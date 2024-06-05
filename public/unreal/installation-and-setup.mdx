@@ -1,0 +1,81 @@
+---
+id: installation-and-setup
+title: Installation & Setup
+slug: /unreal/installation-and-setup
+sidebar_position: 1
+---
+
+## Adding plugin files to your project
+
+### As a git submodule
+
+You can download the Unreal Engine plugin from the [mod.io GitHub Repository](https://github.com/modio/modio-ue) using one of the following methods.
+
+1. Add the repository as a submodule to your repository in your project’s `Plugins/Modio` directory
+
+   In the directory with your .uproject file: `git submodule add https://github.com/modio/modio-ue Plugins/Modio`
+2. Initialize our submodules with `git submodule update --init --recursive`
+
+### In a non-git project, or without submodules
+
+1. Grab the latest release zip from the Releases section on GitHub, and extract the contents to your project’s `Plugins/Modio` directory
+
+![get_latest_release](img/get_latest_release.png) ![get_latest_release2](img/get_latest_release2.png)
+
+:::note
+The automatically generated zips in on the release page, or the 'Code' dropdown here, will not work! They do not contain our submodule dependencies. 
+:::
+
+## Enabling the plugin
+
+Start the editor, then enable the plugin in the Unreal Engine settings:
+
+![plugin_window](img/plugin_window.png)
+
+Once this is done, you can configure the plugin and get started.
+
+## Plugin Configuration
+
+The plugin requires some configuration information to behave correctly. You can access the configuration settings in the Project Settings window:
+
+![plugin_settings](img/plugin_settings.png)
+
+The settings have the following parameters:
+
+| Property | Description |
+| --- | --- |
+| Game Id | Your mod.io-provided Game Id for the target environment |
+| API Key | Your mod.io-provided API key for the target environment |
+| Environment | Your current environment, Live or Test |
+| Log Level | The default logging level to use. Messages with a lower log level will be silently discarded. |
+| Portal | The default portal to use. This usually corresponds to the store your game will be being distributed through. |
+
+:::note
+The Test environment is available for usage in limited circumstances. All games should be setup on the Live environment. If you require access to Test, please contact us.
+:::
+
+### Using background thread
+
+The mod.io plugin can be run on a background thread. Rather than calling [RunPendingHandlers](#RunPendingHandlers) yourself, the mod.io plugin will spin up a background thread and continually call RunPendingHandlers for you. This option can be enabled in the mod.io project settings. This allows you to decouple the frequency with which you perform the plugin’s "work" from your games main thread, which improves performance of the plugin.
+
+Calling methods from the ModioSubsystem will marshall all callbacks back to the game thread, and all other plugin call guarantees remain the same.
+
+## Setting up your game
+
+Before release, you will be able to setup a "hidden" Live environment that will allow you to perform QA against the production environment before release, without exposing your title to the public. At this stage, only selected accounts are able to see your game page, and mods that are uploaded for your title. Once you are ready, you can change the state from "hidden" to "public" to make a full release of your game’s modding capabilities.
+
+## User Interface
+
+The plugin ships with a fully functional UI, featuring mod browsing, searching and collection management. If you want to use the UI in the game, you can read the [UI Documentation](ui-documentation.adoc)
+
+## Profiling
+
+The mod.io SDK ships with some profiling features that are integrated into Unreal’s stat commands. You can read more about enabling profiling [here](profiling.adoc).
+
+## Sample Projects
+
+You can find a sample project demonstrating basic mod.io functionality [here](https://go.mod.io/ue5-sample).
+
+## Next Steps
+
+To begin using the Plugin, either from Blueprint or from C++, please read our [Getting Started Guide](getting-started) for a detailed explanation of initialization and usage.

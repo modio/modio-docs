@@ -1,0 +1,159 @@
+---
+id: installation-and-setup
+title: Installation & Setup
+slug: /cppsdk/setup
+sidebar_position: 1
+---
+
+## Prerequisites
+
+The following packages are required to build the mod.io SDK for Windows 10:
+
+* Visual Studio 2019 & 2022 (Community version works)
+* Visual Studio 2019 & 2022 "Desktop Development with C++" (via Visual Studio Installer)
+
+These include the required CMake (version 3.20 or higher), Ninja, and MSVC C++ compiler.
+
+## Dependencies
+
+The mod.io SDK has the following dependencies:
+
+* [asio](https://github.com/modio/modio-integration-asio)
+* [filesystem](https://github.com/modio/modio-integration-filesystem)
+* [fmt](https://github.com/fmtlib/fmt)
+* [httpparser](https://github.com/nekipelov/httpparser)
+* [json](https://github.com/nlohmann/json)
+* [optional](https://github.com/modio/modio-integration-optional)
+* [utfcpp](https://github.com/nemtrif/utfcpp)
+* [function2](https://github.com/Naios/function2)
+* [mbedtls](https://github.com/ARMmbed/mbedtls) (linux)
+
+While it is possible to download the SDK source code as a zip file from GitHub, a recursive clone will also download all dependencies. To ensure these dependencies are downloaded, use the following commands:
+
+```zsh
+git clone --recurse-submodule https://github.com/modio/modio-sdk
+cd modio-sdk
+```
+
+## Platform Requirements
+
+Each platform has its own set of dependencies, setup and requirements that you may need to follow in order for the mod.io SDK to compile.
+
+[Windows Getting Started](windows/getting-started)
+
+[Mac Getting Started](macos/getting-started)
+
+[Linux Getting Started](linux/getting-started)
+
+[iOS Getting Started](ios/getting-started)
+
+[Android Getting Started](android/getting-started)
+
+## Installation
+
+The mod.io SDK can be installed using one of the following methods:
+
+* Inside a CMake project
+* Standalone: [header-only](#header-only-mode)
+* Standalone: [separate-compilation](#separate-compilation-mode)
+* Standalone: [static-library](#static-library-mode)
+
+
+### Standalone
+To simplify the SDK compilation, the file `CMakePresets.json` includes the most common configurations as `presets` that employ Ninja by default. Therefore, confirm it is available on your `PATH` unless you want to [override](#override) the CMake generator in use.
+
+| Platform | Preset | Target | Build System |
+| --- | --- | --- | --- |
+| Windows | win | Release | Visual Studio 2019 |
+| Windows | win-debug | Debug | Visual Studio 2019 |
+| Windows | win-dbginfo | Pre-Release | Visual Studio 2019 |
+| Linux | linux64 | Release | Ninja |
+| Linux | linux64-debug | Debug | Ninja |
+| Linux | linux64-dbginfo | Pre-Release | Ninja |
+| macOS | macOS | Release | Ninja or XCode |
+| macOS | macOS-debug | Debug | Ninja or XCode |
+| macOS | macOS-dbginfo | Pre-Release | Ninja or XCode |
+| iOS   | iOS           | Release     | Ninja or XCode |
+| iOS   | iOS-debug     | Debug       | Ninja or XCode |
+| iOS   | iOS-dbginfo   | Pre-Release | Ninja or XCode |
+
+
+Debug presets have the `-debug` suffix, and Release-with-debug-info is `-dbginfo`. For example, if you want to build the SDK in debug configuration specify `win-debug` as the preset name.
+
+To build the SDK using the default build and install directories:
+
+1. `cmake -S <modio-sdk folder> --preset=win`
+
+   This will use the Ninja generator to create a Ninja build system in `<modio-sdk folder>/out/build/win`. It installs the compiled libraries/headers to `<modio-sdk folder>/out/install/win`. To build the examples, append ` -DMODIO_BUILD_EXAMPLES=true`.
+2. `cmake --build <modio-sdk folder>/out/build/win`
+
+   This step compiles the SDK as a static library.
+3. `cmake --install <modio-sdk folder>/out/build/win`
+
+   This produces a folder `<modio-sdk folder>/out/install/win` with the following:
+
+   * `header_only` - directory with the header-only version of the SDK
+   * `source` - directory containing the implementation files of the SDK for use in 'split compilation' mode
+   * `static` - directory containing the static library binaries and necessary public include headers
+
+:::note
+If you are compiling the mod.io SDK using different architectures, you can change the preset compilation folder by modifying the "CMAKE_INSTALL_PREFIX" path.
+:::
+
+#### Header-only mode
+
+Simply add each of the subdirectories in `header_only` to your include directories. Then, in `your_project` source file add `#include "modio/ModioSDK.h"`
+
+#### Separate compilation mode
+
+If you prefer to compile the source code directly, add the `cpp` files in the `source` directory, along with the `include` from the header-only mode.
+You must add `MODIO_SEPARATE_COMPILATION` to your project's compiler definitions. Then, in `your_project` source file add `#include "modio/ModioSDK.h"`
+
+#### Static library mode
+
+Add the `inc` directory inside `static` to your `include` and link against the static binary in the `lib` folder.  You must add `MODIO_SEPARATE_COMPILATION` to your project's compiler definitions. Then, in `your_project` source file add `#include "modio/ModioSDK.h"`
+
+### Other Build Systems
+
+If you use a different build system or wish to generate project files for inclusion in an existing Visual Studio solution, you can override the default CMake generator. For example, it is possible to use an MSBuild-based Visual Studio Solution:
+
+```
+cmake -S &lt;modio-sdk folder> --preset=win -G "Visual Studio 16 2019"
+cmake --build &lt;modio-sdk folder>/out/build/win
+cmake --install &lt;modio-sdk folder>/out/build/win
+```
+
+### Deprecated code
+
+If you want to disable deprecated code to avoid warnings or just its usage, you can add `define MODIO_NO_DEPRECATED`, this define will avoid compilation of deprecated code.
+
+### Clang compiler in Visual Studio
+
+It is possible to employ the Clang compiler provided by Visual Studio Installer under the name `C++ Clang Compier for Windows`. You can update the `CMakePreset.json` using the following variables:
+
+```
+"cacheVariables": 
+{
+  "CMAKE_C_COMPILER":
+  {
+    "value": "clang-cl.exe",
+    "type": "STRING"
+  },
+  "CMAKE_CXX_COMPILER":
+  {
+    "value": "clang-cpp.exe",
+    "type": "STRING"
+  }
+}
+```
+
+#### Custom `fmt` library
+If you have a custom version of the `fmt` library, you can modify the linking stage defining `MODIO_USE_CUSTOM_FMT`. This define signals the CMake build system to use a custom version of the library. Also, it requires that you define `MODIO_CUSTOM_FMT_PATH` to the system path that contains the `fmt` library to use.
+
+The directory given to `MODIO_CUSTOM_FMT_PATH` should contain a CMakeLists.txt which exposes the `fmt` and/or `fmt-header-only` targets.
+
+By default the SDK will consume the `fmt-header-only` target. Define `MODIO_CUSTOM_FMT_STATIC` to `true` to override this and request the consumption of the `fmt` static library target instead.
+
+## Next Steps
+
+To begin using the SDK, please read our [Getting Started Guide](getting-started) for a detailed explanation of initialization and usage.

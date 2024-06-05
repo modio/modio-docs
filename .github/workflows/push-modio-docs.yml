@@ -1,0 +1,31 @@
+name: Push files into modio-docs-public
+on:
+  push:
+    branches:
+      - "main"
+    paths: 
+      - "public/**"
+  workflow_dispatch:
+
+jobs:
+  push-files-to-modio-docs-public:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone repo
+        uses: actions/checkout@v4 
+
+      # - name: Create docs structure to be pushed into modio-docs
+      #   run: |
+      #     Tools/create-docs.sh
+
+      - name: Push public docs to modio-docs
+        uses: cpina/github-action-push-to-another-repository@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.DOCS_ACCESS_TOKEN }}
+        with:
+          source-directory: public
+          destination-github-username: "modio"
+          destination-repository-name: "modio-docs"
+          commit-message: "docs: updating public docs from modio-docs-public repo"
+          target-branch: main
+          target-directory: public
