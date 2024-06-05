@@ -1,4 +1,4 @@
-name: Push files into modio-docs-public
+name: Push files into modio-docs
 on:
   push:
     branches:
@@ -8,11 +8,15 @@ on:
   workflow_dispatch:
 
 jobs:
-  push-files-to-modio-docs-public:
+  push-files-to-modio-docs:
     runs-on: ubuntu-latest
     steps:
       - name: Clone repo
         uses: actions/checkout@v4 
+    
+      - name: Config git
+        run: |
+          git config --unset-all http.https://github.com/.extraheader
 
       - name: Push public docs to modio-docs
         uses: cpina/github-action-push-to-another-repository@main
