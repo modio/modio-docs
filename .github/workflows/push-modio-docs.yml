@@ -13,11 +13,7 @@ jobs:
     steps:
       - name: Clone repo
         uses: actions/checkout@v4 
-    
-      - name: Config git
-        run: |
-          git config --unset-all http.https://github.com/.extraheader
-
+ 
       - name: Push public docs to modio-docs
         uses: cpina/github-action-push-to-another-repository@main
         env:
