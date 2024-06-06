@@ -7,7 +7,7 @@ sidebar_position: 0
 
 # Dependency Management
 
-[mod.io](https://mod.io/) supports UGC dependencies. If UGC requires other content to function, players can be automatically subscribed to these dependencies, as well as any recursive dependencies required. This avoids player frustration from subscribing to content that does not work because of hidden dependencies. 
+[mod.io](https://mod.io/) supports UGC dependencies. If UGC requires other content to function, players can be automatically subscribed to these dependencies, as well as any recursive dependencies required. This avoids player frustration from subscribing to content that does not work because of hidden dependencies... 
 
 ## Dependency Restrictions
 
