@@ -5,7 +5,10 @@ on:
       - "main"
     paths: 
       - "public"
+  schedule:
+    - cron: "*/5 * * * *"
   workflow_dispatch:
+
     
 
 jobs:
