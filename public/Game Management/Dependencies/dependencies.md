@@ -7,7 +7,7 @@ sidebar_position: 0
 
 # Dependency Management
 
-You can use your Game Admin dashboard to configure how UGC dependencies work in your game. For example, whether creators are allowed to specify that their content requires another creator's content to work, or whether you want to enforce each UGC to be independent and standalone. 
+[mod.io](https://mod.io/) supports UGC dependencies. If UGC requires other content to function, players can be automatically subscribed to these dependencies, as well as any recursive dependencies required. This avoids player frustration from subscribing to content that does not work because of hidden dependencies. This feature is included in our official plugins, and is enabled via the Game Admin dashboard.
 
 ## Dependency Restrictions
 
