@@ -118,9 +118,9 @@ Add the `inc` directory inside `static` to your `include` and link against the s
 If you use a different build system or wish to generate project files for inclusion in an existing Visual Studio solution, you can override the default CMake generator. For example, it is possible to use an MSBuild-based Visual Studio Solution:
 
 ```
-cmake -S &lt;modio-sdk folder> --preset=win -G "Visual Studio 16 2019"
-cmake --build &lt;modio-sdk folder>/out/build/win
-cmake --install &lt;modio-sdk folder>/out/build/win
+cmake -S <modio-sdk folder> --preset=win -G "Visual Studio 16 2019"
+cmake --build <modio-sdk folder>/out/build/win
+cmake --install <modio-sdk folder>/out/build/win
 ```
 
 ### Deprecated code

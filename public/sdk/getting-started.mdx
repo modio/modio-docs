@@ -78,7 +78,7 @@ Whilst it is now safe to call all other SDK functions from a different thread to
 
 By using a background thread for [RunPendingHandlers](#RunPendingHandlers), you can decouple the frequency with which you perform SDK 'work' from the frequency of your application's main loop for greater performance. 
 
-See [SDK quick-start: Multithreading](#SDK quick-start: Multithreading) for more information.
+See * [SDK quick-start: Multithreading](#sdk-quick-start-multithreading) for more information.
 :::
 
 ### Users and Local Profiles
@@ -156,7 +156,7 @@ However, this value can be overridden in one of two ways:
 
   Per-game, Local Profile-specific settings are stored in `${FolderID_LocalAppData}/mod.io/${Game_ID}/${Local_Profile_Name}/user.json`.
 
-  **Adding** a `RootLocalDataPath` element to this file will redirect the mod installation directory for this specific game only, for the current Local Profile. Removing this value will cause the game to revert back to the global value in `globalsettings.json`.
+  **Adding** a `RootLocalStoragePath` element to this file will redirect the mod installation directory for this specific game only, for the current Local Profile. Removing this value will cause the game to revert back to the global value in `globalsettings.json`.
 
 ---
 ## SDK quick-start
@@ -170,8 +170,10 @@ The following guides are provided to help you through the basic functions of the
 * [SDK quick-start: Error Handling](#sdk-quick-start-error-handling)
 * [SDK quick-start: In-game mod submission](#sdk-quick-start-in-game-mod-submission)
 * [SDK quick-start: Edit an existing mod](#sdk-quick-start-edit-an-existing-mod)
-* [SDK quick-start: User mute/unmute functions](#sdk-quick-start-user-mute/unmute-functions)
+* [SDK quick-start: User mute and unmute functions](#sdk-quick-start-user-mute-and-unmute-functions)
+* [SDK quick-start: Temporary Mod Sets](#sdk-quick-start-temporary-mod-sets)
 * [SDK quick-start: Multithreading](#sdk-quick-start-multithreading)
+* [SDK quick-start: Monetization](#sdk-quick-start-monetization)
 
 ---
 ### SDK quick-start: Initialization and Teardown
@@ -215,8 +217,8 @@ Modio::InitializeOptions Options;
 Options.APIKey = Modio::ApiKey(YOUR_API_KEY);
 Options.GameID = Modio::GameID(YOUR_GAME_ID);
 Options.User = "LocalProfileName";
-Options.PortalInUse = Modio::Portal::None;
 Options.GameEnvironment = Modio::Environment::Live;
+Options.PortalInUse = Modio::Portal::Steam;
 
 Modio::InitializeAsync(Options, [&SDKInitialized](Modio::ErrorCode ec) {
     if (ec)
@@ -872,7 +874,7 @@ Modio::SubmitModChangesAsync(ModID, EditParams, [](Modio::ErrorCode ec, Modio::O
 
 ---
 
-### SDK quick-start: User mute/unmute functions
+### SDK quick-start: User mute and unmute functions
 
 Users have the ability to disable updates from other user's mods. This will prevent mod.io from returning mods authored by the muted user. There are three functions to perform these actions:
 
@@ -946,6 +948,47 @@ Modio::GetMutedUsersAsync([](Modio::ErrorCode ec, Modio::Optional<Modio::UserLis
 
 ---
 
+### SDK quick-start: Temporary Mod Sets
+
+In some situations, you may want mods to only exist on a temporary basis - for instance, in Multiplayer environments where you don't want to subscribe a user to a piece of content. Temporary Mod Sets allow management of these more transient pieces of content separately from subscriptions. Temp Mod Sets do not require authentication to be used, however Mod Management must still be enabled to use Temp Mods.
+
+Temp Mods are downloaded in a folder separately from subscriptions, and are not updated or handled when you call `FetchExternalUpdatesAsync`. That means you can prioritize download and installation of Temp Mods outside of the regular subscription flow.
+
+To use Temp Mods, you can start a TempModSet by calling `InitTempModSet` and passing a list of Mod IDs to be downloaded and extracted. At anytime while a TempModSet is open, you can call [AddToTempModSet](#AddToTempModSet) to add mods to the set (which will be instantly downloaded and extracted). If you no longer need a mod, you can call [RemoveFromTempModSet](#RemoveFromTempModSet) which will remove the file. Once you have finished with a TempModSet, you can call [CloseTempModSet](#CloseTempModSet) which will delete all temporary mods. Temporary mods are also deleted the next time you re-initialize the SDK.
+
+Like regular mods, Temp Mods can be queried using [QueryTempModSet](#QueryTempModSet) to get a ModCollectionEntry with an installation path.
+
+#### Installing Temporary Mods
+
+```cpp
+Modio::EnableModManagement([](Modio::ModManagementEvent ModEvent)
+{
+    if (ModEvent.Status && ModEvent.Event == Modio::ModManagementEvent::EventType::Installed)
+    {
+        std::cout << "Mod with ID: " << ModEvent.ID << " is installed" << std::endl;
+    }
+    else 
+    {
+        std::cout << "Mod with ID: " << ModEvent.ID << " failed to install: " << ModEvent.Status.message() << std::endl;
+    }
+});
+
+std::vector<Modio::ModID> ModIds = {8, 4, 5};
+
+Modio::InitTempModSet(ModIds);
+
+while(Modio::IsModManagementBusy())
+{
+    Modio::RunPendingHandlers();
+}
+```
+
+This call will start a TempModSet and install Mods with IDs 8, 4 and 5.
+
+:::note 
+If you add an already subscribed mod to TempModSet, it will not download be downloaded as the player will already have that content. If you try to unsubscribe from it while it's in TempModSet, the SDK it will wait for it to be removed from TempModSet before processing the unsubscribe.
+:::
+
 ### SDK quick-start: Multithreading
 
 As mentioned in [the quick-start section on initialization](#sdk-initialization), the SDK supports [RunPendingHandlers](#RunPendingHandlers) being run on a secondary thread that already exists or a dedicated background thread you create specifically to peform SDK work.
@@ -998,3 +1041,90 @@ If this occurs, we recommend you use either a `yield` or high-resolution `sleep`
 
 If the SDK runs for the lifetime of your application and you do not call [ShutdownAsync](#ShutdownAsync) this is not necessary.
 :::
+
+
+### SDK quick-start: Monetization
+
+The mod.io SDK supports all of the mod.io monetization features, allowing you sell a per-game virtual currency to your players that they can use to purchase mods, with a share of the revenue split between creators and your studio. Visit HERE (TODO) for an overview of the mod.io monetization system.
+
+Every platform requires specific setup for monetization features to work, with regards to the virtual currency configuration and API calls, however the following documentation is generically applicable, with only small differences per-platform that are documented within the platform-specific monetization documentation.
+
+#### Initialization
+
+The mod.io monetization features are enabled as part of the onboarding process on your game profile. Once that is setup, there is nothing further you need to do for initialization in the SDK.
+
+Ensure that you have set the appropriate Portal when initializing the SDK for the portal you are using for purchasing - for instance, on Steam, you must initialize with Modio::Portal::Steam in order to redeem entitlements for Steam.
+
+#### Getting the user's wallet
+
+On startup, you can make a call to `<<GetUserWalletBalanceAsync>>` to get the balance of the current user's wallet. If no wallet exists for the user, one will be created for them automatically. This call returns the users wallet balance for the current game. On startup is the only time you need to make this call.
+
+We recommend that you cache the value of this result in your game code rather than making consistent calls to `<<GetUserWalletBalanceAsync>>` and update your local state from the return values of other calls that affect wallet balance.
+
+```cpp
+		Modio::GetUserWalletBalanceAsync([](Modio::ErrorCode ec, Modio::Optional<uint64_t> WalletBalance) {
+			if (!ec && WalletBalance.has_value())
+			{
+				GlobalState.WalletAmount = WalletBalance.value();
+			}
+            else 
+            {
+                // Error handling
+            }
+		});
+```
+
+### Querying & Purchasing Mods
+
+As part `<<ListAllModsAsync>>`, you can include an additional filter for whether you list paid mods. By default, only free mods are shown, but you can set `RevenueType` on the `<<FilterParams>>` object passed to `<<ListAllModsAsync>>` to include free and paid content, or just paid content. All mods returned will have a `Price` property, indicating the virtual currency price that must be paid in order to purchase.
+
+```cpp
+Modio::ListAllModsAsync(Modio::FilterParams().RevenueType(Modio::FilterParams::RevenueFilterType::FreeAndPaid), [](Modio::ErrorCode ec, Modio::Optional<Modio::ModInfoList> Results)
+{
+    if (ec)
+    {
+        // Error handling
+    }
+    else
+    {
+        for (Modio::ModInfo& CurrentModProfile : *Results)
+        {
+            std::cout << CurrentModProfile.Price;
+        }
+    }
+});
+```
+
+#### Purchasing Mods
+
+You can call `<<PurchaseModAsync>>` to purchase a given mod. PurchaseModAsync takes two parameters = the ModID of the mod to purchase, and the ExpectedPrice, which is the price displayed to the user from `<<ListAllModsAsync>>`. You must include this parameter for safety, so the user is not charged more or less than the price displayed to them in case the price of the mod has changed between the call to ListAllModsAsync and purchase time.
+Once a mod is purchased, it is automatically subscribed to for the user.
+
+You should validate that the user has enough virtual currency to make the purchase by comparing it to the balance you received from `GetUserWalletBalanceAsync`. Note this is purely for user experience (ie for graying out the purchase button in the UI, or upselling the user a virtual currenct pack), and `PurchaseModAsync` will return an error if the user does not have enough in their wallet.
+
+The updated wallet balance after the purchase amount is subtracted is returned in the callback of `<<PurchaseModAsync>>`.
+
+```cpp
+Modio::PurchaseModAsync(ModId, ModPrice, [](Modio::ErrorCode ec, Modio::Optional<Modio::TransactionRecord> Transaction) {
+    if (ec)
+    {
+        // Error handling
+    }
+    else
+    {
+        if (Transaction.has_value())
+        {
+            GlobalState.WalletAmount =
+                Transaction.value().UpdatedUserWalletBalance;
+        }
+    }
+});
+```
+
+#### Showing user purchases
+
+Even though all purchased mods are automatically subscribed, the user can still unsubscribe from them and uninstall them; however, they still remain owned and purchased by the user. They must re-subscribe to the mod in order to have it installed. This is facilitated by `<<FetchUserPurchasesAsync>>`, which will fetch a list of a users purchased mods. After a successful call, you can then display them with `<<QueryUserPurchases>>`, allowing re-subscription if necessary.
+
+### Sample Code
+
+All platforms have a Monetization sample, demonstrating this flow along with how to handle each platform's commerce and store. For configuration of the virtual currency for each platform, check out the mod.io documentation website.
