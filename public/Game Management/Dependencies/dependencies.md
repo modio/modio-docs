@@ -17,7 +17,7 @@ Before allowing or disallowing dependencies, it is wise to understand the implic
 * UGC creators cannot choose to disallow dependencies when their content already has dependants 
 * Games that allow dependencies with no restrictions cannot monetize 
 * UGC that either allows dependencies, or depends on other content, cannot be monetized
-* Monetized UGC cannot choose to allow dependencies or select other content on which to depend.
+* Monetized UGC cannot choose to allow dependencies or select other content on which to depend
 
 ## Game Dependency Settings
 
