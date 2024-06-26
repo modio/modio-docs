@@ -39,19 +39,7 @@ jobs:
           commit-message: "docs: updating public docs (dependencies) from modio-docs repo"
           target-branch: main
           target-directory: public/Game Management/Dependencies
-          
-      - name: Push public metrics docs to modio-docs-internal
-        uses: cpina/github-action-push-to-another-repository@main
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.DOCS_ACCESS_TOKEN }}
-        with:
-          source-directory: 'public/Game Management/Metrics'
-          destination-github-username: "modio"
-          destination-repository-name: "modio-docs-internal"
-          commit-message: "docs: updating public docs (metrics) from modio-docs"
-          target-branch: main
-          target-directory: public/Game Management/Metrics
-
+        
       - name: Push public moderation docs to modio-docs-internal
         uses: cpina/github-action-push-to-another-repository@main
         env:
