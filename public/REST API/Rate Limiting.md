@@ -1,8 +1,8 @@
 ---
 id: rate-limiting
 title: Rate Limiting
-slug: /rate-limiting/
-sidebar_position: 3
+slug: /restapi/rate-limiting
+sidebar_position: 1
 ---
 
 # Rate Limiting
