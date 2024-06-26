@@ -105,12 +105,12 @@ jobs:
         env:
           API_TOKEN_GITHUB: ${{ secrets.DOCS_ACCESS_TOKEN }}
         with:
-          source-directory: 'public/web'
+          source-directory: 'public/web-services'
           destination-github-username: "modio"
           destination-repository-name: "modio-docs-internal"
           commit-message: "docs: updating public docs (web) from modio-docs repo"
           target-branch: main
-          target-directory: public/web
+          target-directory: public/web-services
 
       - name: Push public side menu to modio-docs-internal
         uses: cpina/github-action-push-to-another-repository@main
