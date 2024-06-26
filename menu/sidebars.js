@@ -153,7 +153,7 @@ const sidebars = {
       type: 'category',
       label: 'Moderation',
       link: {type: 'doc', id: 'game-management/moderation/moderation'},
-      items: ['game-Management/moderation/automated-scanning', 'game-management/moderation/manual-curation', 'game-management/moderation/community-reports',
+      items: ['game-management/moderation/automated-scanning', 'game-management/moderation/manual-curation', 'game-management/moderation/community-reports',
 
         {
           type: 'category',
@@ -168,12 +168,6 @@ const sidebars = {
       id: 'game-management/dependencies/dependency-management',
       label: 'Dependencies',
     },
-    // Remove Metrics until we get the docs written
-    // {
-    //   type: 'category',
-    //   label: 'Metrics',
-    //   items: ['Game Management/Metrics/metrics', 'Game Management/Metrics/metrics-dashboards', 'Game Management/Metrics/metrics-trending', 'Game Management/Metrics/metrics-ccu', 'Game Management/Metrics/metrics-export'],
-    // },
     // WEB SERVICES
     {
       type: 'html',
