@@ -1,8 +1,8 @@
 ---
-id: user-consent
+id: terms
 title: Terms & User Consent
-slug: /user-consent/
-sidebar_position: 0
+slug: /terms
+sidebar_position: 2
 ---
 
 # Terms & User Consent
@@ -67,7 +67,7 @@ The Terms of Use and Privacy Policy must be clickable from somewhere on the dial
 * [https://mod.io/privacy/widget?no_links=true](https://mod.io/privacy/widget?no_links=true)
 
 :::tip
-Note:** The **/widget** part of the URL is optional and removes all menus and the **?no_links=true** part of the URL is optional and removes all links.
+**Note:** The **/widget** part of the URL is optional and removes all menus and the **?no_links=true** part of the URL is optional and removes all links.
 :::
 
 ### Authentication
