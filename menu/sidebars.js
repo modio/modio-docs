@@ -55,8 +55,8 @@ const sidebars = {
     {
       type: 'category',
       label: 'Unity',
-      link: {type: 'doc', id: 'integration/unity/unity'},
-      items: ['integration/unity/unity-setup', 'integration/unity/unity-getting-started', 'integration/unity/unity-ugc-browser', 'integration/unity/unity-marketplace', 
+      link: {type: 'doc', id: 'game-integration/unity/unity'},
+      items: ['game-integration/unity/unity-setup', 'game-integration/unity/unity-getting-started', 'game-integration/unity/unity-ugc-browser', 'game-integration/unity/unity-marketplace', 
       {
         type: 'link',
         label: 'Unity Reference', 
@@ -144,11 +144,6 @@ const sidebars = {
       value: `${startStylePush}GAME MANAGEMENT${endStyle}`,
       defaultStyle: true,
     },
-    // {
-    //   type: 'category',
-    //   label: 'Monetization',
-    //   items: ['Game Management/Monetization/monetization', 'Game Management/Monetization/getting-started'],
-    // },
     {
       type: 'category',
       label: 'Moderation',
@@ -168,7 +163,6 @@ const sidebars = {
       id: 'game-management/dependencies/dependency-management',
       label: 'Dependencies',
     },
-    // WEB SERVICES
     {
       type: 'html',
       value: `${startStylePush}WEB SERVICES${endStyle}`,
@@ -182,12 +176,12 @@ const sidebars = {
       {
         type: 'category',
         label: 'For Players',
-        link: {type: 'doc', id: 'web/authentication/overview'},
-        items: ['web/authentication/openid', 'web/authentication/website-studio-sso'],
+        link: {type: 'doc', id: 'web-services/authentication/overview'},
+        items: ['web-services/authentication/openid', 'web-services/authentication/website-studio-sso'],
       },
       {
         type: 'doc',
-        id: 'web/authentication/s2s',
+        id: 'web-services/authentication/s2s',
         label: 'For Web Servers',
       },
     ]
@@ -195,8 +189,8 @@ const sidebars = {
     {
       type: 'category',
       label: 'Marketplace',
-      link: {type: 'doc', id: 'web/iap/overview'},
-      items: ['web/iap/studio-as-purchase-server'],
+      link: {type: 'doc', id: 'web-services/marketplace/overview'},
+      items: ['web-services/marketplace/studio-as-purchase-server'],
     },
     // REST API
     {

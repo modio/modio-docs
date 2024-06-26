@@ -1,7 +1,7 @@
 ---
 id: website-studio-sso
 title: Website login on mod.io using your identity provider
-slug: /web-services/authentication/website/
+slug: /web-services/authentication/website
 sidebar_position: 2
 ---
 
