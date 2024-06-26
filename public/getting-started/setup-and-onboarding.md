@@ -1,7 +1,7 @@
 ---
 id: setup-and-onboarding
-title: Setup and Onboarding
-sidebar_label: Setup and Onboarding
+title: Setup & Onboarding
+sidebar_label: Setup & Onboarding
 slug: /getting-started/setup-and-onboarding
 sidebar_position: 0
 ---

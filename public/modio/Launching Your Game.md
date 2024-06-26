@@ -1,7 +1,7 @@
 ---
 id: launch
 title: Launch Your Game
-slug: /launch/
+slug: /launch
 sidebar_position: 1
 ---
 

@@ -1,8 +1,8 @@
 ---
 id: premium-features
 title: Premium Features
-slug: /premium-features/
-sidebar_position: 2
+slug: /premium-features
+sidebar_position: 3
 ---
 
 # Premium Features
