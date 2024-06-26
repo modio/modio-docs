@@ -1,7 +1,7 @@
 ---
 id: platforms
 title: Supporting Console Platforms
-slug: /platforms/
+slug: /platforms
 sidebar_position: 0
 ---
 

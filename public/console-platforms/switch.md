@@ -1,7 +1,7 @@
 ---
 id: platforms-switch
 title: Nintendo Switch
-slug: /platforms/switch/
+slug: /platforms/switch
 sidebar_position: 2
 ---
 import CrossLink from '@site/src/components/CrossLink'

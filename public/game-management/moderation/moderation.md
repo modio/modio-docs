@@ -1,12 +1,12 @@
 ---
 id: moderation
-title: Overview
-slug: /moderation/
+title: Moderation
+slug: /moderation
 sidebar_position: 0
 ---
 
 
-# Overview
+# Moderation
 
 
 [mod.io](https://mod.io/) offers four levels of moderation:
