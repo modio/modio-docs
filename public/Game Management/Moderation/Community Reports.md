@@ -9,7 +9,7 @@ sidebar_position: 4
 # Community Reports
 
 
-mod.io provides [built-in reporting tools](https://mod.io/report), both through our website and the interface provided as a part of our Unity & Unreal Engine plugins, allowing users to report content that may be broken, contains stolen content, or violates our Terms of Use. We also provide endpoints in our custom SDK, allowing integration with custom engines to build reporting functionality directly into those games.
+mod.io provides built-in reporting tools, through [our website](https://mod.io/report) and the interface provided as a part of our Unity and Unreal Engine plugins, allowing users to report content that may be broken, is stolen, or violates our Terms of Use. We also provide endpoints in our [REST API](https://docs.mod.io/restapiref/#reports) and SDK, allowing reporting functionality to be integrated directly into custom engines, games, apps and websites.
 
 Users can report mods, guides, and individual users. Reports for each of these are displayed under **Reports** in the **Game Admin** section of your game’s page.
 
