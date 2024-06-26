@@ -3,8 +3,6 @@ on:
   pull_request:
     branches:
       - "main"
-    paths: 
-      - "public"
     types:
       - closed
   workflow_dispatch:
