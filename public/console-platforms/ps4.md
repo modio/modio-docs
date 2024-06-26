@@ -1,7 +1,7 @@
 ---
 id: platforms-playstation
 title: PlayStation&reg;4 & PlayStation&reg;5
-slug: /platforms/playstation/
+slug: /platforms/playstation
 sidebar_position: 1
 ---
 import CrossLink from '@site/src/components/CrossLink'

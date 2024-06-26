@@ -1,7 +1,7 @@
 ---
 id: manual-curation
 title: Manual Curation
-slug: /moderation/manual-curation/
+slug: /moderation/manual-curation
 sidebar_position: 3
 ---
 

@@ -1,7 +1,7 @@
 ---
-id: platforms-further-reading
+id: platforms-console-sdks
 title: Console SDKs
-slug: /platforms/console-sdks/
+slug: /platforms/console-sdks
 sidebar_position: 4
 ---
 
