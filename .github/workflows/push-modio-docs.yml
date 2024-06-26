@@ -21,7 +21,7 @@ jobs:
         env:
           API_TOKEN_GITHUB: ${{ secrets.DOCS_ACCESS_TOKEN }}
         with:
-          source-directory: 'public/Console Platforms'
+          source-directory: 'public/console-platforms'
           destination-github-username: "modio"
           destination-repository-name: "modio-docs-internal"
           commit-message: "docs: updating public docs (console platforms) from modio-docs repo"
@@ -33,7 +33,7 @@ jobs:
         env:
           API_TOKEN_GITHUB: ${{ secrets.DOCS_ACCESS_TOKEN }}
         with:
-          source-directory: 'public/Game Management/Dependencies'
+          source-directory: 'public/game-management/dependencies'
           destination-github-username: "modio"
           destination-repository-name: "modio-docs-internal"
           commit-message: "docs: updating public docs (dependencies) from modio-docs repo"
@@ -57,7 +57,7 @@ jobs:
         env:
           API_TOKEN_GITHUB: ${{ secrets.DOCS_ACCESS_TOKEN }}
         with:
-          source-directory: 'public/Game Management/Moderation'
+          source-directory: 'public/game-management/moderation'
           destination-github-username: "modio"
           destination-repository-name: "modio-docs-internal"
           commit-message: "docs: updating public docs (moderation) from modio-docs repo"
@@ -69,7 +69,7 @@ jobs:
         env:
           API_TOKEN_GITHUB: ${{ secrets.DOCS_ACCESS_TOKEN }}
         with:
-          source-directory: 'public/Integration'
+          source-directory: 'public/integration'
           destination-github-username: "modio"
           destination-repository-name: "modio-docs-internal"
           commit-message: "docs: updating public docs (integration) from modio-docs repo"
@@ -81,7 +81,7 @@ jobs:
         env:
           API_TOKEN_GITHUB: ${{ secrets.DOCS_ACCESS_TOKEN }}
         with:
-          source-directory: 'public/REST API'
+          source-directory: 'public/rest-api'
           destination-github-username: "modio"
           destination-repository-name: "modio-docs-internal"
           commit-message: "docs: updating public docs (REST API) from modio-docs repo"
@@ -93,7 +93,7 @@ jobs:
         env:
           API_TOKEN_GITHUB: ${{ secrets.DOCS_ACCESS_TOKEN }}
         with:
-          source-directory: 'public/Support'
+          source-directory: 'public/support'
           destination-github-username: "modio"
           destination-repository-name: "modio-docs-internal"
           commit-message: "docs: updating public docs (support) from modio-docs repo"
@@ -123,3 +123,16 @@ jobs:
           commit-message: "docs: updating public docs (web) from modio-docs repo"
           target-branch: main
           target-directory: public/web
+
+
+      - name: Push menu structure to modio-docs-internal
+        uses: cpina/github-action-push-to-another-repository@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.DOCS_ACCESS_TOKEN }}
+        with:
+          source-directory: 'menu'
+          destination-github-username: "modio"
+          destination-repository-name: "modio-docs-internal"
+          commit-message: "docs: update public menu from modio-docs repo"
+          target-branch: main
+          target-directory: /
