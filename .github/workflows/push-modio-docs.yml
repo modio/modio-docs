@@ -26,7 +26,7 @@ jobs:
           destination-repository-name: "modio-docs-internal"
           commit-message: "docs: updating public docs (console platforms) from modio-docs repo"
           target-branch: main
-          target-directory: public/Console Platforms
+          target-directory: public/console-platforms
 
       - name: Push public dependencies docs to modio-docs-internal
         uses: cpina/github-action-push-to-another-repository@main
@@ -38,7 +38,7 @@ jobs:
           destination-repository-name: "modio-docs-internal"
           commit-message: "docs: updating public docs (dependencies) from modio-docs repo"
           target-branch: main
-          target-directory: public/Game Management/Dependencies
+          target-directory: public/game-management/dependencies
         
       - name: Push public moderation docs to modio-docs-internal
         uses: cpina/github-action-push-to-another-repository@main
@@ -50,19 +50,19 @@ jobs:
           destination-repository-name: "modio-docs-internal"
           commit-message: "docs: updating public docs (moderation) from modio-docs repo"
           target-branch: main
-          target-directory: public/Game Management/Moderation
+          target-directory: public/game-management/moderation
 
       - name: Push public integration docs to modio-docs-internal
         uses: cpina/github-action-push-to-another-repository@main
         env:
           API_TOKEN_GITHUB: ${{ secrets.DOCS_ACCESS_TOKEN }}
         with:
-          source-directory: 'public/integration'
+          source-directory: 'public/game-integration'
           destination-github-username: "modio"
           destination-repository-name: "modio-docs-internal"
           commit-message: "docs: updating public docs (integration) from modio-docs repo"
           target-branch: main
-          target-directory: public/Integration
+          target-directory: public/game-integration
 
       - name: Push public REST API docs to modio-docs-internal
         uses: cpina/github-action-push-to-another-repository@main
@@ -74,7 +74,7 @@ jobs:
           destination-repository-name: "modio-docs-internal"
           commit-message: "docs: updating public docs (REST API) from modio-docs repo"
           target-branch: main
-          target-directory: public/REST API
+          target-directory: public/rest-api
 
       - name: Push public support docs to modio-docs-internal
         uses: cpina/github-action-push-to-another-repository@main
@@ -86,7 +86,7 @@ jobs:
           destination-repository-name: "modio-docs-internal"
           commit-message: "docs: updating public docs (support) from modio-docs repo"
           target-branch: main
-          target-directory: public/Support
+          target-directory: public/support
 
       - name: Push public overview docs to modio-docs-internal
         uses: cpina/github-action-push-to-another-repository@main
