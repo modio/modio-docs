@@ -111,16 +111,3 @@ jobs:
           commit-message: "docs: updating public docs (web) from modio-docs repo"
           target-branch: main
           target-directory: public/web
-
-
-      - name: Push menu structure to modio-docs-internal
-        uses: cpina/github-action-push-to-another-repository@main
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.DOCS_ACCESS_TOKEN }}
-        with:
-          source-directory: 'menu'
-          destination-github-username: "modio"
-          destination-repository-name: "modio-docs-internal"
-          commit-message: "docs: update public menu from modio-docs repo"
-          target-branch: main
-          target-directory: /
