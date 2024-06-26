@@ -1,10 +1,12 @@
 name: Push files into modio-docs-internal
 on:
-  push:
+  pull_request:
     branches:
       - "main"
     paths: 
       - "public"
+    types:
+      - closed
   workflow_dispatch:
 
     
