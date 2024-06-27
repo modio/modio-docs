@@ -7,7 +7,6 @@ sidebar_position: 1
 
 # Error Codes
 
-
 | Constant Name | Value |
 |--------------|-------|
 | NO_REF | 0 |

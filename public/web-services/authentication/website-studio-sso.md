@@ -227,5 +227,3 @@ Once an account link to a identity provider belonging to a game has been unlinke
 | 11117 | The `expires_in` field returned the Token URL endpoint is either missing or invalid (non-integer). |
 | 11118 | The `token_type` field returned the Token URL endpoint is either missing or not the expected value `Bearer` (case-insensitive). |
 | 11121 | The expected field from the User Info URL endpoint which maps to the users ID for your identity provider could not be obtained. |
-
-

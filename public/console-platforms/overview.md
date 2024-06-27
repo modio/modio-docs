@@ -4,12 +4,11 @@ title: Supporting Console Platforms
 slug: /platforms
 sidebar_position: 0
 ---
-
 import CrossLink from '@site/src/components/CrossLink'
 
 # Supporting Console Platforms
 
-[mod.io](https://mod.io/) is a fully authorized middleware provider for Xbox, PlayStation&reg;4, PlayStation&reg;5 and Nintendo Switch.
+mod.io is a fully authorized middleware provider for Xbox, PlayStation&reg;4, PlayStation&reg;5 and Nintendo Switch.
 
 |      | **Service Availability** | **Certification Support** | **Native SDK** | **Single Sign-On** |
 |------|------|------|------|------|
@@ -19,12 +18,12 @@ import CrossLink from '@site/src/components/CrossLink'
 | **PlayStation 4**   | ✓ | ✓ | ✓ | ✓ |
 | **PlayStation 5**   | ✓ | ✓ | ✓ | ✓ |
 
-You can see examples of [mod.io](https://mod.io/) running on consoles in the following titles today:
+You can see examples of mod.io running on consoles in the following titles today:
 * SnowRunner - Xbox, PS4&trade;/PS5&reg;, Switch ([https://mod.io/g/snowrunner](https://mod.io/g/snowrunner))
 * Space Engineers - Xbox ([https://mod.io/g/spaceengineers](https://mod.io/g/spaceengineers))
 * Skater XL - Xbox, PS4/PS5 ([https://mod.io/g/skaterxl](https://mod.io/g/skaterxl))
 
-If you would like to see an example of [mod.io](https://mod.io/) working in any of these games or other titles, please contact [developers@mod.io](mailto:developers@mod.io) for demonstration keys.
+If you would like to see an example of mod.io working in any of these games or other titles, please contact developers@mod.io for demonstration keys.
 
 ## mod.io Console Featureset
 
@@ -34,7 +33,7 @@ We provide a number of tools and features, built directly into our dashboard, AP
 * Fully compliant moderation systems that allow you to control UGC released onto each platform
 * Ability to upload platform-specific UGC files, helpful if you need to “compile” UGC to work with each respective platform
 * Tagging and metadata systems to manage UGC on a per-platform basis
-* [Platform and portal headers](https://docs.mod.io/restapiref/#platforms) used to localize content (i.e. display names) and other settings automatically
+* [Platform and portal headers](/restapiref/#platforms) used to localize content (i.e. display names) and other settings automatically
 * Word filtering and other processes required by each platform
 * Support for onboarding, and certification requirements around UGC
 * Advanced metrics and reporting so you can compare the usage of UGC, trending content and other key stats across all platforms your games are released

@@ -45,11 +45,11 @@ This will provide users with a streamlined login experience tailored to the appr
 
 ![Xbox Live log in interface available in the mod.io web UI](images/console-support/xbox_auth_web.png)
 
-Please contact us for further instructions for authenticating with Xbox Live: [developers@mod.io](mailto:developers@mod.io)
+Please contact us for further instructions for authenticating with Xbox Live: developers@mod.io
 
 ## Consent
 
-If you choose to use Xbox Live authentication (this isn’t required for email), it is a requirement from Microsoft that consent is collected before a user is authenticated for the first time. So when a user clicks the “UGC” button in-game, you must display an acceptance dialog similar to the one explained [Terms & User Consent](/user-consent/) guide.
+If you choose to use Xbox Live authentication (this isn’t required for email), it is a requirement from Microsoft that consent is collected before a user is authenticated for the first time. So when a user clicks the “UGC” button in-game, you must display an acceptance dialog similar to the one explained [Terms & User Consent](/terms) guide.
 
 ## Networking & Storage
 
