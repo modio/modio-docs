@@ -7,18 +7,17 @@ sidebar_position: 4
 
 # Marketplace
 
-The mod.io SDK supports full monetization features, allowing you to sell a per-game virtual currency to your players that they can use to purchase premium UGC, with a share of the revenue split between creators and your studio. Every platform
-requires specific setup for monetization features to work, with regards to the virtual currency configuration and API calls. 
+The mod.io Unity Plugin supports in-game integration of the mod.io Marketplace - exposing the data and functions required to build a UGC store in-game.
+
+The mod.io monetization features are need to be enabled through the web UI and, if selling the virtual currency through a platform store, will need a service to consume the virtual currency entitlements and apply them to player's mod.io account.
+
+:::note
+See [Monetization Introduction](/monetization) for an introduction to the marketplace features
+See [Purchase Server Implementation](/web-services/marketplace/overview) for more information on implementing platform store support
+:::
 
 The mod.io monetization features are enabled as part of the onboarding process on your game profile. Once that is setup, there is nothing further you need to do for initialization in the SDK.
 
-## Enable Marketplace in the Plugin
-
-The first thing you will need to do is enable the marketplace toggle inside your config. This informs the plugin that your game profile has marketplace features enabled and will behave accordingly.
-
-:::tip
-You can quickly access your config file by going to Tools > mod.io > Edit Settings. 
-:::
 
 ## Get User Wallet Balance
 
