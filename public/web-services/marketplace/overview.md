@@ -1,7 +1,7 @@
 ---
 id: overview
 title: Overview
-slug: /web-services/iap/overview
+slug: /web-services/marketplace/overview
 sidebar_position: 0
 ---
 
