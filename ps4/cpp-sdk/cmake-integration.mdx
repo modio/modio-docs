@@ -1,0 +1,46 @@
+---
+id: cmake-integration
+title: CMake Integration
+slug: /cppsdk/cmake-integration
+sidebar_position: 3
+---
+
+# Using inside a CMake project
+
+1. Unzip the archive
+2. Confirm `your_project` uses CMake 3.20 or later
+
+   ```cmake
+   cmake_minimum_required(VERSION 3.20)
+   ```
+3. Specify the target platform with ORBIS
+
+   ```cmake
+   set (MODIO_PLATFORM ORBIS)
+   ```
+4. Add the SDK subdirectory to your project
+
+   ```cmake
+   add_subdirectory(<modio-sdk folder> EXCLUDE_FROM_ALL)
+   target_compile_features(your_project PUBLIC cxx_std_17)
+   ```
+5. Link the library to your project
+
+   * To use the header-only configuration:
+
+     ```cmake
+     target_link_libraries(your_project PUBLIC modio)
+     ```
+   * Or to use the static library configuration:
+
+     ```cmake
+     target_link_libraries(your_project PUBLIC modioStatic)
+     ```
+
+To simplify the CMake configuration, the folder platform/orbis/cmake has the file "CMakePresets.json" with the base configuration required to guide the mod.io SDK compilation using the PS4&trade; SDK. If you copy that file to the folder root, it can be used as follows:
+
+```cmake
+cmake --preset orbis
+```
+
+For more details, follow the general details described in the [mod.io repository](https://github.com/modio/modio-sdk)
