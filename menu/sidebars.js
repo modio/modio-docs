@@ -146,6 +146,25 @@ const sidebars = {
     },
     {
       type: 'category',
+      label: 'Monetization',
+      link: {type: 'doc', id: 'game-management/monetization/monetization'},
+      items: [ 
+        {
+          type: 'category',
+          label: 'Getting Started',
+          link: {type: 'doc', id: 'game-management/monetization/monetization-getting-started'},
+          items: ['game-management/monetization/monetization-how-it-works', 'game-management/monetization/monetization-enabling-monetization','game-management/monetization/monetization-onboarding', 'game-management/monetization/monetization-dashboard', 'game-management/monetization/monetization-approving-premium-ugc', 'game-management/monetization/monetization-marketplace', 'game-management/monetization/monetization-invoices', 'game-management/monetization/monetization-earnings-payouts']
+        }, 
+        {
+          type: 'category',
+          label: 'Integration',
+          link: {type: 'doc', id: 'game-management/monetization/monetization-integration'},
+          items: ['game-management/monetization/monetization-rest-api']
+        }, 
+        'game-management/monetization/monetization-payment-testing', 'game-management/monetization/monetization-next-steps'],
+    },
+    {
+      type: 'category',
       label: 'Moderation',
       link: {type: 'doc', id: 'game-management/moderation/moderation'},
       items: ['game-management/moderation/automated-scanning', 'game-management/moderation/manual-curation', 'game-management/moderation/community-reports',
