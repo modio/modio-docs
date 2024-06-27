@@ -1,7 +1,7 @@
 ---
 id: overview
 title: Overview
-slug: /web-services/overview
+slug: /web-services/authentication/overview
 sidebar_position: 0
 ---
 
