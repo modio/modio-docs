@@ -5,7 +5,6 @@ slug: /moderation/automated-scanning
 sidebar_position: 1
 ---
 
-
 # Automated Scanning
 
 Every UGC submitted to mod.io is first passed through our automated moderation. This consists of mod.io validation rules as well as platform validation rules. If any of the validation checks fail, an API error response will be returned to the user, and they will need to resubmit with the errors corrected.
@@ -59,7 +58,6 @@ In addition to the above, the mod.io API will:
 * store audit data for later Game Admin and Site Admin usage
 * mark files as a virus, or as safe
 * delete files that are marked as a virus by BucketAV
-
 
 ### Lambda function (BigFileScan) and BucketAV
 

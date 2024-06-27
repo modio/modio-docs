@@ -8,7 +8,7 @@ sidebar_position: 1
 # Installation & Setup
 
 ## Dependencies
-The [mod.io](https://mod.io) Unity Plugin requires the functionality of two other open-source Unity plugins to run. These are included as libraries in the UnityPackage in the `Assets/Plugins/mod.io/ThirdParty` directory:
+The mod.io Unity Plugin requires the functionality of two other open-source Unity plugins to run. These are included as libraries in the UnityPackage in the `Assets/Plugins/mod.io/ThirdParty` directory:
 * Json.Net for improved Json serialization. ([GitHub Repo](https://github.com/SaladLab/Json.Net.Unity3D) || [Unity Asset Store Page](https://assetstore.unity.com/packages/tools/input-management/json-net-for-unity-11347))
 * SharpZipLib to zip and unzip transmitted files. ([GitHub Repo](https://github.com/icsharpcode/SharpZipLib))
 
@@ -47,4 +47,4 @@ You'll need your `game ID` and `API key` for the following steps.
 Deselect the config file before entering Play mode. A known Unity bug can cause the Editor to crash in Unity 2019-2021.
 :::
 
-Your setup is now complete. The [Getting Started guide](/unity/getting-started) will guide you through getting your [mod.io](https://mod.io) integration up and running quickly. If you have any questions or need some help join our [Discord](https://discord.mod.io) server.
+Your setup is now complete. The [Getting Started guide](/unity/getting-started) will guide you through getting your mod.io integration up and running quickly. If you have any questions or need some help join our [Discord](https://discord.mod.io) server.

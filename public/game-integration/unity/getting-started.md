@@ -493,7 +493,7 @@ new SearchFilter(2, 10); // Will return results 21-30
 ```
 
 :::note 
-Search Filters have a number of options for filtering and ordering your results. See the [reference documentation](https://docs.mod.io/unityref/) (or use code completion in your IDE) for its available options.
+Search Filters have a number of options for filtering and ordering your results. See the [reference documentation](/unityref/) (or use code completion in your IDE) for its available options.
 :::
 
 ### Downloading Images
@@ -536,7 +536,7 @@ async void SetRandomMod()
 The code above relies on `allMods`, which is set in the first [searching for mods](#searching-for-mods) section. **Ensure that `allMods` has been set before running this method.**
 :::
 
-This method is downloading the smallest version of the logo, `logoImage_320x180`. However, Mod Profiles have a number of sizes for each image. See the [reference documentation](https://docs.mod.io/unityref/) (or use code completion in your IDE) to view available options. 
+This method is downloading the smallest version of the logo, `logoImage_320x180`. However, Mod Profiles have a number of sizes for each image. See the [reference documentation](/unityref/) (or use code completion in your IDE) to view available options. 
 
 ## Getting Subscribed Mods
 
@@ -683,7 +683,7 @@ void Update()
 In a real implementation, you'll likely track the `modId`'s download and install progress separately to display in your UI. But, this should give you an idea of what's possible with the mod management feature.
 
 :::note 
-There are a number of mod management events available. See the [reference documentation](https://docs.mod.io/unityref/) (or use code completion in your IDE) for a complete list.
+There are a number of mod management events available. See the [reference documentation](/unityref/) (or use code completion in your IDE) for a complete list.
 :::
 
 ## Using Mods

@@ -8,8 +8,7 @@ slug: /monetization/onboarding
 
 ## Verification
 
-In order to meet global financial regulations and compliance requirements and ensure a secure ecosystem, we require all
-publishers to verify through one of two methods: as a business entity or as individual creators. 
+In order to meet global financial regulations and compliance requirements and ensure a secure ecosystem, we require all publishers to verify through one of two methods: as a business entity or as individual creators. 
 
 ### As a business entity
 
@@ -105,19 +104,13 @@ Revenue share splits can be adjusted at any time and will affect all future tran
 
 ## Monetization Settings
 
-Now that you’ve verified and onboarded your team, you are able to turn on and adjust the marketplace functionality for
-your game:
+Now that you’ve verified and onboarded your team, you are able to turn on and adjust the marketplace functionality for your game:
 
-- **Token name** - This defaults to ‘mio’ but allows you to change the name of your token. This name will be shown
-  anywhere the token is referenced within your marketplace.
-- **Minimum and maximum price** - These values restrict content sold in the marketplace to be limited to prices within
-  this range.
-- **Default price** - Sets the default/recommended value populated in the price field when creators set up their content
-  for sale.
-- **Transaction revenue split** - Allows you to change the default revenue share split between creators and you as the
-  game publisher. You can see which share each party will get in the split calculator on the right side.
-- **Enable manual moderation** - Activating this will require all content added to the Marketplace by creators to be
-  [manually approved](/monetization/approving-premium-UGC) by your team.
+- **Token name** - This defaults to ‘mio’ but allows you to change the name of your token. This name will be shown anywhere the token is referenced within your marketplace.
+- **Minimum and maximum price** - These values restrict content sold in the marketplace to be limited to prices within this range.
+- **Default price** - Sets the default/recommended value populated in the price field when creators set up their content for sale.
+- **Transaction revenue split** - Allows you to change the default revenue share split between creators and you as the game publisher. You can see which share each party will get in the split calculator on the right side.
+- **Enable manual moderation** - Activating this will require all content added to the Marketplace by creators to be [manually approved](/monetization/approving-premium-UGC) by your team.
 
 ![Marketplace Settings Flow](images/marketplace-settings.png)
 
@@ -127,18 +120,15 @@ Marketplace setting can be adjusted at any time through your dashboard.
 
 ## Token Packs
 
-You are able to set up token packs for users to purchase. Token amounts and prices are predefined to prevent any
-possibilities of arbitrage within our platform, external platforms, and any games utilizing our Monetization services.
+You are able to set up token packs for users to purchase. Token amounts and prices are predefined to prevent any possibilities of arbitrage within our platform, external platforms, and any games utilizing our Monetization services.
 
-You can define the availability of each individual predefined token pack, in addition to defining what platforms these
-token packs are available on.
+You can define the availability of each individual predefined token pack, in addition to defining what platforms these token packs are available on.
 
 :::warning
 You must ensure that the token packs you make available on mod.io match the SKUs of any platforms you wish to make the token pack available for purchase. We provide a way for you to map these token packs with the ability to enter the SKU id provided by external platforms.
 :::
 
-This ensures we are able to correctly reconcile funds received on external platforms and pay out Creators. An example
-earnings calculator is visible to see what is received by whom on a sale of a Token Pack.
+This ensures we are able to correctly reconcile funds received on external platforms and pay out Creators. An example earnings calculator is visible to see what is received by whom on a sale of a Token Pack.
 
 ![Token Pack Settings Flow](images/token-packs-settings.png)
 
@@ -148,33 +138,18 @@ Token packs can be mapped to Token pack SKUs sold on external platforms.
 
 ## Partner Program
 
-We provide the ability to vet content creators through the use of a Partner Program. The Partner Program allows you to
-define criteria required for creators to be able to monetize their content for your game. These are the criteria you’re
-able to use:
+We provide the ability to vet content creators through the use of a Partner Program. The Partner Program allows you to define criteria required for creators to be able to monetize their content for your game. These are the criteria you’re able to use:
 
-- **Creator must be verified** - By toggling this requirement, it will force every creator to onboard via KYC. By
-  default, KYC verification is only required for cash-out to prevent any hurdles to earning on the platform.
-- **Min number of mods created** - Requires a creator to have this many mods uploaded to mod.io in order to apply. Mod
-  counts are platform-wide and not game-specific.
-- **Min number of subscribers** - Requires a creator to have this many subscribers on mod.io in order to apply.
-  Subscriptions are platform-wide and not game-specific.
-- **Min average mod rating** - Requires a creator to meet this minimum average rating for their content in order to
-  apply.
-- **Max DMCA strikes** - Defines the maximum amount of DMCA strikes a creator has had before they can be rejected. DMCA
-  strikes are platform-wide and not game-specific.
-- **Max number of reports** - Defines the maximum number of reports a creator can have before they can be rejected.
-  Count is platform-wide and not game-specific.
-- **Allow creators to request for special access** - Toggling this will allow creators to manually apply even if they
-  don’t meet the pre-set criteria. Applications will go to the Partner Program queue under Moderation and need to be
-  approved by the game team. This is helpful if you want to allow established creators to be able to apply to be a
-  Monetization Partner.
-- **Enable manual moderation** - Toggling this will require all applicants who have met the above criteria to be
-  manually approved as the final step by the game team before they can be in the Partner Program (by default,
-  applications meeting your set criteria are approved automatically). Applications will go to the Partner Program queue
-  under Moderation and need to be approved by the game team.
+- **Creator must be verified** - By toggling this requirement, it will force every creator to onboard via KYC. By default, KYC verification is only required for cash-out to prevent any hurdles to earning on the platform.
+- **Min number of mods created** - Requires a creator to have this many mods uploaded to mod.io in order to apply. Mod counts are platform-wide and not game-specific.
+- **Min number of subscribers** - Requires a creator to have this many subscribers on mod.io in order to apply. Subscriptions are platform-wide and not game-specific.
+- **Min average mod rating** - Requires a creator to meet this minimum average rating for their content in order to apply.
+- **Max DMCA strikes** - Defines the maximum amount of DMCA strikes a creator has had before they can be rejected. DMCA strikes are platform-wide and not game-specific.
+- **Max number of reports** - Defines the maximum number of reports a creator can have before they can be rejected. Count is platform-wide and not game-specific.
+- **Allow creators to request for special access** - Toggling this will allow creators to manually apply even if they don’t meet the pre-set criteria. Applications will go to the Partner Program queue under Moderation and need to be approved by the game team. This is helpful if you want to allow established creators to be able to apply to be a Monetization Partner.
+- **Enable manual moderation** - Toggling this will require all applicants who have met the above criteria to be manually approved as the final step by the game team before they can be in the Partner Program (by default, applications meeting your set criteria are approved automatically). Applications will go to the Partner Program queue under Moderation and need to be approved by the game team.
 
-Used effectively, the Partner Program allows you to set the right bar for your content creators to be able to monetize
-on your game, and manage the flow of premium UGC through your ecosystem.
+Used effectively, the Partner Program allows you to set the right bar for your content creators to be able to monetize on your game, and manage the flow of premium UGC through your ecosystem.
 
 ![Partner Program Setup](images/partner-program-1.png)
 
