@@ -44,7 +44,7 @@ const sidebars = {
       type: 'category',
       label: 'Unreal',
       link: {type: 'doc', id: 'unreal/index-unreal'},
-      items: ['unreal/installation-and-setup', 'unreal/getting-started', 'unreal/ui-getting-started', 'unreal/profiling', 'unreal/mod-creation-tool', 'unreal/android-configuration',   
+      items: ['unreal/installation-and-setup', 'unreal/getting-started', 'unreal/ui-getting-started', 'unreal/profiling', 'unreal/mod-creation-tool', 'unreal/android-configuration', 'unreal/marketplace',  
       {
         type: 'link',
         label: 'Unreal Reference', 
@@ -69,7 +69,7 @@ const sidebars = {
       label: 'C++ SDK',
       link: {type: 'doc', id: 'sdk/index-sdk'},
       items: [
-        'sdk/installation-and-setup', 'sdk/getting-started',
+        'sdk/installation-and-setup', 'sdk/getting-started', 'sdk/sdk-marketplace',
         {
           type: 'category',
           label: 'Windows',
