@@ -7,4 +7,4 @@ sidebar_position: 0
 
 # Knowledge Base
 
-The [mod.io Knowledge Base](https://support.mod.io/hc/en-us) answers the most common questions that get asked by players. All player enquiries should be directed here at first.
+The [mod.io Knowledge Base](https://support.mod.io) answers the most common questions that get asked by players. All player enquiries should be directed here at first.
