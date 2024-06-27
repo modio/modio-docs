@@ -112,6 +112,30 @@ jobs:
           target-branch: main
           target-directory: public/web-services
 
+      - name: Push public unreal docs to modio-docs-internal
+        uses: cpina/github-action-push-to-another-repository@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.DOCS_ACCESS_TOKEN }}
+        with:
+          source-directory: 'public/unreal'
+          destination-github-username: "modio"
+          destination-repository-name: "modio-docs-internal"
+          commit-message: "docs: updating public docs (unreal) from modio-docs repo"
+          target-branch: main
+          target-directory: public/unreal
+
+      - name: Push public sdk docs to modio-docs-internal
+        uses: cpina/github-action-push-to-another-repository@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.DOCS_ACCESS_TOKEN }}
+        with:
+          source-directory: 'public/sdk'
+          destination-github-username: "modio"
+          destination-repository-name: "modio-docs-internal"
+          commit-message: "docs: updating public docs (sdk) from modio-docs repo"
+          target-branch: main
+          target-directory: public/sdk
+
       - name: Push public side menu to modio-docs-internal
         uses: cpina/github-action-push-to-another-repository@main
         env:
