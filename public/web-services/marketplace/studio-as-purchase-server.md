@@ -17,10 +17,10 @@ To operate as a purchase server that communicates transaction date with mod.io, 
 
 - A title registered within mod.io with monetization functionality enabled.
 - SKU's registered to your mod.io game profile for the platform the entitlements originate from.
-- A secure web server, configured with a [Service Token](/web-services/authentication/s2s/#obtaining-a-service-token) to send service-to-service (S2S) API requests to mod.io
-- A [User Delegation Token](/web-services/authentication/s2s/#obtaining-a-user-delegation-token-for-making-requests-on-behalf-of-a-user), enabling the processing of a transaction on behalf of a mod.io user.
+- A secure web server, configured with a [Service Token](http://docs.mod.io/web-services/authentication/s2s/#obtaining-a-service-token) to send service-to-service (S2S) API requests to mod.io
+- A [User Delegation Token](http://docs.mod.io/web-services/authentication/s2s/#obtaining-a-user-delegation-token-for-making-requests-on-behalf-of-a-user), enabling the processing of a transaction on behalf of a mod.io user.
 
-## Architecture Overview
+### Architecture Overview
 
 ### Transaction Process
 

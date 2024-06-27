@@ -104,13 +104,14 @@ Target rules against a users reputation and connected accounts. For example a us
 * Comments Posted
 * Connected Accounts (you could require users have connected a certain account before doing actions using this check for example)
 
+
 ### Then
 
 Finally, after all of the checks above are complete, if they evaluate to __TRUE__, this is where you define the behavior(s) that should be performed in response.
 
 #### Allow / Deny
 
-Deny will return an error to the user (which you define), and will prevent their request from being processed, as well as any further behaviors from being invoked. Errors will be returned as an [Error Object](/restapiref/#error-object), with [Error Ref of 29200](/api/error-codes) and the response code you specify. This is an example:
+Deny will return an error to the user (which you define), and will prevent their request from being processed, as well as any further behaviors from being invoked. Errors will be returned as an [Error Object](https://docs.mod.io/#error-object), with [Error Ref of 29200](/api/error-codes) and the response code you specify. This is an example:
 
 ```
 {"error":{"code":403,"error_ref":29200,"message":"Your error message goes here."}}
@@ -126,6 +127,7 @@ This action doesn’t stop the content from being processed, but will result in 
 This action doesn’t stop the content from being processed, but it will result in the URL endpoint you define being sent information automatically about the request. This can be used to connect any AI, CRM, communication, file, content or malware vendor you are using. For example if you are using Two Hat for content moderation, you could plug them in here. If you are using JIRA or  Zendesk for CRM / support, you could plug them in here to automatically open a ticket.
 
 See [Webhooks](/moderation/rules-engine/webhooks) for details on how to use this advanced feature.
+
 
 ![Rules Engine UI](images/rules-engine-ui.png)
 

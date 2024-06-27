@@ -5,9 +5,11 @@ slug: /moderation/community-reports
 sidebar_position: 4
 ---
 
+
 # Community Reports
 
-mod.io provides built-in reporting tools, through [our website](https://mod.io/report) and the interface provided as a part of our Unity and Unreal Engine plugins, allowing users to report content that may be broken, is stolen, or violates our Terms of Use. We also provide endpoints in our [REST API](/restapiref/#reports) and SDK, allowing reporting functionality to be integrated directly into custom engines, games, apps and websites.
+
+mod.io provides built-in reporting tools, through [our website](https://mod.io/report) and the interface provided as a part of our Unity and Unreal Engine plugins, allowing users to report content that may be broken, is stolen, or violates our Terms of Use. We also provide endpoints in our [REST API](https://docs.mod.io/restapiref/#reports) and SDK, allowing reporting functionality to be integrated directly into custom engines, games, apps and websites.
 
 Users can report mods, guides, and individual users. Reports for each of these are displayed under **Reports** in the **Game Admin** section of your game’s page.
 
@@ -16,6 +18,7 @@ Users can report mods, guides, and individual users. Reports for each of these a
 :::warning
 There is no setup to do for the reporting system, except to ensure that you integrate the reporting functionality anywhere you display UGC, and action reports submitted by users in a timely manner. This is a requirement enforced by mod.io and first-party platform holders. It is also best practice when dealing with UGC of any kind.
 :::
+
 
 ## Moderation Flows
 
@@ -48,6 +51,7 @@ If you have enabled [per-platform moderation](/manual-curation/#Per-Platform Mod
 
 ![Pending files](images/pending-files.png)
 
+
 #### Reviewing Files
 You can quickly download and review any uploaded files using the **Review Files** option, or by navigating to the **UGC Admin** dashboard from the UGC’s profile.
 
@@ -63,11 +67,14 @@ Files are automatically scanned upon their upload to mod.io, and are deactivated
 
 You can edit a file’s details by clicking the pencil icon. This includes the version number, changelog, and metadata blob. The metadata blob is a useful feature for game developers to include hidden arbitrary data such as the version of the game the mod is compatible with.
 
+
 :::warning
 Files cannot be tampered with once uploaded, so the only way to replace a UGC file with another, is to upload a new version with a new file, and set it live.
 :::
 
+
 If a UGC has multiple files/versions uploaded, you can choose which file/version to set live using the trophy icon, which instructs the SDKs to prioritize that file over the other versions. A non-live file can also be deleted using the trash can icon.
+
 
 :::tip 
 If Per-Platform Moderation is enabled, the same rules as above apply, however each file can be approved or denied for each of the platforms the game supports. If you are interested in using this feature, we recommend contacting us to provide a demonstration.
@@ -88,13 +95,16 @@ Deleting UGC also unsubscribes all users from the UGC which cannot be reversed, 
 
 Once UGC is deleted, you are also presented with slightly different options:
 
+
 ![Deleted UGC options](images/deleted-options.png)
+
 
 **View reason** will display the date the UGC was deleted, the Team member (or the UGC creator) who deleted the UGC, and the reason(s) given by that Team member.
 
 **Restore** will return the UGC to the Live section, and the UGC will again become visible to all users.
 
 You can also edit the UGC’s details using the pencil icon, or permanently delete the UGC by clicking the red trash can icon.
+
 
 :::danger
 Once UGC is permanently deleted,  it cannot be restored!
@@ -143,6 +153,7 @@ The process for managing reports submitted by the community is similar across UG
 
 The report queues are split into three sections, DMCA, Other, and Resolved. By default, the DMCA queue is displayed, as these are generally the highest priority reports that will require attention.
 
+
 |Section      | Purpose                                        |
 | ------------- |------------------------------------------------|
 |DMCA      | DMCA, or Digital Millennium Copyright Act reports, are reports that have been filed by a third party copyright holder, alleging that the content is infringing on their intellectual property. These are usually filed by a third party organisation. |
@@ -154,9 +165,11 @@ The report queues are split into three sections, DMCA, Other, and Resolved. By d
 The mod.io team will action valid DMCA’s, unless your team actions them sooner.
 :::
 
+
 Reports are shown in a table view. Each piece of reported content is shown only once. If multiple users have reported the same piece of content, you will be able to see the number of reports in the count column.
 
 ![Reported mods](images/reported-mods.jpeg)
+
 
 You are able to view more details, including the reasons for the report, and each individual report by clicking the View details button. The speech bubble icon here allows you to contact the creator of the piece of content for which the reports have been filed, and the checkmark will mark the report(s) as resolved.
 

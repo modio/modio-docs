@@ -6,7 +6,8 @@ slug: /monetization/approving-premium-UGC
 
 # Approving Premium UGC
 
-If **‘Enable manual moderation’** has been turned on as part of [Monetization Settings](/monetization/onboarding#monetization-settings), then all premium UGC will need to be approved by the Studio before it can appear on the Marketplace.
+If **‘Enable manual moderation’** has been turned on as part of [Monetization Settings](/monetization/onboarding#monetization-settings), then
+all premium UGC will need to be approved by the Studio before it can appear on the Marketplace.
 
 Content pending approval will appear in your ‘Marketplace Queue’ under Moderation in your Game Admin dashboard on
 mod.io. You will have full controls to Approve, Reject and manage previously approved or rejected content.

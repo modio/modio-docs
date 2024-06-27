@@ -6,8 +6,6 @@ slug: /monetization/getting-started
 
 The mod.io Marketplace allows content creators to monetize premium UGC (User-Generated Content) in-game, on any platform, to a worldwide audience, generating new sources of revenue for game studios and content creators. This guide is designed for game studios and publishers pursuing Marketplace as a service offering for their game.
 
-![Marketplace Features](images/marketplace-features.png)
-
 ### Flexible and customizable
 
 Studios define how revenue is split with their content creators. You have control to adjust to a model that works best for you and your community.

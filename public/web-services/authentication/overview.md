@@ -7,7 +7,7 @@ sidebar_position: 0
 
 # Overview
 
-When interacting with mod.io you may wish to use your own managed identity provider for mod.io interaction by your players. To facilitate this functionality, mod.io offers two widely-used complementing OAuth flows for account linking across both game clients and traditional web-based OAuth flows.
+When interacting with [mod.io](https://mod.io/) you may wish to use your own managed identity provider for mod.io interaction by your players. To facilitate this functionality, mod.io offers two widely-used complementing OAuth flows for account linking across both game clients and traditional web-based OAuth flows.
 
 ## Supported Use Cases
 

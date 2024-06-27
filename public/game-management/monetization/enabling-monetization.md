@@ -6,7 +6,8 @@ slug: /monetization/enabling
 
 # Enabling Monetization
 
-You can request an introduction to monetization from your game’s dashboard. Our experts will work with you to help set up and integrate your game and dashboard with the Marketplace functionality.
+You can request an introduction to monetization from your game’s dashboard. Our experts will work with you to help set
+up and integrate your game and dashboard with the Marketplace functionality.
 
 ![Register Your Interest FLow](images/register-your-interest.png)
 
@@ -14,7 +15,8 @@ You can request an introduction to monetization from your game’s dashboard. Ou
 Requests go to our support team who will work directly with you every step of the way.
 :::
 
-Once enabled by our team, you will be able to onboard, set up and control monetization functionalities through your game admin dashboard. These settings are only accessible if you are the team leader for your title.
+Once enabled by our team, you will be able to onboard, set up and control monetization functionalities through your game
+admin dashboard. These settings are only accessible if you are the team leader for your title.
 
 ![Team Leader Flow](images/team-leader-access.png)
 

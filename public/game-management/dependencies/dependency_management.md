@@ -7,7 +7,7 @@ sidebar_position: 0
 
 # Dependency Management
 
-mod.io supports UGC dependencies. If UGC requires other content to function, players can be automatically subscribed to these dependencies, as well as any recursive dependencies required. This avoids player frustration from subscribing to content that does not work because of hidden dependencies. 
+[mod.io](https://mod.io/) supports UGC dependencies. If UGC requires other content to function, players can be automatically subscribed to these dependencies, as well as any recursive dependencies required. This avoids player frustration from subscribing to content that does not work because of hidden dependencies. 
 
 ## Dependency Restrictions
 
@@ -76,10 +76,13 @@ Below this, any content that depends on this UGC will also show here.
 
 ## Dependency Endpoint
 
-Once dependency support is enabled, our [REST API](/restapiref/#get-mod-dependencies) and plugins can be used to query a UGC's dependencies and dependents. All dependencies of a UGC can be fetched, with an option to recursively fetch nested dependencies that each dependent UGC may also rely on.
+Once dependency support is enabled, our [REST API](https://docs.mod.io/restapiref/#get-mod-dependencies) and plugins can be used to query a UGC's dependencies and dependents. All dependencies of a UGC can be fetched, with an option to recursively fetch nested dependencies that each dependent UGC may also rely on.
 
 When using the dependency support in our official plugins, when a player subscribes to UGC with dependants, they will be automatically subscribed to the required UGC. 
 
 :::warning
 We recommend using the official mod.io plugins for dependency support where possible. Recursive depedency fetching can result in players downloading multiple UGC at once, so appropriate safeguards need to ensure UGC suitability and synchronization. These safeguards are built into our plugins. 
 :::
+
+
+

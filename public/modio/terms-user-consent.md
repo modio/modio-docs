@@ -7,9 +7,9 @@ sidebar_position: 2
 
 # Terms & User Consent
 
-Before downloading UGC, players need to give consent to both the [mod.io](https://mod.io) Terms of Use as well as any applicable terms from the platform the game is using. The simplest way to ensure this is to use our Unreal Engine or Unity plugins. These include acceptance dialog functionality that meets the required standards. 
+Before downloading UGC, players need to give consent to both the [mod.io](https://mod.io/) Terms of Use as well as any applicable terms from the platform the game is using. The simplest way to ensure this is to use our Unreal Engine or Unity plugins. These include acceptance dialog functionality that meets the required standards. 
 
-Consent is important so users are aware a mod.io account is being created, inline with global privacy laws. It also allows mod.io to set out the Terms of Use of which all users must adhere to, or else their account and access to the service and content available might be revoked.
+Consent is important so users are aware a [mod.io](https://mod.io/) account is being created, inline with global privacy laws. It also allows mod.io to set out the Terms of Use of which all users must adhere to, or else their account and access to the service and content available might be revoked.
 
 ## Frequency of application
 
@@ -20,10 +20,8 @@ It is a requirement of the [Game Terms](https://mod.io/gameterms) with mod.io, a
 |    | **Summary** |
 |----|-------------|
 | **Game Terms** | Applicable only to game studios and publishers using mod.io: [https://mod.io/gameterms](https://mod.io/gameterms) |
-| **Terms of Use** | Applicable to all end users using mod.io: [https://mod.io/terms](https://mod.io/terms) |
 | **Privacy Policy** | Applicable to all end users using mod.io: [https://mod.io/privacy](https://mod.io/privacy) |
-| **Acceptable Use Policy** | Applicable to all end users using mod.io: [https://mod.io/aup](https://mod.io/aup) |
-| **Monetization Terms** | Applicable to all game studios, publishers, creators and end users transacting on mod.io: [https://mod.io/monetization](https://mod.io/monetization) |
+| **Terms of Use** | Applicable to all end users using mod.io: [https://mod.io/terms](https://mod.io/terms) |
 
 ## Platform SSO standard
 
@@ -41,9 +39,11 @@ Here is how the user consent and acceptance flow should work:
 3. On acceptance, proceed with your chosen authentication method, and ensure you indicate to the mod.io backend that the user has provided consent (using the authentication endpoint `terms_agreed` field).
 4. On rejection, exit the authentication process, and do not attempt to authenticate the user.
 
+
 ### Example
 
 This example flow is how the consent process is presented in the mod.io Unity and Unreal Engine in-game UIs.
+
 
 ## Implementation
 
@@ -59,9 +59,8 @@ If your game does not authenticate users or only uses the email authentication f
 
 The implemented dialog should look similar to this:
 
-![Terms Dialog](images/terms.png)
 
-Instructions for retrieving localized text for the dialog, [can be found here](/restapiref/#terms).
+Instructions for retrieving localized text for the dialog, can be found here: [https://docs.mod.io/restapiref/#terms](https://docs.mod.io/restapiref/#terms)
 
 The Terms of Use and Privacy Policy must be clickable from somewhere on the dialog, and should load a web browser with the respective links:
 * [https://mod.io/terms/widget?no_links=true](https://mod.io/terms/widget?no_links=true)
@@ -75,7 +74,7 @@ The Terms of Use and Privacy Policy must be clickable from somewhere on the dial
 
 Once a user has clicked **“I Agree”**, you should indicate to the mod.io backend that this has taken place, when you initiate the authentication process.
 
-To make this easy to manage, all of the [platform authentication flows](/restapiref/#steam) supported by mod.io have a `terms_agreed` field which should be set to `false` by default. If the user has agreed to the latest policies, their authentication will proceed as normal, however if their agreement is required and `terms_agreed` is set to `false` an error `403 Forbidden` (`error_ref 11074`) will be returned. When you receive this error, you must collect the users agreement before resubmitting the authentication flow with `terms_agreed` set to `true`, which will be recorded.
+To make this easy to manage, all of the [platform authentication flows](https://docs.mod.io/restapiref/#steam) supported by mod.io have a `terms_agreed` field which should be set to `false` by default. If the user has agreed to the latest policies, their authentication will proceed as normal, however if their agreement is required and `terms_agreed` is set to `false` an error `403 Forbidden` (`error_ref 11074`) will be returned. When you receive this error, you must collect the users agreement before resubmitting the authentication flow with `terms_agreed` set to `true`, which will be recorded.
 
 ## Considerations
 

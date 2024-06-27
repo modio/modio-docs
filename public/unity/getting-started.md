@@ -12,7 +12,7 @@ sidebar_position: 0
 [![Master docs](https://img.shields.io/badge/docs-master-green.svg)](https://go.mod.io/unity-docs)
 [![Unity 3D](https://img.shields.io/badge/Unity-2020.3+-lightgrey.svg)](https://unity3d.com)
 
-Welcome to the mod.io Unity Engine plugin repository. It allows game developers to host and automatically install user-created mods in their games which use **Unity 2020.3** or newer. It provides a UI for mod discovery, installation and collection management, and a C# interface which connects to the [mod.io REST API](https://docs.mod.io/restapiref/).
+Welcome to the mod.io Unity Engine plugin repository. It allows game developers to host and automatically install user-created mods in their games which use **Unity 2020.3** or newer. It provides a UI for mod discovery, installation and collection management, and a C# interface which connects to the [mod.io REST API](https://docs.mod.io).
 
 ## Watch the video tutorial
 <a href="https://www.youtube.com/watch?v=pmECrkdzHzQ"><img src="https://i.ytimg.com/vi/pmECrkdzHzQ/maxresdefault.jpg" alt="mod.io" width="560"/></a>
@@ -258,7 +258,7 @@ public void LoadModExample()
 ```
 
 ## Dependencies
-The mod.io Unity Plugin requires the functionality of two other open-source Unity plugins to run. These are included as libraries in the UnityPackage in the `Assets/Plugins/mod.io/ThirdParty` directory:
+The [mod.io](https://mod.io) Unity Plugin requires the functionality of two other open-source Unity plugins to run. These are included as libraries in the UnityPackage in the `Assets/Plugins/mod.io/ThirdParty` directory:
 * Json.Net for improved Json serialization. ([GitHub Repo](https://github.com/SaladLab/Json.Net.Unity3D) || [Unity Asset Store Page](https://assetstore.unity.com/packages/tools/input-management/json-net-for-unity-11347))
 * SharpZipLib to zip and unzip transmitted files. ([GitHub Repo](https://github.com/icsharpcode/SharpZipLib))
 
@@ -279,4 +279,4 @@ If you need assistance with 1st party approvals, or require a private, white-lab
 Our Unity plugin is public and open source. Game developers are welcome to utilize it directly, to add support for mods in their games, or fork it for their games customized use. Want to make changes to our plugin? Submit a pull request with your recommended changes to be reviewed.
 
 ## Other Repositories
-Our aim with mod.io, is to provide an [open modding API](https://docs.mod.io/restapiref/). You are welcome to [view, fork and contribute to our other codebases](https://github.com/modio) in use.
+Our aim with [mod.io](https://mod.io), is to provide an [open modding API](https://docs.mod.io). You are welcome to [view, fork and contribute to our other codebases](https://github.com/modio) in use.

@@ -7,7 +7,7 @@ sidebar_position: 3
 
 # Premium Features
 
-The core features of [mod.io](https://mod.io) will always be free. However, we also offer several premium features. If you are interested in enabling these for your game, please [contact us](mailto:developers@mod.io).
+The core features of [mod.io](https://mod.io/) will always be free. However, we also offer several premium features. If you are interested in enabling these for your game, please [contact us](mailto:developers@mod.io).
 
 ## Rules Engine Moderation
 
@@ -27,8 +27,12 @@ Together, the four layers combine to give you 100% coverage and control over UGC
 
 ## Embeddable Hub
 
-The Embeddable Hub lets your players download UGC from your website, from the mod.io servers. This can be customized to fit seamlessly into your existing branding and design.  
+The Embeddable Hub lets your players download UGC from your website, from the [mod.io](https://mod.io/) servers. This can be customized to fit seamlessly into your existing branding and design.  
+
 
 ## Monetization
 
-The [UGC Marketplace](/monetization) lets creators sell premium UGC. You can define the creator/studio revenue share, content rules and the allowable price range.
+The UGC Marketplace lets creators sell premium UGC. You can define the creator/studio revenue share, content rules and the allowable price range.
+
+
+
