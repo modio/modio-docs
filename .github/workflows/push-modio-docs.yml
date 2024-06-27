@@ -16,125 +16,17 @@ jobs:
       - name: Clone repo
         uses: actions/checkout@v4 
  
-      - name: Push public console docs to modio-docs-internal
+      - name: Push public docs to modio-docs-internal
         uses: cpina/github-action-push-to-another-repository@main
         env:
           API_TOKEN_GITHUB: ${{ secrets.DOCS_ACCESS_TOKEN }}
         with:
-          source-directory: 'public/console-platforms'
+          source-directory: 'public'
           destination-github-username: "modio"
           destination-repository-name: "modio-docs-internal"
-          commit-message: "docs: updating public docs (console platforms) from modio-docs repo"
+          commit-message: "docs: updating public docs from modio-docs repo"
           target-branch: main
-          target-directory: public/console-platforms
-
-      - name: Push public dependencies docs to modio-docs-internal
-        uses: cpina/github-action-push-to-another-repository@main
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.DOCS_ACCESS_TOKEN }}
-        with:
-          source-directory: 'public/game-management/dependencies'
-          destination-github-username: "modio"
-          destination-repository-name: "modio-docs-internal"
-          commit-message: "docs: updating public docs (dependencies) from modio-docs repo"
-          target-branch: main
-          target-directory: public/game-management/dependencies
-        
-      - name: Push public moderation docs to modio-docs-internal
-        uses: cpina/github-action-push-to-another-repository@main
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.DOCS_ACCESS_TOKEN }}
-        with:
-          source-directory: 'public/game-management/moderation'
-          destination-github-username: "modio"
-          destination-repository-name: "modio-docs-internal"
-          commit-message: "docs: updating public docs (moderation) from modio-docs repo"
-          target-branch: main
-          target-directory: public/game-management/moderation
-
-      - name: Push public integration docs to modio-docs-internal
-        uses: cpina/github-action-push-to-another-repository@main
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.DOCS_ACCESS_TOKEN }}
-        with:
-          source-directory: 'public/game-integration'
-          destination-github-username: "modio"
-          destination-repository-name: "modio-docs-internal"
-          commit-message: "docs: updating public docs (integration) from modio-docs repo"
-          target-branch: main
-          target-directory: public/game-integration
-
-      - name: Push public REST API docs to modio-docs-internal
-        uses: cpina/github-action-push-to-another-repository@main
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.DOCS_ACCESS_TOKEN }}
-        with:
-          source-directory: 'public/rest-api'
-          destination-github-username: "modio"
-          destination-repository-name: "modio-docs-internal"
-          commit-message: "docs: updating public docs (REST API) from modio-docs repo"
-          target-branch: main
-          target-directory: public/rest-api
-
-      - name: Push public support docs to modio-docs-internal
-        uses: cpina/github-action-push-to-another-repository@main
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.DOCS_ACCESS_TOKEN }}
-        with:
-          source-directory: 'public/support'
-          destination-github-username: "modio"
-          destination-repository-name: "modio-docs-internal"
-          commit-message: "docs: updating public docs (support) from modio-docs repo"
-          target-branch: main
-          target-directory: public/support
-
-      - name: Push public overview docs to modio-docs-internal
-        uses: cpina/github-action-push-to-another-repository@main
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.DOCS_ACCESS_TOKEN }}
-        with:
-          source-directory: 'public/modio'
-          destination-github-username: "modio"
-          destination-repository-name: "modio-docs-internal"
-          commit-message: "docs: updating public docs (overview) from modio-docs repo"
-          target-branch: main
-          target-directory: public/modio
-
-      - name: Push public web docs to modio-docs-internal
-        uses: cpina/github-action-push-to-another-repository@main
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.DOCS_ACCESS_TOKEN }}
-        with:
-          source-directory: 'public/web-services'
-          destination-github-username: "modio"
-          destination-repository-name: "modio-docs-internal"
-          commit-message: "docs: updating public docs (web) from modio-docs repo"
-          target-branch: main
-          target-directory: public/web-services
-
-      - name: Push public unreal docs to modio-docs-internal
-        uses: cpina/github-action-push-to-another-repository@main
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.DOCS_ACCESS_TOKEN }}
-        with:
-          source-directory: 'public/unreal'
-          destination-github-username: "modio"
-          destination-repository-name: "modio-docs-internal"
-          commit-message: "docs: updating public docs (unreal) from modio-docs repo"
-          target-branch: main
-          target-directory: public/unreal
-
-      - name: Push public sdk docs to modio-docs-internal
-        uses: cpina/github-action-push-to-another-repository@main
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.DOCS_ACCESS_TOKEN }}
-        with:
-          source-directory: 'public/sdk'
-          destination-github-username: "modio"
-          destination-repository-name: "modio-docs-internal"
-          commit-message: "docs: updating public docs (sdk) from modio-docs repo"
-          target-branch: main
-          target-directory: public/sdk
+          target-directory: public
 
       - name: Push public side menu to modio-docs-internal
         uses: cpina/github-action-push-to-another-repository@main
