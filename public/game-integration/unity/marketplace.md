@@ -1,7 +1,7 @@
 ---
 id: unity-marketplace
 title: Marketplace
-slug: /unity/marketplace/
+slug: /unity/marketplace
 sidebar_position: 4
 ---
 

@@ -1,7 +1,7 @@
 ---
 id: unity-setup
 title: Installation & Setup
-slug: /unity/setup/
+slug: /unity/setup
 sidebar_position: 1
 ---
 

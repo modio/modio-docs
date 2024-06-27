@@ -1,7 +1,7 @@
 ---
 id: unity
 title: Overview
-slug: /unity/
+slug: /unity
 sidebar_position: 0
 ---
 

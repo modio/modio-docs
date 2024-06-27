@@ -1,7 +1,7 @@
 ---
 id: unity-getting-started
 title: Getting Started
-slug: /unity/getting-started/
+slug: /unity/getting-started
 sidebar_position: 2
 ---
 

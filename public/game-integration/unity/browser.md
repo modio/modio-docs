@@ -1,7 +1,7 @@
 ---
 id: unity-ugc-browser
 title: UGC Browser
-slug: /unity/ugc-browser/
+slug: /unity/ugc-browser
 sidebar_position: 3
 ---
 
