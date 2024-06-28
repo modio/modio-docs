@@ -177,7 +177,7 @@ const sidebars = {
         },
       ],
     },
-     {
+    {
       type: 'category',
       label: 'Metrics',
       link: {type: 'doc', id: 'game-management/metrics/metrics'},
