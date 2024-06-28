@@ -178,24 +178,6 @@ const sidebars = {
       ],
     },
     {
-      type: 'category',
-      label: 'Metrics',
-      link: {type: 'doc', id: 'game-management/metrics/metrics'},
-      items: [
-        {
-          type: 'category',
-          label: 'Data',
-          link: {type: 'doc', id: 'game-management/metrics/metrics-data'},
-          items: ['game-management/metrics/ugc-data', 'game-management/metrics/user-activity-data', 'game-management/metrics/health-data'],
-        },
-        {
-          type: 'doc',
-          id: 'game-management/metrics/metrics-exporting',
-          label: 'Exporting',
-        },  
-      ],
-    },
-    {
       type: 'doc',
       id: 'game-management/dependencies/dependency-management',
       label: 'Dependencies',
