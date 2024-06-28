@@ -9,7 +9,7 @@ sidebar_position: 0
 
 Starting your journey with [mod.io](https://mod.io) is easy. In just a few simple steps you’ll be able to offer your players a seamless, cross-platform UGC experience.
 
-## 1. Add Your Game
+## Add Your Game
 
 Add your game by clicking the “Getting Started” button on the [mod.io homepage](https://mod.io). If you’ve never used mod.io before, you’ll be prompted to create an account. 
 
@@ -25,7 +25,7 @@ After you’ve added your game, set its content and moderation rules, such as wh
 You can change these rules at any time from your game’s admin page.
 :::
 
-## 2. Integrate mod.io 
+## Integrate mod.io 
 
 First, you’ll need your API key, you can find it in the “API” section of your game’s admin page. Once you have your key, there are three primary methods of integrating mod.io into your game. 
 
@@ -41,7 +41,7 @@ If your game uses a custom engine, our full-featured [C++ SDK](/cppsdk) provides
 
 Web-apps or games that require atomic control over their mod.io implementation are free to access our [REST API](/restapiref/#getting-started) directly. The REST API powers both of our official plugins, as well as the C++ SDK. Which means that all of mod.io’s features are available, to help create your ideal custom implementation.
 
-## 3. Enable Cross-Platform UGC
+## Enable Cross-Platform UGC
 
 mod.io is an authorized middleware provider for PlayStation&reg;4 & PlayStation&reg;5, Xbox and Switch. We offer [full support and compliance with certification](/platforms), native SDKs and single sign-on. mod.io enables seamless, cross-platform UGC, and helps your creators to reach their audience across PC, consoles and mobile.
 
