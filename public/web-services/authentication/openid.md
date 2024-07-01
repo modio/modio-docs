@@ -32,7 +32,7 @@ Please note that the ability to authenticate players using OpenID is premium fea
 To use ID Token authentication, you must satisfy the following criteria:
 
 - Host an identity provider that implements the [OpenID Connect specification](https://openid.net/developers/how-connect-works/) functionality.
-- A mechanism in which you log in players to your service and then return an ID Token to [send to mod.io](/restapiref/#openid).
+- A mechanism in which you log in players to your service and then return an ID Token to [send to mod.io](https://docs.mod.io/restapiref/#openid).
 
 ## Authentication Process
 
@@ -157,6 +157,6 @@ OpenID offers a powerful method in-which game studios can take an existing sessi
 
 ## References
 
-- [REST API OpenID Endpoint](/restapiref/#openid) - The API endpoint your game client (or web app) sends the ID Token to.
+- [REST API OpenID Endpoint](https://docs.mod.io/restapiref/#openid) - The API endpoint your game client (or web app) sends the ID Token to.
 - [OIDC Specification](https://openid.net/developers/how-connect-works/) - OpenID Connect specification.
 - [jwt.io](https://jwt.io) - Useful tool for inspecting JWT tokens which may assist in debugging.

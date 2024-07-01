@@ -61,7 +61,7 @@ The implemented dialog should look similar to this:
 
 ![Terms Dialog](images/terms.png)
 
-Instructions for retrieving localized text for the dialog, [can be found here](/restapiref/#terms).
+Instructions for retrieving localized text for the dialog, [can be found here](https://docs.mod.io/restapiref/#terms).
 
 The Terms of Use and Privacy Policy must be clickable from somewhere on the dialog, and should load a web browser with the respective links:
 * [https://mod.io/terms/widget?no_links=true](https://mod.io/terms/widget?no_links=true)
@@ -75,7 +75,7 @@ The Terms of Use and Privacy Policy must be clickable from somewhere on the dial
 
 Once a user has clicked **“I Agree”**, you should indicate to the mod.io backend that this has taken place, when you initiate the authentication process.
 
-To make this easy to manage, all of the [platform authentication flows](/restapiref/#steam) supported by mod.io have a `terms_agreed` field which should be set to `false` by default. If the user has agreed to the latest policies, their authentication will proceed as normal, however if their agreement is required and `terms_agreed` is set to `false` an error `403 Forbidden` (`error_ref 11074`) will be returned. When you receive this error, you must collect the users agreement before resubmitting the authentication flow with `terms_agreed` set to `true`, which will be recorded.
+To make this easy to manage, all of the [platform authentication flows](https://docs.mod.io/restapiref/#steam) supported by mod.io have a `terms_agreed` field which should be set to `false` by default. If the user has agreed to the latest policies, their authentication will proceed as normal, however if their agreement is required and `terms_agreed` is set to `false` an error `403 Forbidden` (`error_ref 11074`) will be returned. When you receive this error, you must collect the users agreement before resubmitting the authentication flow with `terms_agreed` set to `true`, which will be recorded.
 
 ## Considerations
 

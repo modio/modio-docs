@@ -39,7 +39,7 @@ If your game uses a custom engine, our full-featured [C++ SDK](/cppsdk) provides
 
 ### REST API
 
-Web-apps or games that require atomic control over their mod.io implementation are free to access our [REST API](/restapiref/#getting-started) directly. The REST API powers both of our official plugins, as well as the C++ SDK. Which means that all of mod.io’s features are available, to help create your ideal custom implementation.
+Web-apps or games that require atomic control over their mod.io implementation are free to access our [REST API](https://docs.mod.io/restapiref/#getting-started) directly. The REST API powers both of our official plugins, as well as the C++ SDK. Which means that all of mod.io’s features are available, to help create your ideal custom implementation.
 
 ## 3. Enable Cross-Platform UGC
 

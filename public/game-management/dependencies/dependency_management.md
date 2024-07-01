@@ -76,7 +76,7 @@ Below this, any content that depends on this UGC will also show here.
 
 ## Dependency Endpoint
 
-Once dependency support is enabled, our [REST API](/restapiref/#get-mod-dependencies) and plugins can be used to query a UGC's dependencies and dependents. All dependencies of a UGC can be fetched, with an option to recursively fetch nested dependencies that each dependent UGC may also rely on.
+Once dependency support is enabled, our [REST API](https://docs.mod.io/restapiref/#get-mod-dependencies) and plugins can be used to query a UGC's dependencies and dependents. All dependencies of a UGC can be fetched, with an option to recursively fetch nested dependencies that each dependent UGC may also rely on.
 
 When using the dependency support in our official plugins, when a player subscribes to UGC with dependants, they will be automatically subscribed to the required UGC. 
 
