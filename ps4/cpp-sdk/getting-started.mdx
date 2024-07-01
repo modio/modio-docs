@@ -1,0 +1,61 @@
+---
+id: installation-and-setup
+title: Installation & Setup
+slug: /cppsdk/installation-and-setup
+sidebar_position: 1
+---
+
+## Installing the PlayStation&reg;4 platform module
+
+To use the mod.io PS4&trade; SDK integration, you need to drop the "orbis" directory into the platform subdirectory of your SDK installation. You can then target ORBIS to compile the mod.io SDK for PS4 SDK.
+
+You can download the console module for your version of the mod.io SDK [here](/cppsdk/changelog).
+
+## PS4 SDK Versions
+
+The mod.io SDK is built and tested against PS4 SDK version 11.0. Using different versions of the PS4 SDK may result in compilation issues.
+
+In case you plan to use CMake to compile the mod.io SDK build outside of Visual Studio, you will need to install the "CMake Extensions", a file typically found here:
+
+```cmake
+C:\Program Files (x86)\SCE\ORBIS\Tools\CMake Extensions\CMakeExtensionsForPS4-10_50_0_0.msi
+```
+
+Those extensions contain the relevant metadata used by CMake to find the Orbis compiler and libraries. The CMake FlagTables file is located at `C:\Program Files\Microsoft Visual Studio\2022\Preview\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.26\Templates\MSBuild\FlagTables` (or equivalent VS and CMake installation directory)
+
+## Initializing the mod.io SDK
+
+You should also ensure that you are passing Modio::Portal::PSN to InitialiazeAsync's PortalInUse property. This adds support for PSN usernames for linked accounts to be returned when querying mods, as well as respecting PlayStation&trade;Network account blocking rules, which is a certification requirement when displaying UGC.
+
+### Setting the appropriate PlayStation Network Environment parameter
+
+PS4 has 3 different environments that are used for authentication, purchases and other functionality. If you wish to use a different NP environment than the default production environment (256), please specify this as the 'PlatformEnvironment' parameter in the ExtendedParameters field on the parameters you provide when initializing the SDK.
+
+You can do this by using the `IssuerId` parameter from `sceNpAuthGetAuthorizationCodeV3(ReqId, &AuthParam, &ResultAuthCode, &IssuerId);`. This will ensure that you will always be using the environment that auth was performed to automatically.
+
+```cpp
+auto Params = Modio::InitializeOptions(Modio::GameID(LaunchParams.GameId), Modio::ApiKey(LaunchParams.ApiKey), Modio::Environment::Live, Modio::Portal::PSN, "PSNUsername");
+
+Params.ExtendedParameters["PlatformEnvironment"] = std::to_string(IssuerId);
+```
+
+
+## Mounting the Temp Data Directory
+
+In your PS4 platform implementation, make sure that you are correctly mounting the temporary data area
+
+```
+SceAppContentTemporaryDataOption option = SCE_APP_CONTENT_TEMPORARY_DATA_OPTION_NONE;
+SceAppContentMountPoint mountPoint;
+
+sceAppContentTemporaryDataMount2(option, &mountPoint);
+```
+
+## File System Restrictions
+
+The maximum directory depth is 8 levels. The deepest path allowed would be (root)/1/2/3/4/5/6/7/8.dat.
+The mod structure on PS4 is `root/mods/{modid}`, you should have a mod data depth limit of 6 levels.
+
+## Authentication
+
+There is a code authenticate example in located at `platform/orbis/examples/PSN` that guides you through the process of using `NPAuth` library. In case you need more details, search the topic "Authentication and Authorization" in the PS4 documentation.
