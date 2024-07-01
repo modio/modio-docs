@@ -1,7 +1,7 @@
 ---
-id: monetization-rest-api
+id: monetization-restapi
 title: REST API Endpoints
-slug: /monetization/rest-api
+slug: /monetization/restapi
 ---
 
 # REST API Endpoints
