@@ -27,8 +27,6 @@ The Health dashboard reports four data sources:
 * Generic
 * Other
 
-![Metrics health data](images/health.png)
-
 ### UGC Reports Closed
 
 ‘UGC reports closed’ shows the total number of reports that have been closed for your game, either by your moderation team or by mod.io. Like ‘UGC reports opened’ they are broken down into the report types. If you have an active moderation team, this metric should track very closely to ‘UGC reports opened’. 
