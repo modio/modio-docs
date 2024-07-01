@@ -33,7 +33,7 @@ We provide a number of tools and features, built directly into our dashboard, AP
 * Fully compliant moderation systems that allow you to control UGC released onto each platform
 * Ability to upload platform-specific UGC files, helpful if you need to “compile” UGC to work with each respective platform
 * Tagging and metadata systems to manage UGC on a per-platform basis
-* [Platform and portal headers](/restapiref/#platforms) used to localize content (i.e. display names) and other settings automatically
+* [Platform and portal headers](https://docs.mod.io/restapiref/#platforms) used to localize content (i.e. display names) and other settings automatically
 * Word filtering and other processes required by each platform
 * Support for onboarding, and certification requirements around UGC
 * Advanced metrics and reporting so you can compare the usage of UGC, trending content and other key stats across all platforms your games are released

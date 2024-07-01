@@ -12,7 +12,7 @@ Typical Nintendo Switch requirements include:
 * UGC cannot run scripts or execute code, unless sufficient mitigations are demonstrated to be in place (e.g. sandboxing or manual curation of content)
 * Nintendo prefers that UGC is called “UGC”, “Items”, “Content”, “Maps” or something similar, not "Mods"
 * UGC must work without the need for manual installation
-* If content is created by a Nintendo user, the display name of the Nintendo user must be shown as the creator if available (our system does this automatically if you configure your [platform headers correctly](/restapiref/#platforms))
+* If content is created by a Nintendo user, the display name of the Nintendo user must be shown as the creator if available (our system does this automatically if you configure your [platform headers correctly](https://docs.mod.io/restapiref/#platforms))
 * User consent is required the first time before authenticating a Nintendo user
 * If the Nintendo user has UGC parental controls disabled, the UGC menu and any UGC installed must be disabled
 

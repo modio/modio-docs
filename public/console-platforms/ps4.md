@@ -12,7 +12,7 @@ Typical requirements for PS4&trade; & PS5&reg; games include:
 * UGC cannot run scripts or execute code, unless sufficient mitigations are demonstrated to be in place (e.g. sandboxing or manual curation of content)
 * UGC must work without the need for manual installation
 * Titles utilising mod.io must allow users the option of playing without mod.io functionality
-* If content is created by a user on PS4/PS5, the display name of the user must be shown as the creator if available (our system does this automatically if you configure your [platform headers correctly](/restapiref/#platforms))
+* If content is created by a user on PS4/PS5, the display name of the user must be shown as the creator if available (our system does this automatically if you configure your [platform headers correctly](https://docs.mod.io/restapiref/#platforms))
 * User consent is required the first time before authenticating a user on PS4/PS5 or accessing data from mod.io. Note: a users consent in one game cannot be used in another, all games must get a users consent individually.
 * If the user has UGC parental controls disabled, the UGC menu and any UGC installed must be disabled
 * Users must be able to play your game without having to create a mod.io account, however UGC should not be made available to users without a mod.io account. This is required to adhere to the TRCs of ensuring consent is collected, and the user has the ability to block content from other users.
