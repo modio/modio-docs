@@ -1,5 +1,5 @@
 ---
-id: marketplace
+id: sdk-marketplace
 title: Marketplace
 sidebar_label: Marketplace
 slug: /cppsdk/marketplace
