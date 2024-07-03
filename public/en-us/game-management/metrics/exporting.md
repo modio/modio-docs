@@ -1,7 +1,7 @@
 ---
 id: metrics-exporting
 title: Exporting
-slug: /metrics/exporting
+slug: /metrics/exporting/
 ---
 
 You can export all the data sent to each dashboard by clicking the ‘Export all’ button at the top right. This will download a zip file of CSVs containing the daily and monthly data for each metric. This export is not dependent on what is currently being shown on the dashboards. 

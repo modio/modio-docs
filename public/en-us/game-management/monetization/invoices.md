@@ -1,7 +1,7 @@
 ---
 id: monetization-invoices
 title: Invoices
-slug: /monetization/invoices
+slug: /monetization/invoices/
 ---
 
 # Invoices

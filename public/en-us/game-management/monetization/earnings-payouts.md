@@ -1,18 +1,18 @@
 ---
 id: monetization-earnings-payouts
 title: Earnings & Payouts
-slug: /monetization/earnings
+slug: /monetization/earnings/
 ---
 
 # Earnings and Payouts
 
 ## Token Conversion
 
-Any earnings received as part of a sale of premium UGC transactions will be earned as tokens. Tokens received are held for 30 days from the time of transaction, this is to account for any potential refund. If a piece of content was purchased on external platforms, then Tokens are held until the [Invoice is paid](/monetization/invoices) by the studio or publisher.
+Any earnings received as part of a sale of premium UGC transactions will be earned as tokens. Tokens received are held for 30 days from the time of transaction, this is to account for any potential refund. If a piece of content was purchased on external platforms, then Tokens are held until the [Invoice is paid](/monetization/invoices/) by the studio or publisher.
 
 Once tokens are available, you are able to convert these tokens to your USD wallet through your Game Admin Dashboard (if you onboarded via KYB) or through your Account (if you onboarded via KYC).
 
-Tokens convert at a fixed rate of USD$0.004 per token as explained in [How it Works](/monetization/how-it-works). Once a token is converted to USD it will be available to be paid out from your account.
+Tokens convert at a fixed rate of USD$0.004 per token as explained in [How it Works](/monetization/how-it-works/). Once a token is converted to USD it will be available to be paid out from your account.
 
 ![Token Conversion Flow](images/token-conversion.png)
 

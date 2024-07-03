@@ -1,7 +1,7 @@
 ---
 id: support-contacts
 title: Contacts
-slug: /support/contacts
+slug: /support/contacts/
 sidebar_position: 1
 ---
 

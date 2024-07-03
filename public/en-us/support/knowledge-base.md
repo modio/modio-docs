@@ -1,7 +1,7 @@
 ---
 id: support-knowledge-base
 title: Knowledge Base
-slug: /support/knowledge-base
+slug: /support/knowledge-base/
 sidebar_position: 0
 ---
 

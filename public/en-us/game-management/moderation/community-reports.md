@@ -1,7 +1,7 @@
 ---
 id: community-reports
 title: Community Reports
-slug: /moderation/community-reports
+slug: /moderation/community-reports/
 sidebar_position: 4
 ---
 

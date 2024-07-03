@@ -1,7 +1,7 @@
 ---
 id: manual-curation
 title: Manual Curation
-slug: /moderation/manual-curation
+slug: /moderation/manual-curation/
 sidebar_position: 3
 ---
 
@@ -59,10 +59,10 @@ When you turn this system on, all mods are hidden and go into your moderation qu
 The **No Curation** option doesn’t mean content cannot be moderated, it just means content can go-live immediately on submission. All content added to mod.io, even approved content can be put back into the moderation queue for curation, or deleted and removed from circulation as explained later in this guide.
 
 :::tip
-This is the default setting and recommended approach, unless you want to control when new mods go-live. This is how the largest comparable UGC platforms operate, including Youtube, Workshop, Roblox and others. Their aim is to automate the majority of moderation, allowing content to release immediately provided it passes all of the programmed checks. See the [Rules Engine](/moderation/rules-engine) for how programmed checks can be defined with mod.io.
+This is the default setting and recommended approach, unless you want to control when new mods go-live. This is how the largest comparable UGC platforms operate, including Youtube, Workshop, Roblox and others. Their aim is to automate the majority of moderation, allowing content to release immediately provided it passes all of the programmed checks. See the [Rules Engine](/moderation/rules-engine/) for how programmed checks can be defined with mod.io.
 :::
 
-The majority of games using mod.io have **No Curation** enabled because it maximizes DMCA-compliance, streamlines resources needed to run UGC by leveraging community reporting, and is preferred by creators and players who appreciate content going live on submission. They focus their effort on rapidly responding to user reports and validating content post-submission. We recommend this effort be paired with the [Rules Engine](/moderation/rules-engine) to automate as much as possible, and using per-platform moderation on consoles and stores where curation is required, as explained in the next section.
+The majority of games using mod.io have **No Curation** enabled because it maximizes DMCA-compliance, streamlines resources needed to run UGC by leveraging community reporting, and is preferred by creators and players who appreciate content going live on submission. They focus their effort on rapidly responding to user reports and validating content post-submission. We recommend this effort be paired with the [Rules Engine](/moderation/rules-engine/) to automate as much as possible, and using per-platform moderation on consoles and stores where curation is required, as explained in the next section.
 
 :::note
 You can always turn Full Curation on instantly anytime in the future, if you want new content to go into a queue for approval before going live.

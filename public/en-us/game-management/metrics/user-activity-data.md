@@ -1,7 +1,7 @@
 ---
 id: user-activity-data
 title: User Activity Data
-slug: /metrics/user-activity-data
+slug: /metrics/user-activity-data/
 ---
 
 # User Activity Data

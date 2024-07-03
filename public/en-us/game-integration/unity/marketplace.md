@@ -1,7 +1,7 @@
 ---
 id: unity-marketplace
 title: Marketplace
-slug: /unity/marketplace
+slug: /unity/marketplace/
 sidebar_position: 4
 ---
 
@@ -12,12 +12,11 @@ The mod.io Unity Plugin supports in-game integration of the mod.io Marketplace -
 The mod.io monetization features are need to be enabled through the web UI and, if selling the virtual currency through a platform store, will need a service to consume the virtual currency entitlements and apply them to player's mod.io account.
 
 :::note
-See [Monetization Introduction](/monetization) for an introduction to the marketplace features
-See [Purchase Server Implementation](/web-services/marketplace/overview) for more information on implementing platform store support
+See [Monetization Introduction](/monetization/) for an introduction to the marketplace features
+See [Purchase Server Implementation](/web-services/marketplace/overview/) for more information on implementing platform store support
 :::
 
 The mod.io monetization features are enabled as part of the onboarding process on your game profile. Once that is setup, there is nothing further you need to do for initialization in the SDK.
-
 
 ## Get User Wallet Balance
 

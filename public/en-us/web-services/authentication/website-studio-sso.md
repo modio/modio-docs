@@ -1,7 +1,7 @@
 ---
 id: website-studio-sso
 title: Website login on mod.io using your identity provider
-slug: /web-services/authentication/website
+slug: /web-services/authentication/website/
 sidebar_position: 2
 ---
 
@@ -129,7 +129,7 @@ The state parameter is generated dynamically by mod.io, your system must forward
 </p>
 </details>
 
-![Page 1 Demo](img/web-sso-setup-page-1.png)
+![Page 1 Demo](images/web-sso-setup-page-1.png)
 
 Once completed, click 'Next'.
 
@@ -168,7 +168,7 @@ Accept: application/json
 </p>
 </details>
 
-![Page 2 Demo](img/web-sso-setup-page-2.png)
+![Page 2 Demo](images/web-sso-setup-page-2.png)
 
 Once completed, click 'Next'.
 
@@ -178,13 +178,13 @@ Once completed, click 'Next'.
 | Portal ID Claim | The name of the key in your User Info endpoint response that contains the users _unique user ID_. Note: If you are implementing OpenID authentication, this must be the same value that is returned in the `sub` claim of the ID Token. |
 | Scopes | The OAuth scopes mod.io will pass to your Token endpoint when requesting a studio access token. These scopes are associated with your identity provider access tokens and not mod.io. At a minimum, you should supply the scope that allows mod.io to fetch the users profile (i.e. `read_profile`) otherwise authentication requests fail. | 
 
-![Page 3 Demo](img/web-sso-setup-page-3.png)
+![Page 3 Demo](images/web-sso-setup-page-3.png)
 
 Once completed, click 'Next'.
 
 A confirmation page will now display a summary of all the endpoints configured and a high-level overview of how the authentication flow will be handled.
 
-![Page 4 Demo](img/web-sso-setup-page-4.png)
+![Page 4 Demo](images/web-sso-setup-page-4.png)
 
 Once everything is correct and ready, click 'Create config'.
 
@@ -195,7 +195,7 @@ Once your config has been saved, we are now ready to prompt users to log into mo
 - **Manual**: Link to mod.io to your game profile the `?portal=studio` query parameter in the URL. `i.e. https://mod.io/g/my-game?portal=studio`. If a user is directed to this page and already has a linked account with your identity provider, the modal will not be displayed.
 - **Automatic**: When a user attempts to do a _write_ action, such as subscribing to a mod, publishing a mod, rating a mod. The prompt will be displayed _if_ the user does not already have their mod.io account linked to your identity provider.
 
-![Unlink account](img/web-sso-prompt-example.png)
+![Unlink account](images/web-sso-prompt-example.png)
 
 After a successful login against your identity provider and a redirect back to mod.io, the user is then logged into mod.io with a mod.io account, with a 'link' now existing between their base mod.io account and your identity platform.
 
@@ -213,7 +213,7 @@ mod.io users will have the option at any time to remove the link between their m
 
 The user will then be shown all first party portals, such as Steam, Xbox Live, etc - as well as any connected identity providers by registered games on mod.io.
 
-![Unlink account example](img/web-sso-unlink-account.png)
+![Unlink account example](images/web-sso-unlink-account.png)
 
 Once an account link to a identity provider belonging to a game has been unlinked, they cannot be reconnected via this dashboard. Instead, users must then re-link their mod.io account to your identity provide [via the prompt options](#prompting-users-to-login) above.
 

@@ -1,7 +1,7 @@
 ---
 id: rules-engine
 title: Rules Engine
-slug: /moderation/rules-engine
+slug: /moderation/rules-engine/
 sidebar_position: 0
 ---
 

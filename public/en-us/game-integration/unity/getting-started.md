@@ -1,7 +1,7 @@
 ---
 id: unity-getting-started
 title: Getting Started
-slug: /unity/getting-started
+slug: /unity/getting-started/
 sidebar_position: 2
 ---
 
@@ -75,7 +75,6 @@ For now, let's start with a simple email authentication to allow us full access.
 :::note  
 While creating the UI layout referenced below is outside the scope of this guide, there are great Unity UI tutorials available. You can, however, use the image below as a guide for the elements required to achieve the same functionality:
 :::
-
 
 With your UI created, let's add our authentication functionality: 
 
@@ -152,7 +151,6 @@ async void OnAuth()
 Don't forget to assign the fields in the Inspector!
 :::
 
-
 If you've implemented the above correctly, you should now be able to:
 
 1. Start Play mode in Unity
@@ -164,7 +162,6 @@ If you've implemented the above correctly, you should now be able to:
 :::note
 If there is no mod.io account associated with the provided email address, one will automatically be created.
 :::
-
 
 There is something worth highlighting: if you restart Play mode, you'll see the logged authentication message again almost immediately. This is the result of two separate factors:
 
@@ -246,7 +243,6 @@ Don't worry if you don't understand the code below. Its only job is to generate 
 :::warning  
 The following code is going to generate a handful of 10-100 MB files, the size of which will give us enough time to show download progress later on. Ensure you have some free space available in your project directory.
 :::
-
 
 ```csharp
 using System.IO; // Add these to the top of your class
@@ -330,8 +326,6 @@ readonly struct DummyModData
     }
 }
 ```
-
-
 
 ### Uploading Mods
 
@@ -507,7 +501,6 @@ As we know, [all mods have a logo](#adding-mods). So let's write a short method 
 :::note  
 Below is a screenshot of the UI we're using to utilize the method. You can use this as a guide for your own or display the result however you'd like!
 :::
-
 
 ```csharp
 [SerializeField] Text randomName;

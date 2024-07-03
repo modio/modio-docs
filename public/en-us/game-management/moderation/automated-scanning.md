@@ -1,7 +1,7 @@
 ---
 id: automated-scanning
 title: Automated Scanning
-slug: /moderation/automated-scanning
+slug: /moderation/automated-scanning/
 sidebar_position: 1
 ---
 

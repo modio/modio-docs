@@ -1,7 +1,7 @@
 ---
 id: platforms-gdk
 title: Xbox One & Xbox Series X/S
-slug: /platforms/gdk
+slug: /platforms/gdk/
 sidebar_position: 3
 ---
 import CrossLink from '@site/src/components/CrossLink'
@@ -49,7 +49,7 @@ Please contact us for further instructions for authenticating with Xbox Live: de
 
 ## Consent
 
-If you choose to use Xbox Live authentication (this isn’t required for email), it is a requirement from Microsoft that consent is collected before a user is authenticated for the first time. So when a user clicks the “UGC” button in-game, you must display an acceptance dialog similar to the one explained [Terms & User Consent](/terms) guide.
+If you choose to use Xbox Live authentication (this isn’t required for email), it is a requirement from Microsoft that consent is collected before a user is authenticated for the first time. So when a user clicks the “UGC” button in-game, you must display an acceptance dialog similar to the one explained [Terms & User Consent](/terms/) guide.
 
 ## Networking & Storage
 

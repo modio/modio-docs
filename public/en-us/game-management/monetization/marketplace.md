@@ -1,7 +1,7 @@
 ---
 id: monetization-marketplace
 title: Marketplace
-slug: /monetization/marketplace
+slug: /monetization/marketplace/
 ---
 
 # Marketplace

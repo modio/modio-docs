@@ -1,7 +1,7 @@
 ---
 id: restapi-error-codes
 title: Error Codes
-slug: /restapi/error-codes
+slug: /restapi/error-codes/
 sidebar_position: 1
 ---
 

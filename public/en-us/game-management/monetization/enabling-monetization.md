@@ -1,7 +1,7 @@
 ---
 id: monetization-enabling-monetization
 title: Enabling Monetization
-slug: /monetization/enabling
+slug: /monetization/enabling/
 ---
 
 # Enabling Monetization

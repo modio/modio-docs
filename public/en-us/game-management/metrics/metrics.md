@@ -1,7 +1,7 @@
 ---
 id: metrics
 title: Metrics
-slug: /metrics
+slug: /metrics/
 ---
 
 mod.io Metrics is a world-class analytics system that provides insights on your UGC community on each platform. These insights include: 

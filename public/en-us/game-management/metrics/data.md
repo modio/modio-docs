@@ -1,7 +1,7 @@
 ---
 id: metrics-data
 title: Data
-slug: /metrics/data
+slug: /metrics/data/
 ---
 
 # Data
