@@ -1,7 +1,7 @@
 ---
 id: monetization-onboarding
 title: Onboarding
-slug: /monetization/onboarding
+slug: /monetization/onboarding/
 ---
 
 # Onboarding
@@ -110,7 +110,7 @@ Now that you’ve verified and onboarded your team, you are able to turn on and 
 - **Minimum and maximum price** - These values restrict content sold in the marketplace to be limited to prices within this range.
 - **Default price** - Sets the default/recommended value populated in the price field when creators set up their content for sale.
 - **Transaction revenue split** - Allows you to change the default revenue share split between creators and you as the game publisher. You can see which share each party will get in the split calculator on the right side.
-- **Enable manual moderation** - Activating this will require all content added to the Marketplace by creators to be [manually approved](/monetization/approving-premium-UGC) by your team.
+- **Enable manual moderation** - Activating this will require all content added to the Marketplace by creators to be [manually approved](/monetization/approving-premium-ugc/) by your team.
 
 ![Marketplace Settings Flow](images/marketplace-settings.png)
 

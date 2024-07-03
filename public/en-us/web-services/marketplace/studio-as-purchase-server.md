@@ -1,7 +1,7 @@
 ---
 id: studio-as-purchase-server
 title: Operating a Purchase Server
-slug: /web-services/marketplace/studio-as-purchase-server
+slug: /web-services/marketplace/studio-as-purchase-server/
 sidebar_position: 0
 ---
 

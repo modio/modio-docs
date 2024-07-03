@@ -1,7 +1,7 @@
 ---
 id: rules-engine-webhooks
 title: Webhooks
-slug: /moderation/rules-engine/webhooks
+slug: /moderation/rules-engine/webhooks/
 sidebar_position: 2
 ---
 

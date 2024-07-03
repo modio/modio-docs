@@ -1,7 +1,7 @@
 ---
 id: rules-engine-setup
 title: Setup
-slug: /moderation/rules-engine/setup
+slug: /moderation/rules-engine/setup/
 sidebar_position: 1
 ---
 
@@ -110,7 +110,7 @@ Finally, after all of the checks above are complete, if they evaluate to __TRUE_
 
 #### Allow / Deny
 
-Deny will return an error to the user (which you define), and will prevent their request from being processed, as well as any further behaviors from being invoked. Errors will be returned as an [Error Object](https://docs.mod.io/restapiref/#error-object), with [Error Ref of 29200](/api/error-codes) and the response code you specify. This is an example:
+Deny will return an error to the user (which you define), and will prevent their request from being processed, as well as any further behaviors from being invoked. Errors will be returned as an [Error Object](https://docs.mod.io/restapiref/#error-object), with [Error Ref of 29200](/api/error-codes/) and the response code you specify. This is an example:
 
 ```
 {"error":{"code":403,"error_ref":29200,"message":"Your error message goes here."}}
@@ -125,7 +125,7 @@ This action doesn’t stop the content from being processed, but will result in 
 
 This action doesn’t stop the content from being processed, but it will result in the URL endpoint you define being sent information automatically about the request. This can be used to connect any AI, CRM, communication, file, content or malware vendor you are using. For example if you are using Two Hat for content moderation, you could plug them in here. If you are using JIRA or  Zendesk for CRM / support, you could plug them in here to automatically open a ticket.
 
-See [Webhooks](/moderation/rules-engine/webhooks) for details on how to use this advanced feature.
+See [Webhooks](/moderation/rules-engine/webhooks/) for details on how to use this advanced feature.
 
 ![Rules Engine UI](images/rules-engine-ui.png)
 

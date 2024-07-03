@@ -1,7 +1,7 @@
 ---
 id: s2s
 title: Authenticating your secure backend server for S2S requests
-slug: /web-services/authentication/s2s
+slug: /web-services/authentication/s2s/
 sidebar_position: 3
 ---
 
@@ -92,7 +92,7 @@ client_id=12743894323&client_secret=Uq8jI5vWHoX0BBKDFDeaiYOVjofITG19&grant_type=
 
 ### Obtaining a User Delegation Token for making requests on behalf of a user
 
-Some service-to-service endpoints require user context to be able to make requests on behalf of a user, such as [creating a transaction](/web-services/iap/studio-as-purchase-server#1-initiating-transaction). To facilitate this, mod.io hosts a public endpoint which can be called by an authenticated user with their bearer token which returns what we call a User Delegation Token. This token should then be sent to your secure backend server from your game client, where you can then use it for specific endpoints in conjunction with a valid service token. See below for the full flow:
+Some service-to-service endpoints require user context to be able to make requests on behalf of a user, such as [creating a transaction](/web-services/iap/studio-as-purchase-server/#1-initiating-transaction). To facilitate this, mod.io hosts a public endpoint which can be called by an authenticated user with their bearer token which returns what we call a User Delegation Token. This token should then be sent to your secure backend server from your game client, where you can then use it for specific endpoints in conjunction with a valid service token. See below for the full flow:
 
 ```mermaid
 sequenceDiagram
@@ -147,7 +147,7 @@ token|string|The User Delegation Token to send to your secure backend.
 
 ### Authenticating requests with your service token
 
-Now you have a valid service token, your purchase server has the ability to call service-to-service endpoints, such as [Creating Transactions](/web-services/iap/studio-as-purchase-server#1-initiating-transaction), [Relaying Clawback Events](/web-services/iap/studio-as-purchase-server#sending-clawback-data-to-modio) and more.
+Now you have a valid service token, your purchase server has the ability to call service-to-service endpoints, such as [Creating Transactions](/web-services/iap/studio-as-purchase-server/#1-initiating-transaction), [Relaying Clawback Events](/web-services/iap/studio-as-purchase-server/#sending-clawback-data-to-modio) and more.
 
 To authenticate requests using your Service Token, simply add the token to your `Authorization` header as if you would a user Bearer token.
 

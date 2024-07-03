@@ -1,7 +1,7 @@
 ---
 id: monetization-getting-started
 title: Getting Started
-slug: /monetization/getting-started
+slug: /monetization/getting-started/
 ---
 
 The mod.io Marketplace allows content creators to monetize premium UGC (User-Generated Content) in-game, on any platform, to a worldwide audience, generating new sources of revenue for game studios and content creators. This guide is designed for game studios and publishers pursuing Marketplace as a service offering for their game.
@@ -24,4 +24,4 @@ Backed by a KYC/KYB verification process for all users and businesses, our syste
 
 As a studio or publisher, you control the conditions for content to be sold on your Marketplace. Our Partner Program allows you to decide which creators in your community are able to monetize within your game. And your game admin dashboard gives a wide range of controls, metrics, and critical insights; allowing you to configure and optimize the creator economy for your game.
 
-The mod.io Marketplace is currently accessible through invitation only. You can dive into the guide below for a walkthrough of the system's inner workings. To explore further, see a live demo, and kickstart your game's monetization journey, feel free to connect with our [contacts](/support/contacts).
+The mod.io Marketplace is currently accessible through invitation only. You can dive into the guide below for a walkthrough of the system's inner workings. To explore further, see a live demo, and kickstart your game's monetization journey, feel free to connect with our [contacts](/support/contacts/).

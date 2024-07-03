@@ -1,7 +1,7 @@
 ---
 id: monetization-next-steps
 title: Next Steps
-slug: /monetization/next-steps
+slug: /monetization/next-steps/
 ---
 
 # Next Steps

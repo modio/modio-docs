@@ -1,7 +1,7 @@
 ---
 id: rules-engine-examples
 title: Use Cases
-slug: /moderation/rules-engine/examples
+slug: /moderation/rules-engine/examples/
 sidebar_position: 4
 ---
 

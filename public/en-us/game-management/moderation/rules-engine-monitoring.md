@@ -1,7 +1,7 @@
 ---
 id: rules-engine-monitoring
 title: Monitoring Rules
-slug: /moderation/rules-engine/monitoring
+slug: /moderation/rules-engine/monitoring/
 sidebar_position: 3
 ---
 

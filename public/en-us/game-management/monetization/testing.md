@@ -1,7 +1,7 @@
 ---
 id: monetization-payment-testing
 title: Payment Testing
-slug: /monetization/payment-testing
+slug: /monetization/payment-testing/
 ---
 
 # Payment Testing

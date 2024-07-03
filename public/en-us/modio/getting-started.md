@@ -31,11 +31,11 @@ First, you’ll need your API key, you can find it in the “API” section of y
 
 ### Unreal Engine and Unity Plugins
 
-Our dedicated engine-plugins are the simplest way to implement mod.io in your [Unreal](/unreal) or [Unity](/unity) game. Alongside enabling streamlined use of all of mod.io’s features, both solutions also include an optional, robust, drop-in UGC browser UI.
+Our dedicated engine-plugins are the simplest way to implement mod.io in your [Unreal](/unreal/) or [Unity](/unity/) game. Alongside enabling streamlined use of all of mod.io’s features, both solutions also include an optional, robust, drop-in UGC browser UI.
 
 ### C++ SDK
 
-If your game uses a custom engine, our full-featured [C++ SDK](/cppsdk) provides a fast and efficient solution for integrating mod.io. Just like our Unreal and Unity plugins, the C++ SDK also includes a powerful file management system that can automatically download and update players’ subscribed UGC files across all platforms.
+If your game uses a custom engine, our full-featured [C++ SDK](/cppsdk/) provides a fast and efficient solution for integrating mod.io. Just like our Unreal and Unity plugins, the C++ SDK also includes a powerful file management system that can automatically download and update players’ subscribed UGC files across all platforms.
 
 ### REST API
 
@@ -43,6 +43,6 @@ Web-apps or games that require atomic control over their mod.io implementation a
 
 ## Enable Cross-Platform UGC
 
-mod.io is an authorized middleware provider for PlayStation&reg;4 & PlayStation&reg;5, Xbox and Switch. We offer [full support and compliance with certification](/platforms), native SDKs and single sign-on. mod.io enables seamless, cross-platform UGC, and helps your creators to reach their audience across PC, consoles and mobile.
+mod.io is an authorized middleware provider for PlayStation&reg;4 & PlayStation&reg;5, Xbox and Switch. We offer [full support and compliance with certification](/platforms/), native SDKs and single sign-on. mod.io enables seamless, cross-platform UGC, and helps your creators to reach their audience across PC, consoles and mobile.
 
 To get started, speak to your platform account managers about adding mod.io and UGC to your game. You can also reach out to us directly, where we can introduce you to our dedicated account managers who are experienced in (and enthusiastic about) [mod.io](https://mod.io) and UGC.

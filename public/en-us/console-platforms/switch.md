@@ -1,7 +1,7 @@
 ---
 id: platforms-switch
 title: Nintendo Switch
-slug: /platforms/switch
+slug: /platforms/switch/
 sidebar_position: 2
 ---
 import CrossLink from '@site/src/components/CrossLink'
@@ -40,7 +40,7 @@ We do not currently support login via Nintendo on the mod.io site. Users who are
 
 ## Consent
 
-If you choose to use Nintendo Network ID authentication (this isn’t required for email), you are required to collect the user's consent before they are authenticated for the first time. So when a user clicks the “UGC” button in-game, you must display an [acceptance dialog](/terms).
+If you choose to use Nintendo Network ID authentication (this isn’t required for email), you are required to collect the user's consent before they are authenticated for the first time. So when a user clicks the “UGC” button in-game, you must display an [acceptance dialog](/terms/).
 
 ## Networking & Storage
 

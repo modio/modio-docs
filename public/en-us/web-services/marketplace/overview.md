@@ -1,7 +1,7 @@
 ---
 id: overview
 title: Overview
-slug: /web-services/marketplace/overview
+slug: /web-services/marketplace/overview/
 sidebar_position: 0
 ---
 
@@ -38,7 +38,7 @@ Hard mode. Game Studio does the heavy lifting.
 | Your Studio | Registering eligible Platform Entitlements (SKU's) with mod.io, Platform Entitlement Consumption,  Virtual Token Transaction Processing with mod.io,  Refunds / Chargebacks / Chargeback-reversal Processing from platforms.
 | mod.io | Processing Virtual Token transactions from your Purchase Server
 
-For a detailed walkthrough of this flow, head to the [Studio as Purchase Server](/web-services/iap/studio-as-purchase-server) section.
+For a detailed walkthrough of this flow, head to the [Studio as Purchase Server](/web-services/iap/studio-as-purchase-server/) section.
 
 # How to Choose
 

@@ -1,7 +1,7 @@
 ---
 id: premium-features
 title: Premium Features
-slug: /premium-features
+slug: /premium-features/
 sidebar_position: 3
 ---
 
@@ -11,7 +11,7 @@ The core features of [mod.io](https://mod.io) will always be free. However, we a
 
 ## Rules Engine Moderation
 
-The [Rules Engine](/moderation/rules-engine/setup) is a powerful tool that can enable you to effectively manage high volumes of UGC content, in a fully automated manner.  It is:
+The [Rules Engine](/moderation/rules-engine/setup/) is a powerful tool that can enable you to effectively manage high volumes of UGC content, in a fully automated manner.  It is:
 
 * Proactive - Run automated actions based on user activity
 * Flexible - Approve or deny content, or log and hold for review
@@ -31,4 +31,4 @@ The Embeddable Hub lets your players download UGC from your website, from the mo
 
 ## Monetization
 
-The [UGC Marketplace](/monetization) lets creators sell premium UGC. You can define the creator/studio revenue share, content rules and the allowable price range.
+The [UGC Marketplace](/monetization/) lets creators sell premium UGC. You can define the creator/studio revenue share, content rules and the allowable price range.

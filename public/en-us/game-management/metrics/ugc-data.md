@@ -1,7 +1,7 @@
 ---
 id: ugc-data
 title: UGC Data
-slug: /metrics/ugc-data
+slug: /metrics/ugc-data/
 ---
 
 # UGC Data

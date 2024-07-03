@@ -1,7 +1,7 @@
 ---
 id: health-data
 title: Health Data
-slug: /metrics/health-data
+slug: /metrics/health-data/
 ---
 
 # Health Data

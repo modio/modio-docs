@@ -1,14 +1,14 @@
 ---
 id: monetization-how-it-works
 title: How it Works
-slug: /monetization/how-it-works
+slug: /monetization/how-it-works/
 ---
 
 # How it Works
 
 Our system is built to support cross-platform payments on web, in-game and console, allowing content creators and studios or publishers to earn revenue no matter where the purchase is made.
 
-Players are able to purchase Token Packs, either directly through your game page on mod.io or any platform you wish to make this available on (PC storefronts, console stores, or your own). Players can then use those tokens to purchase premium UGC, the tokens are paid to creators and the game publisher, based on the revenue split you set in the [Monetization settings](/monetization/onboarding#monetization-settings).
+Players are able to purchase Token Packs, either directly through your game page on mod.io or any platform you wish to make this available on (PC storefronts, console stores, or your own). Players can then use those tokens to purchase premium UGC, the tokens are paid to creators and the game publisher, based on the revenue split you set in the [Monetization settings](/monetization/onboarding/#monetization-settings).
 
 ## Wholesale Token Price and Fees
 

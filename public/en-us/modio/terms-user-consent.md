@@ -1,7 +1,7 @@
 ---
 id: terms
 title: Terms & User Consent
-slug: /terms
+slug: /terms/
 sidebar_position: 2
 ---
 
@@ -19,11 +19,11 @@ It is a requirement of the [Game Terms](https://mod.io/gameterms) with mod.io, a
 
 |    | **Summary** |
 |----|-------------|
-| **Game Terms** | Applicable only to game studios and publishers using mod.io: [https://mod.io/gameterms](https://mod.io/gameterms) |
-| **Terms of Use** | Applicable to all end users using mod.io: [https://mod.io/terms](https://mod.io/terms) |
-| **Privacy Policy** | Applicable to all end users using mod.io: [https://mod.io/privacy](https://mod.io/privacy) |
-| **Acceptable Use Policy** | Applicable to all end users using mod.io: [https://mod.io/aup](https://mod.io/aup) |
-| **Monetization Terms** | Applicable to all game studios, publishers, creators and end users transacting on mod.io: [https://mod.io/monetization](https://mod.io/monetization) |
+| **Game Terms** | Applicable only to game studios and publishers using mod.io: https://mod.io/gameterms |
+| **Terms of Use** | Applicable to all end users using mod.io: https://mod.io/terms |
+| **Privacy Policy** | Applicable to all end users using mod.io: https://mod.io/privacy |
+| **Acceptable Use Policy** | Applicable to all end users using mod.io: https://mod.io/aup |
+| **Monetization Terms** | Applicable to all game studios, publishers, creators and end users transacting on mod.io: https://mod.io/monetization |
 
 ## Platform SSO standard
 
@@ -47,7 +47,7 @@ This example flow is how the consent process is presented in the mod.io Unity an
 
 ## Implementation
 
-If you are using the official mod.io [Unity](/unity), [Unreal](/unreal) or [C++ SDK](/cppsdk), the acceptance dialog functionality is built into those plugins, and should be utilized. Please check those plugins documentation for details using their implementation.
+If you are using the official mod.io [Unity](/unity/), [Unreal](/unreal/) or [C++ SDK](/cppsdk/), the acceptance dialog functionality is built into those plugins, and should be utilized. Please check those plugins documentation for details using their implementation.
 
 If you are building the acceptance and consent process yourself, you should implement the steps detailed above, paired with a dialog and authentication process following the instructions detailed below.
 

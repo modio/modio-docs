@@ -1,7 +1,7 @@
 ---
 id: unity-setup
 title: Installation & Setup
-slug: /unity/setup
+slug: /unity/setup/
 sidebar_position: 1
 ---
 
@@ -47,4 +47,4 @@ You'll need your `game ID` and `API key` for the following steps.
 Deselect the config file before entering Play mode. A known Unity bug can cause the Editor to crash in Unity 2019-2021.
 :::
 
-Your setup is now complete. The [Getting Started guide](/unity/getting-started) will guide you through getting your mod.io integration up and running quickly. If you have any questions or need some help join our [Discord](https://discord.mod.io) server.
+Your setup is now complete. The [Getting Started guide](/unity/getting-started/) will guide you through getting your mod.io integration up and running quickly. If you have any questions or need some help join our [Discord](https://discord.mod.io) server.

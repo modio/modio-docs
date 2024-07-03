@@ -1,7 +1,7 @@
 ---
 id: dependency-management
 title: Dependency Management
-slug: /dependency-management
+slug: /dependency-management/
 sidebar_position: 0
 ---
 
