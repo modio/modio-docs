@@ -18,7 +18,7 @@ Token Packs are sold at a price of USD$0.01 per-token, so $1 for 100, on which w
 
 When $1 is spent to purchase 100 tokens, and those tokens are then used to purchase a piece of content:
 
-* USD$0.48 (48%) is used to cover the payment processor fee (e.g. Steam, PlayStation&trade:Store, Xbox, iOS, Android, or Tilia on Web), and the remainder is profit for the game studio
+* USD$0.48 (48%) is used to cover the payment processor fee (e.g. Steam, PlayStation™Store, Xbox, iOS, Android, or Tilia on Web), and the remainder is profit for the game studio
 * USD$0.52 (52%) is used to cover the fixed wholesale rate of the tokens, broken down as follows:
     - USD$0.4 (40%) is allocated to the tokens earnings pool (i.e. the Marketplace economy)
         - When these 100 tokens are spent, the default is for 70% of the tokens to go to the creator, and 30% go to the studio (this split can be adjusted in your dashboard)
@@ -77,7 +77,7 @@ So in total, the studio share after the sale of this token pack, and its use to 
 
 ### Sales originating from external platforms (Steam, PlayStation, Xbox, etc.)
 
-Player purchases tokens from an external platform (Steam, PlayStation store, Microsoft Store, etc). The price is still $0.01 per token. In this example, we’ll again assume the sale of a token pack of 1000 tokens for $10.
+Player purchases tokens from an external platform (Steam, PlayStation Store, Microsoft Store, etc). The price is still $0.01 per token. In this example, we’ll again assume the sale of a token pack of 1000 tokens for $10.
 
 The external platform would charge 30% of that, leaving $7. Platforms rate vary, for example Epic Game Store would only charge 12%, but for this example we’ll assume a 30% rate which is the standard for Steam, PlayStation or Xbox. The studio will then get the remaining $7 paid directly to them by the platform as royalties.
 

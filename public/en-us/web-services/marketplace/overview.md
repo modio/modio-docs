@@ -13,7 +13,7 @@ mod.io supports the management of player-owned entitlements on first party platf
 
 #### Glossary
 
-- **Platform**: A first party platform, such as Steam, Xbox Live, PlayStation&trade;Network, etc.
+- **Platform**: A first party platform, such as Steam, Xbox Live, PlayStation™Network, etc.
 - **Virtual Token**: mio's - mod.io's Virtual Token Currency which underpins your studios currency (which may have a vanity title).
 
 When it comes to implementing monetization features provided by mod.io, there is an important decision your studio must make as to who is processing the platform entitlements and their subsequent transactions with mod.io.

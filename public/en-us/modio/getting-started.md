@@ -43,6 +43,6 @@ Web-apps or games that require atomic control over their mod.io implementation a
 
 ## Enable Cross-Platform UGC
 
-mod.io is an authorized middleware provider for PlayStation&reg;4 & PlayStation&reg;5, Xbox and Switch. We offer [full support and compliance with certification](/platforms/), native SDKs and single sign-on. mod.io enables seamless, cross-platform UGC, and helps your creators to reach their audience across PC, consoles and mobile.
+mod.io is an authorized middleware provider for PlayStation®4 & PlayStation®5, Xbox and Switch. We offer [full support and compliance with certification](/platforms/), native SDKs and single sign-on. mod.io enables seamless, cross-platform UGC, and helps your creators to reach their audience across PC, consoles and mobile.
 
 To get started, speak to your platform account managers about adding mod.io and UGC to your game. You can also reach out to us directly, where we can introduce you to our dedicated account managers who are experienced in (and enthusiastic about) [mod.io](https://mod.io) and UGC.

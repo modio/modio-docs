@@ -22,8 +22,8 @@ To access console platforms and documentation, see [Supporting Console Platforms
 | Linux           | ✔       |
 | Xbox One        | ✔       |
 | Xbox Series X   | ✔       |
-| PlayStation&reg;4   | ✔       |
-| PlayStation&reg;5   | ✔       |
+| PlayStation®4   | ✔       |
+| PlayStation®5   | ✔       |
 | Nintendo Switch | ✔       |
 | iOS             | ✔       |
 | Android         | ✔       |

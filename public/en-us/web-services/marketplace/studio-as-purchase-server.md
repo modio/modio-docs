@@ -158,7 +158,7 @@ Refer to the table below to determine if you can defer entitlement state where t
 **Platform API** | **Manages Entitlement State?**
 |----------|----------
 | Xbox Live | Yes
-| PlayStation&trade;Network | Yes
+| PlayStation™Network | Yes
 | Steam | Yes
 | Google Play Store | No
 | Apple App Store | No

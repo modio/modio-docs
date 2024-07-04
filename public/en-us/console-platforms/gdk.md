@@ -45,7 +45,7 @@ This will provide users with a streamlined login experience tailored to the appr
 
 ![Xbox Live log in interface available in the mod.io web UI](images/console-support/xbox_auth_web.png)
 
-Please contact us for further instructions for authenticating with Xbox Live: developers@mod.io
+Please contact us for further instructions for authenticating with Xbox Live: developers@mod.io.
 
 ## Consent
 

@@ -32,7 +32,7 @@ Only UGC which follows the rules should be made available to download and play. 
 
 ## Authentication
 
-On Nintendo platforms, you can authenticate the user with mod.io using their email address, or you can authenticate the user with Nintendo Network ID authentication. Our developers are available to assist and advise on the best implementation: developers@mod.io
+On Nintendo platforms, you can authenticate the user with mod.io using their email address, or you can authenticate the user with Nintendo Network ID authentication. Our developers are available to assist and advise on the best implementation: developers@mod.io.
 
 :::note
 We do not currently support login via Nintendo on the mod.io site. Users who are authenticated using a Nintendo Network ID will be limited to only the in-game experience. As such we recommend using Nintendo Network ID authentication where a full in-game integration has been implemented. We are currently negotiating with Nintendo to support authentication on mod.io website with Nintendo Network ID in a future update.

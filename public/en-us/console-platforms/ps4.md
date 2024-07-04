@@ -6,9 +6,9 @@ sidebar_position: 1
 ---
 import CrossLink from '@site/src/components/CrossLink'
 
-# PlayStation&reg;4 & PlayStation&reg;5
+# PlayStation®4 & PlayStation®5
 
-Typical requirements for PS4&trade; & PS5&reg; games include:
+Typical requirements for PS4™ & PS5® games include:
 * UGC cannot run scripts or execute code, unless sufficient mitigations are demonstrated to be in place (e.g. sandboxing or manual curation of content)
 * UGC must work without the need for manual installation
 * Titles utilising mod.io must allow users the option of playing without mod.io functionality
@@ -24,7 +24,7 @@ All games supporting UGC must be approved individually, and you will be required
 
 ## SDK Access
 
-Please contact us for access to the PS4/PS5 SDKs so we can guide you through the steps: developers@mod.io
+Please contact us for access to the PS4/PS5 SDKs so we can guide you through the steps: developers@mod.io.
 
 ## Moderation
 
@@ -32,7 +32,7 @@ On PS4/PS5, only UGC which follows the rules should be made available to downloa
 
 ## Authentication
 
-On PS4/PS5, you can authenticate the user via our PlayStation&trade;Network authentication flow, or by using their email address. We highly recommend using the authentication flow where possible, as it is instant vs email which is not, and more importantly synchronizes a user's PlayStation Network blocklist. The ability to be able to block content from users is a TRC requirement, therefore users must be authenticated before they can access your UGC content via mod.io. 
+On PS4/PS5, you can authenticate the user via our PlayStation™Network authentication flow, or by using their email address. We highly recommend using the authentication flow where possible, as it is instant vs email which is not, and more importantly synchronizes a user's PlayStation Network blocklist. The ability to be able to block content from users is a TRC requirement, therefore users must be authenticated before they can access your UGC content via mod.io. 
 
 If you choose to use PlayStation Network authentication, Sony Interactive Entertainment requires that you collect user consent before they are authenticated for the first time. So when a user clicks the “UGC” button in-game, you must display an [acceptance dialog](/terms/).
 
@@ -44,7 +44,7 @@ This will provide users with a streamlined login experience tailored to the appr
 
 ![PlayStation Network log in interface available in the mod.io web UI](images/console-support/psn_auth_web.png)
 
-Please contact us for more details on how to authenticate with PSN: developers@mod.io
+Please contact us for more details on how to authenticate with PSN: developers@mod.io.
 
 ## Networking & Storage
 
