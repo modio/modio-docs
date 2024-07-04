@@ -1,6 +1,6 @@
 ---
 id: platforms-playstation
-title: PlayStation&reg;4 & PlayStation&reg;5
+title: PlayStation®4 & PlayStation®5
 slug: /platforms/playstation/
 sidebar_position: 1
 ---
