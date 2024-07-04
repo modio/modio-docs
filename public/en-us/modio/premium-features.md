@@ -23,7 +23,7 @@ It forms one layer of our four layer moderation system, all of which are configu
 
 Together, the four layers combine to give you 100% coverage and control over UGC appearing in your game. The goal is to automate the approval of as much content as possible with minimized human intervention, no matter how strict or sensitive your content safety requirements are.
 
-![Moderation layers](/img/rules-engine-layers.png)
+![Moderation layers](images/rules-engine-layers.png)
 
 ## Embeddable Hub
 
