@@ -63,5 +63,6 @@ _Viewing the details of a call to a webhook_
 
 mod.io will not automatically retry failed webhook calls, but via the webhook history, you can retry calls to your webhook.
 
-:::note mod.io allows a maximum of 5 seconds for webhooks to process, so if you expect execution to take longer, we recommend you process it in the background whilst returning a successful response code as early as possible. Any response code within the range of 200-299 is treated as successful.
+:::warning
+mod.io allows a maximum of 5 seconds for webhooks to process, so if you expect execution to take longer, we recommend you process it in the background whilst returning a successful response code as early as possible. Any response code within the range of 200-299 is treated as successful.
 :::
