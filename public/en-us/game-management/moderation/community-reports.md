@@ -118,7 +118,7 @@ You’re able to selectively restrict a user from being able to perform the foll
 Depending on the user’s actions and their severity, you can select one, some, or all of these options to limit their interactions with other users and the UGC for your game.
 
 :::note
-In extreme cases, users can also be banned entirely - if you require a user to be banned, please contact us.
+In extreme cases, users can also be banned entirely - if you require a user to be banned, please [contact us](mailto:support@mod.io).
 :::
 
 To restrict a user, visit their profile page by clicking their display name anywhere it is displayed on the mod.io website. Once you are on their profile page, click **Manage permissions**.

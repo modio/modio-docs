@@ -6,7 +6,7 @@ slug: /monetization/invoices/
 
 # Invoices
 
-For any Token SKU sales made on external platforms (ex: Steam, Microsoft Store, PlayStation Store), the game publisher or studio will be issued an invoice at the start of the next month, for all sales made through that previous month.
+For any Token SKU sales made on external platforms (ex: Steam, Microsoft Store, PlayStation™Store), the game publisher or studio will be issued an invoice at the start of the next month, for all sales made through that previous month.
 
 Studios will have the ability to pay the invoice through their game admin dashboard. Please note you will need to have sufficient funds in your game or individual wallet in order to pay the transaction.
 

@@ -8,18 +8,18 @@ import CrossLink from '@site/src/components/CrossLink'
 
 # Supporting Console Platforms
 
-mod.io is a fully authorized middleware provider for Xbox, PlayStation&reg;4, PlayStation&reg;5 and Nintendo Switch.
+mod.io is a fully authorized middleware provider for Xbox, PlayStation®4, PlayStation®5 and Nintendo Switch.
 
 |      | **Service Availability** | **Certification Support** | **Native SDK** | **Single Sign-On** |
 |------|------|------|------|------|
 | **Xbox One**        | ✓ | ✓ | ✓ | ✓ |
 | **Xbox Series X**   | ✓ | ✓ | ✓ | ✓ |
 | **Nintendo Switch** | ✓ | ✓ | ✓ | ✓ |
-| **PlayStation 4**   | ✓ | ✓ | ✓ | ✓ |
-| **PlayStation 5**   | ✓ | ✓ | ✓ | ✓ |
+| **PlayStation®4**   | ✓ | ✓ | ✓ | ✓ |
+| **PlayStation®5**   | ✓ | ✓ | ✓ | ✓ |
 
 You can see examples of mod.io running on consoles in the following titles today:
-* SnowRunner - Xbox, PS4&trade;/PS5&reg;, Switch (https://mod.io/g/snowrunner)
+* SnowRunner - Xbox, PS4™/PS5®, Switch (https://mod.io/g/snowrunner)
 * Space Engineers - Xbox (https://mod.io/g/spaceengineers)
 * Skater XL - Xbox, PS4/PS5 (https://mod.io/g/skaterxl)
 

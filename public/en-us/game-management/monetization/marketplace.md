@@ -38,7 +38,7 @@ Once purchased, the player is automatically subscribed to the premium UGC and th
 
 Players will be able to self-service refund any transactions they have made through their Account on mod.io, with some restrictions detailed below.
 
-- **Token Packs** - Players can request a refund for any unused token packs they have purchased via the mod.io website within 30 days of purchase. If they've used any part of the tokens purchased, it won't be eligible for a refund. One token pack refund request is available automatically every year. If they've purchased token packs through other platforms (ex: Steam, Microsoft Store, PlayStation Store), they’ll need to request a refund through the relevant platform, and follow their own refund policy.
+- **Token Packs** - Players can request a refund for any unused token packs they have purchased via the mod.io website within 30 days of purchase. If they've used any part of the tokens purchased, it won't be eligible for a refund. One token pack refund request is available automatically every year. If they've purchased token packs through other platforms (ex: Steam, Microsoft Store, PlayStation™Store), they’ll need to request a refund through the relevant platform, and follow their own refund policy.
 
 - **Premium UGC** - Players can refund a premium UGC purchase via the mod.io website within 7 days of purchase. Up to eight refunds of premium UGC purchases are available automatically every year.
 
