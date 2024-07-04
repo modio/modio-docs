@@ -110,7 +110,7 @@ Finally, after all of the checks above are complete, if they evaluate to __TRUE_
 
 #### Allow / Deny
 
-Deny will return an error to the user (which you define), and will prevent their request from being processed, as well as any further behaviors from being invoked. Errors will be returned as an [Error Object](https://docs.mod.io/restapiref/#error-object), with [Error Ref of 29200](/api/error-codes/) and the response code you specify. This is an example:
+Deny will return an error to the user (which you define), and will prevent their request from being processed, as well as any further behaviors from being invoked. Errors will be returned as an [Error Object](https://docs.mod.io/restapiref/#error-object), with [Error Ref of 29200](/restapi/error-codes/) and the response code you specify. This is an example:
 
 ```
 {"error":{"code":403,"error_ref":29200,"message":"Your error message goes here."}}

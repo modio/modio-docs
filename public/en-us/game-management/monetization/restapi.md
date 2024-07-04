@@ -29,7 +29,7 @@ To get a list of all the purchases a user has made, call the following endpoint:
 
 ### Get Paid Mods
 
-To get a list of all the paid mods in the marketplace, call the following endpoint: [get mods](https://docs.mod.io/restapiref/#get-mods) with the revenue_type filter. The following options are available:
+To get a list of all the paid mods in the marketplace, call the following endpoint: [get mods](https://docs.mod.io/restapiref/#get-mods) with the `revenue_type` filter. The following options are available:
 
 0 = Free Mods only in results  
 1 = Paid Mods only in results  
@@ -37,7 +37,7 @@ To get a list of all the paid mods in the marketplace, call the following endpoi
 
 ### Managing File Access to Mods
 
-The API has a number of game options that can be enabled to manage file CDN access to mods. Please see the following endpoint: [game options](https://docs.mod.io/restapiref/#get-game-options). This can be managed via the web interface or the API. The recommended option is to use a bit of 4 and above or 8. This will require the user's authentication token to be supplied when attempting to download the mod. When bitwise of 8 is enabled, we will also check if the user owns the mod before allowing the download.
+The API has a number of game options that can be enabled to manage file CDN access to mods. Please see the value of `api_access_options` in the game object returned by the endpoint: [get game](https://docs.mod.io/restapiref/#get-game). This can be managed via the web interface or the API. The recommended option is to use a bit of 4 and above or 8. This will require the user's authentication token to be supplied when attempting to download the mod. When bitwise of 8 is enabled, we will also check if the user owns the mod before allowing the download.
 
 ### General
 
