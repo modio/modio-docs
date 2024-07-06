@@ -140,7 +140,7 @@ const sidebars = {
     },
     {
       type: 'doc',
-      id: 'console-platforms/apple',
+      id: 'console-platforms/platforms-apple',
       label: 'Apple',
     },
     // Game Management

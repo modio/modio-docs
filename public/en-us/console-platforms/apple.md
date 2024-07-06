@@ -6,7 +6,7 @@ sidebar_position: 5
 ---
 import CrossLink from '@site/src/components/CrossLink'
 
-# Apple SSO
+# Apple
 
 Typical requirements to authenticate to mod.io from a game running on Apple include:
 * A mod.io account.
