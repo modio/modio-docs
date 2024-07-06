@@ -107,10 +107,10 @@ const sidebars = {
         },
       ],
     },
-    // Console Platforms
+    // Platforms
     {
       type: 'html',
-      value: `${startStylePush}CONSOLE PLATFORMS${endStyle}`,
+      value: `${startStylePush}PLATFORMS${endStyle}`,
       defaultStyle: true,
     },
     {
@@ -121,7 +121,7 @@ const sidebars = {
     {
       type: 'doc',
       id: 'console-platforms/platforms-playstation',
-      label: 'PlayStation\u00ae4 & PlayStation\u00ae5',
+      label: 'PlayStation®4 & PlayStation®5',
     },
     {
       type: 'doc',
@@ -137,6 +137,11 @@ const sidebars = {
       type: 'doc',
       id: 'console-platforms/platforms-console-sdks',
       label: 'Console SDKs',
+    },
+    {
+      type: 'doc',
+      id: 'console-platforms/apple',
+      label: 'Apple',
     },
     // Game Management
     {
