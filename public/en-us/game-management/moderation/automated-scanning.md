@@ -15,7 +15,7 @@ All text-based content submitted to mod.io is validated through a series of rule
 
 1. **mod.io validation** (i.e. correct length, correct type, XSS filter, valid HTML)
 2. **Platform validation** (e.g. Xbox Live word filter which blanks words deemed inappropriate)
-3. **Custom rules** defined by the Game Admin, using the Rules Engine Moderation system (available to advanced partners only)
+3. **Custom rules** defined by the Game Admin, using the Rules Engine Moderation system (available as a premium feature via your dashboard)
 
 ![Text scanning](images/text-scanning.png)
 
@@ -24,7 +24,7 @@ All text-based content submitted to mod.io is validated through a series of rule
 All media and images submitted to mod.io are validated via a series of rules, depending on the media’s purpose. All media must pass:
 
 1. **mod.io validation** (i.e. valid image/mime type, filesize, dimensions)
-2. **Custom rules** defined by the Game Admin, using the Rules Engine Moderation system (available to advanced partners only)
+2. **Custom rules** defined by the Game Admin, using the Rules Engine Moderation system (available as a premium feature via your dashboard)
 
 At the moment, the mod.io system does not apply any AI or ML to detect inappropriate content in images. Studios can use the Rules Engine webhooks feature to incorporate third-party AI tools in their moderation flow.
 
@@ -36,7 +36,7 @@ All files and binaries submitted to mod.io are validated via a series of rules, 
 
 1. **mod.io validation** (i.e. valid file/mime type, is valid zip file, file size)
 2. **mod.io malware scan** (check the file against a continually updated list of heuristics to determine if the file contains viruses, trojans etc)
-3. **Custom rules** defined by the Game Admin, using the Rules Engine Moderation system (available to advanced partners only)
+3. **Custom rules** defined by the Game Admin, using the Rules Engine Moderation system (available as a premium feature via your dashboard)
 
 ![File scanning](images/file-scanning.png)
 
