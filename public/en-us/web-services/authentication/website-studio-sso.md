@@ -1,6 +1,6 @@
 ---
 id: website-studio-sso
-title: Website login on mod.io using your identity provider
+title: mod.io login using OpenID
 slug: /web-services/authentication/website/
 sidebar_position: 2
 ---
@@ -205,6 +205,8 @@ mod.io will soon allow the automated functionality listed above only to be trigg
 
 ## Unlinking a mod.io account from your identity provider
 
+### Player-initiated unlinking
+
 mod.io users will have the option at any time to remove the link between their mod.io account and your identity provider. A player can remove an account link by doing the following:
 
 1. While logged in, clicking their avatar in the bottom left-hand corner.
@@ -216,6 +218,42 @@ The user will then be shown all first party portals, such as Steam, Xbox Live, e
 ![Unlink account example](images/web-sso-unlink-account.png)
 
 Once an account link to a identity provider belonging to a game has been unlinked, they cannot be reconnected via this dashboard. Instead, users must then re-link their mod.io account to your identity provide [via the prompt options](#prompting-users-to-login) above.
+
+### Studio-initiated unlinking
+
+There may be instances where a studio needs to programmatically remove the link between a players mod.io account and your identity provider, such as when a player requests an account deletion. In such cases, it's crucial to integrate our S2S (Server to Server) API into your automated processes to ensure the removal of orphaned identity provider connections associated with mod.io accounts. Please refer to the endpoint below for S2S-facilitated connection removal to which you must use [S2S Authentication](/web-services/authentication/s2s/) to accomplish.
+
+#### Request
+
+`DELETE https://{your-game-id}.modapi.io/v1/s2s/connections/{identity-provider-id}`
+
+##### Headers
+
+Header|Type|Required|Description
+---|---|---|---|
+Authorization|string|true|The valid service token created with your OAuth Credentials.
+
+##### Path Parameters
+
+Parameter|Type|Required|Description
+---|---|---|---|
+identity-provider-id|string|true|The unique ID of the player as understood by your identity provider, this should be the same field that is supplied to us in the `sub` claim for OIDC authentication, and the ID field for web-based OAuth 2 authentication. As an example, if your identity provider uses UUID's for player ID's, and those values are what is shared with mod.io via your implementation, then mod.io expects the same value to this endpoint.
+
+```
+POST https://{your-game-id}.modapi.io/v1/s2s/connections/{identity-provider-id} HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+Accept: application/json
+Authorization: Bearer {service-token}
+Content-Type: application/json
+```
+
+#### Response
+
+```json
+204 No Content
+```
+
+Upon success, to re-establish an account link you must initiate the in-game [OpenID](/web-services/authentication/openid/) or web-based [OAuth 2](/web-services/authentication/website/) flow again.
 
 ## Error Reference
 
