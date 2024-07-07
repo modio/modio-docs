@@ -8,7 +8,7 @@ import CrossLink from '@site/src/components/CrossLink'
 
 # Xbox One & Xbox Series X/S 
 
-Requirements for Xbox One & Xbox Series X/S typically include:
+Typical requirements for using mod.io on Xbox One & Xbox Series X/S games include:
 * UGC cannot run scripts or execute code, unless sufficient mitigations are demonstrated to be in place (e.g. sandboxing or manual curation of content)
 * UGC must work without the need for manual installation
 * All “words” must be run through the Xbox word filter

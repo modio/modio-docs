@@ -8,17 +8,17 @@ import CrossLink from '@site/src/components/CrossLink'
 
 # PlayStation®4 & PlayStation®5
 
-Typical requirements for PS4™ & PS5® games include:
+Typical requirements for using mod.io on PS4™ & PS5® games include:
 * UGC cannot run scripts or execute code, unless sufficient mitigations are demonstrated to be in place (e.g. sandboxing or manual curation of content)
 * UGC must work without the need for manual installation
 * Titles utilising mod.io must allow users the option of playing without mod.io functionality
 * If content is created by a user on PS4/PS5, the display name of the user must be shown as the creator if available (our system does this automatically if you configure your [platform headers correctly](https://docs.mod.io/restapiref/#platforms))
-* User consent is required the first time before authenticating a user on PS4/PS5 or accessing data from mod.io. Note: a users consent in one game cannot be used in another, all games must get a users consent individually.
+* User consent is required the first time before authenticating a user on PS4/PS5 or accessing data from mod.io. Note: a users consent in one game cannot be used in another, all games must get a users consent individually
 * If the user has UGC parental controls disabled, the UGC menu and any UGC installed must be disabled
-* Users must be able to play your game without having to create a mod.io account, however UGC should not be made available to users without a mod.io account. This is required to adhere to the TRCs of ensuring consent is collected, and the user has the ability to block content from other users.
+* Users must be able to play your game without having to create a mod.io account, however UGC should not be made available to users without a mod.io account. This is required to adhere to the TRCs of ensuring consent is collected, and the user has the ability to block content from other users
 * All data mod.io provides relating to metrics and usage connected to PS4/PS5, are provided at a partner level only, and for private internal use by your team only
 * Disclose usage of mod.io when submitting proposals for UGC implementations and approval via DevNet
-* All existing Technical Requirements, cross-platform Policy requirements and business policies remain in effect. You need to seek appropriate waivers via standard process if your implementation of mod.io contravene these requirements.
+* All existing Technical Requirements, cross-platform Policy requirements and business policies remain in effect. You need to seek appropriate waivers via standard process if your implementation of mod.io contravene these requirements
 
 All games supporting UGC must be approved individually, and you will be required to go through a dedicated UGC approval process with Sony Interactive Entertainment directly once you are ready to launch the functionality. We recommend contacting your Sony Interactive Entertainment representative to establish their rules for UGC on PS4/PS5 and any specific requirements you will need to meet. We can assist you with this process, and introduce you to our contact in Sony Interactive Entertainment: Antonio Grasso - Global Technology Partnerships if this would be helpful, to get these approvals processed.
 

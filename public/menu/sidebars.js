@@ -143,6 +143,11 @@ const sidebars = {
       id: 'console-platforms/platforms-apple',
       label: 'Apple',
     },
+    {
+      type: 'doc',
+      id: 'console-platforms/platforms-google',
+      label: 'Google Play',
+    },
     // Game Management
     {
       type: 'html',

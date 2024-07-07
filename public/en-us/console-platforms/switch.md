@@ -8,7 +8,7 @@ import CrossLink from '@site/src/components/CrossLink'
 
 # Nintendo Switch
 
-Typical Nintendo Switch requirements include:
+Typical requirements for using mod.io on Nintendo Switch games include:
 * UGC cannot run scripts or execute code, unless sufficient mitigations are demonstrated to be in place (e.g. sandboxing or manual curation of content)
 * Nintendo prefers that UGC is called “UGC”, “Items”, “Content”, “Maps” or something similar, not "Mods"
 * UGC must work without the need for manual installation
