@@ -236,13 +236,7 @@ const sidebars = {
       type: 'category',
       label: 'Marketplace',
       link: {type: 'doc', id: 'web-services/marketplace/overview'},
-      items: ['web-services/marketplace/studio-as-purchase-server',
-        {
-          type: 'category',
-          label: 'Platforms Setup',
-          items: ['web-services/marketplace/marketplace-google'],
-        },
-      ],
+      items: ['web-services/marketplace/studio-as-purchase-server'],
     },
     // REST API
     {
