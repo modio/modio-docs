@@ -66,38 +66,38 @@ const sidebars = {
     {
       type: 'category',
       label: 'C++ SDK',
-      link: {type: 'doc', id: 'game-integration/sdk/index-sdk'},
+      link: {type: 'doc', id: 'game-integration/cppsdk/index-sdk'},
       items: [
-        'game-integration/sdk/installation-and-setup', 'game-integration/sdk/getting-started', 'game-integration/sdk/sdk-marketplace',
+        'game-integration/cppsdk/installation-and-setup', 'game-integration/cppsdk/getting-started', 'game-integration/cppsdk/sdk-marketplace',
         {
           type: 'category',
           label: 'Windows',
-          link: {type: 'doc', id: 'game-integration/sdk/win32/windows-getting-started'},
-          items: ['game-integration/sdk/win32/windows-cmake-integration']
+          link: {type: 'doc', id: 'game-integration/cppsdk/win32/windows-getting-started'},
+          items: ['game-integration/cppsdk/win32/windows-cmake-integration']
         },
         {
           type: 'category',
           label: 'Linux',
-          link: {type: 'doc', id: 'game-integration/sdk/linux/linux-getting-started'},
-          items: ['game-integration/sdk/linux/linux-cmake-integration']
+          link: {type: 'doc', id: 'game-integration/cppsdk/linux/linux-getting-started'},
+          items: ['game-integration/cppsdk/linux/linux-cmake-integration']
         },
         {
           type: 'category',
           label: 'Mac',
-          link: {type: 'doc', id: 'game-integration/sdk/macos/mac-getting-started'},
-          items: ['game-integration/sdk/macos/mac-cmake-integration']
+          link: {type: 'doc', id: 'game-integration/cppsdk/macos/mac-getting-started'},
+          items: ['game-integration/cppsdk/macos/mac-cmake-integration']
         },
         {
           type: 'category',
           label: 'iOS',
-          link: {type: 'doc', id: 'game-integration/sdk/ios/ios-getting-started'},
-          items: ['game-integration/sdk/ios/ios-cmake-integration']
+          link: {type: 'doc', id: 'game-integration/cppsdk/ios/ios-getting-started'},
+          items: ['game-integration/cppsdk/ios/ios-cmake-integration']
         },
         {
           type: 'category',
           label: 'Android',
-          link: {type: 'doc', id: 'game-integration/sdk/android/android-getting-started'},
-          items: ['game-integration/sdk/android/android-cmake-integration']
+          link: {type: 'doc', id: 'game-integration/cppsdk/android/android-getting-started'},
+          items: ['game-integration/cppsdk/android/android-cmake-integration']
         }, 
         {
           type: 'link',
