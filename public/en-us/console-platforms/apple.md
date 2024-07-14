@@ -27,10 +27,10 @@ It takes about 48 hours for your Apple developer account to be verified. Once it
 
 ### Setting up Apple SSO through the Apple Developer Account
 
-1. Sign in to your Apple developer account and click on your **[account](https://developer.apple.com/account/)**.
+1. Sign in to your Apple developer account and click on your [account](https://developer.apple.com/account/).
 ![apple_developer_account_settings.png](images/apple/apple_developer_account_settings.png)
 
-2. In the **Certificates, Identifiers & Profiles** section, click on **[Identifiers](https://developer.apple.com/account/resources/identifiers/list)**. Click on the "+" button to create a new identifier and select the **App IDs** option.
+2. In the **Certificates, Identifiers & Profiles** section, click on [Identifiers](https://developer.apple.com/account/resources/identifiers/list). Click on the "+" button to create a new identifier and select the **App IDs** option.
 ![apple_select_appid.png](images/apple/apple_select_appid.png)
 
 3. Under register a new identifier, select **App** type and click on **Continue**.
@@ -42,7 +42,7 @@ It takes about 48 hours for your Apple developer account to be verified. Once it
 5. Review the information and click on **Register**. A new App ID will be created, and you should be redirected back to the **identifiers** page.
 ![apple_enable_signin_capability.png](images/apple/apple_enable_signin_capability.png)
 
-6. Open your Xcode project and follow the steps [here](https://help.apple.com/xcode/mac/11.0/#/devaf282080a) to add your Apple Developer account to Xcode if it's not already connected.
+6. Open your Xcode project and follow the [steps here](https://help.apple.com/xcode/mac/11.0/#/devaf282080a) to add your Apple Developer account to Xcode if it's not already connected.
 
 7. Update the **Bundle Identifier** to match the one you created in the Apple Developer account. Update the **Team** to match your Apple Developer account.
 ![apple_signin_capability_xcode.png](images/apple/apple_signin_capability_xcode.png)
@@ -50,7 +50,7 @@ It takes about 48 hours for your Apple developer account to be verified. Once it
 8. Next, navigate to the **Signing & Capabilities** tab. Select your team and then click on the "+" button to add a new capability.
 ![apple_sso_setup_xcode_config.png](images/apple/apple_sso_setup_xcode_config.png)
 
-9. Scroll down the list to locate the **Sign in with Apple** capability, click to add this to your project. Update your App ID in the **Signing & Capabilities** tab.
+9. Finally, scroll down the list to locate the **Sign in with Apple** capability, and click to add this to your project. Update your App ID in the **Signing & Capabilities** tab.
 ![apple_xcode_enable_signin_capability.png](images/apple/apple_xcode_enable_signin_capability.png)
 
 ## Configuring your games Apple Bundle ID on mod.io
