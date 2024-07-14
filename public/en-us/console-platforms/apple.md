@@ -15,9 +15,9 @@ Typical requirements for using mod.io on Apple games include:
 * Published contact information so users can easily reach you
 * An Apple developer account
 
-The purpose of this documentation, is for games who want to setup authentication to mod.io using Apple SSO for their players on Apple devices.
-
 ## Setting up Apple SSO
+
+This guide will show you how to setup authentication to mod.io using Apple SSO for their players on Apple devices.
 
 Before you can integrate sign in with Apple on mod.io platform you need a paid Apple developer account. Sign up for one at [developer.apple.com](https://developer.apple.com/).
 
@@ -53,7 +53,7 @@ It takes about 48 hours for your Apple developer account to be verified. Once it
 9. Finally, scroll down the list to locate the **Sign in with Apple** capability, and click to add this to your project. Update your App ID in the **Signing & Capabilities** tab.
 ![apple_xcode_enable_signin_capability.png](images/apple/apple_xcode_enable_signin_capability.png)
 
-## Configuring your games Apple Bundle ID on mod.io
+### Configuring your games Apple Bundle ID on mod.io
 
 1. On the mod.io website, navigate to your [game's admin dashboard](https://mod.io/content) and go to the **Settings** tab.
 
@@ -62,12 +62,12 @@ It takes about 48 hours for your Apple developer account to be verified. Once it
 
 3. Enter the **Bundle ID** of your app in the **Apple** field and **Save Changes**.
 
-## Sign in players to mod.io using Apple
+### Sign in players to mod.io using Apple
 
 If your game is using the official mod.io SDK, Unreal or Unity plugin, follow the instructions provided with it to authenticate players using Apple SSO, or other supported platform authentication methods.
 
 If you are building something custom using the mod.io REST API, follow the [instructions provided here](https://docs.mod.io/restapiref/#apple) to authenticate players using Apple SSO, by calling the `/external/appleauth` endpoint.
 
-## References
+### References
 
 * [Apple Developer Documentation](https://developer.apple.com/documentation/sign_in_with_apple/sign_in_with_apple_rest_api/authenticating_users_with_sign_in_with_apple) - Explains how Apple's SSO works in detail.
