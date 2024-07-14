@@ -15,5 +15,5 @@ For studios that have signed the appropriate NDA with the relevant platfrom, we 
 * [Nintendo Switch](https://docs.mod.io/partners/switch/)
 
 :::note
-These links will only work for studios who we have verified as being under the applicable NDA. If you believe you are, but cannot access the documentation, please [contact us](mailto:developers@mod.io).
+These links will only work for studios who we have verified as being under the applicable NDA. If you believe you are, but cannot access the documentation, please [<u>contact us</u>](mailto:developers@mod.io).
 :::
