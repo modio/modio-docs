@@ -240,7 +240,7 @@ const sidebars = {
         {
           type: 'category',
           label: 'Platforms Setup',
-          items: ['web-services/marketplace/google'],
+          items: ['web-services/marketplace/marketplace-google'],
         },
       ],
     },
