@@ -163,9 +163,9 @@ Refer to the table below to determine if you can defer entitlement state where t
 | Google Play Store | No
 | Apple App Store | No
 
-::::warning
+:::warning
 In the event your are unable to consume the entitlement, potentially due to it already being consumed or due to an unforeseen error - you must **not** finalize the transaction and instead abandon continuing until you have successfully consumed the entitlement. 
-::::
+:::
 
 ### 3. Confirming Transaction
 
@@ -260,9 +260,9 @@ The scenario described is considered fraudulent behavior as a player could conti
 
 For the scenario described above, it is critical to a healthy marketplace within your titles that clawback events are processed by your purchase server, and if eligible, relayed to mod.io for action.
 
-::::warning
+:::warning
 Failing to inform mod.io's clawback API of fraudulent behavior you are notified of may result in your title's marketplace functionality being disabled and potentially removed.
-::::
+:::
 
 #### Clawback handling for yet to be consumed entitlements
 

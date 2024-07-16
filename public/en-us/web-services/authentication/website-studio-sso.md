@@ -221,7 +221,7 @@ Once an account link to a identity provider belonging to a game has been unlinke
 
 ### Studio-initiated unlinking
 
-There may be instances where a studio needs to programmatically remove the link between a players mod.io account and your identity provider, such as when a player requests an account deletion. In such cases, it's crucial to integrate our S2S (Server to Server) API into your automated processes to ensure the removal of orphaned identity provider connections associated with mod.io accounts. Please refer to the endpoint below for S2S-facilitated connection removal to which you must use [S2S Authentication](/web-services/authentication/s2s/) to accomplish.
+There may be instances where a studio needs to programmatically remove the link between a players mod.io account and your identity provider, such as when a player requests an account deletion. In such cases, it's crucial to integrate our S2S (Service to Service) API into your automated processes to ensure the removal of orphaned identity provider connections associated with mod.io accounts. Please refer to the endpoint below for S2S-facilitated connection removal to which you must use [S2S Authentication](/web-services/authentication/s2s/) to accomplish.
 
 #### Request
 
