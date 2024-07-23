@@ -1,7 +1,7 @@
 ---
 id: installation-and-setup
 title: Installation & Setup
-slug: /cppsdk/setup
+slug: /cppsdk/setup/
 sidebar_position: 1
 custom_edit_url: https://github.com/modio/modio-sdk-internal/blob/develop/doc/installation-and-setup.mdx
 ---
@@ -12,15 +12,15 @@ To build on Windows, the mod.io SDK requires Visual Studio 2019 or 2022 with the
 
 If you are building for other platforms, you can follow each platform's requirements below.
 
-[Windows Getting Started](windows/getting-started)
+[Windows Getting Started](windows/getting-started/)
 
-[Mac Getting Started](macos/getting-started)
+[Mac Getting Started](macos/getting-started/)
 
-[Linux Getting Started](linux/getting-started)
+[Linux Getting Started](linux/getting-started/)
 
-[iOS Getting Started](ios/getting-started)
+[iOS Getting Started](ios/getting-started/)
 
-[Android Getting Started](android/getting-started)
+[Android Getting Started](android/getting-started/)
 
 ## Dependencies
 
@@ -49,9 +49,9 @@ The mod.io SDK can be consumed either inside a CMake project, or standalone as e
 
 ### Standalone
 
-When building the mod.io SDK in standalone mode, `Ninja` is used as the default code generator. The following steps apply when using Ninja as a code generator. If you wish to use a different code generator, such as the Visual Studio code generator, go to the [Other Build Systems](other-build-systems) section.
+When building the mod.io SDK in standalone mode, `Ninja` is used as the default code generator. The following steps apply when using Ninja as a code generator. If you wish to use a different code generator, such as the Visual Studio code generator, go to the [Other Build Systems](#other-build-systems) section.
 
-The included `CMakePresets.json` includes the most common configurations as presets and require `Ninja` to be in your path. For a full explanation of all platforms and targets that are part of the presets, click [here](cmake-preset-targets).
+The included `CMakePresets.json` includes the most common configurations as presets and require `Ninja` to be in your path. For a full explanation of all platforms and targets that are part of the presets, click [here](#cmake-preset-targets).
 
 :::note
 If you have Visual Studio installed as your development environment, you can run the following commands from the Developer Command Prompt to easily have your environment configured. Otherwise, ensure that CMake and Ninja are part of your PATH.
@@ -157,4 +157,4 @@ By default the SDK will consume the `fmt-header-only` target. Define `MODIO_CUST
 
 ## Next Steps
 
-To begin using the SDK, please read our [Getting Started Guide](getting-started) for a detailed explanation of initialization and usage.
+To begin using the SDK, please read our [Getting Started Guide](getting-started/) for a detailed explanation of initialization and usage.
