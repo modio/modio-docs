@@ -2,7 +2,7 @@
 id: getting-started
 title: Getting Started
 sidebar_label: Getting Started
-slug: /unreal/getting-started
+slug: /unreal/getting-started/
 sidebar_position: 1
 custom_edit_url: https://github.com/modio/modio-ue4-internal/blob/develop/Plugins/Modio/Doc/getting-started.mdx
 ---
@@ -38,10 +38,10 @@ The plugin uses UTF8 for all strings, as does the mod.io REST API.
 
 ### Thread-safety guarantees
 
-The mod.io plugin is thread-safe with the exception of [RunPendingHandlers](#RunPendingHandlers). If you are calling RunPendingHandlers manually, you must always call it on the same thread.
+The mod.io plugin is thread-safe with the exception of [RunPendingHandlers](https://docs.mod.io/unrealref/#RunPendingHandlers). If you are calling RunPendingHandlers manually, you must always call it on the same thread.
 
 :::note
-The plugin event loop, any internal event handlers, and all callbacks you provide to the mod.io plugin, will be run on the thread invoking [RunPendingHandlers](#RunPendingHandlers).
+The plugin event loop, any internal event handlers, and all callbacks you provide to the mod.io plugin, will be run on the thread invoking [RunPendingHandlers](https://docs.mod.io/unrealref/#RunPendingHandlers).
 :::
 
 ### Non-blocking, asynchronous interface
@@ -54,27 +54,27 @@ All async methods in the public API end with the suffix `Async`.
 
 ##### Callback conventions
 All of these asynchronous methods take a delegate as an argument, which will be invoked **exactly once** with the results of the requested operation. 
-Every async callback takes a [ModioErrorCode](#ModioErrorCode) as its first parameter, with any optional results wrapped in `TOptional` so that you can easily check if a result is valid or not. 
+Every async callback takes a [ModioErrorCode](https://docs.mod.io/unrealref/#_modioerrorcode) as its first parameter, with any optional results wrapped in `TOptional` so that you can easily check if a result is valid or not. 
 
 Any return values provided to your callback are passed-by-value - the plugin doesn’t expect you to have to call `release` or otherwise free up resources given to you. 
 
 :::note
-Even if the plugin is shut down while asynchronous operations are in-flight, your delegates will still be invoked **exactly once**. In this instance, the [ModioErrorCode](#ModioErrorCode) the delegate receives will indicate a cancellation state, and you should check for this as part of your error handling in your delegates.
+Even if the plugin is shut down while asynchronous operations are in-flight, your delegates will still be invoked **exactly once**. In this instance, the [ModioErrorCode](https://docs.mod.io/unrealref/#_modioerrorcode) the delegate receives will indicate a cancellation state, and you should check for this as part of your error handling in your delegates.
 :::
 
 #### Maintaining the plugin event loop
 
-In order to provide a non-blocking implementation, the plugin operates an internal event loop. This event loop, will only ever run on the thread which calls [RunPendingHandlers](#RunPendingHandlers), which is the function we provide to allow you to 'tick' the event loop and process any pending work the Plugin needs to perform.
+In order to provide a non-blocking implementation, the plugin operates an internal event loop. This event loop, will only ever run on the thread which calls [RunPendingHandlers](https://docs.mod.io/unrealref/#RunPendingHandlers), which is the function we provide to allow you to 'tick' the event loop and process any pending work the Plugin needs to perform.
 
-You should either enable the [Configuration](#configuration) setting to allow the plugin to manage a background thread for you which will call [RunPendingHandlers](#RunPendingHandlers), or else invoke it on Tick on the game thread yourself. 
+You should either enable the [Configuration](setup/#plugin-configuration) setting to allow the plugin to manage a background thread for you which will call [RunPendingHandlers](https://docs.mod.io/unrealref/#RunPendingHandlers), or else invoke it on Tick on the game thread yourself. 
 
 :::note
-This means that if you stop calling [RunPendingHandlers](#RunPendingHandlers), any pending asynchronous API methods you have called will not complete and their associated callbacks will not be invoked, nor will the internal data allocated for those operations be freed.
+This means that if you stop calling [RunPendingHandlers](https://docs.mod.io/unrealref/#RunPendingHandlers), any pending asynchronous API methods you have called will not complete and their associated callbacks will not be invoked, nor will the internal data allocated for those operations be freed.
 :::
 
 ### User Sessions
 
-The mod.io plugin runs on a per-platform-user basis. If you are using the plugin on a platform that requires user switching support, it is a requirement that you call [K2_ShutdownAsync](#K2_ShutdownAsync) and then re-initialize the plugin with [K2_InitializeAsync](#K2_InitializeAsync) with a different User Session. Generating a stable User Session ID per platform-specific user will ensure that if the incoming user has already authenticated to mod.io on this device for this game, they won’t need to do so again unless their authentication token has expired.
+The mod.io plugin runs on a per-platform-user basis. If you are using the plugin on a platform that requires user switching support, it is a requirement that you call [K2_ShutdownAsync](https://docs.mod.io/unrealref/#K2_ShutdownAsync) and then re-initialize the plugin with [K2_InitializeAsync](https://docs.mod.io/unrealref/#K2_InitializeAsync) with a different User Session. Generating a stable User Session ID per platform-specific user will ensure that if the incoming user has already authenticated to mod.io on this device for this game, they won’t need to do so again unless their authentication token has expired.
 
 ### Session IDs
 Session IDs are generated by the developer and can be whatever you like as long as they are deterministic/stable. 
@@ -102,11 +102,11 @@ This allows multiple players, for example siblings, to each have their own sessi
 
 ### Error handling
 
-Many functions in the plugin interface either return, or provide as the first parameter to your delegate, a [ModioErrorCode](#ModioErrorCode) value. This is essentially an opaque wrapper around a numeric error code with a category and an associated string message. 
+Many functions in the plugin interface either return, or provide as the first parameter to your delegate, a [ModioErrorCode](https://docs.mod.io/unrealref/#_modioerrorcode) value. This is essentially an opaque wrapper around a numeric error code with a category and an associated string message. 
 
 The plugin doesn’t attempt to predict what your error-handling logic or requirements are: instead, we return the error code to you so you can decide what to do. For instance, if you call a function and receive an error code matching a network error condition, do you want to close down the plugin? Retry again according to custom back-off logic? That decision is left to the consuming application. 
 
-For more details on the error codes and how to inspect their values, please see [Plugin quick-start: Error Handling](#plugin-quick-start-error-handling) and [ModioErrorCode](#ModioErrorCode).
+For more details on the error codes and how to inspect their values, please see [Plugin quick-start: Error Handling](#plugin-quick-start-error-handling) and [ModioErrorCode](https://docs.mod.io/unrealref/#_modioerrorcode).
 
 ### Mod Data Directory
 
@@ -140,7 +140,7 @@ In Linux, macOS & iOS, mods and data binds to a single user. Every other client 
 
 ## Plugin quick-start: Initialization and Teardown
 
-As mentioned in [Maintaining the plugin event loop](#maintaining-the-plugin-event-loop), the plugin’s internal event loop requires care and attention in the form of [RunPendingHandlers](#RunPendingHandlers).
+As mentioned in [Maintaining the plugin event loop](#maintaining-the-plugin-event-loop), the plugin’s internal event loop requires care and attention in the form of [RunPendingHandlers](https://docs.mod.io/unrealref/#RunPendingHandlers).
 For best performance it should be called at least once per frame, so it should either go into your project’s main loop or into a `tick`-style function on an appropriate controller/manager object. 
 
 <Tabs groupId="languages">
@@ -174,11 +174,11 @@ void UModioManager::Tick(float DeltaTime)
   <TabItem value="blueprint" label="Blueprint">
   ![run_pending_handlers](img/run_pending_handlers.png)
 
-When you are ready to initialize the plugin for the current user, you'll need to call [K2_InitializeAsync](#K2_InitializeAsync), passing in an instance of `FModioInitializeOptions`, and a delegate so you know when the plugin is initialized correctly. Here, you can specify your Game ID, API Key, Environment, and [Portal](https://docs.mod.io/#targeting-a-portal). You can get the default portal for the current platform using [GetDefaultPortalForCurrentPlatform](#GetDefaultPortalForCurrentPlatform) function.
+When you are ready to initialize the plugin for the current user, you'll need to call [K2_InitializeAsync](https://docs.mod.io/unrealref/#K2_InitializeAsync), passing in an instance of `FModioInitializeOptions`, and a delegate so you know when the plugin is initialized correctly. Here, you can specify your Game ID, API Key, Environment, and [Portal](https://docs.mod.io/restapiref/#targeting-a-portal). You can get the default portal for the current platform using [GetDefaultPortalForCurrentPlatform](https://docs.mod.io/unrealref/#GetDefaultPortalForCurrentPlatform) function.
 
 ![initasync_customoptions](img/initasync_customoptions.png)
 
-If you have configured your game’s API Key, ID and environment via the Plugin Settings window as in [Configuration](#configuration), you can use the convenience function [Get Project Initialize Options For Session Id](#Get Project Initialize Options For Session Id):
+If you have configured your game’s API Key, ID and environment via the Plugin Settings window as in [Configuration](setup/#plugin-configuration), you can use the convenience function [Get Project Initialize Options For Session Id](https://docs.mod.io/unrealref/#GetProjectInitializeOptionsForSessionId):
 
 ![initasync_getoptions](img/initasync_getoptions.png)
   </TabItem>
@@ -186,7 +186,7 @@ If you have configured your game’s API Key, ID and environment via the Plugin 
 
 
 :::note
-* The error-handling in this sample has been omitted. See [Plugin quick-start: Error Handling](#plugin-quick-start:-error-handling) for more information on error handling. 
+* The error-handling in this sample has been omitted. See [Plugin quick-start: Error Handling](#plugin-quick-start-error-handling) for more information on error handling. 
 * To fully initialize the SDK, you must receive confirmation from the callback. Consider that most functions return after invocation, nonetheless, their effects are only visible in their callback function
 * You need to provide a default Session Id to initialize the SDK, for Windows we provide a method : `<<GetDefaultSessionIdWindows>>`
 :::
@@ -224,7 +224,7 @@ void UModioManager::OnShutdownCallback(FModioErrorCode ErrorCode)
 
 **Notes**
 
-* You will need to continue to call [RunPendingHandlers](#RunPendingHandlers) while the async shutdown is in progress to allow for intermediate handlers to finish running, and for your in-flight calls to return with an error code indicating cancellation.
+* You will need to continue to call [RunPendingHandlers](https://docs.mod.io/unrealref/#RunPendingHandlers) while the async shutdown is in progress to allow for intermediate handlers to finish running, and for your in-flight calls to return with an error code indicating cancellation.
 * You MUST NOT call ShutdownAsync from within one of your completion handlers/callbacks, or the application will potentially deadlock. 
 
 
@@ -248,7 +248,7 @@ You can request an email authentication code to be sent to a users email address
 <Tabs groupId="languages">
   <TabItem value="blueprint" label="Blueprint">
 
-From Blueprint, you can use the [K2_RequestEmailAuthCodeAsync](#K2_RequestEmailAuthCodeAsync) node.
+From Blueprint, you can use the [K2_RequestEmailAuthCodeAsync](https://docs.mod.io/unrealref/#K2_RequestEmailAuthCodeAsync) node.
 
 ![request_email_auth_code](img/request_email_auth_code.png)
 
@@ -283,7 +283,7 @@ Submitting an email authentication code is very similar to the process for reque
 <Tabs group-id="languages">
   <TabItem value="blueprint" label="Blueprint">
 
-You can do this by calling [K2_AuthenticateUserEmailAsync](#K2_AuthenticateUserEmailAsync).
+You can do this by calling [K2_AuthenticateUserEmailAsync](https://docs.mod.io/unrealref/#K2_AuthenticateUserEmailAsync).
 
 ![authenticate_user_email](img/authenticate_user_email.png)
 
@@ -322,19 +322,20 @@ mod.io features single sign on authentication from a number of external provider
 * Google
 * itch.io
 * Nintendo Switch
-* PlayStation&trade;Network
+* PlayStation™Network
 * Steam
 * Xbox Live
+* Oculus
 * OpenID
 
-Please note that the ability to authenticate players using OpenID is feature for advanced partners only. If you are interested in becoming an advanced partner, please contact developers@mod.io
+Please note that the ability to authenticate players using OpenID is a premium feature. If you are interested in mod.io premium features, please contact developers@mod.io.
 
 To use SSO with mod.io, a user must have accepted the mod.io Terms of Use in order to create an account.
 
 This means the external authentication flow is the following:
 
-1. Call [K2_AuthenticateUserExternalAsync](#K2_AuthenticateUserExternalAsync) , passing in any provider-specific parameters, setting `AuthenticationParams::bUserHasAcceptedTerms` to false, and indicating which authentication provider you wish to use. You could use the `UModioPlatformHelpersLibrary::GetDefaultAuthProviderForCurrentPlatform` to get the default provider for the current platform, which is, for example, Steam for Windows. Alternatively, you can specify the provider manually.
-2. Check the error code in the callback - if it indicates the user has not yet created an account or accepted the terms, call [K2_GetTermsOfUseAsync](#K2_GetTermsOfUseAsync) and display the provided information to your user.
+1. Call [K2_AuthenticateUserExternalAsync](https://docs.mod.io/unrealref/#K2_AuthenticateUserExternalAsync) , passing in any provider-specific parameters, setting `AuthenticationParams::bUserHasAcceptedTerms` to false, and indicating which authentication provider you wish to use. You could use the `UModioPlatformHelpersLibrary::GetDefaultAuthProviderForCurrentPlatform` to get the default provider for the current platform, which is, for example, Steam for Windows. Alternatively, you can specify the provider manually.
+2. Check the error code in the callback - if it indicates the user has not yet created an account or accepted the terms, call [K2_GetTermsOfUseAsync](https://docs.mod.io/unrealref/#K2_GetTermsOfUseAsync) and display the provided information to your user.
 3. If the user clicks the OK/affirmative button on your screen displaying the terms of use, repeat the call in step 1 but setting `AuthenticationParams::bUserHasAcceptedTerms` to **true**.
 4. Check the error code in the callback - a false-y error code indicates that authentication was successful, and users can now install and manage mods and subscriptions.
 
@@ -346,7 +347,7 @@ Note that the SDK will automatically URL encode parameters (such as the auth tok
 
 #### Steam Authentication Example
 
-In order to use the Steam authentication functionality, you must add your games [Encrypted App Ticket Key](https://partner.steamgames.com/apps/sdkauth) from Steamworks. On your games profile on mod.io, go to Edit > Options and add the key. You can then call [K2_AuthenticateUserExternalAsync](#K2_AuthenticateUserExternalAsync) and provide the users Encrypted App Ticket as the Auth Token. Note that the Auth Token must be Base64 encoded when passed 
+In order to use the Steam authentication functionality, you must add your games [Encrypted App Ticket Key](https://partner.steamgames.com/apps/sdkauth) from Steamworks. On your games profile on mod.io, go to Edit > Options and add the key. You can then call [K2_AuthenticateUserExternalAsync](https://docs.mod.io/unrealref/#K2_AuthenticateUserExternalAsync) and provide the users Encrypted App Ticket as the Auth Token. Note that the Auth Token must be Base64 encoded when passed 
 
 Below is a sample Blueprint method that will get the users current Encrypted App Ticket that you can use in your Authentication request. Add this to a BlueprintLibrary in your games codebase.
 
@@ -376,13 +377,13 @@ static void GetSteamAuthTicket(int32 LocalUserNum, FOnGetTicket Callback)
     SteamSubsystem->GetEncryptedAppTicketInterface()->RequestEncryptedAppTicket(nullptr, 0);
 }
 ```
-Note that if you are on 4.27 or above, Epic provides a helper method in OnlineIdentityInterface::GetLinkedAccountAuthToken that will get the current account’s auth token without having to take a direct dependency on FOnlineSubsystemSteam. Ensure that the token is Base64 encoded when being passed to [K2_AuthenticateUserExternalAsync](#K2_AuthenticateUserExternalAsync).
+Note that if you are on 4.27 or above, Epic provides a helper method in OnlineIdentityInterface::GetLinkedAccountAuthToken that will get the current account’s auth token without having to take a direct dependency on FOnlineSubsystemSteam. Ensure that the token is Base64 encoded when being passed to [K2_AuthenticateUserExternalAsync](https://docs.mod.io/unrealref/#K2_AuthenticateUserExternalAsync).
   </TabItem>
 </Tabs>
 
 ### Token Lifetime & Re-Authentication
 
-By default, tokens issued via email token exchange have a lifetime of 1 year. You can verify that a user has been successfully authenticated by using [QueryUserProfile](#QueryUserProfile). A success and non-null result indicates that a user has been authenticated.
+By default, tokens issued via email token exchange have a lifetime of 1 year. You can verify that a user has been successfully authenticated by using [QueryUserProfile](https://docs.mod.io/unrealref/#K2_QueryUserProfile). A success and non-null result indicates that a user has been authenticated.
 
 If a user is not authenticated for any reason (for instance their token has been invalidated by changing their password, or their profile data has been removed from their device) then you should prompt them for the authentication flow.
 
@@ -393,11 +394,11 @@ Now that you’ve followed the instructions in [Plugin quick-start: Initializati
 
 <Tabs group-id="languages">
   <TabItem value="blueprint" label="Blueprint">
-The primary way this is done is through [K2_ListAllModsAsync](#K2_ListAllModsAsync).
+The primary way this is done is through [K2_ListAllModsAsync](https://docs.mod.io/unrealref/#K2_ListAllModsAsync).
 
 ![list_all_mods](img/list_all_mods.png)
 
-To search for a specific query string, sort in a different order, or combine different filters, you can use a [ModioFilterParams](#ModioFilterParams) object like this:
+To search for a specific query string, sort in a different order, or combine different filters, you can use a [ModioFilterParams](https://docs.mod.io/unrealref/#_modiofilterparams) object like this:
 
 ![list_all_mods_filter](img/list_all_mods_filter.png)
 
@@ -442,16 +443,16 @@ So you’ve shown the user some mods based on a query they’ve submitted throug
 A user indicates that they want to have a mod installed by 'subscribing' to it. Subscriptions are stored on the mod.io servers and associated to a user’s mod.io account. 
 When a user 'unsubscribes' to a mod, they’re indicating they’d like to have that mod uninstalled from any device they’re logged in on. 
 
-The API for managing subscriptions is simple and consists of a call to either [K2_SubscribeToModAsync](#K2_SubscribeToModAsync) or [K2_UnsubscribeFromModAsync](#K2_UnsubscribeFromModAsync) with the ID of the mod in question and a delegate to receive the status of the request:
+The API for managing subscriptions is simple and consists of a call to either [K2_SubscribeToModAsync](https://docs.mod.io/unrealref/#K2_SubscribeToModAsync) or [K2_UnsubscribeFromModAsync](https://docs.mod.io/unrealref/#K2_UnsubscribeFromModAsync) with the ID of the mod in question and a delegate to receive the status of the request:
 
 :::note
-To subscribe to a mod, [EnableModManagement](#EnableModManagement) must be called beforehand.
+To subscribe to a mod, [EnableModManagement](https://docs.mod.io/unrealref/#K2_EnableModManagement) must be called beforehand.
 :::
 
 When subscribing to a mod, you can also pass in a bool to indicate if you want to subscribe to all dependencies for the given mod. If dependencies are also subscribed, the mod.io servers will also associate them with the current user.
 
 :::note
-Currently when dependencies are included during subscription, they will not automatically be downloaded. To ensure the latest content is downloaded, [FetchExternalUpdatesAsync](#FetchExternalUpdatesAsync) must be called after subscribing.
+Currently when dependencies are included during subscription, they will not automatically be downloaded. To ensure the latest content is downloaded, [FetchExternalUpdatesAsync](https://docs.mod.io/unrealref/#K2_FetchExternalUpdatesAsync) must be called after subscribing.
 :::
 
 <Tabs group-id="languages">
@@ -499,12 +500,12 @@ void UModioManager::OnUnsubscribeFromModCallback(FModioErrorCode ErrorCode, FMod
 
 #### External subscription changes
 
-Because the mod.io service is available as a website as well as integration within your applications, users can manage their subscriptions (and therefore installations) outside of your application. This means that we need to be able to query the server for any external subscription changes. To do this, you will need to fetch external updates  [K2_FetchExternalUpdatesAsync](#K2_FetchExternalUpdatesAsync) to synchronise the server state with the plugin’s local subscriptions.
+Because the mod.io service is available as a website as well as integration within your applications, users can manage their subscriptions (and therefore installations) outside of your application. This means that we need to be able to query the server for any external subscription changes. To do this, you will need to fetch external updates  [K2_FetchExternalUpdatesAsync](https://docs.mod.io/unrealref/#K2_FetchExternalUpdatesAsync) to synchronise the server state with the plugin’s local subscriptions.
 
 <Tabs group-id="languages">
   <TabItem value="blueprint" label="Blueprint">
 
-You can use [K2_FetchExternalUpdatesAsync](#K2_FetchExternalUpdatesAsync) from Blueprint:
+You can use [K2_FetchExternalUpdatesAsync](https://docs.mod.io/unrealref/#K2_FetchExternalUpdatesAsync) from Blueprint:
 
 ![fetch_external_updates](img/fetch_external_updates.png)
 
@@ -532,16 +533,16 @@ void UModioManager::OnFetchExternalUpdatesCallback(FModioErrorCode ErrorCode)
 </Tabs>
 
 :::note
-You should call [K2_FetchExternalUpdatesAsync](#K2_FetchExternalUpdatesAsync) sparingly, at times you want to ensure that the state is up-to-date. Alternatively, we recommend calling it based on user input such as a button in your UI, so you don’t make spurious update checks. 
+You should call [K2_FetchExternalUpdatesAsync](https://docs.mod.io/unrealref/#K2_FetchExternalUpdatesAsync) sparingly, at times you want to ensure that the state is up-to-date. Alternatively, we recommend calling it based on user input such as a button in your UI, so you don’t make spurious update checks. 
 :::
 
 #### Checking the user subscription list
 
-In order to see which mods the user has subscribed to, call [QueryUserSubscriptions](#QueryUserSubscriptions) to retrieve a collection of [ModioModCollectionEntry](#ModioModCollectionEntry) objects, one for each subscribed mod. 
+In order to see which mods the user has subscribed to, call [QueryUserSubscriptions](https://docs.mod.io/unrealref/#QueryUserSubscriptions) to retrieve a collection of [ModioModCollectionEntry](https://docs.mod.io/unrealref/#_modiomodcollectionentry) objects, one for each subscribed mod. 
 Each of these objects contains the mod’s state, profile information, ID, and other data, suitable for showing users a list of their subscriptions.
 
 :::note
-This collection includes mods that are still in the process of being installed! Make sure to check the result of [GetModState](#GetModState) before trying to load files from the mods in this collection, or alternatively use [QueryUserInstallations](#QueryUserInstallations) as described in [Retrieving mod directory paths for loading](#retrieving-mod-directory-paths-for-loading).
+This collection includes mods that are still in the process of being installed! Make sure to check the result of [GetModState](https://docs.mod.io/unrealref/#GetModState) before trying to load files from the mods in this collection, or alternatively use [QueryUserInstallations](https://docs.mod.io/unrealref/#QueryUserInstallations) as described in [Retrieving mod directory paths for loading](#retrieving-mod-directory-paths-for-loading).
 :::
 
 <Tabs group-id="languages">
@@ -572,9 +573,9 @@ void UModioManager::QueryUserSubscriptions()
 
 ### Installation management, mod paths
 
-So a subscription marks a mod as requiring installation, and an unsubscription indicates uninstallation, but how do you actually control when the plugin **does** those things? After all, you don’t want a mod to be uninstalled after your main program has loaded those files into memory, locking them from deletion. Likewise, you probably don’t want to be using networking or processor resources during gameplay for downloading mods. In order to give you control over when these processes occur, without forcing you to shut down the plugin entirely, you can call [K2_EnableModManagement](#K2_EnableModManagement) and [DisableModManagement](#DisableModManagement).
+So a subscription marks a mod as requiring installation, and an unsubscription indicates uninstallation, but how do you actually control when the plugin **does** those things? After all, you don’t want a mod to be uninstalled after your main program has loaded those files into memory, locking them from deletion. Likewise, you probably don’t want to be using networking or processor resources during gameplay for downloading mods. In order to give you control over when these processes occur, without forcing you to shut down the plugin entirely, you can call [K2_EnableModManagement](https://docs.mod.io/unrealref/#K2_EnableModManagement) and [DisableModManagement](#DisableModManagement).
 
-In order to display a notification to your users when a mod is finished installing or updating, [K2_EnableModManagement](#K2_EnableModManagement) asks you to provide it with a callback. Because [K2_EnableModManagement](#K2_EnableModManagement) is not an async function (ie it doesn’t end with *Async), the callback operates differently to asynchronous result callbacks you use elsewhere in the plugin. A callback given to this function will be held by the plugin until a corresponding call to [DisableModManagement](#DisableModManagement) or [K2_ShutdownAsync](#K2_ShutdownAsync), and the callback will be invoked every time a mod is automatically installed, updated, or uninstalled by the plugin’s internal event loop.
+In order to display a notification to your users when a mod is finished installing or updating, [K2_EnableModManagement](https://docs.mod.io/unrealref/#K2_EnableModManagement) asks you to provide it with a callback. Because [K2_EnableModManagement](https://docs.mod.io/unrealref/#K2_EnableModManagement) is not an async function (ie it doesn’t end with *Async), the callback operates differently to asynchronous result callbacks you use elsewhere in the plugin. A callback given to this function will be held by the plugin until a corresponding call to [DisableModManagement](https://docs.mod.io/unrealref/#DisableModManagement) or [K2_ShutdownAsync](https://docs.mod.io/unrealref/#K2_ShutdownAsync), and the callback will be invoked every time a mod is automatically installed, updated, or uninstalled by the plugin’s internal event loop.
 
 <Tabs group-id="languages">
   <TabItem value="blueprint" label="Blueprint">
@@ -619,11 +620,11 @@ void UModioManager::OnModManagementEnabledCallback(FModioModManagementEvent Modi
   </TabItem>
 </Tabs>
 
-While mod management is enabled, the plugin assumes that it has the ability to make changes to the filesystem, including deleting mods that the user has no longer subscribed to. As a result you should make sure that you don’t have any open handles to files inside the mod directories when you call [K2_EnableModManagement](#K2_EnableModManagement).
+While mod management is enabled, the plugin assumes that it has the ability to make changes to the filesystem, including deleting mods that the user has no longer subscribed to. As a result you should make sure that you don’t have any open handles to files inside the mod directories when you call [K2_EnableModManagement](https://docs.mod.io/unrealref/#K2_EnableModManagement).
 
-When you want to be able to freely open files in the mod directories, call [DisableModManagement](#DisableModManagement) to tell the plugin to finish the current operation but not continue any others. 
+When you want to be able to freely open files in the mod directories, call [DisableModManagement](https://docs.mod.io/unrealref/#DisableModManagement) to tell the plugin to finish the current operation but not continue any others. 
 
-Call [IsModManagementBusy](#IsModManagementBusy) to see if mod management is currently updating, installing, or uninstalling a mod. 
+Call [IsModManagementBusy](https://docs.mod.io/unrealref/#IsModManagementBusy) to see if mod management is currently updating, installing, or uninstalling a mod. 
 
 <Tabs group-id="languages">
   <TabItem value="blueprint" label="Blueprint">
@@ -654,7 +655,7 @@ void UModioManager::DisableModManagement()
 
 So now we have the user picking mods and marking them for installation, we’re enabling mod management at a point where we don’t mind the plugin changing the filesystem, and mods are being installed by the plugin, we now need to know where they are on disk, otherwise you can’t load them into your game!
 
-The easiest way to do this is by using [QueryUserInstallations](#QueryUserInstallations). This function allows you to specify if you want to include outdated mods or not, and will return a collection of [ModioModCollectionEntry](#ModioModCollectionEntry) objects that you can query for folder paths you can use to load files into your title. 
+The easiest way to do this is by using [QueryUserInstallations](https://docs.mod.io/unrealref/#QueryUserInstallations). This function allows you to specify if you want to include outdated mods or not, and will return a collection of [ModioModCollectionEntry](https://docs.mod.io/unrealref/#_modiomodcollectionentry) objects that you can query for folder paths you can use to load files into your title. 
 
 <Tabs group-id="languages">
   <TabItem value="blueprint" label="Blueprint">
@@ -706,7 +707,7 @@ In many cases, however, you will want to perform some degree of inspection on an
 
 In your application, you probably don’t need to handle different network errors in different ways, for example. The semantics of networking errors are largely 'try the function again later'.
 
-This is where [ErrorCodeMatches](#ErrorCodeMatches) comes in. 
+This is where [ErrorCodeMatches](https://docs.mod.io/unrealref/#ErrorCodeMatches) comes in. 
 
 It allows you to query if the error satisfies a particular condition, such as 'does this code represent some kind of networking error', without needing to explicitly check the code against all the individual errors in the category:
 
@@ -736,7 +737,7 @@ These steps are outlined below. Mods can also be edited after submission, as det
 
 ### Submitting a new mod
 
-To submit a mod, you must first create a mod handle using [K2_GetModCreationHandle](#K2_GetModCreationHandle) and use that handle when calling [K2_SubmitNewModAsync](#K2_SubmitNewModAsync). Note that the newly created mod will remain hidden until a mod file is added in the next step.
+To submit a mod, you must first create a mod handle using [K2_GetModCreationHandle](https://docs.mod.io/unrealref/#K2_GetModCreationHandle) and use that handle when calling [K2_SubmitNewModAsync](https://docs.mod.io/unrealref/#K2_SubmitNewModAsync). Note that the newly created mod will remain hidden until a mod file is added in the next step.
 <Tabs group-id="languages">
   <TabItem value="blueprint" label="Blueprint">
 
@@ -779,7 +780,7 @@ void UModioManager::OnSubmitNewModCallback(FModioErrorCode ErrorCode, TOptional<
 
 ### Submitting a file for a mod
 
-Once you have successfully submitted a mod, you can submit a file for that mod using [K2_SubmitNewModFileForMod](#K2_SubmitNewModFileForMod). When you submit a file, you pass a [ModioCreateModFileParams](#ModioCreateModFileParams) containing the directory of the files that you want to submit. The plugin will compress this folder into a zip file and upload it as the active version of the mod. Note that there is no callback for this method; you’ll be notified of the completed upload by the Mod Management callbacks.
+Once you have successfully submitted a mod, you can submit a file for that mod using [K2_SubmitNewModFileForMod](https://docs.mod.io/unrealref/#K2_SubmitNewModFileForMod). When you submit a file, you pass a [ModioCreateModFileParams](https://docs.mod.io/unrealref/#_modiocreatemodfileparams) containing the directory of the files that you want to submit. The plugin will compress this folder into a zip file and upload it as the active version of the mod. Note that there is no callback for this method; you’ll be notified of the completed upload by the Mod Management callbacks.
 
 <Tabs group-id="languages">
   <TabItem value="blueprint" label="Blueprint">
@@ -811,9 +812,9 @@ void UModioManager::SubmitNewModFile(FModioModID ModId)
 
 ## Plugin quick-start: Edit an existing mod
 
-Mod details can be edited in-game using [K2_SubmitModChangesAsync](#K2_SubmitModChangesAsync).  This function allows you to edit multiple parameters with a single call.  It takes an [FModioModID](#FModioModID) of the mod to edit, an [FModioEditModParams](#FModioEditModParams) containing one or more parameters to be altered, and a callback that will contain an optional updated [FModioModInfo](#FModioModInfo) object on success.
+Mod details can be edited in-game using [K2_SubmitModChangesAsync](https://docs.mod.io/unrealref/#K2_SubmitModChangesAsync).  This function allows you to edit multiple parameters with a single call.  It takes an [FModioModID](https://docs.mod.io/unrealref/#_modiomodid) of the mod to edit, an [FModioEditModParams](https://docs.mod.io/unrealref/#_modioeditmodparams) containing one or more parameters to be altered, and a callback that will contain an optional updated [FModioModInfo](https://docs.mod.io/unrealref/#_modiomodinfo) object on success.
 
-Note that updating the mod file itself is done via [K2_SubmitNewModFileForMod](#K2_SubmitNewModFileForMod), as detailed in [Submitting a file for a mod](#submitting-a-file-for-a-mod).
+Note that updating the mod file itself is done via [K2_SubmitNewModFileForMod](https://docs.mod.io/unrealref/#K2_SubmitNewModFileForMod), as detailed in [Submitting a file for a mod](#submitting-a-file-for-a-mod).
 
 <Tabs group-id="languages">
   <TabItem value="blueprint" label="Blueprint">
@@ -824,7 +825,7 @@ Note that updating the mod file itself is done via [K2_SubmitNewModFileForMod](#
 
 
 
-Note that it would be more appropriate to pass an [FModioEditModParams](#FModioEditModParams) with your desired parameters into `UModioManager::EditMod()`, however this example shows their creation within the function to illustrate their use.
+Note that it would be more appropriate to pass an [FModioEditModParams](https://docs.mod.io/unrealref/#_modioeditmodparams) with your desired parameters into `UModioManager::EditMod()`, however this example shows their creation within the function to illustrate their use.
 
 ```cpp
 
@@ -869,7 +870,7 @@ To perform any of these actions, the muting user must be authenticated.
 
 ### Mute a user
 
-To mute a user, call [K2_MuteUserAsync](#K2_MuteUserAsync) with the corresponding UserID and a callback, given the asynchronous nature of the function
+To mute a user, call [K2_MuteUserAsync](https://docs.mod.io/unrealref/#K2_MuteUserAsync) with the corresponding UserID and a callback, given the asynchronous nature of the function
 
 <Tabs group-id="languages">
   <TabItem value="blueprint" label="Blueprint">
@@ -906,7 +907,7 @@ void UModioManager::OnMuteUserCallback(FModioErrorCode ErrorCode)
 
 ### Unmute a user
 
-To perform the inverse operation, unmute a user, call [K2_UnmuteUserAsync](#K2_UnmuteUserAsync) with the corresponding UserID and a callback, given the asynchronous nature of the function
+To perform the inverse operation, unmute a user, call [K2_UnmuteUserAsync](https://docs.mod.io/unrealref/#K2_UnmuteUserAsync) with the corresponding UserID and a callback, given the asynchronous nature of the function
 
 <Tabs group-id="languages">
   <TabItem value="blueprint" label="Blueprint">
@@ -942,7 +943,7 @@ void UModioManager::OnUnmuteUserCallback(FModioErrorCode ErrorCode)
 
 ### List muted users
 
-[K2_GetMutedUsersAsync](#K2_GetMutedUsersAsync) returns a list of users previously muted by an authenticated user. 
+[K2_GetMutedUsersAsync](https://docs.mod.io/unrealref/#K2_GetMutedUsersAsync) returns a list of users previously muted by an authenticated user. 
 
 <Tabs group-id="languages">
   <TabItem value="blueprint" label="Blueprint">
@@ -982,9 +983,9 @@ In some situations, you may want mods to only exist on a temporary basis - for i
 
 Temp Mods are downloaded in a folder separately from subscriptions, and are not updated or handled when you call `FetchExternalUpdatesAsync`. That means you can prioritize download and installation of Temp Mods outside of the regular subscription flow.
 
-To use Temp Mods, you can start a TempModSet by calling `InitTempModSet` and passing a list of Mod IDs to be downloaded and extracted. At anytime while a TempModSet is open, you can call [AddToTempModSet](#AddToTempModSet) to add mods to the set (which will be instantly downloaded and extracted). If you no longer need a mod, you can call [RemoveFromTempModSet](#RemoveFromTempModSet) which will remove the file. Once you have finished with a TempModSet, you can call [CloseTempModSet](#CloseTempModSet) which will delete all temporary mods. Temporary mods are also deleted the next time you re-initialize the SDK.
+To use Temp Mods, you can start a TempModSet by calling `InitTempModSet` and passing a list of Mod IDs to be downloaded and extracted. At anytime while a TempModSet is open, you can call [AddToTempModSet](https://docs.mod.io/unrealref/#K2_AddToTempModSet) to add mods to the set (which will be instantly downloaded and extracted). If you no longer need a mod, you can call [RemoveFromTempModSet](https://docs.mod.io/unrealref/#K2_RemoveFromTempModSet) which will remove the file. Once you have finished with a TempModSet, you can call [CloseTempModSet](https://docs.mod.io/unrealref/#K2_CloseTempModSet) which will delete all temporary mods. Temporary mods are also deleted the next time you re-initialize the SDK.
 
-Like regular mods, Temp Mods can be queried using [QueryTempModSet](#QueryTempModSet) to get a ModCollectionEntry with an installation path.
+Like regular mods, Temp Mods can be queried using [QueryTempModSet](https://docs.mod.io/unrealref/#K2_QueryTempModSet) to get a ModCollectionEntry with an installation path.
 
 #### Installing Temporary Mods
 

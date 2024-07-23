@@ -1,9 +1,9 @@
 ---
 id: installation-and-setup
 title: Installation & Setup
-slug: /unreal/setup
+slug: /unreal/setup/
 sidebar_position: 1
-custom_edit_url: https://github.com/modio/modio-ue4-internal/develop/main/Plugins/Modio/Doc/installation-and-setup.mdx
+custom_edit_url: https://github.com/modio/modio-ue4-internal/blob/develop/Plugins/Modio/Doc/installation-and-setup.mdx
 ---
 
 ## Adding plugin files to your project
@@ -57,7 +57,7 @@ The Test environment is available for usage in limited circumstances. All games 
 
 ### Using background thread
 
-The mod.io plugin can be run on a background thread. Rather than calling [RunPendingHandlers](#RunPendingHandlers) yourself, the mod.io plugin will spin up a background thread and continually call RunPendingHandlers for you. This option can be enabled in the mod.io project settings. This allows you to decouple the frequency with which you perform the plugin’s "work" from your games main thread, which improves performance of the plugin.
+The mod.io plugin can be run on a background thread. Rather than calling [RunPendingHandlers](https://docs.mod.io/unrealref/#RunPendingHandlers) yourself, the mod.io plugin will spin up a background thread and continually call RunPendingHandlers for you. This option can be enabled in the mod.io project settings. This allows you to decouple the frequency with which you perform the plugin’s "work" from your games main thread, which improves performance of the plugin.
 
 Calling methods from the ModioSubsystem will marshall all callbacks back to the game thread, and all other plugin call guarantees remain the same.
 
@@ -67,11 +67,11 @@ Before release, you will be able to setup a "hidden" Live environment that will 
 
 ## User Interface
 
-The plugin ships with a fully functional UI, featuring mod browsing, searching and collection management. If you want to use the UI in the game, you can read the [UI Documentation](ugc-browser)
+The plugin ships with a fully functional UI, featuring mod browsing, searching and collection management. If you want to use the UI in the game, you can read the [UI Documentation](ugc-browser/)
 
 ## Profiling
 
-The mod.io SDK ships with some profiling features that are integrated into Unreal’s stat commands. You can read more about enabling profiling [here](profiling).
+The mod.io SDK ships with some profiling features that are integrated into Unreal’s stat commands. You can read more about enabling [profiling here](profiling/).
 
 ## Sample Projects
 
@@ -79,4 +79,4 @@ You can find a sample project demonstrating basic mod.io functionality [here](ht
 
 ## Next Steps
 
-To begin using the Plugin, either from Blueprint or from C++, please read our [Getting Started Guide](getting-started) for a detailed explanation of initialization and usage.
+To begin using the Plugin, either from Blueprint or from C++, please read our [Getting Started Guide](getting-started/) for a detailed explanation of initialization and usage.

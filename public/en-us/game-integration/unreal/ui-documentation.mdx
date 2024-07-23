@@ -2,7 +2,7 @@
 id: ui-getting-started
 title: UGC Browser
 sidebar_label: UGC Browser
-slug: /unreal/ugc-browser
+slug: /unreal/ugc-browser/
 sidebar_position: 2
 custom_edit_url: https://github.com/modio/modio-ue4-internal/blob/develop/Plugins/Modio/Doc/ui-documentation.mdx
 ---
@@ -31,13 +31,13 @@ The Mod.io UE5 UI is built upon the concepts outlined in the [Common UI](https:/
 
 Open the **Plugins** window, and enable the `Common UI` plugin.
 
-![](img/UE5/plugin_ui_enable_plugin.png)
+![plugin_ui_enable_plugin](img/UE5/plugin_ui_enable_plugin.png)
 
 #### Game Viewport Client Class
 
 Navigate to **Project Settings -> Engine -> General Settings**, and set the `Game Viewport Client Class` to `CommonGameViewportClient`.
 
-![](img/UE5/plugin_ui_game_viewport_client_class.png)
+![plugin_ui_game_viewport_client_class](img/UE5/plugin_ui_game_viewport_client_class.png)
 
 #### Input Data
 
@@ -45,13 +45,13 @@ Go to **Project Settings -> Game -> Common Input Settings**, and set the `Input 
 
 Alternatively, you can create your own `Input Data` class that inherits from `CommonInputData` and set that instead. However, you will need to reassign all the Input Actions to your custom ones in **Project Settings -> Modio UI -> Modio Common UI Settings**.
 
-![](img/UE5/plugin_ui_input_data.png)
+![plugin_ui_input_data](img/UE5/plugin_ui_input_data.png)
 
 #### Platform Input
 
 Within the same section (**Project Settings -> Game -> Common Input Settings**), locate the `Platform Input` property to specify the per-platform settings.
 
-![](img/UE5/plugin_ui_platform_input.png)
+![plugin_ui_platform_input](img/UE5/plugin_ui_platform_input.png)
 
 ### Organization
 
@@ -76,8 +76,8 @@ As mentioned earlier, the styling system leverages the same approach as presente
 
 For example, take a look at the ***Collection View (W_ModioCommonCollectionView)***, located at UI5/Default/Widgets/ModBrowser/Collection/W_ModioCommonCollectionView.uasset path. This is one of the default widgets that supports the Mod.io styling system. While the default widgets already come with pre-applied styles based on the default design, you have the flexibility to modify, inherit, customize, and more according to your needs.
 
-![](img/UE5/plugin_ui_collection_view_properties.png)
-![](img/UE5/plugin_ui_collection_view_style.png)
+![plugin_ui_collection_view_properties](img/UE5/plugin_ui_collection_view_properties.png)
+![plugin_ui_collection_view_style](img/UE5/plugin_ui_collection_view_style.png)
 
 ### Customizing Text and Input Actions
 
@@ -87,21 +87,21 @@ For most of the default widgets where the text and actions are available, they c
 
 To alter the input keys themselves, navigate to the plugin’s ***UI5->Default->Platform->Input*** folder. Open the `ModioInputActionDataTable` and modify the corresponding input keys or actions. Note that removing or renaming actions can cause issues in widgets where they are bound, so it’s advisable to retain the same action names and rather change the input keys or add new actions as needed.
 
-![](img/UE5/plugin_ui_inputactiondatatable_drawer.png)
-![](img/UE5/plugin_ui_inputactiondatatable_details.png)
+![plugin_ui_inputactiondatatable_drawer](img/UE5/plugin_ui_inputactiondatatable_drawer.png)
+![plugin_ui_inputactiondatatable_details](img/UE5/plugin_ui_inputactiondatatable_details.png)
 
 To change the key brushes associated with input keys, select the relevant platform folder within ***UI5->Default->Platform->Input*** (e.g., `Xbox`). Open the controller data asset (e.g., `ModioCommonInput_Xbox`) and make the necessary changes to the corresponding key brushes.
 
-![](img/UE5/plugin_ui_input_controller_data_drawer.png)
-![](img/UE5/plugin_ui_input_controller_data_details.png)
+![plugin_ui_input_controller_data_drawer](img/UE5/plugin_ui_input_controller_data_drawer.png)
+![plugin_ui_input_controller_data_details](img/UE5/plugin_ui_input_controller_data_details.png)
 
 ### Manual Action Binding
 
 The `ModioCommonActivatableWidget`, from which the majority of widgets in this UI inherit, provides several useful functions primarily intended for use in C++:
 
-1) `ListenForInputAction` and `ClearListeningInputActions`: The former function listens for a specified input action and invokes a defined function upon the action’s triggering. The latter function clears the active listening action. Typically, `ListenForInputAction` is intended to be invoked during widget initialization, automatically binding the actions (`BindInputActions`) upon construction and unbinding them (`UnbindInputActions`) upon destruction. You can also manually call these functions based on your specific requirements.
+1. `ListenForInputAction` and `ClearListeningInputActions`: The former function listens for a specified input action and invokes a defined function upon the action’s triggering. The latter function clears the active listening action. Typically, `ListenForInputAction` is intended to be invoked during widget initialization, automatically binding the actions (`BindInputActions`) upon construction and unbinding them (`UnbindInputActions`) upon destruction. You can also manually call these functions based on your specific requirements.
 
-2) `BindInputActions` and `UnbindInputActions`: These functions perform the binding and unbinding of input actions. When `bAutoBindInputAction` is set to `true` (which is the default value), these functions are automatically called during widget construction and destruction. If you prefer manual control over input action binding and unbinding, you can set `bAutoBindInputAction` to `false` and call these functions manually, as needed.
+2. `BindInputActions` and `UnbindInputActions`: These functions perform the binding and unbinding of input actions. When `bAutoBindInputAction` is set to `true` (which is the default value), these functions are automatically called during widget construction and destruction. If you prefer manual control over input action binding and unbinding, you can set `bAutoBindInputAction` to `false` and call these functions manually, as needed.
 
 As an illustrative example, consider the straightforward `UModioCommonEmailAuthView` widget. This widget features a text box for users to input their email address, along with three buttons: Back, Submit, and Cancel. Here, the `ListenForInputAction` function is invoked during initialization, and no further action is required. The input actions are automatically bound upon widget construction and unbound upon destruction.
 
@@ -225,4 +225,3 @@ if (UModioUISubsystem* Subsystem = GEngine->GetEngineSubsystem<UModioUISubsystem
 </TabItem>
 </Tabs>
 </details>
-
