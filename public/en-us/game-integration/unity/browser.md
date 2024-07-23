@@ -9,8 +9,8 @@ sidebar_position: 3
 
 The mod.io Unity Engine plugin comes with a configurable in-game UGC browser.  
 
-:::warning 
-> The Browser UI relies on the *config file* that is configured during the [setup instructions](/unity/setup/). Ensure you have completed all of those steps before proceeding.
+:::warning
+The Browser UI relies on the *config file* that is configured during the [setup instructions](/unity/setup/). Ensure you have completed all of those steps before proceeding.
 :::
 
 The Browser UI is incredibly simple to set up, and completely avoids the complexity that can come with building a full-featured mod browser: 
