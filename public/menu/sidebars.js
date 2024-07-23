@@ -68,7 +68,7 @@ const sidebars = {
       label: 'C++ SDK',
       link: {type: 'doc', id: 'game-integration/cppsdk/index-sdk'},
       items: [
-        'game-integration/cppsdk/installation-and-setup', 'game-integration/cppsdk/getting-started', 'game-integration/cppsdk/sdk-marketplace',
+        'game-integration/cppsdk/installation-and-setup', 'game-integration/cppsdk/getting-started', 'game-integration/cppsdk/marketplace',
         {
           type: 'category',
           label: 'Windows',
