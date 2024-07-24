@@ -62,7 +62,7 @@ When making any requests to service-to-service endpoints, you must always provid
 | client_id     | integer | true     | Client ID issued to your game.                                                                               |
 | client_secret | string  | true     | Client Secret issued to your game. This should be secure on a backend server and never displayed to players. |
 | grant_type    | string  | true     | Must be `client_credentials`.                                                                                |
-| scope        | string  | false    | The scopes you wish your token to have. Currently only, read, write, and monetization is supported.          |
+| scope         | string  | false    | Specify the comma-separated scopes you wish your token to have. Currently, only **read**, **write**, **update**, and **monetization** are supported. The update scope will elevate the token's authorization, allowing it to edit mods while acting as the game's leader. |
 
 ```
 POST https://{your-game-id}.modapi.io/v1/oauth/token
