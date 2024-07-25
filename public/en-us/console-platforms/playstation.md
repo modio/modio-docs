@@ -24,7 +24,11 @@ All games supporting UGC must be approved individually, and you will be required
 
 ## SDK Access
 
-Please contact us for access to the PS4/PS5 SDKs so we can guide you through the steps: developers@mod.io.
+Locate mod.io in the PS4 and/or PS5 middleware directory, and click the verify button to confirm your developer status:
+- PS4: [https://ps4.develop.playstation.net/tm/verify/mod_io](https://ps4.develop.playstation.net/tm/verify/mod_io)
+- PS5: [https://game.develop.playstation.net/tm/verify/mod_io](https://game.develop.playstation.net/tm/verify/mod_io)
+
+This will alert our team, and we reach out regarding next steps. If you have any questions, please contact us via: developers@mod.io.
 
 ## Moderation
 
