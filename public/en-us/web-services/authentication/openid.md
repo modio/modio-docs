@@ -123,8 +123,8 @@ For an OpenID authentication request to be successful, mod.io will make the foll
 2. At least one of the signing keys exposed in the JWK URL must have signed the supplied ID Token.
 3. The `sub` claim must be present and a non-empty string or positive integer. In the event an integer datatype is encountered, this value will be casted to a string internally.
 4. The `aud` claim must be `https://mod.io`
-5. The `iat` claim must be in the past and cannot be more than the current epoch unix timestamp minus 10 seconds in the past. Ten additional seconds are subtracted before evaluation to account for clock skew.
-6. The `exp` claim must be in the future and cannot be more than the current epoch unix timestamp plus 10 seconds in the past. Ten additional seconds are added before evaluation to account for clock skew.
+5. The `iat` claim must be in the past and cannot be more than the current epoch unix timestamp minus 10 seconds. Ten additional seconds are subtracted before evaluation to account for clock skew.
+6. The `exp` claim must be in the future and cannot be more than the current epoch unix timestamp plus 10 seconds. Ten additional seconds are added before evaluation to account for clock skew.
 
 ### Testing your ID Token
 
