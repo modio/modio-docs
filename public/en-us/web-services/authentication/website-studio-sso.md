@@ -1,6 +1,6 @@
 ---
 id: website-studio-sso
-title: mod.io login using OpenID
+title: mod.io website login with your identity provider
 slug: /web-services/authentication/website/
 sidebar_position: 2
 ---
