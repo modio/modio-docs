@@ -124,7 +124,7 @@ For an OpenID authentication request to be successful, mod.io will make the foll
 3. The `sub` claim must be present and a non-empty string or positive integer. In the event an integer datatype is encountered, this value will be casted to a string internally.
 4. The `aud` claim must be `https://mod.io`
 5. The `iat` claim cannot be greater than the current epoch unix timestamp with a 10 second buffer to account for clock skew.
-6. The `exp` claim must be more than the current epoch unix timestamp with a buffer of 10 seconds to account for clock skew.
+6. The `exp` claim must be greater than the current epoch unix timestamp with a buffer of 10 seconds to account for clock skew.
 
 ### Testing your ID Token
 
