@@ -13,8 +13,9 @@ When interacting with mod.io you may wish to use your own managed identity provi
 
 | **Origin of Authentication** | **Recommended Flow**                        |
 | ---------------------------- | ------------------------------------------- |
-| In-game                      | OpenID                                      |
-| Embeddable ModHub            | OpenID or OAuth 2.0 Authorization Code Flow |
-| mod.io Website               | OAuth 2.0 Authorization Code Flow           |
+| In-game                      | [OpenID](/web-services/authentication/openid/)                                      | 
+| mod.io Website               | [OAuth 2.0 Authorization Code Flow](/web-services/authentication/website/)         | 
+| Studio Website               | [OAuth 2.0 Authorization Code Flow](/web-services/authentication/sign-in-with-modio/) |
+| Embeddable ModHub            | [OpenID](/web-services/authentication/openid/) or [OAuth 2.0 Authorization Code Flow](/web-services/authentication/website/) | 
 
-mod.io recommends that unless you require the ability to use your own identity provider, you should default to using our first party authentication options such as Steam, Xbox Live, PlayStation™Network, etc. which are flows supported both in-game and via our official website. Studio authentication is considered an premium feature for studios that wish to develop and support their own identity provider.
+We recommend using one of our [first-party authentication options](/platforms/) for in-game sign-on or sign-in via our website. mod.io also offers studio authentication as a premium feature in cases where a studio wishes to use it's own identity provider for authentication.

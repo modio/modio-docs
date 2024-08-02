@@ -1,6 +1,6 @@
 ---
 id: support-search
-title: Search by id
+title: Search by ID
 slug: /support/search-by-id/
 sidebar_position: 2
 ---
