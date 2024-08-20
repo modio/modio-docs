@@ -5,6 +5,8 @@ slug: /web-services/marketplace/studio-as-purchase-server/
 sidebar_position: 0
 ---
 
+# Operating a Purchase Server
+
 Operating a Purchase Server requires a strong understanding of the role you must play in initiating transaction from your secure server. Covered in this section is:
 
 - Making transactions from your purchase server
@@ -19,6 +21,14 @@ To operate as a purchase server that communicates transaction date with mod.io, 
 - SKU's registered to your mod.io game profile for the platform the entitlements originate from.
 - A secure web server, configured with a [Service Token](/web-services/authentication/s2s/#obtaining-a-service-token) to send service-to-service (S2S) API requests to mod.io
 - A [User Delegation Token](/web-services/authentication/s2s/#obtaining-a-user-delegation-token-for-making-requests-on-behalf-of-a-user), enabling the processing of a transaction on behalf of a mod.io user.
+
+## Testing Environment
+
+Please note the test environment domain is slightly different from production and should be called as follows:
+
+```
+https://g-{your-game-id}.test.mod.io/v1/s2s/
+```
 
 ## Architecture Overview
 

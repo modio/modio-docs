@@ -1,8 +1,8 @@
 ---
-id: platforms-console-sdks
+id: console-sdks
 title: Console SDKs
 slug: /platforms/console-sdks/
-sidebar_position: 4
+sidebar_position: 1
 ---
 
 # Console SDKs

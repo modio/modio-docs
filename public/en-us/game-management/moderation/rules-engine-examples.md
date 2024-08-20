@@ -9,7 +9,7 @@ sidebar_position: 4
 
 In practice, the Rules Engine is being used to test mod loading, generate messages in Slack channels for new content submissions, bolster platform-specific word filters, and stop users from editing mod profiles using the web dashboard. 
 
-### Our Example
+## Our Example
 
 As an example, we have very basic rules set up for our test game. In our test game we only want Artic Seals friendly content, which means strictly no Polar Bears. To enforce this, we have set up two rules, one on Mod Comment, which denies the comment if their post includes the words “polar” or “bear”, and a similar rule which automatically reports any mod which is edited to include the words “polar” or “bear”.
 

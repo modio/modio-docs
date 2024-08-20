@@ -14,7 +14,7 @@ The User Activity dashboard reports five data sources:
 * Creators joined
 * API key requests
 
-### Active Users
+## Active Users
 
 ‘Active users’ measures the number of unique users viewing or accessing your game’s UGC through all sources, including your in-game browser, the mod.io website and any embeddable hub on your website that  connects to mod.io. Active users is the total of authenticated users plus unauthenticated users. An additional graph demonstrates this visually:
 
@@ -28,18 +28,18 @@ Due to the uncertainty of measuring users by IP address, ensuring players are au
 
 Active users have the additional dimensions of platform and location. 
 
-### UGC Comments
+## UGC Comments
 
 ‘UGC comments’ measures the total number of comments that players leave on UGC in your game. This metric does not have additional dimensions. 
 
-### Guide Comments
+## Guide Comments
 
 ‘Guide comments’ measures the total number of comments that players leave on guides for your game. This metric does not have additional dimensions. 
 
-### Creators Joined
+## Creators Joined
 
 ‘Creators joined’ measures the number of creators who have uploaded UGC for your game. Each creator is only counted once. This metric does not have additional dimensions. 
 
-### API Key Requests
+## API Key Requests
 
 ‘API key requests’ measures the total number of API key requests your game makes to the mod.io API. This will usually correlate with with active users. API key requests has the additional dimensions of platform and location. 

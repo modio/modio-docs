@@ -1,5 +1,5 @@
 ---
-id: platforms-gdk
+id: gdk
 title: Xbox One & Xbox Series X/S
 slug: /platforms/gdk/
 sidebar_position: 3
@@ -54,3 +54,7 @@ If you choose to use Xbox Live authentication (this isn’t required for email),
 ## Networking & Storage
 
 Storage space available for UGC will be limited, and allocation for space dedicated to UGC will require an entry in your MicrosoftGame.config file. We recommend using ‘Growable Persistent Local Storage’ to allocate the space you require for UGC, as this reduces the up-front storage required on the device. All games that implement mod.io services will require space for storing cached and downloaded data, as well as space for storing user-specific data.
+
+## More Information
+
+Head to our [console SDKs](/platforms/console-sdks/) page, for detailed information about using mod.io on the Xbox, and access to the relevant console module SDK. Be aware that accessing this information requires completion of the appropiate NDA.

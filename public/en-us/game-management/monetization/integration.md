@@ -4,6 +4,8 @@ title: Integration
 slug: /monetization/integration/
 ---
 
+# Integration
+
 The mod.io official plugins for Unreal Engine and Unity are the easiest way to integrate the Marketplace in your game. Please follow the guides in the relevant link for your game engine.
 
 * [SDK Guide](/cppsdk/marketplace/)

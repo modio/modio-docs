@@ -38,9 +38,7 @@ We provide a number of tools and features, built directly into our dashboard, AP
 * Support for onboarding, and certification requirements around UGC
 * Advanced metrics and reporting so you can compare the usage of UGC, trending content and other key stats across all platforms your games are released
 * Rules based moderation flows to streamline and automate moderation depending on the platform(s) targeted
-
-Future functionality to include:
-* Monetization that is compliant with each platforms rules and payment flows
+* Monetization that is compliant with each platforms rules and supports their payment flows
 
 ![SnowRunner in-game mod browser on Xbox](images/console-support/snowrunner_ui.jpg)
 
@@ -51,9 +49,9 @@ _Example Implementation: SnowRunner in-game UGC browser on Xbox_
 Before embarking on UGC support with any new platform, your first step should be to speak to your account manager and let them know you intend on supporting UGC using mod.io. This allows you to begin the process of understanding what rules exist and information they require from you, in-order for your plans to pass certification.
 
 If you need an introduction to our account managers who understand mod.io and UGC, let us know and we will connect you with:
-* Sony Interactive Entertainment: Antonio Grasso - Global Technology Partnerships
-* Microsoft Xbox: Vince Loiseleur - Developer Partner Manager
-* Nintendo Switch: Ulysse Richert-Botté - Developer Relations
+* Sony Interactive Entertainment: Global Technology Partnerships
+* Microsoft Xbox: Developer Partner Manager
+* Nintendo Switch: Developer Relations
 
 ![Skater XL in-game mod browser on PlayStation](images/console-support/skaterxl_ui.png)
 
@@ -70,6 +68,8 @@ The process we recommend to bring UGC to consoles is:
     * How content delivery happens (using mod.io secured APIs)
     * Type of UGC being shared (levels, skins, configs)
     * Does the UGC execute scripts
+    * UGC monetization plans
+1. Notify mod.io of your intent, so we can verify with the platforms, and release our private console documentation and SDKs to your developers. Note: we highly recommend using our Unity, Unreal or C++ SDK for your game integration, but you can also go direct to our REST API, and refer to our private console documentation for all of the requirements and best practice recommendations we've implemented, to ensure certification is a straightforward process.
 1. Begin work on your implementation, which should follow your documentation, and adhere to each platforms requirements, which typically are:
     * No scripts, or approved / sandboxed scripts only
     * No network, filesystem access, or approved / sandboxed access only
@@ -95,13 +95,13 @@ This is the default used by most games, especially those where content creation 
 
 If you prefer to control all content prior to going live, you can turn on a full moderation system. This is generally used by games that want to control what is released across all platforms. Speak to us if you would like to experiment with our rules based moderation flow, or community moderation queue as a more automated way of moderating all content.
 
-An introduction to our moderation flow [is provided in our blog](https://blog.mod.io/how-to-effectively-moderate-user-generated-content-mods-ceb2a05eeeed), and a how-to guide [is available here](https://blog.mod.io/how-moderating-works-9a7e923c625a). We can provide training for your team or take full responsibility for moderation if that is your preferred approach.
+An introduction to our moderation flow [is provided in our blog](https://blog.mod.io/how-to-effectively-moderate-user-generated-content-mods-ceb2a05eeeed), and a detailed guide is available [in our documentation](/moderation/). We can provide training for your team or take full responsibility for moderation if that is your preferred approach.
 
 ### Reporting
 
 A requirement of all consoles, and a critical piece for maintaining a safe UGC environment is supporting a reporting process for content. This process must always be running, and pair with the moderation process chosen above. It must allow the community to report content that is “in-compatible, offensive, stolen or false” and also allow IP rights holders to submit DMCA notices.
 
-Users can report content via the mod.io website (see: [https://mod.io/report](https://mod.io/report)). Games can either link to that report interface, or implement their own in-game which our SDK and engine plugins support if using the UI we provide for Unity and Unreal.
+Users can report content via the mod.io website (see: https://mod.io/report). Games can either link to that report interface, or implement their own in-game which our SDK and engine plugins support if using the UI we provide for Unity and Unreal.
 
 ![Content reporting interface available via the web UI](images/console-support/report-dialog.png)
 

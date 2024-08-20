@@ -114,38 +114,57 @@ const sidebars = {
     },
     {
       type: 'doc',
-      id: 'console-platforms/platforms',
+      id: 'platforms/platforms',
       label: 'Supporting Console Platforms',
     },
     {
       type: 'doc',
-      id: 'console-platforms/platforms-playstation',
-      label: 'PlayStation®4 & PlayStation®5',
-    },
-    {
-      type: 'doc',
-      id: 'console-platforms/platforms-switch',
-      label: 'Nintendo Switch',
-    },
-    {
-      type: 'doc',
-      id: 'console-platforms/platforms-gdk',
-      label: 'Xbox One & Xbox Series X/S',
-    },
-    {
-      type: 'doc',
-      id: 'console-platforms/platforms-console-sdks',
+      id: 'platforms/console-sdks',
       label: 'Console SDKs',
     },
     {
       type: 'doc',
-      id: 'console-platforms/platforms-apple',
-      label: 'Apple',
+      id: 'platforms/playstation',
+      label: 'PlayStation®4 & PlayStation®5',
     },
     {
       type: 'doc',
-      id: 'console-platforms/platforms-google',
-      label: 'Google Play',
+      id: 'platforms/gdk',
+      label: 'Xbox One & Xbox Series X/S',
+    },
+    {
+      type: 'doc',
+      id: 'platforms/switch',
+      label: 'Nintendo Switch',
+    },
+    {
+      type: 'category',
+      label: 'Apple',
+      items: ['platforms/apple/authentication'],
+    },
+    {
+      type: 'category',
+      label: 'Google',
+      //link: {type: 'doc', id: 'platforms/google/authentication'},
+      items: ['platforms/google/authentication', 'platforms/google/marketplace'],
+    },
+    {
+      type: 'category',
+      label: 'Steam',
+      //link: {type: 'doc', id: 'platforms/steam/authentication'},
+      items: ['platforms/steam/authentication', 'platforms/steam/marketplace'],
+    },
+    {
+      type: 'category',
+      label: 'Epic Games',
+      //link: {type: 'doc', id: 'platforms/epic/authentication'},
+      items: ['platforms/epic/authentication'],
+    },
+    {
+    	type: 'category',
+     	label: 'GOG Galaxy',
+      //link: {type: 'doc', id: 'platforms/gog/authentication'},
+      items: ['platforms/gog/authentication'],
     },
     // Game Management
     {

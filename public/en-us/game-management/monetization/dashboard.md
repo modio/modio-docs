@@ -19,6 +19,7 @@ Your dashboard provides you a snapshot into the latest activity within your mark
 :::
 
 ## Settings
+
 - **Marketplace** - You will be able to adjust the settings you configured as part of your onboarding here. These are the same controls and options you enabled in [Monetization settings](/monetization/onboarding/#monetization-settings).
 - **Manage SKUs** - You will be able to enable and disable any token packs sold on the Marketplace here. These are the same [Token Packs](/monetization/onboarding/#token-packs) set up during onboarding. Please note that you will need to adjust any configurations of SKUs on external platforms to ensure compatibility.
 - **Partner Program** - Direct access to the configuration of [Partner Program](/monetization/onboarding/#partner-program) settings can be found here.
@@ -26,6 +27,7 @@ Your dashboard provides you a snapshot into the latest activity within your mark
 - **In-App Purchases** - To enable cross-platform functionality for Marketplace purchases, it's essential to configure your available platforms. Enter your API keys and pertinent details for these platforms in this section.
 
 ## Transactions
+
 - **Transactions** - This section enables you to review all transactions carried out on the game marketplace. You can apply filters to distinguish between SKU sales and UGC sales, or delve into individual transactions to examine the revenue trail and, if applicable, process refunds for eligible transactions.
 - **Invoices** - A full visible list of all pending and historical invoices can be viewed in this section. Full details of how Invoices function can be seen [here](/monetization/invoices/).
 

@@ -64,8 +64,8 @@ The implemented dialog should look similar to this:
 Instructions for retrieving localized text for the dialog, [can be found here](https://docs.mod.io/restapiref/#terms).
 
 The Terms of Use and Privacy Policy must be clickable from somewhere on the dialog, and should load a web browser with the respective links:
-* [https://mod.io/terms/widget?no_links=true](https://mod.io/terms/widget?no_links=true)
-* [https://mod.io/privacy/widget?no_links=true](https://mod.io/privacy/widget?no_links=true)
+* https://mod.io/terms/widget?no_links=true
+* https://mod.io/privacy/widget?no_links=true
 
 :::tip
 **Note:** The **/widget** part of the URL is optional and removes all menus and the **?no_links=true** part of the URL is optional and removes all links.

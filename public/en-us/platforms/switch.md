@@ -1,8 +1,8 @@
 ---
-id: platforms-switch
+id: switch
 title: Nintendo Switch
 slug: /platforms/switch/
-sidebar_position: 2
+sidebar_position: 4
 ---
 import CrossLink from '@site/src/components/CrossLink'
 
@@ -20,7 +20,7 @@ All games supporting UGC must be approved individually, and you will be required
 
 ## SDK Access
 
-For Nintendo Switch access, use the verification link at the bottom of this page: [https://developer.nintendo.com/group/development/getting-started/g1kr9vj6/middleware/mod.io](https://developer.nintendo.com/group/development/getting-started/g1kr9vj6/middleware/mod.io)
+For Nintendo Switch access, use the verification link at the bottom of this page: https://developer.nintendo.com/group/development/getting-started/g1kr9vj6/middleware/mod.io
 
 ![Screenshot of the contact form used for NDA verification via the Nintendo Dev Portal](images/console-support/nintendo_verification.png)
 
@@ -45,3 +45,7 @@ If you choose to use Nintendo Network ID authentication (this isn’t required f
 ## Networking & Storage
 
 Storage space available for UGC will be limited, and allocation for space dedicated to UGC will require approval from Nintendo, who will require you to manage a strict data budget. In addition to the aforementioned approval, cache storage and temp storage will require an entry in your NMETA file. All games that implement mod.io services will require space for storing cached and downloaded data.
+
+## More Information
+
+Head to our [console SDKs](/platforms/console-sdks/) page, for detailed information about using mod.io on the Nintendo Switch, and access to the relevant console module SDK. Be aware that accessing this information requires completion of the appropiate NDA.

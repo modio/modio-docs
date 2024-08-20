@@ -1,8 +1,8 @@
 ---
-id: platforms-playstation
+id: playstation
 title: PlayStation®4 & PlayStation®5
 slug: /platforms/playstation/
-sidebar_position: 1
+sidebar_position: 2
 ---
 import CrossLink from '@site/src/components/CrossLink'
 
@@ -25,8 +25,8 @@ All games supporting UGC must be approved individually, and you will be required
 ## SDK Access
 
 Locate mod.io in the PS4 and/or PS5 middleware directory, and click the verify button to confirm your developer status:
-- PS4: [https://ps4.develop.playstation.net/tm/verify/mod_io](https://ps4.develop.playstation.net/tm/verify/mod_io)
-- PS5: [https://game.develop.playstation.net/tm/verify/mod_io](https://game.develop.playstation.net/tm/verify/mod_io)
+- PS4: https://ps4.develop.playstation.net/tm/verify/mod_io
+- PS5: https://game.develop.playstation.net/tm/verify/mod_io
 
 This will alert our team, and we reach out regarding next steps. If you have any questions, please contact us via: developers@mod.io.
 
@@ -53,3 +53,7 @@ Please contact us for more details on how to authenticate with PSN: developers@m
 ## Networking & Storage
 
 Storage space available for UGC will be limited, and allocation for space dedicated to UGC will require approval from Sony Interactive Entertainment, who will require you to manage a strict data budget. All games that implement mod.io services will require space for storing cached and downloaded data, as well as space for storing user-specific data.
+
+## More Information
+
+Head to our [console SDKs](/platforms/console-sdks/) page, for detailed information about using mod.io on the PlayStation, and access to the relevant console module SDK. Be aware that accessing this information requires completion of the appropiate NDA.
