@@ -100,9 +100,9 @@ const sidebars = {
           items: ['game-integration/cppsdk/android/android-cmake-integration']
         }, 
         {
-          type: 'link',
+          type: 'doc',
           label: 'C++ SDK Reference', 
-          href: `${url}/cppsdkref/#_functions`, 
+          id: `game-integration/cppsdk/refdocs`, 
         },
       ],
     },

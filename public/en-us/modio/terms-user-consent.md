@@ -35,15 +35,17 @@ If you have your own accounts system, mod.io can be set up to use it as the SSO 
 
 ## User Flow
 
-Here is how the user consent and acceptance flow should work:
-1. User attempts an action requiring authentication (i.e. subscribe to mod).
-2. User is presented with an acceptance dialog (required once).
-3. On acceptance, proceed with your chosen authentication method, and ensure you indicate to the mod.io backend that the user has provided consent (using the authentication endpoint `terms_agreed` field).
-4. On rejection, exit the authentication process, and do not attempt to authenticate the user.
+You should prompt players for consent before using any mod.io functionality, such as on startup, or before launching any UGC browsers. Once they have accepted the Terms of Service, you should proceed to authenticate them with your chosen authentication provider, ensuring you pass `terms_agreed=true`.
 
-### Example
+If the user rejects the TOS, you should exit the authentication process and do not attempt to authenticate them.
 
-This example flow is how the consent process is presented in the mod.io Unity and Unreal Engine in-game UIs.
+The way your terms and authentication flow should be implemented is as follows:
+1. At an appropriate time (when the user is opening your UGC browser, on startup, etc), display the Terms of Use.
+2. If the user agrees to the Terms of Service, proceed to the next step. Otherwise, halt the process and do not proceed with authentication.
+3. Store that the user has accepted the terms of service, such as in local storage or cloud user profile storage.
+4. Perform any platform-specific authentication to get the appropriate token to exchange for a mod.io auth token. Visit the Authentication page for each platform you wish to authenticate to for further details.
+5. Exchange that platform specific authentication token for a mod.io OAuth token by calling the mod.io Authentication methods
+6. On success, you will have a token that can be used for all mod.io calls for that user. All official mod.io plugins will use this OAuth token for all user requests.
 
 ## Implementation
 
@@ -68,14 +70,24 @@ The Terms of Use and Privacy Policy must be clickable from somewhere on the dial
 * https://mod.io/privacy/widget?no_links=true
 
 :::tip
-**Note:** The **/widget** part of the URL is optional and removes all menus and the **?no_links=true** part of the URL is optional and removes all links.
+The **/widget** part of the URL is optional and removes all menus and the **?no_links=true** part of the URL is optional and removes all links.
 :::
 
 ### Authentication
 
-Once a user has clicked **“I Agree”**, you should indicate to the mod.io backend that this has taken place, when you initiate the authentication process.
+Once a user has clicked **“I Agree”**, you should indicate to the mod.io backend that this has taken place, when you initiate the authentication process. Acceptance of the TOS should be stored in relevant user settings, for instance a local settings file, or cloud storage file for the user. The mod.io plugins do not provide storage for this field.
 
-To make this easy to manage, all of the [platform authentication flows](https://docs.mod.io/restapiref/#steam) supported by mod.io have a `terms_agreed` field which should be set to `false` by default. If the user has agreed to the latest policies, their authentication will proceed as normal, however if their agreement is required and `terms_agreed` is set to `false` an error `403 Forbidden` (`error_ref 11074`) will be returned. When you receive this error, you must collect the users agreement before resubmitting the authentication flow with `terms_agreed` set to `true`, which will be recorded.
+All of the [platform authentication flows](https://docs.mod.io/restapiref/#steam) supported by mod.io have a `terms_agreed` field which should be set to `false` by default. If the user has agreed to the latest policies, their authentication will proceed as normal, however if their agreement is required and `terms_agreed` is set to `false` an error `403 Forbidden` (`error_ref 11074`) will be returned. When you receive this error, you must collect the users agreement before resubmitting the authentication flow with `terms_agreed` set to `true`, which will be recorded.
+
+mod.io may update our terms of service, which require users to re-accept the terms of use. If you receive a 403 error from the authentication endpoint, even passing `terms_agreed=true`, then you should re-prompt users to accept the Terms of Service.
+
+### Token lifetimes
+
+When you request an access token for mod.io via our authentication endpoint - the mod.io token is only valid for a limited time. All tokens expire or can be revoked, and your code needs to be ready to handle that. You should not make assumptions for how long a token will be valid for.
+
+In the event that an access token is no longer valid, a 401 Not Authorized HTTP error will be returned. To ensure a smooth user experience, your code **SHOULD** anticipate that whenever you call the mod.io API there is a chance you will encounter this response and when you do that you have code to re-authenticate the user. No refresh tokens exist to exchange for a new access token - if your token expires you need to re-authenticate the user.
+
+mod.io recommends to re-authenticate a user anytime you launch your game, or if you receive any errors from the API or plugins indicating that a user is not authenticated.
 
 ## Considerations
 
