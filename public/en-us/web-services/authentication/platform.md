@@ -32,8 +32,8 @@ The implementation requirements differs slightly for each Platform. The typical 
    - [Xbox Live](https://docs.mod.io/partners/xbox/authentication/) ([NDA access required](/platforms/console-sdks/))
    - [Nintendo Switch](https://docs.mod.io/partners/switch/authentication/) ([NDA access required](/platforms/console-sdks/))*
 
-:::Note
-* Currently you cannot sign into the mod.io site using your Apple, Meta Quest or Nintendo Switch account. This means that if you authenticate players using these methods in-game, those users accounts will be headless and orphaned, unless you provide an optional email during the authentication process. Where possible we recommend you give the users the option to provide their email, to offer the most connected UGC user experience in-game and out.
+:::note
+Currently you cannot sign into the mod.io site using your Apple, Meta Quest or Nintendo Switch account. This means that if you authenticate players using these methods in-game, those users accounts will be headless and orphaned, unless you provide an optional email during the authentication process. Where possible we recommend you give the users the option to provide their email, to offer the most connected UGC user experience in-game and out.
 :::
 
 ## Email Authentication
@@ -45,6 +45,6 @@ Alternatively you can authenticate users with email on all platforms, which has 
 - [Unity Engine](https://docs.mod.io/unity/getting-started/#authentication)
 - [C++ SDK](https://docs.mod.io/cppsdk/getting-started/#sdk-quick-start-user-authentication)
 
-:::Warning
+:::warning
 Email is great for instant setup and testing, however we highly recommend using the Platform SSO authentication flows (detailed above) where available, or your own identity provider, as they are instant and accessible vs email which is not. It also makes it easier to block bad actors, and avoids user frustration and error like having to type your email in using gamepads.
 :::

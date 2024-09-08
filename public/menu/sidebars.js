@@ -242,7 +242,7 @@ const sidebars = {
           type: 'category',
           label: 'For Players',
           link: {type: 'doc', id: 'web-services/authentication/overview'},
-          items: ['web-services/authentication/openid', 'web-services/authentication/website-studio-sso', 'web-services/authentication/website-to-modio-sso'],
+          items: ['web-services/authentication/platform', 'web-services/authentication/openid', 'web-services/authentication/website-studio-sso', 'web-services/authentication/website-to-modio-sso'],
         },
         {
           type: 'doc',

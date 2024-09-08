@@ -76,7 +76,7 @@ Prior to configuration on mod.io, your identity provider must create an OAuth cl
 | **Used By** | **Redirect URI** |
 |--------------------------|-----------------------------|
 | mod.io Website | `https://mod.io/oauth/studio` |
-| Embeddable Modhub | `https://embed.modhub.io/oauth/studio`
+| Embeddable Modhub | `https://embed.modhub.io/oauth/studio` |
 
 #### OAuth Client Data for mod.io
 
@@ -100,8 +100,8 @@ Once you have generated the OAuth client with generated with at least one `redir
 
 To setup your identity provider follow these steps:
 
-- Go to your game profile on mod.io whilst logged in as a team member
-- Click the admin icon in the top-right corner (pencil icon).
+- Go to your [game profile](https://mod.io/content#games) on mod.io whilst logged in as a team member
+- Click the manage button next to the game you want to setup SSO
 - On the left-hand side menu, click 'Studio Authentication'
 - Click the **+** button next to _Create new SSO config_
 

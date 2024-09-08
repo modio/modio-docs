@@ -99,6 +99,18 @@ GET https://accounts.your-web-service.com/jwk/keys.json
 Maintained packages exist to handle generating and publishing JWK sets. It's highly recommended you use an existing package for your language of choice for simplicity and to prevent unintended security holes.
 :::
 
+### Setting up your OpenID on the mod.io dashboard
+
+To add your JWK URL to the mod.io dashboard follow these steps:
+
+- Go to your [game profile](https://mod.io/content#games) on mod.io whilst logged in as a team member
+- Click the manage button next to the game you want to setup OpenID for
+- On the left-hand side menu, click 'Studio Authentication'
+- Scroll to the OpenID form and fill in the details
+- Test your config by providing a test id token to _Save your OpenID details_
+
+![OpenID setup](images/openid-setup.png)
+
 ### Required Token Claims
 
 Once the signature of the ID token been verified, mod.io will then extract claims from the ID Token to create an account for the player. The following claims are required:
