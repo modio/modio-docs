@@ -26,3 +26,5 @@ Once you have configured your game for Steam SSO, you can call the Steam Authent
 * For the C++ SDK, [click here](/cppsdk/getting-started/#ssoexternal-authentication)
 * For Unreal Engine, [click here](/unreal/getting-started/#steam-authentication-example)
 * For Unity Engine, [click here](/unity/getting-started/#authentication)
+
+If you are building something custom using the mod.io REST API, follow the [instructions provided here](https://docs.mod.io/restapiref/#steam) to authenticate players using Steam SSO, by calling the `/external/steamauth` endpoint.

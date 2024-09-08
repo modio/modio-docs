@@ -30,3 +30,5 @@ Once you have configured your game for Epic SSO, you can call the Epic Authentic
 * For the C++ SDK, [click here](/cppsdk/getting-started/#ssoexternal-authentication)
 * For Unreal Engine, [click here](/unreal/getting-started/#ssoexternal-authentication)
 * For Unity Engine, [click here](/unity/getting-started/#authentication)
+
+If you are building something custom using the mod.io REST API, follow the [instructions provided here](https://docs.mod.io/restapiref/#epic-games) to authenticate players using Epic Games SSO, by calling the `/external/epicgamesauth` endpoint.

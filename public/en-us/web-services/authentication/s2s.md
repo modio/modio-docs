@@ -2,7 +2,7 @@
 id: s2s
 title: Authenticating your secure backend server for S2S requests
 slug: /web-services/authentication/s2s/
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 # Overview

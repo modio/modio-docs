@@ -36,7 +36,7 @@ On PS4/PS5, only UGC which follows the rules should be made available to downloa
 
 ## Authentication
 
-On PS4/PS5, you can authenticate the user via our PlayStation™Network authentication flow, or by using their email address. We highly recommend using the authentication flow where possible, as it is instant vs email which is not, and more importantly synchronizes a user's PlayStation Network blocklist. The ability to be able to block content from users is a TRC requirement, therefore users must be authenticated before they can access your UGC content via mod.io. 
+On PS4/PS5, you can authenticate the user via our PlayStation™Network authentication flow, or by using their email address. We highly recommend using the authentication flow where possible, as it is instant and accessible vs email which is not, and more importantly synchronizes a user's PlayStation Network blocklist. The ability to be able to block content from users is a TRC requirement, therefore users must be authenticated before they can access your UGC content via mod.io. Detailed instructions can be [found here](https://docs.mod.io/partners/ps5/authentication/) (to access this documentation you must complete the required [SDK Access step](#sdk-access)).
 
 If you choose to use PlayStation Network authentication, Sony Interactive Entertainment requires that you collect user consent before they are authenticated for the first time. So when a user clicks the “UGC” button in-game, you must display an [acceptance dialog](/terms/).
 

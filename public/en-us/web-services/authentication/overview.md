@@ -11,11 +11,11 @@ When interacting with mod.io you may wish to use your own managed identity provi
 
 ## Supported Use Cases
 
+We recommend using the applicable Platform SSO for in-game authentication and sign-in via our website. mod.io also offers Studio SSO using OpenID as a premium feature in cases where a studio wishes to use it's own identity provider for authentication.
+
 | **Origin of Authentication** | **Recommended Flow**                        |
 | ---------------------------- | ------------------------------------------- |
-| In-game                      | [OpenID](/web-services/authentication/openid/)                                      | 
-| mod.io Website               | [OAuth 2.0 Authorization Code Flow](/web-services/authentication/website/)         | 
+| In-game                      | [OpenID](/web-services/authentication/openid/) or [Platform SSO](/web-services/authentication/platform/) or [Email](/web-services/authentication/platform/#email-authentication) |
+| mod.io Website               | [OAuth 2.0 Authorization Code Flow](/web-services/authentication/website/) |
 | Studio Website               | [OAuth 2.0 Authorization Code Flow](/web-services/authentication/sign-in-with-modio/) |
-| Embeddable ModHub            | [OpenID](/web-services/authentication/openid/) or [OAuth 2.0 Authorization Code Flow](/web-services/authentication/website/) | 
-
-We recommend using one of our [first-party authentication options](/platforms/) for in-game sign-on or sign-in via our website. mod.io also offers studio authentication as a premium feature in cases where a studio wishes to use it's own identity provider for authentication.
+| Embeddable ModHub            | [OpenID](/web-services/authentication/openid/) or [OAuth 2.0 Authorization Code Flow](/web-services/authentication/website/) |

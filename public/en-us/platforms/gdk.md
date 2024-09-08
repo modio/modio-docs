@@ -35,7 +35,7 @@ On Xbox, only UGC which follows the rules should be made available to download a
 
 ## Authentication
 
-On Xbox platforms, you can authenticate the user via our Xbox Live authentication flow, or using their email address. We highly recommend using Xbox Live authentication where possible, as it is instant vs email which is not. 
+On Xbox platforms, you can authenticate the user via our Xbox Live authentication flow, or using their email address. We highly recommend using Xbox Live authentication where possible, as it is instant and accessible vs email which is not. Detailed instructions can be [found here](https://docs.mod.io/partners/xbox/authentication/) (to access this documentation you must complete the required [SDK Access step](#sdk-access)).
 
 If your implementation displays the mod.io website or custom web app through a browser overlay, we recommend adding the following query strings to the URL depending on the authentication method you have chosen to support:
 * Xbox Live Authentication: `?portal=xboxlive&login=auto`

@@ -2,7 +2,7 @@
 id: website-to-modio-sso
 title: Sign into your web application with mod.io
 slug: /web-services/authentication/sign-in-with-modio/
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 # Overview

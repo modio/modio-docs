@@ -22,3 +22,5 @@ Once you have configured your game for GOG SSO, you can call the GOG Authenticat
 * For the C++ SDK, [click here](/cppsdk/getting-started/#ssoexternal-authentication)
 * For Unreal Engine, [click here](/unreal/getting-started/#ssoexternal-authentication)
 * For Unity Engine, [click here](/unity/getting-started/#authentication)
+
+If you are building something custom using the mod.io REST API, follow the [instructions provided here](https://docs.mod.io/restapiref/#gog-galaxy) to authenticate players using GOG SSO, by calling the `/external/galaxyauth` endpoint.

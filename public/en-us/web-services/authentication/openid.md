@@ -1,8 +1,8 @@
 ---
 id: openid
-title: In-game login using OpenID
+title: In-game login using your OpenID
 slug: /web-services/authentication/openid/
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 # Overview
