@@ -14,16 +14,16 @@ So you’ve [shown the user some mods](browsing-mods), and they've picked one th
 
 Users indicate they want to install a mod by **subscribing** to it. Subscriptions are stored on the mod.io servers and are associated with a user’s mod.io account, so subscribed mods for a given game will be installed to all devices where a user logs into mod.io for that game.  Similarly, when a user **unsubscribes** from a mod, that mod will be uninstalled from every device they’re logged into mod.io with for that game. 
 
-Subscriptions are managed with calls to either [`SubscribeToModAsync`](/unrealref/#K2_SubscribeToModAsync) or [`UnsubscribeFromModAsync`](/unrealref/#K2_UnsubscribeFromModAsync) containing the desired `ModioModID` and a delegate to receive the status of the request.
+Subscriptions are managed with calls to either [`SubscribeToModAsync`](https://docs.mod.io/unrealref/#K2_SubscribeToModAsync) or [`UnsubscribeFromModAsync`](https://docs.mod.io/unrealref/#K2_UnsubscribeFromModAsync) containing the desired `ModioModID` and a delegate to receive the status of the request.
 
 :::note
-To subscribe or unsubscribe from a mod, [**`EnableModManagement`**](/unrealref/#K2_EnableModManagement) *must* be called beforehand.
+To subscribe or unsubscribe from a mod, [**`EnableModManagement`**](https://docs.mod.io/unrealref/#K2_EnableModManagement) *must* be called beforehand.
 :::
 
 `SubscribeToModAsync` also takes a bool indicating whether or not to to subscribe to any and all dependencies for the given `ModioModID`. 
 
 :::note
-When dependencies are included in the `SubscribeToModAsync` call, they will *not* download automatically. **Only the primary mod specified by `ModioModID` will download automatically.**  To download all subscribed content including dependencies, call [`FetchExternalUpdatesAsync`](/unrealref/#K2_FetchExternalUpdatesAsync) after `SubscribeToModAsync` successfully completes.
+When dependencies are included in the `SubscribeToModAsync` call, they will *not* download automatically. **Only the primary mod specified by `ModioModID` will download automatically.**  To download all subscribed content including dependencies, call [`FetchExternalUpdatesAsync`](https://docs.mod.io/unrealref/#K2_FetchExternalUpdatesAsync) after `SubscribeToModAsync` successfully completes.
 :::
 
 <Tabs group-id="languages">
@@ -78,7 +78,7 @@ void UModioManagerSubsystem::OnUnsubscribeFromModComplete(FModioErrorCode ErrorC
 
 Because mod.io's services are available via our website, users can manage their subscriptions outside of your application. This means that we need to be able to query the server for any external subscription changes. 
 
-Call [`FetchExternalUpdatesAsync`](/unrealref/#K2_FetchExternalUpdatesAsync) to synchronise the server state with the plugin’s local subscriptions.  Any required installations or uninstallations based on the updated user subscriptions will be processed automatically.
+Call [`FetchExternalUpdatesAsync`](https://docs.mod.io/unrealref/#K2_FetchExternalUpdatesAsync) to synchronise the server state with the plugin’s local subscriptions.  Any required installations or uninstallations based on the updated user subscriptions will be processed automatically.
 
 <Tabs group-id="languages">
   <TabItem value="blueprint" label="Blueprint">
@@ -109,15 +109,15 @@ void UModioManagerSubsystem::OnFetchExternalUpdatesComplete(FModioErrorCode Erro
 </Tabs>
 
 :::warning
-Call [`FetchExternalUpdatesAsync`](/unrealref/#K2_FetchExternalUpdatesAsync) sparingly, only when required to ensure that the local state is up-to-date such as on game start-up or based on user input (i.e. as a button on your UI). It should **NOT** be called on tick.
+Call [`FetchExternalUpdatesAsync`](https://docs.mod.io/unrealref/#K2_FetchExternalUpdatesAsync) sparingly, only when required to ensure that the local state is up-to-date such as on game start-up or based on user input (i.e. as a button on your UI). It should **NOT** be called on tick.
 :::
 
 ## Checking the user subscription list
 
-To see which mods the user has subscribed to, call [`QueryUserSubscriptions`](/unrealref/#QueryUserSubscriptions).  This retrieves a `TMap` of [`ModioModCollectionEntry`](/unrealref/#_modiomodcollectionentry) objects, one for each subscribed mod. Each `ModioModCollectionEntry` object contains the mod’s state, profile information, ID and more.
+To see which mods the user has subscribed to, call [`QueryUserSubscriptions`](https://docs.mod.io/unrealref/#QueryUserSubscriptions).  This retrieves a `TMap` of [`ModioModCollectionEntry`](https://docs.mod.io/unrealref/#_modiomodcollectionentry) objects, one for each subscribed mod. Each `ModioModCollectionEntry` object contains the mod’s state, profile information, ID and more.
 
 :::note
-This collection includes mods that are still in the process of being installed! Make sure to check the result of [`GetModState`](/unrealref/#GetModState) before attempting to load files from the mods in this collection.  Alternatively, use [`QueryUserInstallations`](/unrealref/#QueryUserInstallations) as described in [**Retrieving mod directory paths for loading**](#retrieving-mod-directory-paths-for-loading).
+This collection includes mods that are still in the process of being installed! Make sure to check the result of [`GetModState`](https://docs.mod.io/unrealref/#GetModState) before attempting to load files from the mods in this collection.  Alternatively, use [`QueryUserInstallations`](https://docs.mod.io/unrealref/#QueryUserInstallations) as described in [**Retrieving mod directory paths for loading**](#retrieving-mod-directory-paths-for-loading).
 :::
 
 <Tabs group-id="languages">
@@ -144,12 +144,12 @@ void UModioManagerSubsystem::QueryUserSubscriptions()
 
 ## Installation management
 
-So a subscription marks a mod as requiring installation, and an unsubscription indicates uninstallation, but how do you actually control when the plugin **does** those things? After all, you don’t want a mod to be uninstalled after your main program has loaded those files into memory, locking them from deletion. Likewise, you probably don’t want to be using networking or processor resources during gameplay for downloading mods. To give you control over when these processes occur without forcing you to shut down the plugin, you can call [`EnableModManagement`](/unrealref/#K2_EnableModManagement) and [`DisableModManagement`](/unrealref/#DisableModManagement).
+So a subscription marks a mod as requiring installation, and an unsubscription indicates uninstallation, but how do you actually control when the plugin **does** those things? After all, you don’t want a mod to be uninstalled after your main program has loaded those files into memory, locking them from deletion. Likewise, you probably don’t want to be using networking or processor resources during gameplay for downloading mods. To give you control over when these processes occur without forcing you to shut down the plugin, you can call [`EnableModManagement`](https://docs.mod.io/unrealref/#K2_EnableModManagement) and [`DisableModManagement`](https://docs.mod.io/unrealref/#DisableModManagement).
 
-To notify your users when a mod is finished installing or updating, [`EnableModManagement`](/unrealref/#K2_EnableModManagement) asks you to provide it with a callback. This callback will be invoked **every time** a [`ModioModManagementEvent`](/unrealref/#_modiomodmanagementevent) occurs i.e. whenever a mod is installed, updated, uninstalled, or uploaded by the plugin’s internal event loop. This behavior persists until a corresponding call to [`DisableModManagement`](/unrealref/#DisableModManagement) or [`ShutdownAsync`](/unrealref/#K2_ShutdownAsync) is made.
+To notify your users when a mod is finished installing or updating, [`EnableModManagement`](https://docs.mod.io/unrealref/#K2_EnableModManagement) asks you to provide it with a callback. This callback will be invoked **every time** a [`ModioModManagementEvent`](https://docs.mod.io/unrealref/#_modiomodmanagementevent) occurs i.e. whenever a mod is installed, updated, uninstalled, or uploaded by the plugin’s internal event loop. This behavior persists until a corresponding call to [`DisableModManagement`](https://docs.mod.io/unrealref/#DisableModManagement) or [`ShutdownAsync`](https://docs.mod.io/unrealref/#K2_ShutdownAsync) is made.
 
 :::note
-[`EnableModManagement`](/unrealref/#K2_EnableModManagement) is not an async function.  It does not end with the `*Async` suffix. Its callback operates differently to asynchronous result callbacks used elsewhere in the mod.io plugin. 
+[`EnableModManagement`](https://docs.mod.io/unrealref/#K2_EnableModManagement) is not an async function.  It does not end with the `*Async` suffix. Its callback operates differently to asynchronous result callbacks used elsewhere in the mod.io plugin. 
 :::
 
 <Tabs group-id="languages">
@@ -200,11 +200,11 @@ void UModioManagerSubsystem::ModManagementCallback(FModioModManagementEvent ModM
   </TabItem>
 </Tabs>
 
-While mod management is enabled, the plugin assumes that it has the ability to make changes to the filesystem, including deleting mods that the user has no longer subscribed to. As a result you should make sure that you don’t have any open handles to files inside the mod directories when you call [`EnableModManagement`](/unrealref/#K2_EnableModManagement).
+While mod management is enabled, the plugin assumes that it has the ability to make changes to the filesystem, including deleting mods that the user has no longer subscribed to. As a result you should make sure that you don’t have any open handles to files inside the mod directories when you call [`EnableModManagement`](https://docs.mod.io/unrealref/#K2_EnableModManagement).
 
-When you want to be able to freely open files in the mod directories, call [`DisableModManagement`](/unrealref/#DisableModManagement). The plugin will finish the current operation but will not continue any others. 
+When you want to be able to freely open files in the mod directories, call [`DisableModManagement`](https://docs.mod.io/unrealref/#DisableModManagement). The plugin will finish the current operation but will not continue any others. 
 
-Call [`IsModManagementBusy`](/unrealref/#IsModManagementBusy) to see if mod management is currently processing a mod. 
+Call [`IsModManagementBusy`](https://docs.mod.io/unrealref/#IsModManagementBusy) to see if mod management is currently processing a mod. 
 
 <Tabs group-id="languages">
   <TabItem value="c++" label="C++" default>
@@ -228,7 +228,7 @@ void UModioManagerSubsystem::DisableModManagement()
 
 So now we have the user picking mods and marking them for installation, we’re enabling mod management at a point where we don’t mind the plugin changing the filesystem, and mods are being installed by the plugin. We now need to know where they are on disk, otherwise you can’t load them into your game!
 
-The easiest way to do this is by using [`QueryUserInstallations`](/unrealref/#QueryUserInstallations). This function returns a `TMap` of [`ModioModCollectionEntry`](/unrealref/#_modiomodcollectionentry) objects that can be queried for folder paths to use for loading a mod's files into your game. `QueryUserInstallations` also allows you to specify whether or not to include outdated mods.
+The easiest way to do this is by using [`QueryUserInstallations`](https://docs.mod.io/unrealref/#QueryUserInstallations). This function returns a `TMap` of [`ModioModCollectionEntry`](https://docs.mod.io/unrealref/#_modiomodcollectionentry) objects that can be queried for folder paths to use for loading a mod's files into your game. `QueryUserInstallations` also allows you to specify whether or not to include outdated mods.
 
 <Tabs group-id="languages">
   <TabItem value="c++" label="C++" default>

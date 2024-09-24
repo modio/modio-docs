@@ -11,7 +11,7 @@ import TabItem from '@theme/TabItem';
 ## `ModioSubsystem`
 The mod.io Unreal Engine Plugin consumes our [Native SDK](/cppsdk/) internally, and its public API is similar. The Native SDK exposes a number of free functions within the `Modio` namespace, and this plugin wraps those functions in a [Subsystem](https://dev.epicgames.com/documentation/en-us/unreal-engine/programming-subsystems-in-unreal-engine).
 
-The lifetime of the [`ModioSubsystem`](/unrealref/#_modiosubsystem) is automatically managed by the engine and provides a convenient way to access the plugin's functionality.  This is broadly grouped into the following categories:
+The lifetime of the [`ModioSubsystem`](https://docs.mod.io/unrealref/#_modiosubsystem) is automatically managed by the engine and provides a convenient way to access the plugin's functionality.  This is broadly grouped into the following categories:
 
 * Plugin management (initialization, teardown, event loop)
 * User authentication
@@ -33,7 +33,7 @@ The plugin uses UTF8 for all strings, as does the mod.io REST API.
 
 ## Thread-safety guarantees
 
-The mod.io plugin is thread-safe with the exception of [`RunPendingHandlers`](/unrealref/#RunPendingHandlers). If you are calling `RunPendingHandlers` manually, you must always call it on the same thread.
+The mod.io plugin is thread-safe with the exception of [`RunPendingHandlers`](https://docs.mod.io/unrealref/#RunPendingHandlers). If you are calling `RunPendingHandlers` manually, you must always call it on the same thread.
 
 :::note
 The plugin event loop, any internal event handlers, and all callbacks you provide to the mod.io plugin will be run on the thread invoking `RunPendingHandlers`.
@@ -49,7 +49,7 @@ All async methods in the public API end with the suffix `Async`.
 
 ### Callback conventions
 
-All of these asynchronous methods take a delegate as an argument, which will be invoked **exactly once** with the results of the requested operation. Every async callback takes a [`ModioErrorCode`](/unrealref/#_modioerrorcode) as its first parameter, with any optional results wrapped in `TOptional` so that you can easily check if a result is valid.
+All of these asynchronous methods take a delegate as an argument, which will be invoked **exactly once** with the results of the requested operation. Every async callback takes a [`ModioErrorCode`](https://docs.mod.io/unrealref/#_modioerrorcode) as its first parameter, with any optional results wrapped in `TOptional` so that you can easily check if a result is valid.
 
 Async functions should not be considered complete until their callback is invoked.  For example, although `InitializeAsync` returns immediately, you must wait for its callback (with a successful `ModioErrorCode`) before you are able to call any other functions from the `ModioSubsystem`.
 
@@ -61,7 +61,7 @@ Even if the plugin is shut down while asynchronous operations are in-flight, you
 
 ### Maintaining the plugin event loop
 
-In order to provide a non-blocking implementation, the plugin operates an internal event loop. This event loop will only ever run on the thread which calls [`RunPendingHandlers`](/unrealref/#RunPendingHandlers).  `RunPendingHandlers` is the function we provide to tick the internal event loop and process any pending work the plugin needs to perform.
+In order to provide a non-blocking implementation, the plugin operates an internal event loop. This event loop will only ever run on the thread which calls [`RunPendingHandlers`](https://docs.mod.io/unrealref/#RunPendingHandlers).  `RunPendingHandlers` is the function we provide to tick the internal event loop and process any pending work the plugin needs to perform.
 
 You should either enable the [configuration setting](/unreal/installation-and-setup/#plugin-configuration) to allow the plugin to manage a background thread which automatically calls `RunPendingHandlers`, or invoke it on tick in the game thread yourself. 
 
@@ -71,7 +71,7 @@ This means that if you stop calling `RunPendingHandlers`, any pending asynchrono
 
 ## Error handling
 
-Many of the plugin's functions utilize the [`ModioErrorCode`](/unrealref/#_modioerrorcode) type.  For example, all [async](#non-blocking-asynchronous-interface) functions take a `ModioErrorCode` as the first parameter for the function's delegate. This is essentially an opaque wrapper around a numeric error code with a category and an associated string message. 
+Many of the plugin's functions utilize the [`ModioErrorCode`](https://docs.mod.io/unrealref/#_modioerrorcode) type.  For example, all [async](#non-blocking-asynchronous-interface) functions take a `ModioErrorCode` as the first parameter for the function's delegate. This is essentially an opaque wrapper around a numeric error code with a category and an associated string message. 
 
 The plugin doesn’t attempt to predict what your error-handling logic or requirements are.  Instead, we return the error code to you so you can decide what to do. For instance, if you call a function and receive an error code matching a network error condition, do you want to close down the plugin? Retry again according to custom back-off logic? That decision is left to the consuming application. 
 
@@ -79,7 +79,7 @@ For more details on the error codes and how to inspect their values, please see 
 
 ## User sessions
 
-The mod.io plugin runs on a per-platform-user basis. If you are using the plugin on a platform that requires user switching support, you must call [`ShutdownAsync`](/unrealref/#K2_ShutdownAsync) and re-initialize the plugin by calling [`InitializeAsync`](/unrealref/#K2_InitializeAsync) with a different [Session ID](#session-ids). 
+The mod.io plugin runs on a per-platform-user basis. If you are using the plugin on a platform that requires user switching support, you must call [`ShutdownAsync`](https://docs.mod.io/unrealref/#K2_ShutdownAsync) and re-initialize the plugin by calling [`InitializeAsync`](https://docs.mod.io/unrealref/#K2_InitializeAsync) with a different [Session ID](#session-ids). 
 
 Generating a stable platform-specific Session ID for each user will ensure that an incoming user who has already authenticated with mod.io on the current device and game won’t need to re-authenticate unless their authentication token has expired.
 

@@ -17,7 +17,7 @@ These steps are outlined below. Mods can also be edited after submission, as [de
 
 ## Submitting a new mod
 
-To submit a mod, you must first create a mod handle using [`GetModCreationHandle`](/unrealref/#K2_GetModCreationHandle), and use that handle when calling [`SubmitNewModAsync`](/unrealref/#K2_SubmitNewModAsync). Note that the newly created mod will remain hidden until a mod file is added in the next step.
+To submit a mod, you must first create a mod handle using [`GetModCreationHandle`](https://docs.mod.io/unrealref/#K2_GetModCreationHandle), and use that handle when calling [`SubmitNewModAsync`](https://docs.mod.io/unrealref/#K2_SubmitNewModAsync). Note that the newly created mod will remain hidden until a mod file is added in the next step.
 <Tabs group-id="languages">
 
   <TabItem value="blueprint" label="Blueprint">
@@ -55,7 +55,7 @@ void UModioManagerSubsystem::OnSubmitNewModComplete(FModioErrorCode ErrorCode, T
 
 ## Submitting a file for a mod
 
-Once you have successfully submitted a mod, you can submit a mod file for that mod using [`SubmitNewModFileForMod`](/unrealref/#K2_SubmitNewModFileForMod). When you submit a mod file, you pass a [`ModioCreateModFileParams`](/unrealref/#_modiocreatemodfileparams) containing the directory containing all the files that you want to submit. The plugin will compress this folder into a .zip file and upload it as the active version of the mod. 
+Once you have successfully submitted a mod, you can submit a mod file for that mod using [`SubmitNewModFileForMod`](https://docs.mod.io/unrealref/#K2_SubmitNewModFileForMod). When you submit a mod file, you pass a [`ModioCreateModFileParams`](https://docs.mod.io/unrealref/#_modiocreatemodfileparams) containing the directory containing all the files that you want to submit. The plugin will compress this folder into a .zip file and upload it as the active version of the mod. 
 
 In the future, if the mod is updated and requires a new mod file, `SubmitNewModFileForMod` can be called again. The most recent mod file uploaded by `SubmitNewModFileForMod` will be set as the active version. 
 

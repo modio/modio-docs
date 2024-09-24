@@ -16,7 +16,7 @@ To perform any of these actions, the muting user must be authenticated.
 
 ## Mute a user
 
-To mute a user, call [`MuteUserAsync`](/unrealref/#K2_MuteUserAsync) with the corresponding `ModioUserID` and a callback.
+To mute a user, call [`MuteUserAsync`](https://docs.mod.io/unrealref/#K2_MuteUserAsync) with the corresponding `ModioUserID` and a callback.
 
 <Tabs group-id="languages">
   <TabItem value="blueprint" label="Blueprint">
@@ -53,7 +53,7 @@ void UModioManagerSubsystem::OnMuteUserComplete(FModioErrorCode ErrorCode)
 
 ## Unmute a user
 
-To perform the inverse operation call [`UnmuteUserAsync`](/unrealref/#K2_UnmuteUserAsync) with the corresponding `ModioUserID` and a callback.
+To perform the inverse operation call [`UnmuteUserAsync`](https://docs.mod.io/unrealref/#K2_UnmuteUserAsync) with the corresponding `ModioUserID` and a callback.
 
 <Tabs group-id="languages">
   <TabItem value="blueprint" label="Blueprint">
@@ -89,7 +89,7 @@ void UModioManagerSubsystem::OnUnmuteUserComplete(FModioErrorCode ErrorCode)
 
 ## List muted users
 
-[`GetMutedUsersAsync`](/unrealref/#K2_GetMutedUsersAsync) returns a list of users previously muted by an authenticated user. 
+[`GetMutedUsersAsync`](https://docs.mod.io/unrealref/#K2_GetMutedUsersAsync) returns a list of users previously muted by an authenticated user. 
 
 <Tabs group-id="languages">
   <TabItem value="blueprint" label="Blueprint">

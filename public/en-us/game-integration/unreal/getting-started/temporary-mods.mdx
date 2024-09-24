@@ -12,9 +12,9 @@ In some situations, you may want mods to only exist on a temporary basis. For in
 
 Temp mods are downloaded to a separate folder from subscriptions, and are not updated or handled when you call `FetchExternalUpdatesAsync`. That means you can prioritize download and installation of temp mods outside of the regular subscription flow.
 
-To use temp mods, you can start a `TempModSet` by calling `InitTempModSet` and passing a list of `ModioModIDs` to be downloaded and extracted. At any time while a `TempModSet` is open, you can call [`AddToTempModSet`](/unrealref/#K2_AddToTempModSet) to add mods to the set.  These will be instantly downloaded and extracted. If you no longer need a mod, you can call [`RemoveFromTempModSet`](/unrealref/#K2_RemoveFromTempModSet) which will remove the file. Once you have finished with a `TempModSet`, call [`CloseTempModSet`](/unrealref/#K2_CloseTempModSet) which will delete all temporary mods. Temporary mods are also deleted the next time you re-initialize the mod.io plugin.
+To use temp mods, you can start a `TempModSet` by calling `InitTempModSet` and passing a list of `ModioModIDs` to be downloaded and extracted. At any time while a `TempModSet` is open, you can call [`AddToTempModSet`](https://docs.mod.io/unrealref/#K2_AddToTempModSet) to add mods to the set.  These will be instantly downloaded and extracted. If you no longer need a mod, you can call [`RemoveFromTempModSet`](https://docs.mod.io/unrealref/#K2_RemoveFromTempModSet) which will remove the file. Once you have finished with a `TempModSet`, call [`CloseTempModSet`](https://docs.mod.io/unrealref/#K2_CloseTempModSet) which will delete all temporary mods. Temporary mods are also deleted the next time you re-initialize the mod.io plugin.
 
-Like regular mods, temp mods can be queried using [`QueryTempModSet`](/unrealref/#K2_QueryTempModSet) to get a `ModioModCollectionEntry` with an installation path.
+Like regular mods, temp mods can be queried using [`QueryTempModSet`](https://docs.mod.io/unrealref/#K2_QueryTempModSet) to get a `ModioModCollectionEntry` with an installation path.
 
 ### Installing Temporary Mods
 

@@ -27,7 +27,7 @@ If the Online Subsystem login fails at any point in the above process, fall back
 
 ## Terms & user consent 
 
-Users must accept the mod.io Terms of Service before using any mod.io services.  The Terms of Service can be fetched from mod.io using [`GetTermsOfUseAsync`](/unrealref/#K2_GetTermsOfUseAsync).  Before attempting authentication, ensure these terms are displayed to and accepted by the user.  
+Users must accept the mod.io Terms of Service before using any mod.io services.  The Terms of Service can be fetched from mod.io using [`GetTermsOfUseAsync`](https://docs.mod.io/unrealref/#K2_GetTermsOfUseAsync).  Before attempting authentication, ensure these terms are displayed to and accepted by the user.  
 
 See our full [Terms & User Consent](/terms/) documentation for further details.
 
@@ -47,7 +47,7 @@ Users can authenticate to mod.io with just an email address.  This involves:
 
 #### Requesting an authentication code
 
-Request a one-time authentication code by calling [`RequestEmailAuthCodeAsync`](/unrealref/#K2_RequestEmailAuthCodeAsync).  Pass in a user-provided email address as the first argument.
+Request a one-time authentication code by calling [`RequestEmailAuthCodeAsync`](https://docs.mod.io/unrealref/#K2_RequestEmailAuthCodeAsync).  Pass in a user-provided email address as the first argument.
 
 <Tabs groupId="languages">
   <TabItem value="cpp" label="C++" default>
@@ -75,7 +75,7 @@ When your callback is invoked, inspect the `ModioErrorCode` for a successful res
 
 #### Submitting an authentication code
 
-To finalize the user's authentication, submit the code they have entered to mod.io by calling [`AuthenticateUserEmailAsync`](/unrealref/#K2_AuthenticateUserEmailAsync).  Pass the user's code in as the first argument.
+To finalize the user's authentication, submit the code they have entered to mod.io by calling [`AuthenticateUserEmailAsync`](https://docs.mod.io/unrealref/#K2_AuthenticateUserEmailAsync).  Pass the user's code in as the first argument.
 
 <Tabs groupId="languages">
   <TabItem value="cpp" label="C++">
@@ -104,7 +104,7 @@ When your callback is invoked, inspect the `ModioErrorCode` for a successful res
 
 ### Single sign-on authentication
 
-The mod.io Unreal Engine plugin features single sign-on (SSO) authentication from a number of [external providers](/unrealref/#_emodioauthenticationprovider). These include:
+The mod.io Unreal Engine plugin features single sign-on (SSO) authentication from a number of [external providers](https://docs.mod.io/unrealref/#_emodioauthenticationprovider). These include:
 
 - [Xbox Live](/platforms/gdk#authentication)
 - [Steam](/platforms/steam/authentication)
@@ -122,9 +122,9 @@ The mod.io Unreal Engine plugin features single sign-on (SSO) authentication fro
 OpenID is a premium feature. If you are interested in mod.io premium features, please contact developers@mod.io.
 :::
 
-Each platform has their own requirements and prerequisites for performing SSO.  Platform-specific authentication can be found in the respective [platform documentation](/platforms/).  SSO is performed by calling [`AuthenticateUserExternalAsync`](/unrealref/#K2_AuthenticateUserExternalAsync).  This function takes a [`ModioAuthenticationParams`](/unrealref/#_modioauthenticationparams) containing provider-specific parameters, and a [`ModioAuthenticationProvider`](/unrealref/#_emodioauthenticationprovider) indicating the provider you're using.   
+Each platform has their own requirements and prerequisites for performing SSO.  Platform-specific authentication can be found in the respective [platform documentation](/platforms/).  SSO is performed by calling [`AuthenticateUserExternalAsync`](https://docs.mod.io/unrealref/#K2_AuthenticateUserExternalAsync).  This function takes a [`ModioAuthenticationParams`](https://docs.mod.io/unrealref/#_modioauthenticationparams) containing provider-specific parameters, and a [`ModioAuthenticationProvider`](https://docs.mod.io/unrealref/#_emodioauthenticationprovider) indicating the provider you're using.   
 
-[Unreal Engine's Online Subsystem](#using-the-unreal-online-subsystem) provides a convenient way to get a token for `ModioAuthenticationParams.AuthToken`. [`GetDefaultAuthProviderForCurrentPlatform`](/unrealref/#GetDefaultAuthProviderForCurrentPlatform) can be used to get the default provider for the current platform. 
+[Unreal Engine's Online Subsystem](#using-the-unreal-online-subsystem) provides a convenient way to get a token for `ModioAuthenticationParams.AuthToken`. [`GetDefaultAuthProviderForCurrentPlatform`](https://docs.mod.io/unrealref/#GetDefaultAuthProviderForCurrentPlatform) can be used to get the default provider for the current platform. 
 
 :::note
 The plugin will automatically URL encode parameters (such as the auth token) when making the request.
@@ -225,6 +225,6 @@ void UModioManagerSubsystem::OnGetLinkedAccountTokenComplete(int LocalUserNum, b
 
 ## Token Lifetime & Re-Authentication
 
-By default, tokens issued via email token exchange have a lifetime of 1 year. You can verify that a user has been successfully authenticated with [`VerifyUserAuthenticationAsync`](/unrealref/#K2_VerifyUserAuthenticationAsync). 
+By default, tokens issued via email token exchange have a lifetime of 1 year. You can verify that a user has been successfully authenticated with [`VerifyUserAuthenticationAsync`](https://docs.mod.io/unrealref/#K2_VerifyUserAuthenticationAsync). 
 
 If a user is not authenticated for any reason (e.g. their token has been invalidated by changing their password, or their profile data has been removed from their device) then you should prompt them to re-authenticate.
