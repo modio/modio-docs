@@ -42,8 +42,37 @@ const sidebars = {
     {
       type: 'category',
       label: 'Unreal',
-      link: {type: 'doc', id: 'game-integration/unreal/index-unreal'},
-      items: ['game-integration/unreal/installation-and-setup', 'game-integration/unreal/getting-started', 'game-integration/unreal/ui-getting-started', 'game-integration/unreal/profiling', 'game-integration/unreal/mod-creation-tool', 'game-integration/unreal/android-configuration', 'game-integration/unreal/marketplace',  
+      link: {type: 'doc', id: 'game-integration/unreal/ue-index'},
+      items: [
+        'game-integration/unreal/ue-installation-and-setup', 
+        {
+          type: 'category',
+          label: 'Getting Started',
+          link: {type: 'doc', id: 'game-integration/unreal/getting-started/ue-getting-started'},
+          items: [
+            'game-integration/unreal/getting-started/ue-plugin-structure', 
+            'game-integration/unreal/getting-started/ue-initialization',
+            'game-integration/unreal/getting-started/ue-user-authentication',
+            'game-integration/unreal/getting-started/ue-browsing-mods',
+            'game-integration/unreal/getting-started/ue-mod-subscriptions',
+            'game-integration/unreal/getting-started/ue-submit-mods',
+            'game-integration/unreal/getting-started/ue-edit-mods',
+            'game-integration/unreal/getting-started/ue-error-handling',
+            'game-integration/unreal/getting-started/ue-monetization',
+            'game-integration/unreal/getting-started/ue-temporary-mods',
+            'game-integration/unreal/getting-started/ue-mute-user',
+          ]
+        },
+        'game-integration/unreal/ue-marketplace', 
+        'game-integration/unreal/ue-asset-support-for-mods', 
+        'game-integration/unreal/ue-profiling', 
+        'game-integration/unreal/ue-mod-creation-tool', 
+        'game-integration/unreal/ue-android-configuration', 
+        'guides/ue-mod-loading',
+        {
+          type: 'category', 
+          label: 'Legacy', 
+          items: ['guides/ue4-quicklook']},
         {
           type: 'link',
           label: 'Unreal Reference', 

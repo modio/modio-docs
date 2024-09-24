@@ -1,18 +1,19 @@
 ---
-id: index-unreal
+id: ue-index
 title: Overview
 slug: /unreal/
-sidebar_position: 0
 custom_edit_url: https://github.com/modio/modio-ue4-internal/blob/develop/Plugins/Modio/Doc/index.mdx
 ---
 
-The mod.io Unreal Engine plugin allows game developers to host and automatically install user-created mods in their games which use Unreal Engine 5. It provides a UI for mod discovery, installation and collection management, and a C++ and Blueprint interface around the mod.io SDK, which connects to the [mod.io REST API](https://docs.mod.io).
+The mod.io Unreal Engine plugin enables game developers to easily integrate mods into their Unreal Engine 5 games. 
 
-You can download the Unreal Engine plugin from the [mod.io GitHub Repository](https://github.com/modio/modio-ue) and follow the [installation guide](/unreal/setup/) for installing and configuring the plugin.
+The plugin provides a C++ and Blueprint interface around the [mod.io SDK](/cppsdk/) to connect to the [mod.io REST API](https://docs.mod.io/restapiref/). Also included is a set of UI components to easily create a custom user interface that matches your game's style, plus a comprehensive template UI to get you started. 
 
-## Engine & Platform Compatability
+You can download the Unreal Engine plugin from the [mod.io GitHub repository](https://github.com/modio/modio-ue) and follow the [installation guide](installation-and-setup/) for installing and configuring the plugin.  A series of [quick-start guides](getting-started/) are also available to familiarize yourself with the plugin's core features.
 
-The mod.io plugin is generally maintained to support the 3 most recent versions of Unreal Engine. If you are using an older version of the engine, you can access the last supported release of the engine from the Releases page.
+## Engine & platform compatability
+
+The mod.io plugin is generally maintained to support the 3 most recent versions of Unreal Engine. If you are using an older version of the engine, you can access the last supported release of the engine from our [releases page](https://github.com/modio/modio-ue/releases) on GitHub.
 
 ### Engine compatability
 
@@ -28,14 +29,15 @@ The mod.io plugin is generally maintained to support the 3 most recent versions 
 
 ### Platform compatability
 
-The mod.io Unreal Engine plugin supports Windows, Linux, iOS, Android and Mac as part of the public release. For access to Windows (GDK), XBox, PlayStation®4, PlayStation®5 or Switch, follow the [instructions here](/platforms/console-sdks/).
+The mod.io Unreal Engine plugin supports Windows, Linux, Android and macOS as part of the public release. For access to Windows (GDK), Xbox, PlayStation®4, PlayStation®5 or Switch, follow the [instructions here](/platforms/console-sdks/).
 
 ## Features
 
 * C++ and Blueprint support
+* UGC browsing and filtering
+* Automatic downloads and updates
+* Customizable component-based user interface
 * Permissive MIT/BSL-license
 * Async delegate-based interface
 * Non-blocking IO
-* Automatic downloads and updates
-* SSO authentication for email, Steam, Epic Games Store, console platform and custom implementations
-* UGC browsing and filtering
+* SSO authentication for Steam, Epic Games Store, console platform and custom implementations

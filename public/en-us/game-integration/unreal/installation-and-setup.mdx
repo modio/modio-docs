@@ -1,43 +1,45 @@
 ---
-id: installation-and-setup
+id: ue-installation-and-setup
 title: Installation & Setup
-slug: /unreal/setup/
-sidebar_position: 1
+slug: /unreal/installation-and-setup/
 custom_edit_url: https://github.com/modio/modio-ue4-internal/blob/develop/Plugins/Modio/Doc/installation-and-setup.mdx
 ---
 
 ## Adding plugin files to your project
 
+Download the Unreal Engine plugin from the [mod.io GitHub repository](https://github.com/modio/modio-ue) using one of the following methods:
+
 ### As a git submodule
 
-You can download the Unreal Engine plugin from the [mod.io GitHub Repository](https://github.com/modio/modio-ue) using one of the following methods.
+- In the directory with your `.uproject` file, add and download the mod.io plugin as a git submodule with the command: 
 
-1. Add the repository as a submodule to your repository in your project’s `Plugins/Modio` directory
+   `git submodule add https://github.com/modio/modio-ue.git Plugins/Modio`
 
-   In the directory with your .uproject file: `git submodule add https://github.com/modio/modio-ue Plugins/Modio`
-2. Initialize our submodules with `git submodule update --init --recursive`
+- Next, initialize our submodules and dependencies: 
+   
+   `git submodule update --init --recursive`
 
 ### In a non-git project, or without submodules
 
-1. Grab the latest release zip from the Releases section on GitHub, and extract the contents to your project’s `Plugins/Modio` directory
+- Grab the latest release zip from the [releases section](https://github.com/modio/modio-ue/releases) on GitHub and extract the contents to your project’s `Plugins/Modio` directory
 
 ![get_latest_release](img/get_latest_release.png) ![get_latest_release2](img/get_latest_release2.png)
 
 :::note
-The automatically generated zips in on the release page, or the 'Code' dropdown here, will not work! They do not contain our submodule dependencies. 
+GitHub's automatically generated zips will not work! They do not contain our submodule dependencies. Ensure you download the zip file from the releases page as highlighted above.
 :::
 
 ## Enabling the plugin
 
-Start the editor, then enable the plugin in the Unreal Engine settings:
+Start the editor and enable the plugin in the Unreal Engine plugin settings.
 
 ![plugin_window](img/plugin_window.png)
 
-Once this is done, you can configure the plugin and get started.
 
-## Plugin Configuration
 
-The plugin requires some configuration information to behave correctly. You can access the configuration settings in the Project Settings window:
+## Plugin configuration
+
+The plugin requires some initial configuration to behave correctly. You can access these settings in the Project Settings window:
 
 ![plugin_settings](img/plugin_settings.png)
 
@@ -47,32 +49,30 @@ The settings have the following parameters:
 | --- | --- |
 | Game Id | Your mod.io-provided Game Id for the target environment |
 | API Key | Your mod.io-provided API key for the target environment |
-| Environment | Your current environment, Live or Test |
+| Environment | Your target environment, `Live` or `Test` |
 | Log Level | The default logging level to use. Messages with a lower log level will be silently discarded. |
-| Portal | The default portal to use. This usually corresponds to the store your game will be being distributed through. |
+| Portal | The default portal to use. This usually corresponds to the store your game will be distributed through. |
+| Use Background Thread | Enables or disables the use of a [background thread](#using-a-background-thread) for the plugin's work. |
 
 :::note
-The Test environment is available for usage in limited circumstances. All games should be setup on the Live environment. If you require access to Test, please contact us.
+The Test environment is available for usage in limited circumstances only. **[All games should be set up on the Live environment](/unreal/setup/#using-the-live-environment)**. Set your game to **hidden** to restrict access during the testing phase. If you require access to Test, please contact us.
 :::
 
-### Using background thread
+## Using a background thread
 
-The mod.io plugin can be run on a background thread. Rather than calling [RunPendingHandlers](https://docs.mod.io/unrealref/#RunPendingHandlers) yourself, the mod.io plugin will spin up a background thread and continually call RunPendingHandlers for you. This option can be enabled in the mod.io project settings. This allows you to decouple the frequency with which you perform the plugin’s "work" from your games main thread, which improves performance of the plugin.
+[`RunPendingHandlers`](/unrealref/#RunPendingHandlers) is responsible for running any pending plugin work, including invoking callbacks passed to asynchronous operations.  With `Use Background Thread`  set to `true`, the mod.io plugin will automatically spin up a background thread and continually call `RunPendingHandlers` for you. This decouples the frequency of the plugin’s work from your game's main thread, and improves performance of the plugin overall.
 
-Calling methods from the ModioSubsystem will marshall all callbacks back to the game thread, and all other plugin call guarantees remain the same.
+Calling methods from the [`ModioSubsystem`](/unrealref/#_modiosubsystem) will marshall all callbacks back to the game thread.  All other plugin call guarantees remain the same.
 
-## Setting up your game
+## Using the `Live` environment
 
-Before release, you will be able to setup a "hidden" Live environment that will allow you to perform QA against the production environment before release, without exposing your title to the public. At this stage, only selected accounts are able to see your game page, and mods that are uploaded for your title. Once you are ready, you can change the state from "hidden" to "public" to make a full release of your game’s modding capabilities.
+All games should be set up on the `Live` environment for full access to the mod.io REST API's capabilities. 
 
-## Profiling
+If your game or it's modding capabilities are not yet publicly available, set your game to **hidden** on the `Live` environment.  This allows you to restrict access to specific accounts and perform QA against the production environment without exposing your title to the public. 
 
-The mod.io SDK ships with some profiling features that are integrated into Unreal’s stat commands. You can read more about enabling [profiling here](/unreal/profiling/).
-
-## Sample Projects
-
-You can find a sample project demonstrating basic mod.io functionality [here](https://go.mod.io/ue5-sample).
+Once you are ready, change the state from **hidden** to **public** for a full release of your game’s modding capabilities.
 
 ## Next Steps
-
-To begin using the Plugin, either from Blueprint or from C++, please read our [Getting Started Guide](/unreal/getting-started/) for a detailed explanation of initialization and usage.
+ 
+* Our [Getting Started Guide](/unreal/getting-started/) page contains a series of quick-start guides with code samples demonstrating the plugin's core functionality.
+* A sample project demonstrating basic mod.io functionality is available [here](https://go.mod.io/ue5-sample).
