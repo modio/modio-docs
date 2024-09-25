@@ -8,6 +8,10 @@ custom_edit_url: https://github.com/modio/modio-sdk-internal/blob/develop/doc/ge
 
 ## SDK structure and concepts
 
+The following diagram provides an overview of the mod.io SDK initialization procedure and its asynchronous nature.
+
+![alt:"mod.io SDK Initialization flow"](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/modio/modio-sdk/main/doc/chapters/diagrams/general-overview/modio_sdk_flow-init.puml)
+
 The mod.io SDK has a simple structure that primarily consists of a flat interface, with all public methods declared within `ModioSDK.h`.
 
 ### Value objects
@@ -67,7 +71,7 @@ Whilst it is safe to call all other SDK functions from a different thread to the
 
 By using a background thread for [RunPendingHandlers](/cppsdk/refdocs#runpendinghandlers), you can decouple the frequency with which you perform SDK 'work' from the frequency of your application's main loop for greater performance. 
 
-See * [Multithreading](#multithreading) for more information.
+See * [SDK quick-start: Multithreading](#sdk-quick-start-multithreading) for more information.
 :::
 
 ### Users and Local Profiles
@@ -100,7 +104,7 @@ An authenticated user is required to install mods and perform other operations. 
 To change a Local Profile's authenticated user, call [ClearUserDataAsync](/cppsdk/refdocs#clearuserdataasync) to remove the authenticated user, and then re-authenticate as normal.
 
 :::note
-A call to [ClearUserDataAsync](/cppsdk/refdocs#clearuserdataasync) removes the authenticated user from the local device, and disables mod management. Any installed content is marked for uninstallation from local storage if no other Local Profiles contain authenticated users with active subscriptions to it.
+A call to [ClearUserDataAsync](/cppsdk/refdocs#clearuserdataasync) removes the authenticated user from the local device. Any installed content is marked for uninstallation from local storage if no other Local Profiles contain authenticated users with active subscriptions to it.
 :::
 
 To add a newly authenticated user or switch to one already-authenticated without removing the current one, swap to another Local Profile by calling [ShutdownAsync](/cppsdk/refdocs#shutdownasync), then re-initialize via [InitializeAsync](/cppsdk/refdocs#initializeasync) specifying a different Local Profile name in the initialization parameters you supply.
@@ -111,7 +115,7 @@ Callback functions in the SDK either return a value or provide an [ErrorCode](/c
 
 The SDK doesn't attempt to predict what your error-handling logic or requirements are. For example, if you call a function and receive an error code `ec == Modio::HttpError::CannotOpenConnection`, your application could potentially handle this by shutting down the SDK. Another application, however, might wish to retry after an interval determined by its own internal logic. As a result, the SDK defers to your application to decide how to handle errors for the functions you call.
 
-For more details on the error codes and how to inspect their values, please see [Error Handling](#error-handling) and [ErrorCode](/cppsdk/refdocs#ErrorCode).
+For more details on the error codes and how to inspect their values, please see [SDK quick-start: Error Handling](#sdk-quick-start-error-handling) and [ErrorCode](/cppsdk/refdocs#ErrorCode).
 
 ### Mod Data Directories
 
@@ -152,20 +156,20 @@ However, this value can be overridden in one of two ways:
 
 The following guides are provided to help you through the basic functions of the SDK as described in [SDK structure and concepts](#sdk-structure-and-concepts).
 
-* [Initialization and Teardown](#initialization-and-teardown)
-* [Browsing available mods](#browsing-available-mods)
-* [User Authentication](#user-authentication)
-* [Mod management and subscriptions](#mod-management-and-subscriptions)
-* [In-game mod submission](#in-game-mod-submission)
-* [Edit an existing mod](#edit-an-existing-mod)
-* [User mute and unmute functions](#user-mute-and-unmute-functions)
-* [Temporary Mod Sets](#temporary-mod-sets)
-* [Multithreading](#multithreading)
-* [Monetization](#monetization)
-* [Error Handling](#error-handling)
+* [SDK quick-start: Initialization and Teardown](#sdk-quick-start-initialization-and-teardown)
+* [SDK quick-start: Browsing available mods](#sdk-quick-start-browsing-available-mods)
+* [SDK quick-start: User Authentication](#sdk-quick-start-user-authentication)
+* [SDK quick-start: Mod management and subscriptions](#sdk-quick-start-mod-management-and-subscriptions)
+* [SDK quick-start: In-game mod submission](#sdk-quick-start-in-game-mod-submission)
+* [SDK quick-start: Edit an existing mod](#sdk-quick-start-edit-an-existing-mod)
+* [SDK quick-start: User mute and unmute functions](#sdk-quick-start-user-mute-and-unmute-functions)
+* [SDK quick-start: Temporary Mod Sets](#sdk-quick-start-temporary-mod-sets)
+* [SDK quick-start: Multithreading](#sdk-quick-start-multithreading)
+* [SDK quick-start: Monetization](#sdk-quick-start-monetization)
+* [SDK quick-start: Error Handling](#sdk-quick-start-error-handling)
 
 ---
-### Initialization and Teardown
+### SDK quick-start: Initialization and Teardown
 
 :::note
 This functionality is demonstrated in example 01_Initialization
@@ -205,7 +209,7 @@ It is worth considering that the "LocalProfileName" is used by the mod.io SDK to
 **Notes**
 
 * By convention you'll see these code examples pass in lambda functions as callback handlers, but you can use anything convertible to `std::function` with the appropriate signature.
-* The error-handling in this sample is deliberately kept brief. See [Error Handling](#error-handling) for more information on error handling.
+* The error-handling in this sample is deliberately kept brief. See [SDK quick-start: Error Handling](#sdk-quick-start-error-handling) for more information on error handling.
 * You can perform calls to other functions, such as something that shows your mod browser UI implementation, directly in the callback. The primary caveat to doing much processing here is that you'll be running in the context of, and therefore blocking, the thread running the callback, which is the thread running [RunPendingHandlers](/cppsdk/refdocs#runpendinghandlers).
 
 #### Extended Initialization Parameters
@@ -273,13 +277,13 @@ RunPendingHandlers is not reentrant-safe. Do not call [RunPendingHandlers](/cpps
 
 ---
 
-### Browsing available mods
+### SDK quick-start: Browsing available mods
 
 :::note
 This functionality is demonstrated in example 02_ModQueries
 :::
 
-Now that you've followed the instructions in [Initialization and Teardown](#initialization-and-teardown) you can begin to query the available mods for information you can display to your end users. The primary way this is done is through [ListAllModsAsync](/cppsdk/refdocs#listallmodsasync). Note that authentication is not required to browse mods.
+Now that you've followed the instructions in [SDK quick-start: Initialization and Teardown](#sdk-quick-start-initialization-and-teardown) you can begin to query the available mods for information you can display to your end users. The primary way this is done is through [ListAllModsAsync](/cppsdk/refdocs#listallmodsasync). Note that authentication is not required to browse mods.
 
 ```cpp
 
@@ -318,7 +322,7 @@ Modio::ListAllModsAsync(Modio::FilterParams.NameContains("Your Query").PagedResu
 
 ---
 
-### User Authentication
+### SDK quick-start: User Authentication
 
 :::note
 This functionality is demonstrated in example 03_Authentication
@@ -389,7 +393,6 @@ This means the external authentication flow is the following:
 3. If the user clicks the OK/affirmative button on your screen displaying the terms of use, repeat the call in step 1 but setting `AuthenticationParams::bUserHasAcceptedTerms` to **true**
 4. Check the error code in the callback - a false-y error code indicates that authentication was successful, and users can now install and manage mods and subscriptions.
 
-
 ```cpp
 Modio::AuthenticationParams UserParams;
 UserParams.AuthToken = "AuthenticationToken";
@@ -424,10 +427,6 @@ UserParams.bUserHasAcceptedTerms = true;
 Modio::AuthenticateUserExternalAsync(UserParams,Provider,[](Modio::ErrorCode ec){/* ... */});
 
 ```
-
-:::note
-Changing users via AuthenticateUserExternalAsync (ie performing an authentication for a different user) will disable mod management.
-:::
 
 #### Epic Games Authentication Example
 
@@ -574,7 +573,7 @@ Note that you do not need to base64 encode the app ticket that you receive from 
 
 ---
 
-### Mod management and subscriptions
+### SDK quick-start: Mod management and subscriptions
 
 :::note
 This functionality is demonstrated in example 04_SubscriptionManagement
@@ -737,7 +736,7 @@ for (Modio::filesystem::path& Path : ModPaths)
 
 ---
 
-### In-game mod submission
+### SDK quick-start: In-game mod submission
 
 :::note
 This functionality is demonstrated in example 08_SubmitMod
@@ -748,7 +747,7 @@ Submitting a mod from inside your game and making it visible to other players in
 * Submission of the mod
 * Submission of the mod's data (aka 'the mod file')
 
-These steps are outlined below. Mods can also be edited after submission, as detailed in [Edit an existing mod](#edit-an-existing-mod)
+These steps are outlined below. Mods can also be edited after submission, as detailed in [SDK quick-start: Edit an existing mod](#sdk-quick-start-edit-an-existing-mod)
 
 #### Submitting a new mod
 
@@ -797,7 +796,7 @@ Modio::SubmitNewModFileForMod(NewModID, Params);
 
 ---
 
-### Edit an existing mod
+### SDK quick-start: Edit an existing mod
 
 Mod details can be edited in-game using [SubmitModChangesAsync](/cppsdk/refdocs#submitmodchangesasync).  This function allows you to edit multiple parameters with a single call.  It takes a `Modio::ModID` of the mod to edit, a `Modio::EditModParams` containing one or more parameters to be altered, and a callback that will contain an optional updated `Modio::ModInfo` object on success.
 
@@ -827,7 +826,7 @@ Modio::SubmitModChangesAsync(ModID, EditParams, [](Modio::ErrorCode ec, Modio::O
 
 ---
 
-### User mute and unmute functions
+### SDK quick-start: User mute and unmute functions
 
 Users have the ability to disable updates from other user's mods. This will prevent mod.io from returning mods authored by the muted user. There are three functions to perform these actions:
 
@@ -901,7 +900,7 @@ Modio::GetMutedUsersAsync([](Modio::ErrorCode ec, Modio::Optional<Modio::UserLis
 
 ---
 
-### Temporary Mod Sets
+### SDK quick-start: Temporary Mod Sets
 
 :::note
 This functionality is demonstrated in example 11_TempModSets
@@ -946,13 +945,13 @@ This call will start a TempModSet and install Mods with IDs 8, 4 and 5.
 If you add an already subscribed mod to TempModSet, it will not download be downloaded as the player will already have that content. If you try to unsubscribe from it while it's in TempModSet, the SDK it will wait for it to be removed from TempModSet before processing the unsubscribe.
 :::
 
-### Multithreading
+### SDK quick-start: Multithreading
 
 :::note
 This functionality is demonstrated in example 07_Threading
 :::
 
-As mentioned in [the quick-start section on initialization](#initialization-and-teardown), the SDK supports [RunPendingHandlers](/cppsdk/refdocs#runpendinghandlers) being run on a secondary thread that already exists or a dedicated background thread you create specifically to peform SDK work.
+As mentioned in [the quick-start section on initialization](#sdk-quick-start-initialization-and-teardown), the SDK supports [RunPendingHandlers](/cppsdk/refdocs#runpendinghandlers) being run on a secondary thread that already exists or a dedicated background thread you create specifically to peform SDK work.
 
 :::note
 Callbacks you provide to the SDK will run ***on the thread running [RunPendingHandlers](/cppsdk/refdocs#runpendinghandlers)*** - if you host [RunPendingHandlers](/cppsdk/refdocs#runpendinghandlers) on a different thread, it is your responsibility to synchronize with the main thread if you wish to pass results back to it, through callbacks you provide to the SDK.
@@ -1004,7 +1003,7 @@ If the SDK runs for the lifetime of your application and you do not call [Shutdo
 :::
 
 
-### Monetization
+### SDK quick-start: Monetization
 
 :::note
 This functionality is demonstrated in example 09_MonetizationWalletManagement (for initialization and wallet management) and 10_MonetizationPurchase (for purchase functionality).
@@ -1098,7 +1097,7 @@ Even though all purchased mods are automatically subscribed, the user can still 
 
 User Delegation Tokens can be used by a backend server for S2S (Server to Server) transactions/functionality. You can get one for the current user by calling `<<GetUserDelegationToken>>`, the callback for which contains the Token as a `std::string`.
 
-### Error Handling
+### SDK quick-start: Error Handling
 
 The majority of mod.io SDK functions return a `Modio::ErrorCode`. In particular, asynchronous callbacks execute with a `Modio::ErrorCode` as the first parameter.
 
