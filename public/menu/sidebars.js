@@ -61,6 +61,19 @@ const sidebars = {
             'game-integration/unreal/getting-started/ue-monetization',
             'game-integration/unreal/getting-started/ue-temporary-mods',
             'game-integration/unreal/getting-started/ue-mute-user',
+            'game-integration/unreal/getting-started/ue-metrics-play-sessions',
+          ]
+        },
+        {
+          type: 'category',
+          label: 'Component UI',
+          link: {type: 'doc', id: 'game-integration/unreal/component-ui/ue-overview'},
+          items: [
+            'game-integration/unreal/component-ui/ue-principles',
+            'game-integration/unreal/component-ui/ue-architecture',
+            'game-integration/unreal/component-ui/ue-localization',
+            'game-integration/unreal/component-ui/ue-helpers',
+            'game-integration/unreal/component-ui/ue-enable-disable',
           ]
         },
         'game-integration/unreal/ue-marketplace', 
@@ -243,7 +256,7 @@ const sidebars = {
           type: 'category',
           label: 'Data',
           link: {type: 'doc', id: 'game-management/metrics/metrics-data'},
-          items: ['game-management/metrics/ugc-data', 'game-management/metrics/user-activity-data', 'game-management/metrics/health-data'],
+          items: ['game-management/metrics/metrics-sessions', 'game-management/metrics/ugc-data', 'game-management/metrics/user-activity-data', 'game-management/metrics/health-data'],
         },
         {
           type: 'doc',

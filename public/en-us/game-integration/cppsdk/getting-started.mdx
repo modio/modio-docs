@@ -8,10 +8,6 @@ custom_edit_url: https://github.com/modio/modio-sdk-internal/blob/develop/doc/ge
 
 ## SDK structure and concepts
 
-The following diagram provides an overview of the mod.io SDK initialization procedure and its asynchronous nature.
-
-![alt:"mod.io SDK Initialization flow"](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/modio/modio-sdk/main/doc/chapters/diagrams/general-overview/modio_sdk_flow-init.puml)
-
 The mod.io SDK has a simple structure that primarily consists of a flat interface, with all public methods declared within `ModioSDK.h`.
 
 ### Value objects
@@ -71,7 +67,7 @@ Whilst it is safe to call all other SDK functions from a different thread to the
 
 By using a background thread for [RunPendingHandlers](/cppsdk/refdocs#runpendinghandlers), you can decouple the frequency with which you perform SDK 'work' from the frequency of your application's main loop for greater performance. 
 
-See * [SDK quick-start: Multithreading](#sdk-quick-start-multithreading) for more information.
+See * [Multithreading](#multithreading) for more information.
 :::
 
 ### Users and Local Profiles
@@ -104,7 +100,7 @@ An authenticated user is required to install mods and perform other operations. 
 To change a Local Profile's authenticated user, call [ClearUserDataAsync](/cppsdk/refdocs#clearuserdataasync) to remove the authenticated user, and then re-authenticate as normal.
 
 :::note
-A call to [ClearUserDataAsync](/cppsdk/refdocs#clearuserdataasync) removes the authenticated user from the local device. Any installed content is marked for uninstallation from local storage if no other Local Profiles contain authenticated users with active subscriptions to it.
+A call to [ClearUserDataAsync](/cppsdk/refdocs#clearuserdataasync) removes the authenticated user from the local device, and disables mod management. Any installed content is marked for uninstallation from local storage if no other Local Profiles contain authenticated users with active subscriptions to it.
 :::
 
 To add a newly authenticated user or switch to one already-authenticated without removing the current one, swap to another Local Profile by calling [ShutdownAsync](/cppsdk/refdocs#shutdownasync), then re-initialize via [InitializeAsync](/cppsdk/refdocs#initializeasync) specifying a different Local Profile name in the initialization parameters you supply.
@@ -115,7 +111,7 @@ Callback functions in the SDK either return a value or provide an [ErrorCode](/c
 
 The SDK doesn't attempt to predict what your error-handling logic or requirements are. For example, if you call a function and receive an error code `ec == Modio::HttpError::CannotOpenConnection`, your application could potentially handle this by shutting down the SDK. Another application, however, might wish to retry after an interval determined by its own internal logic. As a result, the SDK defers to your application to decide how to handle errors for the functions you call.
 
-For more details on the error codes and how to inspect their values, please see [SDK quick-start: Error Handling](#sdk-quick-start-error-handling) and [ErrorCode](/cppsdk/refdocs#ErrorCode).
+For more details on the error codes and how to inspect their values, please see [Error Handling](#error-handling) and [ErrorCode](/cppsdk/refdocs#ErrorCode).
 
 ### Mod Data Directories
 
@@ -156,20 +152,21 @@ However, this value can be overridden in one of two ways:
 
 The following guides are provided to help you through the basic functions of the SDK as described in [SDK structure and concepts](#sdk-structure-and-concepts).
 
-* [SDK quick-start: Initialization and Teardown](#sdk-quick-start-initialization-and-teardown)
-* [SDK quick-start: Browsing available mods](#sdk-quick-start-browsing-available-mods)
-* [SDK quick-start: User Authentication](#sdk-quick-start-user-authentication)
-* [SDK quick-start: Mod management and subscriptions](#sdk-quick-start-mod-management-and-subscriptions)
-* [SDK quick-start: In-game mod submission](#sdk-quick-start-in-game-mod-submission)
-* [SDK quick-start: Edit an existing mod](#sdk-quick-start-edit-an-existing-mod)
-* [SDK quick-start: User mute and unmute functions](#sdk-quick-start-user-mute-and-unmute-functions)
-* [SDK quick-start: Temporary Mod Sets](#sdk-quick-start-temporary-mod-sets)
-* [SDK quick-start: Multithreading](#sdk-quick-start-multithreading)
-* [SDK quick-start: Monetization](#sdk-quick-start-monetization)
-* [SDK quick-start: Error Handling](#sdk-quick-start-error-handling)
+* [Initialization and Teardown](#initialization-and-teardown)
+* [Browsing available mods](#browsing-available-mods)
+* [User Authentication](#user-authentication)
+* [Mod management and subscriptions](#mod-management-and-subscriptions)
+* [In-game mod submission](#in-game-mod-submission)
+* [Edit an existing mod](#edit-an-existing-mod)
+* [User mute and unmute functions](#user-mute-and-unmute-functions)
+* [Temporary Mod Sets](#temporary-mod-sets)
+* [Multithreading](#multithreading)
+* [Monetization](#monetization)
+* [Metrics Play Sessions](#metrics-play-sessions)
+* [Error Handling](#error-handling)
 
 ---
-### SDK quick-start: Initialization and Teardown
+### Initialization and Teardown
 
 :::note
 This functionality is demonstrated in example 01_Initialization
@@ -209,7 +206,7 @@ It is worth considering that the "LocalProfileName" is used by the mod.io SDK to
 **Notes**
 
 * By convention you'll see these code examples pass in lambda functions as callback handlers, but you can use anything convertible to `std::function` with the appropriate signature.
-* The error-handling in this sample is deliberately kept brief. See [SDK quick-start: Error Handling](#sdk-quick-start-error-handling) for more information on error handling.
+* The error-handling in this sample is deliberately kept brief. See [Error Handling](#error-handling) for more information on error handling.
 * You can perform calls to other functions, such as something that shows your mod browser UI implementation, directly in the callback. The primary caveat to doing much processing here is that you'll be running in the context of, and therefore blocking, the thread running the callback, which is the thread running [RunPendingHandlers](/cppsdk/refdocs#runpendinghandlers).
 
 #### Extended Initialization Parameters
@@ -277,13 +274,13 @@ RunPendingHandlers is not reentrant-safe. Do not call [RunPendingHandlers](/cpps
 
 ---
 
-### SDK quick-start: Browsing available mods
+### Browsing available mods
 
 :::note
 This functionality is demonstrated in example 02_ModQueries
 :::
 
-Now that you've followed the instructions in [SDK quick-start: Initialization and Teardown](#sdk-quick-start-initialization-and-teardown) you can begin to query the available mods for information you can display to your end users. The primary way this is done is through [ListAllModsAsync](/cppsdk/refdocs#listallmodsasync). Note that authentication is not required to browse mods.
+Now that you've followed the instructions in [Initialization and Teardown](#initialization-and-teardown) you can begin to query the available mods for information you can display to your end users. The primary way this is done is through [ListAllModsAsync](/cppsdk/refdocs#listallmodsasync). Note that authentication is not required to browse mods.
 
 ```cpp
 
@@ -322,7 +319,7 @@ Modio::ListAllModsAsync(Modio::FilterParams.NameContains("Your Query").PagedResu
 
 ---
 
-### SDK quick-start: User Authentication
+### User Authentication
 
 :::note
 This functionality is demonstrated in example 03_Authentication
@@ -393,6 +390,7 @@ This means the external authentication flow is the following:
 3. If the user clicks the OK/affirmative button on your screen displaying the terms of use, repeat the call in step 1 but setting `AuthenticationParams::bUserHasAcceptedTerms` to **true**
 4. Check the error code in the callback - a false-y error code indicates that authentication was successful, and users can now install and manage mods and subscriptions.
 
+
 ```cpp
 Modio::AuthenticationParams UserParams;
 UserParams.AuthToken = "AuthenticationToken";
@@ -427,6 +425,10 @@ UserParams.bUserHasAcceptedTerms = true;
 Modio::AuthenticateUserExternalAsync(UserParams,Provider,[](Modio::ErrorCode ec){/* ... */});
 
 ```
+
+:::note
+Changing users via AuthenticateUserExternalAsync (ie performing an authentication for a different user) will disable mod management.
+:::
 
 #### Epic Games Authentication Example
 
@@ -573,7 +575,7 @@ Note that you do not need to base64 encode the app ticket that you receive from 
 
 ---
 
-### SDK quick-start: Mod management and subscriptions
+### Mod management and subscriptions
 
 :::note
 This functionality is demonstrated in example 04_SubscriptionManagement
@@ -736,7 +738,7 @@ for (Modio::filesystem::path& Path : ModPaths)
 
 ---
 
-### SDK quick-start: In-game mod submission
+### In-game mod submission
 
 :::note
 This functionality is demonstrated in example 08_SubmitMod
@@ -747,7 +749,7 @@ Submitting a mod from inside your game and making it visible to other players in
 * Submission of the mod
 * Submission of the mod's data (aka 'the mod file')
 
-These steps are outlined below. Mods can also be edited after submission, as detailed in [SDK quick-start: Edit an existing mod](#sdk-quick-start-edit-an-existing-mod)
+These steps are outlined below. Mods can also be edited after submission, as detailed in [Edit an existing mod](#edit-an-existing-mod)
 
 #### Submitting a new mod
 
@@ -796,7 +798,7 @@ Modio::SubmitNewModFileForMod(NewModID, Params);
 
 ---
 
-### SDK quick-start: Edit an existing mod
+### Edit an existing mod
 
 Mod details can be edited in-game using [SubmitModChangesAsync](/cppsdk/refdocs#submitmodchangesasync).  This function allows you to edit multiple parameters with a single call.  It takes a `Modio::ModID` of the mod to edit, a `Modio::EditModParams` containing one or more parameters to be altered, and a callback that will contain an optional updated `Modio::ModInfo` object on success.
 
@@ -826,7 +828,7 @@ Modio::SubmitModChangesAsync(ModID, EditParams, [](Modio::ErrorCode ec, Modio::O
 
 ---
 
-### SDK quick-start: User mute and unmute functions
+### User mute and unmute functions
 
 Users have the ability to disable updates from other user's mods. This will prevent mod.io from returning mods authored by the muted user. There are three functions to perform these actions:
 
@@ -900,7 +902,7 @@ Modio::GetMutedUsersAsync([](Modio::ErrorCode ec, Modio::Optional<Modio::UserLis
 
 ---
 
-### SDK quick-start: Temporary Mod Sets
+### Temporary Mod Sets
 
 :::note
 This functionality is demonstrated in example 11_TempModSets
@@ -945,13 +947,13 @@ This call will start a TempModSet and install Mods with IDs 8, 4 and 5.
 If you add an already subscribed mod to TempModSet, it will not download be downloaded as the player will already have that content. If you try to unsubscribe from it while it's in TempModSet, the SDK it will wait for it to be removed from TempModSet before processing the unsubscribe.
 :::
 
-### SDK quick-start: Multithreading
+### Multithreading
 
 :::note
 This functionality is demonstrated in example 07_Threading
 :::
 
-As mentioned in [the quick-start section on initialization](#sdk-quick-start-initialization-and-teardown), the SDK supports [RunPendingHandlers](/cppsdk/refdocs#runpendinghandlers) being run on a secondary thread that already exists or a dedicated background thread you create specifically to peform SDK work.
+As mentioned in [the quick-start section on initialization](#initialization-and-teardown), the SDK supports [RunPendingHandlers](/cppsdk/refdocs#runpendinghandlers) being run on a secondary thread that already exists or a dedicated background thread you create specifically to peform SDK work.
 
 :::note
 Callbacks you provide to the SDK will run ***on the thread running [RunPendingHandlers](/cppsdk/refdocs#runpendinghandlers)*** - if you host [RunPendingHandlers](/cppsdk/refdocs#runpendinghandlers) on a different thread, it is your responsibility to synchronize with the main thread if you wish to pass results back to it, through callbacks you provide to the SDK.
@@ -1003,7 +1005,7 @@ If the SDK runs for the lifetime of your application and you do not call [Shutdo
 :::
 
 
-### SDK quick-start: Monetization
+### Monetization
 
 :::note
 This functionality is demonstrated in example 09_MonetizationWalletManagement (for initialization and wallet management) and 10_MonetizationPurchase (for purchase functionality).
@@ -1041,6 +1043,55 @@ We recommend that you cache the value of this result in your game code rather th
             }
 		});
 ```
+
+#### Syncing Entitlements
+
+:::note
+This functionality is demonstrated in example 12_RefreshEntitlements.
+For Steam, this functionality is demonstrated in advanced example 01_SteamAuthAndEntitlements.
+For consoles, check the examples folder in the platform module.
+:::
+
+If you are supporting the purchase of token packs on platform storefronts, entitlement refreshing is the method by which those token packs are consumed and converted into mod.io virtual tokens for users to purchase UGC with.
+
+Each platform has a specific way of setting up entitlements for consumption, but generally speaking the way you consume those entitlements is the same. Read each platform's Marketplace documentation for how to configure entitlements and any platform-specific information for entitlement consumption.
+
+You should always start by calling `GetUserWalletBalanceAsync` to ensure that a user has a wallet created, or entitlements cannot be consumed. To consume entitlements, call `RefreshUserEntitlementsAsync` as follows:
+
+```cpp
+const Modio::EntitlementParams EntitlementParams;
+Modio::RefreshUserEntitlementsAsync(
+	EntitlementParams,
+	[&](Modio::ErrorCode ec, Modio::Optional<Modio::EntitlementConsumptionStatusList> Entitlements) {
+		if (ec)
+		{
+			std::cout << "Failed to refresh user entitlements: " << ec.message() << std::endl;
+		}
+		else
+		{
+			if (Entitlements.has_value() && Entitlements->Size() > 0)
+			{
+				if (Entitlements->WalletBalance.has_value())
+				{
+					UserWalletBalance = Entitlements->WalletBalance->Balance;
+
+					std::cout << "Entitlements consumed: " << Entitlements->Size() << std::endl;
+					std::cout << "Updated UserWalletBalance is " << UserWalletBalance;
+				}
+			}
+			else
+			{
+				std::cout << "No entitlements synced; nothing further to do." << std::endl;
+			}
+		}
+	});
+```
+
+:::note
+The `WalletBalance` returned in `Modio::EntitlementConsumptionStatusList` will be 0 if no entitlements have been consumed. You should conditionally update your local state based on whether any entitlements have actually been consumed.
+:::
+
+Generally speaking, you should do this on startup in case the user has made a purchase outside of the game, and after a user has made a purchase on a platform - most platforms will have some callback or indicator that this has occurred. Check that the `Modio::Optional<Modio::EntitlementConsumptionStatusList>` is valid and its size is greater than 0. 
 
 ### Querying & Purchasing Mods
 
@@ -1097,7 +1148,118 @@ Even though all purchased mods are automatically subscribed, the user can still 
 
 User Delegation Tokens can be used by a backend server for S2S (Server to Server) transactions/functionality. You can get one for the current user by calling `<<GetUserDelegationToken>>`, the callback for which contains the Token as a `std::string`.
 
-### SDK quick-start: Error Handling
+### Metrics Play Sessions
+
+:::note
+This functionality is demonstrated in example 13_MetricsSession.
+:::
+
+The mod.io SDK supports all of the mod.io metrics features, allowing you to start a metrics play sesion, keeping that session alive via a heartbeat (automatically called, or manually handled) and then ending that session. Metric sessions allow you to track which mods your players interact with most frequently. Visit https://docs.mod.io/metrics/ for an overview of the mod.io metrics system.
+
+:::note
+Running metrics play sessions is a premium feature. If you are interested in mod.io premium features, please contact developers@mod.io.
+:::
+
+Metrics based on the platform and portal, are transparently taken care of with no additional consideration needed when using the SDK.
+
+#### Initialization
+
+The mod.io metrics features are enabled as part of generating a Metrics Secret Key your API settings in your game dashboard, e.g. https://mod.io/g/game-name/admin/api-key. Once this key has been generated, you need to pass it in as an ExtendedParameters field in your InitializeOptions when Initializing the mod.io SDK, e.g.:
+
+
+```cpp
+Modio::InitializeOptions initializeOptions;
+initializeOptions.ExtendedParameters["MetricsSecretKey"] = "00000000-1111-2222-3333-444444444444";
+```
+
+Failing to set up the Metrics Secret Key will result in a `Modio::MetricsError::SessionNotInitialized`` error being returned when using the metrics functionality.
+
+#### Starting a Metrics Session
+
+You can call [MetricsSessionStartAsync](/cppsdk/refdocs#metricssessionstartasync) to start a new session tracking the usage of mods in the context of your game. You'll notice that `MetricsSessionStartAsync` takes a [MetricsSessionParams](/cppsdk/refdocs#metricssessionparams) object as its parameter. This contains an optional Session Id, as well as a required vector of mods to track.
+
+:::note
+If a Session Id is not provided, a random one will be created for you.
+:::
+
+```cpp
+Modio::MetricsSessionParams Params = Modio::MetricsSessionParams {{}, ModIds};
+
+Modio::MetricsSessionStartAsync(Params, [](Modio::ErrorCode ec) {
+{
+	if (ec)
+	{
+		// Error has occurred while attempting to start a session
+	}
+	else
+	{
+		// Session started successfully
+	}
+});
+```
+
+The Metrics Session Params accepts an optional Session Id in the form of a `Modio::Guid` which you may want to use to associate the new session with any supplementary telemetry you are gathering in your game.
+
+#### Metrics heartbeat
+
+To ensure that the session is kept alive, a heartbeat is required to be submitted at most every 5 minutes. We recommend doing this a bit earlier than the threshold to ensure you do not miss the window.
+
+There are two methods provided to control the behaviour of the heart beat, [MetricsSessionSendHeartbeatOnceAsync](/cppsdk/refdocs#metricssessionsendheartbeatonceasync) which you can call at your desired precision, as well as a single call and forget [MetricsSessionSendHeartbeatAtIntervalAsync](/cppsdk/refdocs#metricssessionsendheartbeatintervalasync) with a desired interval.
+
+Calling `MetricsSessionSendHeartbeatOnceAsync` will submit a single heartbeat, and return an error code if something went wrong. If no error has occured, the heartbeat has been successfully sent.
+
+
+```cpp
+Modio::MetricsSessionSendHeartbeatOnceAsync([](Modio::ErrorCode ec) 
+{
+	if (ec)
+	{
+		// Error has occurred while submitting a heartbeat
+	}
+	else
+	{
+		// Heartbeat successfully sent
+	}
+});
+```
+
+Calling `MetricsSessionSendHeartbeatAtIntervalAsync` requires a parameter with the desired interval frequency in seconds. An error code will be returned if something went wrong, otherwise you will receive a false-y error if the interval loop has been shut down successfully (such as ending a session).
+
+```cpp
+uint32_t IntervalSeconds = 150;
+Modio::MetricsSessionSendHeartbeatAtIntervalAsync(IntervalSeconds, [](Modio::ErrorCode ec) 
+{
+	if (ec)
+	{
+		// Error has occurred while submitting a heartbeat
+	}
+	else
+	{
+		// Heartbeat interval loop has been shut down successfully
+	}
+});
+```
+
+#### Ending a Metrics Session
+
+To complete a session, for example when finishing a match, or quitting out of your game, you can call [MetricsSessionEndAsync](/cppsdk/refdocs#metricssessionendasync).
+As with the other calls, you will receive an error if anything has gone wrong, otherwise the operation successfully completed.
+
+```cpp
+Modio::MetricsSessionEndAsync([](Modio::ErrorCode ec) 
+{
+	if (ec)
+	{
+		// Error has occurred while attempting to end a session
+	}
+	else
+	{
+		// Metrics session successfully completed
+	}
+});
+```
+
+### Error Handling
 
 The majority of mod.io SDK functions return a `Modio::ErrorCode`. In particular, asynchronous callbacks execute with a `Modio::ErrorCode` as the first parameter.
 
@@ -1116,55 +1278,6 @@ else
     // Error code was false-y, therefore the operation succeeded
 }
 ```
-
-#### Syncing Entitlements
-
-:::note
-This functionality is demonstrated in example 12_RefreshEntitlements.
-For Steam, this functionality is demonstrated in advanced example 01_SteamAuthAndEntitlements.
-For consoles, check the examples folder in the platform module.
-:::
-
-If you are supporting the purchase of token packs on platform storefronts, entitlement refreshing is the method by which those token packs are consumed and converted into mod.io virtual tokens for users to purchase UGC with.
-
-Each platform has a specific way of setting up entitlements for consumption, but generally speaking the way you consume those entitlements is the same. Read each platform's Marketplace documentation for how to configure entitlements and any platform-specific information for entitlement consumption.
-
-You should always start by calling `GetUserWalletBalanceAsync` to ensure that a user has a wallet created, or entitlements cannot be consumed. To consume entitlements, call `RefreshUserEntitlementsAsync` as follows:
-
-```cpp
-const Modio::EntitlementParams EntitlementParams;
-Modio::RefreshUserEntitlementsAsync(
-	EntitlementParams,
-	[&](Modio::ErrorCode ec, Modio::Optional<Modio::EntitlementConsumptionStatusList> Entitlements) {
-		if (ec)
-		{
-			std::cout << "Failed to refresh user entitlements: " << ec.message() << std::endl;
-		}
-		else
-		{
-			if (Entitlements.has_value() && Entitlements->Size() > 0)
-			{
-				if (Entitlements->WalletBalance.has_value())
-				{
-					UserWalletBalance = Entitlements->WalletBalance->Balance;
-
-					std::cout << "Entitlements consumed: " << Entitlements->Size() << std::endl;
-					std::cout << "Updated UserWalletBalance is " << UserWalletBalance;
-				}
-			}
-			else
-			{
-				std::cout << "No entitlements synced; nothing further to do." << std::endl;
-			}
-		}
-	});
-```
-
-:::note
-The `WalletBalance` returned in `Modio::EntitlementConsumptionStatusList` will be 0 if no entitlements have been consumed. You should conditionally update your local state based on whether any entitlements have actually been consumed.
-:::
-
-Generally speaking, you should do this on startup in case the user has made a purchase outside of the game, and after a user has made a purchase on a platform - most platforms will have some callback or indicator that this has occurred. Check that the `Modio::Optional<Modio::EntitlementConsumptionStatusList>` is valid and its size is greater than 0. 
 
 ##### Handling Failures
 
