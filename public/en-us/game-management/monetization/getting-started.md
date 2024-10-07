@@ -16,7 +16,7 @@ Studios define how revenue is split with their content creators. You have contro
 
 ### White label solution
 
-You can customize things to fit your game and brand (such as the name and amounts of tokens your players will purchase to buy UGC from your marketplace). 
+You can customize things to fit your game and brand (such as the name and amounts of virtual currency your players will purchase to buy UGC from your marketplace). 
 
 ### Secured and scalable 
 
