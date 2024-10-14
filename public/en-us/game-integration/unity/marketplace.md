@@ -21,7 +21,7 @@ The mod.io monetization features are enabled as part of the onboarding process o
 
 ## Get User Wallet Balance
 
-Returns the current user's token balance.
+Returns the current user's virtual currency credits balance.
 
 ```csharp
 async void GetUserWalletBalanceExample()
@@ -29,7 +29,7 @@ async void GetUserWalletBalanceExample()
    var response = await ModIOUnityAsync.GetUserWalletBalance();
    if (response.result.Succeeded())
    {
-       Debug.Log($"User has a balance of {response.value.balance } tokens.");
+       Debug.Log($"User has a balance of {response.value.balance } credits.");
    }
    else
    {
@@ -40,7 +40,7 @@ async void GetUserWalletBalanceExample()
 
 ## Purchase Item
 
-Purchases a mod using Tokens.
+Purchases a mod using virtual currency credits.
 
 ```csharp
 async void PurchaseItemExample()
@@ -84,7 +84,7 @@ async void GetUserPurchases()
 ```
 
 ### Syncing Purchases with Steam
-If you setup SKUs for your users to purchase tokens through steam, you can sync these purchases with the mod.io server with the `SyncEntitlments` method. If a user purchases a token pack on steam, you can add the SKU used for that token pack on the Web by going to Admin > Monetization > Manage SKUs. Then when you use SyncEntitlments it will consume the purchased item and add those tokens to the user's wallet. Below is a very simple example of how to use the method.
+If you setup SKUs for your users to purchase virtual currency through steam, you can sync these purchases with the mod.io server with the `SyncEntitlments` method. If a user purchases a virtual currency pack on steam, you can add the SKU used for that virtual currency pack on the Web by going to Admin > Monetization > Manage SKUs. Then when you use SyncEntitlments it will consume the purchased item and add those virtual currency credits to the user's wallet. Below is a very simple example of how to use the method.
 
 :::note
 SyncEntitlements will automatically be run when using ModIOUnity.FetchUpdates as well.

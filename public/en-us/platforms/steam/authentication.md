@@ -24,7 +24,7 @@ Once you have your encrypted app ticket key, go to your game admin page on mod.i
 Once you have configured your game for Steam SSO, you can call the Steam Authentication endpoint using a Base64, URL encoded Encrypted App Ticket, obtained from `ISteamUser::GetEncryptedAppTicket()` using the Steamworks SDK. Each of our SDKs provide samples and documentation for how to perform Steam SSO.
 
 * For the C++ SDK, [click here](/cppsdk/getting-started/#ssoexternal-authentication)
-* For Unreal Engine, [click here](/unreal/getting-started/#steam-authentication-example)
+* For Unreal Engine, [click here](/unreal/getting-started/user-authentication#single-sign-on-authentication)
 * For Unity Engine, [click here](/unity/getting-started/#authentication)
 
 If you are building something custom using the mod.io REST API, follow the [instructions provided here](https://docs.mod.io/restapiref/#steam) to authenticate players using Steam SSO, by calling the `/external/steamauth` endpoint.

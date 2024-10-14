@@ -1,6 +1,6 @@
 ---
 id: ugc-data
-title: UGC Data
+title: UGC Usage Data
 slug: /metrics/ugc-data/
 ---
 

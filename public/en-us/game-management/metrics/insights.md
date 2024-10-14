@@ -1,6 +1,6 @@
 ---
 id: metrics-sessions
-title: Metrics Sessions
+title: Playtime Insights Metrics Sessions
 slug: /metrics/metrics-sessions/
 ---
 

@@ -28,7 +28,7 @@ The scopes that you request as part of the EOS login process in your game must m
 Once you have configured your game for Epic SSO, you can call the Epic Authentication endpoint, passing the EOS ID Token, [obtained from `EOS_Auth_CopyIdToken`](https://dev.epicgames.com/docs/api-ref/functions/eos-auth-copy-id-token) using the EOS SDK. Each of our SDKs provide samples and documentation for how to perform Epic SSO.
 
 * For the C++ SDK, [click here](/cppsdk/getting-started/#ssoexternal-authentication)
-* For Unreal Engine, [click here](/unreal/getting-started/#ssoexternal-authentication)
+* For Unreal Engine, [click here](/unreal/getting-started/user-authentication#single-sign-on-authentication)
 * For Unity Engine, [click here](/unity/getting-started/#authentication)
 
 If you are building something custom using the mod.io REST API, follow the [instructions provided here](https://docs.mod.io/restapiref/#epic-games) to authenticate players using Epic Games SSO, by calling the `/external/epicgamesauth` endpoint.

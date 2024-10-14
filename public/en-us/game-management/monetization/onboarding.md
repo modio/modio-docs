@@ -106,7 +106,7 @@ Revenue share splits can be adjusted at any time and will affect all future tran
 
 Now that you’ve verified and onboarded your team, you are able to turn on and adjust the marketplace functionality for your game:
 
-- **Token name** - This defaults to ‘mio’ but allows you to change the name of your token. This name will be shown anywhere the token is referenced within your marketplace.
+- **Virtual Currency name** - This defaults to ‘creator credits’ but allows you to change the name of your virtual currency. This name will be shown anywhere the virtual currency is referenced within your marketplace.
 - **Minimum and maximum price** - These values restrict content sold in the marketplace to be limited to prices within this range.
 - **Default price** - Sets the default/recommended value populated in the price field when creators set up their content for sale.
 - **Transaction revenue split** - Allows you to change the default revenue share split between creators and you as the game publisher. You can see which share each party will get in the split calculator on the right side.
@@ -118,22 +118,22 @@ Now that you’ve verified and onboarded your team, you are able to turn on and 
 Marketplace setting can be adjusted at any time through your dashboard.
 :::
 
-## Token Packs
+## Virtual Currency Packs
 
-You are able to set up token packs for users to purchase. Token amounts and prices are predefined to prevent any possibilities of arbitrage within our platform, external platforms, and any games utilizing our Monetization services.
+You are able to set up virtual currency packs for users to purchase. Virtual currency amounts and prices are predefined to prevent any possibilities of arbitrage within our platform, external platforms, and any games utilizing our Monetization services.
 
-You can define the availability of each individual predefined token pack, in addition to defining what platforms these token packs are available on.
+You can define the availability of each individual predefined virtual currency pack, in addition to defining what platforms these virtual currency packs are available on.
 
 :::warning
-You must ensure that the token packs you make available on mod.io match the SKUs of any platforms you wish to make the token pack available for purchase. We provide a way for you to map these token packs with the ability to enter the SKU id provided by external platforms.
+You must ensure that the virtual currency packs you make available on mod.io match the SKUs of any platforms you wish to make the virtual currency pack available for purchase. We provide a way for you to map these virtual currency packs with the ability to enter the SKU id provided by external platforms.
 :::
 
-This ensures we are able to correctly reconcile funds received on external platforms and pay out Creators. An example earnings calculator is visible to see what is received by whom on a sale of a Token Pack.
+This ensures we are able to correctly reconcile funds received on external platforms and pay out Creators. An example earnings calculator is visible to see what is received by whom on a sale of a Virtual Currency Pack.
 
-![Token Pack Settings Flow](images/token-packs-settings.png)
+![Virtual Currency Pack Settings Flow](images/virtual-currency-packs-settings.png)
 
 :::note
-Token packs can be mapped to Token pack SKUs sold on external platforms.
+Virtual currency packs can be mapped to virtual currency pack SKUs sold on external platforms.
 :::
 
 ## Partner Program

@@ -41,9 +41,9 @@ Currently you cannot sign into the mod.io site using your Apple, Meta Quest or N
 Alternatively you can authenticate users with email on all platforms, which has no dependencies and therefore is great for testing. Instructions for using email authentication can be found below:
 
 - [REST API](https://docs.mod.io/restapiref/#email-exchange)
-- [Unreal Engine](/unreal/getting-started/#email-authentication)
+- [Unreal Engine](/unreal/getting-started/user-authentication/#email-authentication)
 - [Unity Engine](https://docs.mod.io/unity/getting-started/#authentication)
-- [C++ SDK](https://docs.mod.io/cppsdk/getting-started/#sdk-quick-start-user-authentication)
+- [C++ SDK](https://docs.mod.io/cppsdk/getting-started/#user-authentication)
 
 :::warning
 Email is great for instant setup and testing, however we highly recommend using the Platform SSO authentication flows (detailed above) where available, or your own identity provider, as they are instant and accessible vs email which is not. It also makes it easier to block bad actors, and avoids user frustration and error like having to type your email in using gamepads.

@@ -8,7 +8,7 @@ import CrossLink from '@site/src/components/CrossLink'
 
 # Google Play Entitlements
 
-This guide will show you how to set up your game up on Google Play Console and mod.io website for mod.io to process entitlements on your behalf. The mod.io platform will use the Google Play Android Developer API to verify purchases and grant associated entitlements to users who have purchased [mio tokens](#glossary-of-terms) in your game. Conversely, if a user requests a refund, mod.io will revoke the entitlements associated with the refunded purchase.
+This guide will show you how to set up your game up on Google Play Console and mod.io website for mod.io to process entitlements on your behalf. The mod.io platform will use the Google Play Android Developer API to verify purchases and grant associated entitlements to users who have purchased [creator credits](#glossary-of-terms) in your game. Conversely, if a user requests a refund, mod.io will revoke the entitlements associated with the refunded purchase.
 
 :::note
 To revoke entitlements after refunds, you must tick the remove entitlements checkbox in the refund request, you can also set this value to true programmatically. [Voided Purchases Documentation](https://developers.google.com/android-publisher/voided-purchases).
@@ -22,10 +22,10 @@ To revoke entitlements after refunds, you must tick the remove entitlements chec
 * **Google Play Console**: The console provided by Google that allows developers to publish and manage applications or games and in-app products on Google Play.
 * **Package Name**: The package name is a unique name for your game on the Google Play Store. It is also known as the application ID.
 * **Product Id**: The product id is a unique identifier for an in-app product on Google Play. It is used to identify the product when making purchases.
-* **mios**: mios are consumable digital tokens that can be purchased within your game and exchanged for game mods on the mod.io platform.
+* **creator credits**: Creator credits are consumable virtual currency that can be purchased within your game and exchanged for game mods on the mod.io platform.
 
 ## Use cases
-In-app mio purchases for a game published on Google Play Store running on an android mobile device. Mios are consumable in-app digital products that can be used to purchase mods on mod.io.
+In-app virtual currency credits purchases for a game published on Google Play Store running on an android mobile device. Credits are consumable in-app digital products that can be used to purchase mods on mod.io.
 
 ## Prerequisites
 
@@ -54,7 +54,7 @@ This section assumes you have a game set up on Google play console. Follow the [
 
 1. Go to the mod.io dashboard and navigate to **Admin > Monetization**, marketplace must be enabled to access this screen.
 
-2. Navigate to **Settings > Manage Skus** and select the token pack you'd like to associate with the Google Play product.
+2. Navigate to **Settings > Manage Skus** and select the virtual currency pack you'd like to associate with the Google Play product.
 
 3. Select Google from the dropdown and enter the Google Product Id(s) from Google Play Console ([from the previous section](#setting-in-app-products-on-google-play-console)), click **save**.
 ![Google Cloud project enable APIs & Services](images/modio_link_google_productid.png)

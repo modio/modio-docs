@@ -67,7 +67,7 @@ It takes about 48 hours for your Apple developer account to be verified. Once it
 If your game is using the official mod.io SDK, Unreal or Unity plugin, follow the instructions provided with it to authenticate players using Apple SSO, or other supported platform authentication methods.
 
 * For the C++ SDK, [click here](/cppsdk/getting-started/#ssoexternal-authentication)
-* For Unreal Engine, [click here](/unreal/getting-started/#ssoexternal-authentication)
+* For Unreal Engine, [click here](/unreal/getting-started/user-authentication#single-sign-on-authentication)
 * For Unity Engine, [click here](/unity/getting-started/#authentication)
 
 If you are building something custom using the mod.io REST API, follow the [instructions provided here](https://docs.mod.io/restapiref/#apple) to authenticate players using Apple SSO, by calling the `/external/appleauth` endpoint.
