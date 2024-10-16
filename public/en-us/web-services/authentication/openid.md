@@ -116,7 +116,7 @@ To add your JWK URL to the mod.io dashboard follow these steps:
 Once the signature of the ID token been verified, mod.io will then extract claims from the ID Token to create an account for the player. The following claims are required:
 
 - `sub`: Subject claim. This value MUST be the unique identifier for the player within your identity provider.
-- `aud`: Audience claim. This value MUST be `https://mod.io`.
+- `aud`: Audience claim. This value must be set to either `https://mod.io` or `https://g-<your-game-id>.mod.api.io`. If you set the audience to your game's URL, the token will only work within that URL and won't be valid on any other [mod.io](https://mod.io) domain.
 
 ### Optional Claims Mappings
 
@@ -134,7 +134,7 @@ For an OpenID authentication request to be successful, mod.io will make the foll
 1. The signing keys exposed by the JWK URL must either be Elliptic Curve (EC) with `256` and `512` being supported curves, or RSA with `RS256` being supported.
 2. At least one of the signing keys exposed in the JWK URL must have signed the supplied ID Token.
 3. The `sub` claim must be present and a non-empty string or positive integer. In the event an integer datatype is encountered, this value will be casted to a string internally.
-4. The `aud` claim must be `https://mod.io`
+4. The `aud` claim must be set to either `https://mod.io` or `https://g-<your-game-id>.modapi.io`. If you use your game's URL, it must match the API host exactly.
 5. The `iat` claim cannot be greater than the current epoch unix timestamp with a 10 second buffer to account for clock skew.
 6. The `exp` claim must be greater than the current epoch unix timestamp with a 10 second buffer to account for clock skew.
 
@@ -165,7 +165,7 @@ OpenID offers a powerful method in-which game studios can take an existing sessi
 | 11090         | mod.io was unable to obtain the JWK set from the registered JWK URL.                     |
 | 11092         | The ID token is not valid yet, indicating an invalid `nbf` claim value.                  |
 | 11093         | The ID token has expired, indicating an invalid `exp` claim value.                       |
-| 11094         | The value of the audience claim (aud) did not match the expected value `https://mod.io`. |
+| 11094         | The value of the audience claim (aud) did not match the expected value.                  |
 
 ## References
 
