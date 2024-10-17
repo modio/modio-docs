@@ -14,6 +14,7 @@ For a user to make a purchase, they must first have a wallet. To do so, call the
 - Register the user with the marketplace.
 - Create or fetch a wallet for the user in your game.
 - Read balances of the wallet.
+- Read the deficit of a wallet. (Note: The deficit refers to any amount the user owes the marketplace in cases where a refund could not be fully processed.)
 
 ## User Purchases
 

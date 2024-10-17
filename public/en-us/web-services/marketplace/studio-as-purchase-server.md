@@ -12,6 +12,7 @@ Operating a Purchase Server requires a strong understanding of the role you must
 - Making transactions from your purchase server
 - Relaying clawback events from your purchase server to mod.io
 - Handling failures and edge cases with clawback functionality
+- Reading transaction history
 
 ## Prerequisites
 
@@ -338,3 +339,349 @@ tax|integer|The tax amount of the purchase in cents.
 tax_type|string|The tax type.
 transaction_type|string|The state of the transaction that was processed. Possible values are `cancelled`, `cleared`, `failed`, `paid`, `pending`, `refunded`.
 purchase_date|timestamp|The time of the purchase.
+
+## Reading Transaction History
+
+To view the transaction history of your purchase server, you can query the transaction history endpoint. This endpoint returns a list of transactions processed by your purchase server.
+It is recommended to poll this endpoint at a reasonable rate to ensure your purchase server has not missed or failed to process any transactions. An S2S token is required to read the folowing endpoints.  
+
+To query the transaction history, you may use:
+
+- The transaction index endpoint to load a paginated history.
+- The show endpoint to load a specific transaction and any related transaction history.
+
+You will need a monetization team ID, which mod.io can provide upon request.
+The endpoints include the full transaction history of your purchase server, including details such as:
+
+- `Transaction ID`
+- `Gross amount`
+- `Net amount`
+- `Platform fee`
+- `Gateway fee`
+- `Tax and tax type`
+- `Transaction type`
+- `Purchase date`
+You can query and filter transactions using any of the filters listed below.
+
+### FAQs
+- What are the transaction_type values and what do they represent?
+  - `pending` - The transaction is pending, and no funds have been taken.
+  - `paid` - The transaction has been paid, and funds have been issued to holding wallets.
+  - `cleared` - The transaction has cleared, meaning funds have settled into earned wallets.
+  - `refunded` - The transaction has been refunded.
+  - `cancelled` - The transaction was aborted and no funds where processed.
+  - `failed` - The transaction failed to be processed and no funds where processed.
+- What do the values in line_item represent?
+  - Line items represent anything that the transaction has processed. Some meta-information is included, such as:
+  - `buyer_id`: Represents the mod.io user_id of the buyer.
+  - `mod_id`: Represents the ID of the mod processed during the transaction.
+- What does the `gateway_uuid` represent?
+  - This is a unique universal identifier used to track a transaction across multiple systems. It is recommended to use the primary ID of the entitlement, as it remains the same across all transaction states (i.e., pending, paid, cleared).
+  When loading transactions in the show endpoint, note that the gateway_uuid remains the same across all transaction states.
+- What does the `clawback_uuid` represent?
+  - This is a non-unique ID in the transaction system used to link clawback transactions together. It is recommended to track and maintain this ID in your payment server when processing a refund. This ID will then be attached to any transactions refunded and any child transactions in the event of a clawback deficit.
+
+### Transaction Index
+
+This endpoint gives a paginated list of transactions processed by our purchase server.
+
+```
+GET https://{your-game-id}.modapi.io/v1/s2s/monetization-teams/{monetization-team-id}/transactions HTTP/1.1
+Accept: application/json
+Authorization: Bearer {service-token}
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": 24573667,
+      "gateway_uuid": "e421341b0-107e-4604-a07d-96e87XSadsa1",
+      "gateway_name": "tilia",
+      "account_id": 1234,
+      "gross_amount": 16500,
+      "net_amount": 15000,
+      "platform_fee": 1500,
+      "gateway_fee": 1070,
+      "tax": 1500,
+      "tax_type": "sales",
+      "currency": "usd",
+      "transaction_type": "paid",
+      "monetization_type": "marketplace",
+      "purchase_date": "2015-10-21 04:55:22",
+      "created_at": 499146135,
+      "line_items": [
+        {
+          "mod_id": 1,
+          "game_id": 1,
+          "buyer_id": 1,
+          "mod_name": "mod mods",
+          "game_name": "Game",
+          "buyer_name": "Buyer"
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "per_page": 15,
+    "current_page": "/v1/s2s/monetization-teams/1234/transactions?cursor=eyJpZCI6MTY0MTUxNTUyLCJfcG9pbnRzVG9OZXh0SXRlbXMiOXSDaDS",
+    "next_page_url": "/v1/s2s/monetization-teams/1234/transactions?cursor=eyJpZCI6MTY0MTUxNTUyLCJfcG9pbnRzVG9OZXh0SXRlbXMiOXSDaDS",
+    "prev_page_url": "/v1/s2s/monetization-teams/1234/transactions?cursor=eyJpZCI6MTY0MTUxNTUyLCJfcG9pbnRzVG9OZXh0SXRlbXMiOXSDaDS"
+  }
+}
+```
+
+##### Response Schema
+
+Name|Type|Description
+---|---|---
+id | integer | Unique ID of the transaction.
+gateway_uuid | string | UUID of the payment gateway used for the transaction.
+gateway_name | string | Name of the payment gateway.
+account_id | integer | ID of the account involved in the transaction.
+gross_amount | integer | Gross amount of the transaction (in cents).
+net_amount | integer | Net amount after fees and taxes (in cents).
+platform_fee | integer | Fee charged by the platform (in cents).
+gateway_fee | integer | Fee charged by the payment gateway (in cents).
+tax | integer | Tax amount applied to the transaction (in cents).
+tax_type | string | Type of tax applied (e.g., sales).
+currency | string | Currency code (e.g., USD).
+transaction_type | string | Type of transaction (e.g., paid).
+monetization_type | string | Type of monetization (e.g., marketplace).
+purchase_date | string | Date and time of the purchase in "YYYY-MM-DD HH:MM:SS" format.
+created_at | integer | Timestamp of when the transaction was created.
+line_items | array | List of individual line items in the transaction.
+line_items[].mod_id | integer | ID of the mod.
+line_items[].game_id | integer | ID of the game.
+line_items[].buyer_id | integer | ID of the buyer.
+line_items[].mod_name | string | Name of the mod.
+line_items[].game_name | string | Name of the game.
+line_items[].buyer_name | string | Name of the buyer.
+meta | object | Metadata about the paginated response.
+meta.per_page | integer | Number of records per page.
+meta.current_page | string | Current page URL with the cursor.
+meta.next_page_url | string | URL to the next page of results.
+meta.prev_page_url | string | URL to the previous page of results.
+
+#### Filtering Transactions
+
+There are several filters you can use to query the transaction index endpoint.
+
+| Name             | Type   | Description                                                                                      |
+|------------------|--------|--------------------------------------------------------------------------------------------------|
+| transaction_type | array  | The types of transactions to filter by. Can be used as an array or on its own.                   |
+| monetization_type| array  | The types of monetization to filter by. Can be used as an array or on its own.                   |
+| currency_type    | array  | The type of currency to filter by. Can be used as an array or on its own.                       |
+| buyer            | int    | The buyer ID to filter by. Can only be used as a single filter.                                  |
+| gateway_name     | int    | The gateway name to filter by. Can only be used as a single filter.                              |
+| clawback_uuid    | string | The clawback UUID to filter by. Can only be used as a single filter.                             |
+| gateway_uuid     | string | The gateway transaction ID to filter by. Can only be used as a single filter.                    |
+| line_items       | string | The line item key-value pair to filter by. Can only be used as a single filter.                  |
+| created_at_start | date   | The start date to sort by. Assumes the current date as the end if not given. Can be a timestamp or a date-time string. |
+| created_at_end   | date   | The end date to sort by. Assumes the current date as the start if not given. Can be a timestamp or a date-time string. |
+
+
+### Transaction Show
+
+This endpoint provides an individual collection of transactions processed by our purchase server. It includes all transactions that share the same `gateway_uuid`.
+
+```
+GET https://{your-game-id}.modapi.io/v1/s2s/monetization-teams/{monetization-team-id}/transactions/{transaction-id} HTTP/1.1
+Accept: application/json
+Authorization: Bearer {service-token}
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": 123,
+      "gateway_uuid": "0ab243d2-b234-4be0-b1ff-910d3335Xs09d6",
+      "gateway_name": "tilia",
+      "account_id": 123,
+      "gross_amount": 219,
+      "net_amount": 199,
+      "platform_fee": 20,
+      "gateway_fee": 30,
+      "tax": 20,
+      "tax_type": "sales",
+      "currency": "usd",
+      "tokens": 200,
+      "transaction_type": "cleared",
+      "monetization_type": "fiat",
+      "purchase_date": "2015-10-21 04:55:22",
+      "created_at": 499146135,
+      "payment_method": [
+        {
+          "name": "Visa ending in 1111",
+          "id": "4ef030e0-3e70-4d38-adc3-280e7b7e7b7b",
+          "amount": 219,
+          "display_amount": "USD 2.19"
+        }
+      ],
+      "items": [
+        {
+          "id": 123,
+          "gateway_uuid": "0ab243d2-b234-4be0-biff-910d3335Xs09d6",
+          "gateway_name": "tilia",
+          "sale_price": 199,
+          "gateway_fee": 30,
+          "platform_fee": 20,
+          "currency": "usd",
+          "tokens": 200,
+          "token_team_id": 123,
+          "sale_type": "bought",
+          "monetization_type": "fiat",
+          "transaction_type": "paid",
+          "purchase_date": "2015-10-21 04:55:22",
+          "created_at": 499146135,
+          "line_items": [
+            {
+              "mod_id": 1,
+              "game_id": 1,
+              "buyer_id": 1,
+              "mod_name": "mod mods",
+              "game_name": "Game",
+              "buyer_name": "Buyer"
+            }
+          ]
+        },
+        {
+          "id": 123,
+          "gateway_uuid": "0ab243d2-b234-4be0-biff-910d3335Xs09d6",
+          "gateway_name": "tilia",
+          "sale_price": 199,
+          "gateway_fee": 30,
+          "platform_fee": 20,
+          "token_pool_fee": 80,
+          "currency": "usd",
+          "tokens": 200,
+          "token_team_id": 758829527,
+          "sale_type": "sold",
+          "monetization_type": "fiat",
+          "transaction_type": "cleared",
+          "team_type": "store",
+          "purchase_date": "2015-10-21 04:55:22",
+          "created_at": 499146135,
+          "line_items": [
+            {
+              "mod_id": 1,
+              "game_id": 1,
+              "buyer_id": 1,
+              "mod_name": "mod mods",
+              "game_name": "Game",
+              "buyer_name": "Buyer"
+            }
+          ],
+          "breakdown": [
+            {
+              "platform": {
+                "revenue": 20
+              },
+              "store": [
+                {
+                  "revenue": 69,
+                  "users": [
+                    {
+                      "account_name": "User A",
+                      "account_id": 123,
+                      "revenue": 6
+                    },
+                    {
+                      "account_name": "User B",
+                      "account_id": 456,
+                      "revenue": 63
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "revenue": 6
+        }
+      ],
+      "line_items": [
+        {
+          "mod_id": 1,
+          "game_id": 1,
+          "buyer_id": 1,
+          "mod_name": "mod mods",
+          "game_name": "Game",
+          "buyer_name": "Buyer"
+        }
+      ]
+    }
+  ]
+}
+```
+
+##### Response Schema
+
+Name|Type|Description
+---|---|---
+data | array | List of transaction records.
+id | integer | Unique ID of the transaction.
+gateway_uuid | string | UUID of the payment gateway used for the transaction.
+gateway_name | string | Name of the payment gateway.
+account_id | integer | ID of the account involved in the transaction.
+gross_amount | integer | Gross amount of the transaction (in cents).
+net_amount | integer | Net amount after fees and taxes (in cents).
+platform_fee | integer | Fee charged by the platform (in cents).
+gateway_fee | integer | Fee charged by the payment gateway (in cents).
+tax | integer | Tax amount applied to the transaction (in cents).
+tax_type | string | Type of tax applied (e.g., sales).
+currency | string | Currency code (e.g., USD).
+tokens | integer | Number of tokens in the transaction.
+transaction_type | string | Type of transaction (e.g., cleared).
+monetization_type | string | Type of monetization (e.g., fiat).
+purchase_date | string | Date and time of the purchase in "YYYY-MM-DD HH:MM:SS" format.
+created_at | integer | Timestamp of when the transaction was created.
+payment_method | array | List of payment methods used in the transaction.
+payment_method[].name | string | Display name of the payment method (e.g., Visa ending in 1111).
+payment_method[].id | string | Unique ID of the payment method.
+payment_method[].amount | integer | Amount paid using this payment method (in cents).
+payment_method[].display_amount | string | Human-readable representation of the amount paid.
+items | array | List of individual items in the transaction.
+items[].id | integer | Unique ID of the item.
+items[].gateway_uuid | string | UUID of the payment gateway for this item.
+items[].gateway_name | string | Name of the payment gateway for this item.
+items[].sale_price | integer | Sale price of the item (in cents).
+items[].gateway_fee | integer | Fee charged by the payment gateway for this item (in cents).
+items[].platform_fee | integer | Fee charged by the platform for this item (in cents).
+items[].token_pool_fee | integer | Token pool fee associated with the item (in cents).
+items[].currency | string | Currency code for the item (e.g., USD).
+items[].tokens | integer | Number of tokens involved in the transaction.
+items[].token_team_id | integer | ID of the token team for the item.
+items[].sale_type | string | Type of sale (e.g., bought, sold).
+items[].monetization_type | string | Type of monetization for the item (e.g., fiat).
+items[].transaction_type | string | Type of transaction for the item (e.g., paid, cleared).
+items[].team_type | string | Type of team involved (e.g., store).
+items[].purchase_date | string | Date and time of the item's purchase in "YYYY-MM-DD HH:MM:SS" format.
+items[].created_at | integer | Timestamp of when the item was created.
+items[].line_items | array | List of individual line items for this item.
+items[].line_items[].mod_id | integer | ID of the mod.
+items[].line_items[].game_id | integer | ID of the game.
+items[].line_items[].buyer_id | integer | ID of the buyer.
+items[].line_items[].mod_name | string | Name of the mod.
+items[].line_items[].game_name | string | Name of the game.
+items[].line_items[].buyer_name | string | Name of the buyer.
+items[].breakdown | array | Revenue breakdown for the item.
+items[].breakdown[].platform.revenue | integer | Revenue earned by the platform (in cents).
+items[].breakdown[].store | array | List of revenue breakdowns for the store.
+items[].breakdown[].store[].revenue | integer | Revenue earned by the store (in cents).
+items[].breakdown[].store[].users | array | List of users and their revenue shares.
+items[].breakdown[].store[].users[].account_name | string | Name of the user.
+items[].breakdown[].store[].users[].account_id | integer | ID of the user.
+items[].breakdown[].store[].users[].revenue | integer | Revenue earned by the user (in cents).
+items[].revenue | integer | Total revenue from the item (in cents).
+line_items | array | List of individual line items in the transaction.
+line_items[].mod_id | integer | ID of the mod.
+line_items[].game_id | integer | ID of the game.
+line_items[].buyer_id | integer | ID of the buyer.
+line_items[].mod_name | string | Name of the mod.
+line_items[].game_name | string | Name of the game.
+line_items[].buyer_name | string | Name of the buyer.
