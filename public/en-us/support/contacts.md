@@ -11,4 +11,4 @@ For all game integration enquiries (Unity, Unreal, SDK and REST API), please con
 
 For all business development enquiries, please contact us at developers@mod.io.
 
-For general enquiries, please contact us at support@mod.io, or search our knowledge base: https://support.mod.io.
+For general queries you can search our knowledge base here: https://support.mod.io.

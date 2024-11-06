@@ -158,6 +158,7 @@ The following guides are provided to help you through the basic functions of the
 * [Mod management and subscriptions](#mod-management-and-subscriptions)
 * [In-game mod submission](#in-game-mod-submission)
 * [Edit an existing mod](#edit-an-existing-mod)
+* [Content reporting](#content-reporting)
 * [User mute and unmute functions](#user-mute-and-unmute-functions)
 * [Temporary Mod Sets](#temporary-mod-sets)
 * [Multithreading](#multithreading)
@@ -828,6 +829,37 @@ Modio::SubmitModChangesAsync(ModID, EditParams, [](Modio::ErrorCode ec, Modio::O
 
 ---
 
+### Content reporting
+
+:::note
+This functionality is demonstrated in example 06_ReportMod
+:::
+
+The SDK has full support for reporting content that breaches guidelines - this can be entire games, users, or mods themselves. When reporting a mod, users can provide a report type, a reason and their contact details. These reports will appear on your game's moderation dashboard to be actioned. Shipping your title on consoles generally requires moderation and reporting capability being provided in your game.
+
+To report a piece of content, call [ReportContentAsync](cppsdk/refdocs#reportcontentasync), providing a `Modio::ReportParams` containing the paramters for the report.
+
+```cpp
+
+Modio::ReportParams Params = Modio::ReportParams(Modio::ModID(ModID), Modio::ReportType::DMCA, "This mod contains copyrighted content",
+						"ReporterName", "Reporter@Email.com");
+
+Modio::ReportContentAsync(Params, [](Modio::ErrorCode ec)
+{
+    if (ec)
+    {
+        // error handling
+    }
+    else
+    {
+        // content successfully reported
+    }
+});
+
+```
+
+---
+
 ### User mute and unmute functions
 
 Users have the ability to disable updates from other user's mods. This will prevent mod.io from returning mods authored by the muted user. There are three functions to perform these actions:
@@ -1052,7 +1084,7 @@ For Steam, this functionality is demonstrated in advanced example 01_SteamAuthAn
 For consoles, check the examples folder in the platform module.
 :::
 
-If you are supporting the purchase of token packs on platform storefronts, entitlement refreshing is the method by which those token packs are consumed and converted into mod.io virtual tokens for users to purchase UGC with.
+If you are supporting the purchase of virtual currency packs on platform storefronts, entitlement refreshing is the method by which those virtual currency packs are consumed and converted into mod.io virtual currency credits for users to purchase UGC with.
 
 Each platform has a specific way of setting up entitlements for consumption, but generally speaking the way you consume those entitlements is the same. Read each platform's Marketplace documentation for how to configure entitlements and any platform-specific information for entitlement consumption.
 

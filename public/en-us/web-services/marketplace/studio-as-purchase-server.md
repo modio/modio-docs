@@ -514,7 +514,7 @@ Authorization: Bearer {service-token}
       "transaction_type": "cleared",
       "monetization_type": "fiat",
       "purchase_date": "2015-10-21 04:55:22",
-      "created_at": 499146135,
+      "created_at": 499146135123456,
       "payment_method": [
         {
           "name": "Visa ending in 1111",
@@ -538,7 +538,7 @@ Authorization: Bearer {service-token}
           "monetization_type": "fiat",
           "transaction_type": "paid",
           "purchase_date": "2015-10-21 04:55:22",
-          "created_at": 499146135,
+          "created_at": 499146135123456,
           "line_items": [
             {
               "mod_id": 1,
@@ -566,7 +566,7 @@ Authorization: Bearer {service-token}
           "transaction_type": "cleared",
           "team_type": "store",
           "purchase_date": "2015-10-21 04:55:22",
-          "created_at": 499146135,
+          "created_at": 499146135123456,
           "line_items": [
             {
               "mod_id": 1,

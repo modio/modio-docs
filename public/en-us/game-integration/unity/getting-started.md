@@ -1154,3 +1154,85 @@ namespace ModIO
     }
 }
 ```
+# Metrics Play Sessions
+
+The mod.io SDK supports all of the mod.io metrics features, allowing you to start a metrics play sesion, keeping that session alive via a heartbeat (automatically called, or manually handled) and then ending that session. Metric sessions allow you to track which mods your players interact with most frequently. Visit https://docs.mod.io/metrics/ for an overview of the mod.io metrics system.
+
+:::note
+Running metrics play sessions is a premium feature. If you are interested in mod.io premium features, please contact developers@mod.io.
+:::
+
+The following documentation walks you through the setup process and gives example usages.
+
+When you want to start tracking analytic data you can call ```StartAnalyticsSession()```. This function requires a unique ```sessionId```, an array of ```modIds``` being used in the session,
+and the ```autoStartHeartbeat``` boolean that represents automation of the analytics heartbeat. 
+
+:::note
+You will need to cache your session id as it will be needed later.
+:::
+:::note
+It is recommended that you allow automation of the heartbeat function by passing in ```true```.
+:::
+
+
+```csharp
+string[] modIds;
+string sessionId;
+
+void Example()
+{
+    var r = await ModIOUnityAsync.StartAnalyticsSession(sessionId, modIds, true);
+    if (r.result.Succeeded())
+    {
+        //Store the returned session id to end the session later.
+        sessionId = r.value;
+        Debug.Log("Successfully sent start analytics session request");
+    }
+    else
+    {
+        Debug.Log("Failed to send start analytics session request");
+    }
+}
+```
+
+If you decide that you want more control over when the heartbeat function is called, you can manually call ```SendAnalyticsHeartbeat()```. This function tells our backend that the session is still active. The only parameter required is the ```sessionId``` that you used to start the analytics session.
+
+:::note
+Each call to ```SendAnalyticsHeartbeat()``` should be at least 5 minutes apart. 
+:::
+```csharp
+string sessionId;
+ 
+async void Example()
+{
+    Result r = await ModIOUnityAsync.SendAnalyticsHeartbeat(sessionId);
+
+    if (r.result.Succeeded())
+    {
+        Debug.Log("Successfully sent analytics heartbeat request");
+    }
+    else
+    {
+        Debug.Log("Failed to send analytics heartbeat request");
+    }
+}
+```
+
+When you are ready to end the session, you can call ```EndAnalyticsSession()``` by passing in the ```sessionId``` that you used to start the analytics session.
+
+```csharp
+string sessionId;
+async void Example()
+{
+    Result result = await ModIOUnityAsync.EndAnalyticsSession(sessionId);
+
+    if (result.Succeeded())
+    {
+        Debug.Log("Successfully sent end analytics request");
+    }
+    else
+    {
+        Debug.Log("Failed to send end analytics request");
+    }
+}
+```
