@@ -2,7 +2,6 @@
 id: ue-enable-disable
 title: Enable Disable Mod Functionality
 slug: /unreal/component-ui/enable-disable/
-sidebar_position: 6
 custom_edit_url: https://github.com/modio/modio-ue4-internal/tree/main/Plugins/ModioComponentUI/Doc/component-ui/enable_disable.mdx
 ---
 
@@ -18,11 +17,11 @@ The Component UI includes support for enabling and disabling mods in your UI and
 
 Enable/Disable is behind a feature flag under `Project Settings > Plugins > mod.io > Feature Flags > Enable Mod Enable/Disable support`. Enabling this is the first step to using the built-in feature.
 
-## Adding a IModEnabledStateProvider
+## Adding an `IModEnabledStateProvider`
 
-Just like the rest of the Component UI, the Enable/Disable functionality is driven by an interface `IModEnabledStateProvider`. The class that you implement this on will be both a data provider for the state of mods, as well as receive callbacks for enable and disable events that are triggered from the components. You can also implement this interface in Blueprint. Generally speaking, something that persists for a long time such as a GameInstance or your UGC Manager Subsystem should implement this interface and handle persistence.
+Just like the rest of the Component UI, the Enable/Disable functionality is driven by an interface: `IModEnabledStateProvider`. The class on which you implement this interface will be a data provider for the state of mods, and will also receive callbacks for enable and disable events that are triggered from the components. You can also implement this interface in Blueprint. Generally speaking, something that persists for a long time such as a `GameInstance` or your UGC Manager Subsystem should implement this interface and handle persistence.
 
-### Registering the IModEnabledStateProvider
+### Registering the `IModEnabledStateProvider`
 
 Whichever class implements `IModEnabledStateProvider` has to register itself with the UI Subsystem as follows:
 
@@ -35,7 +34,7 @@ if (UModioUISubsystem* UISubsystem = GEngine->GetEngineSubsystem<UModioUISubsyst
 
 ### Handling a state change
 
-When you enable or disable a mod from the UI, the `IModEnabledStateProvider` will receive a `RequestModEnabledStateChange` callback. You can then store the state of the ModID. As an example, if you were just storing this per-session, your implementing class could declare something such as `TSet<int64> DisabledMods;`, and update it as such:
+When you enable or disable a mod from the UI, the `IModEnabledStateProvider` will receive a `RequestModEnabledStateChange` callback. You can then store the state of the `ModID`. As an example, if you were just storing this per-session, your implementing class could declare something such as `TSet<int64> DisabledMods` and update it like so:
 
 ```c++
 bool UModioGameInstance::NativeRequestModEnabledStateChange(int64 ID, bool bNewEnabledState)
@@ -54,7 +53,7 @@ bool UModioGameInstance::NativeRequestModEnabledStateChange(int64 ID, bool bNewE
 
 ### Querying the state of a mod
 
-Similarly, whenever the Enable/Disable state of a mod needs to be queried by the UI, the `IModEnabledStateProvider` will receive a `QueryIsModEnabled` callback, which simply returns whether the mod is enabled or not:
+Similarly, whenever the Enable/Disable state of a mod needs to be queried by the UI, the `IModEnabledStateProvider` will receive a `QueryIsModEnabled` callback which simply returns whether the mod is enabled or not:
 
 ```c++
 bool UModioGameInstance::NativeQueryIsModEnabled(int64 ModID)

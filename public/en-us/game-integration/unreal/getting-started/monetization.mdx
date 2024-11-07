@@ -2,7 +2,7 @@
 id: ue-monetization
 title: Monetization
 slug: /unreal/getting-started/monetization
-custom_edit_url: https://github.com/modio/modio-ue4-internal/blob/develop/Plugins/Modio/Doc/getting-started/monetization.mdx
+custom_edit_url: https://github.com/modio/modio-ue4-internal/blob/develop/Plugins/Modio/Doc/doc_root/en-us/getting-started/monetization.mdx
 ---
 
 import Tabs from '@theme/Tabs';
@@ -169,3 +169,77 @@ void UModioManagerSubsystem::OnGetUserDelegationTokenCallback(FModioErrorCode Er
 
 </TabItem>
 </Tabs>
+
+
+## Listing and Purchasing Premium Currency
+
+The Monetization premium features mod.io includes the ability to show the relevant platform store (where possible), which allows the user to purchase virtual currency, top up their wallet, and purchase Premium UGC all without leaving the game.
+
+This functionality is exposed in one of two ways.
+
+### Displaying the Native Platform Store
+
+The recommended method is to simply call `UModioUISubsystem::RequestShowTokenPurchaseUIWithHandler` which will attempt to show the appropriate Platform Native storefront via Unreal's `IOnlineSubsystem`. This function will return an `EModioOpenStoreResult` indicating whether call succeeded or not.
+
+`FailedInactive` indicates that the Monetization feature is disabled in the base Mod.io plugin settings.
+
+`FailedUnsupportedPlatform` means that the current platform has not implemented its native storefront in the Unreal Engine Online Subsystem, and so you will have to implement your own method for getting and displaying purchasable items. An example/template of this can be found in the ComponentUI reference design, see below for more information.
+
+`FailedUnknown` is a catch-all for other error types, such as inactive online subsystems, network issues, etc, and you should check the relevant logs for any pertinent information.
+
+`Success` means that the platform store UI is being displayed, and you can then listen for the `Callback` to handle any resulting purchases. This `Callback` only indicates whether the Store was opened and closed successfully, not whether the user made a purchase or not. There is also `UModioUISubsystem::RequestShowTokenPurchaseUI` for instances where a Callback is not needed.
+
+<Tabs group-id="languages">
+  <TabItem value="blueprint" label="Blueprint">
+
+
+  ![ShowPlatformStoreUI](img/ShowPlatformStoreUI.png)
+
+  </TabItem>
+</Tabs>
+
+### Displaying Component UI Store Offers
+
+In cases where native store display is not supported, there is a provided template UI component for displaying and listing product offers within the Component UI itself.
+
+Found at `ModioComponentUI/Content/UI/Templates/Default/WBP_ModioDefaultTokenPackBrowser` this Widget provides a framework and example of querying a set of product offers, displaying them, and purchasing them through the platform store.
+
+NOTE: With either the Native or Component UI methods, the refreshing and consumption of purchased Entitlements, as well as the updating of the user's Wallet Balance, is left up to you the developer due to platform limitations.
+
+## Consuming User Entitlements
+
+User Entitlements are virtual currency packs/products that the user can purchase through their relevant platform store. These Entitlements can then be consumed; in the case of virtual currency, adding balance to their mod.io wallet for use purchasing UGC.
+
+Once a user has purchased a virtual currency pack on a given store those entitlements must be consumed before they can be used. To do so you can call `UModioSubsystem::RefreshUserEntitlementsAsync` which takes in `FModioEntitlementParams` and a `FOnRefreshUserEntitlementsDelegateFast` as a Callback, returning an `FModioErrorCode` and `TOptional<FModioEntitlementConsumptionStatusList>` indicating the status of the user’s entitlements.
+
+`FModioEntitlementParams` is to be populated with the Delegation Token received from `UModioSubsystem::GetUserDelegationTokenAsync`.
+
+<Tabs group-id="languages">
+	<TabItem value="c++" label="C++" default>
+
+```cpp
+// Get the relevant platform authentication token prior to making this call.
+void UModioManager::RefreshUserEntitlements(const FString& PlatformAuthToken)
+{
+	if (GEngine->GetEngineSubsystem<UModioSubsystem>())
+	{
+		FModioEntitlementParams Params;
+		Params.ExtendedParams.Add("auth_code", PlatformAuthToken);
+		GEngine->GetEngineSubsystem<UModioSubsystem>()->RefreshUserEntitlementsAsync(Params, FOnRefreshUserEntitlementsDelegateFast::CreateUObject(this, &UModioManager::OnRefreshUserEntitlementsCallback));
+	}
+}
+
+void UModioManager::OnRefreshUserEntitlementsCallback(FModioErrorCode ErrorCode, TOptional<FModioEntitlementConsumptionStatusList> ConsumptionStatusList)
+{
+	if (ErrorCode == false)
+	{
+		// Successfully refreshed entitlements.
+	}
+}
+```
+
+</TabItem>
+</Tabs>
+
+After entitlements are refreshed successfully any classes properly implementing the `ModioUIWalletBalanceUpdatedEventReceiver` interface will receive the updated balance.
+

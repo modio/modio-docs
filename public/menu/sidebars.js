@@ -70,10 +70,12 @@ const sidebars = {
           link: {type: 'doc', id: 'game-integration/unreal/component-ui/ue-overview'},
           items: [
             'game-integration/unreal/component-ui/ue-principles',
+            'game-integration/unreal/component-ui/ue-building-a-screen',
             'game-integration/unreal/component-ui/ue-architecture',
             'game-integration/unreal/component-ui/ue-localization',
             'game-integration/unreal/component-ui/ue-helpers',
             'game-integration/unreal/component-ui/ue-enable-disable',
+            'game-integration/ue-generated/ue-ui-refdocs',
           ]
         },
         'game-integration/unreal/ue-marketplace', 
@@ -85,12 +87,9 @@ const sidebars = {
         {
           type: 'category', 
           label: 'Legacy', 
-          items: ['guides/ue4-quicklook']},
-        {
-          type: 'link',
-          label: 'Unreal Reference', 
-          href: `${url}/unrealref/#_classes`, 
+          items: ['guides/ue4-quicklook']
         },
+        'game-integration/ue-generated/ue-refdocs',
       ],
     },
     {
