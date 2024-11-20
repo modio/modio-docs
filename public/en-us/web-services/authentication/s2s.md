@@ -55,7 +55,7 @@ When making any requests to service-to-service endpoints, you must always provid
 
 #### Request
 
-`POST https://{your-game-id}.modapi.io/v1/oauth/token`
+`POST https://g-{your-game-id}.modapi.io/v1/oauth/token`
 
 | Parameter     | Type    | Required | Description                                                                                                  |
 | ------------- | ------- | -------- | ------------------------------------------------------------------------------------------------------------ |
@@ -65,7 +65,7 @@ When making any requests to service-to-service endpoints, you must always provid
 | scope         | string  | false    | Specify the comma-separated scopes you wish your token to have. Valid scopes are `read`, `write`, `update`, and `monetization`. The `update` scope will elevate the token's authorization, allowing it to edit mods while acting as the game's leader. |
 
 ```
-POST https://{your-game-id}.modapi.io/v1/oauth/token
+POST https://g-{your-game-id}.modapi.io/v1/oauth/token
 Content-Type: application/x-www-form-urlencoded
 Accept: application/json
 
@@ -121,10 +121,10 @@ sequenceDiagram
 
 To request a User Delegation Token to send to your secure backend, you must first use the _Access Token_ from an authenticated user when making the request.
 
-`POST https://{your-game-id}.modapi.io/v1/me/s2s/oauth/token`
+`POST https://g-{your-game-id}.modapi.io/v1/me/s2s/oauth/token`
 
 ```
-POST https://{your-game-id}.modapi.io/v1/me/s2s/oauth/token
+POST https://g-{your-game-id}.modapi.io/v1/me/s2s/oauth/token
 Accept: application/json
 Authorization: Bearer {user-access-token}
 ```
@@ -152,7 +152,7 @@ Now you have a valid service token, your purchase server has the ability to call
 To authenticate requests using your Service Token, simply add the token to your `Authorization` header as if you would a user Bearer token.
 
 ```http
-GET https://{your-game-id}.modapi.io/v1/s2s/...
+GET https://g-{your-game-id}.modapi.io/v1/s2s/...
 Accept: application/json
 Authorization: Bearer {service-token}
 ```

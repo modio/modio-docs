@@ -225,7 +225,7 @@ There may be instances where a studio needs to programmatically remove the link 
 
 #### Request
 
-`DELETE https://{your-game-id}.modapi.io/v1/s2s/connections/{identity-provider-id}`
+`DELETE https://g-{your-game-id}.modapi.io/v1/s2s/connections/{identity-provider-id}`
 
 ##### Headers
 
@@ -240,7 +240,7 @@ Parameter|Type|Required|Description
 identity-provider-id|string|true|The unique ID of the player as understood by your identity provider, this should be the same field that is supplied to us in the `sub` claim for OIDC authentication, and the ID field for web-based OAuth 2 authentication. As an example, if your identity provider uses UUID's for player ID's, and those values are what is shared with mod.io via your implementation, then mod.io expects the same value to this endpoint.
 
 ```
-POST https://{your-game-id}.modapi.io/v1/s2s/connections/{identity-provider-id} HTTP/1.1
+POST https://g-{your-game-id}.modapi.io/v1/s2s/connections/{identity-provider-id} HTTP/1.1
 Content-Type: application/x-www-form-urlencoded
 Accept: application/json
 Authorization: Bearer {service-token}

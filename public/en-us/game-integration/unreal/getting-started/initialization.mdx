@@ -15,12 +15,12 @@ This guide describes the mod.io Unreal Engine plugin's basic event loop, intiali
 For more information, see our [User Authentication](user-authentication) quick-start guide.
 
 ## Calling RunPendingHandlers
-Before initializing the plugin, ensure [`RunPendingHandlers`](https://docs.mod.io/unrealref/#RunPendingHandlers) is being continually called. You can do this yourself in your project’s main loop, or by setting [`Use Background Thread`](/unreal/installation-and-setup/#using-a-background-thread) to true in the mod.io project settings.  For best performance, `RunPendingHandlers` should be called at least once per frame. See [Maintaining the plugin event loop](/unreal/getting-started/plugin-structure/#maintaining-the-plugin-event-loop) for additional information.
+Before initializing the plugin, ensure [`RunPendingHandlers`](/unreal/refdocs/#run-pending-handlers) is being continually called. You can do this yourself in your project’s main loop, or by setting [`Use Background Thread`](/unreal/installation-and-setup/#using-a-background-thread) to true in the mod.io project settings.  For best performance, `RunPendingHandlers` should be called at least once per frame. See [Maintaining the plugin event loop](/unreal/getting-started/plugin-structure/#maintaining-the-plugin-event-loop) for additional information.
 
 ## Initialization
-The mod.io Unreal Engine plugin is initialized by calling [`InitializeAsync`](https://docs.mod.io/unrealref/#K2_InitializeAsync), passing in a [`ModioInitializeOptions`](https://docs.mod.io/unrealref/#_modioinitializeoptions) with the relevant information for the current session, and a callback containing a [`ModioErrorCode`](https://docs.mod.io/unrealref/#_modioerrorcode) that will contain the result of the initialization on completion.  
+The mod.io Unreal Engine plugin is initialized by calling [`InitializeAsync`](/unreal/refdocs/#initializeasync), passing in a [`ModioInitializeOptions`](/unreal/refdocs/#modioinitializeoptions) with the relevant information for the current session, and a callback containing a [`ModioErrorCode`](/unreal/refdocs/#modioerrorcode) that will contain the result of the initialization on completion.  
 
-Use [`GetProjectInitializeOptionsForSessionId`](https://docs.mod.io/unrealref/#GetProjectInitializeOptionsForSessionId) to initialize the plugin using the information entered in the [mod.io project settings](/unreal/installation-and-setup/#plugin-configuration).  On Windows, [`GetDefaultSessionIdWindows`](https://docs.mod.io/unrealref/#GetDefaultSessionIdWindows) can be used as the [Session ID](/unreal/getting-started/plugin-structure/#session-ids).  Some platforms also require additional parameters added to `ModioInitializeOptions.ExtendedInitializationParameters`.  Refer to the relevant [platform documentation](/platforms/) for more information.
+Use [`GetProjectInitializeOptionsForSessionId`](/unreal/refdocs/#get-project-initialize-options-for-session-id) to initialize the plugin using the information entered in the [mod.io project settings](/unreal/installation-and-setup/#plugin-configuration).  On Windows, [`GetDefaultSessionIdWindows`](/unreal/refdocs/#get-default-session-id-windows) can be used as the [Session ID](/unreal/getting-started/plugin-structure/#session-ids).  Some platforms also require additional parameters added to `ModioInitializeOptions.ExtendedInitializationParameters`.  Refer to the relevant [platform documentation](/platforms/) for more information.
 
 <Tabs groupId="languages">
   <TabItem value="cpp" label="C++">
@@ -64,7 +64,7 @@ void UModioManagerSubsystem::Tick(float DeltaTime)
 
 ## Shutdown
 
-The mod.io Unreal Engine plugin is shut down by calling [`ShutdownAsync`](https://docs.mod.io/unrealref/#K2_ShutdownAsync) in a similar fashion.
+The mod.io Unreal Engine plugin is shut down by calling [`ShutdownAsync`](/unreal/refdocs/#shutdownasync) in a similar fashion.
 
 <Tabs groupId="languages">
   <TabItem value="cpp" label="C++">
@@ -94,7 +94,7 @@ void UModioManagerSubsystem::OnShutdownComplete(FModioErrorCode ErrorCode)
 
 
 :::note
-* You *must* continue to call [**`RunPendingHandlers`**](https://docs.mod.io/unrealref/#RunPendingHandlers) while shutdown is in progress to allow intermediate handlers to complete.
+* You *must* continue to call [**`RunPendingHandlers`**](/unreal/refdocs/#run-pending-handlers) while shutdown is in progress to allow intermediate handlers to complete.
 * Any in-flight mod.io async calls will complete with an error code indicating cancellation.
 * You *must not* call **`ShutdownAsync`** from within another completion handler/callback. This may cause the application to deadlock. 
 :::

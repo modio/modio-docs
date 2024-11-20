@@ -81,8 +81,8 @@ const sidebars = {
         'game-integration/unreal/ue-marketplace', 
         'game-integration/unreal/ue-asset-support-for-mods', 
         'game-integration/unreal/ue-profiling', 
-        'game-integration/unreal/ue-mod-creation-tool', 
         'game-integration/unreal/ue-android-configuration', 
+        'game-integration/unreal/ue-mod-creation-tool', 
         'guides/ue-mod-loading',
         {
           type: 'category', 
@@ -96,7 +96,7 @@ const sidebars = {
       type: 'category',
       label: 'Unity',
       link: {type: 'doc', id: 'game-integration/unity/unity'},
-      items: ['game-integration/unity/unity-setup', 'game-integration/unity/unity-getting-started', 'game-integration/unity/unity-ugc-browser', 'game-integration/unity/unity-marketplace', 
+      items: ['game-integration/unity/unity-setup', 'game-integration/unity/unity-getting-started', 'game-integration/unity/unity-ugc-browser', 'game-integration/unity/unity-marketplace', 'guides/unity-mod-loading',
         {
           type: 'link',
           label: 'Unity Reference', 
@@ -283,7 +283,7 @@ const sidebars = {
           type: 'category',
           label: 'For Players',
           link: {type: 'doc', id: 'web-services/authentication/overview'},
-          items: ['web-services/authentication/platform', 'web-services/authentication/openid', 'web-services/authentication/website-studio-sso', 'web-services/authentication/website-to-modio-sso'],
+          items: ['web-services/authentication/platform', 'web-services/authentication/openid', 'web-services/authentication/device', 'web-services/authentication/website-studio-sso', 'web-services/authentication/website-to-modio-sso'],
         },
         {
           type: 'doc',

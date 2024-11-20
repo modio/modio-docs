@@ -1,3 +1,8 @@
+---
+id: ue4-quicklook
+title: UE4 Quicklook
+slug: /unreal/ue4-quicklook/
+---
 
 # UE4 Quicklook
 
@@ -9,9 +14,8 @@ Included within this release are:
 
 - [Plugin](https://github.com/modio/modio-ue/releases/tag/v2023.11)
 - [UI](https://github.com/modio/modio-ue/tree/v2023.11/Content/UI)
-- [Docs](https://docs.mod.io/unreal/)
 
-Note: The content complete UE4 plugin update was completed in November 2023. As a result, mod.io features more recent than this date are compatible, but not native to UE4 projects. Our UE5 docs repository for features and service can be found [here](../unreal)
+Note: The content complete UE4 plugin update was completed in November 2023. As a result, mod.io features more recent than this date are compatible, but not native to UE4 projects. Our UE5 docs repository for features and service can be found [here](/unreal/)
 
 ## Sample project
 
@@ -26,7 +30,7 @@ A sample UE4 project showcasing a simple integration is available here: [UE4 Sam
 
 ## Approach to Mod Loading for UE
 
-Guidance on best practice for mod loading with UE4 is provided. We recommend building for cross-platform file support and multi-platform (i.e. PC and Console SKUs). Even for UE4 projects where multi-platform mod support isn’t a focus, adopting best practice approaches will improve overall player experience when playing with mods. The document is available here: [UE Mod Loading](/guides/ue-mod-loading)
+Guidance on best practice for mod loading with UE4 is provided. We recommend building for cross-platform file support and multi-platform (i.e. PC and Console SKUs). Even for UE4 projects where multi-platform mod support isn’t a focus, adopting best practice approaches will improve overall player experience when playing with mods. The document is available here: [UE Mod Loading](/unreal/mod-loading/)
 
 # UI compatible with UE4 plugin
 

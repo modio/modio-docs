@@ -124,7 +124,7 @@ After successfully obtaining a `code` from the mod.io authentication server, you
 
 #### Request
 
-`POST https://{your-game-id}.modapi.io/v1/oauth/token`
+`POST https://g-{your-game-id}.modapi.io/v1/oauth/token`
 
 | Parameter     | Type    | Required | Description                                                                                                  |
 | ------------- | ------- | -------- | ------------------------------------------------------------------------------------------------------------ |
@@ -135,7 +135,7 @@ After successfully obtaining a `code` from the mod.io authentication server, you
 | redirect_uri  | string  | true     | The `redirect_uri` registered with your application. This must be the same `redirect_uri` used in Step 1 when logging in via mod.io
 
 ```
-POST https://{your-game-id}.modapi.io/v1/oauth/token
+POST https://g-{your-game-id}.modapi.io/v1/oauth/token
 Content-Type: application/x-www-form-urlencoded
 Accept: application/json
 
@@ -174,7 +174,7 @@ Returned with the access token is a refresh token, which can be exchanged for an
 
 #### Request
 
-`POST https://{your-game-id}.modapi.io/v1/oauth/token/refresh`
+`POST https://g-{your-game-id}.modapi.io/v1/oauth/token/refresh`
 
 | Parameter     | Type    | Required | Description                                                                                                  |
 | ------------- | ------- | -------- | ------------------------------------------------------------------------------------------------------------ |
@@ -185,7 +185,7 @@ Returned with the access token is a refresh token, which can be exchanged for an
 | redirect_uri  | string  | true     | The `redirect_uri` registered with your application. This must be the same `redirect_uri` used in Step 1 when logging in via mod.io |
 
 ```
-POST https://{your-game-id}.modapi.io/v1/oauth/token
+POST https://g-{your-game-id}.modapi.io/v1/oauth/token
 Content-Type: application/x-www-form-urlencoded
 Accept: application/json
 

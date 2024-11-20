@@ -60,9 +60,9 @@ The Test environment is available for usage in limited circumstances only. **[Al
 
 ## Using a background thread
 
-[`RunPendingHandlers`](https://docs.mod.io/unrealref/#RunPendingHandlers) is responsible for running any pending plugin work, including invoking callbacks passed to asynchronous operations.  With `Use Background Thread`  set to `true`, the mod.io plugin will automatically spin up a background thread and continually call `RunPendingHandlers` for you. This decouples the frequency of the plugin’s work from your game's main thread, and improves performance of the plugin overall.
+[`RunPendingHandlers`](/unreal/refdocs/#run-pending-handlers) is responsible for running any pending plugin work, including invoking callbacks passed to asynchronous operations.  With `Use Background Thread`  set to `true`, the mod.io plugin will automatically spin up a background thread and continually call `RunPendingHandlers` for you. This decouples the frequency of the plugin’s work from your game's main thread, and improves performance of the plugin overall.
 
-Calling methods from the [`ModioSubsystem`](https://docs.mod.io/unrealref/#_modiosubsystem) will marshall all callbacks back to the game thread.  All other plugin call guarantees remain the same.
+Calling methods from the [`ModioSubsystem`](/unreal/refdocs/#modiosubsystem) will marshall all callbacks back to the game thread.  All other plugin call guarantees remain the same.
 
 ## Using the `Live` environment
 

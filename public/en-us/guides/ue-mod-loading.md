@@ -1,7 +1,14 @@
+---
+id: ue-mod-loading
+title: Mod Loading
+slug: /unreal/mod-loading/
+---
+
 # Mod Loading QuickStart
 
 ## Introduction
-Mod.io provides studios and publishers with suggested tools to enable official mod support in their games. In addition to tools, our goal is to share best practices for developers exploring how to ready their game for mods and provide the best opportunity for a successful long-tail provided by official mod support. This guide features a starting point specific to Unreal Engine games and includes:
+
+mod.io provides studios and publishers with suggested tools to enable official mod support in their games. In addition to tools, our goal is to share best practices for developers exploring how to ready their game for mods and provide the best opportunity for a successful long-tail provided by official mod support. This guide features a starting point specific to Unreal Engine games and includes:
 
 - Mod Content Types
 - Packaging and cooking
@@ -16,6 +23,7 @@ Unreal Engine supports loading non-Unreal specific data formats (i.e., non-uasse
 
 ### PAK Files
 PAK files are an engine-standard way of packaging and distributing all of Unreal's specific functionality and content. This means that you can load any sort of UAsset type (Blueprints, StaticMeshes, AnimationSequences, etc.) that the engine supports at runtime.
+
 In order for your game to support this, you should keep the following in mind when structuring your content:
 - Avoid hard references
 - Make use of primary asset types
@@ -38,6 +46,7 @@ See below an example command to extract a pak file:
 ```shell
 "C:\Program Files\Epic Games\UE_5.1\Engine\Binaries\Win64\UnrealPak.exe" "C:\Game\MyPakFile.pak" -Extract "C:\Users\My_Username\Desktop\Unpack"
 ```
+
 The easiest way to package/cook a mod into a pak file is to create a plugin that contains all the mod’s data. Then it is possible to invoke UnrealPak using the DLC cooker, such as via the Project Launcher that comes with every modern vanilla UE. Note that the mod would need to be cooked for every platform intended for release, unlike the Generic Data Type approach.
 
 ## Mod Loading

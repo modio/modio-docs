@@ -35,17 +35,53 @@ If you have your own accounts system, mod.io can be set up to use it as the SSO 
 
 ## User Flow
 
-You should prompt players for consent before using any mod.io functionality, such as on startup, or before launching any UGC browsers. Once they have accepted the Terms of Service, you should proceed to authenticate them with your chosen authentication provider, ensuring you pass `terms_agreed=true`.
+You should prompt players for consent before using any mod.io functionality, such as on startup, or before launching any UGC browsers. Once they have accepted the Terms of Use, you should proceed to authenticate them with your chosen authentication provider, ensuring you pass `terms_agreed=true`.
 
-If the user rejects the TOS, you should exit the authentication process and do not attempt to authenticate them.
+If the user rejects the Terms of Use, you should exit the authentication process and do not attempt to authenticate them.
 
-The way your terms and authentication flow should be implemented is as follows:
-1. At an appropriate time (when the user is opening your UGC browser, on startup, etc), display the Terms of Use.
-2. If the user agrees to the Terms of Service, proceed to the next step. Otherwise, halt the process and do not proceed with authentication.
-3. Store that the user has accepted the terms of service, such as in local storage or cloud user profile storage.
-4. Perform any platform-specific authentication to get the appropriate token to exchange for a mod.io auth token. Visit the Authentication page for each platform you wish to authenticate to for further details.
-5. Exchange that platform specific authentication token for a mod.io OAuth token by calling the mod.io Authentication methods
-6. On success, you will have a token that can be used for all mod.io calls for that user. All official mod.io plugins will use this OAuth token for all user requests.
+### Diagram
+
+```mermaid
+flowchart TD
+    A(fa:fa-user Opens UGC menu) --> B{Agreement
+    required?}
+    B -->|Yes| C(Show terms dialog)
+    B -->|No| E
+    C --> D{Terms agreed?}
+    D -->|Yes| E(fa:fa-check Authenticate the user)
+    D -->|No| F(fa:fa-xmark Do not authenticate)
+    E -->|Terms update
+    required| C
+    style B fill:#999,stroke:#666,color:#000
+    style D fill:#999,stroke:#666,color:#000
+    style E fill:#7EEF8C,stroke:#00c717
+    style F fill:#DB5355,stroke:#c00
+```
+
+### Visual Representation
+
+1. User opens your game, and is presented with a menu option to explore UGC. User clicks the menu option.
+
+![Step 1: User accesses mod.io in your game](images/terms-step1.png)
+
+2. Before opening the UGC exploration UI, the user is prompted to consent to authentication by the game and agree to the mod.io Terms of Use.
+   * Localization of this dialog is available in all of the [supported languages](https://docs.mod.io/restapiref/#localization).
+   * This dialog must be shown and agreed by the user before initiating authentication for the first time.
+   * You can skip this step if the user has already agreed (we recommend you store that the user has accepted the Terms of Use, in local storage or cloud user profile storage to faciliate this).
+   * The diagram below is purely for illustrative purposes. Your implementation must use the [latest wording](https://docs.mod.io/restapiref/#authentication-2) required by mod.io.
+
+![Step 2: User is prompted to agree to terms](images/terms-step2.png)
+
+3. Once the user has accepted, authentication can happen instantly if using platform SSO (i.e. Xbox auth), or your own account system using OIDC. Email authentication and QR code are also supported, and if used require additional steps to sign in.
+   * Visit our [authentication documentation](/web-services/authentication/platform/) for instructions on how to authenticate users.
+   * If you completed step 2 prior to authenticating the user, you should indicate the user has accepted the terms in your request, otherwise the value must remain false.
+   * If you skipped step 2 and receive the error `403 Forbidden (error_ref 11074)`, this indicates the terms have been updated since the user last agreed. You need to return to step 2 and get their agreement to continue.
+
+![Step 3: User accepts terms and authentication proceeds](images/terms-step3.png)
+
+4. Once signed in, the user is able to perform actions which require authentication (such as subscribe, purchase, or submit UGC), and the mod.io SDK will automatically synchronise their UGC collection.
+
+![Step 4: User is signed in and can manage their UGC collection](images/terms-step4.png)
 
 ## Implementation
 
@@ -75,7 +111,7 @@ The **/widget** part of the URL is optional and removes all menus and the **?no_
 
 ### Authentication
 
-Once a user has clicked **“I Agree”**, you should indicate to the mod.io backend that this has taken place, when you initiate the authentication process. Acceptance of the TOS should be stored in relevant user settings, for instance a local settings file, or cloud storage file for the user. The mod.io plugins do not provide storage for this field.
+Once a user has clicked **“I Agree”**, you should indicate to the mod.io backend that this has taken place, when you initiate the authentication process. Acceptance of the Terms of Use should be stored in relevant user settings, for instance a local settings file, or cloud storage file for the user. The mod.io plugins do not provide storage for this field.
 
 All of the [platform authentication flows](https://docs.mod.io/restapiref/#steam) supported by mod.io have a `terms_agreed` field which should be set to `false` by default. If the user has agreed to the latest policies, their authentication will proceed as normal, however if their agreement is required and `terms_agreed` is set to `false` an error `403 Forbidden` (`error_ref 11074`) will be returned. When you receive this error, you must collect the users agreement before resubmitting the authentication flow with `terms_agreed` set to `true`, which will be recorded.
 

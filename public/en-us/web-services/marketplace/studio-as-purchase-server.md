@@ -1,13 +1,13 @@
 ---
 id: studio-as-purchase-server
-title: Operating a Purchase Server
+title: Studio as Purchase Server
 slug: /web-services/marketplace/studio-as-purchase-server/
 sidebar_position: 0
 ---
 
-# Operating a Purchase Server
+# Studio as Purchase Server
 
-Operating a Purchase Server requires a strong understanding of the role you must play in initiating transaction from your secure server. Covered in this section is:
+Operating your own a Purchase Server requires a strong understanding of the role you must play in initiating transaction from your secure server. Covered in this section is:
 
 - Making transactions from your purchase server
 - Relaying clawback events from your purchase server to mod.io
@@ -93,7 +93,7 @@ This request acts as an indicator of intent, to inform mod.io you are beginning 
 
 #### Request
 
-`POST https://{your-game-id}.modapi.io/v1/s2s/transactions/intent`
+`POST https://g-{your-game-id}.modapi.io/v1/s2s/transactions/intent`
 
 ##### Headers
 
@@ -112,7 +112,7 @@ portal|string|true|The portal where the sku resides. Valid values are `apple`, `
 gateway_uuid|string|false|An optional mapping alpha dash string that can be used to track this transaction. It is recommended to use primary ID of the entitlement as it exists on the processing platform if you have it available.
 
 ```
-POST https://{your-game-id}.modapi.io/v1/s2s/transactions/intent HTTP/1.1
+POST https://g-{your-game-id}.modapi.io/v1/s2s/transactions/intent HTTP/1.1
 Content-Type: application/x-www-form-urlencoded
 Accept: application/json
 X-Modio-Idempotent-Key: d720901c-a8ed-42ff-9343-39d4a3e16b18
@@ -186,7 +186,7 @@ Upon successful consumption of the entitlement against the Platforms Entitlement
 
 Create a service-to-service (S2S) transaction commit. This is for performing an external credit transaction. This step finalizes the transaction and will issue creator credits to the user associated to it. A successful request will return a [S2S Pay Object](https://docs.mod.io/restapiref/#s2s-pay-object) object. Requires scope of monetization on token.
 
-`POST https://{your-game-id}.modapi.io/v1/s2s/transactions/commit`
+`POST https://g-{your-game-id}.modapi.io/v1/s2s/transactions/commit`
 
 ##### Headers
 
@@ -204,7 +204,7 @@ transaction_id|integer|true|The ID of the transaction to complete.
 clawback_uuid|string|false|An optional mapping alpha dash string that can be used to group this transaction against other transactions.
 
 ```
-POST https://{your-game-id}.modapi.io/v1/s2s/transactions/commit HTTP/1.1
+POST https://g-{your-game-id}.modapi.io/v1/s2s/transactions/commit HTTP/1.1
 Content-Type: application/x-www-form-urlencoded
 Accept: application/json
 X-Modio-Idempotent-Key: d720901c-a8ed-42ff-9343-39d4a3e16b18
@@ -291,7 +291,7 @@ Once your system has received the clawback events from the platform, you should 
 
 #### Request
 
-`POST https://{your-game-id}.modapi.io/v1/s2s/transactions/clawback`
+`POST https://g-{your-game-id}.modapi.io/v1/s2s/transactions/clawback`
 
 Parameter|Type|Required|Description
 ---|---|---|---|
@@ -301,7 +301,7 @@ portal|string|true|The portal the transaction is tied to. Valid values are `appl
 refund_reason|string|true|The reason for the refund / transaction reversal.
 
 ```
-POST https://{your-game-id}.modapi.io/v1/s2s/transactions/clawback HTTP/1.1
+POST https://g-{your-game-id}.modapi.io/v1/s2s/transactions/clawback HTTP/1.1
 Content-Type: application/x-www-form-urlencoded
 Accept: application/json
 Authorization: Bearer {service-token}
@@ -386,7 +386,7 @@ You can query and filter transactions using any of the filters listed below.
 This endpoint gives a paginated list of transactions processed by our purchase server.
 
 ```
-GET https://{your-game-id}.modapi.io/v1/s2s/monetization-teams/{monetization-team-id}/transactions HTTP/1.1
+GET https://g-{your-game-id}.modapi.io/v1/s2s/monetization-teams/{monetization-team-id}/transactions HTTP/1.1
 Accept: application/json
 Authorization: Bearer {service-token}
 ```
@@ -488,7 +488,7 @@ There are several filters you can use to query the transaction index endpoint.
 This endpoint provides an individual collection of transactions processed by our purchase server. It includes all transactions that share the same `gateway_uuid`.
 
 ```
-GET https://{your-game-id}.modapi.io/v1/s2s/monetization-teams/{monetization-team-id}/transactions/{transaction-id} HTTP/1.1
+GET https://g-{your-game-id}.modapi.io/v1/s2s/monetization-teams/{monetization-team-id}/transactions/{transaction-id} HTTP/1.1
 Accept: application/json
 Authorization: Bearer {service-token}
 ```
