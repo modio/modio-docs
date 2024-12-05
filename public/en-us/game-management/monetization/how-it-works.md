@@ -10,7 +10,7 @@ Our system is built to support cross-platform payments on web, in-game and conso
 
 Players are able to purchase Virtual Currency Packs, either directly through your game page on mod.io or any platform you wish to make this available on (PC storefronts, console stores, or your own). Players can then use this currency to purchase premium UGC, the currency is paid to creators and the game publisher, in the form of credits, based on the revenue split you set in the [Monetization settings](/monetization/onboarding/#monetization-settings).
 
-## Wholesale Virtuazl Currency Price and Fees
+## Wholesale Virtual Currency Price and Fees
 
 Virtual Currency Packs are sold at a price of USD$0.01 per-credit, so $1 for 100, on which we charge a fixed wholesale rate of USD$0.0052 per-credit which covers our fee and payouts to creators which we manage for you. The remaining USD$0.0048 per-credit goes to the game publisher after payment processor fees are applied.
 
