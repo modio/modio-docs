@@ -36,36 +36,36 @@ All asynchronous methods in the public API have the suffix `Async`.
 #### Callback conventions
 These asynchronous methods take a `std::function`-derived callback, which will be invoked exactly once with the results of the requested operation.
 
-Every async callback takes an [ErrorCode](/cppsdk/refdocs#ErrorCode) as its first parameter, with any results wrapped in [Optional](/cppsdk/refdocs#Optional) to check if a result is valid or empty.
+Every async callback takes an [ErrorCode](/cppsdk/refdocs/#ErrorCode) as its first parameter, with any results wrapped in [Optional](/cppsdk/refdocs/#Optional) to check if a result is valid or empty.
 
 Return values provided to your callback are passed `by-value`. The SDK does not expect you to have to call `release` or free up resources given to you.
 
 :::note
-Even if the SDK shuts down while asynchronous operations are pending, the remaining callbacks will still execute **exactly once**. In this case, the callback receives an [ErrorCode](/cppsdk/refdocs#ErrorCode) to indicate a canceled state. Your project should handle gracefully this behavior as part of your error handling.
+Even if the SDK shuts down while asynchronous operations are pending, the remaining callbacks will still execute **exactly once**. In this case, the callback receives an [ErrorCode](/cppsdk/refdocs/#ErrorCode) to indicate a canceled state. Your project should handle gracefully this behavior as part of your error handling.
 :::
 
 #### Maintaining the SDK event loop
 
-In order to provide a non-blocking implementation, the SDK operates an internal event loop. This event loop only runs on the thread which calls [RunPendingHandlers](/cppsdk/refdocs#runpendinghandlers).
+In order to provide a non-blocking implementation, the SDK operates an internal event loop. This event loop only runs on the thread which calls [RunPendingHandlers](/cppsdk/refdocs/#runpendinghandlers).
 
-The event loop, all internal event handlers and callbacks provided to the mod.io SDK execute on the thread invoking [RunPendingHandlers](/cppsdk/refdocs#runpendinghandlers). [RunPendingHandlers](/cppsdk/refdocs#runpendinghandlers) must only be called on one thread, otherwise, its behavior is undefined.
+The event loop, all internal event handlers and callbacks provided to the mod.io SDK execute on the thread invoking [RunPendingHandlers](/cppsdk/refdocs/#runpendinghandlers). [RunPendingHandlers](/cppsdk/refdocs/#runpendinghandlers) must only be called on one thread, otherwise, its behavior is undefined.
 
 :::note
-If you stop calling [RunPendingHandlers](/cppsdk/refdocs#runpendinghandlers), any pending asynchronous API methods will not complete and their associated callbacks will not be invoked. It also includes the internal data allocated for those operations, as well as the release of any allocated objects.
+If you stop calling [RunPendingHandlers](/cppsdk/refdocs/#runpendinghandlers), any pending asynchronous API methods will not complete and their associated callbacks will not be invoked. It also includes the internal data allocated for those operations, as well as the release of any allocated objects.
 :::
 
 ### Thread Safety
 
-Given that [RunPendingHandlers](/cppsdk/refdocs#runpendinghandlers) performs all the work of the SDK and executes the callbacks that you provide as handlers for the completion of async functions, your application needs to be calling it at regular intervals. However, you may not wish to do so on the main thread of your application, given that the function has to execute for long enough to actually 'get some work done'.
+Given that [RunPendingHandlers](/cppsdk/refdocs/#runpendinghandlers) performs all the work of the SDK and executes the callbacks that you provide as handlers for the completion of async functions, your application needs to be calling it at regular intervals. However, you may not wish to do so on the main thread of your application, given that the function has to execute for long enough to actually 'get some work done'.
 
-The mod.io SDK supports the execution of [RunPendingHandlers](/cppsdk/refdocs#runpendinghandlers) on a background thread while your application invokes other SDK functions on the main thread, for example in response to user input in your application's user interface. 
+The mod.io SDK supports the execution of [RunPendingHandlers](/cppsdk/refdocs/#runpendinghandlers) on a background thread while your application invokes other SDK functions on the main thread, for example in response to user input in your application's user interface. 
 
-Whilst it is safe to call all other SDK functions from a different thread to the one executing [RunPendingHandlers](/cppsdk/refdocs#runpendinghandlers), it is important to note that our existing guarantees are maintained, namely, you'll still receive exactly one callback invocation per asynchronous function you run, and ***callbacks you provide to those methods will be executed on the thread running [RunPendingHandlers](/cppsdk/refdocs#runpendinghandlers)***. 
+Whilst it is safe to call all other SDK functions from a different thread to the one executing [RunPendingHandlers](/cppsdk/refdocs/#runpendinghandlers), it is important to note that our existing guarantees are maintained, namely, you'll still receive exactly one callback invocation per asynchronous function you run, and ***callbacks you provide to those methods will be executed on the thread running [RunPendingHandlers](/cppsdk/refdocs/#runpendinghandlers)***. 
 
 :::note
-[RunPendingHandlers](/cppsdk/refdocs#runpendinghandlers) should still only be called on a single thread - it is not safe to call [RunPendingHandlers](/cppsdk/refdocs#runpendinghandlers) from multiple threads, either simultaneously or sequentially.
+[RunPendingHandlers](/cppsdk/refdocs/#runpendinghandlers) should still only be called on a single thread - it is not safe to call [RunPendingHandlers](/cppsdk/refdocs/#runpendinghandlers) from multiple threads, either simultaneously or sequentially.
 
-By using a background thread for [RunPendingHandlers](/cppsdk/refdocs#runpendinghandlers), you can decouple the frequency with which you perform SDK 'work' from the frequency of your application's main loop for greater performance. 
+By using a background thread for [RunPendingHandlers](/cppsdk/refdocs/#runpendinghandlers), you can decouple the frequency with which you perform SDK 'work' from the frequency of your application's main loop for greater performance. 
 
 See * [Multithreading](#multithreading) for more information.
 :::
@@ -97,21 +97,21 @@ This allows multiple players, such as siblings, to each have their own session t
 
 An authenticated user is required to install mods and perform other operations. Check the `requires` section on any SDK function to see what operations need an authenticated user. However, anyone can freely browse and search your game's available mods and only prompt the user to authenticate/create an account when they wish to perform any restricted operations (such as rating or subscribing to a mod).
 
-To change a Local Profile's authenticated user, call [ClearUserDataAsync](/cppsdk/refdocs#clearuserdataasync) to remove the authenticated user, and then re-authenticate as normal.
+To change a Local Profile's authenticated user, call [ClearUserDataAsync](/cppsdk/refdocs/#clearuserdataasync) to remove the authenticated user, and then re-authenticate as normal.
 
 :::note
-A call to [ClearUserDataAsync](/cppsdk/refdocs#clearuserdataasync) removes the authenticated user from the local device, and disables mod management. Any installed content is marked for uninstallation from local storage if no other Local Profiles contain authenticated users with active subscriptions to it.
+A call to [ClearUserDataAsync](/cppsdk/refdocs/#clearuserdataasync) removes the authenticated user from the local device, and disables mod management. Any installed content is marked for uninstallation from local storage if no other Local Profiles contain authenticated users with active subscriptions to it.
 :::
 
-To add a newly authenticated user or switch to one already-authenticated without removing the current one, swap to another Local Profile by calling [ShutdownAsync](/cppsdk/refdocs#shutdownasync), then re-initialize via [InitializeAsync](/cppsdk/refdocs#initializeasync) specifying a different Local Profile name in the initialization parameters you supply.
+To add a newly authenticated user or switch to one already-authenticated without removing the current one, swap to another Local Profile by calling [ShutdownAsync](/cppsdk/refdocs/#shutdownasync), then re-initialize via [InitializeAsync](/cppsdk/refdocs/#initializeasync) specifying a different Local Profile name in the initialization parameters you supply.
 
 ### Error handling
 
-Callback functions in the SDK either return a value or provide an [ErrorCode](/cppsdk/refdocs#ErrorCode) value. It is a numeric error code with a category and an associated string message.
+Callback functions in the SDK either return a value or provide an [ErrorCode](/cppsdk/refdocs/#ErrorCode) value. It is a numeric error code with a category and an associated string message.
 
 The SDK doesn't attempt to predict what your error-handling logic or requirements are. For example, if you call a function and receive an error code `ec == Modio::HttpError::CannotOpenConnection`, your application could potentially handle this by shutting down the SDK. Another application, however, might wish to retry after an interval determined by its own internal logic. As a result, the SDK defers to your application to decide how to handle errors for the functions you call.
 
-For more details on the error codes and how to inspect their values, please see [Error Handling](#error-handling) and [ErrorCode](/cppsdk/refdocs#ErrorCode).
+For more details on the error codes and how to inspect their values, please see [Error Handling](#error-handling) and [ErrorCode](/cppsdk/refdocs/#ErrorCode).
 
 ### Mod Data Directories
 
@@ -174,7 +174,7 @@ This functionality is demonstrated in example 01_Initialization
 :::
 
 #### SDK Configuration and Initialization
-When you are ready to initialize the SDK for the current session, you'll need to call [InitializeAsync](/cppsdk/refdocs#initializeasync), passing in your product's mod.io ID, your API key, the Local Profile Name, and a callback/handler so you know when the SDK is initialized correctly. Note that [InitializeAsync](/cppsdk/refdocs#initializeasync)'s callback will be invoked after calling [RunPendingHandlers](/cppsdk/refdocs#runpendinghandlers) from your project's main loop.
+When you are ready to initialize the SDK for the current session, you'll need to call [InitializeAsync](/cppsdk/refdocs/#initializeasync), passing in your product's mod.io ID, your API key, the Local Profile Name, and a callback/handler so you know when the SDK is initialized correctly. Note that [InitializeAsync](/cppsdk/refdocs/#initializeasync)'s callback will be invoked after calling [RunPendingHandlers](/cppsdk/refdocs/#runpendinghandlers) from your project's main loop.
 
 You should also ensure that you are targeting an appropriate Portal for mod.io to understand what storefront or app the request is originating from. This enabled additional storefront-based functionality, such as returning display name mappings for that portal.
 
@@ -208,12 +208,12 @@ It is worth considering that the "LocalProfileName" is used by the mod.io SDK to
 
 * By convention you'll see these code examples pass in lambda functions as callback handlers, but you can use anything convertible to `std::function` with the appropriate signature.
 * The error-handling in this sample is deliberately kept brief. See [Error Handling](#error-handling) for more information on error handling.
-* You can perform calls to other functions, such as something that shows your mod browser UI implementation, directly in the callback. The primary caveat to doing much processing here is that you'll be running in the context of, and therefore blocking, the thread running the callback, which is the thread running [RunPendingHandlers](/cppsdk/refdocs#runpendinghandlers).
+* You can perform calls to other functions, such as something that shows your mod browser UI implementation, directly in the callback. The primary caveat to doing much processing here is that you'll be running in the context of, and therefore blocking, the thread running the callback, which is the thread running [RunPendingHandlers](/cppsdk/refdocs/#runpendinghandlers).
 
 #### Extended Initialization Parameters
 
-The `ExtendedParameters` field on [InitializeOptions](/cppsdk/refdocs#InitializeOptions) is a set of key-value pairs intended for platform-specific or special-case parameters that need to be passed to the SDK.
-Simply set the value before passing your initialization parameters in to [InitializeAsync](/cppsdk/refdocs#initializeasync).
+The `ExtendedParameters` field on [InitializeOptions](/cppsdk/refdocs/#InitializeOptions) is a set of key-value pairs intended for platform-specific or special-case parameters that need to be passed to the SDK.
+Simply set the value before passing your initialization parameters in to [InitializeAsync](/cppsdk/refdocs/#initializeasync).
 
 ```cpp
 Options.ExtendedParameters["SomeParameterName"] = "SomeParameterValue";
@@ -241,22 +241,22 @@ while(!SDKShutdownComplete)
 ```
 
 :::note
-[ShutdownAsync](/cppsdk/refdocs#shutdownasync) uses a lock to ensure that global SDK state is not mutated out from underneath an invocation of [RunPendingHandlers](/cppsdk/refdocs#runpendinghandlers). It is not safe to call [ShutdownAsync](/cppsdk/refdocs#shutdownasync) in any callback you provide to the SDK. Callbacks are executed during [RunPendingHandlers](/cppsdk/refdocs#runpendinghandlers) execution, your application will deadlock while waiting for the enclosing [RunPendingHandlers](/cppsdk/refdocs#runpendinghandlers) to complete. The lock is deliberately not implemented to support recursive locking, again because [ShutdownAsync](/cppsdk/refdocs#shutdownasync) mutates data structures that [RunPendingHandlers](/cppsdk/refdocs#runpendinghandlers) expects to remain unchanged for the duration of its scope.
+[ShutdownAsync](/cppsdk/refdocs/#shutdownasync) uses a lock to ensure that global SDK state is not mutated out from underneath an invocation of [RunPendingHandlers](/cppsdk/refdocs/#runpendinghandlers). It is not safe to call [ShutdownAsync](/cppsdk/refdocs/#shutdownasync) in any callback you provide to the SDK. Callbacks are executed during [RunPendingHandlers](/cppsdk/refdocs/#runpendinghandlers) execution, your application will deadlock while waiting for the enclosing [RunPendingHandlers](/cppsdk/refdocs/#runpendinghandlers) to complete. The lock is deliberately not implemented to support recursive locking, again because [ShutdownAsync](/cppsdk/refdocs/#shutdownasync) mutates data structures that [RunPendingHandlers](/cppsdk/refdocs/#runpendinghandlers) expects to remain unchanged for the duration of its scope.
 :::
 
 :::note
-You will need to continue to call [RunPendingHandlers](/cppsdk/refdocs#runpendinghandlers) while the async shutdown is in progress to allow for intermediate handlers to finish running.
+You will need to continue to call [RunPendingHandlers](/cppsdk/refdocs/#runpendinghandlers) while the async shutdown is in progress to allow for intermediate handlers to finish running.
 :::
 
 #### Event Loop (RunPendingHandlers)
 
-As mentioned in [Maintaining the SDK event loop](#maintaining-the-sdk-event-loop), the SDK's internal event loop requires care and attention in the form of [RunPendingHandlers](/cppsdk/refdocs#runpendinghandlers).
+As mentioned in [Maintaining the SDK event loop](#maintaining-the-sdk-event-loop), the SDK's internal event loop requires care and attention in the form of [RunPendingHandlers](/cppsdk/refdocs/#runpendinghandlers).
 
-ALL SDK work is performed during executions of [RunPendingHandlers](/cppsdk/refdocs#runpendinghandlers), therefore calling it as often as possible will improve performance of the SDK's I/O operations.
+ALL SDK work is performed during executions of [RunPendingHandlers](/cppsdk/refdocs/#runpendinghandlers), therefore calling it as often as possible will improve performance of the SDK's I/O operations.
 
-You can either call [RunPendingHandlers](/cppsdk/refdocs#runpendinghandlers) on the main thread, or on a [dedicated background thread or existing thread of your choice](#using-a-dedicated-background-thread).
+You can either call [RunPendingHandlers](/cppsdk/refdocs/#runpendinghandlers) on the main thread, or on a [dedicated background thread or existing thread of your choice](#using-a-dedicated-background-thread).
 
-For optimal execution, [RunPendingHandlers](/cppsdk/refdocs#runpendinghandlers) should be called at least once per frame. 
+For optimal execution, [RunPendingHandlers](/cppsdk/refdocs/#runpendinghandlers) should be called at least once per frame. 
 
 For example, if you wish to call RunPendingHandlers on the main thread, it could be located into your project's main loop or into a `tick`-style function on an appropriate controller/manager object.
 
@@ -270,7 +270,7 @@ while(bGameIsRunning == true)
 ```
 
 :::note
-RunPendingHandlers is not reentrant-safe. Do not call [RunPendingHandlers](/cppsdk/refdocs#runpendinghandlers) inside a callback you give to the SDK, or your application will deadlock. Callbacks are run inside [RunPendingHandlers](/cppsdk/refdocs#runpendinghandlers), and your inner [RunPendingHandlers](/cppsdk/refdocs#runpendinghandlers) call will block infinitely waiting for the enclosing scope to exit.
+RunPendingHandlers is not reentrant-safe. Do not call [RunPendingHandlers](/cppsdk/refdocs/#runpendinghandlers) inside a callback you give to the SDK, or your application will deadlock. Callbacks are run inside [RunPendingHandlers](/cppsdk/refdocs/#runpendinghandlers), and your inner [RunPendingHandlers](/cppsdk/refdocs/#runpendinghandlers) call will block infinitely waiting for the enclosing scope to exit.
 :::
 
 ---
@@ -281,7 +281,7 @@ RunPendingHandlers is not reentrant-safe. Do not call [RunPendingHandlers](/cpps
 This functionality is demonstrated in example 02_ModQueries
 :::
 
-Now that you've followed the instructions in [Initialization and Teardown](#initialization-and-teardown) you can begin to query the available mods for information you can display to your end users. The primary way this is done is through [ListAllModsAsync](/cppsdk/refdocs#listallmodsasync). Note that authentication is not required to browse mods.
+Now that you've followed the instructions in [Initialization and Teardown](#initialization-and-teardown) you can begin to query the available mods for information you can display to your end users. The primary way this is done is through [ListAllModsAsync](/cppsdk/refdocs/#listallmodsasync). Note that authentication is not required to browse mods.
 
 ```cpp
 
@@ -301,7 +301,7 @@ Modio::ListAllModsAsync(Modio::FilterParams(), [](Modio::ErrorCode ec, Modio::Op
 });
 ```
 
-You'll notice that [ListAllModsAsync](/cppsdk/refdocs#listallmodsasync) takes a [FilterParams](/cppsdk/refdocs#FilterParams) object as its first parameter. The default state of this object is set to ask for the first 100 results (the maximum number returnable in a query), sorting by mod ID.
+You'll notice that [ListAllModsAsync](/cppsdk/refdocs/#listallmodsasync) takes a [FilterParams](/cppsdk/refdocs/#FilterParams) object as its first parameter. The default state of this object is set to ask for the first 100 results (the maximum number returnable in a query), sorting by mod ID.
 
 To search for a specific query string, sort in a different order, or combine different filters, you can pass in a FilterParams object like this:
 
@@ -386,8 +386,8 @@ To use SSO with mod.io, a user must have accepted the mod.io Terms of Use in ord
 
 This means the external authentication flow is the following:
 
-1. Call [AuthenticateUserExternalAsync](/cppsdk/refdocs#authenticateuserexternalasync) , passing in any provider-specific parameters, setting `AuthenticationParams::bUserHasAcceptedTerms` to false, and indicating which authentication provider you wish to use
-2. Check the error code in the callback - if it indicates the user has not yet created an account or accepted the terms, call [GetTermsOfUseAsync](/cppsdk/refdocs#gettermsofuseasync) and display the provided information to your user
+1. Call [AuthenticateUserExternalAsync](/cppsdk/refdocs/#authenticateuserexternalasync) , passing in any provider-specific parameters, setting `AuthenticationParams::bUserHasAcceptedTerms` to false, and indicating which authentication provider you wish to use
+2. Check the error code in the callback - if it indicates the user has not yet created an account or accepted the terms, call [GetTermsOfUseAsync](/cppsdk/refdocs/#gettermsofuseasync) and display the provided information to your user
 3. If the user clicks the OK/affirmative button on your screen displaying the terms of use, repeat the call in step 1 but setting `AuthenticationParams::bUserHasAcceptedTerms` to **true**
 4. Check the error code in the callback - a false-y error code indicates that authentication was successful, and users can now install and manage mods and subscriptions.
 
@@ -586,9 +586,9 @@ Now you've shown the user some mods based on a query they've submitted through y
 
 #### Installation management and mod filepaths
 
-A subscription marks a mod as requiring installation, whereas an unsubscription indicates uninstallation. But, how do you actually control when the SDK **does** those things? After all, you don't want a mod to be uninstalled after your main program has loaded those files into memory, locking them from deletion. Likewise, you probably don't want to be using networking or processor resources during gameplay for downloading mods. In order to give you control over when these processes occur, without forcing you to shut down the SDK entirely, you can call [EnableModManagement](/cppsdk/refdocs#enablemodmanagement) and [DisableModManagement](/cppsdk/refdocs#disablemodmanagement).
+A subscription marks a mod as requiring installation, whereas an unsubscription indicates uninstallation. But, how do you actually control when the SDK **does** those things? After all, you don't want a mod to be uninstalled after your main program has loaded those files into memory, locking them from deletion. Likewise, you probably don't want to be using networking or processor resources during gameplay for downloading mods. In order to give you control over when these processes occur, without forcing you to shut down the SDK entirely, you can call [EnableModManagement](/cppsdk/refdocs/#enablemodmanagement) and [DisableModManagement](/cppsdk/refdocs/#disablemodmanagement).
 
-In order to display a notification to your users when a mod is finished installing or updating, [EnableModManagement](/cppsdk/refdocs#enablemodmanagement) asks you to provide a callback. Because [EnableModManagement](/cppsdk/refdocs#enablemodmanagement) is **not an async** function (ie it doesn't end with *Async), the function handler operates differently compared to other asynchronous results callbacks you use elsewhere in the SDK. A handler given to this function will be held by the SDK until a corresponding call to [DisableModManagement](/cppsdk/refdocs#disablemodmanagement) or [ShutdownAsync](/cppsdk/refdocs#shutdownasync) takes place. The handler will be invoked every time a mod is automatically installed, updated, or uninstalled by the SDK's internal event loop.
+In order to display a notification to your users when a mod is finished installing or updating, [EnableModManagement](/cppsdk/refdocs/#enablemodmanagement) asks you to provide a callback. Because [EnableModManagement](/cppsdk/refdocs/#enablemodmanagement) is **not an async** function (ie it doesn't end with *Async), the function handler operates differently compared to other asynchronous results callbacks you use elsewhere in the SDK. A handler given to this function will be held by the SDK until a corresponding call to [DisableModManagement](/cppsdk/refdocs/#disablemodmanagement) or [ShutdownAsync](/cppsdk/refdocs/#shutdownasync) takes place. The handler will be invoked every time a mod is automatically installed, updated, or uninstalled by the SDK's internal event loop.
 
 ```cpp
 Modio::EnableModManagement([](Modio::ModManagementEvent ModEvent)
@@ -617,16 +617,16 @@ if (!Modio::IsModManagementBusy())
 A user indicates they want to have a mod installed by 'subscribing' to it. The mod.io servers stores subscriptions and associates them with a particular user's mod.io account. 
 When a user 'unsubscribes' to a mod, they indicate that mod should be uninstalled from any device they're logged in on.
 
-The API for managing subscriptions is simple and consists of a call to either [SubscribeToModAsync](/cppsdk/refdocs#subscribetomodasync) or [UnsubscribeFromModAsync](/cppsdk/refdocs#unsubscribefrommodasync) with the ID of the mod in question and a callback to receive the status of the request:
+The API for managing subscriptions is simple and consists of a call to either [SubscribeToModAsync](/cppsdk/refdocs/#subscribetomodasync) or [UnsubscribeFromModAsync](/cppsdk/refdocs/#unsubscribefrommodasync) with the ID of the mod in question and a callback to receive the status of the request:
 
 :::note
-To subscribe to a mod, [EnableModManagement](/cppsdk/refdocs#enablemodmanagement) must be called beforehand.
+To subscribe to a mod, [EnableModManagement](/cppsdk/refdocs/#enablemodmanagement) must be called beforehand.
 :::
 
 When subscribing to a mod, you can also pass in a bool to indicate if you want to subscribe to all dependencies for the given mod. If dependencies are also subscribed, the mod.io servers will also associate them with the current user.
 
 :::note
-Currently when dependencies are included during subscription, they will not automatically be downloaded. To ensure the latest content is downloaded, [FetchExternalUpdatesAsync](/cppsdk/refdocs#fetchexternalupdatesasync) must be called after subscribing.
+Currently when dependencies are included during subscription, they will not automatically be downloaded. To ensure the latest content is downloaded, [FetchExternalUpdatesAsync](/cppsdk/refdocs/#fetchexternalupdatesasync) must be called after subscribing.
 :::
 
 ```cpp
@@ -660,7 +660,7 @@ Modio::UnsubscribeFromModAsync(ModID, [](Modio::ErrorCode ec)
 
 ##### External subscription changes
 
-Remember that the mod.io service is available as a website besides the integration within your application. Users can manage their subscriptions (and therefore installations) outside of your game. Consequently, you must query the server for any external subscription changes. To do this, use [FetchExternalUpdatesAsync](/cppsdk/refdocs#fetchexternalupdatesasync) to synchronise the server state with the SDK's local subscriptions:
+Remember that the mod.io service is available as a website besides the integration within your application. Users can manage their subscriptions (and therefore installations) outside of your game. Consequently, you must query the server for any external subscription changes. To do this, use [FetchExternalUpdatesAsync](/cppsdk/refdocs/#fetchexternalupdatesasync) to synchronise the server state with the SDK's local subscriptions:
 
 ```cpp
 Modio::FetchExternalUpdatesAsync([](Modio::ErrorCode ec)
@@ -677,10 +677,10 @@ Modio::FetchExternalUpdatesAsync([](Modio::ErrorCode ec)
 ```
 
 :::note
-You should call [FetchExternalUpdatesAsync](/cppsdk/refdocs#fetchexternalupdatesasync) at particular times in your application when you want to ensure that the state is up-to-date. The mod.io SDK will apply rate-limiting internally if you try to call it too often.
+You should call [FetchExternalUpdatesAsync](/cppsdk/refdocs/#fetchexternalupdatesasync) at particular times in your application when you want to ensure that the state is up-to-date. The mod.io SDK will apply rate-limiting internally if you try to call it too often.
 :::
 
-In case you need to prepare for changes happening beforehand, call [PreviewExternalUpdatesAsync](/cppsdk/refdocs#previewexternalupdatesasync). This function retrieves a list of updates between the users local mod state, and the server-side state. It allows you to identify which mods will be modified when you call [FetchExternalUpdatesAsync](/cppsdk/refdocs#fetchexternalupdatesasync) next in order to perform any content management (such as unloading files) that might be required. Its use is very similar:
+In case you need to prepare for changes happening beforehand, call [PreviewExternalUpdatesAsync](/cppsdk/refdocs/#previewexternalupdatesasync). This function retrieves a list of updates between the users local mod state, and the server-side state. It allows you to identify which mods will be modified when you call [FetchExternalUpdatesAsync](/cppsdk/refdocs/#fetchexternalupdatesasync) next in order to perform any content management (such as unloading files) that might be required. Its use is very similar:
 
 ```cpp
 Modio::PreviewExternalUpdatesAsync([](Modio::ErrorCode ec, std::map<Modio::ModID, Modio::UserSubscriptionList::ChangeType> ListOfChanges)
@@ -698,19 +698,19 @@ Modio::PreviewExternalUpdatesAsync([](Modio::ErrorCode ec, std::map<Modio::ModID
 
 ##### Checking the user subscription list
 
-In order to see which mods the user has subscribed to, call [QueryUserSubscriptions](/cppsdk/refdocs#queryusersubscriptions) to retrieve a collection of [ModCollectionEntry](/cppsdk/refdocs#ModCollectionEntry) objects, one for each subscribed mod.
+In order to see which mods the user has subscribed to, call [QueryUserSubscriptions](/cppsdk/refdocs/#queryusersubscriptions) to retrieve a collection of [ModCollectionEntry](/cppsdk/refdocs/#ModCollectionEntry) objects, one for each subscribed mod.
 Each of these objects contains the mod's state, profile information, ID, and other data suitable for showing users a list of their subscriptions.
 
 :::note
-This collection includes mods that are still in the process of being installed. Make sure to check the result of `ModCollectionEntry::GetModState` before trying to load files from the mods in this collection. Alternatively, use [QueryUserInstallations](/cppsdk/refdocs#queryuserinstallations) as described in [Retrieving mod directory paths for loading](/cppsdk/refdocs#retrieving-mod-directory-filepaths-for-loading).
+This collection includes mods that are still in the process of being installed. Make sure to check the result of `ModCollectionEntry::GetModState` before trying to load files from the mods in this collection. Alternatively, use [QueryUserInstallations](/cppsdk/refdocs/#queryuserinstallations) as described in [Retrieving mod directory paths for loading](/cppsdk/refdocs/#retrieving-mod-directory-filepaths-for-loading).
 :::
 
-A distinction exists between functions [QueryUserInstallations](/cppsdk/refdocs#queryuserinstallations) and [QuerySystemInstallations](/cppsdk/refdocs#querysysteminstallations). The first fetches the subset of the user's subscribed mods that are installed and therefore ready for loading. [QueryUserInstallations](/cppsdk/refdocs#queryuserinstallations) is more relevant for most cases to personalize the content shown to the user. On the other hand, a call to [QuerySystemInstallations](/cppsdk/refdocs#querysysteminstallations) returns all mods installed on the system (including those the current user is subscribed to). This provides insight into mods installed by other users. 
+A distinction exists between functions [QueryUserInstallations](/cppsdk/refdocs/#queryuserinstallations) and [QuerySystemInstallations](/cppsdk/refdocs/#querysysteminstallations). The first fetches the subset of the user's subscribed mods that are installed and therefore ready for loading. [QueryUserInstallations](/cppsdk/refdocs/#queryuserinstallations) is more relevant for most cases to personalize the content shown to the user. On the other hand, a call to [QuerySystemInstallations](/cppsdk/refdocs/#querysysteminstallations) returns all mods installed on the system (including those the current user is subscribed to). This provides insight into mods installed by other users. 
 
 If local space is a concern, here are some options to manage storage:
 
-* Execute [QuerySystemInstallations](/cppsdk/refdocs#querysysteminstallations), let the user know space is limited and provide the chance to select mods to uninstall. Then call [ForceUninstallModAsync](/cppsdk/refdocs#ForceUninstallModAsync) to remove mods selected by the user.
-* Execute [QueryUserInstallations](/cppsdk/refdocs#queryuserinstallations) and prompt the user to unsubscribe from large mods.
+* Execute [QuerySystemInstallations](/cppsdk/refdocs/#querysysteminstallations), let the user know space is limited and provide the chance to select mods to uninstall. Then call [ForceUninstallModAsync](/cppsdk/refdocs/#ForceUninstallModAsync) to remove mods selected by the user.
+* Execute [QueryUserInstallations](/cppsdk/refdocs/#queryuserinstallations) and prompt the user to unsubscribe from large mods.
 
 The first option focuses on the removal of mods the user has not interacted with, whereas the second option would actively uninstall mods the user has previously considered and subscribed to. Consider other alternatives when designing your game to support mods.
 
@@ -718,7 +718,7 @@ The first option focuses on the removal of mods the user has not interacted with
 
 Once the user can pick mods and subscribe to them (i.e. mark them for installation), mod.io SDK management can alter the filesystem and retrieve mods. We need to know where they are on the filesystem to load them into your gameplay.
 
-The easiest way to do this is by using [QueryUserInstallations](/cppsdk/refdocs#queryuserinstallations). This function allows you to specify if you want to include outdated mods or not. It returns a collection of [ModCollectionEntry](/cppsdk/refdocs#ModCollectionEntry) objects that you can query for folder paths you can use to load files into your title.
+The easiest way to do this is by using [QueryUserInstallations](/cppsdk/refdocs/#queryuserinstallations). This function allows you to specify if you want to include outdated mods or not. It returns a collection of [ModCollectionEntry](/cppsdk/refdocs/#ModCollectionEntry) objects that you can query for folder paths you can use to load files into your title.
 
 ```cpp
 std::vector<Modio::filesystem::path> ModPaths;
@@ -754,7 +754,7 @@ These steps are outlined below. Mods can also be edited after submission, as det
 
 #### Submitting a new mod
 
-To submit a mod, first create a mod handle using [GetModCreationHandle](/cppsdk/refdocs#getmodcreationhandle) and use that handle when calling [SubmitNewModAsync](/cppsdk/refdocs#submitnewmodasync). Note that the newly created mod will remain hidden until a mod file is added in the next step.
+To submit a mod, first create a mod handle using [GetModCreationHandle](/cppsdk/refdocs/#getmodcreationhandle) and use that handle when calling [SubmitNewModAsync](/cppsdk/refdocs/#submitnewmodasync). Note that the newly created mod will remain hidden until a mod file is added in the next step.
 
 ```cpp
 
@@ -783,7 +783,7 @@ Modio::SubmitNewModAsync(Handle, Params, [](Modio::ErrorCode ec, Modio::Optional
 
 #### Submitting a file for a mod
 
-Once you have successfully submitted a mod, you can submit a file for that mod using [SubmitNewModFileForMod](/cppsdk/refdocs#submitnewmodfileformod). When you submit a file, pass a `Modio::CreateModFileParams` containing the directory of the files that you want to submit. The SDK will compress this folder into a zip file and upload it as the active version of the mod. Note that there is no callback for this method; you'll be notified of the completed upload by the Mod Management callback.
+Once you have successfully submitted a mod, you can submit a file for that mod using [SubmitNewModFileForMod](/cppsdk/refdocs/#submitnewmodfileformod). When you submit a file, pass a `Modio::CreateModFileParams` containing the directory of the files that you want to submit. The SDK will compress this folder into a zip file and upload it as the active version of the mod. Note that there is no callback for this method; you'll be notified of the completed upload by the Mod Management callback.
 
 ```cpp
 
@@ -801,9 +801,9 @@ Modio::SubmitNewModFileForMod(NewModID, Params);
 
 ### Edit an existing mod
 
-Mod details can be edited in-game using [SubmitModChangesAsync](/cppsdk/refdocs#submitmodchangesasync).  This function allows you to edit multiple parameters with a single call.  It takes a `Modio::ModID` of the mod to edit, a `Modio::EditModParams` containing one or more parameters to be altered, and a callback that will contain an optional updated `Modio::ModInfo` object on success.
+Mod details can be edited in-game using [SubmitModChangesAsync](/cppsdk/refdocs/#submitmodchangesasync).  This function allows you to edit multiple parameters with a single call.  It takes a `Modio::ModID` of the mod to edit, a `Modio::EditModParams` containing one or more parameters to be altered, and a callback that will contain an optional updated `Modio::ModInfo` object on success.
 
-Note that updating the mod file itself is done via [SubmitNewModFileForMod](/cppsdk/refdocs#submitnewmodfileformod), as detailed in [Submitting a file for a mod](#submitting-a-file-for-a-mod).
+Note that updating the mod file itself is done via [SubmitNewModFileForMod](/cppsdk/refdocs/#submitnewmodfileformod), as detailed in [Submitting a file for a mod](#submitting-a-file-for-a-mod).
 
 ```cpp
 
@@ -874,7 +874,7 @@ To perform any of these actions, the muting user must be authenticated.
 
 #### Mute a user
 
-To mute a user, call [MuteUserAsync](/cppsdk/refdocs#muteuserasync) with the corresponding `Modio::UserID` and a callback, given the asynchronous nature of the function
+To mute a user, call [MuteUserAsync](/cppsdk/refdocs/#muteuserasync) with the corresponding `Modio::UserID` and a callback, given the asynchronous nature of the function
 
 ```cpp
 
@@ -894,7 +894,7 @@ Modio::MuteUserAsync(UserID, [](Modio::ErrorCode ec)
 
 #### Unmute a user
 
-To perform the inverse operation, unmute a user, call [UnmuteUserAsync](/cppsdk/refdocs#unmuteuserasync) with the corresponding `Modio::UserID` and a callback, given the asynchronous nature of the function
+To perform the inverse operation, unmute a user, call [UnmuteUserAsync](/cppsdk/refdocs/#unmuteuserasync) with the corresponding `Modio::UserID` and a callback, given the asynchronous nature of the function
 
 ```cpp
 
@@ -914,7 +914,7 @@ Modio::UnmuteUserAsync(UserID, [](Modio::ErrorCode ec)
 
 #### List muted users
 
-[GetMutedUsersAsync](/cppsdk/refdocs#getmutedusersasync) returns a `Modio::UserList` on success, containing information on users previously muted by the authenticated user. 
+[GetMutedUsersAsync](/cppsdk/refdocs/#getmutedusersasync) returns a `Modio::UserList` on success, containing information on users previously muted by the authenticated user. 
 
 ```cpp
 
@@ -944,9 +944,9 @@ In some situations, you may want mods to only exist on a temporary basis - for i
 
 Temp Mods are downloaded in a folder separately from subscriptions, and are not updated or handled when you call `FetchExternalUpdatesAsync`. That means you can prioritize download and installation of Temp Mods outside of the regular subscription flow.
 
-To use Temp Mods, you can start a TempModSet by calling `InitTempModSet` and passing a list of Mod IDs to be downloaded and extracted. At anytime while a TempModSet is open, you can call [AddToTempModSet](/cppsdk/refdocs#addtotempmodset) to add mods to the set (which will be instantly downloaded and extracted). If you no longer need a mod, you can call [RemoveFromTempModSet](/cppsdk/refdocs#removefromtempmodset) which will remove the file. Once you have finished with a TempModSet, you can call [CloseTempModSet](/cppsdk/refdocs#closetempmodset) which will delete all temporary mods. Temporary mods are also deleted the next time you re-initialize the SDK.
+To use Temp Mods, you can start a TempModSet by calling `InitTempModSet` and passing a list of Mod IDs to be downloaded and extracted. At anytime while a TempModSet is open, you can call [AddToTempModSet](/cppsdk/refdocs/#addtotempmodset) to add mods to the set (which will be instantly downloaded and extracted). If you no longer need a mod, you can call [RemoveFromTempModSet](/cppsdk/refdocs/#removefromtempmodset) which will remove the file. Once you have finished with a TempModSet, you can call [CloseTempModSet](/cppsdk/refdocs/#closetempmodset) which will delete all temporary mods. Temporary mods are also deleted the next time you re-initialize the SDK.
 
-Like regular mods, Temp Mods can be queried using [QueryTempModSet](/cppsdk/refdocs#querytempmodset) to get a ModCollectionEntry with an installation path.
+Like regular mods, Temp Mods can be queried using [QueryTempModSet](/cppsdk/refdocs/#querytempmodset) to get a ModCollectionEntry with an installation path.
 
 #### Installing Temporary Mods
 
@@ -985,17 +985,17 @@ If you add an already subscribed mod to TempModSet, it will not download be down
 This functionality is demonstrated in example 07_Threading
 :::
 
-As mentioned in [the quick-start section on initialization](#initialization-and-teardown), the SDK supports [RunPendingHandlers](/cppsdk/refdocs#runpendinghandlers) being run on a secondary thread that already exists or a dedicated background thread you create specifically to peform SDK work.
+As mentioned in [the quick-start section on initialization](#initialization-and-teardown), the SDK supports [RunPendingHandlers](/cppsdk/refdocs/#runpendinghandlers) being run on a secondary thread that already exists or a dedicated background thread you create specifically to peform SDK work.
 
 :::note
-Callbacks you provide to the SDK will run ***on the thread running [RunPendingHandlers](/cppsdk/refdocs#runpendinghandlers)*** - if you host [RunPendingHandlers](/cppsdk/refdocs#runpendinghandlers) on a different thread, it is your responsibility to synchronize with the main thread if you wish to pass results back to it, through callbacks you provide to the SDK.
+Callbacks you provide to the SDK will run ***on the thread running [RunPendingHandlers](/cppsdk/refdocs/#runpendinghandlers)*** - if you host [RunPendingHandlers](/cppsdk/refdocs/#runpendinghandlers) on a different thread, it is your responsibility to synchronize with the main thread if you wish to pass results back to it, through callbacks you provide to the SDK.
 :::
 
 This allows the SDK to avoid blocking the main thread of your application while performing IO.
 
 #### Using an existing secondary thread
 
-If you have an existing secondary thread which is not heavily utilized, you can call [RunPendingHandlers](/cppsdk/refdocs#runpendinghandlers) on that thread:
+If you have an existing secondary thread which is not heavily utilized, you can call [RunPendingHandlers](/cppsdk/refdocs/#runpendinghandlers) on that thread:
 
 ```cpp
 while(bRunBackgroundThread == true)
@@ -1010,7 +1010,7 @@ Just remember, that performance of the SDK is proportional to the amount of CPU 
 
 #### Using a dedicated background thread
 
-Using a dedicated background thread for [RunPendingHandlers](/cppsdk/refdocs#runpendinghandlers) will ensure the best performance for the SDK's I/O operations by allowing SDK functionality to execute at a rate not limited by your application's main loop frequency or existing background loop frequencies.
+Using a dedicated background thread for [RunPendingHandlers](/cppsdk/refdocs/#runpendinghandlers) will ensure the best performance for the SDK's I/O operations by allowing SDK functionality to execute at a rate not limited by your application's main loop frequency or existing background loop frequencies.
 
 ```cpp
 //Assumption: bHaltBackgroundThread is a threadsafe flag or atomic boolean whose lifetime is guaranteed to be longer than that of the handler thread
@@ -1027,13 +1027,13 @@ HandlerThread = std::thread([&bHaltBackgroundThread]() {
 ```
 
 :::note
-[ShutdownAsync](/cppsdk/refdocs#shutdownasync) takes a lock on the SDK's internal state in order to finalize the pending task queue and shut down internal services. 
+[ShutdownAsync](/cppsdk/refdocs/#shutdownasync) takes a lock on the SDK's internal state in order to finalize the pending task queue and shut down internal services. 
 
-If you call [RunPendingHandlers](/cppsdk/refdocs#runpendinghandlers) in a background thread, especially a dedicated background thread, and invoke [ShutdownAsync](/cppsdk/refdocs#shutdownasync) to close the SDK while your application continues to run, on certain platforms you may find the mutex/lock to be unfair to the point that the main thread cannot take the lock, because the background thread does not get suspended by the OS' scheduler often enough. 
+If you call [RunPendingHandlers](/cppsdk/refdocs/#runpendinghandlers) in a background thread, especially a dedicated background thread, and invoke [ShutdownAsync](/cppsdk/refdocs/#shutdownasync) to close the SDK while your application continues to run, on certain platforms you may find the mutex/lock to be unfair to the point that the main thread cannot take the lock, because the background thread does not get suspended by the OS' scheduler often enough. 
 
 If this occurs, we recommend you use either a `yield` or high-resolution `sleep` after each invocation of RunPendingHandlers to allow the main thread to take the shutdown lock. Alternatively, you can use some kind of signaling mechanism to pause the background thread calling RunPendingHandlers, call ShutdownAsync, and then allow that background thread to resume looping. 
 
-If the SDK runs for the lifetime of your application and you do not call [ShutdownAsync](/cppsdk/refdocs#shutdownasync) this is not necessary.
+If the SDK runs for the lifetime of your application and you do not call [ShutdownAsync](/cppsdk/refdocs/#shutdownasync) this is not necessary.
 :::
 
 
@@ -1043,7 +1043,7 @@ If the SDK runs for the lifetime of your application and you do not call [Shutdo
 This functionality is demonstrated in example 09_MonetizationWalletManagement (for initialization and wallet management) and 10_MonetizationPurchase (for purchase functionality).
 :::
 
-The mod.io SDK supports all of the mod.io monetization features, allowing you sell a per-game virtual currency to your players that they can use to purchase mods, with a share of the revenue split between creators and your studio. Visit https://docs.mod.io/monetization/ for an overview of the mod.io monetization system.
+The mod.io SDK supports all of the mod.io monetization features, allowing you sell a per-game virtual currency to your players that they can use to purchase mods, with a share of the revenue split between creators and your studio. Visit [mod.io monetization system](/monetization/) for an overview.
 
 Every platform requires specific setup for monetization features to work, with regards to the virtual currency configuration and API calls, however the following documentation is generically applicable, with only small differences per-platform that are documented within the platform-specific monetization documentation.
 
@@ -1186,7 +1186,7 @@ User Delegation Tokens can be used by a backend server for S2S (Server to Server
 This functionality is demonstrated in example 13_MetricsSession.
 :::
 
-The mod.io SDK supports all of the mod.io metrics features, allowing you to start a metrics play sesion, keeping that session alive via a heartbeat (automatically called, or manually handled) and then ending that session. Metric sessions allow you to track which mods your players interact with most frequently. Visit https://docs.mod.io/metrics/ for an overview of the mod.io metrics system.
+The mod.io SDK supports all of the mod.io metrics features, allowing you to start a metrics play sesion, keeping that session alive via a heartbeat (automatically called, or manually handled) and then ending that session. Metric sessions allow you to track which mods your players interact with most frequently. Visit [mod.io metrics system](/metrics/) for an overview.
 
 :::note
 Running metrics play sessions is a premium feature. If you are interested in mod.io premium features, please contact developers@mod.io.
@@ -1208,7 +1208,7 @@ Failing to set up the Metrics Secret Key will result in a `Modio::MetricsError::
 
 #### Starting a Metrics Session
 
-You can call [MetricsSessionStartAsync](/cppsdk/refdocs#metricssessionstartasync) to start a new session tracking the usage of mods in the context of your game. You'll notice that `MetricsSessionStartAsync` takes a [MetricsSessionParams](/cppsdk/refdocs#metricssessionparams) object as its parameter. This contains an optional Session Id, as well as a required vector of mods to track.
+You can call [MetricsSessionStartAsync](/cppsdk/refdocs/#metricssessionstartasync) to start a new session tracking the usage of mods in the context of your game. You'll notice that `MetricsSessionStartAsync` takes a [MetricsSessionParams](/cppsdk/refdocs/#metricssessionparams) object as its parameter. This contains an optional Session Id, as well as a required vector of mods to track.
 
 :::note
 If a Session Id is not provided, a random one will be created for you.
@@ -1236,7 +1236,7 @@ The Metrics Session Params accepts an optional Session Id in the form of a `Modi
 
 To ensure that the session is kept alive, a heartbeat is required to be submitted at most every 5 minutes. We recommend doing this a bit earlier than the threshold to ensure you do not miss the window.
 
-There are two methods provided to control the behaviour of the heart beat, [MetricsSessionSendHeartbeatOnceAsync](/cppsdk/refdocs#metricssessionsendheartbeatonceasync) which you can call at your desired precision, as well as a single call and forget [MetricsSessionSendHeartbeatAtIntervalAsync](/cppsdk/refdocs#metricssessionsendheartbeatintervalasync) with a desired interval.
+There are two methods provided to control the behaviour of the heart beat, [MetricsSessionSendHeartbeatOnceAsync](/cppsdk/refdocs/#metricssessionsendheartbeatonceasync) which you can call at your desired precision, as well as a single call and forget [MetricsSessionSendHeartbeatAtIntervalAsync](/cppsdk/refdocs/#metricssessionsendheartbeatintervalasync) with a desired interval.
 
 Calling `MetricsSessionSendHeartbeatOnceAsync` will submit a single heartbeat, and return an error code if something went wrong. If no error has occured, the heartbeat has been successfully sent.
 
@@ -1274,7 +1274,7 @@ Modio::MetricsSessionSendHeartbeatAtIntervalAsync(IntervalSeconds, [](Modio::Err
 
 #### Ending a Metrics Session
 
-To complete a session, for example when finishing a match, or quitting out of your game, you can call [MetricsSessionEndAsync](/cppsdk/refdocs#metricssessionendasync).
+To complete a session, for example when finishing a match, or quitting out of your game, you can call [MetricsSessionEndAsync](/cppsdk/refdocs/#metricssessionendasync).
 As with the other calls, you will receive an error if anything has gone wrong, otherwise the operation successfully completed.
 
 ```cpp
@@ -1391,7 +1391,7 @@ else if (Modio::ErrorCodeMatches(ec, Modio::HttpError::ServerClosedConnection))
 
 However, this still requires knowledge of the different types of HTTP errors. In your application you probably don't need to handle them differently. The semantics of networking errors are largely 'try the function again later'.
 
-This is where the second overload of [ErrorCodeMatches](/cppsdk/refdocs#ErrorCodeMatches) comes in. It allows you to query if the error satisfies a particular condition, such as 'does this code represent some kind of networking error':
+This is where the second overload of [ErrorCodeMatches](/cppsdk/refdocs/#ErrorCodeMatches) comes in. It allows you to query if the error satisfies a particular condition, such as 'does this code represent some kind of networking error':
 
 ```cpp
 Modio::ErrorCode ec;
@@ -1467,6 +1467,6 @@ Modio::GetModInfoAsync(ModID, [](Modio::ErrorCode ec, Modio::Optional<Modio::Mod
 
 #### Parameter Validation Errors
 
-Some of the SDK functions may return errors that indicate a parameter or data validation failure. For these cases, the SDK parses the error response from the mod.io API and stores the information about which parameters failed validation until the next network request executes. If an SDK function returns an error which matches `Modio::ErrorConditionTypes::InvalidArgsError`, you can call [GetLastValidationError](/cppsdk/refdocs#getlastvalidationerror) in your callback to retrieve those errors and display appropriate feedback to the end-user.
+Some of the SDK functions may return errors that indicate a parameter or data validation failure. For these cases, the SDK parses the error response from the mod.io API and stores the information about which parameters failed validation until the next network request executes. If an SDK function returns an error which matches `Modio::ErrorConditionTypes::InvalidArgsError`, you can call [GetLastValidationError](/cppsdk/refdocs/#getlastvalidationerror) in your callback to retrieve those errors and display appropriate feedback to the end-user.
 
 ---

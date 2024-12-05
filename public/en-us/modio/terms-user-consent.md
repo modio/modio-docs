@@ -46,7 +46,7 @@ flowchart TD
     A(fa:fa-user Opens UGC menu) --> B{Agreement
     required?}
     B -->|Yes| C(Show terms dialog)
-    B -->|No| E
+    B -->|No, already collected| E
     C --> D{Terms agreed?}
     D -->|Yes| E(fa:fa-check Authenticate the user)
     D -->|No| F(fa:fa-xmark Do not authenticate)

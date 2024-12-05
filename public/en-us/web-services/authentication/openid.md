@@ -1,6 +1,6 @@
 ---
 id: openid
-title: In-game login using your OpenID
+title: In-game login using your Identity Provider
 slug: /web-services/authentication/openid/
 sidebar_position: 2
 ---
@@ -25,7 +25,7 @@ Please note that the ability to authenticate players using OpenID is premium fea
 ## Use cases
 
 - **In-Game**: Due to the stateless nature of ID Tokens, they are an excellent candidate for being used in-exchange for a mod.io access token as they do not rely on web-redirects to obtain and furthermore it is independent from how a player authenticates with your service to generate the ID Token.
-- **Embeddable Modhub**: If you are embedding a modhub into one or more of your domains, and you already have sign in functionality within your domain against your identity provider, you can use the `openid` to get an `id_token` returned, which you can then pass to our embeddable hub for frictionless SSO.
+- **Embeddable Hub**: If you are embedding a hub into one or more of your domains, and you already have sign in functionality within your domain against your identity provider, you can use the `openid` to get an `id_token` returned, which you can then pass to our Embeddable Hub for frictionless SSO.
 
 ## Prerequisites
 
@@ -116,7 +116,7 @@ To add your JWK URL to the mod.io dashboard follow these steps:
 Once the signature of the ID token been verified, mod.io will then extract claims from the ID Token to create an account for the player. The following claims are required:
 
 - `sub`: Subject claim. This value MUST be the unique identifier for the player within your identity provider.
-- `aud`: Audience claim. This value must be set to either `https://mod.io` or `https://g-<your-game-id>.mod.api.io`. If you set the audience to your game's URL, the token will only work within that URL and won't be valid on any other [mod.io](https://mod.io) domain.
+- `aud`: Audience claim. This value must be set to either `https://mod.io` or `https://g-{your-game-id}.modapi.io`. If you set the audience to your game's URL, the token will only work within that URL and won't be valid on any other [mod.io](https://mod.io) domain.
 
 ### Optional Claims Mappings
 
@@ -134,7 +134,7 @@ For an OpenID authentication request to be successful, mod.io will make the foll
 1. The signing keys exposed by the JWK URL must either be Elliptic Curve (EC) with `256` and `512` being supported curves, or RSA with `RS256` being supported.
 2. At least one of the signing keys exposed in the JWK URL must have signed the supplied ID Token.
 3. The `sub` claim must be present and a non-empty string or positive integer. In the event an integer datatype is encountered, this value will be casted to a string internally.
-4. The `aud` claim must be set to either `https://mod.io` or `https://g-<your-game-id>.modapi.io`. If you use your game's URL, it must match the API host exactly.
+4. The `aud` claim must be set to either `https://mod.io` or `https://g-{your-game-id}.modapi.io`. If you use your game's URL, it must match the API host exactly.
 5. The `iat` claim cannot be greater than the current epoch unix timestamp with a 10 second buffer to account for clock skew.
 6. The `exp` claim must be greater than the current epoch unix timestamp with a 10 second buffer to account for clock skew.
 

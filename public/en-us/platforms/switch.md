@@ -24,7 +24,7 @@ For Nintendo Switch access, use the verification link at the bottom of this page
 
 ![Screenshot of the contact form used for NDA verification via the Nintendo Dev Portal](images/console-support/nintendo_verification.png)
 
-Once verified, notify your mod.io contact and we will provide access to the Nintendo Switch support module for your integration solution. Alternatively, contact us directly at developers@mod.io.
+Once verified, your mod.io contact will provide access to the Nintendo Switch support module for your integration solution. Alternatively, contact us directly at developers@mod.io.
 
 ## Moderation
 

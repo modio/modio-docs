@@ -1,6 +1,6 @@
 ---
 id: website-studio-sso
-title: mod.io website login using your OpenID
+title: mod.io website login using your Identity Provider
 slug: /web-services/authentication/website/
 sidebar_position: 3
 ---
@@ -76,7 +76,7 @@ Prior to configuration on mod.io, your identity provider must create an OAuth cl
 | **Used By** | **Redirect URI** |
 |--------------------------|-----------------------------|
 | mod.io Website | `https://mod.io/oauth/studio` |
-| Embeddable Modhub | `https://embed.modhub.io/oauth/studio` |
+| Embeddable Hub | `https://embed.modhub.io/oauth/studio` |
 
 #### OAuth Client Data for mod.io
 

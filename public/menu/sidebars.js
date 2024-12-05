@@ -197,6 +197,12 @@ const sidebars = {
     },
     {
       type: 'category',
+      label: 'Oculus',
+      //link: {type: 'doc', id: 'platforms/oculus/authentication'},
+      items: ['platforms/oculus/authentication', 'platforms/oculus/marketplace'],
+    },
+    {
+      type: 'category',
       label: 'Epic Games',
       //link: {type: 'doc', id: 'platforms/epic/authentication'},
       items: ['platforms/epic/authentication'],
@@ -283,7 +289,7 @@ const sidebars = {
           type: 'category',
           label: 'For Players',
           link: {type: 'doc', id: 'web-services/authentication/overview'},
-          items: ['web-services/authentication/platform', 'web-services/authentication/openid', 'web-services/authentication/device', 'web-services/authentication/website-studio-sso', 'web-services/authentication/website-to-modio-sso'],
+          items: ['web-services/authentication/platform', 'web-services/authentication/device', 'web-services/authentication/openid', 'web-services/authentication/website-studio-sso', 'web-services/authentication/website-to-modio-sso'],
         },
         {
           type: 'doc',
@@ -297,6 +303,18 @@ const sidebars = {
       label: 'Marketplace',
       link: {type: 'doc', id: 'web-services/marketplace/overview'},
       items: ['web-services/marketplace/studio-as-purchase-server'],
+    },
+    {
+      type: 'category',
+      label: 'Embeddable Hub',
+      link: {type: 'doc', id: 'web-services/embeddable-hub/overview'},
+      items: [
+        'web-services/embeddable-hub/style',
+        'web-services/embeddable-hub/settings',
+        'web-services/embeddable-hub/custom-css',
+        'web-services/embeddable-hub/deployment',
+        'web-services/embeddable-hub/communication',
+      ],
     },
     // REST API
     {
