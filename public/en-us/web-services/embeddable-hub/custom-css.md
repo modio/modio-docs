@@ -15,7 +15,9 @@ The Embeddable Hub provides various semantic class names to assist in applying s
 
 Don't forget that you can preview your customizations immediately using the preview button at the bottom of each tab.
 
-**Note**: If your game is not live, the 'Visible when game is hidden' checkbox on the [settings page](../settings) must be checked.
+:::note
+If your game is not live, the _'Visible when game is hidden'_ checkbox on the [settings page](../settings) must be checked.
+:::
 
 ## CSS classes
 ```

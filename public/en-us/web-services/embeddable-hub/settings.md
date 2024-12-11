@@ -30,9 +30,11 @@ You can choose whether your users log in to your Embeddable Hub using your studi
 
 The minimum age is a required field and is shown as part of the mod.io terms agreement when logging in.
 
-**Note:** In order to use studio SSO, you must have configured this in your game's dashboard, as described [here](/web-services/authentication/website/).
+:::note
+In order to use studio SSO, you must have configured this in your game's dashboard, as described [here](/web-services/authentication/website/).
+:::
 
-For other authentication methods initiated externally, see the [communication](/web-services/embeddable-hub/communication/) page.
+For other authentication methods initiated externally, see the [communication](../communication/) page.
 
 ## Agreements
 

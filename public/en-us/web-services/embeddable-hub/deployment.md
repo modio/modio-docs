@@ -9,9 +9,9 @@ sidebar_position: 3
 
 Deploying your Embeddable Hub is easy, just follow the steps below:
 
-1. If your game is hidden or pending, the 'Visible when game is hidden' checkbox on the [Settings page](../settings) must be checked, if your game is already live, go straight to step 2.
-2. Ensure that the domain you are hosting your Embeddable Hub on is whitelisted in the 'Allowed origins' section of the [Settings page](../settings#allowed-origins).
-3. Go to the 'Embed code' tab, copy the source code and paste it into your own site's source code.
+1. If your game is hidden or pending, the _'Visible when game is hidden'_ checkbox on the [Settings page](../settings) must be checked, if your game is already live, go straight to step 2.
+2. Ensure that the domain you are hosting your Embeddable Hub on is whitelisted in the _'Allowed origins'_ section of the [Settings page](../settings#allowed-origins).
+3. Go to the _'Embed code'_ tab, copy the source code and paste it into your own site's source code.
     
     a. If you completed this step before enabling the checkbox in step 1, or unpublished your game, return here to get the required `hash` parameter.
 4. Deploy your site however you do normally and view your Embeddable Hub on the page.
@@ -24,4 +24,4 @@ Examples include functions that automatically resize the iframe when its content
 
 ## Communicating with the Embeddable Hub
 
-Be sure to check out the [next topic](/web-services/embeddable-hub/communication/) to learn more about how your site can interact with the Embeddable Hub for a seamless user experience.
+Be sure to check out the [next topic](../communication/) to learn more about how your site can interact with the Embeddable Hub for a seamless user experience.

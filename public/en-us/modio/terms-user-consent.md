@@ -107,6 +107,10 @@ The Terms of Use and Privacy Policy must be clickable from somewhere on the dial
 
 :::tip
 The **/widget** part of the URL is optional and removes all menus and the **?no_links=true** part of the URL is optional and removes all links.
+
+If these URLs open with a blank white screen in-game, that means your web browser does not support Javascript. If this is the case, please use the following URLs instead:
+* https://mod.io/legal/terms?no_links=true
+* https://mod.io/legal/privacy?no_links=true
 :::
 
 ### Authentication

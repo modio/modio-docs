@@ -1,13 +1,13 @@
 ---
-id: style
-title: Style
-slug: /web-services/embeddable-hub/style/
+id: theme
+title: Theme
+slug: /web-services/embeddable-hub/theme/
 sidebar_position: 0
 ---
 
-# Style
+# Theme
 
-Modifying your Embeddable Hub's style is easy. Simply adjust the different inputs and preview the changes in realtime to the side.
+Modifying your Embeddable Hub's theme is easy. Simply adjust the different inputs and preview the changes in realtime to the side.
 
 ## Colors
 
@@ -27,6 +27,8 @@ To modify button and tile's border width and radius, enter a number into the fir
 
 In addition to the preview boxes to the right of each section, there is a button at the bottom of the form to preview the entire Embeddable Hub site as it would appear with the current settings.
 
-**Note**: If you are creating a new Embeddable Hub, your changes must be saved at least once in order to use the preview button. Additionally, if your game is not live, the 'Visible when game is hidden' checkbox on the [settings page](../settings) must be checked.
+:::note
+If you are creating a new Embeddable Hub, your changes must be saved at least once in order to use the preview button. Additionally, if your game is not live, the _'Visible when game is hidden'_ checkbox on the [settings page](../settings) must be checked.
+:::
 
 ![Embeddable Hub preview](./images/embeddable_hub_preview.png)

@@ -20,13 +20,16 @@ We recommend contacting your Microsoft representative to establish their rules f
 
 ## SDK Access
 
-In order to allow access to the GDK Support modules for Xbox, we need to verify your status with Microsoft as an approved developer via our account manager.
-
-To do this, if you are licensed with Microsoft, you can verify your status using the Middleware Request form here: https://developer.microsoft.com/en-us/games/support/request-gdkx-middleware
+In order to allow access to the GDK Support modules for Xbox, we need to verify your status with Microsoft as an approved developer. If you are already an approved developer with Microsoft, you can do this online at [the following webform](https://developer.microsoft.com/en-us/games/support/request-gdkx-middleware). Select "mod.io" from the Middleware Partner list, and submit your details which will notify our team via developers@mod.io.
 
 ![Middeware Request form used for GDK resource access via the Xbox Game Dev Portal](images/console-support/xbox_verification.png)
 
-Once verified, your mod.io contact will provide access to the GDK support module for your integration solution. Alternatively, contact us directly at developers@mod.io.
+ If you are not yet an approved developer, we will need to confirm your status with our account manager. To do this, please notify your contact at mod.io that you require this access and provide us with the following details as they would be recorded by Microsoft:
+* Your Company Name
+* Your Title/Game Name
+* The email domain/address registered with Microsoft. (eg. \*@mod.io)
+
+Once verified, your mod.io contact will provide access to the GDK support module for your integration solution.
 
 ## Moderation
 

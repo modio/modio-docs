@@ -35,7 +35,7 @@ A number of commands can be sent to and received from the Embeddable Hub using t
 | Key           | Data type      | Description                                                                                                                                                       |
 | ------------- | -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | modioAuth     | IModioAuth     | Authenticate a user by passing in either an ID token from your game's [Open ID](/web-services/authentication/openid/) setup or an access token and optional email |
-| modioCSS      | string         | Sets Custom CSS, as described on the [Custom CSS](/web-services/embeddable-hub/custom-css/) page                                                                  |
+| modioCSS      | string         | Sets Custom CSS, as described on the [Custom CSS](../custom-css/) page                                                                                            |
 | modioFilter   | IModioFilter   | Sets a tag to force filtering on, or a featured tag                                                                                                               |
 | modioHome     | true           | Navigates the Embeddable Hub back to the home page                                                                                                                |
 | modioLang     | string         | Sets the language of the Embeddable Hub. See [Localization](/restapiref/#localization) for available languages                                                    |
@@ -43,8 +43,8 @@ A number of commands can be sent to and received from the Embeddable Hub using t
 | modioPortal   | string         | Sets a portal header on every request. See [Targeting a portal](/restapiref/#targeting-a-portal) for more info                                                    |
 | modioQuery    | IModioQuery    | Search or filter mods by name or tags                                                                                                                             |
 | modioScroll   | IModioScroll   | Sets the scroll position of the containing site                                                                                                                   |
-| modioSettings | IModioSettings | Modify the settings of your Embeddable Hub, as described on the [settings page](/web-services/embeddable-hub/settings/)                                           |
-| modioStyle    | IModioStyle    | Modify the style of your Embeddable Hub, as described on the [style page](/web-services/embeddable-hub/style/)                                                    |
+| modioSettings | IModioSettings | Modify the settings of your Embeddable Hub, as described on the [settings page](../settings/)                                                                     |
+| modioStyle    | IModioStyle    | Modify the style of your Embeddable Hub, as described on the [theme page](../style/)                                                                              |
 | modioUrl      | string         | Informs the Embeddable Hub of the URL of the containing site                                                                                                      |
 | modioWindow   | number         | Informs the Embeddable Hub of the height of the user's browser window                                                                                             |
 
@@ -149,3 +149,7 @@ A number of commands can be sent to and received from the Embeddable Hub using t
 | modioInit   | true      | Informs the containing site that the Embeddable Hub has loaded                                           |
 | modioPage   | string    | Informs the containing site of the current page the Embeddable Hub is on                                 |
 | modioScroll | number    | Used to control the vertical scroll position of the containing window                                    |
+
+## JavaScript API
+
+The Embeddable Hub exposes a JavaScript API that is useful for calling functions directly when the hub is embedded in-game. More details will be coming soon, but you can contact us at developers@mod.io for more information.

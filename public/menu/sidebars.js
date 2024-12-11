@@ -289,7 +289,7 @@ const sidebars = {
           type: 'category',
           label: 'For Players',
           link: {type: 'doc', id: 'web-services/authentication/overview'},
-          items: ['web-services/authentication/platform', 'web-services/authentication/device', 'web-services/authentication/openid', 'web-services/authentication/website-studio-sso', 'web-services/authentication/website-to-modio-sso'],
+          items: ['web-services/authentication/platform', 'web-services/authentication/device', 'web-services/authentication/openid', 'web-services/authentication/website-studio-sso', 'web-services/authentication/website-to-modio-sso', 'web-services/authentication/verification'],
         },
         {
           type: 'doc',
@@ -309,7 +309,7 @@ const sidebars = {
       label: 'Embeddable Hub',
       link: {type: 'doc', id: 'web-services/embeddable-hub/overview'},
       items: [
-        'web-services/embeddable-hub/style',
+        'web-services/embeddable-hub/theme',
         'web-services/embeddable-hub/settings',
         'web-services/embeddable-hub/custom-css',
         'web-services/embeddable-hub/deployment',
