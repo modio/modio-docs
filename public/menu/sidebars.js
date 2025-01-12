@@ -71,11 +71,22 @@ const sidebars = {
           items: [
             'game-integration/unreal/component-ui/ue-principles',
             'game-integration/unreal/component-ui/ue-building-a-screen',
+            'game-integration/unreal/component-ui/ue-substitute-components',
+            'game-integration/unreal/component-ui/ue-custom-components',
             'game-integration/unreal/component-ui/ue-architecture',
             'game-integration/unreal/component-ui/ue-localization',
             'game-integration/unreal/component-ui/ue-helpers',
             'game-integration/unreal/component-ui/ue-enable-disable',
             'game-integration/ue-generated/ue-ui-refdocs',
+          ]
+        },
+        {
+          type: 'category',
+          label: 'Template UI',
+          link: {type: 'doc', id: 'game-integration/unreal/template-ui/ui-overview'},
+          items: [
+            'game-integration/unreal/template-ui/ui-features',
+            'game-integration/unreal/template-ui/ui-layouts',
           ]
         },
         'game-integration/unreal/ue-marketplace', 

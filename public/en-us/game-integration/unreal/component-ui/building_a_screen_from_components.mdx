@@ -5,36 +5,48 @@ slug: /unreal/component-ui/building-a-screen/
 custom_edit_url: https://github.com/modio/modio-ue4-internal/tree/main/Plugins/ModioComponentUI/Doc/doc_root/en-us/component-ui/building_a_screen_from_components.mdx
 ---
 
-The majority of work involved in implementing the mod.io UI component framework will be building custom UI layouts for consuming content from mod.io by assembling components into more complex layouts.  This is a step-by-step guide demonstrating the appropriate workflow for building such a screen. Here's the end result of this guide:
+The majority of work involved in implementing the mod.io UI component framework will be building custom UI layouts for consuming content from mod.io by assembling components into more complex layouts.  This is a step-by-step guide demonstrating the appropriate workflow for building such a screen. 
 
-![Basic Browser In Editor](img/BasicBrowserInEditor.png)
+Here's the end result of this guide:
+
+![Basic Browser In Editor](img/browser-InEditor.png)
 *A basic mod browser widget in-editor*
 
-![Basic Browser In Game](img/BasicBrowserInGame.png)
+![Basic Browser In Game](img/browser-InGame.png)
 *A basic mod browser widget in-game*
 
 ## Creating the outer `UserWidget`
 
-The first step involves creating a `UserWidget` to contain the different components and to handle passing messages between them in response to user input. 
-Based on the screenshot above, this screen is going to need to contain the following components:
+### Components
 
-* Search input field
+This step involves creating an outer `UserWidget` that will contain the different components. This widget will also handle passing messages between its components in response to user input. 
+
+The outer widget requires the following components:
+
+* List of preset filters (Trending, Recent, and Popular) for the user to select
+* Search input box
 * Search button
-* Search results tile view
-* List of preset filters for the user to select
+* List of mod tiles
 
-Regardless of whether the logic is implemented in Blueprint or C++, the enclosing screen will need to be able to reference those components inside it. In order to make the layout as flexible as possble, it is recommended to avoid using direct references to widgets via member variables in the enclosing class.
+### Interfaces
 
-The ideal implementation uses getter functions to return a reference to each component, typed as a `UWidget` with a desired interface rather than the concrete widget type. This allows implementations to switch out the concrete type of the component at any time without causing Blueprint links to break. In contrast to using `UPROPERTY` widget references with `BindWidget`, it also allows the inner widget to live anywhere within the hierarchy — even inside a subwidget.
+Regardless of whether the logic is implemented in Blueprint or C++, the enclosing widget will need to be able to reference those components inside it. To make the layout as flexible as possible, we recommend avoiding direct references to widgets via member variables in the enclosing class.
 
-This approach is used widely in the default component implementations and the default layout template included in the mod.io plugin. Refer to those for further examples of this pattern.
+The ideal implementation uses getter functions to return a reference to each component, typed as a `UWidget` with a desired interface rather than the concrete widget type. This allows implementations to switch out the concrete type of the component at any time without causing Blueprint links to break. In contrast to using `UPROPERTY` widget references with `BindWidget`, it also allows the inner widget to live anywhere within the hierarchy — even inside a subwidget.  
 
-1. Create a C++ class deriving from `UUserWidget`, or a new Widget Blueprint in the editor.
-2. Create the following stub functions in the widget:
+![Basic Browser In Game with Labels](img/browser-InGameLabelled.png)
+*The outer widget contains 4 components.  Each component implements the relevant interface for its functionality.*
 
+This approach is used widely in the default component implementations and the default layout template included in the mod.io Component UI plugin. 
+
+Getter functions can be implemented in either C++ or Blueprint:
 
 <Tabs groupId="languages">
 	<TabItem value="cpp" label="C++" default>
+
+	1. Create a C++ class deriving from `UUserWidget`
+	2. Create the following stub functions in the widget:
+
 		 ```cpp
 		TScriptInterface<IModioUIObjectSelector> GetPresetFilterSelectorWidget() { return nullptr; }
 		TScriptInterface<IModioUIModListViewInterface> GetModTileViewWidget() { return nullptr; }
@@ -43,35 +55,40 @@ This approach is used widely in the default component implementations and the de
 		```
 	</TabItem>
 	<TabItem value="blueprint" label="Blueprint">
-		![Get Preset Filter Selector Widget](img/GetPresetFilterSelectorWidget.png)
 
-		![Get Mod Tile View Widget](img/GetModTileViewWidget.png)
+	1. Create a new Widget Blueprint in the editor
+	2. Create the following stub functions in the widget:
 
-		![Get Search Editable Text Box Widget](img/GetSearchEditableTextBoxWidget.png)
+		![Get Preset Filter Selector Widget](img/browser-GetPresetFilterSelectorWidget.png)
 
-		![Get Search Button Widget](img/GetSearchButtonWidget.png)
+		![Get Mod Tile View Widget](img/browser-GetModTileViewWidget.png)
+
+		![Get Search Editable Text Box Widget](img/browser-GetSearchEditableTextBoxWidget.png)
+
+		![Get Search Button Widget](img/browser-GetSearchButtonWidget.png)
 
 	</TabItem>
 </Tabs>
 
 ## Adding the preset filter selector
 
-The [Preset Filter Selector](/unreal/ui-refdocs/#preset-filter-selector) component presents a game-defined list of preset filter values to a user to pick from. These filters can be then passed to any Plugin function that accepts a `FModioFilterParams` object.
-In this mod browser, the filter selector will be used to allow a user to "quick-search".
-The list of preset filters is configurable via the mod.io plugin settings pages in the Editor's Plugin Settings dialog.
+The [Preset Filter Selector](/unreal/ui-refdocs/#preset-filter-selector) component presents a game-defined list of preset filter values for a user to select. These filters can be passed to any plugin function that accepts a `FModioFilterParams` object. In this mod browser, the filter selector will be used to allow a user to quick-search. The list of preset filters is configurable via the mod.io plugin settings in the editor's **Project Settings** dialog.
 
 1. Add a `UModioPresetFilterSelector`-derived widget (such as the default `WBP_ModioDefaultPresetFilterSelectorWidget` from the reference design) to the hierarchy of the mod browser `UserWidget`.
-2. Modify the definition of `GetPresetFilterSelectorWidget` to return a reference to the selector instance added in step 1.
-3. Configure the preset list of filters in the Plugin Settings dialog:
 
-![Preset Filters Configuration](img/Preset_Filters_Configuration.png)
+2. Modify `GetPresetFilterSelectorWidget` to return a reference to the selector instance added in step 1.
+
+![Preset filter selector getter function](img/browser-PresetFilterGetter.png)
+
+3. Configure the preset list of filters in the **Project Settings** dialog:
+
+![Preset Filters Configuration](img/browser-Preset_Filters_Configuration.png)
 
 ## Binding an event handler to the filter selector
 
-In order to use the selected filter parameters to search for mods, the mod browser `UserWidget` needs to handle a "selection changed" event being emitted from the Filter Selector.
+In order to use the selected filter parameters to search for mods, the mod browser `UserWidget` needs to handle a **selection changed** event being emitted from the filter selector.
 
-The browser will need to provide a function with the appropriate signature, bind it to a delegate and pass that delegate to the filter selector so that it can be invoked when the user changes their selection.
-The browser should access the filter selector via the getter function implemented earlier to ensure that changing the concrete type of the filter selector will not break consuming code.
+The browser will need to provide a function with the appropriate signature, bind it to a delegate, and pass that delegate to the filter selector so that it can be invoked when the user changes their selection. The browser should access the filter selector via the getter function `GetPresetFilterSelectorWidget()` to ensure that changing the concrete type of the filter selector will not break consuming code.
 
 
 <Tabs groupId="languages">
@@ -99,11 +116,11 @@ The browser should access the filter selector via the getter function implemente
 	<TabItem value="blueprint" label="Blueprint">
 		1. Create a new function with one input parameter of type Object.
 
-		![On Preset Filter Changed](img/OnPresetFilterChanged.png)
+		![On Preset Filter Changed](img/browser-OnPresetFilterChanged.png)
 
 		2. Call `AddSelectionChangedHandler` on the object returned from `GetPresetFilterSelectorWidget()` in `Event On Initialized`, and bind the event to the function created in step 1.
 
-		![Add Selection Changed Handler](img/AddSelectionChangedHandler.png)
+		![Add Selection Changed Handler](img/browser-AddSelectionChangedHandler.png)
 	</TabItem>
 </Tabs>
 
@@ -111,7 +128,7 @@ The browser should access the filter selector via the getter function implemente
 
 Your mod browser now has an event handler which will be executed when the user changes which filter they want to apply, but that handler currently does not have an implementation. The handler needs to retrieve the information about the selected filter and initiate a query for matching mods using the plugin.
 
-The Preset Filter Selector is a specialization of the [Object Selector](/unreal/ui-refdocs/#object-selector), and will emit Selection Changed events providing bound handlers with a `UObject` representing the newly selected filter. The component specification requires that the `UObject` implement the `UModioModFilterUIDetails` interface, which allows it to be queried for the `FModioFilterParams` that the `UObject` represents.
+The **Preset Filter Selector** is a specialization of the [**Object Selector**](/unreal/ui-refdocs/#object-selector) and will emit **Selection Changed** events, providing bound handlers with a `UObject` representing the newly selected filter. The component specification requires that the `UObject` implement the `IModioModFilterUIDetails` interface, which allows it to be queried for the `FModioFilterParams` that the `UObject` represents.
 
 As a result, the selection changed handler can retrieve the associated `FModioFilterParams` from the user's selection, and submit that to the mod.io REST API via the plugin to retrieve results.
 
@@ -147,13 +164,13 @@ As a result, the selection changed handler can retrieve the associated `FModioFi
 	2. Invoke `RequestListAllMods` from Modio UI Subsystem and pass the FilterParams retrieved in step 1, and a string identifier to uniquely identify the request source. The identifier allows widgets that register for events when a new result set is available, to know the originating widget and whether the event is one they should respond to.
 	3. Store the identifier in a member variable so that it can be validated against later.
 
-	![On Preset Filter Changed Implementation](img/OnPresetFilterChanged_Implementation.png)
+	![On Preset Filter Changed Implementation](img/browser-OnPresetFilterChanged_Implementation.png)
 	</TabItem>
 </Tabs>
 
 ## Adding the mod list visualizer
 
-The mod browser requires some widget that is able to visualize or display the results of the filter that was used in the query. The `IModioUIModListViewInterface` interface was designed specifically for implementation by widgets that are capable of such visualization, and one of the default implementations of this interface supplied by the plguin is `UModioDefaultModTileView`.
+The mod browser requires some widget that is able to visualize or display the results of the filter that was used in the query. The `IModioUIModListViewInterface` interface was designed specifically for implementation by widgets that are capable of such visualization, and one of the default implementations of this interface supplied by the plugin is `UModioDefaultModTileView`.
 
 1. Add a `ModioDefaultModTileView` to the widget's hierarchy, and alter the implementation of `GetModTileViewWidget` so that it returns a reference to the widget in question. Alternatively, use a `UModioDefaultModListView` to display the mods as a vertical or horizontal list instead of a grid.
 2. Specify the Entry Widget class to use for the tile view, such as the default `WBP_ModioDefaultModTile` from the reference design, which is derived from `UModioDefaultModTile`.
@@ -229,14 +246,14 @@ Once that interface is implemented, the widget can register to receive events wh
 		1. In your Widget Blueprint's **Class Settings**, add `ModioUIModInfoReceiver` as an implemented interface.
 		2. In `PreConstruct`, invoke `RegisterModInfoReceiver()` (if it is not already called in the parent class).
 
-		![Register Mod Info Receiver](img/RegisterModInfoReceiver.png)
+		![Register Mod Info Receiver](img/browser-RegisterModInfoReceiver.png)
 
 		3. Implement the event handler for `ListAllMods` to return a result by overriding `OnListAllModsRequestCompleted`.
 		4. In the event handler, validate the request identifier against the one stored earlier when the request was made.
 		5. Handle the error code if it is populated, as well as the case where the list of mods is not set.
 		6. Call `SetModsFromModInfoList` function on the widget returned by `GetModTileViewWidget()` (`ModioUIModInfoReceiver` interface).
 
-		![Native On List All Mods Request Completed](img/NativeOnListAllModsRequestCompleted.png)
+		![Native On List All Mods Request Completed](img/browser-NativeOnListAllModsRequestCompleted.png)
 	</TabItem>
 </Tabs>
 
@@ -280,11 +297,11 @@ In similar fashion to the preset filter selector earlier, `ModioDefaultButton` i
 	<TabItem value="blueprint" label="Blueprint">
 		1. Create a new function with one input parameter of type Object.
 
-		![On Search Button Clicked](img/OnSearchButtonClicked.png)
+		![On Search Button Clicked](img/browser-OnSearchButtonClicked.png)
 
 		2. Call `AddClickedHandler` on the object returned from `GetSearchButtonWidget()`, in `OnInitialized`, and bind the event to the function created in step 1.
 
-		![Add Clicked Handler](img/AddClickedHandler.png)
+		![Add Clicked Handler](img/browser-AddClickedHandler.png)
 	</TabItem>
 </Tabs>
 
@@ -324,7 +341,7 @@ Once the user's input is retrieved from the text box, it can be incorporated int
 		2. Create an `FModioFilterParams` object, and use the `NameContains` function on it, passing the string returned by `GatherInput`. 
 		3. Call `RequestListAllMods` as earlier, passing a request ID.
 
-		![On Search Button Clicked Implementation](img/OnSearchButtonClicked_Implementation.png)
+		![On Search Button Clicked Implementation](img/browser-OnSearchButtonClicked_Implementation.png)
 
 	</TabItem>
 </Tabs>
@@ -333,6 +350,6 @@ Note there is no need to create another handler for the `ListAllModsCompleted` e
 
 ## Next Steps
 
-The mod.io functionality for a basic mod browser widget is now complete.  You may apply any layout and styling changes as desired — our example makes use of a background border, horizontal and vertical boxes, and in-built sizing and padding options found in the details panel of each sub-widget.
+The mod.io functionality for a basic mod browser widget is now complete.  You may apply any layout and styling changes as desired — our example makes use of a background border, horizontal and vertical boxes, and in-built sizing and padding options found in the details panel of each sub-component.
 
 Once you are satisfied with your simple mod browser, initialize the mod.io plugin using your game's API key and Game ID, and add your new widget to the viewport to search and browse mods. Please refer to the [Getting Started](https://docs.mod.io/unreal/getting-started/) section of the core mod.io Unreal Engine plugin for further information.
