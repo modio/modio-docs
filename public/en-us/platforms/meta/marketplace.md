@@ -1,17 +1,17 @@
 ---
 id: marketplace
 title: Marketplace
-slug: /platforms/oculus/marketplace
+slug: /platforms/meta/marketplace
 sidebar_position: 0
 ---
 
-# Oculus Marketplace
+# Meta Quest Marketplace
 
 ## Data Use Checkups
 
 In order to access Meta's In-App Purchases, you'll need to complete Data Use Checkups for Meta's team to verify.
 
-Navigate to your game's Meta Developer Dashboard, go to Requirements > Data Use Checkup:
+Navigate to your game's [Meta Developer Dashboard](https://developers.meta.com/horizon/), go to Requirements > Data Use Checkup:
 
 ![duc_dashboard.png](images/duc_dashboard.png)
 
@@ -69,7 +69,7 @@ To find these details, navigate to your game's Meta Developer Dashboard, click D
 Make sure to use the App ID, **NOT** the Federated App ID.
 :::
 
-![oculus_app_details.png](images/oculus_app_details.png)
+![meta_app_details.png](images/meta_app_details.png)
 
 Next, navigate to your game's mod.io admin page > Monetization > Settings > In-App Purchases and enter these details into the fields below:
 
@@ -79,7 +79,7 @@ Then, to configure the SKUs, click 'Manage SKUs':
 
 ![modio_manage_skus.png](images/modio_manage_skus.png)
 
-Toggle _Sell this pack_ on the pack you'd like to sell. Once toggled, set the platform to Oculus Quest and enter the SKU in the adjacent field:
+Toggle _Sell this pack_ on the pack you'd like to sell. Once toggled, set the platform to Meta Quest and enter the SKU in the adjacent field:
 
 ![sku_modio_configure.png](images/sku_modio_configure.png)
 
@@ -111,7 +111,7 @@ Once the test user has the entitlement, you can use the mod.io purchase server e
 
 Each of our plugins provide built-in functionality for this. Authenticate the test user with the integrated mod.io plugin and the entitlement will automatically be consumed. You can see the virtual currency update both on the mod.io website & in the plugin.
 
-If your game is using an official mod.io plugin, follow the relevant link below for integrating marketplace using Oculus, or other supported platform marketplaces:
+If your game is using an official mod.io plugin, follow the relevant link below for integrating marketplace using Meta Quest, or other supported platform marketplaces:
 
 * [Unreal Engine](/unreal/marketplace)
 * [Unity](/unity/marketplace)

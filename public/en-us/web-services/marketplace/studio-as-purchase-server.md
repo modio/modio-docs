@@ -485,7 +485,7 @@ There are several filters you can use to query the transaction index endpoint.
 
 ### Transaction Show
 
-This endpoint provides an individual collection of transactions processed by our purchase server. It includes all transactions that share the same `gateway_uuid`.
+This endpoint provides an individual collection of all states of a transaction processed by our purchase server. It includes all transactions that share the same `gateway_uuid`.
 
 ```
 GET https://g-{your-game-id}.modapi.io/v1/s2s/monetization-teams/{monetization-team-id}/transactions/{transaction-id} HTTP/1.1
@@ -511,7 +511,7 @@ Authorization: Bearer {service-token}
       "tax_type": "sales",
       "currency": "usd",
       "tokens": 200,
-      "transaction_type": "cleared",
+      "transaction_type": "paid",
       "monetization_type": "fiat",
       "purchase_date": "2015-10-21 04:55:22",
       "created_at": 499146135123456,
@@ -525,7 +525,7 @@ Authorization: Bearer {service-token}
       ],
       "items": [
         {
-          "id": 123,
+          "id": 321,
           "gateway_uuid": "0ab243d2-b234-4be0-biff-910d3335Xs09d6",
           "gateway_name": "tilia",
           "sale_price": 199,
@@ -551,7 +551,7 @@ Authorization: Bearer {service-token}
           ]
         },
         {
-          "id": 123,
+          "id": 654,
           "gateway_uuid": "0ab243d2-b234-4be0-biff-910d3335Xs09d6",
           "gateway_name": "tilia",
           "sale_price": 199,
@@ -563,7 +563,124 @@ Authorization: Bearer {service-token}
           "token_team_id": 758829527,
           "sale_type": "sold",
           "monetization_type": "fiat",
-          "transaction_type": "cleared",
+          "transaction_type": "paid",
+          "team_type": "store",
+          "purchase_date": "2015-10-21 04:55:22",
+          "created_at": 499146135123456,
+          "line_items": [
+            {
+              "mod_id": 1,
+              "game_id": 1,
+              "buyer_id": 1,
+              "mod_name": "mod mods",
+              "game_name": "Game",
+              "buyer_name": "Buyer"
+            }
+          ],
+          "breakdown": [
+            {
+              "platform": {
+                "revenue": 20
+              },
+              "store": [
+                {
+                  "revenue": 69,
+                  "users": [
+                    {
+                      "account_name": "User A",
+                      "account_id": 123,
+                      "revenue": 6
+                    },
+                    {
+                      "account_name": "User B",
+                      "account_id": 456,
+                      "revenue": 63
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "revenue": 6
+        }
+      ],
+      "line_items": [
+        {
+          "mod_id": 1,
+          "game_id": 1,
+          "buyer_id": 1,
+          "mod_name": "mod mods",
+          "game_name": "Game",
+          "buyer_name": "Buyer"
+        }
+      ]
+    },
+    {
+      "id": 456,
+      "gateway_uuid": "0ab243d2-b234-4be0-b1ff-910d3335Xs09d6",
+      "gateway_name": "tilia",
+      "account_id": 123,
+      "gross_amount": 219,
+      "net_amount": 199,
+      "platform_fee": 20,
+      "gateway_fee": 30,
+      "tax": 20,
+      "tax_type": "sales",
+      "currency": "usd",
+      "tokens": 200,
+      "transaction_type": "pending",
+      "monetization_type": "fiat",
+      "purchase_date": "2015-10-21 04:55:22",
+      "created_at": 499146135123456,
+      "payment_method": [
+        {
+          "name": "Visa ending in 1111",
+          "id": "4ef030e0-3e70-4d38-adc3-280e7b7e7b7b",
+          "amount": 219,
+          "display_amount": "USD 2.19"
+        }
+      ],
+      "items": [
+        {
+          "id": 987,
+          "gateway_uuid": "0ab243d2-b234-4be0-biff-910d3335Xs09d6",
+          "gateway_name": "tilia",
+          "sale_price": 199,
+          "gateway_fee": 30,
+          "platform_fee": 20,
+          "currency": "usd",
+          "tokens": 200,
+          "token_team_id": 123,
+          "sale_type": "bought",
+          "monetization_type": "fiat",
+          "transaction_type": "paid",
+          "purchase_date": "2015-10-21 04:55:22",
+          "created_at": 499146135123456,
+          "line_items": [
+            {
+              "mod_id": 1,
+              "game_id": 1,
+              "buyer_id": 1,
+              "mod_name": "mod mods",
+              "game_name": "Game",
+              "buyer_name": "Buyer"
+            }
+          ]
+        },
+        {
+          "id": 999,
+          "gateway_uuid": "0ab243d2-b234-4be0-biff-910d3335Xs09d6",
+          "gateway_name": "tilia",
+          "sale_price": 199,
+          "gateway_fee": 30,
+          "platform_fee": 20,
+          "token_pool_fee": 80,
+          "currency": "usd",
+          "tokens": 200,
+          "token_team_id": 758829527,
+          "sale_type": "sold",
+          "monetization_type": "fiat",
+          "transaction_type": "paid",
           "team_type": "store",
           "purchase_date": "2015-10-21 04:55:22",
           "created_at": 499146135123456,

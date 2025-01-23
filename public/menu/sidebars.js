@@ -107,7 +107,21 @@ const sidebars = {
       type: 'category',
       label: 'Unity',
       link: {type: 'doc', id: 'game-integration/unity/unity'},
-      items: ['game-integration/unity/unity-setup', 'game-integration/unity/unity-getting-started', 'game-integration/unity/unity-ugc-browser', 'game-integration/unity/unity-marketplace', 'guides/unity-mod-loading',
+      items: [
+        'game-integration/unity/unity-setup', 
+        'game-integration/unity/unity-getting-started', 
+        {
+          type: 'category',
+          label: 'Template UI',
+          link: { type: 'doc', id: 'game-integration/unity/template-ui/ui-overview' },
+          items: [
+            'game-integration/unity/template-ui/ui-features',
+            'game-integration/unity/template-ui/ui-layouts',
+            'game-integration/unity/template-ui/ui-integration',
+          ]
+        },
+        'game-integration/unity/unity-marketplace', 
+        'guides/unity-mod-loading',
         {
           type: 'link',
           label: 'Unity Reference', 
@@ -208,9 +222,9 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'Oculus',
-      //link: {type: 'doc', id: 'platforms/oculus/authentication'},
-      items: ['platforms/oculus/authentication', 'platforms/oculus/marketplace'],
+      label: 'Meta Quest',
+      //link: {type: 'doc', id: 'platforms/meta/authentication'},
+      items: ['platforms/meta/authentication', 'platforms/meta/marketplace'],
     },
     {
       type: 'category',
