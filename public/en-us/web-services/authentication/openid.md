@@ -89,6 +89,7 @@ GET https://accounts.your-web-service.com/jwk/keys.json
       "kty": "RSA",
       "e": "AQAB",
       "kid": "WMS7EnkIGpcH9DGZsv2WcY9xsuFnZCtxZjj4Ahb-_8E",
+      "alg": "RS256",
       "n": "l6XI48ujknQQlsJgpGXg4l2i_DuUxuG2GXTzkOG7UtX4MqkVBCfW1t1JIIc8q0kCInC2oBwhC599ZCmd-cOi0kS7Aquv68fjERIRK9oCUnF_lJg296jV8xcalFY0FOWX--qX3xGKL33VjJBMIrIu7ETjj06s-v4li22CnHmu2lDkrp_FPTVzFscn-XRIojqIFb7pKRFPt27m12FNE_Rd9bqlVCkvMNuE7VTpTOrSfKk5B01M5IuXKXk0pTAWnelqaD9bHjAExe2I_183lp_uFhNN4hLTjOojxl-dK8Jy2OCPEAsg5rs9Lwttp3zZ--y0sM7UttN2dE0w3F2f352MNQ"
     }
   ]
@@ -131,7 +132,7 @@ Within your OpenID configuration panel, you can configure mappings which are the
 
 For an OpenID authentication request to be successful, mod.io will make the following checks, in the shown order before considering the ID Token valid for creating a mod.io access token.
 
-1. The signing keys exposed by the JWK URL must either be Elliptic Curve (EC) with `256` and `512` being supported curves, or RSA with `RS256` being supported.
+1. The signing keys exposed by the JWK URL must either be Elliptic Curve (EC) with `256` and `512` being supported curves, or RSA with `RS256` being supported. The `alg` parameter is mandatory both in the JWK endpoint and the OpenID token that is being verified.
 2. At least one of the signing keys exposed in the JWK URL must have signed the supplied ID Token.
 3. The `sub` claim must be present and a non-empty string or positive integer. In the event an integer datatype is encountered, this value will be casted to a string internally.
 4. The `aud` claim must be set to either `https://mod.io` or `https://g-{your-game-id}.modapi.io`. If you use your game's URL, it must match the API host exactly.
