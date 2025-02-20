@@ -90,7 +90,6 @@ const sidebars = {
           ]
         },
         'game-integration/unreal/ue-marketplace', 
-        'game-integration/unreal/ue-asset-support-for-mods', 
         'game-integration/unreal/ue-profiling', 
         'game-integration/unreal/ue-android-configuration', 
         'game-integration/unreal/ue-mod-creation-tool', 
@@ -122,11 +121,7 @@ const sidebars = {
         },
         'game-integration/unity/unity-marketplace', 
         'guides/unity-mod-loading',
-        {
-          type: 'link',
-          label: 'Unity Reference', 
-          href: `${url}/unityref/`, 
-        },
+        'game-integration/unity/unity-unityref',
       ],
     },
     {

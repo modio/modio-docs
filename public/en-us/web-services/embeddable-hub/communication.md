@@ -152,4 +152,24 @@ A number of commands can be sent to and received from the Embeddable Hub using t
 
 ## JavaScript API
 
-The Embeddable Hub exposes a JavaScript API that is useful for calling functions directly when the hub is embedded in-game. More details will be coming soon, but you can contact us at developers@mod.io for more information.
+The Embeddable Hub exposes a JavaScript API that is useful for calling functions directly when the hub is embedded in-game.
+These are listed below, with their relevant detail and required parameters.
+
+The Hub expects an interface named `modio` on the global JS object which supports the following functions:
+
+| Function                    | Parameters                        | Description                                                                   |
+| --------------------------- | --------------------------------- | ----------------------------------------------------------------------------- |
+| getAuthToken                |                                   | Used to get the logged in user's access token from the SDK                    |
+| getActivatedIds             |                                   | Used to get the list of activated mod IDs from the SDK                        |
+| getLocalMods                |                                   | Used to get the list of locally installed mods from the SDK                   |
+| getLocalActivatedIds        |                                   | Used to get the list of activated local mod IDs from the SDK                  |
+| getLanguage                 |                                   | Used to get the language the SDK is using                                     |
+| getPlatform                 |                                   | Used to get the platform the SDK is running on                                |
+| getPortal                   |                                   | Used to get the portal the SDK is authenticated with                          |
+| setAuthToken                | token: string                     | Used to set the logged in user's access token on the SDK                      |
+| setUserId                   | userId: int                       | Used to set the logged in user's ID on the SDK                                |
+| setActivatedIds             | modIds: array&lt;int&gt;          | Used to set the list of activated mod IDs on the SDK                          |
+| setLocalActivatedIds        | modIds: array&lt;string&gt;       | Used to set the list of activated local mod IDs on the SDK                    |
+| notifySubscriptionChange    | modId: int, isSubscribed: boolean | Used to notify the SDK that a mod has been subscribed to or unsubscribed from |
+| notifyActivationChange      | modId: int, isActivated: boolean  | Used to notify the SDK that a mod has been activated or deactivated           |
+| notifyLocalActivationChange | modId: int, isActivated: boolean  | Used to notify the SDK that a local mod has been activated or deactivated     |
