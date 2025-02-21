@@ -13,25 +13,25 @@ Here's a brief breakdown of the main layouts and widgets that make the UI, and h
 For a comprehensive look at creating and substituting your own components into the Template UI, see [**Creating Custom Components**](/unreal/component-ui/custom-components/) and [**Substituting Components in the Template Mod Browser**](/unreal/component-ui/substitute-components/)
 :::
 
-### `WBP_ModioModBrowser`
+### [WBP_ModioModBrowser](/unreal/ui-refdocs/#wbp_modiomodbrowser)
 ![modio mod browser](img/modiomodbrowser.png)
 This is the main layout for the mod browser.
 The layouts are built to be navigable on both keyboard & mouse and gamepad.  The layout will scale responsively to different screen aspect ratios.
  \
 &nbsp;
 
-### `WBP_ModTileView`
-The mod tile that will populate the browser. Their scale and padding in the browser can be set via the `WBP_ModTileView` layout in the `WBP_ModioModBrowser` layout.
+### [WBP_ModioDefaultModTile](/unreal/ui-refdocs/#wbp_modiodefaultmodtile)
+The mod tile that will populate the browser. Their scale and padding in the browser can be set via the `WBP_ModioDefaultModTile` layout in the `WBP_ModioModBrowser` layout.
 
 ![modio mod tile](img/modtileview.png)
 
-### `WBP_ModModDetailsDialog`
+### [WBP_ModioModDetailsDialog](/unreal/ui-refdocs/#wbp_modiomoddetailsdialog)
 
 While the thumbnail gallery should be kept at a consistent aspect ratio of 16:9, the rest of the layout & widgets can be scaled to suit your current layout.
 
 ![modio mod details dialog](img/modiomoddetailsdialog.png)
 
-### `WBP_ModioFilterPanel`
+### [WBP_ModioFilterPanel](/unreal/ui-refdocs/#wbp_modiofilterpanel)
 
 The filter panel uses both radio and check boxes for filter and sort options, broken down into sub-categories that can be expanded or collapsed.
 
@@ -51,7 +51,7 @@ A UI style element is applied to a range of widgets, and allows for colours assi
 \
 &nbsp;
 
-### `WBP_ModioDefaultModTile`
+### [WBP_ModioDefaultModTile](/unreal/ui-refdocs/#wbp_modiodefaultmodtile)
 
 ![modifying the mod tile](img/modiodefaultmodtile_edit.png)
 
@@ -67,7 +67,7 @@ A UI style element is applied to a range of widgets, and allows for colours assi
 \
 &nbsp;
 
-### `WBP_ModioDefaultButton` and `WBP_ModioDefaultIconButton`
+### [WBP_ModioDefaultButton](/unreal/ui-refdocs/#wbp_modiodefaultbutton) and [WBP_ModioDefaultIconButton](/unreal/ui-refdocs/#wbp_modiodefaulticonbutton)
 
 ![modifying buttons](img/modiodefaultbutton_edit.png)
 
@@ -88,10 +88,10 @@ Most buttons will use these as a parent, so the following UI settings will be av
 \
 &nbsp;
 
-### `WBP_ModioModBrowser`
+### [WBP_ModioModBrowser](/unreal/ui-refdocs/#wbp_modiomodbrowser)
 
 ![modifying the mod browser](img/modiomodbrowser_edit.png)
 
-Inside `WBP_ModioModBrowser`, you can find a modified grid layout called `WBP_ModTileView`. This is populated with `WBP_ModioDefaultModTile`. The `WBP_ModTileView` layout controls the size and padding of the tiles.
+Inside [WBP_ModioModBrowser](/unreal/ui-refdocs/#wbp_modiomodbrowser), you can find a modified grid layout named `ModTileView`. This is populated with [WBP_ModioDefaultModTile](/unreal/ui-refdocs/#wbp_modiodefaultmodtile). The `ModTileView` layout controls the size and padding of the tiles.
 
 The size of the thumbnail is locked to a 16:9 aspect ratio — while the mod tiles can be resized to suit your needs, by default they will need to work around this restriction.

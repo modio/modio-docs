@@ -175,7 +175,23 @@ void UModioManagerSubsystem::OnGetUserDelegationTokenCallback(FModioErrorCode Er
 
 The Monetization premium features mod.io includes the ability to show the relevant platform store (where possible), which allows the user to purchase virtual currency, top up their wallet, and purchase Premium UGC all without leaving the game.
 
-This functionality is exposed in one of two ways.
+While Unreal provides built-in methods for accessing a given platform's storefront, not all platforms are fully supported, and as such the Component UI framework provides an alternative for unsupported platform, with the following logic:
+
+```mermaid
+---
+title: Store Invocation
+---
+flowchart
+
+A[UModioUISubsystem::RequestShowTokenPurchaseUI] --> B{Is Monetization Enabled?}
+B -- No --> FailedInactive{{FailedInactive}}
+B -- Yes --> C{Does Platform Support Native Display?}
+C -- No --> FailUn{{FailedUnsupportedPlatform}}
+C -- Yes --> D{OnlineSubsystem -> ExternalUIInterface -> ShowStoreUI}
+C -- Browser Only --> E{OnlineSubsystem -> ExternalUIInterface -> ShowWebURL}
+FailUn -. UModioUISubsystem -> RequestShowDialog(StoreUI) .- F{{ModioTokenPackUI displayed}}
+
+```
 
 ### Displaying the Native Platform Store
 
@@ -215,6 +231,9 @@ Once a user has purchased a virtual currency pack on a given store those entitle
 `FModioEntitlementParams` is to be populated with the Delegation Token received from `UModioSubsystem::GetUserDelegationTokenAsync`.
 
 <Tabs group-id="languages">
+	<TabItem value="blueprint" label="Blueprint">
+  ![refresh_user_entitlements](img/refresh_user_entitlements.png)
+	</TabItem>
 	<TabItem value="c++" label="C++" default>
 
 ```cpp

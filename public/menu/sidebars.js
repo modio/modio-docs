@@ -91,13 +91,20 @@ const sidebars = {
         },
         'game-integration/unreal/ue-marketplace', 
         'game-integration/unreal/ue-profiling', 
-        'game-integration/unreal/ue-android-configuration', 
         'game-integration/unreal/ue-mod-creation-tool', 
         'guides/ue-mod-loading',
         {
           type: 'category', 
           label: 'Legacy', 
           items: ['guides/ue4-quicklook']
+        },
+        {
+          type: 'category',
+          label: 'Platform Configurations',
+          items: [
+            'game-integration/unreal/android/ue-android-configuration',
+            'game-integration/unreal/meta/ue-meta-configuration',
+          ]
         },
         'game-integration/ue-generated/ue-refdocs',
       ],
@@ -159,7 +166,7 @@ const sidebars = {
           label: 'Android',
           link: {type: 'doc', id: 'game-integration/cppsdk/android/android-getting-started'},
           items: ['game-integration/cppsdk/android/android-cmake-integration']
-        }, 
+        },
         {
           type: 'doc',
           label: 'C++ SDK Reference', 

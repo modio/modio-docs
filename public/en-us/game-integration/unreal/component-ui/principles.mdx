@@ -63,6 +63,48 @@ The mod.io component UI framework is primarily concerned with the visualization 
 - A "data source" can be any type of `UObject`, but in practice, the component UI framework often expects the Data Source for a specific component to implement a specific interface so that it can be queried for data to visualize. There are no other requirements on a data source. For instance, if implementors wanted to use a `UObject` that implemented the data interface for a mod and for a user (referencing the mod's author) — this is supported.
 - The mod.io UI subsystem emits events by invoking multicast delegates when asynchronous calls that alter the implicit data model have completed. This ensures that individual components do not need to rely on one another to know when this occurs and only receive notifications for data model changes they wish to be informed of.
 
+```mermaid
+---
+title: Mod Details Data Binding
+---
+classDiagram
+    namespace Interfaces{
+        class IModioUIDataSourceWidget{
+            void NativeSetDataSource(UObject* InDataSource) virtual
+            UObject* NativeGetDataSource() virtual
+        }
+        class IModioModInfoUIDetails{
+            FModioModInfo GetFullModInfo_Implementation() virtual
+            FModioModID GetModID_Implementation() virtual
+        }
+    }
+
+    namespace Widgets{
+        class UModioUIComponentBase{
+            TObjectPtr[UObject] DataSource
+            NativeSetDataSource(UObject* InDataSource) override
+            UObject* NativeGetDataSource() override
+        }
+
+        class UModioModDetailsDialog{
+            NativeSetDataSource(UObject* InDataSource) override
+            UObject* NativeGetDataSource() override
+        }
+    }
+
+    class UModioModInfoUI{
+        <<UObject>>
+        FModioModInfo Underlying
+        FModioModInfo GetFullModInfo_Implementation() override
+        FModioModID GetModID_Implementation() override
+    }
+
+    UModioUIComponentBase --|> IModioUIDataSourceWidget: Implements
+    UModioUIComponentBase --* UModioModDetailsDialog: Parent Of
+    UModioModInfoUI --|> IModioModInfoUIDetails: Implements
+    UModioModDetailsDialog --> UModioModInfoUI: Expects as [DataSource]
+```
+
 ### Emphasise flexibility and composability for widgets
 
 While a template design for the component UI framework will be shipped in a future release, the expectation is that many studios will want to build their own layout or incorporate components from the framework into their existing UI implementation, and the default component implementations should avoid making assumptions about how and where they are used. The framework and the default implementations of components in the framework do everything possible to ensure loose coupling between components and between components and their internal subwidgets.

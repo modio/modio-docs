@@ -1,0 +1,67 @@
+---
+id: ue-meta-configuration
+title: Meta Quest Configuration
+slug: /unreal/meta-configuration/
+custom_edit_url: https://github.com/modio/modio-ue4-internal/blob/develop/Plugins/Modio/Doc/doc_root/en-us/meta/meta-configuration.mdx
+---
+
+### Configuration
+
+To access Meta Quest-specific APIs, including authentication, you need to download and integrate the Meta Platform SDK into your Unreal Engine project. Follow these steps:
+
+1. **Download the Meta Platform SDK Plugin**:
+   - Visit the [Meta Unreal Engine 5 Platform SDK](https://developers.meta.com/horizon/downloads/package/unreal-5-platform-sdk-plugin/) and download the plugin.
+   - Extract the plugin into your project's `Plugins` directory.
+
+2. **Enable the Plugin**:
+   - Open your Unreal Engine project.
+   - Navigate to `Edit > Plugins` and enable the **Meta XR Platform** plugin.
+
+This plugin provides access to Meta Quest-specific functionality, such as achievements, leaderboards, authentication, and so on.
+
+### Authentication
+
+Once the plugin is installed and the platform SDK is integrated, you can use the following steps to authenticate users via Meta Quest. The authentication process involves obtaining an access token, retrieving a user proof, and also obtaining the user ID. After that, you can pass all of this information to mod.io for authentication.
+
+Here's how to implement Meta Quest authentication with mod.io:
+
+```cpp
+// Fetching the Meta Quest Access Token
+OvrPlatform_User_GetAccessToken(UGameplayStatics::GetGameInstance(GetWorld()), OvrPlatform_User_GetAccessToken_Delegate::CreateWeakLambda(this, [this](bool bSuccess, FStringPtr AccessTokenResponseStringPtr, FString ErrorString)
+{
+	if (!bSuccess)
+	{
+		UE_LOG(LogTemp, Error, TEXT("Failed to get access token, error: %s"), *ErrorString);
+		return;
+	}
+	const FString AccessTokenResponseString = AccessTokenResponseStringPtr.ToSharedRef().Get();
+
+	// Fetching User Proof
+	OvrPlatform_User_GetUserProof(UGameplayStatics::GetGameInstance(GetWorld()), OvrPlatform_User_GetUserProof_Delegate::CreateWeakLambda(this, [this, AccessTokenResponseString](bool bSuccess, FOvrUserProofPtr UserProofResponseStringPtr, FString ErrorString)
+	{
+		if (!bSuccess)
+		{
+			UE_LOG(LogTemp, Error, TEXT("Failed to get user proof, error: %s"), *ErrorString);
+			return;
+		}
+
+		const FString NonceString = UserProofResponseStringPtr.ToSharedRef().Get().Nonce;
+
+		// Fetching User ID
+		const FString UserIdString = FString::FromInt(UOvrFunctionsBlueprintLibrary::Platform_GetLoggedInUserID());
+
+		// Authenticating with mod.io
+		FModioAuthenticationParams AuthParams;
+		AuthParams.AuthToken = AccessTokenResponseString;
+		AuthParams.UserEmail = TEXT("example@gmail.com");
+		AuthParams.ExtendedParameters.Add("device", "quest"); // Can also be "rift"
+		AuthParams.ExtendedParameters.Add("nonce", NonceString);
+		AuthParams.ExtendedParameters.Add("user_id", UserIdString);
+
+		if (UModioSubsystem* ModioSubsystem = GEngine->GetEngineSubsystem<UModioSubsystem>())
+		{
+			ModioSubsystem->AuthenticateUserExternalAsync(AuthParams, EModioAuthenticationProvider::Oculus, FOnErrorOnlyDelegateFast::CreateUObject(this, &UModioUGCSubsystem::OnAuthenticationComplete));
+		}
+	}));
+}));
+```

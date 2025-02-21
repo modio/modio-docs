@@ -20,6 +20,23 @@ The mod.io Component UI framework therefore includes the `UModioUISubsystem` —
 
 To receive or handle mod.io events triggered by other widgets, a component implements a "Receiver" interface and then "registers" itself to bind the receiver interface methods to the UI subsystem's internal delegates. Using interfaces for widgets that wish to register for event notifications promotes loose coupling between the receiving widgets and the UI subsystem. The UI subsystem knows little about what objects are listening for events other than that they implement the given receiver interface — in theory, non-widget `UObjects` could also register for these events.
 
+The following sequence is a high-level example of this; it applies to all of the Event Handler Interfaces.
+
+```mermaid
+sequenceDiagram
+    autonumber
+    UYourWidget -->> IModioModInfoEventReceiver: Implements
+    note over UYourWidget,IModioModInfoEventReceiver: On Construction
+    UYourWidget ->> IModioModInfoEventReceiver: Register(EModioUIModInfoEventType)
+    create participant UModioUISubsystem
+    IModioModInfoEventReceiver ->> UModioUISubsystem: RegisterEventHandler
+    note over UModioUISubsystem: RequestModInfoForModIDs is called
+    UModioUISubsystem -->> UModioUISubsystem: ModInfoRequestCompletedHandler
+    UModioUISubsystem ->> IModioModInfoEventReceiver: ModInfoRequestHandler delegate Broadcast
+    IModioModInfoEventReceiver ->> UYourWidget: NativeOnModInfoRequestCompleted(ModInfo)
+    UYourWidget -->> UYourWidget: Updates UI
+```
+
 ### Registering for events triggered by other UI widgets
 
 For an event to be received, the implementing widget must bind a delegate to the UI subsystem's internal multicast delegates. This is accomplished by two methods:
@@ -45,6 +62,30 @@ As a best practice, ensure that events are deregistered when no longer needed. S
 ## Component interfaces
 
 Component interfaces each define a set of related functionality or operations that can be performed on a widget. Components in the framework are specified in terms of their constituent interfaces rather than specific base classes, facilitating the incorporation and reuse of existing UI widgets from the host project. For instance, an Editable Text component is any widget that implements `IModioUIStringInputWidget` and `IModioUITextValidator`. This could be a subclass of `UEditableTextBox`, or a `UUserWidget` that *contains* a `UEditableTextBox`. It could also be a UMG `UUserWidget` containing (at some level of the hierarchy) an entirely custom `UWidget` that a studio has implemented to handle gathering user input. The mod.io default components and the Template UI make no other assumptions.
+
+For example, the various Button classes included in the ComponentUI plugin only implement the given interfaces where they become relevant, and at no point in the hierarchy is the specific class of the widget required to access any of its functionality.
+
+```mermaid
+---
+title: Button Inheritance Tree
+---
+classDiagram
+	class UCommonButtonBase
+	class UModioButtonWidget {
+		Implements ModioUIBoundActionWidget
+		Implements IModioUISelectableWidget
+		Implements IModioUIHoverableWidget
+		Implements IModioUIHasTooltipWidget
+		Implements IModioFocusableWidget
+		Implements IModioUIDataSourceWidget
+	}
+	class UModioDefaultTextButton {
+		Implements IModioUIHasTextWidget
+	}
+	
+	UCommonButtonBase --|> UModioButtonWidget
+	UModioButtonWidget --|> UModioDefaultTextButton
+```
 
 ## Data binding interfaces
 
