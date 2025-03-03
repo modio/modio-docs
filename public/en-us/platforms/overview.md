@@ -85,7 +85,7 @@ The overall complexity is quite low once you’ve got your game loading and runn
 
 ## Moderation
 
-Our moderation dashboard provides you with all the tools required to comply with the content management rules required by Microsoft, Sony and Nintendo. You can choose to allow all content automatically, or require content be approved before being made available.
+Our moderation dashboard provides you with all the tools required to comply with the content management rules required by Microsoft, Sony Interactive Entertainment and Nintendo. You can choose to allow all content automatically, or require content be approved before being made available.
 
 #### Allowing all content automatically
 

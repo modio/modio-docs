@@ -35,7 +35,7 @@ If you have your own accounts system, mod.io can be set up to use it as the SSO 
 
 ## User Flow
 
-You should prompt players for consent before using any mod.io functionality, such as on startup, or before launching any UGC browsers. Once they have accepted the Terms of Use, you should proceed to authenticate them with your chosen authentication provider, ensuring you pass `terms_agreed=true`.
+You should prompt players for terms and consent acceptance before using any mod.io functionality, such as on startup, or before launching any UGC browsers. Once they have accepted the Terms of Use, you should proceed to authenticate them with your chosen authentication provider, ensuring you pass `terms_agreed=true`. In all future automated authentication attempts you should pass in `terms_agreed=false`, and mod.io will accept the users authentication request if they have agreed to the latest terms, or return `403 Forbidden` (`error_ref 11074`) if they need to agree to updated terms, which requires you to start this process from the beginning (i.e. prompt players for terms and content acceptance and pass in `terms_agreed=true` if they accept).
 
 If the user rejects the Terms of Use, you should exit the authentication process and do not attempt to authenticate them.
 
@@ -46,12 +46,14 @@ flowchart TD
     A(fa:fa-user Opens UGC menu) --> B{Agreement
     required?}
     B -->|Yes| C(Show terms dialog)
-    B -->|No, already collected| E
+    B -->|"No, already collected
+    (mod.io will verify)"| E
     C --> D{Terms agreed?}
     D -->|Yes| E(fa:fa-check Authenticate the user)
     D -->|No| F(fa:fa-xmark Do not authenticate)
-    E -->|Terms update
-    required| C
+    E -->|"If mod.io responds with
+    403 forbidden (error_ref 11074)
+    it means terms acceptance required"| C
     style B fill:#999,stroke:#666,color:#000
     style D fill:#999,stroke:#666,color:#000
     style E fill:#7EEF8C,stroke:#00c717
@@ -74,8 +76,8 @@ flowchart TD
 
 3. Once the user has accepted, authentication can happen instantly if using platform SSO (i.e. Xbox auth), or your own account system using OIDC. Email authentication and QR code are also supported, and if used require additional steps to sign in.
    * Visit our [authentication documentation](/web-services/authentication/platform/) for instructions on how to authenticate users.
-   * If you completed step 2 prior to authenticating the user, you should indicate the user has accepted the terms in your request, otherwise the value must remain false.
-   * If you skipped step 2 and receive the error `403 Forbidden (error_ref 11074)`, this indicates the terms have been updated since the user last agreed. You need to return to step 2 and get their agreement to continue.
+   * If you completed step 2 prior to authenticating the user, you should indicate the user has accepted the terms in your request to mod.io `terms_agreed=true`, otherwise the value must remain `terms_agreed=false`.
+   * If you skipped step 2 and receive the error `403 Forbidden (error_ref 11074)`, this indicates the terms have been updated since the user last agreed. You need to return to step 2 and get the users agreement to continue.
 
 ![Step 3: User accepts terms and authentication proceeds](images/terms-step3.png)
 
@@ -117,7 +119,7 @@ If these URLs open with a blank white screen in-game, that means your web browse
 
 Once a user has clicked **“I Agree”**, you should indicate to the mod.io backend that this has taken place, when you initiate the authentication process. Acceptance of the Terms of Use should be stored in relevant user settings, for instance a local settings file, or cloud storage file for the user. The mod.io plugins do not provide storage for this field.
 
-All of the [platform authentication flows](https://docs.mod.io/restapiref/#steam) supported by mod.io have a `terms_agreed` field which should be set to `false` by default. If the user has agreed to the latest policies, their authentication will proceed as normal, however if their agreement is required and `terms_agreed` is set to `false` an error `403 Forbidden` (`error_ref 11074`) will be returned. When you receive this error, you must collect the users agreement before resubmitting the authentication flow with `terms_agreed` set to `true`, which will be recorded.
+All of the [platform authentication flows](https://docs.mod.io/restapiref/#steam) supported by mod.io have a `terms_agreed` field which should be set to `false` by default. If the user has agreed to the latest policies, their authentication will proceed as normal. However if their agreement is required and `terms_agreed` is set to `false` an error `403 Forbidden` (`error_ref 11074`) will be returned. When you receive this error, you must collect the users agreement before resubmitting the authentication flow with `terms_agreed` set to `true`, which will be recorded.
 
 mod.io may update our terms of service, which require users to re-accept the terms of use. If you receive a 403 error from the authentication endpoint, even passing `terms_agreed=true`, then you should re-prompt users to accept the Terms of Service.
 
