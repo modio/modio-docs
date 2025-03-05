@@ -23,6 +23,11 @@ The mod.io Unreal Engine plugin is initialized by calling [`InitializeAsync`](/u
 Use [`GetProjectInitializeOptionsForSessionId`](/unreal/refdocs/#get-project-initialize-options-for-session-id) to initialize the plugin using the information entered in the [mod.io project settings](/unreal/installation-and-setup/#plugin-configuration).  On Windows, [`GetDefaultSessionIdWindows`](/unreal/refdocs/#get-default-session-id-windows) can be used as the [Session ID](/unreal/getting-started/plugin-structure/#session-ids).  Some platforms also require additional parameters added to `ModioInitializeOptions.ExtendedInitializationParameters`.  Refer to the relevant [platform documentation](/platforms/) for more information.
 
 <Tabs groupId="languages">
+<TabItem value="blueprint" label="Blueprint">
+  	![run_pending_handlers](img/run_pending_handlers.png)
+
+	![initasync_getoptions](img/initasync_getoptions.png)
+  </TabItem>
   <TabItem value="cpp" label="C++">
 
  ```cpp
@@ -49,11 +54,6 @@ void UModioManagerSubsystem::Tick(float DeltaTime)
 }
 ```
   </TabItem>
-  <TabItem value="blueprint" label="Blueprint">
-  	![run_pending_handlers](img/run_pending_handlers.png)
-
-	![initasync_getoptions](img/initasync_getoptions.png)
-  </TabItem>
 </Tabs>
 
 
@@ -67,6 +67,9 @@ void UModioManagerSubsystem::Tick(float DeltaTime)
 The mod.io Unreal Engine plugin is shut down by calling [`ShutdownAsync`](/unreal/refdocs/#shutdownasync) in a similar fashion.
 
 <Tabs groupId="languages">
+  <TabItem value="blueprint" label="Blueprint">
+![shutdownasync_runhandlers](img/shutdownasync_runhandlers.png)
+  </TabItem>
   <TabItem value="cpp" label="C++">
 
  ```cpp
@@ -83,11 +86,6 @@ void UModioManagerSubsystem::OnShutdownComplete(FModioErrorCode ErrorCode)
 	UE_LOG(LogModioGame, Log, TEXT("Shutdown complete with result: %s"), *ErrorCode.GetErrorMessage());
 }
 ```
-
-  </TabItem>
-  <TabItem value="blueprint" label="Blueprint">
-![shutdownasync_runhandlers](img/shutdownasync_runhandlers.png)
-
 
   </TabItem>
 </Tabs>

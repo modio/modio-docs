@@ -50,6 +50,9 @@ Users can authenticate to mod.io with just an email address.  This involves:
 Request a one-time authentication code by calling [`RequestEmailAuthCodeAsync`](/unreal/refdocs/#requestemailauthcodeasync).  Pass in a user-provided email address as the first argument.
 
 <Tabs groupId="languages">
+  <TabItem value="blueprint" label="Blueprint">
+![request_email_auth_code](img/request_email_auth_code.png)
+  </TabItem>
   <TabItem value="cpp" label="C++" default>
  ```cpp
 void UModioManagerSubsystem::RequestEmailAuthCode(const FString &EmailAddress)
@@ -66,9 +69,6 @@ void UModioManagerSubsystem::OnRequestEmailAuthCodeComplete(FModioErrorCode Erro
 }
 ```
   </TabItem>
-  <TabItem value="blueprint" label="Blueprint">
-![request_email_auth_code](img/request_email_auth_code.png)
-  </TabItem>
 </Tabs>
 
 When your callback is invoked, inspect the `ModioErrorCode` for a successful result.  On success, prompt the user to check their emails and enter the authentication code they have received into your game.
@@ -78,6 +78,9 @@ When your callback is invoked, inspect the `ModioErrorCode` for a successful res
 To finalize the user's authentication, submit the code they have entered to mod.io by calling [`AuthenticateUserEmailAsync`](/unreal/refdocs/#authenticateuseremailasync).  Pass the user's code in as the first argument.
 
 <Tabs groupId="languages">
+  <TabItem value="blueprint" label="Blueprint">
+![authenticate_user_email](img/authenticate_user_email.png)
+  </TabItem>
   <TabItem value="cpp" label="C++">
 
  ```cpp
@@ -94,9 +97,6 @@ void UModioManagerSubsystem::OnAuthenticateUserEmailComplete(FModioErrorCode Err
 	UE_LOG(LogModioGame, Log, TEXT("Email auth code submission complete with result: %s"), *ErrorCode.GetErrorMessage());
 }
 ```
-  </TabItem>
-  <TabItem value="blueprint" label="Blueprint">
-![authenticate_user_email](img/authenticate_user_email.png)
   </TabItem>
 </Tabs>
 
@@ -131,6 +131,9 @@ The plugin will automatically URL encode parameters (such as the auth token) whe
 :::
 
 <Tabs groupId="languages">
+  <TabItem value="blueprint" label="Blueprint">
+![authenticate_user_email](img/authenticate_user_external.png)
+  </TabItem>
   <TabItem value="cpp" label="C++">
 
  ```cpp
@@ -147,9 +150,6 @@ void UModioManagerSubsystem::AuthenticateUserExternalComplete(FModioErrorCode Er
 	UE_LOG(LogModioGame, Log, TEXT("SSO complete with result: %s"), *ErrorCode.GetErrorMessage());
 }
 ```
-  </TabItem>
-  <TabItem value="blueprint" label="Blueprint">
-![authenticate_user_email](img/authenticate_user_external.png)
   </TabItem>
 </Tabs>
 

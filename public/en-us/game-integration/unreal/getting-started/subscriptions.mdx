@@ -234,6 +234,9 @@ So now we have the user picking mods and marking them for installation, we’re 
 The easiest way to do this is by using [`QueryUserInstallations`](/unreal/refdocs/#query-user-installations). This function returns a `TMap` of [`ModioModCollectionEntry`](/unreal/refdocs/#modiomodcollectionentry) objects that can be queried for folder paths to use for loading a mod's files into your game. `QueryUserInstallations` also allows you to specify whether or not to include outdated mods.
 
 <Tabs group-id="languages">
+  <TabItem value="blueprint" label="Blueprint">
+![query_user_installations](img/query_user_installations.png)
+  </TabItem>
   <TabItem value="c++" label="C++" default>
  ```cpp
 void UModioManagerSubsystem::GetInstalledMods()
@@ -246,11 +249,6 @@ void UModioManagerSubsystem::GetInstalledMods()
 	}
 }
 ```
-  </TabItem>
-  <TabItem value="blueprint" label="Blueprint">
-
-![query_user_installations](img/query_user_installations.png)
-
   </TabItem>
 
 </Tabs>
