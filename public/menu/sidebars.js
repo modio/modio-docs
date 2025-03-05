@@ -168,6 +168,12 @@ const sidebars = {
           items: ['game-integration/cppsdk/android/android-cmake-integration']
         },
         {
+          type: 'category',
+          label: 'Meta Quest / Oculus',
+          link: {type: 'doc', id: 'game-integration/cppsdk/meta/meta-getting-started'},
+          items: ['game-integration/cppsdk/meta/meta-cmake-integration']
+        },
+        {
           type: 'doc',
           label: 'C++ SDK Reference', 
           id: `game-integration/cppsdk/refdocs`, 
