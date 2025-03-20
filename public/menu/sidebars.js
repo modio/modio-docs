@@ -77,7 +77,7 @@ const sidebars = {
             'game-integration/unreal/component-ui/ue-localization',
             'game-integration/unreal/component-ui/ue-helpers',
             'game-integration/unreal/component-ui/ue-enable-disable',
-            'game-integration/ue-generated/ue-ui-refdocs',
+            'game-integration/ue-generated/ui/ue-ui-refdocs',
           ]
         },
         {
@@ -106,7 +106,7 @@ const sidebars = {
             'game-integration/unreal/meta/ue-meta-configuration',
           ]
         },
-        'game-integration/ue-generated/ue-refdocs',
+        'game-integration/ue-generated/core/ue-refdocs',
       ],
     },
     {
