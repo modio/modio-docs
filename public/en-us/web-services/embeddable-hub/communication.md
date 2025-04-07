@@ -24,7 +24,7 @@ The following table details the available query parameters available by modifyin
 | lang           |                     | Sets the language of the Embeddable Hub. See [Localization](/restapiref/#localization) for available languages       |
 | featured       |                     | Shows a number of trending mods that have the specified tag in a carousel at the top of the mod browse page          |
 | featured_count |                     | The number of featured mods to show if the 'featured' parameter is set (defaults to 5)                               |
-| udt            |                     | Authenticate a user by passing in a User Delegated Token                                                             |
+| udt            |                     | Authenticate a user by passing in a User Delegated Token (for example if you are using the mod.io SDK and have authenticated the user, the UDT can be fetched by calling `GetUserDelegationTokenAsync`)                                                             |
 
 ## Message events
 
