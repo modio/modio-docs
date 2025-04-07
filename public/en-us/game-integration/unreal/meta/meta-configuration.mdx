@@ -7,17 +7,27 @@ custom_edit_url: https://github.com/modio/modio-ue4-internal/blob/develop/Plugin
 
 ### Configuration
 
-To access Meta Quest-specific APIs, including authentication, you need to download and integrate the Meta Platform SDK into your Unreal Engine project. Follow these steps:
+To access Meta Quest-specific APIs, including authentication, you need to download and integrate the MetaXR and MetaXR Platform plugins into your Unreal Engine project. Follow these steps:
 
-1. **Download the Meta Platform SDK Plugin**:
+1. **Download the MetaXR Plugin**:
+   - Visit the [Meta Unreal Engine 5 Integration](https://developers.meta.com/horizon/downloads/package/unreal-engine-5-integration/) and download the plugin.
+   - Extract the plugin into your project's `Plugins` directory.
+
+2. **Download the Meta Platform SDK Plugin**:
    - Visit the [Meta Unreal Engine 5 Platform SDK](https://developers.meta.com/horizon/downloads/package/unreal-5-platform-sdk-plugin/) and download the plugin.
    - Extract the plugin into your project's `Plugins` directory.
 
-2. **Enable the Plugin**:
+3. **Enable the Plugins**:
    - Open your Unreal Engine project.
-   - Navigate to `Edit > Plugins` and enable the **Meta XR Platform** plugin.
+   - Navigate to `Edit > Plugins` and ensure both **MetaXR** (under Installed/Virtual Reality) and **MetaXR Platform** (under Installed/Online Platform) plugins are enabled.
 
-This plugin provides access to Meta Quest-specific functionality, such as achievements, leaderboards, authentication, and so on.
+4. **Add Supported Devices**:
+   - Navigate to `Edit > Project Settings`
+   - Navigate to `Plugins > Meta XR`
+   - Under `Mobile > Supported Meta Quest Device`, add `Meta Quest 3`
+   - `File > Save All`, restart the Unreal Editor
+
+These plugins provide access to Meta Quest-specific functionality, such as achievements, leaderboards, authentication, and so on.
 
 ### Authentication
 

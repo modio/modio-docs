@@ -31,6 +31,8 @@ Users must accept the mod.io Terms of Service before using any mod.io services. 
 
 See our full [Terms & User Consent](/terms/) documentation for further details.
 
+When authenticating via SSO, the `bUserHasAcceptedTerms` parameter should be set to **false** by default. If the user has already accepted the latest terms, they will be authenticated automatically. If they haven't accepted the latest terms, an error `403 Forbidden (error_ref 11074)` will be returned. When you receive this error, you must display the terms dialog to the user, and if they accept, resubmit the authentication flow with `bUserHasAcceptedTerms` set to **true** for that specific request only. All subsequent authentication attempts should revert to using **false** for this parameter.
+
 ## Authentication methods
 
 The mod.io Unreal Engine plugin provides two ways for users to create an account to use the service: email authentication, and single sign-on (SSO) through an external authentication partner.

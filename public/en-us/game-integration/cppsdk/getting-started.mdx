@@ -217,8 +217,28 @@ Simply set the value before passing your initialization parameters in to [Initia
 
 ```cpp
 Options.ExtendedParameters["SomeParameterName"] = "SomeParameterValue";
-
 ```
+
+#### Storage Quota
+
+The SDK supports the following storage quota parameters that can be set through `ExtendedParameters`:
+
+| Parameter | Description |
+| --- | --- |
+| `ModStorageQuotaMB` | Defines a maximum quota of locally installed mods for this game, in megabytes (minimum 25 MB). This includes temp mods and those installed by other users on this system. |
+| `CacheStorageQuotaMB` | Defines a maximum quota for cached image data such as mod logos and gallery images, in megabytes (minimum 25 MB). |
+
+Example usage:
+
+```cpp
+// Set mod storage quota to 500 MB
+Options.ExtendedParameters["ModStorageQuotaMB"] = "500";
+
+// Set cache storage quota to 250 MB
+Options.ExtendedParameters["CacheStorageQuotaMB"] = "250";
+```
+
+By setting these values, the SDK will actively enforce the specified storage limits.
 
 #### Shutting Down
 
@@ -388,7 +408,7 @@ This means the external authentication flow is the following:
 
 1. Call [AuthenticateUserExternalAsync](/cppsdk/refdocs/#authenticateuserexternalasync) , passing in any provider-specific parameters, setting `AuthenticationParams::bUserHasAcceptedTerms` to false, and indicating which authentication provider you wish to use
 2. Check the error code in the callback - if it indicates the user has not yet created an account or accepted the terms, call [GetTermsOfUseAsync](/cppsdk/refdocs/#gettermsofuseasync) and display the provided information to your user
-3. If the user clicks the OK/affirmative button on your screen displaying the terms of use, repeat the call in step 1 but setting `AuthenticationParams::bUserHasAcceptedTerms` to **true**
+3. If the user clicks the OK/affirmative button on your screen displaying the terms of use, repeat the call in step 1 but setting `AuthenticationParams::bUserHasAcceptedTerms` to **true** for this single authentication request only. For all subsequent authentication attempts, this parameter should be set back to **false** - the system will automatically authenticate the user if they've already accepted the latest terms. Otherwise, the system will return an error (`403 Forbidden (error_ref 11074)`) allowing you to show the updated terms
 4. Check the error code in the callback - a false-y error code indicates that authentication was successful, and users can now install and manage mods and subscriptions.
 
 
@@ -396,7 +416,7 @@ This means the external authentication flow is the following:
 Modio::AuthenticationParams UserParams;
 UserParams.AuthToken = "AuthenticationToken";
 UserParams.UserEmail = "UserEmail";
-UserParams.bUserHasAcceptedTerms = false;
+UserParams.bUserHasAcceptedTerms = false; // Always start with false
 
 Modio::AuthenticateUserExternalAsync(UserParams,Provider,[Provider](Modio::ErrorCode ec)
 {
@@ -431,6 +451,10 @@ Modio::AuthenticateUserExternalAsync(UserParams,Provider,[](Modio::ErrorCode ec)
 Changing users via AuthenticateUserExternalAsync (ie performing an authentication for a different user) will disable mod management.
 :::
 
+:::important
+The `bUserHasAcceptedTerms` parameter should only be set to true for the specific authentication request made immediately after the user accepts the terms dialog. For all subsequent authentication attempts, this parameter should be set to false. If the user has already accepted the latest terms, they will be authenticated automatically. If the terms have been updated since their last acceptance, setting this parameter to false will trigger the appropriate error (403 Forbidden, error_ref 11074) allowing you to show the updated terms.
+:::
+
 #### Epic Games Authentication Example
 
 In order to use Epic Games Authentication, you must ensure that you have [configured Epic Account Services for your title](/platforms/epic/authentication). Once you have done this, you can request an ID Token for a user that has been logged into Epic. You must ensure that the scopes you are authentication with match the scopes for the application you are configuring in EAS.
@@ -456,6 +480,9 @@ static void EOS_CALL LoginCompleteCallbackFn(const EOS_Auth_LoginCallbackInfo* D
 		Modio::AuthenticationParams User;
 		User.AuthToken = Token;
 		User.bURLEncodeAuthToken = true;
+
+		// Note: bUserHasAcceptedTerms should only be set to true if the user has just accepted the terms dialog
+		// Otherwise it should be false - the system will authenticate automatically if the user has accepted the latest terms
 		User.bUserHasAcceptedTerms = true;
 
 		Modio::AuthenticateUserExternalAsync(User, Modio::AuthenticationProvider::Epic, [](Modio::ErrorCode ec) {
@@ -512,7 +539,11 @@ Finally, once you have your Base64 encoded app ticket, you can SSO to mod.io as 
 Modio::AuthenticationParams AuthParams;
 AuthParams.AuthToken = EncodedSteamAuthTicket;
 AuthParams.bURLEncodeAuthToken = true;
+
+// Note: bUserHasAcceptedTerms should only be set to true if the user has just accepted the terms dialog
+// Otherwise it should be false - the system will authenticate automatically if the user has accepted the latest terms
 AuthParams.bUserHasAcceptedTerms = true;
+
 Modio::AuthenticateUserExternalAsync(
 	AuthParams, Modio::AuthenticationProvider::Steam, [&](Modio::ErrorCode ec) {
 		if (ec)
@@ -556,7 +587,11 @@ Finally, you can SSO to mod.io as follows:
 Modio::AuthenticationParams AuthParams;
 AuthParams.AuthToken = AuthTicket;
 AuthParams.bURLEncodeAuthToken = true;
+
+// Note: bUserHasAcceptedTerms should only be set to true if the user has just accepted the terms dialog
+// Otherwise it should be false - the system will authenticate automatically if the user has accepted the latest terms
 AuthParams.bUserHasAcceptedTerms = true;
+
 Modio::AuthenticateUserExternalAsync(
 	AuthParams, Modio::AuthenticationProvider::GoG, [&](Modio::ErrorCode ec) {
 		if (ec)

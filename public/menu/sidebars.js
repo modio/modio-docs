@@ -77,6 +77,7 @@ const sidebars = {
             'game-integration/unreal/component-ui/ue-localization',
             'game-integration/unreal/component-ui/ue-helpers',
             'game-integration/unreal/component-ui/ue-enable-disable',
+            'game-integration/unreal/component-ui/ue-gamepad-glyph-switching',
             'game-integration/ue-generated/ui/ue-ui-refdocs',
           ]
         },
