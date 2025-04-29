@@ -1,0 +1,25 @@
+---
+id: overview
+title: Overview
+slug: /unreal/modio-ugc/overview/
+custom_edit_url: https://github.com/modio/modio-ue4-internal/tree/main/Plugins/ModioUGC/Doc/doc_root/en-us/modio-ugc/overview.mdx
+---
+
+**ModioUGC** (along with ModioUGCEditor) is a module that facilitates pak file loading and unloading for Unreal Engine projects.
+
+Mods are created as content-only plugins. Each plugin represents a mod, where content such as textures, meshes, blueprints, etc., can be added. The mod is then packaged into one or more files:
+
+- A `.pak` file (always created)
+- `.ucas` and `.utoc` files (created when Io Store is used)
+- An accompanying `.uplugin` file for mounting at runtime
+
+This process is similar to how the Project Launcher packages a plugin as DLC. The packaged mod can be compressed, optionally uploaded to mod.io, downloaded, and applied in-game using the runtime module.
+
+Although similar to the [UGCExample](https://github.com/EpicGames/UGCExample), **ModioUGC** emphasizes a more robust and scalable integration.
+
+## What's included
+
+It features two main modules:
+
+- **Editor Module**: Handles mod creation, management, and packaging.
+- **Runtime Module**: Manages mounting of mods (pak files) to the game.

@@ -350,6 +350,20 @@ const sidebars = {
         'web-services/embeddable-hub/communication',
       ],
     },
+    {
+      type: 'category',
+      label: 'Cloud Cooking',
+      link: {type: 'doc', id: 'web-services/cloud-cooking/overview'},
+      items: [
+        {
+          type: "category",
+          label: "Preparing Your Game & Editor",
+          items: ['web-services/cloud-cooking/preparing-your-game-unreal',]
+        },
+        'web-services/cloud-cooking/configuring-cloud-cooking',
+        'web-services/cloud-cooking/architecture',
+      ],
+    },
     // REST API
     {
       type: 'html',

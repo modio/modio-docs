@@ -15,7 +15,7 @@ All text-based content submitted to mod.io is validated through a series of rule
 
 1. **mod.io validation** (i.e. correct length, correct type, XSS filter, valid HTML)
 2. **Platform validation** (e.g. Xbox Live word filter which blanks words deemed inappropriate)
-3. **Custom rules** defined by the Game Admin, using the Rules Engine Moderation system (available as a premium feature via your dashboard)
+3. **Custom rules** defined by the Game Admin, using the Rules Engine Moderation system, and also the word filter allow list and deny list
 
 ![Text scanning](images/text-scanning.png)
 
@@ -24,7 +24,7 @@ All text-based content submitted to mod.io is validated through a series of rule
 All media and images submitted to mod.io are validated via a series of rules, depending on the media’s purpose. All media must pass:
 
 1. **mod.io validation** (i.e. valid image/mime type, filesize, dimensions)
-2. **Custom rules** defined by the Game Admin, using the Rules Engine Moderation system (available as a premium feature via your dashboard)
+2. **Custom rules** defined by the Game Admin, using the Rules Engine Moderation system
 
 At the moment, the mod.io system does not apply any AI or ML to detect inappropriate content in images. Studios can use the Rules Engine webhooks feature to incorporate third-party AI tools in their moderation flow.
 
@@ -36,13 +36,19 @@ All files and binaries submitted to mod.io are validated via a series of rules, 
 
 1. **mod.io validation** (i.e. valid file/mime type, is valid zip file, file size)
 2. **mod.io malware scan** (check the file against a continually updated list of heuristics to determine if the file contains viruses, trojans etc)
-3. **Custom rules** defined by the Game Admin, using the Rules Engine Moderation system (available as a premium feature via your dashboard)
+3. **Custom rules** defined by the Game Admin, using the Rules Engine Moderation system, and also the file schema validation
 
 ![File scanning](images/file-scanning.png)
 
 ### File size validation
 
 At this time only UGC can be submitted to mod.io up to 20gb in size. Small files, under 100mb, will be uploaded in one chunk. Larger files will use a multi-part upload where the file is split up client-side, and re-assembled server-side.
+
+### File schema validation
+
+Automatically scan UGC contents, to ensure the files contained are ones your game supports, and anything else (i.e. zip, dll, exe etc) are flagged. If the validation check matches, you can either block the upload from completing, or open a report for the Game Admin to review.
+
+![File schema validation](images/file-schema-validation.png)
 
 ### Malware scanning
 

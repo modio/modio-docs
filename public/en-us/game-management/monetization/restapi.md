@@ -18,6 +18,8 @@ For a user to make a purchase, they must first have a wallet. To do so, call the
 
 ## User Purchases
 
+### Purchase a Mod
+
 Once you have a wallet, the user is ready to make a purchase. To do so, call the following endpoint: [purchase a mod](https://docs.mod.io/restapiref/#purchase-a-mod). The intention is for this endpoint to be client-side in-game to:
 - Purchase a mod from the marketplace.
 - Subscribe them to the mod they just purchased.
