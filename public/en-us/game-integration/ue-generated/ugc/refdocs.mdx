@@ -1,0 +1,1083 @@
+---
+id: modio-ugc-refdocs
+title: Modio UGC API Reference
+slug: /unreal/ugc-refdocs/
+---
+
+
+## Classes
+
+### ModEnabledStateProvider 
+
+
+
+##### Inheritance Hierarchy
+-> Interface-> Object
+
+
+
+
+
+
+#### Request Mod Enabled State Change
+
+
+
+![nd_img_ModEnabledStateProvider_RequestModEnabledStateChange.png](img/refdocs/nd_img_ModEnabledStateProvider_RequestModEnabledStateChange.png)
+
+```cpp
+bool RequestModEnabledStateChange(FGenericModID ID, bool bNewEnabledState)
+```
+
+
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModEnabledStateProvider`|
+|`ID`|The raw ID for the mod to enable or disable|
+|`bNewEnabledState`|the new state for the mod|
+</RefTable>
+
+
+
+##### Returns
+true if the mod's state was successfully changed, else false
+
+
+
+
+
+
+
+
+
+
+
+#### Query Is Mod Enabled
+
+
+
+![nd_img_ModEnabledStateProvider_QueryIsModEnabled.png](img/refdocs/nd_img_ModEnabledStateProvider_QueryIsModEnabled.png)
+
+```cpp
+bool QueryIsModEnabled(FGenericModID ModID)
+```
+
+
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModEnabledStateProvider`|
+|`ModID`|the raw ID for the mod to query|
+</RefTable>
+
+
+
+##### Returns
+true if the mod is enabled, else false
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+### UGCLibrary 
+
+
+
+##### Inheritance Hierarchy
+-> BlueprintFunctionLibrary-> Object
+
+
+
+
+
+
+
+
+
+---
+
+### UGCPackageWrapper 
+
+
+
+##### Inheritance Hierarchy
+-> Object
+
+
+
+
+
+
+
+
+
+---
+
+### UGCProvider 
+
+
+
+##### Inheritance Hierarchy
+-> Interface-> Object
+
+
+
+
+
+
+#### Is Provider Enabled
+
+
+
+![nd_img_UGCProvider_IsProviderEnabled.png](img/refdocs/nd_img_UGCProvider_IsProviderEnabled.png)
+
+```cpp
+bool IsProviderEnabled()
+```
+
+
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`UGCProvider`|
+</RefTable>
+
+
+
+##### Returns
+bool indicating whether the UGC provider is enabled
+
+
+
+
+
+
+
+
+
+
+
+#### Initialize Provider
+
+
+
+![nd_img_UGCProvider_InitializeProvider.png](img/refdocs/nd_img_UGCProvider_InitializeProvider.png)
+
+```cpp
+void InitializeProvider(FOnUGCProviderInitializedDelegate Handler)
+```
+
+
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`UGCProvider`|
+|`Handler`|Callback for initialization success.|
+</RefTable>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#### Get Installed UGC Paths
+
+
+
+![nd_img_UGCProvider_GetInstalledUGCPaths.png](img/refdocs/nd_img_UGCProvider_GetInstalledUGCPaths.png)
+
+```cpp
+FModUGCPathMap GetInstalledUGCPaths()
+```
+
+
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`UGCProvider`|
+</RefTable>
+
+
+
+##### Returns
+A map of installed UGC paths to their IDs.
+
+
+
+
+
+
+
+
+
+
+
+#### Deinitialize Provider
+
+
+
+![nd_img_UGCProvider_DeinitializeProvider.png](img/refdocs/nd_img_UGCProvider_DeinitializeProvider.png)
+
+```cpp
+void DeinitializeProvider(FOnUGCProviderDeinitializedDelegate Handler)
+```
+
+
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`UGCProvider`|
+|`Handler`|Callback for deinitialization success.|
+</RefTable>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+### UGCSubsystem 
+
+
+
+##### Inheritance Hierarchy
+-> EngineSubsystem-> DynamicSubsystem-> Subsystem-> Object
+
+
+
+
+
+
+#### Unmount UGC Package By Mod ID
+
+
+
+![nd_img_UGCSubsystem_UnmountUGCPackageByModID.png](img/refdocs/nd_img_UGCSubsystem_UnmountUGCPackageByModID.png)
+
+```cpp
+void UnmountUGCPackageByModID(FGenericModID ModID, bool bRemoveUGCPackage)
+```
+
+
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`UGCSubsystem`|
+|`ModID`|the ID of the package to unmount|
+|`bRemoveUGCPackage`|should the package be removed from the registry altogether after unmounting? pass true for uninstallation|
+</RefTable>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#### Unmount UGC Package
+
+
+
+![nd_img_UGCSubsystem_UnmountUGCPackage.png](img/refdocs/nd_img_UGCSubsystem_UnmountUGCPackage.png)
+
+```cpp
+void UnmountUGCPackage(FUGCPackage Package, bool bRemoveUGCPackage)
+```
+
+
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`UGCSubsystem`|
+|`Package`||
+|`bRemoveUGCPackage`|should the package be removed from the registry altogether after unmounting? pass true for uninstallation|
+</RefTable>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#### Unload All UGC Packages
+
+
+![nd_img_UGCSubsystem_UnloadAllUGCPackages.png](img/refdocs/nd_img_UGCSubsystem_UnloadAllUGCPackages.png)
+
+```cpp
+void UnloadAllUGCPackages()
+```
+
+
+
+
+
+
+
+#### Set UGC Provider
+
+
+
+![nd_img_UGCSubsystem_SetUGCProvider.png](img/refdocs/nd_img_UGCSubsystem_SetUGCProvider.png)
+
+```cpp
+void SetUGCProvider(TScriptInterface<IUGCProvider> InUGCProvider)
+```
+
+
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`UGCSubsystem`|
+|`InUGCProvider`|The UGC provider to use|
+</RefTable>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#### Set UGC Enabled State Provider
+
+
+
+![nd_img_UGCSubsystem_SetUGCEnabledStateProvider.png](img/refdocs/nd_img_UGCSubsystem_SetUGCEnabledStateProvider.png)
+
+```cpp
+void SetUGCEnabledStateProvider(TScriptInterface<IModEnabledStateProvider> NewProvider)
+```
+
+
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`UGCSubsystem`|
+|`NewProvider`|The new object to query via IRavenModEnabledStateProvider|
+</RefTable>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#### Remove UGC Changed Handler
+
+
+
+![nd_img_UGCSubsystem_RemoveUGCChangedHandler.png](img/refdocs/nd_img_UGCSubsystem_RemoveUGCChangedHandler.png)
+
+```cpp
+void RemoveUGCChangedHandler(FOnUGCPackagesChangedDelegate Handler)
+```
+
+
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`UGCSubsystem`|
+|`Handler`|Delegate to remove|
+</RefTable>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#### Remove Mod Enabled State Change Handler
+
+
+
+![nd_img_UGCSubsystem_RemoveModEnabledStateChangeHandler.png](img/refdocs/nd_img_UGCSubsystem_RemoveModEnabledStateChangeHandler.png)
+
+```cpp
+void RemoveModEnabledStateChangeHandler(FModEnabledStateChangeHandler Handler)
+```
+
+
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`UGCSubsystem`|
+|`Handler`|Delegate to be removed from the notification list|
+</RefTable>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#### Refresh UGC
+
+
+![nd_img_UGCSubsystem_RefreshUGC.png](img/refdocs/nd_img_UGCSubsystem_RefreshUGC.png)
+
+```cpp
+void RefreshUGC()
+```
+
+
+
+
+
+
+
+#### Enumerate All UGC Packages
+
+
+
+![nd_img_UGCSubsystem_K2_EnumerateAllUGCPackages.png](img/refdocs/nd_img_UGCSubsystem_K2_EnumerateAllUGCPackages.png)
+
+```cpp
+void K2_EnumerateAllUGCPackages(FUGCPackageEnumeratorDelegate Enumerator) const
+```
+
+
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`UGCSubsystem`|
+|`Enumerator`|The bound delegate to invoke|
+</RefTable>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#### Is UGC Feature Enabled
+
+
+
+![nd_img_UGCSubsystem_IsUGCFeatureEnabled.png](img/refdocs/nd_img_UGCSubsystem_IsUGCFeatureEnabled.png)
+
+```cpp
+bool IsUGCFeatureEnabled(EUGCSubsystemFeature Feature)
+```
+
+
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`UGCSubsystem`|
+|`Feature`|The feature to query|
+</RefTable>
+
+
+
+##### Returns
+bool indicating the state of the specified feature
+
+
+
+
+
+
+
+
+
+
+
+#### Is Provider Enabled
+
+
+
+![nd_img_UGCSubsystem_IsProviderEnabled.png](img/refdocs/nd_img_UGCSubsystem_IsProviderEnabled.png)
+
+```cpp
+bool IsProviderEnabled()
+```
+
+
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`UGCSubsystem`|
+</RefTable>
+
+
+
+##### Returns
+bool indicating whether the UGC provider is enabled
+
+
+
+
+
+
+
+
+
+
+
+#### Initialize UGCProvider
+
+
+
+![nd_img_UGCSubsystem_InitializeUGCProvider.png](img/refdocs/nd_img_UGCSubsystem_InitializeUGCProvider.png)
+
+```cpp
+void InitializeUGCProvider(FOnUGCProviderInitializedDelegate Handler)
+```
+
+
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`UGCSubsystem`|
+|`Handler`|Callback for initialization success.|
+</RefTable>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#### Get UGC Package By Mod ID
+
+
+
+![nd_img_UGCSubsystem_GetUGCPackageByModID.png](img/refdocs/nd_img_UGCSubsystem_GetUGCPackageByModID.png)
+
+```cpp
+bool GetUGCPackageByModID(FGenericModID ModID, FUGCPackage UGCPackage) const
+```
+
+
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`UGCSubsystem`|
+|`ModID`|the ID of the mod to get the package for|
+|`UGCPackage`|the package to populate with the UGC package data|
+</RefTable>
+
+
+
+##### Returns
+true if the package was found, false otherwise
+
+
+
+
+
+
+
+
+
+
+
+#### Get Package Names From UGC Package
+
+
+
+![nd_img_UGCSubsystem_GetPackageNamesFromUGCPackage.png](img/refdocs/nd_img_UGCSubsystem_GetPackageNamesFromUGCPackage.png)
+
+```cpp
+TArray<FName> GetPackageNamesFromUGCPackage(FUGCPackage UGCPackage) const
+```
+
+
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`UGCSubsystem`|
+|`UGCPackage`|The UGC package to get package names from|
+</RefTable>
+
+
+
+##### Returns
+Array of package names
+
+
+
+
+
+
+
+
+
+
+
+#### Deinitialize UGCProvider
+
+
+
+![nd_img_UGCSubsystem_DeinitializeUGCProvider.png](img/refdocs/nd_img_UGCSubsystem_DeinitializeUGCProvider.png)
+
+```cpp
+void DeinitializeUGCProvider(FOnUGCProviderDeinitializedDelegate Handler)
+```
+
+
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`UGCSubsystem`|
+|`Handler`|Callback for deinitialization success.|
+</RefTable>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#### Add UGC From Path
+
+
+
+![nd_img_UGCSubsystem_AddUGCFromPath.png](img/refdocs/nd_img_UGCSubsystem_AddUGCFromPath.png)
+
+```cpp
+void AddUGCFromPath(FString Path)
+```
+
+
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`UGCSubsystem`|
+|`Path`|The path to the UGC package, such as "C:\Users\Public\mod.io\6532\mods\4119758". This path must contain a .uplugin file in the root directory, and .pak file in "Content/Paks/[PLATFORM]" directory|
+</RefTable>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#### Add UGC Changed Handler
+
+
+
+![nd_img_UGCSubsystem_AddUGCChangedHandler.png](img/refdocs/nd_img_UGCSubsystem_AddUGCChangedHandler.png)
+
+```cpp
+void AddUGCChangedHandler(FOnUGCPackagesChangedDelegate Handler)
+```
+
+
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`UGCSubsystem`|
+|`Handler`|Delegate to invoke|
+</RefTable>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#### Add Mod Enabled State Change Handler
+
+
+
+![nd_img_UGCSubsystem_AddModEnabledStateChangeHandler.png](img/refdocs/nd_img_UGCSubsystem_AddModEnabledStateChangeHandler.png)
+
+```cpp
+void AddModEnabledStateChangeHandler(FModEnabledStateChangeHandler Handler)
+```
+
+
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`UGCSubsystem`|
+|`Handler`|Delegate to be notified|
+</RefTable>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##### Variables
+<RefTable colWidths={['10%', '10%', '20%']} stripes="odd">
+| | | |
+|-|-|-|
+| `FOnUGCPackagesChangedMulticastDelegate` | `OnUGCPackagesChanged` |  |
+| `FOnModEnabledStateChangeMulticastDelegate` | `OnModEnabledStateChanged` |  |
+</RefTable>
+
+
+
+---
+
+### UGC_Metadata 
+
+
+
+##### Inheritance Hierarchy
+-> PrimaryDataAsset-> DataAsset-> Object
+
+
+
+
+
+
+##### Variables
+<RefTable colWidths={['10%', '10%', '20%']} stripes="odd">
+| | | |
+|-|-|-|
+| `FString` | `UnrealVersion` |  |
+| `bool` | `bIoStoreEnabled` |  |
+</RefTable>
+
+
+
+---
+
+
+
+## Structs
+
+### GenericModID 
+
+
+
+
+
+
+
+
+
+
+##### Variables
+<RefTable colWidths={['10%', '10%', '20%']} stripes="odd">
+| | | |
+|-|-|-|
+| `int64` | `ModID` |  |
+</RefTable>
+
+
+
+---
+
+### UGCPackage 
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+### ModUGCPathMap 
+
+
+
+
+
+
+
+
+
+
+##### Variables
+<RefTable colWidths={['10%', '10%', '20%']} stripes="odd">
+| | | |
+|-|-|-|
+| `TMap<FString,FGenericModID>` | `PathToModIDMap` |  |
+</RefTable>
+
+
+
+---
+
+
+
+## Functions 
+
+
+
+### GetModID (FUGCPackage)
+
+
+![nd_img_UGCLibrary_GetModID.png](img/refdocs/nd_img_UGCLibrary_GetModID.png)
+
+```cpp
+bool GetModID(FUGCPackage UGCPackage, FGenericModID ModID)
+```
+
+
+
+
+---
+
+
+
+## Enums
+
+### EUGCPackageMountState {#EUGCPackageMountState} 
+
+
+
+
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+| `EUPMS_Unmounted` |  |
+| `EUPMS_Mounted` |  |
+</RefTable>
+
+---
+
+### EUGCSubsystemFeature {#EUGCSubsystemFeature} 
+
+
+
+
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+| `EUSF_ModEnableDisable` |  |
+| `EUSF_Monetization` |  |
+| `EUSF_ModDownvote` |  |
+</RefTable>
+
+---
+
+
+

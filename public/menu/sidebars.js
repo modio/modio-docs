@@ -66,6 +66,19 @@ const sidebars = {
         },
         {
           type: 'category',
+          label: 'Modio UGC',
+          link: {type: 'doc', id: 'game-integration/unreal/modio-ugc/overview'},
+          items: [
+            'game-integration/unreal/modio-ugc/integration',
+            'game-integration/unreal/modio-ugc/creating-ugc',
+            'game-integration/unreal/modio-ugc/packaging-ugc',
+            'game-integration/unreal/modio-ugc/example-ugc',
+            'game-integration/unreal/modio-ugc/troubleshooting',
+            'game-integration/ue-generated/ugc/modio-ugc-refdocs',
+          ]
+        },
+        {
+          type: 'category',
           label: 'Component UI',
           link: {type: 'doc', id: 'game-integration/unreal/component-ui/ue-overview'},
           items: [
