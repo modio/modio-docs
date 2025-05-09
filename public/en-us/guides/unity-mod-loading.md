@@ -194,7 +194,7 @@ We recommend considering a console compliant approach even if your primary SKUs 
 
 *Enable & Disable*
 - **Do** - utilise mod.io functionality which allows the game to sync mod collection on a subscribe function, checking the player’s collection and providing the means to enable and disable mods for a play session.
-- **Don't** - rely on a game restart to enable mods subscribed to by a player (this is non-compliant with console guidelines).
+- **Don't** - rely on exiting and restarting the application to enable mods subscribed to by a player
 
 *File Override*
 - **Do** - load content dynamically using UserInstalledMod’s directory field to get the paths for each piece of content the user has installed.

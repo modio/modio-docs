@@ -50,7 +50,7 @@ Below is an example of the CloudCooking BuildGraph script that you can use in yo
 
     <Agent Name="Default Agent" Type="Default">
         <Node Name="CookMod">
-            <Command Name="BuildCookRun" Arguments="-Project=$(UProjectPath) -Platform=$(UGCBuildPlatform) -nocompile -installed -utf8output  -build -cook -CookCultures=en -unversionedcookedcontent -pak -stage -basedonreleaseversion=UGCReleaseV1_0 -stagebasereleasepaks -DLCName=$(DLCName) -stagingdirectory=$(UGCStagingDirectory)" />
+            <Command Name="BuildCookRun" Arguments="-Project=$(UProjectPath) -Platform=$(UGCBuildPlatform) -nocompile -installed -utf8output  -nobuild -cook -CookCultures=en -unversionedcookedcontent -pak -stage -basedonreleaseversion=UGCReleaseV1_0 -stagebasereleasepaks -DLCName=$(DLCName) -stagingdirectory=$(UGCStagingDirectory)" />
         </Node>
     </Agent>
 </BuildGraph>

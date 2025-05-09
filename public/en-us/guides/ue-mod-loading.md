@@ -90,7 +90,7 @@ Each PAK file should correspond to its respective platform, so if you intend to 
 
 ### ‘Dos and Don’ts’
 - **Do**: Utilize mod.io functionality that allows the game to sync mod collections on a subscribe function, checking the player’s collection and providing the means to enable and disable mods for a play session.
-- **Don’t**: Rely on a game restart to enable mods subscribed to by a player (this is non-compliant with console guidelines)
+- **Don’t**: Rely on exiting and restarting the application to enable mods subscribed to by a player
 
 - **Do**: Load content dynamically using the built-in `QueryUserInstallations` method to get the paths for each piece of content the user has installed
 - **Don’t**: Rely on the engine's auto-loading behavior or leveraging the Mods directory to load content, as these directories are not accessible on consoles and present additional challenges around file locking for uninstalling and updating content

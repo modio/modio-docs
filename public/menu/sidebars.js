@@ -142,7 +142,26 @@ const sidebars = {
         },
         'game-integration/unity/unity-marketplace', 
         'guides/unity-mod-loading',
-        'game-integration/unity/unity-unityref',
+        {
+          type: 'category',
+          label: 'Unity Reference',
+          items: [
+            'game-integration/unity/unity-cs-ref',
+            'game-integration/unity/unity-unity-ref',
+            'game-integration/unity/unity-builder-ref',
+          ]
+        },
+        {
+          type: 'category',
+          label: 'Legacy Plugin',
+          link: { type: 'doc', id: 'game-integration/unity/legacy/unity' },
+          items: [
+            'game-integration/unity/legacy/unity-setup',
+            'game-integration/unity/legacy/unity-getting-started',
+            'game-integration/unity/legacy/unity-marketplace',
+            'game-integration/unity/legacy/unity-unityref',
+          ]
+        },
       ],
     },
     {

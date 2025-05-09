@@ -40,24 +40,21 @@ The mod.io Unity Engine plugin makes it simple to implement Marketplace into you
 
 ### Purchasing Virtual Currency
 
-Purchasing Virtual Currency is achieved using the relevant `ModioPlatform` implementation, available for each supported storefront platform. We're going to use `ModioPlatformFacepunch` & `ModioPlatformOculus` as our two examples.
+Purchasing Virtual Currency is achieved using the relevant `IModioStorefrontService` or `IModioVirtualCurrencyProviderService` implementation, available for each supported storefront platform.
 
-For `ModioPlatformFacepunch`, all that needs to be done is to call `OpenPlatformPurchaseFlow()` on the base `ModioPlatform` class:
+For `IModioStorefrontService`, all that needs to be done is to call `OpenPlatformPurchaseFlow()`.
 
 ```csharp
 async void OpenPurchaseFlow()
 {
-    // This will open the Steam store-front overlay for your game
-    var result = await ModioPlatform.ActivePlatform.OpenPlatformPurchaseFlow();
-
-    if (result.Succeeded()) 
-        Debug.Log("Successfully opened Purchase Flow");
-    else
-        Debug.Log($"Failed to open {typeof(ModioPlatform.ActivePlatform)}'s Purchase flow");
+    Error error = await ModioServices.Resolve<IModioStorefrontService>().OpenPlatformPurchaseFlow();
+    if(!error)
+        return;
+    // ... error handling logic
 }
 ```
 
-For `ModioPlatformOculus`, it's a little more involved. Oculus doesn't provide the same storefront overlay functionality, and instead requires your game's UI to present the user with available SKUs. Once one is selected in-game, we can then open Oculus' checkout flow. To support this behavior, `ModioPlatformOculus` also implements the interface `IModioVirtualCurrencyPackBrowsablePlatform`.
+For `IModioVirtualCurrencyProviderService`, it's a little more involved. Some platforms do not provide storefront overlay functionality, and instead requires your game's UI to present the user with available SKUs. Once one is selected in-game, we can then open the platforms checkout flow.
 
 This interface utilizes the platform agnostic `PortalSku` struct, which provides a localized price in string format, the value of the virtual currency pack, the SKU code and the portal it originated from.
 
@@ -66,17 +63,12 @@ To get available SKUs for purchase, call `GetCurrencyPacks()`. To then checkout 
 ```csharp
 async void OpenPurchaseFlow()
 {
-    if (!(ModioPlatform.ActivePlatform is IModioVirtualCurrencyPackBrowsablePlatform browsablePlatform))
-    {
-        Debug.Log($"{typeof(ModioPlatform.ActivePlatform)} does not support {typeof(IModioVirtualCurrencyPackBrowsablePlatform)}!");
-        return;
-    }
+    var virtualCurrencyProviderService = ModioServices.Resolve<IModioVirtualCurrencyProviderService>();
+    (Error error, PortalSku[] skus) = await ModioServices.Resolve<IModioVirtualCurrencyProviderService>().GetCurrencyPackSkus();
 
-    ResultAnd<PortalSku[]> skuResult = await browsablePlatform.GetCurrencyPackSkus();
-
-    if (!skuResult.result.Succeeded())
+    if (error)
     {
-        Debug.Log($"Error getting Currency Pack Skus: {skuResult.result}");
+        // ... error handling
         return;
     }
 
@@ -85,26 +77,24 @@ async void OpenPurchaseFlow()
     if (cancelled)
         return;
 
-    var checkoutResult = browsablePlatform.OpenCheckoutFlow(selectedSku);
+    error = virtualCurrencyProviderService.OpenCheckoutFlow(selectedSku);
 
-    if (checkoutResult.result.Succeeded())
-        Debug.Log($"Successfully purchased {selectedSku.Sku}");
-    else
-        Debug.Log($"Error purchasing SKU {selectedSku.Sku}: {skuResult.result}");
+    if (error){
+        // ... error handling
+    }
 }
 ```
 
-Now that we've purchased the Virtual Currency pack on the platform, the final step is to tell mod.io's servers to Sync Entitlements, which will consume the entitlement and convert it into Virtual Currency. To do so, we simply call `ModIOUnityAsync.SyncEntitlements()`:
+The implementations of `IModioStorefrontService` and `IModioVirtualCurrencyProviderService` should also automatically SyncEntitlements for the user without manual intervention. However you can force this by calling `User.Current.SyncEntitlements()`. This will use the current platforms `IModioEntitlementService`.
 
 ```csharp
 async void SyncEntitlements()
 {
-    var response = await ModIOUnityAsync.SyncEntitlements();
+    Error error = await User.Current.SyncEntitlements();
 
-    if (response.result.Succeeded())
-        Debug.Log("Successfully synced entitlements!");
-    else
-        Debug.Log($"Error syncing entitlements: {response.result}");
+    if (error){
+        // ... error handling
+    }
 }
 ```
 
@@ -112,88 +102,53 @@ We've successfully purchased a Virtual Currency pack and consumed it using mod.i
 
 ### Get User Wallet Balance
 
-To get the wallet balance of the authenticated user, use `ModIOUnityAsync.GetUserWalletBalance()`. The return `Wallet` class contains information on your game's currency name as well as the balance:
+The implementations of `IModioStorefrontService` and `IModioVirtualCurrencyProviderService` should automatically sync the current User's Wallet. However you can force the sync by calling `User.Current.SyncWallet()`.
 
 ```csharp
 async void GetUserWalletBalanceExample()
 {
    var response = await ModIOUnityAsync.GetUserWalletBalance();
 
-   if (response.result.Succeeded())
-       Debug.Log($"User has a balance of {response.value.balance} credits.");
-   else
-       Debug.Log($"Error getting user's wallet balance: {response.result}");
-}
-```
+    Error error = await User.Current.SyncEntitlements();
 
-The `ModIOUnityEvents.UserEntitlementsChanged` event is invoked any time the authenticated user's wallet balance changes. This is particularly useful for implementing a UI element that displays the user's current wallet balance:
-
-```csharp
-public class WalletUIElement : MonoBehavior
-{
-    void Awake()
-    {
-        UpdateWallet();
-
-        ModIOUnityEvents.UserEntitlementsChanged += UpdateWallet;
-    }
-
-    void OnDestroy()
-    {
-        ModIOUnityEvents.UserEntitlementsChanged -= UpdateWallet;
-    }
-
-    async void UpdateWallet()
-    {
-        var walletResult = await ModIOUnityAsync.GetUserWalletBalance();
-
-        if (walletResult.result.Succeeded())
-            Debug.Log($"Successfully updated wallet amount {walletResult.value.currency}: {walletResult.value.balance}");
-        else
-            Debug.Log($"Error updating wallet: {walletResult.result}");
+    if (error){
+        // ... error handling
     }
 }
-```
 
 ### Purchasing a Mod
 
-Purchasing a mod is equally straight-forward, and uses `ModIOUnityAsync.PurchaseItem()`. This method requires a string argument called an idempotent: a unique string value which prevents accidental duplicate purchases. The price that was displayed to the user is also required, which must match the mod price, and acts as a safety measure to ensure the correct amount is being charged:
+Purchasing a mod is equally straight-forward, and uses `Mod.Purchase()`. This method takes a boolean argument for whether to subscribe on purchase.
 
 ```csharp
 async void PurchaseModExample()
 {
-    
-    ModId modId = new ModId(1234);          //Mod to purchase
-    string idempotent = modId.ToString();   //Guarantees no accidental duplicate purchases of this mod
-    int displayAmount = 12;                 //Price displayed to the player (Must match mod price)
+    (Error error, Mod mod) = await Mod.GetMod(1234); //Gets the mod either from cache or the server;
 
-    var response = await ModIOUnityAsync.PurchaseMod(modId, displayAmount, idempotent);
+    if(error){
+        // ... error handling
+        return;
+    }
 
-    if (response.result.Succeeded())
-        Debug.Log($"Successfully purchased Mod {modId}");
-    else
-        Debug.Log($"Error purchasing Mod {modId}: {response.result}");
+    error = await mod.Purchase(true);
+    if (!error){
+        // ... error handling   
+    }
 }
 ```
 
-The plugin will automatically subscribe to purchased mods. If you have previously called `ModIOUnity.EnableModManagement()` the mod will be added to the download queue and installed.
+The plugin will begin download and installing the mod if you have previously called `ModInstallationManagement.Active()` the mod will be added to the download queue and installed.
 
 ### Getting User's Purchases
 
 To install purchased mods the user should be subscribed to them (this happens automatically on purchase), and they will be automatically installed and updated after enabling mod management. See [Installing Mods](/unity/getting-started/#installing-mods) in the [Getting Started](/unity/getting-started/) guide for more information.
 
-To get a list of all of the authenticated user's purchased mods, use the synchronous method `ModIOUnity.GetPurchasedMods()`:
+To get a list of all of the authenticated user's purchased mods, use the synchronous method `User.Current.ModRepository.GetPurchased()`:
 
 ```csharp
 void GetUserPurchases()
 {
-    ModProfile[] purchasedMods = ModIOUnity.GetPurchasedMods(out Result result);
-
-    if (result.Succeeded())
-        foreach (var modProfile in purchasedMods)
-            Debug.Log($"User owns mod with id: {modProfile.id}");
-    else
-        Debug.Log($"Error getting purchased mods: {result}");
+    IEnumerable<Mod> purchasedMods = User.Current.ModRepository.GetPurchased();
 }
 ```
 

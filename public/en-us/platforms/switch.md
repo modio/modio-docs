@@ -16,7 +16,7 @@ Typical requirements for using mod.io on Nintendo Switch games include:
 * User consent is required the first time before authenticating a Nintendo user
 * If the Nintendo user has UGC parental controls disabled, the UGC menu and any UGC installed must be disabled
 
-All games supporting UGC must be approved individually, and you will be required to go through a dedicated UGC approval process with Nintendo directly once you are ready to launch the functionality. We recommend contacting your Nintendo representative early to establish their rules for UGC and any specific requirements you will need to meet. We can assist you with this process, and introduce you to our contact Ulysse Richert-Botté (Developer Relations, Nintendo) if this would be helpful.
+All games supporting UGC must be approved individually, and you will be required to go through a dedicated UGC approval process with Nintendo directly once you are ready to launch the functionality. We recommend contacting your Nintendo representative early to establish their rules for UGC and any specific requirements you will need to meet. We can assist you with this process, and introduce you to our contact Vincenzo Russo (Developer Relations, Nintendo) if this would be helpful.
 
 ## SDK Access
 

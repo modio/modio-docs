@@ -26,7 +26,7 @@ When $1 is spent to purchase 100 credits, and this virtual currency is then used
 
 A studio can expect a 20% to 61% share of the revenue from UGC sales, depending on the payment processor fee, and the revenue split configured. Creators can expect from 40% to 20%. Standards for creators’ payouts vary, but the industry norm from games like Roblox and Counter-Strike 2 is established around 25%.
 
-![Monetization Revenue Split](images/RevenueSplit-black.png)
+![Monetization Revenue Split](images/store-revenue-split-black.png)
 
 ### Fees
 
@@ -71,7 +71,7 @@ The above covers the transaction for the purchase of virtual currency packs. Fol
 
 So in total, the studio share after the sale of this virtual currency pack, and its use to purchase premium UGC, would amount to $5.3.
 
-![Virtual Currency Pack Sale In Store](images/IntStoreFlow-black.png)
+![Virtual Currency Pack Sale In Store](images/store-flow-internal-black.png)
 
 *Overview of the system for a virtual currency pack sale of $10 happening via the mod.io web app.*
 
@@ -99,6 +99,6 @@ The above covers the transaction for the purchase of virtual currency packs. Fol
 
 So in total, the studio share after the sale of this virtual currency pack, and its use to purchase premium UGC, would amount to $3.
 
-![Virtual Currency Pack Sale External](images/ExtStoreFlow-black.png)
+![Virtual Currency Pack Sale External](images/store-flow-external-black.png)
 
 *Overview of the system for a virtual currency pack sale of $10 happening via the mod.io web app.*
