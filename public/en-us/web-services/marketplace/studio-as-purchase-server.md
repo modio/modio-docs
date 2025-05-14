@@ -1,11 +1,11 @@
 ---
 id: studio-as-purchase-server
-title: Studio as Purchase Server
+title: Marketplace - Studio as Purchase Server
 slug: /web-services/marketplace/studio-as-purchase-server/
-sidebar_position: 0
+sidebar_position: 1
 ---
 
-# Studio as Purchase Server
+# Marketplace - Studio as Purchase Server
 
 Operating your own a Purchase Server requires a strong understanding of the role you must play in initiating transaction from your secure server. Covered in this section is:
 

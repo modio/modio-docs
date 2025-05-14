@@ -297,11 +297,10 @@ const sidebars = {
           items: ['game-management/monetization/monetization-how-it-works', 'game-management/monetization/monetization-enabling-monetization','game-management/monetization/monetization-onboarding', 'game-management/monetization/monetization-dashboard', 'game-management/monetization/monetization-approving-premium-ugc', 'game-management/monetization/monetization-marketplace', 'game-management/monetization/monetization-invoices', 'game-management/monetization/monetization-earnings-payouts']
         }, 
         {
-          type: 'category',
-          label: 'Integration',
-          link: {type: 'doc', id: 'game-management/monetization/monetization-integration'},
-          items: ['game-management/monetization/monetization-restapi']
-        }, 
+          type: 'category', 
+          label: 'Integrations', 
+          items: ['web-services/marketplace/modio-as-purchase-server', 'web-services/marketplace/studio-as-purchase-server'],
+        },
         'game-management/monetization/monetization-payment-testing', 'game-management/monetization/monetization-next-steps'
       ],
     },
@@ -367,8 +366,18 @@ const sidebars = {
     {
       type: 'category',
       label: 'Marketplace',
-      link: {type: 'doc', id: 'web-services/marketplace/overview'},
-      items: ['web-services/marketplace/studio-as-purchase-server'],
+      items: [
+      {
+        type: 'doc',
+        label: 'Getting Started',
+        id: 'web-services/marketplace/getting-started',
+      }, 
+      {
+        type: 'category', 
+        label: 'Integrations', 
+        items: ['web-services/marketplace/modio-as-purchase-server', 'web-services/marketplace/studio-as-purchase-server'],
+      }
+      ]
     },
     {
       type: 'category',

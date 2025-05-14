@@ -174,7 +174,7 @@ Returned with the access token is a refresh token, which can be exchanged for an
 
 #### Request
 
-`POST https://g-{your-game-id}.modapi.io/v1/oauth/token/refresh`
+`POST https://g-{your-game-id}.modapi.io/v1/oauth/token`
 
 | Parameter     | Type    | Required | Description                                                                                                  |
 | ------------- | ------- | -------- | ------------------------------------------------------------------------------------------------------------ |

@@ -119,7 +119,7 @@ The `cloudcooking.config` file is used to indicate to the build agent where it c
 
 | Parameter Name    | Example Value | Description |
 | -------- | -------- | ------- |
-| EngineBuildDirectory  | /UnrealEngine/Engine/Build | Path to the engine's Build directory, for RunUAT.bat |
+| EngineBuildDirectory  | /UnrealEngine/ | Path where the Engine folder can be found |
 | GameProjectDirectory | /UnrealEngine/Engine/MyGame | Path to the directory of your game  |
 | GameProjectName | MyGame.uproject | Filename of the uproject file for your game.  |
 
@@ -127,7 +127,7 @@ An example of the cloudcooking.config file for the above folder structure:
 
 ```json
 {
-    "EngineBuildDirectory" : "/UnrealEngine/Engine/" ,
+    "EngineBuildDirectory" : "/UnrealEngine/" ,
     "GameProjectDirectory" : "/UnrealEngine/Engine/MyGame",
     "GameProjectName" : "MyGame"
 }
