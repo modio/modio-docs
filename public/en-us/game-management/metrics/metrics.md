@@ -14,7 +14,7 @@ mod.io Metrics is a detailed analytics system that provides insights on your UGC
 * What are the trending UGC and creators in the last month
 * How many reports have been raised against UGC, and whether these reports are valid
 
-In addition, our upcoming Concurrent Players premium feature will give you insights into how long players are playing UGC and how frequently, letting you answer questions such as how UGC contributes to player retention and game longevity.
+In addition, our Playtime Metrics premium feature will give you insights into how long players are playing UGC and how frequently, letting you answer questions such as how UGC contributes to player retention and game longevity.
 
 ## Setting up metrics
 

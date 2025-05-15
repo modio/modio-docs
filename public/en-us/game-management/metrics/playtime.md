@@ -1,12 +1,12 @@
 ---
-id: metrics-sessions
-title: Playtime Insights Metrics Sessions
-slug: /metrics/metrics-sessions/
+id: playtime-metrics
+title: Playtime Metrics
+slug: /metrics/playtime/
 ---
 
-# Playtime Insights: Metrics Sessions
+# Playtime Metrics
 
-With Metrics Sessions, mod.io provides the ability for game studios & publishers to capture & analyze live data from your game to gain insights into how players are interacting with user-generated content within your title(s). Out of the box, the following insights are available: 
+With Playtime Metrics, mod.io provides the ability for game studios & publishers to capture & analyze live data from your game to gain insights into how players are interacting with user-generated content within your title(s). Out of the box, the following insights are available: 
 
 - Concurrent Players (CCU)
 - Concurrent UGC
@@ -15,12 +15,12 @@ With Metrics Sessions, mod.io provides the ability for game studios & publishers
 - Average UGC interacted with per session
 
 :::info
-Please note that Player Insights is a premium feature. If you are interested in accessing premium features via your games dashboard, please contact developers@mod.io.
+Please note that Playtime Metrics is a premium feature. If you are interested in accessing premium features via your games dashboard, please contact developers@mod.io.
 :::
 
 ## Getting Started
 
-Once you have enabled Playtime Insights: Metric Sessions via the Premium Features dashboard, you are ready to start implementing the feature. For the rest of this document we will be focusing on the REST API implementation of the feature if your game has not integrated our plugins. 
+Once you have enabled Playtime Metrics via the Premium Features dashboard, you are ready to start implementing the feature. For the rest of this document we will be focusing on the REST API implementation of the feature if your game has not integrated our plugins. 
 
 ## SDK Support
 

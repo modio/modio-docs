@@ -326,7 +326,7 @@ const sidebars = {
           type: 'category',
           label: 'Data',
           link: {type: 'doc', id: 'game-management/metrics/metrics-data'},
-          items: ['game-management/metrics/metrics-sessions', 'game-management/metrics/ugc-data', 'game-management/metrics/user-activity-data', 'game-management/metrics/health-data'],
+          items: ['game-management/metrics/playtime', 'game-management/metrics/ugc-data', 'game-management/metrics/user-activity-data', 'game-management/metrics/health-data'],
         },
         {
           type: 'doc',
