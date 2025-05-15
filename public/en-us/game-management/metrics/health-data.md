@@ -1,10 +1,10 @@
 ---
-id: health-data
-title: Health Data
-slug: /metrics/health-data/
+id: health
+title: Health Metrics
+slug: /metrics/health/
 ---
 
-# Health Data
+# Health Metrics
 
 The Health dashboard reports four data sources:
 

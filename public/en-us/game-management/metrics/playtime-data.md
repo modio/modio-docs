@@ -1,5 +1,5 @@
 ---
-id: playtime-metrics
+id: playtime
 title: Playtime Metrics
 slug: /metrics/playtime/
 ---

@@ -1,10 +1,10 @@
 ---
-id: user-activity-data
-title: User Activity Data
-slug: /metrics/user-activity-data/
+id: user-activity
+title: User Activity Metrics
+slug: /metrics/user-activity/
 ---
 
-# User Activity Data
+# User Activity Metrics
 
 The User Activity dashboard reports five data sources:
 

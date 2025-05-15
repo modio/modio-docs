@@ -1,10 +1,10 @@
 ---
-id: ugc-data
-title: UGC Usage Data
-slug: /metrics/ugc-data/
+id: ugc
+title: UGC Metrics
+slug: /metrics/ugc/
 ---
 
-# UGC Data
+# UGC Metrics
 
 The UGC dashboard reports six data sources:
 
