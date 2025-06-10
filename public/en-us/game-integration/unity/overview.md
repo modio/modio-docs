@@ -19,13 +19,13 @@ To access console platforms and documentation, see [Supporting Console Platforms
 | Platform          | Support | Legacy Support |
 |-------------------|:-------:|:--------------:| 
 | Windows           |    ✓    |       ✓        |
-| macOS             |   Q2    |       ✓        |
-| Linux             |   Q2    |       ✓        |
+| macOS             |    ✓    |       ✓        |
+| Linux             |    ✓    |       ✓        |
 | Meta Quest        |    ✓    |       ✓        |
-| Xbox One          |   Q2    |       ✓        |
-| Xbox Series X     |   Q2    |       ✓        |
-| PlayStation® 4    |   Q2    |       ✓        |
-| PlayStation® 5    |   Q2    |       ✓        |
+| Xbox One          |    ✓    |       ✓        |
+| Xbox Series X     |    ✓    |       ✓        |
+| PlayStation® 4    |    ✓    |       ✓        |
+| PlayStation® 5    |    ✓    |       ✓        |
 | Nintendo Switch   |   Q2    |       ✓        |
 | iOS               |   Q2    |       ✓        |
 | Android           |   Q2    |       ✓        |

@@ -9,17 +9,20 @@ sidebar_position: 100
 ## Functions
 
 
-### MakeStable
+
+
+
+### ToString
 
 
 
 
 
 ```cpp
-StableStorage<Object> MakeStable(Types &&...Args)
+inline std::string ToString(Modio::MaturityOption option)
 ```
 
-Convenience method to make a shared pointer
+Transform an MaturityOption to an std::string
 
 
 
@@ -27,295 +30,15 @@ Convenience method to make a shared pointer
 
 
 
-### MakeStable
 
 
 
 
 
-```cpp
-StableStorage<Object> MakeStable(Types &&...Args)
-```
 
-Convenience method to make a shared pointer
 
 
 
-
-
-
-
-### format_as
-
-
-
-
-
-```cpp
-inline std::underlying_type_t<Modio::Environment> format_as(Modio::Environment EnumValue)
-```
-
-Transform the EnumValue into the underlying type
-
-
-#### Parameters
-
-<RefTable colWidths={['30%', '30%', '40%']} stripes="odd">
-| | |
-|-|-|
-|EnumValue|The enumerator value| 
-</RefTable>
-
-#### Returns
-
-A statically casted value related to the enumerator
-
-
-
-
-
-### format_as
-
-
-
-
-
-```cpp
-inline std::underlying_type_t<Modio::Portal> format_as(Modio::Portal EnumValue)
-```
-
-Transform the EnumValue into the underlying type
-
-
-#### Parameters
-
-<RefTable colWidths={['30%', '30%', '40%']} stripes="odd">
-| | |
-|-|-|
-|EnumValue|The enumerator value| 
-</RefTable>
-
-#### Returns
-
-A statically casted value related to the enumerator
-
-
-
-
-
-### format_as
-
-
-
-
-
-```cpp
-inline std::underlying_type_t<Modio::ModfilePlatform> format_as(Modio::ModfilePlatform EnumValue)
-```
-
-Transform the EnumValue into the underlying type
-
-
-#### Parameters
-
-<RefTable colWidths={['30%', '30%', '40%']} stripes="odd">
-| | |
-|-|-|
-|EnumValue|The enumerator value| 
-</RefTable>
-
-#### Returns
-
-A statically casted value related to the enumerator
-
-
-
-
-
-### format_as
-
-
-
-
-
-```cpp
-inline std::underlying_type_t<Modio::LogoSize> format_as(Modio::LogoSize EnumValue)
-```
-
-Transform the EnumValue into the underlying type
-
-
-#### Parameters
-
-<RefTable colWidths={['30%', '30%', '40%']} stripes="odd">
-| | |
-|-|-|
-|EnumValue|The enumerator value| 
-</RefTable>
-
-#### Returns
-
-A statically casted value related to the enumerator
-
-
-
-
-
-### format_as
-
-
-
-
-
-```cpp
-inline std::underlying_type_t<Modio::IconSize> format_as(Modio::IconSize EnumValue)
-```
-
-Transform the EnumValue into the underlying type
-
-
-#### Parameters
-
-<RefTable colWidths={['30%', '30%', '40%']} stripes="odd">
-| | |
-|-|-|
-|EnumValue|The enumerator value| 
-</RefTable>
-
-#### Returns
-
-A statically casted value related to the enumerator
-
-
-
-
-
-### format_as
-
-
-
-
-
-```cpp
-inline std::underlying_type_t<Modio::AvatarSize> format_as(Modio::AvatarSize EnumValue)
-```
-
-Transform the EnumValue into the underlying type
-
-
-#### Parameters
-
-<RefTable colWidths={['30%', '30%', '40%']} stripes="odd">
-| | |
-|-|-|
-|EnumValue|The enumerator value| 
-</RefTable>
-
-#### Returns
-
-A statically casted value related to the enumerator
-
-
-
-
-
-### format_as
-
-
-
-
-
-```cpp
-inline std::underlying_type_t<Modio::GallerySize> format_as(Modio::GallerySize EnumValue)
-```
-
-Transform the EnumValue into the underlying type
-
-
-#### Parameters
-
-<RefTable colWidths={['30%', '30%', '40%']} stripes="odd">
-| | |
-|-|-|
-|EnumValue|The enumerator value| 
-</RefTable>
-
-#### Returns
-
-A statically casted value related to the enumerator
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### LogLevelToString
-
-
-
-
-
-```cpp
-constexpr const char *LogLevelToString(LogLevel Level)
-```
-
-Converts a Modio::LogLevel enum to string for use in log output
-
-
-#### Parameters
-
-<RefTable colWidths={['30%', '30%', '40%']} stripes="odd">
-| | |
-|-|-|
-|Level|the enum level| 
-</RefTable>
-
-#### Returns
-
-Null-terminated string containing friendly name
-
-
-
-
-
-### LogCategoryToString
-
-
-
-
-
-```cpp
-constexpr const char *LogCategoryToString(LogCategory Category)
-```
-
-Converts a Modio::LogCategory enum to string for use in log output
-
-
-#### Parameters
-
-<RefTable colWidths={['30%', '30%', '40%']} stripes="odd">
-| | |
-|-|-|
-|Category|the enum category| 
-</RefTable>
-
-#### Returns
-
-Null-terminated string containing friendly name
 
 
 
@@ -576,6 +299,7 @@ Synchronises the local list of the current user's subscribed mods with the serve
 * _authenticated-user_
 * _no-rate-limiting_
 * _management-enabled_
+* _fetch-external-updates-not-running_
 
 #### Parameters
 
@@ -593,6 +317,7 @@ Synchronises the local list of the current user's subscribed mods with the serve
 |GenericError::SDKNotInitialized|SDK not initialized
 |UserDataError::InvalidUser|No authenticated user
 |HttpError::RateLimited|Too many frequent calls to the API. Wait some time and try again.
+|GenericError::RequestInProgress|FetchExternalUpdates operation is already running.
 |NetworkError|Couldn't connect to mod.io servers
 </RefTable>
 
@@ -608,7 +333,7 @@ Synchronises the local list of the current user's subscribed mods with the serve
 
 
 ```cpp
-void PreviewExternalUpdatesAsync(std::function<void (Modio::ErrorCode, std::map<Modio::ModID, Modio::UserSubscriptionList::ChangeType>)> OnPreviewDone)
+void PreviewExternalUpdatesAsync(std::function<void (Modio::ErrorCode, int)> OnPreviewDone)
 ```
 
 Retrieve a list of updates between the users local mod state, and the server-side state. This allows you to identify which mods will be modified by the next call to FetchExternalUpdatesAsync in order to perform any content management (such as unloading files) that might be required.
@@ -767,7 +492,7 @@ Error code indicating there is no pending upload, install, or update associated 
 
 
 ```cpp
-Modio::Optional<Modio::ModProgressInfo> QueryCurrentModUpdate()
+int QueryCurrentModUpdate()
 ```
 
 Provides progress information for a mod installation or update operation if one is currently in progress.
@@ -789,7 +514,7 @@ Optional ModProgressInfo object containing information regarding the progress of
 
 
 ```cpp
-std::map<Modio::ModID, Modio::ModCollectionEntry> QueryUserSubscriptions()
+int QueryUserSubscriptions()
 ```
 
 Fetches the local view of the user's subscribed mods, including mods that are subscribed but not yet installed
@@ -811,7 +536,7 @@ std::map using Mod IDs as keys and ModCollectionEntry objects providing informat
 
 
 ```cpp
-std::map<Modio::ModID, Modio::ModCollectionEntry> QueryUserInstallations(bool bIncludeOutdatedMods)
+int QueryUserInstallations(bool bIncludeOutdatedMods)
 ```
 
 Fetches the subset of the user's subscribed mods that are installed and therefore ready for loading
@@ -840,7 +565,7 @@ std::map using Mod IDs as keys and ModCollectionEntry objects providing informat
 
 
 ```cpp
-std::map<Modio::ModID, Modio::ModCollectionEntry> QuerySystemInstallations()
+int QuerySystemInstallations()
 ```
 
 Fetches all mods installed on the system such that a consuming application can present the information in a UI in order to free up space by uninstalling mods
@@ -850,6 +575,28 @@ Fetches all mods installed on the system such that a consuming application can p
 #### Returns
 
 std::map using Mod IDs as keys and ModCollectionEntry objects providing information about mods installed on the system regardless of which user installed them
+
+
+
+
+
+### QueryStorageInfo
+
+
+
+
+
+```cpp
+Modio::StorageInfo QueryStorageInfo()
+```
+
+Retrieves a snapshot of current storage related information such as space consumed by mod installations and total available space
+
+
+
+#### Returns
+
+Structure containing storage information
 
 
 
@@ -983,7 +730,7 @@ Queries the server to update the user data. An empty ErrorCode passed to the cal
 
 
 ```cpp
-Modio::Optional<Modio::User> QueryUserProfile()
+int QueryUserProfile()
 ```
 
 Fetches the currently authenticated mod.io user profile if there is one associated with the current platform user
@@ -1051,7 +798,7 @@ Uses platform-specific authentication to associate a mod.io user account with th
 
 
 ```cpp
-void GetTermsOfUseAsync(std::function<void (Modio::ErrorCode, Modio::Optional<Modio::Terms>)> Callback)
+void GetTermsOfUseAsync(std::function<void (Modio::ErrorCode, int)> Callback)
 ```
 
 This function retrieves the information required for a game to display the mod.io terms of use to a player who wishes to create a mod.io account
@@ -1112,7 +859,7 @@ The handle to use in a call to SubmitNewModAsync
 
 
 ```cpp
-void SubmitNewModAsync(Modio::ModCreationHandle Handle, Modio::CreateModParams Params, std::function<void (Modio::ErrorCode, Modio::Optional<Modio::ModID>)> Callback)
+void SubmitNewModAsync(Modio::ModCreationHandle Handle, Modio::CreateModParams Params, std::function<void (Modio::ErrorCode, int)> Callback)
 ```
 
 Requests a new mod be created with the specified properties
@@ -1156,7 +903,7 @@ Requests a new mod be created with the specified properties
 
 
 ```cpp
-void SubmitModChangesAsync(Modio::ModID Mod, Modio::EditModParams Params, std::function<void (Modio::ErrorCode, Modio::Optional<Modio::ModInfo>)> Callback)
+void SubmitModChangesAsync(Modio::ModID Mod, Modio::EditModParams Params, std::function<void (Modio::ErrorCode, int)> Callback)
 ```
 
 Edits the parameters of a mod, by updating any fields set in the Params object to match the passed-in values. Fields left empty on the Params object will not be updated. If no fields are populated, will return an error.
@@ -1242,7 +989,7 @@ Queues the upload of a new modfile release for the specified mod using the submi
 
 
 ```cpp
-void ListAllModsAsync(Modio::FilterParams Filter, std::function<void (Modio::ErrorCode, Modio::Optional<Modio::ModInfoList>)> Callback)
+void ListAllModsAsync(Modio::FilterParams Filter, std::function<void (Modio::ErrorCode, int)> Callback)
 ```
 
 Provides a list of mods for the current game, that match the parameters specified in the filter
@@ -1283,7 +1030,7 @@ Provides a list of mods for the current game, that match the parameters specifie
 
 
 ```cpp
-void GetModInfoAsync(Modio::ModID ModId, std::function<void (Modio::ErrorCode, Modio::Optional<Modio::ModInfo>)> Callback)
+void GetModInfoAsync(Modio::ModID ModId, std::function<void (Modio::ErrorCode, int)> Callback)
 ```
 
 Fetches detailed information about the specified mod, including description and file metadata for the most recent release
@@ -1326,7 +1073,7 @@ Fetches detailed information about the specified mod, including description and 
 
 
 ```cpp
-void GetModMediaAsync(Modio::ModID ModId, Modio::LogoSize LogoSize, std::function<void (Modio::ErrorCode, Modio::Optional<std::string>)> Callback)
+void GetModMediaAsync(Modio::ModID ModId, Modio::LogoSize LogoSize, std::function<void (Modio::ErrorCode, int)> Callback)
 ```
 
 Downloads the logo for the specified mod. Will use existing file if it is already present on disk
@@ -1371,7 +1118,7 @@ Downloads the logo for the specified mod. Will use existing file if it is alread
 
 
 ```cpp
-void GetModMediaAsync(Modio::ModID ModId, Modio::GallerySize GallerySize, Modio::GalleryIndex Index, std::function<void (Modio::ErrorCode, Modio::Optional<std::string>)> Callback)
+void GetModMediaAsync(Modio::ModID ModId, Modio::GallerySize GallerySize, Modio::GalleryIndex Index, std::function<void (Modio::ErrorCode, int)> Callback)
 ```
 
 Get a gallery image for the specified mod ID. If it already exists on disk the file will be reused unless it is outdated
@@ -1417,7 +1164,7 @@ Get a gallery image for the specified mod ID. If it already exists on disk the f
 
 
 ```cpp
-void GetModMediaAsync(Modio::ModID ModId, Modio::AvatarSize AvatarSize, std::function<void (Modio::ErrorCode, Modio::Optional<std::string>)> Callback)
+void GetModMediaAsync(Modio::ModID ModId, Modio::AvatarSize AvatarSize, std::function<void (Modio::ErrorCode, int)> Callback)
 ```
 
 Downloads the creator avatar for a specified mod. Will use existing file if it is already present on disk and not outdated
@@ -1508,7 +1255,7 @@ Submits a rating for a mod on behalf of the currently authenticated user.
 
 
 ```cpp
-void GetModTagOptionsAsync(std::function<void (Modio::ErrorCode, Modio::Optional<Modio::ModTagOptions>)> Callback)
+void GetModTagOptionsAsync(std::function<void (Modio::ErrorCode, int)> Callback)
 ```
 
 Fetches the available tags used on mods for the current game. These tags can them be used in conjunction with the FilterParams passed to ListAllMods
@@ -1548,7 +1295,7 @@ Fetches the available tags used on mods for the current game. These tags can the
 
 
 ```cpp
-void GetModDependenciesAsync(Modio::ModID ModID, bool Recursive, std::function<void (Modio::ErrorCode, Modio::Optional<Modio::ModDependencyList>)> Callback)
+void GetModDependenciesAsync(Modio::ModID ModID, bool Recursive, std::function<void (Modio::ErrorCode, int)> Callback)
 ```
 
 For a given Mod ID, fetches a list of any mods that the creator has marked as dependencies
@@ -1576,6 +1323,97 @@ For a given Mod ID, fetches a list of any mods that the creator has marked as de
 |GenericError::SDKNotInitialized|SDK not initialized
 |HttpError::RateLimited|Too many frequent calls to the API. Wait some time and try again.
 |GenericError::BadParameter|The supplied mod ID is invalid
+|NetworkError|Couldn't connect to mod.io servers
+</RefTable>
+
+
+
+
+
+
+### AddModDependenciesAsync
+
+
+
+
+
+```cpp
+void AddModDependenciesAsync(Modio::ModID ModID, int Dependencies, std::function<void (Modio::ErrorCode)> Callback)
+```
+
+Adds dependencies to a specified mod, linking it with other mods that are required for it to function
+
+#### Requirements
+
+* _initialized-sdk_
+* _no-rate-limiting_
+* _authenticated-user_
+
+#### Parameters
+
+<RefTable colWidths={['30%', '30%', '40%']} stripes="odd">
+| | |
+|-|-|
+|ModID|The mod to add dependencies to| 
+|Dependencies|List of mod dependencies to add| 
+|Callback|Callback providing a status code to indicate if the dependencies were added successfully| 
+</RefTable>
+
+#### Error Values
+
+<RefTable colWidths={['30%']} stripes="odd">
+| | |
+|-|-|
+|GenericError::SDKNotInitialized|SDK not initialized
+|UserDataError::InvalidUser|No authenticated user
+|HttpError::RateLimited|Too many frequent calls to the API. Wait some time and try again.
+|GenericError::BadParameter|The supplied mod ID is invalid
+|NetworkError|Couldn't connect to mod.io servers
+|EntityNotFoundError|Specified mod could not be found
+</RefTable>
+
+
+
+
+
+
+### DeleteModDependenciesAsync
+
+
+
+
+
+```cpp
+void DeleteModDependenciesAsync(Modio::ModID ModID, int Dependencies, std::function<void (Modio::ErrorCode)> Callback)
+```
+
+Deletes dependencies from a specified mod, unlinking it from other mods that are no longer required.
+
+#### Requirements
+
+* _initialized-sdk_
+* _no-rate-limiting_
+* _authenticated-user_
+
+#### Parameters
+
+<RefTable colWidths={['30%', '30%', '40%']} stripes="odd">
+| | |
+|-|-|
+|ModID|The mod to delete dependencies from| 
+|Dependencies|List of mod IDs to delete as dependencies| 
+|Callback|Callback providing a status code to indicate if the dependencies were deleted successfully| 
+</RefTable>
+
+#### Error Values
+
+<RefTable colWidths={['30%']} stripes="odd">
+| | |
+|-|-|
+|GenericError::SDKNotInitialized|SDK not initialized
+|UserDataError::InvalidUser|No authenticated user
+|HttpError::RateLimited|Too many frequent calls to the API. Wait some time and try again.
+|GenericError::BadParameter|The supplied mod IDs are invalid
 |NetworkError|Couldn't connect to mod.io servers
 </RefTable>
 
@@ -1717,7 +1555,7 @@ De-authenticates the current mod.io user for the current session, and clears all
 
 
 ```cpp
-void GetUserMediaAsync(Modio::AvatarSize AvatarSize, std::function<void (Modio::ErrorCode, Modio::Optional<std::string>)> Callback)
+void GetUserMediaAsync(Modio::AvatarSize AvatarSize, std::function<void (Modio::ErrorCode, int)> Callback)
 ```
 
 Downloads the avatar of the currently authenticated user. Will only perform a download if there is no local cache of the avatar or if that cached copy is out-of-date.
@@ -1760,7 +1598,7 @@ Downloads the avatar of the currently authenticated user. Will only perform a do
 
 
 ```cpp
-std::vector<Modio::FieldError> GetLastValidationError()
+int GetLastValidationError()
 ```
 
 If the last request to the mod.io servers returned a validation failure, this function returns extended information describing the fields that failed validation.
@@ -1788,7 +1626,7 @@ Collection of Modio::FieldError objects, or empty collection if there was no val
 void ReportContentAsync(Modio::ReportParams Report, std::function<void (Modio::ErrorCode)> Callback)
 ```
 
-Sends a content report to mod.io. When using this function, please inform your users that if they provide their contact name or details in the Report parameter, that those may be shared with the person responsible for the content being reported. For more information on what data in a report will be shared with whom, please see link:https://mod.io/report/widget[our website's report form] for more information.
+Sends a content report to mod.io. When using this function, please inform your users that if they provide their contact name or details in the Report parameter, that those may be shared with the person responsible for the content being reported. For more information on what data in a report will be shared with whom, please see link: [our website's report form](https://mod.io/report) for more information.
 
 #### Requirements
 
@@ -1897,6 +1735,7 @@ Archives a mod. This mod will no longer be able to be viewed or retrieved via th
 |ApiError::InsufficientPermission|The authenticated user does not have permission to archive this mod. This action is restricted to team managers and administrators only.
 |GenericError::SDKNotInitialized|SDK not initialized
 |GenericError::BadParameter|The supplied mod ID is invalid
+|APIError::CannotArchiveModWithDependents|This mod is a dependency of other mods and as such cannot be archived
 |NetworkError|Couldn't connect to mod.io servers
 |EntityNotFoundError|Specified mod does not exist or was deleted
 </RefTable>
@@ -1913,7 +1752,7 @@ Archives a mod. This mod will no longer be able to be viewed or retrieved via th
 
 
 ```cpp
-void ListUserCreatedModsAsync(Modio::FilterParams Filter, std::function<void (Modio::ErrorCode, Modio::Optional<Modio::ModInfoList>)> Callback)
+void ListUserCreatedModsAsync(Modio::FilterParams Filter, std::function<void (Modio::ErrorCode, int)> Callback)
 ```
 
 Provides a list of mods that the user has submitted, or is a team member for, for the current game, applying the parameters specified in the filter
@@ -1955,7 +1794,7 @@ Provides a list of mods that the user has submitted, or is a team member for, fo
 
 
 ```cpp
-std::vector<std::string> GetBaseModInstallationDirectories()
+int GetBaseModInstallationDirectories()
 ```
 
 Returns a list of base mod installation directories. Under normal circumstances, this will return a single directory, which is the base directory that all mods are installed to for the current user.
@@ -2089,7 +1928,7 @@ Unmute a user. This will allow mod.io to mods authored by the previously muted u
 
 
 ```cpp
-void GetMutedUsersAsync(std::function<void (Modio::ErrorCode, Modio::Optional<Modio::UserList>)> Callback)
+void GetMutedUsersAsync(std::function<void (Modio::ErrorCode, int)> Callback)
 ```
 
 List all the users that have been muted by the current user.
@@ -2121,7 +1960,7 @@ List all the users that have been muted by the current user.
 
 
 ```cpp
-void GetGameInfoAsync(Modio::GameID GameID, std::function<void (Modio::ErrorCode, Modio::Optional<Modio::GameInfo>)> Callback)
+void GetGameInfoAsync(Modio::GameID GameID, std::function<void (Modio::ErrorCode, int)> Callback)
 ```
 
 Fetches detailed information about the specified game
@@ -2164,7 +2003,7 @@ Fetches detailed information about the specified game
 
 
 ```cpp
-void ListUserGamesAsync(Modio::FilterParams Filter, std::function<void (Modio::ErrorCode, Modio::Optional<Modio::GameInfoList>)> Callback)
+void ListUserGamesAsync(Modio::FilterParams Filter, std::function<void (Modio::ErrorCode, int)> Callback)
 ```
 
 Provides a list of games for the current user, that match the parameters specified in the filter
@@ -2199,6 +2038,47 @@ Provides a list of games for the current user, that match the parameters specifi
 
 
 
+### GetUserRatingsAsync
+
+
+
+
+
+```cpp
+void GetUserRatingsAsync(std::function<void (Modio::ErrorCode, int)> Callback)
+```
+
+Provides a list of mod ratings for the current user
+
+#### Requirements
+
+* _initialized-sdk_
+* _no-rate-limiting_
+* _user-authenticated_
+
+#### Parameters
+
+<RefTable colWidths={['30%', '30%', '40%']} stripes="odd">
+| | |
+|-|-|
+|Callback|Callback invoked with a status code and an optional UserRatingList providing ratings for each mod| 
+</RefTable>
+
+#### Error Values
+
+<RefTable colWidths={['30%']} stripes="odd">
+| | |
+|-|-|
+|GenericError::SDKNotInitialized|SDK not initialized
+|HttpError::RateLimited|Too many frequent calls to the API. Wait some time and try again.
+|NetworkError|Couldn't connect to mod.io servers
+</RefTable>
+
+
+
+
+
+
 
 ### PurchaseModAsync
 
@@ -2207,7 +2087,7 @@ Provides a list of games for the current user, that match the parameters specifi
 
 
 ```cpp
-void PurchaseModAsync(Modio::ModID ModID, uint64_t ExpectedPrice, std::function<void (Modio::ErrorCode, Modio::Optional<Modio::TransactionRecord>)> Callback)
+void PurchaseModAsync(Modio::ModID ModID, uint64_t ExpectedPrice, std::function<void (Modio::ErrorCode, int)> Callback)
 ```
 
 Attempts to purchase a specified mod with an expected price. Purchasing a mod will add a subscription to it
@@ -2253,7 +2133,7 @@ Attempts to purchase a specified mod with an expected price. Purchasing a mod wi
 
 
 ```cpp
-void RefreshUserEntitlementsAsync(Modio::EntitlementParams Params, std::function<void (Modio::ErrorCode, Modio::Optional<EntitlementConsumptionStatusList>)> Callback)
+void RefreshUserEntitlementsAsync(Modio::EntitlementParams Params, std::function<void (Modio::ErrorCode, int)> Callback)
 ```
 
 Requests mod.io consume available entitlements for the current authenticated user purchased through the current portal.
@@ -2343,7 +2223,7 @@ Fetches a list of all purchases that a User has made. Query the list using Query
 
 
 ```cpp
-std::map<Modio::ModID, Modio::ModInfo> QueryUserPurchasedMods()
+int QueryUserPurchasedMods()
 ```
 
 Fetches the locally cached view of the user's purchased mods, populated fromRefreshUserPurchasesAsync
@@ -2401,7 +2281,7 @@ Gets a UserDelegationToken that can be used by a backend serve for S2S functiona
 
 
 ```cpp
-Modio::ErrorCode InitTempModSet(std::vector<Modio::ModID> ModIds)
+Modio::ErrorCode InitTempModSet(int ModIds)
 ```
 
 Initialize a Temp Mod Set, installing every specified mod given in the param if they are not already subbed.
@@ -2440,7 +2320,7 @@ Modio::ErrorCode indicating if temp mod correctly started
 
 
 ```cpp
-Modio::ErrorCode AddToTempModSet(std::vector<Modio::ModID> ModIds)
+Modio::ErrorCode AddToTempModSet(int ModIds)
 ```
 
 Add mods to an already created Temp Mod Session, install every temp mod given in the param if they already subbed or already in Temp Mod Set
@@ -2480,7 +2360,7 @@ Modio::ErrorCode indicating if temp mod correctly started
 
 
 ```cpp
-Modio::ErrorCode RemoveFromTempModSet(std::vector<Modio::ModID> ModIds)
+Modio::ErrorCode RemoveFromTempModSet(int ModIds)
 ```
 
 Delete mods to an already created Temp Mod Session, delete every temp mods given in the param if they already subbed mod, it will not delete them.
@@ -2553,7 +2433,7 @@ Modio::ErrorCode indicating if temp mod correctly started
 
 
 ```cpp
-std::map<Modio::ModID, Modio::ModCollectionEntry> QueryTempModSet()
+int QueryTempModSet()
 ```
 
 Fetches the temp mod added to Temp Mod Set
@@ -2823,7 +2703,7 @@ Helper class to strongly type bitfield operations
 <RefTable colWidths={['30%', '20%', '50%']} stripes="odd">
 | | | |
 |-|-|-|
-| [`Modio::Optional<StorageType>`](#_2249073032064) | Value |  |
+| [`int`](#_2323073650848) | Internal |  |
 </RefTable>
 
 
@@ -2895,7 +2775,7 @@ Retrieve the size of the internal list
 <RefTable colWidths={['30%', '20%', '50%']} stripes="odd">
 | | | |
 |-|-|-|
-| [`ListType`](#_2249073637472) | InternalList |  |
+| [`ListType`](#_2323126549088) | InternalList |  |
 </RefTable>
 
 
@@ -2950,12 +2830,12 @@ Class specifying the parameters to submit when creating a mod file
 <RefTable colWidths={['30%', '20%', '50%']} stripes="odd">
 | | | |
 |-|-|-|
-| [`std::string`](#_2249037487584) | RootDirectory | Path to a directory to treat as the root of the mod. The SDK will compress all contents of this folder into a .zip archive, with a relative path based on this directory. This directory will not be created itself, the contents will exist at the top level of the archive. |
-| [`Modio::Optional<std::string>`](#_2249071261648) | Version | Optional version string for this modfile release |
-| [`Modio::Optional<std::string>`](#_2249071261648) | Changelog | Optional changelog string for this modfile release |
-| [`Modio::Optional<_Bool>`](#_2249075727856) | bSetAsActive | Should this mod be set as active/latest release? Defaults to true if not set. |
-| [`Modio::Optional<std::string>`](#_2249071261648) | MetadataBlob | Optional metadata blob for this mod |
-| [`Modio::Optional<std::vector<Modio::ModfilePlatform> >`](#_2249075967152) | Platforms | Optional vector of platforms for this modfile |
+| [`std::string`](#_2323102537648) | RootDirectory | Path to a directory to treat as the root of the mod. The SDK will compress all contents of this folder into a .zip archive, with a relative path based on this directory. This directory will not be created itself, the contents will exist at the top level of the archive. |
+| [`int`](#_2323073650848) | Version | Optional version string for this modfile release |
+| [`int`](#_2323073650848) | Changelog | Optional changelog string for this modfile release |
+| [`int`](#_2323073650848) | bSetAsActive | Should this mod be set as active/latest release? Defaults to true if not set. |
+| [`int`](#_2323073650848) | MetadataBlob | Optional metadata blob for this mod |
+| [`int`](#_2323073650848) | Platforms | Optional vector of platforms for this modfile |
 </RefTable>
 
 
@@ -2974,17 +2854,18 @@ Class specifying the parameters to submit when creating a mod
 <RefTable colWidths={['30%', '20%', '50%']} stripes="odd">
 | | | |
 |-|-|-|
-| [`std::string`](#_2249037487584) | PathToLogoFile | Path to the logo for the mod. Must point to a valid file on disk or the mod will not be created on the server. |
-| [`std::string`](#_2249037487584) | Name | The name of the mod |
-| [`std::string`](#_2249037487584) | Summary | A brief summary of what the mod is |
-| [`Modio::Optional<std::string>`](#_2249071261648) | NamePath | Optional override for the name 'slug' in the mod's URL |
-| [`Modio::Optional<Modio::ObjectVisibility>`](#_2249076765840) | Visibility | Optional override for the mod's visibility status. Defaults to Public (1) |
-| [`Modio::Optional<std::string>`](#_2249071261648) | Description | Optional long description of the mod |
-| [`Modio::Optional<std::string>`](#_2249071261648) | HomepageURL | Optional URL to the mod's homepage. Must be a valid URL |
-| [`Modio::Optional<std::size_t>`](#_2249077279536) | Stock | Optional quantity limit on the mod |
-| [`Modio::Optional<Modio::MaturityOption>`](#_2249077518256) | MaturityRating | Bitwise mask of flags indicating mature content |
-| [`Modio::Optional<std::string>`](#_2249071261648) | MetadataBlob | Optional metadata blob for this mod |
-| [`Modio::Optional<std::vector<std::string> >`](#_2249078032096) | Tags | Optional list of mod tags. All tags must be supported by the parent game to be applied |
+| [`std::string`](#_2323102537648) | PathToLogoFile | Path to the logo for the mod. Must point to a valid file on disk or the mod will not be created on the server. |
+| [`std::string`](#_2323102537648) | Name | The name of the mod |
+| [`std::string`](#_2323102537648) | Summary | A brief summary of what the mod is |
+| [`int`](#_2323073650848) | NamePath | Optional override for the name 'slug' in the mod's URL |
+| [`int`](#_2323073650848) | Visibility | Optional override for the mod's visibility status. Defaults to Public (1) |
+| [`int`](#_2323073650848) | Description | Optional long description of the mod |
+| [`int`](#_2323073650848) | HomepageURL | Optional URL to the mod's homepage. Must be a valid URL |
+| [`int`](#_2323073650848) | Stock | Optional quantity limit on the mod |
+| [`int`](#_2323073650848) | MaturityRating | Bitwise mask of flags indicating mature content |
+| [`int`](#_2323073650848) | CommunityOptions | Community options for the mod |
+| [`int`](#_2323073650848) | MetadataBlob | Optional metadata blob for this mod |
+| [`int`](#_2323073650848) | Tags | Optional list of mod tags. All tags must be supported by the parent game to be applied |
 </RefTable>
 
 
@@ -3003,16 +2884,17 @@ Class specifying fields to update for a mod
 <RefTable colWidths={['30%', '20%', '50%']} stripes="odd">
 | | | |
 |-|-|-|
-| [`Modio::Optional<std::string>`](#_2249071261648) | Name | The name of the mod |
-| [`Modio::Optional<std::string>`](#_2249071261648) | Summary | A brief summary of what the mod is |
-| [`Modio::Optional<std::string>`](#_2249071261648) | NamePath | Optional override for the name 'slug' in the mod's URL |
-| [`Modio::Optional<Modio::ObjectVisibility>`](#_2249076765840) | Visibility | Optional override for the mod's visibility status. Defaults to Public (1) |
-| [`Modio::Optional<std::string>`](#_2249071261648) | Description | Optional long description of the mod |
-| [`Modio::Optional<std::string>`](#_2249071261648) | HomepageURL | Optional URL to the mod's homepage. Must be a valid URL |
-| [`Modio::Optional<Modio::MaturityOption>`](#_2249077518256) | MaturityRating | Bitwise mask of flags indicating mature content |
-| [`Modio::Optional<std::string>`](#_2249071261648) | MetadataBlob | Optional metadata blob for this mod |
-| [`Modio::Optional<std::string>`](#_2249071261648) | LogoPath | Optional path to a new logo image |
-| [`Modio::Optional<std::vector<std::string> >`](#_2249078032096) | Tags | Optional tags vector for this mod |
+| [`int`](#_2323073650848) | Name | The name of the mod |
+| [`int`](#_2323073650848) | Summary | A brief summary of what the mod is |
+| [`int`](#_2323073650848) | NamePath | Optional override for the name 'slug' in the mod's URL |
+| [`int`](#_2323073650848) | Visibility | Optional override for the mod's visibility status. Defaults to Public (1) |
+| [`int`](#_2323073650848) | Description | Optional long description of the mod |
+| [`int`](#_2323073650848) | HomepageURL | Optional URL to the mod's homepage. Must be a valid URL |
+| [`int`](#_2323073650848) | MaturityRating | Bitwise mask of flags indicating mature content |
+| [`int`](#_2323073650848) | CommunityOptions | Community options for the mod |
+| [`int`](#_2323073650848) | MetadataBlob | Optional metadata blob for this mod |
+| [`int`](#_2323073650848) | LogoPath | Optional path to a new logo image |
+| [`int`](#_2323073650848) | Tags | Optional tags vector for this mod |
 </RefTable>
 
 
@@ -3027,7 +2909,7 @@ Class storing a set of filter parameters for use in xref:Modio::ListAllModsAsync
 #### Enums
 
 
-##### SortFieldType {#_2249081878336} 
+##### SortFieldType {#_2323127632688} 
 
 Enum indicating which field should be used to sort the results.
 
@@ -3049,7 +2931,7 @@ Enum indicating which field should be used to sort the results.
 
 
 
-##### SortDirection {#_2249081881200} 
+##### SortDirection {#_2323127635552} 
 
 Enum indicating which direction sorting should be applied
 
@@ -3065,7 +2947,7 @@ Enum indicating which direction sorting should be applied
 
 
 
-##### RevenueFilterType {#_2249081882208} 
+##### RevenueFilterType {#_2323127636560} 
 
 Enum indicating filtering options based off revenue type
 
@@ -3149,7 +3031,7 @@ Only include mods where the name contains the provided string
 
 
 ```cpp
-FilterParams &NameContains(const std::vector<std::string> &SearchString)
+FilterParams &NameContains(const int &SearchString)
 ```
 
 Only include mods where the name contains at least one of the provided strings (string1 OR string2 OR stringN...)
@@ -3205,7 +3087,7 @@ Only include mods with the specified author User ID
 
 
 ```cpp
-FilterParams &MatchingAuthors(const std::vector<Modio::UserID> &UserIds)
+FilterParams &MatchingAuthors(const int &UserIds)
 ```
 
 Only include mods with the specified author User IDs
@@ -3233,7 +3115,7 @@ Only include mods with the specified author User IDs
 
 
 ```cpp
-FilterParams &MatchingIDs(const std::vector<Modio::ModID> &IDSet)
+FilterParams &MatchingIDs(const int &IDSet)
 ```
 
 Only include mods with the specified IDs
@@ -3261,7 +3143,7 @@ Only include mods with the specified IDs
 
 
 ```cpp
-FilterParams &ExcludingIDs(const std::vector<Modio::ModID> &IDSet)
+FilterParams &ExcludingIDs(const int &IDSet)
 ```
 
 Exclude mods with the specified IDs. This takes precedence over MatchingIDs.
@@ -3289,7 +3171,7 @@ Exclude mods with the specified IDs. This takes precedence over MatchingIDs.
 
 
 ```cpp
-FilterParams &MarkedLiveAfter(std::chrono::system_clock::time_point LiveAfter)
+FilterParams &MarkedLiveAfter(int LiveAfter)
 ```
 
 Only include mods that were marked live (i.e released) after the specified date
@@ -3317,7 +3199,7 @@ Only include mods that were marked live (i.e released) after the specified date
 
 
 ```cpp
-FilterParams &MarkedLiveBefore(std::chrono::system_clock::time_point LiveBefore)
+FilterParams &MarkedLiveBefore(int LiveBefore)
 ```
 
 Only include mods that were marked live (i.e released) before the specified date
@@ -3373,7 +3255,7 @@ Only include mods that have the specified tag
 
 
 ```cpp
-FilterParams &WithTags(std::vector<std::string> NewTags)
+FilterParams &WithTags(int NewTags)
 ```
 
 Only include mods that have all the specified tags (tag1 AND tag2 AND tagN...)
@@ -3429,7 +3311,7 @@ Only include mods that do not have the specified tag
 
 
 ```cpp
-FilterParams &WithoutTags(std::vector<std::string> NewTags)
+FilterParams &WithoutTags(int NewTags)
 ```
 
 Only include mods that do not have any of the specified tags ( NOT (tag1 OR tag2 OR tagN...))
@@ -3635,22 +3517,22 @@ Default FilterParams constructor. Sorts by mod ID in ascending order and returns
 <RefTable colWidths={['30%', '20%', '50%']} stripes="odd">
 | | | |
 |-|-|-|
-| [`SortFieldType`](#_2249081878336) | SortField |  |
-| [`SortDirection`](#_2249081881200) | Direction |  |
-| [`std::vector<Modio::UserID>`](#_2249081891168) | AuthorUserIds |  |
-| [`std::vector<std::string>`](#_2249059514272) | SearchKeywords |  |
-| [`Modio::Optional<std::chrono::system_clock::time_point>`](#_2249082058480) | DateRangeBegin |  |
-| [`Modio::Optional<std::chrono::system_clock::time_point>`](#_2249082058480) | DateRangeEnd |  |
-| [`std::vector<std::string>`](#_2249059514272) | Tags |  |
-| [`std::vector<std::string>`](#_2249059514272) | ExcludedTags |  |
-| [`std::vector<Modio::ModID>`](#_2249072325168) | IncludedIDs |  |
-| [`std::vector<Modio::ModID>`](#_2249072325168) | ExcludedIDs |  |
-| [`Modio::Optional<RevenueFilterType>`](#_2249082318832) | Revenue |  |
-| [`Modio::Optional<MaturityOption>`](#_2249077518256) | Maturity |  |
-| [`Modio::Optional<std::string>`](#_2249071261648) | MetadataBlobSearchString |  |
-| [`_Bool`](#_2248993237888) | IsPaged |  |
-| [`std::size_t`](#_2248993238240) | Index |  |
-| [`std::size_t`](#_2248993238240) | Count |  |
+| [`SortFieldType`](#_2323127632688) | SortField |  |
+| [`SortDirection`](#_2323127635552) | Direction |  |
+| [`int`](#_2323073650848) | AuthorUserIds |  |
+| [`int`](#_2323073650848) | SearchKeywords |  |
+| [`int`](#_2323073650848) | DateRangeBegin |  |
+| [`int`](#_2323073650848) | DateRangeEnd |  |
+| [`int`](#_2323073650848) | Tags |  |
+| [`int`](#_2323073650848) | ExcludedTags |  |
+| [`int`](#_2323073650848) | IncludedIDs |  |
+| [`int`](#_2323073650848) | ExcludedIDs |  |
+| [`int`](#_2323073650848) | Revenue |  |
+| [`int`](#_2323073650848) | Maturity |  |
+| [`int`](#_2323073650848) | MetadataBlobSearchString |  |
+| [`_Bool`](#_2323073650720) | IsPaged |  |
+| [`std::size_t`](#_2323073651072) | Index |  |
+| [`std::size_t`](#_2323073651072) | Count |  |
 </RefTable>
 
 
@@ -3756,11 +3638,11 @@ Get the ResultCount
 <RefTable colWidths={['30%', '20%', '50%']} stripes="odd">
 | | | |
 |-|-|-|
-| [`std::int32_t`](#_2248993238016) | PageIndex |  |
-| [`std::int32_t`](#_2248993238016) | PageSize |  |
-| [`std::int32_t`](#_2248993238016) | PageCount |  |
-| [`std::int32_t`](#_2248993238016) | TotalResultCount |  |
-| [`std::int32_t`](#_2248993238016) | ResultCount |  |
+| [`std::int32_t`](#_2323073650848) | PageIndex |  |
+| [`std::int32_t`](#_2323073650848) | PageSize |  |
+| [`std::int32_t`](#_2323073650848) | PageCount |  |
+| [`std::int32_t`](#_2323073650848) | TotalResultCount |  |
+| [`std::int32_t`](#_2323073650848) | ResultCount |  |
 </RefTable>
 
 
@@ -3830,18 +3712,18 @@ Class representing a mod which is installed locally
 <RefTable colWidths={['30%', '20%', '50%']} stripes="odd">
 | | | |
 |-|-|-|
-| [`Modio::ModID`](#_2249069302624) | ID | The ID of the mod |
-| [`std::atomic<Modio::ModState>`](#_2249083990240) | CurrentState | The status of the mod, is it pending installation, is it installed but needing an update, etc |
-| [`Modio::Optional<Modio::ModState>`](#_2249084066480) | RollbackState |  |
-| [`ModInfo`](#_2249074908352) | ModProfile | Mod descriptor from the REST API |
-| [`std::atomic<uint8_t>`](#_2249040321696) | LocalUserSubscriptionCount | Reference counting to allow automatic uninstallation of unused local mods |
-| [`std::set<Modio::UserID>`](#_2249084381248) | LocalUserSubscriptions |  |
-| [`std::string`](#_2249037487584) | PathOnDisk |  |
-| [`Modio::FileSize`](#_2249071041248) | SizeOnDisk |  |
-| [`std::atomic<_Bool>`](#_2249040319968) | ShouldNotRetry | flag if this mod should not be processed because it encountered an unrecoverable error during installation/update. This should not be saved to disk as we will more than likely want to retry next session |
-| [`Modio::ErrorCode`](#_2249042265104) | NeverRetryReason |  |
-| [`Modio::ErrorCode`](#_2249042265104) | LastErrorCode |  |
-| [`uint8_t`](#_2248993238112) | RetriesRemainingThisSession |  |
+| [`Modio::ModID`](#_2323126336688) | ID | The ID of the mod |
+| [`std::atomic<Modio::ModState>`](#_2323127843440) | CurrentState | The status of the mod, is it pending installation, is it installed but needing an update, etc |
+| [`int`](#_2323073650848) | RollbackState |  |
+| [`ModInfo`](#_2323126664912) | ModProfile | Mod descriptor from the REST API |
+| [`std::atomic<uint8_t>`](#_2323103377376) | LocalUserSubscriptionCount | Reference counting to allow automatic uninstallation of unused local mods |
+| [`int`](#_2323073650848) | LocalUserSubscriptions |  |
+| [`std::string`](#_2323102537648) | PathOnDisk |  |
+| [`Modio::FileSize`](#_2323126345552) | SizeOnDisk |  |
+| [`std::atomic<_Bool>`](#_2323103375616) | ShouldNotRetry | flag if this mod should not be processed because it encountered an unrecoverable error during installation/update. This should not be saved to disk as we will more than likely want to retry next session |
+| [`Modio::ErrorCode`](#_2323105508160) | NeverRetryReason |  |
+| [`Modio::ErrorCode`](#_2323105508160) | LastErrorCode |  |
+| [`uint8_t`](#_2323073650944) | RetriesRemainingThisSession |  |
 </RefTable>
 
 
@@ -3856,7 +3738,7 @@ Class representing the progress of a mod installation or update
 #### Enums
 
 
-##### EModProgressState {#_2249084829456} 
+##### EModProgressState {#_2323127874592} 
 
 Enum representing which state the currently processing mod is in
 
@@ -3960,7 +3842,7 @@ Modio::FileSize for total progress in bytes
 <RefTable colWidths={['30%', '20%', '50%']} stripes="odd">
 | | | |
 |-|-|-|
-| [`Modio::ModID`](#_2249069302624) | ID | The mod ID of the mod being processed |
+| [`Modio::ModID`](#_2323126336688) | ID | The mod ID of the mod being processed |
 </RefTable>
 
 
@@ -3976,7 +3858,7 @@ Class containing the mod IDs the current user is subscribed to
 #### Enums
 
 
-##### ChangeType {#_2249085101552} 
+##### ChangeType {#_2323089262448} 
 
 Enum indicating if a mod was added or removed when calculating the difference of two user subscription lists
 
@@ -4066,7 +3948,7 @@ Updates the error/status code for a given Mod ID in the log
 
 
 ```cpp
-inline std::vector<Modio::ModManagementEvent> ClearLog()
+inline int ClearLog()
 ```
 
 Clears the log of events
@@ -4086,7 +3968,7 @@ All entries in the log at the time ClearLog was called
 <RefTable colWidths={['30%', '20%', '50%']} stripes="odd">
 | | | |
 |-|-|-|
-| [`std::vector<Modio::ModManagementEvent>`](#_2249085656992) | InternalData |  |
+| [`int`](#_2323073650848) | InternalData |  |
 </RefTable>
 
 
@@ -4099,14 +3981,50 @@ Container for a collection of ModDependency objects
 
 
 
+#### Functions
+
+
+##### AppendUnique
+
+
+
+
+
+```cpp
+void AppendUnique(const ModDependencyList &Other)
+```
+
+Insert the unique contents of a ModDependencyList to the end of this list
+
+
+
+
+
+
+##### AppendUnique
+
+
+
+
+
+```cpp
+void AppendUnique(const ModDependency &ModDependencyData)
+```
+
+Insert a unique ModDependency to the end of this list
+
+
+
+
+
 
 #### Variables
 
 <RefTable colWidths={['30%', '20%', '50%']} stripes="odd">
 | | | |
 |-|-|-|
-| [`std::int64_t`](#_2248993238080) | TotalFilesize | Total size of all the dependency files in bytes. |
-| [`std::int64_t`](#_2248993238080) | TotalFilesizeUncompressed | Total Size of the uncompressed dependency files in bytes. |
+| [`std::uint64_t`](#_2323073651072) | TotalFilesize | Total size of all the dependency files in bytes. |
+| [`std::uint64_t`](#_2323073651072) | TotalFilesizeUncompressed | Total Size of the uncompressed dependency files in bytes. |
 </RefTable>
 
 
@@ -4175,7 +4093,7 @@ Insert a ModioEntitlementConsumptionStatus to the end of this list
 
 
 ```cpp
-Modio::Optional<EntitlementConsumptionStatusList> EntitlementsThatRequireRetry() const
+int EntitlementsThatRequireRetry() const
 ```
 
 Filter elements that require a second request to confirm the entitlement
@@ -4194,7 +4112,7 @@ Optional list with the elements that need a retry, otherwise an empty object.
 <RefTable colWidths={['30%', '20%', '50%']} stripes="odd">
 | | | |
 |-|-|-|
-| [`Modio::Optional<Modio::EntitlementWalletBalance>`](#_2249153102656) | WalletBalance | Updated wallet balance from syncing entitlements |
+| [`int`](#_2323073650848) | WalletBalance | Updated wallet balance from syncing entitlements |
 </RefTable>
 
 
@@ -4292,7 +4210,7 @@ Class representing a list of users
 void Append(const UserList &Other)
 ```
 
-Insert ModInfoList to the end of this list
+Insert UserList to the end of this list
 
 
 
@@ -4309,7 +4227,7 @@ Insert ModInfoList to the end of this list
 void Append(const User &UserData)
 ```
 
-Insert a ModInfo to the end of this list
+Insert a User to the end of this list
 
 
 
@@ -4366,7 +4284,7 @@ explicit constructor from a value of the underlying integer type
 <RefTable colWidths={['30%', '20%', '50%']} stripes="odd">
 | | | |
 |-|-|-|
-| [`UnderlyingIntegerType`](#_2248994162480) | Value |  |
+| [`UnderlyingIntegerType`](#_2323074857808) | Value |  |
 </RefTable>
 
 
@@ -4411,7 +4329,7 @@ Explicit constructor
 <RefTable colWidths={['30%', '20%', '50%']} stripes="odd">
 | | | |
 |-|-|-|
-| [`std::string`](#_2249037487584) | InternalCode |  |
+| [`std::string`](#_2323102537648) | InternalCode |  |
 </RefTable>
 
 
@@ -4456,7 +4374,7 @@ Explicit constructor
 <RefTable colWidths={['30%', '20%', '50%']} stripes="odd">
 | | | |
 |-|-|-|
-| [`std::string`](#_2249037487584) | InternalAddress |  |
+| [`std::string`](#_2323102537648) | InternalAddress |  |
 </RefTable>
 
 
@@ -4501,7 +4419,7 @@ Explicit constructor
 <RefTable colWidths={['30%', '20%', '50%']} stripes="odd">
 | | | |
 |-|-|-|
-| [`std::string`](#_2249037487584) | InternalApiKey |  |
+| [`std::string`](#_2323102537648) | InternalApiKey |  |
 </RefTable>
 
 
@@ -4608,6 +4526,38 @@ Strong type for a game ID
 
 
 
+###  {#} 
+
+
+
+Strong type representing a Guid as 16byte binary value
+
+
+
+#### Functions
+
+
+
+
+
+
+
+
+
+
+
+
+#### Variables
+
+<RefTable colWidths={['30%', '20%', '50%']} stripes="odd">
+| | | |
+|-|-|-|
+| [`uint8_t[16]`](#_2323103860688) | Raw8 |  |
+| [`uint64_t[2]`](#_2323126361648) | Raw64 |  |
+</RefTable>
+
+
+
 ### Guid {#Guid} 
 
 
@@ -4660,12 +4610,36 @@ Explicit constructor
 
 
 
+##### Guid
+
+
+
+
+
+```cpp
+explicit Guid(const Modio::GuidV4 &InGuid)
+```
+
+Explicit constructor
+
+
+###### Parameters
+
+<RefTable colWidths={['30%', '30%', '40%']} stripes="odd">
+| | |
+|-|-|
+|InGuid|raw 128bit Guid| 
+</RefTable>
+
+
+
+
 #### Variables
 
 <RefTable colWidths={['30%', '20%', '50%']} stripes="odd">
 | | | |
 |-|-|-|
-| [`std::string`](#_2249037487584) | InternalGuid |  |
+| [`std::string`](#_2323102537648) | InternalGuid |  |
 </RefTable>
 
 
@@ -4696,11 +4670,11 @@ Simple struct to encapsulate data passed to external authentication systems
 <RefTable colWidths={['30%', '20%', '50%']} stripes="odd">
 | | | |
 |-|-|-|
-| [`std::string`](#_2249037487584) | AuthToken | AuthToken String received by an authentication provider, that later is used to verify a user on the mod.io API |
-| [`Modio::Optional<std::string>`](#_2249071261648) | UserEmail | UserEmail Optional string that associates an email with a user |
-| [`_Bool`](#_2248993237888) | bUserHasAcceptedTerms | bUserHasAcceptedTerms Boolean value that signals when a user has accepted the mod.io Terms of Service. True when they are accepted, false otherwise. |
-| [`_Bool`](#_2248993237888) | bURLEncodeAuthToken | bURLEncodeAuthToken Boolean value to let the SDK know if the AuthToken requires URL encoding before sending the string to the mod.io API. By default, it would not perform URL encoding. |
-| [`std::map<std::string, std::string>`](#_2249071526496) | ExtendedParameters | ExtendedParameters A map to store extended parameters required by some providers. |
+| [`std::string`](#_2323102537648) | AuthToken | AuthToken String received by an authentication provider, that later is used to verify a user on the mod.io API |
+| [`int`](#_2323073650848) | UserEmail | UserEmail Optional string that associates an email with a user |
+| [`_Bool`](#_2323073650720) | bUserHasAcceptedTerms | bUserHasAcceptedTerms Boolean value that signals when a user has accepted the mod.io Terms of Service. True when they are accepted, false otherwise. |
+| [`_Bool`](#_2323073650720) | bURLEncodeAuthToken | bURLEncodeAuthToken Boolean value to let the SDK know if the AuthToken requires URL encoding before sending the string to the mod.io API. By default, it would not perform URL encoding. |
+| [`int`](#_2323073650848) | ExtendedParameters | ExtendedParameters A map to store extended parameters required by some providers. |
 </RefTable>
 
 
@@ -4719,8 +4693,8 @@ Simple struct representing a validation error from the REST API
 <RefTable colWidths={['30%', '20%', '50%']} stripes="odd">
 | | | |
 |-|-|-|
-| [`std::string`](#_2249037487584) | Field | String description of the field failing validation |
-| [`std::string`](#_2249037487584) | Error | String containing the reason for the validation failure |
+| [`std::string`](#_2323102537648) | Field | String description of the field failing validation |
+| [`std::string`](#_2323102537648) | Error | String containing the reason for the validation failure |
 </RefTable>
 
 
@@ -4739,7 +4713,7 @@ Simple struct to encapsulate portal-specific data required when consuming entitl
 <RefTable colWidths={['30%', '20%', '50%']} stripes="odd">
 | | | |
 |-|-|-|
-| [`std::map<std::string, std::string>`](#_2249071526496) | ExtendedParameters | ExtendedParameters A map to store extended parameters required by some portals. |
+| [`int`](#_2323073650848) | ExtendedParameters | ExtendedParameters A map to store extended parameters required by some portals. |
 </RefTable>
 
 
@@ -4758,8 +4732,85 @@ Simple struct to store metric session specific parameters for use in xref:Modio:
 <RefTable colWidths={['30%', '20%', '50%']} stripes="odd">
 | | | |
 |-|-|-|
-| [`Modio::Optional<Modio::Guid>`](#_2249072081152) | SessionId | Set a custom Session Id to be used in the metrics service for your session |
-| [`std::vector<Modio::ModID>`](#_2249072325168) | ModIds | Includes mods which will be tracked as part of the metrics service |
+| [`int`](#_2323073650848) | SessionId | Set a custom Session Id to be used in the metrics service for your session |
+| [`int`](#_2323073650848) | ModIds | Includes mods which will be tracked as part of the metrics service |
+</RefTable>
+
+
+
+### StorageInfo {#StorageInfo} 
+
+
+
+Structure containing storage usage information including availability and consumption
+
+
+
+#### Functions
+
+
+##### GetSpace
+
+
+
+
+
+```cpp
+Modio::FileSize GetSpace(Modio::StorageLocation Location, Modio::StorageUsage Usage) const
+```
+
+Returns the recorded storage space for a given storage location and usage type
+
+
+###### Parameters
+
+<RefTable colWidths={['30%', '30%', '40%']} stripes="odd">
+| | |
+|-|-|
+|Location|Where the storage has been written to| 
+|Usage|The type of storage usage recorded| 
+</RefTable>
+
+###### Returns
+
+Modio::FileSize for total storage space in bytes
+
+
+
+
+##### GetQuota
+
+
+
+
+
+```cpp
+static int GetQuota(Modio::StorageLocation Location)
+```
+
+Get the storage quota for a given `Modio::StorageLocation` if one has been set.
+
+
+###### Parameters
+
+<RefTable colWidths={['30%', '30%', '40%']} stripes="odd">
+| | |
+|-|-|
+|Location|The type of storage to get the quota for.| 
+</RefTable>
+
+###### Returns
+
+`Modio::Optional<Modio::FileSize>` of the storage quota in bytes for the specified `Modio::StorageLocation`. Empty if no quota is set.
+
+
+
+
+#### Variables
+
+<RefTable colWidths={['30%', '20%', '50%']} stripes="odd">
+| | | |
+|-|-|-|
 </RefTable>
 
 
@@ -4774,7 +4825,7 @@ Metadata for a release archive for a mod
 #### Enums
 
 
-##### VirusScanStatus {#_2249072975216} 
+##### VirusScanStatus {#_2323126442896} 
 
 Enum related to the Virus scan status of a file
 
@@ -4794,7 +4845,7 @@ Enum related to the Virus scan status of a file
 
 
 
-##### VirusStatus {#_2249072977008} 
+##### VirusStatus {#_2323126444688} 
 
 Enum related to the Virus status of a file
 
@@ -4817,20 +4868,34 @@ Enum related to the Virus status of a file
 <RefTable colWidths={['30%', '20%', '50%']} stripes="odd">
 | | | |
 |-|-|-|
-| [`Modio::FileMetadataID`](#_2249071018544) | MetadataId | Unique modfile id. |
-| [`Modio::ModID`](#_2249069302624) | ModId | Unique mod id. |
-| [`std::int64_t`](#_2248993238080) | DateAdded | Unix timestamp of date file was added. |
-| [`VirusScanStatus`](#_2249072975216) | CurrentVirusScanStatus | Current virus scan status of the file. For newly added files that have yet to be scanned this field will change frequently until a scan is complete |
-| [`VirusStatus`](#_2249072977008) | CurrentVirusStatus | Was a virus detected? |
-| [`std::int64_t`](#_2248993238080) | Filesize | Size of the file in bytes. |
-| [`std::int64_t`](#_2248993238080) | FilesizeUncompressed | Size of the uncompressed file in bytes. |
-| [`std::string`](#_2249037487584) | Filename | Filename including extension. |
-| [`std::string`](#_2249037487584) | Version | Release version this file represents. |
-| [`std::string`](#_2249037487584) | Changelog | Changelog for the file. |
-| [`std::string`](#_2249037487584) | MetadataBlob | Metadata stored by the game developer for this file. |
-| [`std::string`](#_2249037487584) | DownloadBinaryURL | Modfile download URL |
-| [`std::int64_t`](#_2248993238080) | DownloadExpiryDate | Modfile download expiry date |
+| [`Modio::FileMetadataID`](#_2323126340752) | MetadataId | Unique modfile id. |
+| [`Modio::ModID`](#_2323126336688) | ModId | Unique mod id. |
+| [`std::int64_t`](#_2323073650912) | DateAdded | Unix timestamp of date file was added. |
+| [`VirusScanStatus`](#_2323126442896) | CurrentVirusScanStatus | Current virus scan status of the file. For newly added files that have yet to be scanned this field will change frequently until a scan is complete |
+| [`VirusStatus`](#_2323126444688) | CurrentVirusStatus | Was a virus detected? |
+| [`std::uint64_t`](#_2323073651072) | Filesize | Size of the file in bytes. |
+| [`std::uint64_t`](#_2323073651072) | FilesizeUncompressed | Size of the uncompressed file in bytes. |
+| [`std::string`](#_2323102537648) | Filename | Filename including extension. |
+| [`std::string`](#_2323102537648) | Version | Release version this file represents. |
+| [`std::string`](#_2323102537648) | Changelog | Changelog for the file. |
+| [`std::string`](#_2323102537648) | MetadataBlob | Metadata stored by the game developer for this file. |
+| [`std::string`](#_2323102537648) | DownloadBinaryURL | Modfile download URL |
+| [`std::int64_t`](#_2323073650912) | DownloadExpiryDate | Modfile download expiry date |
 </RefTable>
+
+
+
+### ModCommunityOptionsFlags {#ModCommunityOptionsFlags} 
+
+
+
+A strong type flag object to represent ModCommunityOptions
+
+
+
+#### Functions
+
+
 
 
 
@@ -4848,16 +4913,16 @@ Contains download stats and ratings for a mod
 <RefTable colWidths={['30%', '20%', '50%']} stripes="odd">
 | | | |
 |-|-|-|
-| [`std::int64_t`](#_2248993238080) | PopularityRankPosition | Current rank of the mod. |
-| [`std::int64_t`](#_2248993238080) | PopularityRankTotalMods | Number of ranking spots the current rank is measured against. |
-| [`std::int64_t`](#_2248993238080) | DownloadsTotal | Number of total mod downloads. |
-| [`std::int64_t`](#_2248993238080) | SubscribersTotal | Number of total users who have subscribed to the mod. |
-| [`std::int64_t`](#_2248993238080) | RatingTotal | Number of times this mod has been rated. |
-| [`std::int64_t`](#_2248993238080) | RatingPositive | Number of positive ratings. |
-| [`std::int64_t`](#_2248993238080) | RatingNegative | Number of negative ratings. |
-| [`std::int64_t`](#_2248993238080) | RatingPercentagePositive | Number of positive ratings, divided by the total ratings to determine it’s percentage score. |
-| [`double`](#_2248993238304) | RatingWeightedAggregate | Overall rating of this item calculated using the [Wilson score confidence interval](https://www.evanmiller.org/how-not-to-sort-by-average-Ratinghtml). This column is good to sort on, as it will order items based on number of ratings and will place items with many positive ratings above those with a higher score but fewer ratings. |
-| [`std::string`](#_2249037487584) | RatingDisplayText | Textual representation of the rating in format: Overwhelmingly Positive -> Very Positive -> Positive -> Mostly Positive -> Mixed -> Negative -> Mostly Negative -> Very Negative -> Overwhelmingly Negative -> Unrated |
+| [`std::int64_t`](#_2323073650912) | PopularityRankPosition | Current rank of the mod. |
+| [`std::int64_t`](#_2323073650912) | PopularityRankTotalMods | Number of ranking spots the current rank is measured against. |
+| [`std::int64_t`](#_2323073650912) | DownloadsTotal | Number of total mod downloads. |
+| [`std::int64_t`](#_2323073650912) | SubscribersTotal | Number of total users who have subscribed to the mod. |
+| [`std::int64_t`](#_2323073650912) | RatingTotal | Number of times this mod has been rated. |
+| [`std::int64_t`](#_2323073650912) | RatingPositive | Number of positive ratings. |
+| [`std::int64_t`](#_2323073650912) | RatingNegative | Number of negative ratings. |
+| [`std::int64_t`](#_2323073650912) | RatingPercentagePositive | Number of positive ratings, divided by the total ratings to determine it’s percentage score. |
+| [`double`](#_2323073651136) | RatingWeightedAggregate | Overall rating of this item calculated using the [Wilson score confidence interval](https://www.evanmiller.org/how-not-to-sort-by-average-Ratinghtml). This column is good to sort on, as it will order items based on number of ratings and will place items with many positive ratings above those with a higher score but fewer ratings. |
+| [`std::string`](#_2323102537648) | RatingDisplayText | Textual representation of the rating in format: Overwhelmingly Positive -> Very Positive -> Positive -> Mostly Positive -> Mixed -> Negative -> Mostly Negative -> Very Negative -> Overwhelmingly Negative -> Unrated |
 </RefTable>
 
 
@@ -4890,13 +4955,13 @@ Object representing a mod.io user profile
 <RefTable colWidths={['30%', '20%', '50%']} stripes="odd">
 | | | |
 |-|-|-|
-| [`Modio::UserID`](#_2249069283296) | UserId | Unique id for the user |
-| [`std::string`](#_2249037487584) | Username | Username of the user |
-| [`Modio::Optional<Modio::Detail::OAuthToken>`](#_2249074184000) | AuthToken | Authentification token of the user |
-| [`std::int64_t`](#_2248993238080) | DateOnline | Unix timestamp the user was last online |
-| [`std::string`](#_2249037487584) | ProfileUrl | URL of the user's mod.io profile |
-| [`Modio::Detail::Avatar`](#_2249074145968) | Avatar | Cached information about the user's avatar |
-| [`std::string`](#_2249037487584) | DisplayNamePortal | The display name of the User for the given Portal that the mod search is coming from * ie if the Portal is PSN, then this is the owning user's PSN profile name if accounts are linked. |
+| [`Modio::UserID`](#_2323126332304) | UserId | Unique id for the user |
+| [`std::string`](#_2323102537648) | Username | Username of the user |
+| [`int`](#_2323073650848) | AuthToken | Authentification token of the user |
+| [`std::int64_t`](#_2323073650912) | DateOnline | Unix timestamp the user was last online |
+| [`std::string`](#_2323102537648) | ProfileUrl | URL of the user's mod.io profile |
+| [`Modio::Detail::Avatar`](#_2323126600512) | Avatar | Cached information about the user's avatar |
+| [`std::string`](#_2323102537648) | DisplayNamePortal | The display name of the User for the given Portal that the mod search is coming from * ie if the Portal is PSN, then this is the owning user's PSN profile name if accounts are linked. |
 </RefTable>
 
 
@@ -4915,8 +4980,8 @@ Strong type for a ModTag
 <RefTable colWidths={['30%', '20%', '50%']} stripes="odd">
 | | | |
 |-|-|-|
-| [`std::string`](#_2249037487584) | Tag |  |
-| [`std::string`](#_2249037487584) | TagLocalized |  |
+| [`std::string`](#_2323102537648) | Tag |  |
+| [`std::string`](#_2323102537648) | TagLocalized |  |
 </RefTable>
 
 
@@ -4935,8 +5000,8 @@ Key-Value pair that represents a mod metadata
 <RefTable colWidths={['30%', '20%', '50%']} stripes="odd">
 | | | |
 |-|-|-|
-| [`std::string`](#_2249037487584) | Key |  |
-| [`std::string`](#_2249037487584) | Value |  |
+| [`std::string`](#_2323102537648) | Key |  |
+| [`std::string`](#_2323102537648) | Value |  |
 </RefTable>
 
 
@@ -4955,32 +5020,33 @@ Full mod profile including current release information, media links, and stats
 <RefTable colWidths={['30%', '20%', '50%']} stripes="odd">
 | | | |
 |-|-|-|
-| [`Modio::ModID`](#_2249069302624) | ModId | Unique Mod ID |
-| [`std::string`](#_2249037487584) | ProfileName | Name of the mod |
-| [`std::string`](#_2249037487584) | ProfileSummary | Summary of the mod |
-| [`std::string`](#_2249037487584) | ProfileDescription | Detailed description in HTML format |
-| [`std::string`](#_2249037487584) | ProfileDescriptionPlaintext | Detailed description in plaintext |
-| [`std::string`](#_2249037487584) | ProfileURL | URL to the mod profile |
-| [`Modio::User`](#_2249074181664) | ProfileSubmittedBy | Information on the user who submitted the mod |
-| [`std::int64_t`](#_2248993238080) | ProfileDateAdded | Unix timestamp of the date the mod was registered |
-| [`std::int64_t`](#_2248993238080) | ProfileDateUpdated | Unix timestamp of the date the mod was updated |
-| [`std::int64_t`](#_2248993238080) | ProfileDateLive | Unix timestamp of the date the mod was marked live |
-| [`Modio::ProfileMaturity`](#_2249073070112) | ProfileMaturityOption | Object representing a mod.io user profile	* Maturity options flagged by the mod developer, this is only relevant if the parent game allows mods to	* be labeled as mature. The value of this field will default to None unless the parent game allows * to flag mature content. |
-| [`std::string`](#_2249037487584) | MetadataBlob | Metadata stored by the game developer. |
-| [`Modio::Optional<Modio::FileMetadata>`](#_2249074915920) | FileInfo | Information about the mod's most recent public release |
-| [`std::vector<Modio::Metadata>`](#_2249075161840) | MetadataKvp | Arbitrary key-value metadata set for this mod |
-| [`std::vector<Modio::ModTag>`](#_2249075302032) | Tags | Tags this mod has set |
-| [`std::size_t`](#_2248993238240) | NumGalleryImages | Number of images in the mod's media gallery |
-| [`Modio::GalleryList`](#_2249074696704) | GalleryImages | List of images in the mod's media gallery |
-| [`Modio::YoutubeURLList`](#_2249074032144) | YoutubeURLs | List of youtube links provided by the creator of the mod |
-| [`Modio::SketchfabURLList`](#_2249074044640) | SketchfabURLs | List of sketchfab links provided by the creator of the mod |
-| [`Modio::ModStats`](#_2249073011616) | Stats | Stats and rating information for the mod |
-| [`Modio::Detail::Logo`](#_2249074857600) | ModLogo | Media data related to the mod logo |
-| [`std::string`](#_2249037487584) | Version | The current ModInfo version. This property is updated when changes to the class happen. |
-| [`Modio::ModServerSideStatus`](#_2249074907200) | ModStatus | The current ModStatus on the server: Accepted, NotAccepted, or Deleted. |
-| [`Modio::ObjectVisibility`](#_2249072073760) | Visibility | The visibility status of the mod, default to Public |
-| [`uint64_t`](#_2248993238240) | Price | Price of this mod |
-| [`_Bool`](#_2248993237888) | Dependencies | If this mod has any direct dependencie. |
+| [`Modio::ModID`](#_2323126336688) | ModId | Unique Mod ID |
+| [`std::string`](#_2323102537648) | ProfileName | Name of the mod |
+| [`std::string`](#_2323102537648) | ProfileSummary | Summary of the mod |
+| [`std::string`](#_2323102537648) | ProfileDescription | Detailed description in HTML format |
+| [`std::string`](#_2323102537648) | ProfileDescriptionPlaintext | Detailed description in plaintext |
+| [`std::string`](#_2323102537648) | ProfileURL | URL to the mod profile |
+| [`Modio::User`](#_2323126613056) | ProfileSubmittedBy | Information on the user who submitted the mod |
+| [`std::int64_t`](#_2323073650912) | ProfileDateAdded | Unix timestamp of the date the mod was registered |
+| [`std::int64_t`](#_2323073650912) | ProfileDateUpdated | Unix timestamp of the date the mod was updated |
+| [`std::int64_t`](#_2323073650912) | ProfileDateLive | Unix timestamp of the date the mod was marked live |
+| [`Modio::ProfileMaturity`](#_2323126536576) | ProfileMaturityOption | Object representing a mod.io user profile	* Maturity options flagged by the mod developer, this is only relevant if the parent game allows mods to	* be labeled as mature. The value of this field will default to None unless the parent game allows * to flag mature content. |
+| [`Modio::ModCommunityOptionsFlags`](#_2323126509120) | CommunityOptions | Community options for the mod |
+| [`std::string`](#_2323102537648) | MetadataBlob | Metadata stored by the game developer. |
+| [`int`](#_2323073650848) | FileInfo | Information about the mod's most recent public release |
+| [`int`](#_2323073650848) | MetadataKvp | Arbitrary key-value metadata set for this mod |
+| [`int`](#_2323073650848) | Tags | Tags this mod has set |
+| [`std::size_t`](#_2323073651072) | NumGalleryImages | Number of images in the mod's media gallery |
+| [`Modio::GalleryList`](#_2323126633296) | GalleryImages | List of images in the mod's media gallery |
+| [`Modio::YoutubeURLList`](#_2323126574224) | YoutubeURLs | List of youtube links provided by the creator of the mod |
+| [`Modio::SketchfabURLList`](#_2323126577104) | SketchfabURLs | List of sketchfab links provided by the creator of the mod |
+| [`Modio::ModStats`](#_2323126518288) | Stats | Stats and rating information for the mod |
+| [`Modio::Detail::Logo`](#_2323126640000) | ModLogo | Media data related to the mod logo |
+| [`std::string`](#_2323102537648) | Version | The current ModInfo version. This property is updated when changes to the class happen. This is NOT the version of the mod itself. Mod versioning is tied to FileInfo, not ModInfo. |
+| [`Modio::ModServerSideStatus`](#_2323126663760) | ModStatus | The current ModStatus on the server: Accepted, NotAccepted, or Deleted. |
+| [`Modio::ObjectVisibility`](#_2323126408720) | Visibility | The visibility status of the mod, default to Public |
+| [`uint64_t`](#_2323073651072) | Price | Price of this mod |
+| [`_Bool`](#_2323073650720) | Dependencies | If this mod has any direct dependencies |
 </RefTable>
 
 
@@ -5046,12 +5112,12 @@ Explicit and preferred constructor with the necessary variables to store
 <RefTable colWidths={['30%', '20%', '50%']} stripes="odd">
 | | | |
 |-|-|-|
-| [`Modio::GameID`](#_2249071044496) | GameID | The mod.io-provided ID for the game. |
-| [`Modio::ApiKey`](#_2249069268688) | APIKey | The mod.io-provided API key for your application or game. |
-| [`Modio::UserHandleType`](#_2249037487584) | User | Unique identifier for the local session, which will optionally contain user data for an authenticated mod.io user (once authentication is completed). |
-| [`Modio::Portal`](#_2249069191504) | PortalInUse | The storefront or distribution method to use. The API uses this parameter to serve platform-compliant user names. Use `Modio::Portal::None` if your title does not require this. |
-| [`Modio::Environment`](#_2249069186384) | GameEnvironment | The mod.io environment you want to run the SDK on. |
-| [`std::map<std::string, std::string>`](#_2249071526496) | ExtendedParameters | Platform-specific extended initialization parameters. See xref:Platform-specific Notes[] for more information regarding any special values your platform requires or supports. |
+| [`Modio::GameID`](#_2323126346672) | GameID | The mod.io-provided ID for the game. |
+| [`Modio::ApiKey`](#_2323126325680) | APIKey | The mod.io-provided API key for your application or game. |
+| [`Modio::UserHandleType`](#_2323102537648) | User | Unique identifier for the local session, which will optionally contain user data for an authenticated mod.io user (once authentication is completed). |
+| [`Modio::Portal`](#_2323126282896) | PortalInUse | The storefront or distribution method to use. The API uses this parameter to serve platform-compliant user names. Use `Modio::Portal::None` if your title does not require this. |
+| [`Modio::Environment`](#_2323126280080) | GameEnvironment | The mod.io environment you want to run the SDK on. |
+| [`int`](#_2323073650848) | ExtendedParameters | Platform-specific extended initialization parameters. See xref:Platform-specific Notes[] for more information regarding any special values your platform requires or supports. |
 </RefTable>
 
 
@@ -5066,7 +5132,7 @@ Simple struct representing the outcome of a mod management operation
 #### Enums
 
 
-##### EventType {#_2249085112608} 
+##### EventType {#_2323089268352} 
 
 What type of event occurred
 
@@ -5096,9 +5162,9 @@ What type of event occurred
 <RefTable colWidths={['30%', '20%', '50%']} stripes="odd">
 | | | |
 |-|-|-|
-| [`Modio::ModID`](#_2249069302624) | ID | ID for the mod that the event occurred on |
-| [`EventType`](#_2249085112608) | Event | What type of event occurred |
-| [`Modio::ErrorCode`](#_2249042265104) | Status | Empty if operation completed successfully, truthy/contains error code if operation failed |
+| [`Modio::ModID`](#_2323126336688) | ID | ID for the mod that the event occurred on |
+| [`EventType`](#_2323089268352) | Event | What type of event occurred |
+| [`Modio::ErrorCode`](#_2323105508160) | Status | Empty if operation completed successfully, truthy/contains error code if operation failed |
 </RefTable>
 
 
@@ -5117,15 +5183,15 @@ Simple struct containing simplified information about a mod which is a dependenc
 <RefTable colWidths={['30%', '20%', '50%']} stripes="odd">
 | | | |
 |-|-|-|
-| [`Modio::ModID`](#_2249069302624) | ModID | Unique mod id. |
-| [`std::string`](#_2249037487584) | ModName | Name of the mod |
-| [`std::int64_t`](#_2248993238080) | DateAdded | Unix timestamp of the date the mod was registered |
-| [`std::int64_t`](#_2248993238080) | DateUpdated | Unix timestamp of the date the mod was updated |
-| [`std::uint8_t`](#_2248993238112) | DependencyDepth | The level at which this dependency sits. When greater than zero (0), it means that this dependency relies on additional dependencies. |
-| [`Modio::Detail::Logo`](#_2249074857600) | Logo | Media data related to the mod logo |
-| [`Modio::Optional<Modio::FileMetadata>`](#_2249074915920) | FileInfo | Information about the mod's most recent public release |
-| [`Modio::ModServerSideStatus`](#_2249074907200) | Status | The current ModStatus on the server: Accepted, NotAccepted, or Deleted. |
-| [`Modio::ObjectVisibility`](#_2249072073760) | Visibility | The visibility status of the mod, default to Public |
+| [`Modio::ModID`](#_2323126336688) | ModID | Unique mod id. |
+| [`std::string`](#_2323102537648) | ModName | Name of the mod |
+| [`std::int64_t`](#_2323073650912) | DateAdded | Unix timestamp of the date the mod was registered |
+| [`std::int64_t`](#_2323073650912) | DateUpdated | Unix timestamp of the date the mod was updated |
+| [`std::uint8_t`](#_2323073650944) | DependencyDepth | The level at which this dependency sits. When greater than zero (0), it means that this dependency relies on additional dependencies. |
+| [`Modio::Detail::Logo`](#_2323126640000) | Logo | Media data related to the mod logo |
+| [`int`](#_2323073650848) | FileInfo | Information about the mod's most recent public release |
+| [`Modio::ModServerSideStatus`](#_2323126663760) | Status | The current ModStatus on the server: Accepted, NotAccepted, or Deleted. |
+| [`Modio::ObjectVisibility`](#_2323126408720) | Visibility | The visibility status of the mod, default to Public |
 </RefTable>
 
 
@@ -5144,7 +5210,7 @@ Further details about a Virtual Currency entitlement that was consumed
 <RefTable colWidths={['30%', '20%', '50%']} stripes="odd">
 | | | |
 |-|-|-|
-| [`int`](#_2248993238016) | TokensAllocated | Amount of tokens that were issued for this specific entitlement consumption |
+| [`int`](#_2323073650848) | TokensAllocated | Amount of tokens that were issued for this specific entitlement consumption |
 </RefTable>
 
 
@@ -5160,18 +5226,38 @@ The result of an entitlement's consumption
 #### Functions
 
 
+##### EntitlementRequiresRetry
+
+
+
+
+
+```cpp
+bool EntitlementRequiresRetry() const
+```
+
+Ask the entitlement if it needs to sync with the endpoint given that it has not been consumed and the transaction state is failed or pending.
+
+
+
+###### Returns
+
+True when the entitlement needs to sync with the API. Otherwise false
+
+
+
 
 #### Variables
 
 <RefTable colWidths={['30%', '20%', '50%']} stripes="odd">
 | | | |
 |-|-|-|
-| [`std::string`](#_2249037487584) | TransactionId | ID of the transaction to redeem this entitlement |
-| [`Modio::EntitlementConsumptionState`](#_2249152930672) | TransactionState | State of the transaction |
-| [`std::string`](#_2249037487584) | SkuId | ID of the SKU that we attempted to consume |
-| [`_Bool`](#_2248993237888) | EntitlementConsumed | Whether this entitlement was consumed or not |
-| [`Modio::EntitlementType`](#_2249152931920) | EntitlementType | Type of Entitlement that was consumed |
-| [`Modio::EntitlementConsumptionVirtualCurrencyDetails`](#_2249152932672) | VirtualCurrencyDetails | Details about |
+| [`std::string`](#_2323102537648) | TransactionId | ID of the transaction to redeem this entitlement |
+| [`Modio::EntitlementConsumptionState`](#_2323089333680) | TransactionState | State of the transaction |
+| [`std::string`](#_2323102537648) | SkuId | ID of the SKU that we attempted to consume |
+| [`_Bool`](#_2323073650720) | EntitlementConsumed | Whether this entitlement was consumed or not |
+| [`Modio::EntitlementType`](#_2323089334928) | EntitlementType | Type of Entitlement that was consumed |
+| [`Modio::EntitlementConsumptionVirtualCurrencyDetails`](#_2323089335680) | VirtualCurrencyDetails | Details about |
 </RefTable>
 
 
@@ -5190,7 +5276,7 @@ Updated wallet balance from the sync entitlements call
 <RefTable colWidths={['30%', '20%', '50%']} stripes="odd">
 | | | |
 |-|-|-|
-| [`uint64_t`](#_2248993238240) | Balance |  |
+| [`uint64_t`](#_2323073651072) | Balance |  |
 </RefTable>
 
 
@@ -5209,16 +5295,54 @@ Contains download stats for a game
 <RefTable colWidths={['30%', '20%', '50%']} stripes="odd">
 | | | |
 |-|-|-|
-| [`Modio::GameID`](#_2249071044496) | GameID | Unique game id |
-| [`std::int64_t`](#_2248993238080) | ModCountTotal | Available mod count for the game |
-| [`std::int64_t`](#_2248993238080) | ModDownloadsToday | Mods downloaded today for the game |
-| [`std::int64_t`](#_2248993238080) | ModDownloadsTotal | Total Mods downloaded for the game |
-| [`std::int64_t`](#_2248993238080) | ModDownloadsDailyAverage | Average mods downloaded on a daily basis |
-| [`std::int64_t`](#_2248993238080) | ModSubscribersTotal | Number of total users who have subscribed to the mods for the game |
-| [`std::int64_t`](#_2248993238080) | DateExpires | Unix timestamp until this game's statistics are considered stale |
+| [`Modio::GameID`](#_2323126346672) | GameID | Unique game id |
+| [`std::int64_t`](#_2323073650912) | ModCountTotal | Available mod count for the game |
+| [`std::int64_t`](#_2323073650912) | ModDownloadsToday | Mods downloaded today for the game |
+| [`std::int64_t`](#_2323073650912) | ModDownloadsTotal | Total Mods downloaded for the game |
+| [`std::int64_t`](#_2323073650912) | ModDownloadsDailyAverage | Average mods downloaded on a daily basis |
+| [`std::int64_t`](#_2323073650912) | ModSubscribersTotal | Number of total users who have subscribed to the mods for the game |
+| [`std::int64_t`](#_2323073650912) | DateExpires | Unix timestamp until this game's statistics are considered stale |
 </RefTable>
 
 
+
+### ModTagLocalizationData {#ModTagLocalizationData} 
+
+
+
+Localization data for a tag value
+
+
+
+
+#### Variables
+
+<RefTable colWidths={['30%', '20%', '50%']} stripes="odd">
+| | | |
+|-|-|-|
+| [`std::string`](#_2323102537648) | Tag | The original raw unlocalized tag value used by the REST API |
+| [`int`](#_2323073650848) | Translations | Culture code -> Localized tag value string mapping for all configured languages. |
+</RefTable>
+
+
+
+### LocalizedTagCategory {#LocalizedTagCategory} 
+
+
+
+Struct containing pre-localized display strings for a tag group
+
+
+
+
+#### Variables
+
+<RefTable colWidths={['30%', '20%', '50%']} stripes="odd">
+| | | |
+|-|-|-|
+| [`std::string`](#_2323102537648) | GroupName | Localized display string for this tag category's name |
+| [`int`](#_2323073650848) | Tags | Localized display strings for all valid values in this tag category |
+</RefTable>
 
 
 
@@ -5239,14 +5363,14 @@ Metadata about a group of tags that can be used for filtering mods
 <RefTable colWidths={['30%', '20%', '50%']} stripes="odd">
 | | | |
 |-|-|-|
-| [`std::string`](#_2249037487584) | TagGroupName | Raw unlocalized tag group name |
-| [`std::vector<std::string>`](#_2249059514272) | TagGroupValues | Valid raw unlocalized tag values this group contains |
-| [`std::map<std::string, std::string>`](#_2249071526496) | TagGroupNameLocData | Culture code -> localized tag category name mapping for all configured languages |
-| [`std::vector<ModTagLocalizationData>`](#_2249038050880) | TagGroupValueLocData | Localization data for this tag category's values in all configured languages |
-| [`_Bool`](#_2248993237888) | bAllowMultipleSelection | True if multiple tags from the group can be used simultaneously |
-| [`_Bool`](#_2248993237888) | bHidden | True if only visible by admins |
-| [`_Bool`](#_2248993237888) | bLocked | True if only editable by admins |
-| [`std::string`](#_2249037487584) | Locale | the culture code for the mod.io locale at the time the mod.io API returned this data |
+| [`std::string`](#_2323102537648) | TagGroupName | Raw unlocalized tag group name |
+| [`int`](#_2323073650848) | TagGroupValues | Valid raw unlocalized tag values this group contains |
+| [`int`](#_2323073650848) | TagGroupNameLocData | Culture code -> localized tag category name mapping for all configured languages |
+| [`int`](#_2323073650848) | TagGroupValueLocData | Localization data for this tag category's values in all configured languages |
+| [`_Bool`](#_2323073650720) | bAllowMultipleSelection | True if multiple tags from the group can be used simultaneously |
+| [`_Bool`](#_2323073650720) | bHidden | True if only visible by admins |
+| [`_Bool`](#_2323073650720) | bLocked | True if only editable by admins |
+| [`std::string`](#_2323102537648) | Locale | the culture code for the mod.io locale at the time the mod.io API returned this data |
 </RefTable>
 
 
@@ -5293,6 +5417,175 @@ A strong type flag object to represent GameMonetizationOptions from a mod.io inf
 
 
 
+### GamePlatform {#GamePlatform} 
+
+
+
+Details about a platform that this game supports
+
+
+
+
+#### Variables
+
+<RefTable colWidths={['30%', '20%', '50%']} stripes="odd">
+| | | |
+|-|-|-|
+| [`Modio::ModfilePlatform`](#_2323126286320) | Platform | Platform that the game supports |
+| [`_Bool`](#_2323073650720) | Locked | Whether or not this platform is Locked from having files submitted to it |
+| [`_Bool`](#_2323073650720) | Moderated | Whether or not files submitted for this platform are required to go through moderation |
+</RefTable>
+
+
+
+### HeaderImage {#HeaderImage} 
+
+
+
+Contains media URLs to the preview header image for the game
+
+
+
+
+#### Variables
+
+<RefTable colWidths={['30%', '20%', '50%']} stripes="odd">
+| | | |
+|-|-|-|
+| [`std::string`](#_2323102537648) | Filename |  |
+| [`std::string`](#_2323102537648) | Original |  |
+</RefTable>
+
+
+
+### OtherUrl {#OtherUrl} 
+
+
+
+Creator defined URLs to share
+
+
+
+
+#### Variables
+
+<RefTable colWidths={['30%', '20%', '50%']} stripes="odd">
+| | | |
+|-|-|-|
+| [`std::string`](#_2323102537648) | Label |  |
+| [`std::string`](#_2323102537648) | Url |  |
+</RefTable>
+
+
+
+### Theme {#Theme} 
+
+
+
+Theme color values for the game
+
+
+
+
+#### Variables
+
+<RefTable colWidths={['30%', '20%', '50%']} stripes="odd">
+| | | |
+|-|-|-|
+| [`std::string`](#_2323102537648) | Primary |  |
+| [`std::string`](#_2323102537648) | Dark |  |
+| [`std::string`](#_2323102537648) | Light |  |
+| [`std::string`](#_2323102537648) | Success |  |
+| [`std::string`](#_2323102537648) | Warning |  |
+| [`std::string`](#_2323102537648) | Danger |  |
+</RefTable>
+
+
+
+### GameInfo {#GameInfo} 
+
+
+
+Details about a game
+
+
+
+
+#### Variables
+
+<RefTable colWidths={['30%', '20%', '50%']} stripes="odd">
+| | | |
+|-|-|-|
+| [`Modio::GameID`](#_2323126346672) | GameID | Unique Game ID |
+| [`std::int64_t`](#_2323073650912) | DateAdded | Unix timestamp of date game was registered |
+| [`std::int64_t`](#_2323073650912) | DateUpdated | Unix timestamp of date game was updated |
+| [`std::int64_t`](#_2323073650912) | DateLive | Unix timestamp of date game was set live |
+| [`std::string`](#_2323102537648) | UgcName | Word used to describe user-generated content (mods, items, addons etc) |
+| [`Modio::Detail::Icon`](#_2323128144608) | Icon | Contains media URLs to the icon for the game |
+| [`Modio::Detail::Logo`](#_2323126640000) | Logo | Contains media URLs to the logo for the game |
+| [`Modio::HeaderImage`](#_2323128194752) | HeaderImage | Contains media URLs to the preview header image for the game |
+| [`std::string`](#_2323102537648) | Name | Name of the game |
+| [`std::string`](#_2323102537648) | Summary | Summary of the game's mod support |
+| [`std::string`](#_2323102537648) | Instructions | A guide about creating and uploading mods for this game to mod.io |
+| [`std::string`](#_2323102537648) | InstructionsUrl | Link to a mod.io guide, modding wiki, or a page where modders can learn how to make and submit mods to this game's profile |
+| [`std::string`](#_2323102537648) | ProfileUrl | URL to the game |
+| [`Modio::Theme`](#_2323128199200) | Theme | Theme color values for the game |
+| [`Modio::GameStats`](#_2323089354400) | Stats | Numerous aggregate stats for the game |
+| [`int`](#_2323073650848) | OtherUrls | Creator defined URLs to share |
+| [`int`](#_2323073650848) | PlatformSupport | Platforms supported by this title |
+| [`Modio::GameCommunityOptionsFlags`](#_2323128162288) | CommunityOptions | Community options for the game |
+| [`Modio::GameMonetization`](#_2323128183344) | GameMonetizationOptions | Monetization options for the game |
+| [`Modio::GameMaturityOptionsFlags`](#_2323128172688) | MaturityOptions | Maturity options for the game |
+| [`std::string`](#_2323102537648) | VirtualTokenName | Name of the Virtual Tokens for this game |
+| [`int`](#_2323073650848) | TagOptions | Tags for this game |
+</RefTable>
+
+
+
+
+### UserRatingList {#UserRatingList} 
+
+
+
+Object representing a mod.io user's ratings
+
+
+
+#### Functions
+
+
+##### Append
+
+
+
+
+
+```cpp
+void Append(const UserRatingList &Other)
+```
+
+Insert ModInfoList to the end of this list
+
+
+
+
+
+
+##### Append
+
+
+
+
+
+```cpp
+void Append(const UserRating &UserRatingData)
+```
+
+Insert a ModInfo to the end of this list
+
+
+
+
 
 
 
@@ -5312,9 +5605,9 @@ This struct contains strings that should be displayed to a user when displaying 
 <RefTable colWidths={['30%', '20%', '50%']} stripes="odd">
 | | | |
 |-|-|-|
-| [`struct TermsButtons`](#_2249155775312) | Buttons |  |
-| [`struct TermsLinks`](#_2249155779776) | Links |  |
-| [`std::string`](#_2249037487584) | TermsText | The plaintext version of the mod.io terms of use |
+| [`struct TermsButtons`](#_2323128230144) | Buttons |  |
+| [`struct TermsLinks`](#_2323128231648) | Links |  |
+| [`std::string`](#_2323102537648) | TermsText | The plaintext version of the mod.io terms of use |
 </RefTable>
 
 
@@ -5333,10 +5626,10 @@ Contains information about a successful transaction for a mod
 <RefTable colWidths={['30%', '20%', '50%']} stripes="odd">
 | | | |
 |-|-|-|
-| [`Modio::ModID`](#_2249069302624) | AssociatedModID | The mod the purchase was for |
-| [`uint64_t`](#_2248993238240) | Price | The price the mod was purchased for |
-| [`uint64_t`](#_2248993238240) | UpdatedUserWalletBalance | The updated balance in the user's wallet after the transaction |
-| [`Modio::ModInfo`](#_2249074908352) | Mod | ModInfo of the mod that was purchase and subscribed to |
+| [`Modio::ModID`](#_2323126336688) | AssociatedModID | The mod the purchase was for |
+| [`uint64_t`](#_2323073651072) | Price | The price the mod was purchased for |
+| [`uint64_t`](#_2323073651072) | UpdatedUserWalletBalance | The updated balance in the user's wallet after the transaction |
+| [`Modio::ModInfo`](#_2323126664912) | Mod | ModInfo of the mod that was purchase and subscribed to |
 </RefTable>
 
 
@@ -5347,7 +5640,7 @@ Contains information about a successful transaction for a mod
 ## Enums
 
 
-### Environment {#_2249069186384} 
+### Environment {#_2323126280080} 
 
 Enum representing what environment your game is deployed in
 
@@ -5363,7 +5656,7 @@ Enum representing what environment your game is deployed in
 
 
 
-### Portal {#_2249069191504} 
+### Portal {#_2323126282896} 
 
 Enum representing the store or service your game is being distributed through
 
@@ -5387,7 +5680,7 @@ Enum representing the store or service your game is being distributed through
 
 
 
-### ModfilePlatform {#_2249069197264} 
+### ModfilePlatform {#_2323126286320} 
 
 Enum representing the platform(s) that a modfile is enabled for
 
@@ -5413,7 +5706,7 @@ Enum representing the platform(s) that a modfile is enabled for
 
 
 
-### LogoSize {#_2249069203344} 
+### LogoSize {#_2323126290064} 
 
 Enum representing mod logo sizes
 
@@ -5431,7 +5724,7 @@ Enum representing mod logo sizes
 
 
 
-### IconSize {#_2249069208960} 
+### IconSize {#_2323126293344} 
 
 Enum representing game icon sizes
 
@@ -5449,7 +5742,7 @@ Enum representing game icon sizes
 
 
 
-### AvatarSize {#_2249069214576} 
+### AvatarSize {#_2323126296624} 
 
 Enum representing avatar image sizes
 
@@ -5466,7 +5759,7 @@ Enum representing avatar image sizes
 
 
 
-### GallerySize {#_2249069220064} 
+### GallerySize {#_2323126299776} 
 
 Enum representing an image gallery size
 
@@ -5483,7 +5776,7 @@ Enum representing an image gallery size
 
 
 
-### Language {#_2249072061232} 
+### Language {#_2323126399232} 
 
 Enum representing the languages mod.io support responses in
 
@@ -5515,7 +5808,7 @@ Enum representing the languages mod.io support responses in
 
 
 
-### AuthenticationProvider {#_2249072063424} 
+### AuthenticationProvider {#_2323126401424} 
 
 Simple struct to encapsulate data passed to external authentication systems
 
@@ -5542,7 +5835,7 @@ Simple struct to encapsulate data passed to external authentication systems
 
 
 
-### LogLevel {#_2249072069520} 
+### LogLevel {#_2323126404464} 
 
 Degree of severity for the log output
 
@@ -5561,7 +5854,7 @@ Degree of severity for the log output
 
 
 
-### LogCategory {#_2249072071088} 
+### LogCategory {#_2323126406032} 
 
 The category of the log message (usually the internal service the message is originating from)
 
@@ -5584,7 +5877,7 @@ The category of the log message (usually the internal service the message is ori
 
 
 
-### Rating {#_2249072072512} 
+### Rating {#_2323126407520} 
 
 A rating for a mod.
 
@@ -5601,9 +5894,9 @@ A rating for a mod.
 
 
 
-### ObjectVisibility {#_2249072073760} 
+### ObjectVisibility {#_2323126408720} 
 
-The visiblility of a mod.
+The visibility of a mod.
 
 
 #### Values
@@ -5617,7 +5910,7 @@ The visiblility of a mod.
 
 
 
-### PlatformStatus {#_2249072074656} 
+### PlatformStatus {#_2323126409696} 
 
 File approval status to filter by. Passed in ExtendedInitializationParameters for the duration of a session.
 
@@ -5634,7 +5927,58 @@ File approval status to filter by. Passed in ExtendedInitializationParameters fo
 
 
 
-### MaturityOption {#_2249073064512} 
+### StorageLocation {#_2323126413280} 
+
+Where the storage has been written to
+
+
+#### Values
+
+<RefTable colWidths={['50%', '50%']} stripes="odd">
+| | |
+|-|-|
+| `Local` | 0 |
+| `Cache` | 1 |
+</RefTable>
+
+
+
+### StorageUsage {#_2323126414272} 
+
+The type of storage usage
+
+
+#### Values
+
+<RefTable colWidths={['50%', '50%']} stripes="odd">
+| | |
+|-|-|
+| `Consumed` | 0 |
+| `Available` | 1 |
+</RefTable>
+
+
+
+### ModCommunityOptions {#_2323126507408} 
+
+Community options for a game	* 0 = None set (default)	* 1 = Comments are enabled	* 64 = Enable Previews	* 128 = Enable Preview URLs	* 1024 = Allow mod dependencies
+
+
+#### Values
+
+<RefTable colWidths={['50%', '50%']} stripes="odd">
+| | |
+|-|-|
+| `None` | 0 |
+| `EnableComments` | 1 |
+| `EnablePreviews` | 64 |
+| `EnablePreviewURLs` | 128 |
+| `AllowDependencies` | 1024 |
+</RefTable>
+
+
+
+### MaturityOption {#_2323126531056} 
 
 Maturity types classification according to the mod.io API	* 0 = None set (default)	* 1 = Alcohol	* 2 = Drugs	* 4 = Violence	* 8 = Explicit
 
@@ -5653,7 +5997,7 @@ Maturity types classification according to the mod.io API	* 0 = None set (defaul
 
 
 
-### ModServerSideStatus {#_2249074907200} 
+### ModServerSideStatus {#_2323126663760} 
 
 Possible status as received from the server
 
@@ -5670,7 +6014,7 @@ Possible status as received from the server
 
 
 
-### HttpError {#_2249079420672} 
+### HttpError {#_2323126698928} 
 
 
 
@@ -5698,7 +6042,7 @@ Possible status as received from the server
 
 
 
-### FilesystemError {#_2249079461008} 
+### FilesystemError {#_2323126719968} 
 
 
 
@@ -5714,15 +6058,16 @@ Possible status as received from the server
 | `FileNotFound` | 20740 |
 | `InsufficientSpace` | 20741 |
 | `NoPermission` | 20742 |
-| `ReadError` | 20743 |
-| `UnableToCreateFile` | 20744 |
-| `UnableToCreateFolder` | 20745 |
-| `WriteError` | 20746 |
+| `PathTooLong` | 20743 |
+| `ReadError` | 20744 |
+| `UnableToCreateFile` | 20745 |
+| `UnableToCreateFolder` | 20746 |
+| `WriteError` | 20747 |
 </RefTable>
 
 
 
-### UserAuthError {#_2249079493712} 
+### UserAuthError {#_2323126738688} 
 
 
 
@@ -5743,7 +6088,7 @@ Possible status as received from the server
 
 
 
-### UserDataError {#_2249079525744} 
+### UserDataError {#_2323126755664} 
 
 
 
@@ -5759,7 +6104,7 @@ Possible status as received from the server
 
 
 
-### ArchiveError {#_2249079555984} 
+### ArchiveError {#_2323126770208} 
 
 
 
@@ -5775,7 +6120,7 @@ Possible status as received from the server
 
 
 
-### GenericError {#_2249079586912} 
+### GenericError {#_2323127054864} 
 
 
 
@@ -5793,13 +6138,14 @@ Possible status as received from the server
 | `OperationCanceled` | 21766 |
 | `OperationError` | 21767 |
 | `QueueClosed` | 21768 |
-| `SDKAlreadyInitialized` | 21769 |
-| `SDKNotInitialized` | 21770 |
+| `RequestInProgress` | 21769 |
+| `SDKAlreadyInitialized` | 21770 |
+| `SDKNotInitialized` | 21771 |
 </RefTable>
 
 
 
-### SystemError {#_2249079623040} 
+### SystemError {#_2323127074080} 
 
 
 
@@ -5814,7 +6160,7 @@ Possible status as received from the server
 
 
 
-### ZlibError {#_2249079655136} 
+### ZlibError {#_2323127088320} 
 
 
 
@@ -5842,7 +6188,7 @@ Possible status as received from the server
 
 
 
-### ModManagementError {#_2249079694576} 
+### ModManagementError {#_2323127108400} 
 
 
 
@@ -5864,7 +6210,7 @@ Possible status as received from the server
 
 
 
-### ModValidationError {#_2249079732320} 
+### ModValidationError {#_2323127126320} 
 
 
 
@@ -5880,7 +6226,7 @@ Possible status as received from the server
 
 
 
-### MonetizationError {#_2249079767136} 
+### MonetizationError {#_2323127140880} 
 
 
 
@@ -5905,7 +6251,7 @@ Possible status as received from the server
 
 
 
-### ParentalControlRestriction {#_2249079808080} 
+### ParentalControlRestriction {#_2323127160128} 
 
 
 
@@ -5920,7 +6266,7 @@ Possible status as received from the server
 
 
 
-### MetricsError {#_2249079844064} 
+### MetricsError {#_2323127174224} 
 
 
 
@@ -5939,7 +6285,7 @@ Possible status as received from the server
 
 
 
-### PremiumFeaturesError {#_2249079883168} 
+### PremiumFeaturesError {#_2323127190688} 
 
 
 
@@ -5954,7 +6300,7 @@ Possible status as received from the server
 
 
 
-### ApiError {#_2249079920592} 
+### ApiError {#_2323127204768} 
 
 
 
@@ -5975,6 +6321,7 @@ Possible status as received from the server
 | `CannotMuteYourself` | 17039 |
 | `CannotVerifyExternalCredentials` | 11032 |
 | `CrossOriginForbidden` | 10001 |
+| `EmailExchangeCodeAlreadyRedeemed` | 11011 |
 | `EmailLoginCodeExpired` | 11012 |
 | `EmailLoginCodeInvalid` | 11014 |
 | `ExpiredOrRevokedAccessToken` | 11005 |
@@ -5993,6 +6340,11 @@ Possible status as received from the server
 | `MissingContentTypeHeader` | 13005 |
 | `MissingReadPermission` | 11004 |
 | `MissingWritePermission` | 11003 |
+| `ModCannotAddDependencyMonetized` | 15076 |
+| `ModCannotAllowDependencyMonetized` | 15073 |
+| `ModCannotDeleteDependency` | 15074 |
+| `ModDependenciesNotAllowed` | 15072 |
+| `ModIsDependency` | 15071 |
 | `ModfileNoUploadPermission` | 15006 |
 | `ModioOutage` | 10000 |
 | `MonetizationAuthentication` | 900002 |
@@ -6036,7 +6388,7 @@ Possible status as received from the server
 
 
 
-### ErrorConditionTypes {#_2249080354048} 
+### ErrorConditionTypes {#_2323127272032} 
 
 Enum describing the different conditions a Modio::ErrorCode can satisfy Check if a Modio::ErrorCode meets a particular condition using ErrorCodeMatches
 
@@ -6088,11 +6440,18 @@ Enum describing the different conditions a Modio::ErrorCode can satisfy Check if
 | `MetricsSessionIsNotActive` | 40 |
 | `MetricsSessionHasNoMods` | 41 |
 | `PremiumFeatureNotAvailable` | 42 |
+| `EmailExchangeCodeAlreadyRedeemed` | 43 |
+| `ModDependenciesNotAllowed` | 44 |
+| `ModCannotAddDependencyMonetized` | 45 |
+| `ModIsDependency` | 46 |
+| `ModCannotAllowDependencyMonetized` | 47 |
+| `ModCannotDeleteDependency` | 48 |
+| `RequestInProgress` | 49 |
 </RefTable>
 
 
 
-### ModState {#_2249083984976} 
+### ModState {#_2323127840288} 
 
 Enum representing the current state of a mod
 
@@ -6112,7 +6471,7 @@ Enum representing the current state of a mod
 
 
 
-### ReportType {#_2249085972176} 
+### ReportType {#_2323089319408} 
 
 The type of report being made
 
@@ -6134,7 +6493,7 @@ The type of report being made
 
 
 
-### EntitlementConsumptionState {#_2249152930672} 
+### EntitlementConsumptionState {#_2323089333680} 
 
 State of an entitlement consumption transaction
 
@@ -6152,7 +6511,7 @@ State of an entitlement consumption transaction
 
 
 
-### EntitlementType {#_2249152931920} 
+### EntitlementType {#_2323089334928} 
 
 Type of entitlement that was consumed
 
@@ -6167,9 +6526,9 @@ Type of entitlement that was consumed
 
 
 
-### GameCommunityOptions {#_2249154066096} 
+### GameCommunityOptions {#_2323128158784} 
 
-Community options for a game	* 0 = None set (default)	* 1 = Comments are enabled	* 2 = Guides are enabled	* 4 = Pin on homepage	* 8 = Show on homepage	* 16 = Show more on homepage	* 32 = Allow change status	* 64 = Enable Previews (Game must be hidden)	* 128 = Allow Preview Share-URL (Previews must be enabled)	* 256 = Allow negative ratings	* 512 = Allow mods to be edited on web
+Community options for a game	* 0 = None set (default)	* 1 = Comments are enabled	* 2 = Guides are enabled	* 4 = Pin on homepage	* 8 = Show on homepage	* 16 = Show more on homepage	* 32 = Allow change status	* 64 = Enable Previews (Game must be hidden)	* 128 = Allow Preview Share-URL (Previews must be enabled)	* 256 = Allow negative ratings	* 512 = Allow mods to be edited on web	* 1024 = Allow mod dependencies	* 2048 = Allow comments on guides
 
 
 #### Values
@@ -6188,11 +6547,13 @@ Community options for a game	* 0 = None set (default)	* 1 = Comments are enabled
 | `AllowPreviewShareURL` | 128 |
 | `AllowNegativeRatings` | 256 |
 | `AllowModsToBeEditedOnWeb` | 512 |
+| `AllowModDependencies` | 1024 |
+| `AllowCommentsOnGuides` | 2048 |
 </RefTable>
 
 
 
-### GameMaturityOptions {#_2249154633728} 
+### GameMaturityOptions {#_2323128171424} 
 
 Maturity options for a game	* 0 = Don't allow mature content in mods (default)	* 1 = This game allows mods containing mature content	* 2 = This game is for mature audiences only
 
@@ -6209,7 +6570,7 @@ Maturity options for a game	* 0 = Don't allow mature content in mods (default)	*
 
 
 
-### GameMonetizationOptions {#_2249154681632} 
+### GameMonetizationOptions {#_2323128181856} 
 
 Monetization properties of a game	* 0 = None set (default)	* 1 = Monetization is enabled	* 2 = Marketplace is enabled	* 4 = Partner Program is enabled
 

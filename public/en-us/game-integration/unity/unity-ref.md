@@ -1,6 +1,6 @@
 ---
 id: unity-unity-ref
-title: Unity Reference Docs
+title: Unity
 slug: /unity/unity-ref/
 sidebar_position: 1
 ---
@@ -16,6 +16,7 @@ sidebar_position: 1
 | [`ModioPreInitializer`](#Modio.Unity.ModioPreInitializer) |  |
 | [`ModioUnityLogger`](#Modio.Unity.ModioUnityLogger) |  |
 | [`ModioUnitySettings`](#Modio.Unity.ModioUnitySettings) |  |
+| [`UnityRootPathProvider`](#Modio.Unity.UnityRootPathProvider) | Provides a default root path for non-windows Unity platforms. |
 | [`UnityWebBrowserHandler`](#Modio.Unity.UnityWebBrowserHandler) |  |
 
 ### ImageCacheTexture2D{#Modio.Unity.ImageCacheTexture2D}
@@ -28,7 +29,7 @@ public class ImageCacheTexture2D : BaseImageCache<Texture2D>
 ###### Field
 
 
-#### [`ImageCacheTexture2D`](#Modio.Unity.ImageCacheTexture2D.Instance) `Instance`
+#### [`ImageCacheTexture2D`](#Modio.Unity.ImageCacheTexture2D) `Instance`
 
 ```csharp
 ImageCacheTexture2D Instance = new ImageCacheTexture2D()
@@ -222,7 +223,49 @@ string DefaultResourceNameOverride = "mod.io/v3_config_local"
 ```csharp
 public ModioSettings Settings
 ```
-`get` 
+`get`
+
+___
+
+### UnityRootPathProvider{#Modio.Unity.UnityRootPathProvider}
+
+```csharp
+public class UnityRootPathProvider : IModioRootPathProvider
+```
+
+Provides a default root path for non-windows Unity platforms.
+
+
+
+###### Property
+
+
+#### `string Path`
+
+```csharp
+public string Path
+```
+
+
+Path to the shared public folder;
+
+Typically returns "C:\Users\Public\"
+
+
+
+
+#### `string UserPath`
+
+```csharp
+public string UserPath
+```
+
+
+Path to the local user app data folder;
+
+Typically returns "C:\Users\&lt;UserName&gt;\AppData\Roaming"
+
+
 
 ___
 

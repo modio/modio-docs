@@ -9,7 +9,7 @@ sidebar_position: 3
 
 | Type | Description |
 |------|-------------|
-| [`ModBuilder`](#Modio.Mods.Builder.ModBuilder) | A programmatic interface for Creating a new [`Mod`](#Modio.Mods.Builder.ModBuilder). This class will handle all the publishing tasks that need to be performed intelligently, minimizing the amount of requests made. |
+| [`ModBuilder`](#Modio.Mods.Builder.ModBuilder) | A programmatic interface for Creating a new [`Mod`](#Modio.Mods.Mod). This class will handle all the publishing tasks that need to be performed intelligently, minimizing the amount of requests made. |
 | [`ModfileBuilder`](#Modio.Mods.Builder.ModfileBuilder) |  |
 
 ### ModBuilder{#Modio.Mods.Builder.ModBuilder}
@@ -17,7 +17,7 @@ sidebar_position: 3
 ```csharp
 public class ModBuilder
 ```
-A programmatic interface for Creating a new [`Mod`](#Modio.Mods.Builder.ModBuilder). This class will handle all the publishing
+A programmatic interface for Creating a new [`Mod`](#Modio.Mods.Mod). This class will handle all the publishing
 tasks that need to be performed intelligently, minimizing the amount of requests made.
 
 ###### Remarks
@@ -43,7 +43,7 @@ Produces a list of Tuples with each published change &amp; their corresponding r
 ```csharp
 public string Name
 ```
-`get` 
+`get`
 
 
 #### `string Summary`
@@ -51,7 +51,7 @@ public string Name
 ```csharp
 public string Summary
 ```
-`get` 
+`get`
 
 
 #### `string Description`
@@ -59,7 +59,7 @@ public string Summary
 ```csharp
 public string Description
 ```
-`get` 
+`get`
 
 
 #### `string LogoFilePath`
@@ -67,7 +67,7 @@ public string Description
 ```csharp
 public string LogoFilePath
 ```
-`get` 
+`get`
 
 
 #### `string GalleryFilePaths`
@@ -75,7 +75,7 @@ public string LogoFilePath
 ```csharp
 public string[] GalleryFilePaths
 ```
-`get` 
+`get`
 
 
 #### `string Tags`
@@ -83,7 +83,7 @@ public string[] GalleryFilePaths
 ```csharp
 public string[] Tags
 ```
-`get` 
+`get`
 
 
 #### `string MetadataBlob`
@@ -91,7 +91,7 @@ public string[] Tags
 ```csharp
 public string MetadataBlob
 ```
-`get` 
+`get`
 
 
 #### `Dictionary MetadataKvps`
@@ -99,7 +99,7 @@ public string MetadataBlob
 ```csharp
 public Dictionary<string, string> MetadataKvps
 ```
-`get` 
+`get`
 
 
 #### `List Dependencies`
@@ -107,7 +107,7 @@ public Dictionary<string, string> MetadataKvps
 ```csharp
 public List<long> Dependencies
 ```
-`get` 
+`get`
 
 
 #### `bool Visible`
@@ -115,7 +115,7 @@ public List<long> Dependencies
 ```csharp
 public bool Visible
 ```
-`get` 
+`get`
 
 
 #### [`ModMaturityOptions`](#Modio.Mods.ModMaturityOptions) `MaturityOptions`
@@ -123,7 +123,7 @@ public bool Visible
 ```csharp
 public ModMaturityOptions MaturityOptions
 ```
-`get` 
+`get`
 
 
 #### [`ModCommunityOptions`](#Modio.Mods.ModCommunityOptions) `CommunityOptions`
@@ -131,7 +131,7 @@ public ModMaturityOptions MaturityOptions
 ```csharp
 public ModCommunityOptions CommunityOptions
 ```
-`get` 
+`get`
 
 
 #### `bool IsMonetized`
@@ -139,7 +139,7 @@ public ModCommunityOptions CommunityOptions
 ```csharp
 public bool IsMonetized
 ```
-`get` 
+`get`
 
 
 #### `bool IsLimitedStock`
@@ -147,7 +147,7 @@ public bool IsMonetized
 ```csharp
 public bool IsLimitedStock
 ```
-`get` 
+`get`
 
 
 #### `int Price`
@@ -155,7 +155,7 @@ public bool IsLimitedStock
 ```csharp
 public int Price
 ```
-`get` 
+`get`
 
 
 #### `int Stock`
@@ -163,7 +163,7 @@ public int Price
 ```csharp
 public int Stock
 ```
-`get` 
+`get`
 
 
 #### `bool IsEditMode`
@@ -174,12 +174,12 @@ public bool IsEditMode
 
 
 
-#### [`Mod`](#Modio.Mods.Builder.ModBuilder.EditTarget) `EditTarget`
+#### [`Mod`](#Modio.Mods.Mod) `EditTarget`
 
 ```csharp
 public Mod EditTarget
 ```
-`get` 
+`get`
 
 
 ###### Method
@@ -212,11 +212,33 @@ public ModBuilder SetDescription(string description)
 public ModBuilder SetTags(ICollection<string> tags)
 ```
 
+###### Remarks
+
+This will overwrite all tags on the mod.
+
+
+#### SetTags{#Modio.Mods.Builder.ModBuilder.SetTags}
+
+```csharp
+public ModBuilder SetTags(string tag)
+```
+
+###### Remarks
+
+This will overwrite all tags on the mod.
+
 
 #### AppendTags{#Modio.Mods.Builder.ModBuilder.AppendTags}
 
 ```csharp
 public ModBuilder AppendTags(ICollection<string> tags)
+```
+
+
+#### AppendTags{#Modio.Mods.Builder.ModBuilder.AppendTags}
+
+```csharp
+public ModBuilder AppendTags(string tag)
 ```
 
 
@@ -255,7 +277,7 @@ public ModBuilder SetLogo(string logoFilePath)
 #### SetLogo{#Modio.Mods.Builder.ModBuilder.SetLogo}
 
 ```csharp
-public ModBuilder SetLogo(byte[] imageData)
+public ModBuilder SetLogo(byte[] imageData, ImageFormat format)
 ```
 
 
@@ -415,7 +437,7 @@ changes, then process the remaining data as separate publish tasks.
 
 ###### Returns
 
-`Error.None` if the initial request succeeds. Use [`Results`](#Modio.Mods.ModioPage.TotalSearchResults) to inspect the results
+`Error.None` if the initial request succeeds. Use [`Results`](#Modio.Mods.Builder.ModBuilder.Results) to inspect the results
 of each publish task.
 
 ___
@@ -435,7 +457,7 @@ public class ModfileBuilder
 ```csharp
 public string FilePath
 ```
-`get` 
+`get`
 
 
 #### `string Version`
@@ -443,7 +465,7 @@ public string FilePath
 ```csharp
 public string Version
 ```
-`get` 
+`get`
 
 
 #### `string ChangeLog`
@@ -451,7 +473,7 @@ public string Version
 ```csharp
 public string ChangeLog
 ```
-`get` 
+`get`
 
 
 #### `string MetadataBlob`
@@ -459,15 +481,15 @@ public string ChangeLog
 ```csharp
 public string MetadataBlob
 ```
-`get` 
+`get`
 
 
-#### `string Platforms`
+#### [`Platform`](#Modio.Mods.Builder.ModfileBuilder.Platform) `Platforms`
 
 ```csharp
-public string[] Platforms
+public Platform[] Platforms
 ```
-`get` 
+`get`
 
 
 ###### Method
@@ -505,17 +527,39 @@ public ModfileBuilder SetMetadataBlob(string metadataBlob)
 ```
 
 
+#### SetPlatform{#Modio.Mods.Builder.ModfileBuilder.SetPlatform}
+
+```csharp
+public ModfileBuilder SetPlatform(Platform platform)
+```
+
+###### Remarks
+
+This will overwrite all platforms on this modfile.
+
+
 #### SetPlatforms{#Modio.Mods.Builder.ModfileBuilder.SetPlatforms}
 
 ```csharp
-public ModfileBuilder SetPlatforms(ICollection<string> platforms)
+public ModfileBuilder SetPlatforms(ICollection<Platform> platforms)
+```
+
+###### Remarks
+
+This will overwrite all platforms on this modfile.
+
+
+#### AppendPlatform{#Modio.Mods.Builder.ModfileBuilder.AppendPlatform}
+
+```csharp
+public ModfileBuilder AppendPlatform(Platform platform)
 ```
 
 
 #### AppendPlatforms{#Modio.Mods.Builder.ModfileBuilder.AppendPlatforms}
 
 ```csharp
-public ModfileBuilder AppendPlatforms(ICollection<string> platforms)
+public ModfileBuilder AppendPlatforms(ICollection<Platform> platforms)
 ```
 
 
@@ -523,6 +567,53 @@ public ModfileBuilder AppendPlatforms(ICollection<string> platforms)
 
 ```csharp
 public ModBuilder FinishModfile()
+```
+
+
+###### Enum
+
+```csharp
+Windows
+```
+
+```csharp
+Mac
+```
+
+```csharp
+Linux
+```
+
+```csharp
+Android
+```
+
+```csharp
+IOS
+```
+
+```csharp
+XboxOne
+```
+
+```csharp
+XboxSeriesX
+```
+
+```csharp
+PlayStation4
+```
+
+```csharp
+PlayStation5
+```
+
+```csharp
+Switch
+```
+
+```csharp
+Oculus
 ```
 
 ___
@@ -616,6 +707,23 @@ EditFlags = Name
                     | MetadataBlob
                     | Tags
                     | MonetizationConfig
+```
+
+___
+
+###### ImageFormat{#Modio.Mods.Builder.ImageFormat}
+
+
+```csharp
+Jpg
+```
+
+```csharp
+Jpeg
+```
+
+```csharp
+Png
 ```
 
 ___

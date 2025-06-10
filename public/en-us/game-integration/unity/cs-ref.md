@@ -35,25 +35,37 @@ public class Error : IEquatable<Error>
 ###### Field
 
 
-#### [`Error`](#Modio.Error.None) `None`
+#### [`Error`](#Modio.Error) `None`
 
 ```csharp
 Error None = new Error(ErrorCode.NONE)
 ```
 
 
-#### [`Error`](#Modio.Error.Unknown) `Unknown`
+#### [`Error`](#Modio.Error) `Unknown`
 
 ```csharp
 Error Unknown = new Error(ErrorCode.UNKNOWN)
 ```
 
 
-#### [`ErrorCode`](#Modio.Errors.RateLimitErrorCode) `Code`
+#### [`ErrorCode`](#Modio.Errors.ErrorCode) `Code`
 
 ```csharp
 ErrorCode Code
 ```
+
+
+###### Property
+
+
+#### `bool IsSilent`
+
+```csharp
+public bool IsSilent
+```
+
+If an error is silent, don't print an error to the console.
 
 
 ###### Method
@@ -154,7 +166,7 @@ If set to true plugin will attempt to download and extract in one step.
 
 
 
-#### [`Mod`](#Modio.ModInstallationManagement.CurrentOperationOnMod) `CurrentOperationOnMod`
+#### [`Mod`](#Modio.Mods.Mod) `CurrentOperationOnMod`
 
 ```csharp
 public static Mod CurrentOperationOnMod
@@ -254,7 +266,7 @@ Returns the total disk usage in bytes
 
 ###### Parameters
 
-`includeQueued` 
+`includeQueued`
 Wether to include queued (pending) operation, if true
 will account for file IO changes to be made by the queued operation
 
@@ -328,7 +340,7 @@ public static void ClearExpiredTempMods()
 #### RetryInstallingMod{#Modio.ModInstallationManagement.RetryInstallingMod}
 
 ```csharp
-public static void RetryInstallingMod(Mod mod)
+public static async Task<Error> RetryInstallingMod(Mod mod)
 ```
 
 Retries installing a given mod.
@@ -393,6 +405,10 @@ Uninstall
 
 ```csharp
 Validate
+```
+
+```csharp
+Scan
 ```
 
 ```csharp
@@ -508,7 +524,7 @@ Prefer resolving the dependency yourself
 ```csharp
 public static bool IsInitialized
 ```
-`get` 
+`get`
 
 Returns `true` if initialized, `false` otherwise.
 
@@ -662,36 +678,36 @@ string LOG_PREFIX_DEFAULT = "[mod.io] "
 ###### Property
 
 
-#### [`ModioLog?`](#Modio.ModioLog.Error) `Error`
+#### [`ModioLog?`](#Modio.ModioLog) `Error`
 
 ```csharp
 public static ModioLog? Error
 ```
-`get` 
+`get`
 
 
-#### [`ModioLog?`](#Modio.ModioLog.Warning) `Warning`
+#### [`ModioLog?`](#Modio.ModioLog) `Warning`
 
 ```csharp
 public static ModioLog? Warning
 ```
-`get` 
+`get`
 
 
-#### [`ModioLog?`](#Modio.ModioLog.Message) `Message`
+#### [`ModioLog?`](#Modio.ModioLog) `Message`
 
 ```csharp
 public static ModioLog? Message
 ```
-`get` 
+`get`
 
 
-#### [`ModioLog?`](#Modio.ModioLog.Verbose) `Verbose`
+#### [`ModioLog?`](#Modio.ModioLog) `Verbose`
 
 ```csharp
 public static ModioLog? Verbose
 ```
-`get` 
+`get`
 
 
 ###### Method
@@ -903,7 +919,7 @@ public class TermsOfUse
 ```
 
 The mod.io Terms of Use links. Each link contains a boolean field for if its required, Users must agree to all
-linked terms that have a True value for this field. 
+linked terms that have a True value for this field.
 Use [`Get`](#Modio.TermsOfUse.Get) to get the latest Terms of Use.
 
 
@@ -916,7 +932,7 @@ Use [`Get`](#Modio.TermsOfUse.Get) to get the latest Terms of Use.
 ```csharp
 public string TermsText
 ```
-`get` 
+`get`
 
 
 #### `string AgreeText`
@@ -924,7 +940,7 @@ public string TermsText
 ```csharp
 public string AgreeText
 ```
-`get` 
+`get`
 
 
 #### `string DisagreeText`
@@ -932,7 +948,7 @@ public string AgreeText
 ```csharp
 public string DisagreeText
 ```
-`get` 
+`get`
 
 
 #### [`TermsOfUseLink`](#Modio.TermsOfUseLink) `Links`
@@ -940,7 +956,7 @@ public string DisagreeText
 ```csharp
 public TermsOfUseLink[] Links
 ```
-`get` 
+`get`
 
 
 ###### Method
@@ -1179,7 +1195,7 @@ public interface IGetActiveUserIdentifier
 #### GetActiveUserIdentifier{#Modio.Authentication.IGetActiveUserIdentifier.GetActiveUserIdentifier}
 
 ```csharp
-public string GetActiveUserIdentifier();
+public Task<string> GetActiveUserIdentifier();
 ```
 
 ___
@@ -1199,7 +1215,7 @@ public interface IModioAuthService
 ```csharp
 public ModioAPI.Portal Portal
 ```
-`get` 
+`get`
 
 
 ###### Method
@@ -1330,7 +1346,7 @@ public void SetCodePrompter(Func<Task<string>> codePrompter)
 #### GetActiveUserIdentifier{#Modio.Authentication.ModioEmailAuthService.GetActiveUserIdentifier}
 
 ```csharp
-public string GetActiveUserIdentifier()
+public Task<string> GetActiveUserIdentifier()
 ```
 
 ___
@@ -1358,7 +1374,7 @@ public static IModioAuthService ServiceOverride
 ```csharp
 public static IReadOnlyList<IModioAuthService> AuthBindings
 ```
-`get` 
+`get`
 
 
 #### `bool IsEmailPlatform`
@@ -1397,7 +1413,7 @@ public Task<Error> Authenticate(bool displayedTerms, string thirdPartyEmail
 #### GetActiveUserIdentifier{#Modio.Authentication.ModioMultiplatformAuthResolver.GetActiveUserIdentifier}
 
 ```csharp
-public string GetActiveUserIdentifier()
+public Task<string> GetActiveUserIdentifier()
 ```
 
 ___
@@ -1434,7 +1450,7 @@ public class ApiError : Error
 ###### Field
 
 
-#### [`ApiError`](#Modio.Errors.ApiError.None) `None`
+#### [`ApiError`](#Modio.Errors.ApiError) `None`
 
 ```csharp
 ApiError None = new ApiError(ApiErrorCode.NONE)
@@ -1463,7 +1479,7 @@ public class ArchiveError : Error
 ###### Field
 
 
-#### [`ArchiveError`](#Modio.Errors.ArchiveError.None) `None`
+#### [`ArchiveError`](#Modio.Errors.ArchiveError) `None`
 
 ```csharp
 ArchiveError None = new ArchiveError(ArchiveErrorCode.NONE)
@@ -1538,7 +1554,7 @@ public class FilesystemError : Error
 ###### Field
 
 
-#### [`FilesystemError`](#Modio.Errors.FilesystemError.None) `None`
+#### [`FilesystemError`](#Modio.Errors.FilesystemError) `None`
 
 ```csharp
 FilesystemError None = new FilesystemError(FilesystemErrorCode.NONE)
@@ -1567,7 +1583,7 @@ public class GenericError : Error
 ###### Field
 
 
-#### [`GenericError`](#Modio.Errors.GenericError.None) `None`
+#### [`GenericError`](#Modio.Errors.GenericError) `None`
 
 ```csharp
 GenericError None = new GenericError(GenericErrorCode.NONE)
@@ -1596,7 +1612,7 @@ public class HttpError : Error
 ###### Field
 
 
-#### [`HttpError`](#Modio.Errors.HttpError.None) `None`
+#### [`HttpError`](#Modio.Errors.HttpError) `None`
 
 ```csharp
 HttpError None = new HttpError(HttpErrorCode.NONE)
@@ -1625,7 +1641,7 @@ public class MetricsError : Error
 ###### Field
 
 
-#### [`MetricsError`](#Modio.Errors.MetricsError.None) `None`
+#### [`MetricsError`](#Modio.Errors.MetricsError) `None`
 
 ```csharp
 MetricsError None = new MetricsError(MetricsErrorCode.NONE)
@@ -1654,7 +1670,7 @@ public class ModManagementError : Error
 ###### Field
 
 
-#### [`ModManagementError`](#Modio.Errors.ModManagementError.None) `None`
+#### [`ModManagementError`](#Modio.Errors.ModManagementError) `None`
 
 ```csharp
 ModManagementError None = new ModManagementError(ModManagementErrorCode.NONE)
@@ -1683,7 +1699,7 @@ public class ModValidationError : Error
 ###### Field
 
 
-#### [`ModValidationError`](#Modio.Errors.ModValidationError.None) `None`
+#### [`ModValidationError`](#Modio.Errors.ModValidationError) `None`
 
 ```csharp
 ModValidationError None = new ModValidationError(ModValidationErrorCode.NONE)
@@ -1712,7 +1728,7 @@ public class MonetizationError : Error
 ###### Field
 
 
-#### [`MonetizationError`](#Modio.Errors.MonetizationError.None) `None`
+#### [`MonetizationError`](#Modio.Errors.MonetizationError) `None`
 
 ```csharp
 MonetizationError None = new MonetizationError(MonetizationErrorCode.NONE)
@@ -1763,7 +1779,7 @@ public class SystemError : Error
 ###### Field
 
 
-#### [`SystemError`](#Modio.Errors.SystemError.None) `None`
+#### [`SystemError`](#Modio.Errors.SystemError) `None`
 
 ```csharp
 SystemError None = new SystemError(SystemErrorCode.NONE)
@@ -1792,7 +1808,7 @@ public class TempModsError : Error
 ###### Field
 
 
-#### [`TempModsError`](#Modio.Errors.TempModsError.None) `None`
+#### [`TempModsError`](#Modio.Errors.TempModsError) `None`
 
 ```csharp
 TempModsError None = new TempModsError(TempModsErrorCode.NONE)
@@ -1821,7 +1837,7 @@ public class UserAuthError : Error
 ###### Field
 
 
-#### [`UserAuthError`](#Modio.Errors.UserAuthError.None) `None`
+#### [`UserAuthError`](#Modio.Errors.UserAuthError) `None`
 
 ```csharp
 UserAuthError None = new UserAuthError(UserAuthErrorCode.NONE)
@@ -1850,7 +1866,7 @@ public class UserDataError : Error
 ###### Field
 
 
-#### [`UserDataError`](#Modio.Errors.UserDataError.None) `None`
+#### [`UserDataError`](#Modio.Errors.UserDataError) `None`
 
 ```csharp
 UserDataError None = new UserDataError(UserDataErrorCode.NONE)
@@ -1879,7 +1895,7 @@ public class ZlibError : Error
 ###### Field
 
 
-#### [`ZlibError`](#Modio.Errors.ZlibError.None) `None`
+#### [`ZlibError`](#Modio.Errors.ZlibError) `None`
 
 ```csharp
 ZlibError None = new ZlibError(ZlibErrorCode.NONE)
@@ -3712,7 +3728,9 @@ ___
 | [`DefaultRootPathProvider`](#Modio.FileIO.DefaultRootPathProvider) |  |
 | [`IModioDataStorage`](#Modio.FileIO.IModioDataStorage) | Interface for the platform file IO services |
 | [`IModioRootPathProvider`](#Modio.FileIO.IModioRootPathProvider) |  |
+| [`LinuxDataStorage`](#Modio.FileIO.LinuxDataStorage) |  |
 | [`MD5ComputingStreamWrapper`](#Modio.FileIO.MD5ComputingStreamWrapper) |  |
+| [`MacDataStorage`](#Modio.FileIO.MacDataStorage) |  |
 | [`ModioDiskTestSettings`](#Modio.FileIO.ModioDiskTestSettings) |  |
 | [`WindowsRootPathProvider`](#Modio.FileIO.WindowsRootPathProvider) | Provides a root path for windows |
 
@@ -3844,8 +3862,8 @@ Calculate a MD5 Hash
 
 ###### Parameters
 
-`filePath` 
-`buffer` 
+`filePath`
+`buffer`
 
 ###### Returns
 
@@ -3917,7 +3935,7 @@ public virtual Task<Error> DeleteCachedImage(Uri serverPath)
 #### IsThereAvailableFreeSpaceFor{#Modio.FileIO.BaseDataStorage.IsThereAvailableFreeSpaceFor}
 
 ```csharp
-public virtual Task<bool> IsThereAvailableFreeSpaceFor(long bytesDownload, long bytesInstall)
+public virtual Task<bool> IsThereAvailableFreeSpaceFor(long tempBytes, long persistentBytes)
 ```
 
 
@@ -3959,7 +3977,7 @@ public virtual string GetModfilePath(long modId, long modfileId)
 #### GetInstallPath{#Modio.FileIO.BaseDataStorage.GetInstallPath}
 
 ```csharp
-public virtual string GetInstallPath(long modId, long modfileId)
+public virtual string GetInstallPath(long modId, long modfileId)  // Match V2 install path. Note that initial V3 versions put mods in an "Installed" directory; see MigrateLegacyModInstalls
 ```
 
 
@@ -4036,10 +4054,18 @@ public interface IModioRootPathProvider
 ```csharp
 public string Path
 ```
-`get` 
+`get`
 
 Path of Mod Installs
 
+
+___
+
+### LinuxDataStorage{#Modio.FileIO.LinuxDataStorage}
+
+```csharp
+public class LinuxDataStorage : BaseDataStorage
+```
 
 ___
 
@@ -4058,7 +4084,7 @@ public class MD5ComputingStreamWrapper : Stream
 ```csharp
 public int TotalBytesRead
 ```
-`get` 
+`get`
 
 
 #### `bool CanRead`
@@ -4150,6 +4176,14 @@ public override void SetLength(long value)
 
 ```csharp
 public override void Write(byte[] buffer, int offset, int count)
+```
+
+___
+
+### MacDataStorage{#Modio.FileIO.MacDataStorage}
+
+```csharp
+public class MacDataStorage : BaseDataStorage
 ```
 
 ___
@@ -4308,7 +4342,7 @@ public class ImageCacheBytes : BaseImageCache<byte[]>
 ###### Field
 
 
-#### [`ImageCacheBytes`](#Modio.Images.ImageCacheBytes.Instance) `Instance`
+#### [`ImageCacheBytes`](#Modio.Images.ImageCacheBytes) `Instance`
 
 ```csharp
 ImageCacheBytes Instance = new ImageCacheBytes()
@@ -4350,7 +4384,7 @@ true if the url isn't null
 ```csharp
 public string Url
 ```
-`get` 
+`get`
 
 
 ###### Method
@@ -4411,7 +4445,7 @@ public class ModioImageSource<TResolution> where TResolution:Enum
 ```csharp
 public string FileName
 ```
-`get` 
+`get`
 
 
 ###### Method
@@ -4452,6 +4486,7 @@ ___
 | [`ModStats`](#Modio.Mods.ModStats) |  |
 | [`ModTag`](#Modio.Mods.ModTag) |  |
 | [`Modfile`](#Modio.Mods.Modfile) |  |
+| [`ModfileDownloadReference`](#Modio.Mods.ModfileDownloadReference) |  |
 | [`ModioPage`](#Modio.Mods.ModioPage) |  |
 
 ### GameData{#Modio.Mods.GameData}
@@ -4496,7 +4531,7 @@ bool MultiSelect
 ```
 
 
-#### [`ModTag`](#Modio.API.ModioAPI.Tags.GetModTagsFilter) `Tags`
+#### [`ModTag`](#Modio.Mods.ModTag) `Tags`
 
 ```csharp
 ModTag[] Tags
@@ -4546,7 +4581,7 @@ UI elements accordingly.
 ```csharp
 public ModId Id
 ```
-`get` 
+`get`
 
 
 #### `string Name`
@@ -4554,7 +4589,7 @@ public ModId Id
 ```csharp
 public string Name
 ```
-`get` 
+`get`
 
 
 #### `string Summary`
@@ -4570,31 +4605,31 @@ public string Summary
 ```csharp
 public string Description
 ```
-`get` 
+`get`
 
 
-#### [`DateTime`](#Modio.Extensions.DateTimeExtensions) `DateLive`
+#### `DateTime DateLive`
 
 ```csharp
 public DateTime DateLive
 ```
-`get` 
+`get`
 
 
-#### [`DateTime`](#Modio.Extensions.DateTimeExtensions) `DateUpdated`
+#### `DateTime DateUpdated`
 
 ```csharp
 public DateTime DateUpdated
 ```
-`get` 
+`get`
 
 
-#### [`ModTag`](#Modio.API.ModioAPI.Tags.GetModTagsFilter) `Tags`
+#### [`ModTag`](#Modio.Mods.ModTag) `Tags`
 
 ```csharp
 public ModTag[] Tags
 ```
-`get` 
+`get`
 
 
 #### `string MetadataBlob`
@@ -4602,7 +4637,7 @@ public ModTag[] Tags
 ```csharp
 public string MetadataBlob
 ```
-`get` 
+`get`
 
 
 #### `Dictionary MetadataKvps`
@@ -4610,7 +4645,7 @@ public string MetadataBlob
 ```csharp
 public Dictionary<string,string> MetadataKvps
 ```
-`get` 
+`get`
 
 
 #### [`ModCommunityOptions`](#Modio.Mods.ModCommunityOptions) `CommunityOptions`
@@ -4618,7 +4653,7 @@ public Dictionary<string,string> MetadataKvps
 ```csharp
 public ModCommunityOptions CommunityOptions
 ```
-`get` 
+`get`
 
 
 #### [`ModMaturityOptions`](#Modio.Mods.ModMaturityOptions) `MaturityOptions`
@@ -4626,7 +4661,7 @@ public ModCommunityOptions CommunityOptions
 ```csharp
 public ModMaturityOptions MaturityOptions
 ```
-`get` 
+`get`
 
 
 #### [`Modfile`](#Modio.API.ModioAPI.Mods.GetModsFilter.Modfile) `File`
@@ -4634,7 +4669,7 @@ public ModMaturityOptions MaturityOptions
 ```csharp
 public Modfile File
 ```
-`get` 
+`get`
 
 
 #### [`ModStats`](#Modio.Mods.ModStats) `Stats`
@@ -4642,7 +4677,7 @@ public Modfile File
 ```csharp
 public ModStats Stats
 ```
-`get` 
+`get`
 
 
 #### `long Price`
@@ -4650,7 +4685,7 @@ public ModStats Stats
 ```csharp
 public long Price
 ```
-`get` 
+`get`
 
 
 #### `bool IsMonetized`
@@ -4658,7 +4693,7 @@ public long Price
 ```csharp
 public bool IsMonetized
 ```
-`get` 
+`get`
 
 
 #### [`ModioImageSource`](#Modio.Images.ModioImageSource) `Logo`
@@ -4666,7 +4701,7 @@ public bool IsMonetized
 ```csharp
 public ModioImageSource<LogoResolution> Logo
 ```
-`get` 
+`get`
 
 
 #### `ModioImageSource<GalleryResolution> Gallery`
@@ -4674,7 +4709,7 @@ public ModioImageSource<LogoResolution> Logo
 ```csharp
 public ModioImageSource<GalleryResolution>[] Gallery
 ```
-`get` 
+`get`
 
 
 #### [`UserProfile`](#Modio.Users.UserProfile) `Creator`
@@ -4682,15 +4717,15 @@ public ModioImageSource<GalleryResolution>[] Gallery
 ```csharp
 public UserProfile Creator
 ```
-`get` 
+`get`
 
 
-#### [`ModDependencies`](#Modio.API.ModioAPI.Dependencies.GetModDependenciesFilter) `Dependencies`
+#### [`ModDependencies`](#Modio.Mods.ModDependencies) `Dependencies`
 
 ```csharp
 public ModDependencies Dependencies
 ```
-`get` 
+`get`
 
 
 #### [`ModRating`](#Modio.Mods.ModRating) `CurrentUserRating`
@@ -4698,7 +4733,7 @@ public ModDependencies Dependencies
 ```csharp
 public ModRating CurrentUserRating
 ```
-`get` 
+`get`
 
 
 #### `bool IsSubscribed`
@@ -4706,7 +4741,7 @@ public ModRating CurrentUserRating
 ```csharp
 public bool IsSubscribed
 ```
-`get` 
+`get`
 
 
 #### `bool IsPurchased`
@@ -4714,7 +4749,7 @@ public bool IsSubscribed
 ```csharp
 public bool IsPurchased
 ```
-`get` 
+`get`
 
 
 #### `bool IsEnabled`
@@ -4867,7 +4902,7 @@ it's available.
 
 ###### Returns
 
-A collection of [`Mod`](#Modio)s.
+A collection of [`Mod`](#Modio.Mods.Mod)s.
 
 
 #### RateMod{#Modio.Mods.Mod.RateMod}
@@ -4960,7 +4995,7 @@ public class ModDependencies
 ```csharp
 public int Count
 ```
-`get` 
+`get`
 
 
 #### `bool HasDependencies`
@@ -4968,7 +5003,7 @@ public int Count
 ```csharp
 public bool HasDependencies
 ```
-`get` 
+`get`
 
 
 #### `bool IsMapped`
@@ -4995,7 +5030,7 @@ Gets all dependencies of the dependent.
 
 An asynchronous task that returns a tuple ([`Error`](#Modio.ModioLog.Error) error, `IReadOnlyList{Mod}` results), where:
 `error` is the error encountered during the task (if any)
-`result` is a readonly list of [`Mod`](#Modio) dependencies.
+`result` is a readonly list of [`Mod`](#Modio.Mods.Mod) dependencies.
 
 
 ___
@@ -5166,8 +5201,8 @@ Adds a tag to be used in filtering mods for a request.
 
 ###### See Also
 
-[`Tag`](#Modio.API.ModioAPI.Mods.GetModsFilter.Tags)
-[`TagCategory`](#Modio.Mods.GameTagCategory)
+[`ModTag`](#Modio.Mods.ModTag)
+[`GameTagCategory`](#Modio.Mods.GameTagCategory)
 
 
 #### AddTags{#Modio.Mods.ModSearchFilter.AddTags}
@@ -5185,8 +5220,8 @@ Adds multiple tags used in filtering mods for a request.
 
 ###### See Also
 
-[`Tag`](#Modio.API.ModioAPI.Mods.GetModsFilter.Tags)
-[`TagCategory`](#Modio.Mods.GameTagCategory)
+[`ModTag`](#Modio.Mods.ModTag)
+[`GameTagCategory`](#Modio.Mods.GameTagCategory)
 
 
 #### ClearTags{#Modio.Mods.ModSearchFilter.ClearTags}
@@ -5248,7 +5283,7 @@ public class ModStats
 ```csharp
 public long Subscribers
 ```
-`get` 
+`get`
 
 
 #### `long Downloads`
@@ -5256,7 +5291,7 @@ public long Subscribers
 ```csharp
 public long Downloads
 ```
-`get` 
+`get`
 
 
 #### `long RatingsPositive`
@@ -5264,7 +5299,7 @@ public long Downloads
 ```csharp
 public long RatingsPositive
 ```
-`get` 
+`get`
 
 
 #### `long RatingsNegative`
@@ -5272,7 +5307,7 @@ public long RatingsPositive
 ```csharp
 public long RatingsNegative
 ```
-`get` 
+`get`
 
 
 #### `long RatingsPercent`
@@ -5280,7 +5315,7 @@ public long RatingsNegative
 ```csharp
 public long RatingsPercent
 ```
-`get` 
+`get`
 
 ___
 
@@ -5309,7 +5344,7 @@ string ApiName
 ```csharp
 public string NameLocalized
 ```
-`get` 
+`get`
 
 
 #### `bool IsVisible`
@@ -5317,7 +5352,7 @@ public string NameLocalized
 ```csharp
 public bool IsVisible
 ```
-`get` 
+`get`
 
 
 #### `int Count`
@@ -5354,7 +5389,7 @@ public class Modfile
 ```csharp
 public long ModId
 ```
-`get` 
+`get`
 
 
 #### `long Id`
@@ -5362,7 +5397,7 @@ public long ModId
 ```csharp
 public long Id
 ```
-`get` 
+`get`
 
 
 #### `long FileSize`
@@ -5370,7 +5405,7 @@ public long Id
 ```csharp
 public long FileSize
 ```
-`get` 
+`get`
 
 
 #### `long ArchiveFileSize`
@@ -5378,7 +5413,7 @@ public long FileSize
 ```csharp
 public long ArchiveFileSize
 ```
-`get` 
+`get`
 
 
 #### `string InstallLocation`
@@ -5394,7 +5429,7 @@ public string InstallLocation
 ```csharp
 public string Version
 ```
-`get` 
+`get`
 
 
 #### `string MetadataBlob`
@@ -5402,7 +5437,7 @@ public string Version
 ```csharp
 public string MetadataBlob
 ```
-`get` 
+`get`
 
 
 #### [`ModFileState`](#Modio.Mods.ModFileState) `State`
@@ -5413,7 +5448,7 @@ public ModFileState State
 `get` `set`
 
 
-#### [`Error`](#Modio.Mods.Modfile.FileStateErrorCause) `FileStateErrorCause`
+#### [`Error`](#Modio.ModioLog.Error) `FileStateErrorCause`
 
 ```csharp
 public Error FileStateErrorCause
@@ -5435,6 +5470,47 @@ public float FileStateProgress
 public long DownloadingBytesPerSecond
 ```
 `get` `set`
+
+
+#### [`ModfileDownloadReference`](#Modio.Mods.ModfileDownloadReference) `Download`
+
+```csharp
+public ModfileDownloadReference Download
+```
+`get`
+
+
+#### `string Md5Hash`
+
+```csharp
+public string Md5Hash
+```
+`get`
+
+___
+
+### ModfileDownloadReference{#Modio.Mods.ModfileDownloadReference}
+
+```csharp
+public struct ModfileDownloadReference
+```
+
+
+###### Field
+
+
+#### `string BinaryUrl`
+
+```csharp
+string BinaryUrl
+```
+
+
+#### `DateTime ExpiresAfter`
+
+```csharp
+DateTime ExpiresAfter
+```
 
 ___
 
@@ -6111,10 +6187,10 @@ public bool HasGotSubscriptions
 ```csharp
 public IEnumerable<Mod> GetCreatedMods()
 ```
-Returns a new array containing the [`Mod`](#Modio)s this user added or is a team member of.
+Returns a new array containing the [`Mod`](#Modio.Mods.Mod)s this user added or is a team member of.
 Use `GetCreatedMods(List{Modio.Mods.Mod},out Modio.Error)` to avoid the array creation.
 Note:
- mods may not be initialized, use Mod.`Mod.IsInitialized` to test for initialization.
+mods may not be initialized, use Mod.`Mod.IsInitialized` to test for initialization.
 
 
 
@@ -6178,12 +6254,12 @@ public class User
 ###### Property
 
 
-#### [`User`](#Modio.Users.User.Current) `Current`
+#### [`User`](#Modio.Users.User) `Current`
 
 ```csharp
 public static User Current
 ```
-`get` 
+`get`
 
 
 #### `string LocalUserId`
@@ -6191,7 +6267,7 @@ public static User Current
 ```csharp
 public string LocalUserId
 ```
-`get` 
+`get`
 
 
 #### `long UserId`
@@ -6207,7 +6283,7 @@ public long UserId
 ```csharp
 public bool IsInitialized
 ```
-`get` 
+`get`
 
 
 #### `bool HasAcceptedTermsOfUse`
@@ -6215,7 +6291,7 @@ public bool IsInitialized
 ```csharp
 public bool HasAcceptedTermsOfUse
 ```
-`get` 
+`get`
 
 
 #### `bool IsAuthenticated`
@@ -6223,7 +6299,7 @@ public bool HasAcceptedTermsOfUse
 ```csharp
 public bool IsAuthenticated
 ```
-`get` 
+`get`
 
 
 #### `bool IsUpdating`
@@ -6231,7 +6307,7 @@ public bool IsAuthenticated
 ```csharp
 public bool IsUpdating
 ```
-`get` 
+`get`
 
 
 #### [`UserProfile`](#Modio.Users.UserProfile) `Profile`
@@ -6239,7 +6315,7 @@ public bool IsUpdating
 ```csharp
 public UserProfile Profile
 ```
-`get` 
+`get`
 
 
 #### [`Wallet`](#Modio.Users.User.Wallet) `Wallet`
@@ -6247,7 +6323,7 @@ public UserProfile Profile
 ```csharp
 public Wallet Wallet
 ```
-`get` 
+`get`
 
 
 #### [`ModRepository`](#Modio.Users.User.ModRepository) `ModRepository`
@@ -6255,7 +6331,7 @@ public Wallet Wallet
 ```csharp
 public ModRepository ModRepository
 ```
-`get` 
+`get`
 
 
 ###### Method
@@ -6422,7 +6498,7 @@ Gets all mod creations by the User from the API.
 
 An asynchronous task that returns a tuple ([`Error`](#Modio.ModioLog.Error) error, `IReadOnlyList{Mod}` results), where:
 `error` is the error encountered during the task (if any)
-`result` is a readonly list of [`Mod`](#Modio)s created by this user.
+`result` is a readonly list of [`Mod`](#Modio.Mods.Mod)s created by this user.
 
 
 ###### Remarks
@@ -6435,7 +6511,7 @@ This will crawl through all creations but not cache any data. Please use sparing
 ```csharp
 [ModioDebugMenu(ShowInBrowserMenu
 ```
-Removes the [`User`](#Modio.API.ModioAPI.Teams.GetModTeamMembersFilter.UserId) and associated authentication and caches from this device.
+Removes the [`User`](#Modio.Users.User) and associated authentication and caches from this device.
 
 
 #### LogOut{#Modio.Users.User.LogOut}
@@ -6443,7 +6519,7 @@ Removes the [`User`](#Modio.API.ModioAPI.Teams.GetModTeamMembersFilter.UserId) a
 ```csharp
 public static void LogOut()
 ```
-Logs out the current [`User`](#Modio.API.ModioAPI.Teams.GetModTeamMembersFilter.UserId) without deleting any associated data stored on this device.
+Logs out the current [`User`](#Modio.Users.User) without deleting any associated data stored on this device.
 
 ___
 
@@ -6479,7 +6555,7 @@ public long UserId
 ```
 `get` `set`
 
- This is the unique Id of the user.
+This is the unique Id of the user.
 
 
 
@@ -6488,7 +6564,7 @@ public long UserId
 ```csharp
 public string PortalUsername
 ```
-`get` 
+`get`
 
 The display name of the user's account they authenticated with. Eg if they authenticated
 with Steam it would be their Steam username.
@@ -6500,7 +6576,7 @@ with Steam it would be their Steam username.
 ```csharp
 public ModioImageSource<AvatarResolution> Avatar
 ```
-`get` 
+`get`
 
 
 #### `string Timezone`
@@ -6508,7 +6584,7 @@ public ModioImageSource<AvatarResolution> Avatar
 ```csharp
 public string Timezone
 ```
-`get` 
+`get`
 
 
 #### `string Language`
@@ -6516,7 +6592,7 @@ public string Timezone
 ```csharp
 public string Language
 ```
-`get` 
+`get`
 
 
 ###### Method
@@ -6669,7 +6745,7 @@ public class Wallet
 ```csharp
 public string Type
 ```
-`get` 
+`get`
 
 
 #### `string Currency`
@@ -6677,7 +6753,7 @@ public string Type
 ```csharp
 public string Currency
 ```
-`get` 
+`get`
 
 
 #### `long Balance`
@@ -6685,6 +6761,6 @@ public string Currency
 ```csharp
 public long Balance
 ```
-`get` 
+`get`
 
 ___

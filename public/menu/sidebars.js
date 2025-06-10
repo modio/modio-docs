@@ -44,24 +44,24 @@ const sidebars = {
       label: 'Unreal',
       link: {type: 'doc', id: 'game-integration/unreal/ue-index'},
       items: [
-        'game-integration/unreal/ue-installation-and-setup', 
         {
           type: 'category',
-          label: 'Getting Started',
-          link: {type: 'doc', id: 'game-integration/unreal/getting-started/ue-getting-started'},
+          label: 'Core Plugin',
+          link: {type: 'doc', id: 'game-integration/unreal/core-plugin/ue-getting-started'},
           items: [
-            'game-integration/unreal/getting-started/ue-plugin-structure', 
-            'game-integration/unreal/getting-started/ue-initialization',
-            'game-integration/unreal/getting-started/ue-user-authentication',
-            'game-integration/unreal/getting-started/ue-browsing-mods',
-            'game-integration/unreal/getting-started/ue-mod-subscriptions',
-            'game-integration/unreal/getting-started/ue-submit-mods',
-            'game-integration/unreal/getting-started/ue-edit-mods',
-            'game-integration/unreal/getting-started/ue-error-handling',
-            'game-integration/unreal/getting-started/ue-monetization',
-            'game-integration/unreal/getting-started/ue-temporary-mods',
-            'game-integration/unreal/getting-started/ue-mute-user',
-            'game-integration/unreal/getting-started/ue-metrics-play-sessions',
+            'game-integration/unreal/core-plugin/ue-initialization',
+            'game-integration/unreal/core-plugin/ue-plugin-structure', 
+            'game-integration/unreal/core-plugin/ue-user-authentication',
+            'game-integration/unreal/core-plugin/ue-browsing-mods',
+            'game-integration/unreal/core-plugin/ue-mod-subscriptions',
+            'game-integration/unreal/core-plugin/ue-submit-mods',
+            'game-integration/unreal/core-plugin/ue-edit-mods',
+            'game-integration/unreal/core-plugin/ue-error-handling',
+            'game-integration/unreal/core-plugin/ue-monetization',
+            'game-integration/unreal/core-plugin/ue-temporary-mods',
+            'game-integration/unreal/core-plugin/ue-mute-user',
+            'game-integration/unreal/core-plugin/ue-metrics-play-sessions',
+            'game-integration/unreal/core-plugin/ue-mod-creation-tool', 
           ]
         },
         {
@@ -69,10 +69,7 @@ const sidebars = {
           label: 'Modio UGC',
           link: {type: 'doc', id: 'game-integration/unreal/modio-ugc/overview'},
           items: [
-            'game-integration/unreal/modio-ugc/integration',
-            'game-integration/unreal/modio-ugc/creating-ugc',
-            'game-integration/unreal/modio-ugc/packaging-ugc',
-            'game-integration/unreal/modio-ugc/example-ugc',
+            'game-integration/unreal/modio-ugc/getting-started',
             'game-integration/unreal/modio-ugc/troubleshooting',
             'game-integration/ue-generated/ugc/modio-ugc-refdocs',
           ]
@@ -103,9 +100,7 @@ const sidebars = {
             'game-integration/unreal/template-ui/ui-layouts',
           ]
         },
-        'game-integration/unreal/ue-marketplace', 
         'game-integration/unreal/ue-profiling', 
-        'game-integration/unreal/ue-mod-creation-tool', 
         'guides/ue-mod-loading',
         {
           type: 'category', 
