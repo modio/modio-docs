@@ -4,7 +4,6 @@ title: Xbox One & Xbox Series X/S
 slug: /platforms/gdk/
 sidebar_position: 3
 ---
-import CrossLink from '@site/src/components/CrossLink'
 
 # Xbox One & Xbox Series X/S 
 

@@ -4,7 +4,6 @@ title: Nintendo Switch
 slug: /platforms/switch/
 sidebar_position: 4
 ---
-import CrossLink from '@site/src/components/CrossLink'
 
 # Nintendo Switch
 

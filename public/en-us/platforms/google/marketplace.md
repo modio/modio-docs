@@ -4,7 +4,6 @@ title: Marketplace
 slug: /platforms/google/marketplace
 sidebar_position: 1
 ---
-import CrossLink from '@site/src/components/CrossLink'
 
 # Google Play Entitlements
 

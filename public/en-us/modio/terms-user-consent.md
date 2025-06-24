@@ -75,7 +75,7 @@ flowchart TD
 ![Step 2: User is prompted to agree to terms](images/terms-step2.png)
 
 3. Once the user has accepted, authentication can happen instantly if using platform SSO (i.e. Xbox auth), or your own account system using OIDC. Email authentication and QR code are also supported, and if used require additional steps to sign in.
-   * Visit our [authentication documentation](/web-services/authentication/platform/) for instructions on how to authenticate users.
+   * Visit our [authentication documentation](/authentication/platform/) for instructions on how to authenticate users.
    * If you completed step 2 prior to authenticating the user, you should indicate the user has accepted the terms in your request to mod.io `terms_agreed=true`, otherwise the value must remain `terms_agreed=false`.
    * If you skipped step 2 and receive the error `403 Forbidden (error_ref 11074)`, this indicates the terms have been updated since the user last agreed. You need to return to step 2 and get the users agreement to continue.
 

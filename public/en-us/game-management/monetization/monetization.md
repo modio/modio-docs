@@ -17,6 +17,6 @@ To explore the Marketplace functionality, follow these steps:
 2. [Request Monetization](/monetization/enabling/), by visiting game admin > monetization -> getting started, and we will enable the Marketplace for you.
 3. Refer to the [Getting Started guide](/monetization/getting-started/) to learn how to integrate the Marketplace into your game.
 4. Complete the [technical integration](/monetization/integration/) using the official mod.io plugins or REST API.
-5. Use mod.io as a [purchasing server](/web-services/marketplace/overview/) or create your own.
+5. Setup a [purchasing server](/monetization/integration/#purchase-server) to consume the entitlements purchased and apply them to the players account.
 
 If you require assistance setting up and running your Marketplace, please contact any of our experts at developers@mod.io.

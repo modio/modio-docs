@@ -4,7 +4,6 @@ title: Authentication
 slug: /platforms/google/authentication
 sidebar_position: 0
 ---
-import CrossLink from '@site/src/components/CrossLink'
 
 # Google Play Authentication
 
@@ -96,7 +95,7 @@ To authenticate to mod.io via a Google Play account, we support the following cr
 If your game is using the official mod.io SDK, Unreal or Unity plugin, follow the instructions provided with it to authenticate players using Google SSO, or other supported platform authentication methods.
 
 * For the C++ SDK, [click here](/cppsdk/getting-started/#ssoexternal-authentication)
-* For Unreal Engine, [click here](/unreal/getting-started/user-authentication#single-sign-on-authentication)
+* For Unreal Engine, [click here](/unreal/getting-started/user-authentication/#single-sign-on-authentication)
 * For Unity Engine, [click here](/unity/getting-started/#authentication)
 
 If you are building something custom using the mod.io REST API, follow the [instructions provided here](https://docs.mod.io/restapiref/#google) to authenticate players using Google SSO, by calling the `/external/googleauth` endpoint.

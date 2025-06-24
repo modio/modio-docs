@@ -70,7 +70,7 @@ Now, return to your scene in Unity, enter Play mode and you should see the logge
 
 ## Authentication
 
-Most of the API’s functionality requires player authentication. The plugin offers a large range of SSO (single-sign on) authentication options, including Steam, Oculus, Xbox, PlayStation 4/5, and more. We strongly recommend using these options as they provide a frictionless user experience and don't require multiple steps.
+Most of the API’s functionality requires player authentication. The plugin offers a large range of SSO (single-sign on) authentication options, including Steam, Meta, Epic Games, Apple, Google, Xbox, PlayStation 4/5, Nintendo Switch, and more. We strongly recommend using these options as they provide a frictionless user experience and don't require multiple steps.
 
 For now, let's start with a simple email authentication to allow us full access. To do so we need to bind the Email Authentication service so that it's chosen as the auth service for the plugin.
 
@@ -187,7 +187,7 @@ if your email provider supports it, you can use plus-addressing to test multiple
 
 ### Steam Single Sign-On
 
-Alternatively SSO methods with other platforms can be used to authenticate the user with mod.io. Check out our [documentation](https://docs.mod.io/restapiref/?http#authentication-2) to see a list of all platforms we support SSO with. For this example we're going to use Steam with the [Facepunch Steamworks library](https://wiki.facepunch.com/steamworks/).
+Alternatively SSO methods with other platforms can be used to authenticate the user with mod.io. Check out our [documentation](https://docs.mod.io/restapiref/#authentication-2) to see a list of all platforms we support SSO with. For this example we're going to use Steam with the [Facepunch Steamworks library](https://wiki.facepunch.com/steamworks/).
 
 Feel free to come back to this section later! Authentication is agnostic of the rest of this guide's behavior.
 
@@ -196,7 +196,7 @@ Feel free to come back to this section later! Authentication is agnostic of the 
 <summary><i>Click to expand</i></summary>
 
 :::important
-before we can implement single sign-on, we need to configure steam sso for your game on the mod.io website. please read our [documentation](https://docs.mod.io/platforms/steam/authentication) on how to do this before continuing with the implementation below.
+before we can implement single sign-on, we need to configure steam sso for your game on the mod.io website. please read our [documentation](/platforms/steam/authentication/) on how to do this before continuing with the implementation below.
 :::
 >
 
@@ -542,7 +542,7 @@ new ModSearchFilter(2, 10); // Will return results 21-30
 ```
 
 :::note
-mod search filters have a number of options for filtering and ordering your results. see the [documentation](https://docs.mod.io/unity/) (or use code completion in your ide) for its available options.
+mod search filters have a number of options for filtering and ordering your results. see the [documentation](/unity/) (or use code completion in your ide) for its available options.
 :::
 > If you're looking for more granular filtering, check out the `ModioAPI.Mods.GetModsFilter` class.
 

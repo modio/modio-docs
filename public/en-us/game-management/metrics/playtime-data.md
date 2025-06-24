@@ -24,7 +24,7 @@ Once you have enabled Playtime Metrics via the Premium Features dashboard, you a
 
 ## SDK Support
 
-If you are using the mod.io [Unreal Engine](https://docs.mod.io/unreal/getting-started/#metrics-play-sessions) / [C++ SDK](https://docs.mod.io/cppsdk/getting-started/metrics-play-sessions) or [Unity plugin](https://docs.mod.io/unity/getting-started/#metrics-play-sessions), this is an implemented feature and it is strongly recommended you use the functionality via the plugins as it abstracts away implementation complexity such as building the session hash.
+If you are using the mod.io [Unreal Engine](/unreal/getting-started/#metrics-play-sessions) / [C++ SDK](/cppsdk/getting-started/#metrics-play-sessions) or [Unity plugin](/unity/getting-started/#metrics-play-sessions), this is an implemented feature and it is strongly recommended you use the functionality via the plugins as it abstracts away implementation complexity such as building the session hash.
 
 ## Capture Process
 

@@ -4,7 +4,6 @@ title: Supporting Console Platforms
 slug: /platforms/
 sidebar_position: 0
 ---
-import CrossLink from '@site/src/components/CrossLink'
 
 # Supporting Console Platforms
 

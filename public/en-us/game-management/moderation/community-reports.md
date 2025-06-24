@@ -44,7 +44,7 @@ On all tabs you can edit the UGC’s details (such as name and description) by c
 
 ### Approving Per-Platform Files
 
-If you have enabled [per-platform moderation](/manual-curation/#Per-Platform Moderation), an additional tab **Pending files** will appear. If Per-Platform Moderation is enabled, all UGC with files ready for approval for the supported platforms will appear here. From this tab you can **Review Files** for approval, which will release the file onto the approved platform(s).
+If you have enabled [per-platform moderation](/moderation/manual-curation/#per-platform-moderation), an additional tab **Pending files** will appear. If Per-Platform Moderation is enabled, all UGC with files ready for approval for the supported platforms will appear here. From this tab you can **Review Files** for approval, which will release the file onto the approved platform(s).
 
 ![Pending files](images/pending-files.png)
 

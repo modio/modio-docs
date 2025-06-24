@@ -4,7 +4,6 @@ title: PlayStation®4 & PlayStation®5
 slug: /platforms/playstation/
 sidebar_position: 2
 ---
-import CrossLink from '@site/src/components/CrossLink'
 
 # PlayStation®4 & PlayStation®5
 

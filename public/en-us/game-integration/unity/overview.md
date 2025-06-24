@@ -14,7 +14,7 @@ A custom-built [ready-made UI](#quick-start) for mod discovery is included, alon
 :::
 
 ## Platform Support
-To access console platforms and documentation, see [Supporting Console Platforms](https://docs.mod.io/platforms/). If a platform you require isn't available yet, please reach out to us.
+To access console platforms and documentation, see [Supporting Console Platforms](/platforms/). If a platform you require isn't available yet, please reach out to us.
 
 | Platform          | Support | Legacy Support |
 |-------------------|:-------:|:--------------:| 

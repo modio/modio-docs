@@ -282,34 +282,57 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'Monetization',
-      link: {type: 'doc', id: 'game-management/monetization/monetization'},
-      items: [ 
+      label: 'Authentication',
+      items: [
         {
           type: 'category',
-          label: 'Getting Started',
-          link: {type: 'doc', id: 'game-management/monetization/monetization-getting-started'},
-          items: ['game-management/monetization/monetization-how-it-works', 'game-management/monetization/monetization-enabling-monetization','game-management/monetization/monetization-onboarding', 'game-management/monetization/monetization-dashboard', 'game-management/monetization/monetization-approving-premium-ugc', 'game-management/monetization/monetization-marketplace', 'game-management/monetization/monetization-invoices', 'game-management/monetization/monetization-earnings-payouts']
-        }, 
-        {
-          type: 'category', 
-          label: 'Integrations', 
-          items: ['web-services/marketplace/modio-as-purchase-server', 'web-services/marketplace/studio-as-purchase-server'],
+          label: 'For Players',
+          link: {type: 'doc', id: 'game-management/authentication/authentication-overview'},
+          items: ['game-management/authentication/authentication-platform', 'game-management/authentication/authentication-device', 'game-management/authentication/authentication-openid', 'game-management/authentication/authentication-website-studio-sso', 'game-management/authentication/authentication-website-to-modio-sso', 'game-management/authentication/authentication-verification'],
         },
-        'game-management/monetization/monetization-payment-testing', 'game-management/monetization/monetization-next-steps'
+        {
+          type: 'doc',
+          id: 'game-management/authentication/authentication-s2s',
+          label: 'For Web Servers',
+        },
       ],
     },
     {
       type: 'category',
-      label: 'Moderation',
-      link: {type: 'doc', id: 'game-management/moderation/moderation'},
-      items: ['game-management/moderation/automated-scanning', 'game-management/moderation/manual-curation', 'game-management/moderation/community-reports',
+      label: 'Cloud Cooking',
+      link: {type: 'doc', id: 'game-management/cloud-cooking/cloud-cooking-overview'},
+      items: [
         {
-          type: 'category',
-          label: 'Rules Engine',
-          link: {type: 'doc', id: 'game-management/moderation/rules-engine'},
-          items: ['game-management/moderation/rules-engine-setup', 'game-management/moderation/rules-engine-webhooks', 'game-management/moderation/rules-engine-monitoring', 'game-management/moderation/rules-engine-examples'],
+          type: "category",
+          label: "Preparing Your Game & Editor",
+          items: ['game-management/cloud-cooking/cloud-cooking-preparing-your-game-unreal',]
         },
+        'game-management/cloud-cooking/cloud-cooking-configuration',
+        'game-management/cloud-cooking/cloud-cooking-architecture',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Collections',
+      link: {type: 'doc', id: 'game-management/collections/collections-overview'},
+      items: [],
+    },
+    {
+      type: 'doc',
+      id: 'game-management/dependencies/dependency-management',
+      label: 'Dependencies',
+    },
+    {
+      type: 'category',
+      label: 'Embeddable Hub',
+      link: {type: 'doc', id: 'game-management/embeddable-hub/embeddable-hub-overview'},
+      items: [
+        'game-management/embeddable-hub/embeddable-hub-theme',
+        'game-management/embeddable-hub/embeddable-hub-settings',
+        'game-management/embeddable-hub/embeddable-hub-custom-css',
+        'game-management/embeddable-hub/embeddable-hub-add-ugc',
+        'game-management/embeddable-hub/embeddable-hub-deployment',
+        'game-management/embeddable-hub/embeddable-hub-communication',
       ],
     },
     {
@@ -331,73 +354,36 @@ const sidebars = {
       ],
     },
     {
-      type: 'doc',
-      id: 'game-management/dependencies/dependency-management',
-      label: 'Dependencies',
-    },
-    // Web Services
-    {
-      type: 'html',
-      value: `${startStylePush}WEB SERVICES${endStyle}`,
-      defaultStyle: true,
-    },
-    {
       type: 'category',
-      label: 'Authentication',
-      items: [
+      label: 'Moderation',
+      link: {type: 'doc', id: 'game-management/moderation/moderation'},
+      items: ['game-management/moderation/automated-scanning', 'game-management/moderation/manual-curation', 'game-management/moderation/community-reports',
         {
           type: 'category',
-          label: 'For Players',
-          link: {type: 'doc', id: 'web-services/authentication/overview'},
-          items: ['web-services/authentication/platform', 'web-services/authentication/device', 'web-services/authentication/openid', 'web-services/authentication/website-studio-sso', 'web-services/authentication/website-to-modio-sso', 'web-services/authentication/verification'],
-        },
-        {
-          type: 'doc',
-          id: 'web-services/authentication/s2s',
-          label: 'For Web Servers',
+          label: 'Rules Engine',
+          link: {type: 'doc', id: 'game-management/moderation/rules-engine'},
+          items: ['game-management/moderation/rules-engine-setup', 'game-management/moderation/rules-engine-webhooks', 'game-management/moderation/rules-engine-monitoring', 'game-management/moderation/rules-engine-examples'],
         },
       ],
     },
     {
       type: 'category',
-      label: 'Marketplace',
-      items: [
-      {
-        type: 'doc',
-        label: 'Getting Started',
-        id: 'web-services/marketplace/getting-started',
-      }, 
-      {
-        type: 'category', 
-        label: 'Integrations', 
-        items: ['web-services/marketplace/modio-as-purchase-server', 'web-services/marketplace/studio-as-purchase-server'],
-      }
-      ]
-    },
-    {
-      type: 'category',
-      label: 'Embeddable Hub',
-      link: {type: 'doc', id: 'web-services/embeddable-hub/overview'},
-      items: [
-        'web-services/embeddable-hub/theme',
-        'web-services/embeddable-hub/settings',
-        'web-services/embeddable-hub/custom-css',
-        'web-services/embeddable-hub/deployment',
-        'web-services/embeddable-hub/communication',
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Cloud Cooking',
-      link: {type: 'doc', id: 'web-services/cloud-cooking/overview'},
-      items: [
+      label: 'Monetization',
+      link: {type: 'doc', id: 'game-management/monetization/monetization'},
+      items: [ 
         {
-          type: "category",
-          label: "Preparing Your Game & Editor",
-          items: ['web-services/cloud-cooking/preparing-your-game-unreal',]
+          type: 'category',
+          label: 'Getting Started',
+          link: {type: 'doc', id: 'game-management/monetization/monetization-getting-started'},
+          items: ['game-management/monetization/monetization-how-it-works', 'game-management/monetization/monetization-enabling-monetization','game-management/monetization/monetization-onboarding', 'game-management/monetization/monetization-dashboard', 'game-management/monetization/monetization-approving-premium-ugc', 'game-management/monetization/monetization-marketplace', 'game-management/monetization/monetization-invoices', 'game-management/monetization/monetization-earnings-payouts']
+        }, 
+        {
+          type: 'category', 
+          label: 'Integration', 
+          link: {type: 'doc', id: 'game-management/monetization/monetization-integration'},
+          items: ['game-management/monetization/monetization-modio-as-purchase-server', 'game-management/monetization/monetization-studio-as-purchase-server'],
         },
-        'web-services/cloud-cooking/configuring-cloud-cooking',
-        'web-services/cloud-cooking/architecture',
+        'game-management/monetization/monetization-payment-testing', 'game-management/monetization/monetization-next-steps'
       ],
     },
     // REST API

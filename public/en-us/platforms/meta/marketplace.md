@@ -113,6 +113,6 @@ Each of our plugins provide built-in functionality for this. Authenticate the te
 
 If your game is using an official mod.io plugin, follow the relevant link below for integrating marketplace using Meta Quest, or other supported platform marketplaces:
 
-* [Unreal Engine](/unreal/marketplace)
-* [Unity](/unity/marketplace)
-* [C++ SDK](/cppsdk/marketplace)
+* [Unreal Engine](/unreal/marketplace/)
+* [Unity](/unity/marketplace/)
+* [C++ SDK](/cppsdk/marketplace/)
