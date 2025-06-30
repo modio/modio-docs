@@ -12,8 +12,8 @@ Deploying your Embeddable Hub is easy, just follow the steps below:
 1. If your game is hidden or pending, the _'Visible when game is hidden'_ checkbox on the [Settings page](../settings) must be checked, if your game is already live, go straight to step 2.
 2. Ensure that the domain you are hosting your Embeddable Hub on is whitelisted in the _'Allowed origins'_ section of the [Settings page](../settings#allowed-origins).
 3. Go to the _'Embed code'_ tab, copy the source code and paste it into your own site's source code.
-    
-    a. If you completed this step before enabling the checkbox in step 1, or unpublished your game, return here to get the required `hash` parameter.
+   a. If you completed this step before enabling the checkbox in step 1, or unpublished your game, return here to get the required `hash` parameter.
+   b. If you want to load the embed hub in-game as your mod browser UI, instead copy the embed hub URL and load that directly in your web browser.
 4. Deploy your site however you do normally and view your Embeddable Hub on the page.
 
 ## Script tag

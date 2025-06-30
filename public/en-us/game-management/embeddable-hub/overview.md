@@ -15,7 +15,19 @@ The Embeddable Hub is a premium feature. If you are interested in mod.io premium
 
 ## Setup
 
-Once you've gained access to the Embeddable Hub, you'll find the settings in your game's Admin Dashboard. When you navigate to the page, you'll be prompted to set up a hub with a name and some basic styling. After you've saved your changes, your hub will be created and you can now explore the rest of the configurable options as well as preview your hub.
+Once you've gained access to the Embeddable Hub, you'll find the settings in your game's Admin Dashboard. When you navigate to the page, you'll be prompted to set up a hub which takes a few minutes:
+
+1. Name your hub and [configure the theme](https://docs.mod.io/embeddable-hub/theme/).
+2. Adjust hub layout, enabled features and authentication method [via settings](https://docs.mod.io/embeddable-hub/settings/).
+3. Make advanced changes by setting [custom CSS](https://docs.mod.io/embeddable-hub/custom-css/)
+4. Copy the embed code or URL to [deploy the embed hub](https://docs.mod.io/embeddable-hub/deployment/).
+5. Optional advanced features can be achieved by [communicating with the embed hub](https://docs.mod.io/embeddable-hub/communication/).
+
+You can preview your hub at any time during the set up process. You can also create multiple hubs, if you want different designs for use in-game, on your homepage, corporate site, and launcher.
+
+:::info
+The mod.io team can be engaged to design the embed hub to match your homepage or style guide, and assist with advanced features such as SSO (single-sign on) support using your account system. If you are interested support, please contact developers@mod.io.
+:::
 
 ## Demonstration
 
