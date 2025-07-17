@@ -16,7 +16,7 @@ The User Activity dashboard reports five data sources:
 
 ## Active Users
 
-‘Active users’ measures the number of unique users viewing or accessing your game’s UGC through all sources, including your in-game browser, the mod.io website and any embeddable hub on your website that  connects to mod.io. Active users is the total of authenticated users plus unauthenticated users. An additional graph demonstrates this visually:
+‘Active users’ measures the number of unique users viewing or accessing your game’s UGC through all sources, including your in-game browser, the mod.io website and any Embed Hub on your website that connects to mod.io. Active users is the total of authenticated users plus unauthenticated users. An additional graph demonstrates this visually:
 
 ![Metrics active users](images/users.png)
 

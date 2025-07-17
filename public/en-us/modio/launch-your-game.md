@@ -23,7 +23,7 @@ If your game uses cross-platform UGC, you will need to set these platforms in th
 
 ## Share access and test
 
-At the top of your game profile panel you will see your game is in hidden status. Click the ‘Share access’ button to send preview links to team members. This is a great time to test that the content settings you defined when creating the game profile are still appropriate. You may also want to explore the different features of mod.io, and discuss whether you need premium features such as Monetization, Embeddable Hub or Rules Engine Moderation. 
+At the top of your game profile panel you will see your game is in hidden status. Click the ‘Share access’ button to send preview links to team members. This is a great time to test that the content settings you defined when creating the game profile are still appropriate. You may also want to explore the different features of mod.io, and discuss whether you need premium features such as Monetization, Embed Hub or Rules Engine Moderation. 
 
 ![preview](images/preview.png)
 

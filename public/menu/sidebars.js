@@ -324,15 +324,15 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: 'Embeddable Hub',
-      link: {type: 'doc', id: 'game-management/embeddable-hub/embeddable-hub-overview'},
+      label: 'Embed Hub',
+      link: {type: 'doc', id: 'game-management/embed-hub/embed-hub-overview'},
       items: [
-        'game-management/embeddable-hub/embeddable-hub-theme',
-        'game-management/embeddable-hub/embeddable-hub-settings',
-        'game-management/embeddable-hub/embeddable-hub-custom-css',
-        'game-management/embeddable-hub/embeddable-hub-add-ugc',
-        'game-management/embeddable-hub/embeddable-hub-deployment',
-        'game-management/embeddable-hub/embeddable-hub-communication',
+        'game-management/embed-hub/embed-hub-theme',
+        'game-management/embed-hub/embed-hub-settings',
+        'game-management/embed-hub/embed-hub-custom-css',
+        'game-management/embed-hub/embed-hub-add-ugc',
+        'game-management/embed-hub/embed-hub-deployment',
+        'game-management/embed-hub/embed-hub-communication',
       ],
     },
     {

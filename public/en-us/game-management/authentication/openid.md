@@ -25,7 +25,7 @@ Please note that the ability to authenticate players using OpenID is premium fea
 ## Use cases
 
 - **In-Game**: Due to the stateless nature of ID Tokens, they are an excellent candidate for being used in-exchange for a mod.io access token as they do not rely on web-redirects to obtain and furthermore it is independent from how a player authenticates with your service to generate the ID Token.
-- **Embeddable Hub**: If you are embedding a hub into one or more of your domains, and you already have sign in functionality within your domain against your identity provider, you can use the `openid` to get an `id_token` returned, which you can then pass to our Embeddable Hub for frictionless SSO.
+- **Embed Hub**: If you are embedding a hub into one or more of your domains, and you already have sign in functionality within your domain against your identity provider, you can use the `openid` to get an `id_token` returned, which you can then pass to our Embed Hub for frictionless SSO.
 
 ## Prerequisites
 
@@ -108,7 +108,7 @@ To add your JWK URL to the mod.io dashboard follow these steps:
 - Click the manage button next to the game you want to setup OpenID for
 - On the left-hand side menu, click 'Studio Authentication'
 - Scroll to the OpenID form and fill in the details
-- Test your config by providing a test id token to _Save your OpenID details_
+- Save the details
 
 ![OpenID setup](images/openid-setup.png)
 
@@ -138,17 +138,6 @@ For an OpenID authentication request to be successful, mod.io will make the foll
 4. The `aud` claim must be set to either `https://mod.io` or `https://g-{your-game-id}.modapi.io`. If you use your game's URL, it must match the API host exactly.
 5. The `iat` claim cannot be greater than the current epoch unix timestamp with a 10 second buffer to account for clock skew.
 6. The `exp` claim must be greater than the current epoch unix timestamp with a 10 second buffer to account for clock skew.
-
-### Testing your ID Token
-
-Once you have implemented the functionality to issue the ID Tokens as well as have published a public JWK endpoint for mod.io to use, you can use the _Test ID Token_ functionality within the OpenID configuration panel to ensure the following:
-
-- mod.io is able to fetch your public JWK set.
-- mod.io was able to verify that at least one JWK in the keyset signed the ID Token.
-
-:::warning
-The testing functionality does not verify the claims within the token such as the audience claim that must be `https://mod.io`. Instead, it is offered as a tool to verify that upon supplying mod.io with a JWK set and a token issued by your identity provider, that mod.io can fetch the keyset from your web service and successfully verify the signature of the ID Token.
-:::
 
 ## Recommendations
 

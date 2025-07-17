@@ -19,6 +19,10 @@ Download the Unreal Engine plugin from the [mod.io GitHub repository](https://gi
    
    `git submodule update --init --recursive`
 
+:::note
+On first run, or any time you update the git submodule for the plugin, you must set the MODIO_DEVELOPMENT_MODE environment variable to 1. This will tell the plugin to regenerate the files it produces from the internal copy of the mod.io C++ SDK. This environment variable does not need to be set if you are using the standalone release zips, or during normal development when you have not updated the Plugin via git. Once these files are regenerated, simply leave the environment variable unset and the regenerated files can be added to your version control system. This allows you to update the plugin via Git without interfering with daily use of Perforce or similar version control that requires files be marked read-only. 
+:::
+
 ### In a non-git project, or without submodules
 
 - Grab the latest release zip from the [releases section](https://github.com/modio/modio-ue/releases) on GitHub and extract the contents to your project’s `Plugins/Modio` directory

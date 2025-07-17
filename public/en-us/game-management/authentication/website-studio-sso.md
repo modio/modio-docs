@@ -26,7 +26,7 @@ This website-based flow, combined with our in-game OpenID flow are intended to c
 ## Use cases
 
 - **mod.io Website**: Logging users into mod.io using your identity provider credentials.
-- **Embeddable Hub**: Logging users into your Embedded Hub using your identity provider credentials. Whilst supported, we strongly recommend your website issuing an OpenID token for the authenticated user on your website, and then sharing the OpenID token with our Embedded Hub.
+- **Embed Hub**: Logging users into your Embed Hub using your identity provider credentials. Whilst supported, we strongly recommend your website issuing an OpenID token for the authenticated user on your website, and then sharing the OpenID token with our Embed Hub.
 
 ## Prerequisites
 
@@ -76,7 +76,7 @@ Prior to configuration on mod.io, your identity provider must create an OAuth cl
 | **Used By** | **Redirect URI** |
 |--------------------------|-----------------------------|
 | mod.io Website | `https://mod.io/oauth/studio` |
-| Embeddable Hub | `https://embed.modhub.io/oauth/studio` |
+| Embed Hub      | `https://embed.modhub.io/oauth/studio` |
 
 #### OAuth Client Data for mod.io
 

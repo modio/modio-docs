@@ -18,4 +18,4 @@ We recommend using the applicable Platform SSO for in-game authentication and si
 | In-game                      | [OpenID](/authentication/openid/) or [Platform SSO](/authentication/platform/) or [Email](/authentication/platform/#email-authentication) |
 | mod.io Website               | [OAuth 2.0 Authorization Code Flow](/authentication/website/) |
 | Studio Website               | [OAuth 2.0 Authorization Code Flow](/authentication/sign-in-with-modio/) |
-| Embeddable Hub               | [OpenID](/authentication/openid/) or [OAuth 2.0 Authorization Code Flow](/authentication/website/) |
+| Embed Hub                    | [OpenID](/authentication/openid/) or [OAuth 2.0 Authorization Code Flow](/authentication/website/) |

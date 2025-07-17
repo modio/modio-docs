@@ -1,22 +1,22 @@
 ---
-id: embeddable-hub-custom-css
+id: embed-hub-custom-css
 title: Custom CSS
-slug: /embeddable-hub/custom-css/
+slug: /embed-hub/custom-css/
 sidebar_position: 2
 ---
 
 # Custom CSS
 
-If the style and settings options in the previous sections are insufficient, you can directly override the Embeddable Hub's CSS for even more control over your site's look and feel.
+If the style and settings options in the previous sections are insufficient, you can directly override the Embed Hub's CSS for even more control over your site's look and feel.
 
-The Embeddable Hub provides various semantic class names to assist in applying style to common elements on the page. These are detailed below. Alternatively, you can use your browser's developer tools to inspect the element you wish to style and look for an appropriate class name.
+The Embed Hub provides various semantic class names to assist in applying style to common elements on the page. These are detailed below. Alternatively, you can use your browser's developer tools to inspect the element you wish to style and look for an appropriate class name.
 
-![Browser debug window](./images/embeddable_hub_css.png)
+![Browser debug window](./images/embed_hub_css.png)
 
 Don't forget that you can preview your customizations immediately using the preview button at the bottom of each tab.
 
 :::note
-If your game is not live, the _'Visible when game is hidden'_ checkbox on the [settings page](../settings) must be checked.
+If your game is not live, the _'Visible when game is hidden'_ checkbox on the [settings page](../settings/) must be checked.
 :::
 
 ## CSS classes
