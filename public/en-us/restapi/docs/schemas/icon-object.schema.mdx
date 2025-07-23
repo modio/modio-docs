@@ -1,0 +1,33 @@
+---
+id: icon-object
+title: "Icon Object"
+description: "Contains icon data."
+sidebar_label: "Icon Object"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"filename":"icon.png","original":"https://assets.modcdn.io/images/placeholder/icon.png","thumb_64x64":"https://assets.modcdn.io/images/placeholder/icon.png","thumb_128x128":"https://assets.modcdn.io/images/placeholder/icon.png","thumb_256x256":"https://assets.modcdn.io/images/placeholder/icon.png"}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Icon Object"}
+>
+</Heading>
+
+
+
+Contains icon data.
+
+<Schema
+  schema={{"title":"Icon Object","description":"Contains icon data.","properties":{"filename":{"description":"Icon filename including extension.","type":"string","example":"icon.png"},"original":{"description":"URL to the full-sized icon.","type":"string","example":"https://assets.modcdn.io/images/placeholder/icon.png"},"thumb_64x64":{"description":"URL to the small icon thumbnail.","type":"string","example":"https://assets.modcdn.io/images/placeholder/icon.png"},"thumb_128x128":{"description":"URL to the medium icon thumbnail.","type":"string","example":"https://assets.modcdn.io/images/placeholder/icon.png"},"thumb_256x256":{"description":"URL to the large icon thumbnail.","type":"string","example":"https://assets.modcdn.io/images/placeholder/icon.png"}},"type":"object"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

@@ -1,0 +1,33 @@
+---
+id: game-token-pack-object
+title: "Game Token Pack Object"
+description: "Contains game token pack data."
+sidebar_label: "Game Token Pack Object"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"id":1,"token_pack_id":1,"price":1000,"amount":1000,"portal":"WEB","sku":"SKU0001","name":"Token Pack A","description":"This pack contains 1000 tokens!","date_added":1492564103,"date_updated":1492564103}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Game Token Pack Object"}
+>
+</Heading>
+
+
+
+Contains game token pack data.
+
+<Schema
+  schema={{"title":"Game Token Pack Object","description":"Contains game token pack data.","properties":{"id":{"description":"The internal mod.io ID of the game token pack.","type":"integer","format":"int32","example":1},"token_pack_id":{"description":"The ID of the token pack.","type":"integer","format":"int32","example":1},"price":{"description":"The price of the token pack in USD.","type":"integer","format":"int32","example":1000},"amount":{"description":"The amount of tokens the pack contains.","type":"integer","format":"int32","example":1000},"portal":{"description":"The portal of the token pack.","type":"string","example":"WEB"},"sku":{"description":"The SKU ID of the token pack.","type":"string","example":"SKU0001"},"name":{"description":"The name of the game token pack.","type":"string","example":"Token Pack A"},"description":{"description":"The description of the game token pack.","type":"string","example":"This pack contains 1000 tokens!"},"date_added":{"description":"Unix timestamp of the date the token pack was added to the game.","type":"integer","format":"int32","example":1492564103},"date_updated":{"description":"Unix timestamp of the date the game token pack was updated.","type":"integer","format":"int32","example":1492564103}},"type":"object"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

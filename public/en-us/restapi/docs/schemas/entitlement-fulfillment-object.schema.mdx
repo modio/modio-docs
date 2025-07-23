@@ -1,0 +1,33 @@
+---
+id: entitlement-fulfillment-object
+title: "Entitlement Fulfillment Object"
+description: ""
+sidebar_label: "Entitlement Fulfillment Object"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"transaction_id":"124641934672","transaction_state":0,"sku_id":"MODIO0001","entitlement_consumed":true,"entitlement_type":0,"details":{"tokens_allocated":1000}}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Entitlement Fulfillment Object"}
+>
+</Heading>
+
+
+
+
+
+<Schema
+  schema={{"title":"Entitlement Fulfillment Object","properties":{"transaction_id":{"description":"The mod.io transaction ID for the entitlement transfer.","type":"string","example":"124641934672"},"transaction_state":{"title":"Transaction State Enum","type":"integer","enum":[0,1,2,3],"x-enumDescriptions":{"FAILED (0)":"Everyone","PENDING (1)":"Pending","FULFILLED (2)":"Fulfilled","LIMIT_EXCEEDED (3)":"Consume Limit Exceeded"}},"sku_id":{"description":"The portal SKU ID associated with the transaction.","type":"string","example":"MODIO0001"},"entitlement_consumed":{"description":"Has the entitlement been consumed in the 3rd-party portal?","type":"boolean","example":true},"entitlement_type":{"description":"The entitlement type, once consumed and the entitlement is transferred to mod.io. Possible values: __0__ = Virtual Tokens","type":"integer","format":"int32","enum":[0],"example":0},"details":{"title":"Entitlement Details Object","properties":{"tokens_allocated":{"description":"The amount of virtual tokens (Mio's) allocated from the entitlement consumption.","type":"integer","format":"int32","example":1000}},"type":"object"}},"type":"object"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

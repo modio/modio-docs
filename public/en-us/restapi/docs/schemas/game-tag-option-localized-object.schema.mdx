@@ -1,0 +1,33 @@
+---
+id: game-tag-option-localized-object
+title: "Game Tag Option Localized Object"
+description: ""
+sidebar_label: "Game Tag Option Localized Object"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"name":"Theme","name_localized":"string","type":"checkboxes","tags":["Horror"],"tags_localized":{"Horror":"Horreur"},"tag_count_map":{"Horror":52},"hidden":false,"locked":false}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Game Tag Option Localized Object"}
+>
+</Heading>
+
+
+
+
+
+<Schema
+  schema={{"title":"Game Tag Option Localized Object","properties":{"name":{"description":"Name of the tag group.","type":"string","example":"Theme"},"name_localized":{"type":"string"},"type":{"description":"Can multiple tags be selected via 'checkboxes' or should only a single tag be selected via a 'dropdown'.","type":"string","example":"checkboxes"},"tags":{"description":"Array of tags in this group.","type":"array","items":{"description":"Tag value","type":"string","example":"Horror"}},"tags_localized":{"description":"List of tag names and the localized variant of the tag.","type":"object","example":{"Horror":"Horreur"},"additionalProperties":{"type":"string"}},"tag_count_map":{"description":"List of tag names and the count of mods with these tags.","type":"object","example":{"Horror":52},"additionalProperties":{"type":"integer","format":"int32"}},"hidden":{"description":"Groups of tags flagged as 'hidden' are intended to be used for filtering (eg. game version), but should not be displayed to users. Hidden tags will only be returned if `show_hidden_tags` is set to `true`.","type":"boolean","example":false},"locked":{"description":"Groups of tags flagged as 'locked' are editable only if the authenticated user is a team member of the parent game. Useful for games to tag special functionality, which users can see and filter on (eg. competition winners).","type":"boolean","example":false}},"type":"object"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

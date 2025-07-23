@@ -1,0 +1,33 @@
+---
+id: logo-object
+title: "Logo Object"
+description: "Contains logo data."
+sidebar_label: "Logo Object"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"filename":"card.png","original":"https://assets.modcdn.io/images/placeholder/card.png","thumb_320x180":"https://assets.modcdn.io/images/placeholder/card.png","thumb_640x360":"https://assets.modcdn.io/images/placeholder/card.png","thumb_1280x720":"https://assets.modcdn.io/images/placeholder/card.png"}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Logo Object"}
+>
+</Heading>
+
+
+
+Contains logo data.
+
+<Schema
+  schema={{"title":"Logo Object","description":"Contains logo data.","properties":{"filename":{"description":"Logo filename including extension.","type":"string","example":"card.png"},"original":{"description":"URL to the full-sized logo.","type":"string","example":"https://assets.modcdn.io/images/placeholder/card.png"},"thumb_320x180":{"description":"URL to the small logo thumbnail.","type":"string","example":"https://assets.modcdn.io/images/placeholder/card.png"},"thumb_640x360":{"description":"URL to the medium logo thumbnail.","type":"string","example":"https://assets.modcdn.io/images/placeholder/card.png"},"thumb_1280x720":{"description":"URL to the large logo thumbnail.","type":"string","example":"https://assets.modcdn.io/images/placeholder/card.png"}},"type":"object"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

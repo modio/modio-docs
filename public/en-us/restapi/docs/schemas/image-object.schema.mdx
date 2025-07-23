@@ -1,0 +1,33 @@
+---
+id: image-object
+title: "Image Object"
+description: "Contains images data."
+sidebar_label: "Image Object"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"filename":"card.png","original":"https://assets.modcdn.io/images/placeholder/card.png","thumb_320x180":"https://assets.modcdn.io/images/placeholder/card.png","thumb_1280x720":"https://assets.modcdn.io/images/placeholder/card.png"}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Image Object"}
+>
+</Heading>
+
+
+
+Contains images data.
+
+<Schema
+  schema={{"title":"Image Object","description":"Contains images data.","properties":{"filename":{"description":"Image filename including extension.","type":"string","example":"card.png"},"original":{"description":"URL to the full-sized image.","type":"string","example":"https://assets.modcdn.io/images/placeholder/card.png"},"thumb_320x180":{"description":"URL to the image thumbnail.","type":"string","example":"https://assets.modcdn.io/images/placeholder/card.png"},"thumb_1280x720":{"description":"URL to the image thumbnail.","type":"string","example":"https://assets.modcdn.io/images/placeholder/card.png"}},"type":"object"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

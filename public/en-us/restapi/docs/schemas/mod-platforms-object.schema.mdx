@@ -1,0 +1,33 @@
+---
+id: mod-platforms-object
+title: "Mod Platforms Object"
+description: "Contains platform data for the corresponding mod. This object is only applicable if the game has [cross-platform moderation](/restapi/docs/targeting-a-platform) enabled.."
+sidebar_label: "Mod Platforms Object"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"platform":"PLAYSTATION5","modfile_live":1}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Mod Platforms Object"}
+>
+</Heading>
+
+
+
+Contains platform data for the corresponding mod. This object is only applicable if the game has [cross-platform moderation](/restapi/docs/targeting-a-platform) enabled..
+
+<Schema
+  schema={{"title":"Mod Platforms Object","description":"Contains platform data for the corresponding mod. This object is only applicable if the game has [cross-platform moderation](/restapi/docs/targeting-a-platform) enabled..","properties":{"platform":{"title":"Platform String Enum","description":"A [target platform](/restapi/docs/targeting-a-platform).","type":"string","enum":["ALL","WINDOWS","MAC","LINUX","ANDROID","IOS","XBOXONE","XBOXSERIESX","PLAYSTATION4","PLAYSTATION5","SWITCH","OCULUS","SOURCE"],"example":"PLAYSTATION5","x-enumDescriptions":{"ALL":"All Platforms","WINDOWS":"Windows","MAC":"Mac","LINUX":"Linux","ANDROID":"Android","IOS":"Iphone IOS","XBOXONE":"Xbox One","XBOXSERIESX":"Xbox Series X","PLAYSTATION4":"Playstation 4","PLAYSTATION5":"Playstation 5","SWITCH":"Switch","OCULUS":"Oculus","SOURCE":"Source"}},"modfile_live":{"description":"The unique id of the modfile that is currently live on the platform specified in the `platform` field.","type":"integer","format":"int32","example":1}},"type":"object"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

@@ -1,0 +1,72 @@
+---
+id: get-game-token-packs
+title: "Get Game Token Packs"
+description: "Get all token packs for a game. Successful request will return a [Game Token Pack Object](/restapi/docs/schemas/game-token-pack-object)."
+sidebar_label: "Get Game Token Packs"
+hide_title: true
+hide_table_of_contents: true
+api: eJzNVt9v2zYQ/le4e2oBxXLSbsD0lrVFEATDgiZGMQSGQVNni41EsuQpjmvofx+Okm3FVtole5lfbEu8+777+XEDJJcBsjv40xok/V2StgamCeQYlNcu/s3gAknIshRk79EIJ9V9EAvrhRRLWeFI3NRKYQiLuhQev9UYSKx0yX+o9kZIcXchKxS30fxaqnvx1/wrKpq+ST0Gkk6nuVUhDarASoaUvZ5EsBMGO7Hx9NsRJGAd+sjyMocMlkgzPjyLh2eRGSTgpJcVEnqObQNGVsiH2avOIQHNQTlJBRxFyjzjGQ5Ee8whI19jAi03yDZAa8futCFcoocmAXyUlSsRstNmypbBWRMw8OGz8Zi/BlB62djnDxJQ1hAaYivpXKlVDDf9Gth00+ehiTGPvLW5PQrtgzUktQmxZr1SilyS5NQ6z8kl3RLX+THv2wIFh+2NLEVl85G24vKjsAtBBR76ZZcHqUpgYX0lqX307gyepC6BfRVnz8Hv4f4TkvNa4TBCfHUMIrQRk5uPL8Uaj8dNArKydVvSY7z2XQRksBBxI6LqKvY6TGc9yfKZGOO7H2YykNdm2fcLXz79wd0e7uthrzdXk5/VZ8DrzdVkPB6fsud2UIdc85uf99mA995cnDPEE9dDSL0nrwMsdHhaPsEF6Yr7S+QgCWcyz3GgxydGPwrSFa/Fym0ZsMVhP65kENGJILuj+dJWef/72a+/vT8dv9vSqh1/vZzY4VJhdp2v13NqdoatAkDDnwQCqtprWsftbmVNxRmL2MprQpjyDn48cd7mteJddrxGGY3QBG1NqxD3uIasb5TAgyxrHDJm9xVSYTsBinpDBWQQdSukm05omrTqqWq61zN2vw3hhtd5u3Gl07NIZCcx0ukrXMN2MHYnOgX7VqNfc0NtU7Az7B4ksCjtql3nFYehW1mpqbC+4zXxJWRQELmQpWm71NPSLjWnKSjrWnIeJcf7GWUurCnXiTBWeAy29gqDUNKIObIm6IVuS95WI4MP0nCfJgJzTcJ6kWOJhHvj0bas2ixsX9g6hTm/vjwSsy9YKhs7LnafXSy00ntROr++HIm/bd1eQxba5AIf0K+p0GYp1rYWBjEXcm5r4jk1qIjfrDQVWx8PWkbfaHJntaEg5ljaFYf2gD60POLacjZQJeM+6QrFF6YDWQ6HMWz2Sv9/umB1HUT4SKkrpTYcYe2jkLR9fhdvUhxPtr9S9VsdOiXvmn2aQGEDseFmM5cBJ75sGn7cNnB2N+Vx81rOuex3G8h14N85ZAtZBvxB4t587q5pb8X+6jYYwnakzLo33JB0o78NpJk2CRQoc/S9xXCuFDr610vh4tMtJHHKhkZyt682w5x40kQ7PFt2cQyhSZ6xeGZ4W1tG4xl/1nq3GXa58NLQLJ5tpk3T/AMS9yD4
+sidebar_class_name: "get api-method"
+info_path: restapi/docs/mod-io-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import ParamsItem from "@theme/ParamsItem";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get Game Token Packs"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/games/{game-id}/monetization/token-packs"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Get all token packs for a game. Successful request will return a [Game Token Pack Object](/restapi/docs/schemas/game-token-pack-object).
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"game-id","in":"path","description":"Game id","required":true,"schema":{"type":"integer"},"example":1}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Game Token Pack Successful","content":{"application/json":{"schema":{"title":"Game Token Pack Object","description":"Contains game token pack data.","properties":{"id":{"description":"The internal mod.io ID of the game token pack.","type":"integer","format":"int32","example":1},"token_pack_id":{"description":"The ID of the token pack.","type":"integer","format":"int32","example":1},"price":{"description":"The price of the token pack in USD.","type":"integer","format":"int32","example":1000},"amount":{"description":"The amount of tokens the pack contains.","type":"integer","format":"int32","example":1000},"portal":{"description":"The portal of the token pack.","type":"string","example":"WEB"},"sku":{"description":"The SKU ID of the token pack.","type":"string","example":"SKU0001"},"name":{"description":"The name of the game token pack.","type":"string","example":"Token Pack A"},"description":{"description":"The description of the game token pack.","type":"string","example":"This pack contains 1000 tokens!"},"date_added":{"description":"Unix timestamp of the date the token pack was added to the game.","type":"integer","format":"int32","example":1492564103},"date_updated":{"description":"Unix timestamp of the date the game token pack was updated.","type":"integer","format":"int32","example":1492564103}},"type":"object"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

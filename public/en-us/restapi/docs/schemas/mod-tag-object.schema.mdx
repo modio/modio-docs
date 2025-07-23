@@ -1,0 +1,33 @@
+---
+id: mod-tag-object
+title: "Mod Tag Object"
+description: "Contains mod tag data."
+sidebar_label: "Mod Tag Object"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"name":"Unity","name_localized":"Unity","date_added":1499841487}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Mod Tag Object"}
+>
+</Heading>
+
+
+
+Contains mod tag data.
+
+<Schema
+  schema={{"title":"Mod Tag Object","description":"Contains mod tag data.","properties":{"name":{"description":"Tag name.","type":"string","example":"Unity"},"name_localized":{"description":"The localized tag name influenced by the [Accept-Language](https://docs.mod.io/restapiref/#localization) header, defaults to English.","type":"string","example":"Unity"},"date_added":{"description":"**Deprecated:** Unix timestamp of date tag was applied.","type":"integer","format":"int32","example":1499841487}},"type":"object"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

@@ -1,0 +1,72 @@
+---
+id: get-authenticated-user
+title: "Get Authenticated User"
+description: "Get the _authenticated user_ details. Successful request will return a single [User Object](/restapi/docs/schemas/user-object). This endpoint is optionally available as an S2S [Service to Service](/restapi/docs/service-to-service) request with an oauth S2S token. This behaves in the same way and will display user info for the account that created the S2S token. To retrieve another users info instead, you can optionally pass in a [User Delegate Token](/restapi/docs/schemas/user-delegation-token-object) when doing an S2S request. [UDT](/restapi/docs/schemas/user-delegation-token-object) can only be used when doing an S2S request."
+sidebar_label: "Get Authenticated User"
+hide_title: true
+hide_table_of_contents: true
+api: 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
+sidebar_class_name: "get api-method"
+info_path: restapi/docs/mod-io-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import ParamsItem from "@theme/ParamsItem";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get Authenticated User"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/me"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Get the _authenticated user_ details. Successful request will return a single [User Object](/restapi/docs/schemas/user-object). This endpoint is optionally available as an S2S [Service to Service](/restapi/docs/service-to-service) request with an oauth S2S token. This behaves in the same way and will display user info for the account that created the S2S token. To retrieve another users info instead, you can optionally pass in a [User Delegate Token](/restapi/docs/schemas/user-delegation-token-object) when doing an S2S request. [UDT](/restapi/docs/schemas/user-delegation-token-object) can only be used when doing an S2S request.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"X-Modio-Delegation-Token","in":"header","description":"The Delegation Token of the user you are making the request on behalf of.","required":false,"schema":{"type":"string"},"example":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Request Successful","content":{"application/json":{"schema":{"title":"User Object","description":"Contains user data.","properties":{"id":{"description":"Unique id of the user.","type":"integer","format":"int32","example":1},"name_id":{"description":"Path for the user on mod.io. For example: https://mod.io/u/__name-id-here__","type":"string","example":"xant"},"username":{"description":"Display name of the user.","type":"string","example":"XanT"},"display_name_portal":{"description":"The users' display name for the targeted portal. Value will be `null` if no valid `X-Modio-Portal` portal header value is provided. For more information see [Targeting a Portal](/restapi/docs/targeting-a-portal).","type":"string","example":null},"date_online":{"description":"Unix timestamp of date the user was last online.","type":"integer","format":"int32","example":1509922961},"date_joined":{"description":"Unix timestamp of date the user joined.","type":"integer","format":"int32","example":1509922961},"avatar":{"title":"Avatar Object","description":"Contains avatar data.","properties":{"filename":{"description":"Avatar filename including extension.","type":"string","example":"avatar.png"},"original":{"description":"URL to the full-sized avatar.","type":"string","example":"https://assets.modcdn.io/images/placeholder/avatar.png"},"thumb_50x50":{"description":"URL to the small avatar thumbnail.","type":"string","example":"https://assets.modcdn.io/images/placeholder/avatar_50x50.png"},"thumb_100x100":{"description":"URL to the medium avatar thumbnail.","type":"string","example":"https://assets.modcdn.io/images/placeholder/avatar_100x100.png"}},"type":"object"},"timezone":{"description":"Deprecated: No longer used and will be removed in subsequent API version.","type":"string","example":""},"language":{"description":"Deprecated: No longer used and will be removed in subsequent API version. To [localize the API response](/restapi/docs/localization) we recommend you set the `Accept-Language` header.","type":"string","example":""},"profile_url":{"description":"URL to the users profile.","type":"string","example":"https://mod.io/u/xant"}},"type":"object"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

@@ -1,0 +1,74 @@
+---
+id: get-mods-stats
+title: "Get Mods Stats"
+description: "Get all mod stats for mods of the corresponding game. Successful request will return an array of [Mod Stats Objects](/restapi/docs/get-mod-stats)."
+sidebar_label: "Get Mods Stats"
+hide_title: true
+hide_table_of_contents: true
+api: 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
+sidebar_class_name: "get api-method"
+info_path: restapi/docs/mod-io-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import ParamsItem from "@theme/ParamsItem";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get Mods Stats"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/games/{game-id}/mods/stats"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Get all mod stats for mods of the corresponding game. Successful request will return an array of [Mod Stats Objects](/restapi/docs/get-mod-stats).
+
+    __NOTE:__ We highly recommend you apply filters to this endpoint to get only the results you need. For more information regarding filtering please see the [filtering](/restapi/docs/restapi-getting-started#filtering) section.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"game-id","in":"path","description":"Game id","required":true,"schema":{"type":"integer"},"example":1},{"name":"mod_id","in":"query","description":"Unique id of the mod.","schema":{"type":"integer"}},{"name":"popularity_rank_position","in":"query","description":"Current ranking by popularity for the corresponding mod.","schema":{"type":"integer"}},{"name":"popularity_rank_total_mods","in":"query","description":"Global mod count in which `popularity_rank_position` is compared against.","schema":{"type":"integer"}},{"name":"downloads_total","in":"query","description":"A sum of all modfile downloads for the corresponding mod.","schema":{"type":"integer"}},{"name":"subscribers_total","in":"query","description":"A sum of all current subscribers for the corresponding mod.","schema":{"type":"integer"}},{"name":"ratings_positive","in":"query","description":"Amount of positive ratings.","schema":{"type":"integer"}},{"name":"ratings_negative","in":"query","description":"Amount of negative ratings.","schema":{"type":"integer"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Request","content":{"application/json":{"schema":{"title":"Get Mod Stats","properties":{"data":{"description":"Array containing stats objects.","type":"array","items":{"title":"Mod Stats Object","description":"Contains stats data.","properties":{"mod_id":{"description":"Unique mod id.","type":"integer","format":"int32","example":2},"popularity_rank_position":{"description":"Current rank of the mod.","type":"integer","format":"int32","example":13},"popularity_rank_total_mods":{"description":"Number of ranking spots the current rank is measured against.","type":"integer","format":"int32","example":204},"downloads_today":{"description":"Last 24hours of downloads for the mod.","type":"integer","format":"int32","example":327},"downloads_total":{"description":"Total downloads for the mod.","type":"integer","format":"int32","example":27492},"subscribers_total":{"description":"Total users who have subscribed to the mod.","type":"integer","format":"int32","example":16394},"ratings_total":{"description":"Total times the mod has been rated.","type":"integer","format":"int32","example":1230},"ratings_positive":{"description":"Number of positive ratings.","type":"integer","format":"int32","example":1047},"ratings_negative":{"description":"Number of negative ratings.","type":"integer","format":"int32","example":183},"ratings_percentage_positive":{"description":"Number of positive ratings, divided by the total ratings to determine it’s percentage score.","type":"integer","format":"int32","example":91},"ratings_weighted_aggregate":{"description":"Overall rating of this item calculated using the [Wilson score confidence interval](https://www.evanmiller.org/how-not-to-sort-by-average-rating.html). This column is good to sort on, as it will order items based on number of ratings and will place items with many positive ratings above those with a higher score but fewer ratings.","type":"number","format":"float","example":87.38},"ratings_display_text":{"description":"Textual representation of the rating in format.","type":"string","enum":["Overwhelmingly Positive","Very Positive","Positive","Mostly Positive","Mixed","Negative","Mostly Negative","Very Negative","Overwhelmingly Negative","Unrated"],"example":"Very Positive"},"date_expires":{"description":"Unix timestamp until this mods's statistics are considered stale.","type":"integer","format":"int32","example":1492564103}},"type":"object"}},"result_count":{"description":"Number of results returned in this request.","type":"integer","format":"int32","example":70},"result_offset":{"description":"Number of results skipped over. Defaults to 0 unless overridden by `_offset` filter.","type":"integer","format":"int32","example":0},"result_limit":{"description":"Maximum number of results returned in the request. Defaults to 100 (max) unless overridden by `_limit` filter.","type":"integer","format":"int32","example":100},"result_total":{"description":"Total number of results found.","type":"integer","format":"int32","example":70}},"type":"object"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

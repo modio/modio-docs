@@ -1,0 +1,33 @@
+---
+id: download-object
+title: "Download Object"
+description: "Contains download data."
+sidebar_label: "Download Object"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"binary_url":"https://api.mod.io.dev.internal/v1/games/1/mods/1/files/1/download/c489a0354111a4d76640d47f0cdcb294","date_expires":1579316848}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Download Object"}
+>
+</Heading>
+
+
+
+Contains download data.
+
+<Schema
+  schema={{"title":"Download Object","description":"Contains download data.","properties":{"binary_url":{"description":"URL to download the file from the mod.io CDN.<br /><br />__NOTE:__ If the [game](/restapi/docs/edit-game) requires mod downloads to be initiated via the API, the `binary_url` returned will contain a verification hash. This hash must be supplied to get the modfile, and will expire after a certain period of time. Saving and reusing the `binary_url` won't work in this situation given it's dynamic nature.","type":"string","example":"https://api.mod.io.dev.internal/v1/games/1/mods/1/files/1/download/c489a0354111a4d76640d47f0cdcb294"},"date_expires":{"description":"Unix timestamp of when the `binary_url` will expire.","type":"integer","example":1579316848}},"type":"object"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

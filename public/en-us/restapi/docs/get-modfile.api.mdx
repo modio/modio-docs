@@ -1,0 +1,72 @@
+---
+id: get-modfile
+title: "Get Modfile"
+description: "Get a file. Successful request will return a single [Modfile Object](/restapi/docs/schemas/modfile-object).<br /><br />__NOTE:__ If the [game](/restapi/docs/edit-game) requires mod downloads to be initiated via the API, the `binary_url` returned will contain a verification hash. This hash must be supplied to get the modfile, and will expire after a certain period of time. Saving and reusing the `binary_url` won't work in this situation given it's dynamic nature."
+sidebar_label: "Get Modfile"
+hide_title: true
+hide_table_of_contents: true
+api: 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
+sidebar_class_name: "get api-method"
+info_path: restapi/docs/mod-io-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import ParamsItem from "@theme/ParamsItem";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get Modfile"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/games/{game-id}/mods/{mod-id}/files/{file-id}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Get a file. Successful request will return a single [Modfile Object](/restapi/docs/schemas/modfile-object).<br /><br />__NOTE:__ If the [game](/restapi/docs/edit-game) requires mod downloads to be initiated via the API, the `binary_url` returned will contain a verification hash. This hash must be supplied to get the modfile, and will expire after a certain period of time. Saving and reusing the `binary_url` won't work in this situation given it's dynamic nature.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"game-id","in":"path","description":"Game id","required":true,"schema":{"type":"integer"},"example":1},{"name":"mod-id","in":"path","description":"Mod id","required":true,"schema":{"type":"integer"},"example":2},{"name":"file-id","in":"path","description":"Modfile id","required":true,"schema":{"type":"integer"},"example":3}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Request","content":{"application/json":{"schema":{"title":"Modfile Object","description":"Contains modfile data.","properties":{"id":{"description":"Unique modfile id.","type":"integer","format":"int32","example":2},"mod_id":{"description":"Unique mod id.","type":"integer","format":"int32","example":2},"date_added":{"description":"Unix timestamp of date file was added.","type":"integer","format":"int32","example":1499841487},"date_updated":{"description":"Unix timestamp of date file was updated.","type":"integer","format":"int32","example":1499841487},"date_scanned":{"description":"Unix timestamp of date file was virus scanned.","type":"integer","format":"int32","example":1499841487},"virus_status":{"title":"Virus Scan Status Enum","description":"Current virus scan status of the file. For newly added files that have yet to be scanned this field will change frequently until a scan is complete.","type":"integer","enum":[0,1,2,3,4,5],"x-enumDescriptions":{"NOT_SCANNED (0)":"Not scanned","SCANNED (1)":"Scan complete","SCAN_IN_PROGRESS (2)":"In progress","FILE_TOO_LARGE (3)":"Too large to scan","FILE_NOT_FOUND (4)":"File not found","SCAN_ERROR (5)":"Error Scanning"}},"virus_positive":{"title":"Virus Scan Enum","description":"Was a virus detected.","type":"integer","enum":[0,1,2],"x-enumDescriptions":{"NO_THREATS_FOUND (0)":"No threats detected","THREATS_FOUND (1)":"Flagged as malicious","POTENTIALLY_HARMFUL (2)":"Flagged as containing potentially harmful files (i.e. EXEs)"}},"virustotal_hash":{"description":"Deprecated: No longer used and will be removed in subsequent API version.","type":"string","example":""},"filesize":{"description":"Size of the file in bytes.","type":"integer","format":"int32","example":15181},"filesize_uncompressed":{"description":"The uncompressed filesize of the zip archive.","type":"integer","format":"int32","example":16384},"filehash":{"title":"Filehash Object","description":"Contains filehash data.","properties":{"md5":{"description":"MD5 hash of the file.","type":"string","example":"2d4a0e2d7273db6b0a94b0740a88ad0d"}},"type":"object"},"filename":{"description":"Filename including extension.","type":"string","example":"rogue-knight-v1.zip"},"version":{"description":"Release version this file represents.","type":"string","example":"1.3"},"changelog":{"description":"Changelog for the file.","type":"string","example":"VERSION 1.3 -- Changes -- Fixed critical castle floor bug."},"metadata_blob":{"description":"Metadata stored by the game developer for this file.","type":"string","example":"rogue,hd,high-res,4k,hd textures"},"download":{"title":"Download Object","description":"Contains download data.","properties":{"binary_url":{"description":"URL to download the file from the mod.io CDN.<br /><br />__NOTE:__ If the [game](/restapi/docs/edit-game) requires mod downloads to be initiated via the API, the `binary_url` returned will contain a verification hash. This hash must be supplied to get the modfile, and will expire after a certain period of time. Saving and reusing the `binary_url` won't work in this situation given it's dynamic nature.","type":"string","example":"https://api.mod.io.dev.internal/v1/games/1/mods/1/files/1/download/c489a0354111a4d76640d47f0cdcb294"},"date_expires":{"description":"Unix timestamp of when the `binary_url` will expire.","type":"integer","example":1579316848}},"type":"object"},"platforms":{"description":"Contains modfile platform data.","type":"array","items":{"title":"Modfile Platform Object","description":"Contains platform filtering data for this modfile. This object is only applicable if the parent game has [cross-platform moderation](/restapi/docs/targeting-a-platform) enabled. Otherwise this value will always be `null`.","properties":{"platform":{"title":"Platform String Enum","description":"A [target platform](/restapi/docs/targeting-a-platform).","type":"string","enum":["ALL","WINDOWS","MAC","LINUX","ANDROID","IOS","XBOXONE","XBOXSERIESX","PLAYSTATION4","PLAYSTATION5","SWITCH","OCULUS","SOURCE"],"example":"PLAYSTATION5","x-enumDescriptions":{"ALL":"All Platforms","WINDOWS":"Windows","MAC":"Mac","LINUX":"Linux","ANDROID":"Android","IOS":"Iphone IOS","XBOXONE":"Xbox One","XBOXSERIESX":"Xbox Series X","PLAYSTATION4":"Playstation 4","PLAYSTATION5":"Playstation 5","SWITCH":"Switch","OCULUS":"Oculus","SOURCE":"Source"}},"status":{"title":"Mod Platform Status Enum","description":"The status of the modfile for the corresponding `platform`.","type":"integer","enum":[0,1,2,3],"x-enumDescriptions":{"PENDING (0)":"Pending","APPROVED (1)":"Approved","DENIED (2)":"Denied","TARGETED (3)":"Targeted"}}},"type":"object"}}},"type":"object"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

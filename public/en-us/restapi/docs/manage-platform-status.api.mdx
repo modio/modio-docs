@@ -1,0 +1,74 @@
+---
+id: manage-platform-status
+title: "Manage Platform Status"
+description: "Manage the platform status of a particular modfile. This endpoint does not set any file live, instead it allows you to approve and deny new uploads. To set a file as the *live* file for the approved platforms after you have reviewed them, you must call the [Edit Modfile](/restapi/docs/update-modfile) with the active flag enabled."
+sidebar_label: "Manage Platform Status"
+hide_title: true
+hide_table_of_contents: true
+api: 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
+sidebar_class_name: "post api-method"
+info_path: restapi/docs/mod-io-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import ParamsItem from "@theme/ParamsItem";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Manage Platform Status"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/games/{game-id}/mods/{mod-id}/files/{file-id}/platforms"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Manage the platform status of a particular modfile. This endpoint does not set any file live, instead it allows you to approve and deny new uploads. To set a file as the *live* file for the approved platforms after you have reviewed them, you must call the [Edit Modfile](/restapi/docs/update-modfile) with the active flag enabled.
+
+  __NOTE:__ This is ony applicable if the parent game has cross-platform moderation enabled. A successful request will return the updated [Modfile object](/schemas/modfile-object).
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"game-id","in":"path","description":"Game id","required":true,"schema":{"type":"integer"},"example":1},{"name":"mod-id","in":"path","description":"Mod id","required":true,"schema":{"type":"integer"},"example":2},{"name":"file-id","in":"path","description":"Modfile id","required":true,"schema":{"type":"integer"},"example":3}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/x-www-form-urlencoded":{"schema":{"properties":{"approved":{"description":"An array containing one or more [platform strings](/restapi/docs/targeting-a-platform) that the specified modfile is approved for","type":"array","items":{"type":"string"}},"denied":{"description":"An array containing one or more [platform strings](/restapi/docs/targeting-a-platform) that the specified modfile is denied for. <br /><br />__NOTE:__ You cannot mark a live modfile as denied, if a modfile is live the only option to remove it is to set another [existing modfile](/restapi/docs/edit-modfile) as the live modfile for that platform, or add a [new modfile](/restapi/docs/add-modfile).","type":"array","items":{"type":"string"}}},"type":"object"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Request.","content":{"application/json":{"schema":{"title":"Modfile Object","description":"Contains modfile data.","properties":{"id":{"description":"Unique modfile id.","type":"integer","format":"int32","example":2},"mod_id":{"description":"Unique mod id.","type":"integer","format":"int32","example":2},"date_added":{"description":"Unix timestamp of date file was added.","type":"integer","format":"int32","example":1499841487},"date_updated":{"description":"Unix timestamp of date file was updated.","type":"integer","format":"int32","example":1499841487},"date_scanned":{"description":"Unix timestamp of date file was virus scanned.","type":"integer","format":"int32","example":1499841487},"virus_status":{"title":"Virus Scan Status Enum","description":"Current virus scan status of the file. For newly added files that have yet to be scanned this field will change frequently until a scan is complete.","type":"integer","enum":[0,1,2,3,4,5],"x-enumDescriptions":{"NOT_SCANNED (0)":"Not scanned","SCANNED (1)":"Scan complete","SCAN_IN_PROGRESS (2)":"In progress","FILE_TOO_LARGE (3)":"Too large to scan","FILE_NOT_FOUND (4)":"File not found","SCAN_ERROR (5)":"Error Scanning"}},"virus_positive":{"title":"Virus Scan Enum","description":"Was a virus detected.","type":"integer","enum":[0,1,2],"x-enumDescriptions":{"NO_THREATS_FOUND (0)":"No threats detected","THREATS_FOUND (1)":"Flagged as malicious","POTENTIALLY_HARMFUL (2)":"Flagged as containing potentially harmful files (i.e. EXEs)"}},"virustotal_hash":{"description":"Deprecated: No longer used and will be removed in subsequent API version.","type":"string","example":""},"filesize":{"description":"Size of the file in bytes.","type":"integer","format":"int32","example":15181},"filesize_uncompressed":{"description":"The uncompressed filesize of the zip archive.","type":"integer","format":"int32","example":16384},"filehash":{"title":"Filehash Object","description":"Contains filehash data.","properties":{"md5":{"description":"MD5 hash of the file.","type":"string","example":"2d4a0e2d7273db6b0a94b0740a88ad0d"}},"type":"object"},"filename":{"description":"Filename including extension.","type":"string","example":"rogue-knight-v1.zip"},"version":{"description":"Release version this file represents.","type":"string","example":"1.3"},"changelog":{"description":"Changelog for the file.","type":"string","example":"VERSION 1.3 -- Changes -- Fixed critical castle floor bug."},"metadata_blob":{"description":"Metadata stored by the game developer for this file.","type":"string","example":"rogue,hd,high-res,4k,hd textures"},"download":{"title":"Download Object","description":"Contains download data.","properties":{"binary_url":{"description":"URL to download the file from the mod.io CDN.<br /><br />__NOTE:__ If the [game](/restapi/docs/edit-game) requires mod downloads to be initiated via the API, the `binary_url` returned will contain a verification hash. This hash must be supplied to get the modfile, and will expire after a certain period of time. Saving and reusing the `binary_url` won't work in this situation given it's dynamic nature.","type":"string","example":"https://api.mod.io.dev.internal/v1/games/1/mods/1/files/1/download/c489a0354111a4d76640d47f0cdcb294"},"date_expires":{"description":"Unix timestamp of when the `binary_url` will expire.","type":"integer","example":1579316848}},"type":"object"},"platforms":{"description":"Contains modfile platform data.","type":"array","items":{"title":"Modfile Platform Object","description":"Contains platform filtering data for this modfile. This object is only applicable if the parent game has [cross-platform moderation](/restapi/docs/targeting-a-platform) enabled. Otherwise this value will always be `null`.","properties":{"platform":{"title":"Platform String Enum","description":"A [target platform](/restapi/docs/targeting-a-platform).","type":"string","enum":["ALL","WINDOWS","MAC","LINUX","ANDROID","IOS","XBOXONE","XBOXSERIESX","PLAYSTATION4","PLAYSTATION5","SWITCH","OCULUS","SOURCE"],"example":"PLAYSTATION5","x-enumDescriptions":{"ALL":"All Platforms","WINDOWS":"Windows","MAC":"Mac","LINUX":"Linux","ANDROID":"Android","IOS":"Iphone IOS","XBOXONE":"Xbox One","XBOXSERIESX":"Xbox Series X","PLAYSTATION4":"Playstation 4","PLAYSTATION5":"Playstation 5","SWITCH":"Switch","OCULUS":"Oculus","SOURCE":"Source"}},"status":{"title":"Mod Platform Status Enum","description":"The status of the modfile for the corresponding `platform`.","type":"integer","enum":[0,1,2,3],"x-enumDescriptions":{"PENDING (0)":"Pending","APPROVED (1)":"Approved","DENIED (2)":"Denied","TARGETED (3)":"Targeted"}}},"type":"object"}}},"type":"object"}}}},"403":{"description":"The authenticated user does not have permission to edit the platforms for the specified modfile, ensure the user is a member of parent game team.","content":{"application/json":{"schema":{"title":"Error Object","properties":{"error":{"description":"Contains error data.","properties":{"code":{"description":"The [HTTP code](/restapi/docs/response-codes).","type":"integer","format":"int32","default":403},"error_ref":{"description":"The mod.io error code.","type":"integer","default":10000},"message":{"description":"The server response to your request. Responses will vary depending on the endpoint, but the object structure will persist.","type":"string","default":"You do not have the required permissions to access this resource."},"errors":{"description":"Optional Validation errors object. This field is only supplied if the response is a validation error `422 Unprocessible Entity`. See [errors documentation](/restapi/docs/errors) for more information.","type":"object"}},"type":"object"}},"type":"object"}}},"x-errorrefs":{"14037":"The parent game doesn't cross-platform modfile submissions.","15007":"The authenticated user does not have permission to edit the platforms for the specified modfile, ensure the user is a member of parent game team."}}}}
+>
+  
+</StatusCodes>
+
+
+      

@@ -1,0 +1,33 @@
+---
+id: transaction-items-object
+title: "Transaction Items Object"
+description: "Contains Items Records data."
+sidebar_label: "Transaction Items Object"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"id":1234,"gateway_uuid":"3fa85f64-5717-4562-b3fc-2c963f66afa6","gateway_name":"tilia","sale_price":0,"gateway_fee":0,"platform_fee":0,"currency":"usd","tokens":0,"token_team_id":0,"sale_type":"bought","monetization_type":"fiat","transaction_type":"paid","purchase_date":"2024-07-29T15:51:28.071Z","created_at":1728268151123456,"line_items":[{"mod_id":1234,"game_id":4567,"buyer_id":8910,"mod_name":"my mod","game_name":"my game","buyer_name":"buyers name"}],"breakdown":[{"platform":{"revenue":99},"store":[{"revenue":99,"users":[{"account_name":"name","account_id":123,"revenue":99}]}]}],"revenue":99}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Transaction Items Object"}
+>
+</Heading>
+
+
+
+Contains Items Records data.
+
+<Schema
+  schema={{"title":"Transaction Items Object","description":"Contains Items Records data.","properties":{"id":{"description":"Unique identifier for the transaction.","type":"integer","example":1234},"gateway_uuid":{"description":"UUID of the payment gateway.","type":"string","format":"uuid"},"gateway_name":{"description":"Name of the payment gateway.","type":"string","example":"tilia"},"sale_price":{"description":"Sale price of the item.","type":"number","format":"float"},"gateway_fee":{"description":"Fee charged by the gateway.","type":"number","format":"float"},"platform_fee":{"description":"Fee charged by the platform.","type":"number","format":"float"},"currency":{"description":"Currency code for the transaction.","type":"string","example":"usd"},"tokens":{"description":"Number of tokens involved in the transaction.","type":"integer"},"token_team_id":{"description":"ID of the token team.","type":"integer"},"sale_type":{"description":"Type of sale, e.g., bought or sold.","type":"string","example":"bought"},"monetization_type":{"description":"Type of monetization, e.g., fiat.","type":"string","example":"fiat"},"transaction_type":{"description":"Type of transaction, e.g., paid or cleared.","type":"string","example":"paid"},"purchase_date":{"description":"Date and time of the purchase.","type":"string","format":"date-time"},"created_at":{"description":"Creation timestamp with microseconds.","type":"integer","format":"int64","example":1728268151123456},"line_items":{"description":"Array of line item objects.","type":"array","items":{"properties":{"mod_id":{"description":"Mod ID.","type":"integer","example":1234},"game_id":{"description":"Game ID.","type":"integer","example":4567},"buyer_id":{"description":"Buyer ID.","type":"integer","example":8910},"mod_name":{"description":"Name of the mod.","type":"string","example":"my mod"},"game_name":{"description":"Name of the game.","type":"string","example":"my game"},"buyer_name":{"description":"Name of the buyer.","type":"string","example":"buyers name"}},"type":"object"}},"breakdown":{"description":"Array containing breakdown of revenues.","type":"array","items":{"properties":{"platform":{"properties":{"revenue":{"description":"Platform revenue.","type":"number","format":"float","example":99}},"type":"object"},"store":{"description":"Array of store revenue objects.","type":"array","items":{"properties":{"revenue":{"description":"Store revenue.","type":"number","format":"float","example":99},"users":{"description":"Array of user revenue details.","type":"array","items":{"properties":{"account_name":{"description":"Account name.","type":"string","example":"name"},"account_id":{"description":"Account ID.","type":"integer","example":123},"revenue":{"description":"User revenue.","type":"number","format":"float","example":99}},"type":"object"}}},"type":"object"}}},"type":"object"}},"revenue":{"description":"Total revenue for the transaction.","type":"number","format":"float","example":99}},"type":"object"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

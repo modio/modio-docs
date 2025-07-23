@@ -1,0 +1,72 @@
+---
+id: create-multipart-upload-session
+title: "Create Multipart Upload Session"
+description: "Create a new multipart upload session. A successful request will return a single [Multipart Upload Object](/restapi/docs/schemas/multipart-upload-object)."
+sidebar_label: "Create Multipart Upload Session"
+hide_title: true
+hide_table_of_contents: true
+api: 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
+sidebar_class_name: "post api-method"
+info_path: restapi/docs/mod-io-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import ParamsItem from "@theme/ParamsItem";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Create Multipart Upload Session"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/games/{game-id}/mods/{mod-id}/files/multipart"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Create a new multipart upload session. A successful request will return a single [Multipart Upload Object](/restapi/docs/schemas/multipart-upload-object).
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"game-id","in":"path","description":"Game id","required":true,"schema":{"type":"integer"},"example":1},{"name":"mod-id","in":"path","description":"Mod id","required":true,"schema":{"type":"integer"},"example":2}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/x-www-form-urlencoded":{"schema":{"title":"Create Multipart Upload Session Request","required":["filename"],"properties":{"filename":{"description":"The filename of the file once all the parts have been [uploaded](/restapi/docs/add-multipart-upload-part). The filename must include the `.zip` extension and cannot exceed 100 characters.","type":"string","example":"testfile.zip"},"nonce":{"description":"An optional nonce to provide to prevent duplicate upload sessions from being created concurrently. Max 64 characters (Recommended: SHA-256)","type":"string","example":"a93d389804ee0490f1903ab26500a66a695ce65fa7ecb074d79771857d074355"}},"type":"object"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Request","content":{"application/json":{"schema":{"title":"Multipart Upload Object","description":"Contains multipart upload session data.","properties":{"upload_id":{"description":"A universally unique identifier (UUID) that represents the upload session.","type":"string","example":"123e4567-e89b-12d3-a456-426614174000"},"status":{"title":"Modfile Upload Status Enum","description":"The status of the upload session.","type":"integer","enum":[0,1,2,3,4],"example":0,"x-enumDescriptions":{"INCOMPLETE (0)":"Incomplete","PENDING (1)":"Pending","PROCESSING (2)":"Processing","COMPLETE (3)":"Complete","CANCELLED (4)":"Cancelled"}}},"type":"object"}}}},"400":{"description":"The nonce you provided was already associated with a completed upload session. If you wish to start a new upload you should regenerate the nonce parameter.","content":{"application/json":{"schema":{"title":"Error Object","properties":{"error":{"description":"Contains error data.","properties":{"code":{"description":"The [HTTP code](/restapi/docs/response-codes).","type":"integer","format":"int32","default":403},"error_ref":{"description":"The mod.io error code.","type":"integer","default":10000},"message":{"description":"The server response to your request. Responses will vary depending on the endpoint, but the object structure will persist.","type":"string","default":"You do not have the required permissions to access this resource."},"errors":{"description":"Optional Validation errors object. This field is only supplied if the response is a validation error `422 Unprocessible Entity`. See [errors documentation](/restapi/docs/errors) for more information.","type":"object"}},"type":"object"}},"type":"object"}}},"x-errorrefs":{"29002":"The nonce you provided was already associated with a completed upload session. If you wish to start a new upload you should regenerate the nonce parameter."}},"403":{"description":"The authenticated user has had upload privileges restricted by mod.io admins, this is typically due to spam.","content":{"application/json":{"schema":{"title":"Error Object","properties":{"error":{"description":"Contains error data.","properties":{"code":{"description":"The [HTTP code](/restapi/docs/response-codes).","type":"integer","format":"int32","default":403},"error_ref":{"description":"The mod.io error code.","type":"integer","default":10000},"message":{"description":"The server response to your request. Responses will vary depending on the endpoint, but the object structure will persist.","type":"string","default":"You do not have the required permissions to access this resource."},"errors":{"description":"Optional Validation errors object. This field is only supplied if the response is a validation error `422 Unprocessible Entity`. See [errors documentation](/restapi/docs/errors) for more information.","type":"object"}},"type":"object"}},"type":"object"}}},"x-errorrefs":{"15006":"The authenticated user does not have permission to upload modfiles for the specified mod, ensure the user is a team manager or administrator.","15012":"The authenticated user has had upload privileges restricted by mod.io admins, this is typically due to spam."}}}}
+>
+  
+</StatusCodes>
+
+
+      

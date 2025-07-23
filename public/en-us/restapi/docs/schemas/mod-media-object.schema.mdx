@@ -1,0 +1,33 @@
+---
+id: mod-media-object
+title: "Mod Media Object"
+description: "Contains mod media data."
+sidebar_label: "Mod Media Object"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"youtube":["https://www.youtube.com/watch?v=dQw4w9WgXcQ"],"sketchfab":["https://sketchfab.com/models/ef40b2d300334d009984c8865b2db1c8"],"images":[{"filename":"card.png","original":"https://assets.modcdn.io/images/placeholder/card.png","thumb_320x180":"https://assets.modcdn.io/images/placeholder/card.png","thumb_1280x720":"https://assets.modcdn.io/images/placeholder/card.png"}]}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Mod Media Object"}
+>
+</Heading>
+
+
+
+Contains mod media data.
+
+<Schema
+  schema={{"title":"Mod Media Object","description":"Contains mod media data.","properties":{"youtube":{"description":"Array of YouTube links.","type":"array","items":{"description":"URL to the YouTube video.","type":"string","example":"https://www.youtube.com/watch?v=dQw4w9WgXcQ"}},"sketchfab":{"description":"Array of SketchFab links.","type":"array","items":{"description":"URL to the Sketchfab render.","type":"string","example":"https://sketchfab.com/models/ef40b2d300334d009984c8865b2db1c8"}},"images":{"description":"Array of image objects (a gallery).","type":"array","items":{"title":"Image Object","description":"Contains images data.","properties":{"filename":{"description":"Image filename including extension.","type":"string","example":"card.png"},"original":{"description":"URL to the full-sized image.","type":"string","example":"https://assets.modcdn.io/images/placeholder/card.png"},"thumb_320x180":{"description":"URL to the image thumbnail.","type":"string","example":"https://assets.modcdn.io/images/placeholder/card.png"},"thumb_1280x720":{"description":"URL to the image thumbnail.","type":"string","example":"https://assets.modcdn.io/images/placeholder/card.png"}},"type":"object"}}},"type":"object"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

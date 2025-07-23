@@ -1,0 +1,82 @@
+---
+id: add-mod-media
+title: "Add Mod Media"
+description: "This endpoint is very flexible and will add any images posted to the mods gallery regardless of their body name providing they are a valid image. The request `Content-Type` header __must__ be `multipart/form-data` to submit image files. Successful request will return a [Message Object](/restapi/docs/schemas/message-object)."
+sidebar_label: "Add Mod Media"
+hide_title: true
+hide_table_of_contents: true
+api: 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
+sidebar_class_name: "post api-method"
+info_path: restapi/docs/mod-io-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import ParamsItem from "@theme/ParamsItem";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Add Mod Media"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/games/{game-id}/mods/{mod-id}/media"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+This endpoint is very flexible and will add any images posted to the mods gallery regardless of their body name providing they are a valid image. The request `Content-Type` header __must__ be `multipart/form-data` to submit image files. Successful request will return a [Message Object](/restapi/docs/schemas/message-object).
+
+ __NOTE:__ You can also add media to [your mod's profile](https://mod.io/content) on the mod.io website. This is the easiest way.
+
+
+
+:::tip
+
+Rules engine applies here
+
+:::
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"game-id","in":"path","description":"Game id","required":true,"schema":{"type":"integer"},"example":1},{"name":"mod-id","in":"path","description":"Mod id","required":true,"schema":{"type":"integer"},"example":2}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"multipart/form-data":{"schema":{"title":"Add Mod Media Request","properties":{"logo":{"description":"Image file which will represent your mods logo. Must be jpg, jpeg or png format and cannot exceed 8MB in filesize. Dimensions must be at least 512x288 and we recommended you supply a high resolution image with a 16 / 9 ratio. mod.io will use this logo to create three thumbnails with the dimensions of 320x180, 640x360 and 1280x720.<br /><br />Alternatively, a zip archive of images to add to the mods gallery. Only valid jpg, jpeg and png images in the zip file will be processed. The filename __must be images.zip__ all other zips will be ignored. Alternatively you can POST one or more images to this endpoint and they will be detected and added to the mods gallery.","type":"string","format":"binary","example":"@/path/to/logo.jpg"},"image1":{"type":"string","format":"binary","example":"@/path/to/image1.jpg"},"image2":{"type":"string","format":"binary","example":"@/path/to/image2.jpg"},"sync":{"description":"Defaults to false, which will append uploaded images to the gallery. Passing in true will allow you to remove all images that exist in the gallery and be replaced with the uploaded images.","type":"boolean","default":false},"youtube":{"description":"Full Youtube link(s) you want to add. Every Youtube link to add requires a separate field with youtube[] as the key (eg. youtube[]=https://www.youtube.com/watch?v=IGVZOLV9SPo, youtube[]=https://www.youtube.com/watch?v=5nY6fjZ3EUc)","type":"array","items":{"type":"string"},"default":"https://www.youtube.com/watch?v=dQw4w9WgXcQ"},"sketchfab":{"description":"Full Sketchfab link(s) you want to add. Every Sketchfab link to add requires a separate field with sketchfab[] as the key (eg. sketchfab[]=https://sketchfab.com/models/71f04e390ff54e5f8d9a51b4e1caab7e, sketchfab[]=https://sketchfab.com/models/5c85e649dd854cb58c2b9af081ebb0ff)","type":"array","items":{"type":"string"},"default":"https://sketchfab.com/models/7793b895f27841f4930e6b71f75a8d74"}},"type":"object"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"201":{"description":"Resource Created","headers":{"Location":{"description":"URL to newly created resource","schema":{"type":"string"}}},"content":{"application/json":{"schema":{"title":"Update Mod Media Response","properties":{"code":{"type":"integer","format":"int32","example":201},"message":{"type":"string","example":"You have successfully added new media to the specified mod."}},"type":"object"}}}},"403":{"description":"The authenticated user does not have permission to add media for this mod, this action is restricted to team managers & administrators only.","content":{"application/json":{"schema":{"title":"Error Object","properties":{"error":{"description":"Contains error data.","properties":{"code":{"description":"The [HTTP code](/restapi/docs/response-codes).","type":"integer","format":"int32","default":403},"error_ref":{"description":"The mod.io error code.","type":"integer","default":10000},"message":{"description":"The server response to your request. Responses will vary depending on the endpoint, but the object structure will persist.","type":"string","default":"You do not have the required permissions to access this resource."},"errors":{"description":"Optional Validation errors object. This field is only supplied if the response is a validation error `422 Unprocessible Entity`. See [errors documentation](/restapi/docs/errors) for more information.","type":"object"}},"type":"object"}},"type":"object"}}},"x-errorrefs":{"15035":"The authenticated user does not have permission to add media for this mod, this action is restricted to team managers & administrators only."}}}}
+>
+  
+</StatusCodes>
+
+
+      

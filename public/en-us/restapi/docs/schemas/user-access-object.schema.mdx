@@ -1,0 +1,33 @@
+---
+id: user-access-object
+title: "User Access Object"
+description: "Contains user access data."
+sidebar_label: "User Access Object"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"resource_type":"games","resource_id":3026,"resource_name":"My Awesome Mod","resource_name_id":"my-awesome-mod","resource_url":""}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"User Access Object"}
+>
+</Heading>
+
+
+
+Contains user access data.
+
+<Schema
+  schema={{"title":"User Access Object","description":"Contains user access data.","properties":{"resource_type":{"description":"Type of resource.","type":"string","enum":["games","mods","guides"],"example":"games"},"resource_id":{"description":"Unique id of the resource.","type":"integer","format":"int32","example":3026},"resource_name":{"description":"The relative name of the resource.","type":"integer","format":"int32","example":"My Awesome Mod"},"resource_name_id":{"description":"Path for the resource on mod.io.","type":"string","example":"my-awesome-mod"},"resource_url":{"description":"URL to the resource that was reported. If the resource has been permanently deleted, and thus you cannot access it anymore - this field will be null.","type":"string","example":""}},"type":"object"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

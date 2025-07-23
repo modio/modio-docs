@@ -1,0 +1,33 @@
+---
+id: modfile-cook-object
+title: "Modfile Cook Object"
+description: "Contains modfile cook data."
+sidebar_label: "Modfile Cook Object"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"cook_uuid":"123e4567-e89b-12d3-a456-426614174000","modfile":0,"platform":"ps5","status":1,"dateadded":1499841487,"dateupdated":1499841487,"metadata":["string"],"logs":["string"],"filename":"rogue-knight-v1.zip","filesize":15181,"version":"1.3"}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Modfile Cook Object"}
+>
+</Heading>
+
+
+
+Contains modfile cook data.
+
+<Schema
+  schema={{"title":"Modfile Cook Object","description":"Contains modfile cook data.","properties":{"cook_uuid":{"description":"The UUID of a cook.","type":"string","example":"123e4567-e89b-12d3-a456-426614174000"},"modfile":{"description":"The id of the source modfile.","type":"integer","format":"int32"},"platform":{"description":"The platform being cooked for.","type":"string","example":"ps5"},"status":{"description":"The status of the cook.","type":"integer","format":"int32","example":1},"dateadded":{"description":"Unix timestamp the cook was started.","type":"integer","format":"int32","example":1499841487},"dateupdated":{"description":"Unix timestamp the cook was last updated.","type":"integer","format":"int32","example":1499841487},"metadata":{"description":"The metadata of the cook.","type":"array","items":{"type":"string"}},"logs":{"description":"The logs of the cook.","type":"array","items":{"type":"string"}},"filename":{"description":"Filename including extension.","type":"string","example":"rogue-knight-v1.zip"},"filesize":{"description":"Size of the file in bytes.","type":"integer","format":"int32","example":15181},"version":{"description":"Release version this file represents.","type":"string","example":"1.3"}},"type":"object"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

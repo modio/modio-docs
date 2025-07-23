@@ -1,0 +1,72 @@
+---
+id: get-game-tag-options
+title: "Get Game Tag Options"
+description: "Get all tags for the corresponding game, that can be applied to any of its mods. Successful request will return an array of [Game Tag Option Objects](/restapi/docs/schemas/game-tag-option-object). We recommended reading the [filtering documentation](/restapi/docs/restapi-getting-started#filtering) to return only the records you want."
+sidebar_label: "Get Game Tag Options"
+hide_title: true
+hide_table_of_contents: true
+api: eJztWFtvK7cR/isDNoBsYCX5uCgK6O00SZ2glwQn5yBoDNceLWd3GXPJDTlrWRH2vxdDrizJkn2cII990WXFmfn4zV0bxVhHtbhWH+X9plCaYhlMx8Y7tVBXxIDWgpyCygfghqD0IVDsvNPG1VBjSwVwgwwlOlgSYNdZQxrYA7o1+AoMR2i9jjP4oS9LirHqLQT6pafIsDJWvnAfHKADDAGT0PUVtgQfsYbvEhz4bvkzlRxvzuaBImNn5tqXcR7LhlqMcwEyZaynPh2f+nT8fAY/EgQqfduS06QhECbgcpXrylimIF+1L/uWHKMIP7cxfpnWxGxcPY2MgUn/6Un8XG47XsI7u07axWrQEda+hxU6nqlC+Y5CMvGtVgtVE98K7lvG+jbjjqpQHQZsiSmIazbKYUtyWC5otCqUEd90yI06cphwls4IvSaQVgsOPRUq06QWG8XrTtQZx1RTUEOh6BHbzpJavBtusiRF/pvXa7W4Tg/E25GiSF9eXMjbodk9t37I0qpQpXdMjuV0Coky3Xv+cxSRzT4gw2I8Rdszpyc2gpDGJtvXyHgM4H2KGrGIxm3DUsIWchhE4d4wtfHA4MkIOzKZ+X9u8t8i7KvkaTFUB993YmbkN7IEhtpjV31sqCUhXDTeWl+iNb9i1nd0IzdCh1VDgeCe1hEwEPDKT8sGA5ZMASy6usdaslJThDOa1bMCJuQmBUw0yWsVJueATsMD2p5GJQ3BaJ80CJy4B91veUCtjeBB+/0BI8+veAg9s4n2NaiwMtykwnBYThLGWcoBZgqi7r/XOP31/fSnm83l8IUahi3M54x9iQ7a3rLpLOWKtSSIZKlk0vBgECZlQ+X90j9SnIAPEBvfW50TFiEaV2fJI0GEiQ6+037lJq+7eGdB/Jyr6+lgldARkMYBNyYexU8qhPtRe6hEwjaR9Sqcb3wIPmTSsI5HMfeSrcMEYKxPAMhxf0yH2AroosWcwUfq6ES4f+1qa2IDe5J7yfU652JRnwiIKwotut+tsgrHKv8eyJW/F+XwPMFeeIL1bel7x7ctdscQ/mkij8GTEzfldm7MvUs/Sa/NCcYNxZwMp9L7CdxmGyiLv1wOn037becoVOVDi5wf/fkyoW+M1qccfCXhHZ+ivrJY16QBI0yyyCQVJtGd2jR7ycI+kk6Dx65Rn1E9y+X9gUI03p0XsOx5m8zOswhqEzuL66yojxTiDL5JdrL9NHWkxF/S2LhJg6ngLjZ+dZshSVuOd2AiRGJRdCe99G6PyqX3ltDtc1mhjTQUyvryXtrvbyAii2QiSBvGpaUM0uQgw54bciytlHS6loBDYMIWWmqXFLbx2GEgx4moGXyKJL1ZiKxTyLBP8RM7Kg1aqHpXZocbXhewakzZZNbSUBeJUpBlJ4B32QmlbzviFCmwMs5RiOdv4eZk1AeKveUc+Ceabb+9Wz4X93w21s9xbJkdh+UegL9e7Ez5qor0Jlvx3nQdafAPFGbwFVWYHrOHC+idpRjTTyHH13INd6Pyu5Gy10HtYbKmNScg/QsfTdu34D5DAz2xcIDy3cUFnLX4eP4S2mT2bWDfXezBZc9oT7QGeXwCbOV7pz/roBPhMcjDSGUfDK/TTIydub2nNKAOxUZ5yYxLWWRkvFc3Msc+TkvvYt9K7TqYQB+nq9VqKhimfbDkZB6Rkflx2gWv+/JIII2sApLJxdzTrjcqmd+3UqjckN9iTUBvFTxZPa0gWZcLtcSNH9eGPCE1aqHS4hPnm3E9GOZp6NjR9YPM2bl+P5G2a/yd+QdJ5x93jO2Jccf4paewll645fdJcHxQqMr6VVJuWoGco1d+9GGcMz4FqxaqYe7iYj5vvZ4ZP7e+NsJpLH2XwSXHLdQHwjyRFeBkpYq+DyXF7XLZem0qQymKVsEwjYMfal2kmilznSZLTDvh2TaEjKv8/gKQwcD77789GmJ/JFt62SF8yitfVSaVyp3IDP4ji500kso4DfRAYc2N9CjZ+BxJVV/6nmUvcVTK5pi78qhDJkvRTU533jiWgdX6lVxtbG1qod4J/Z2P3KLbLSMv7UoHd9jsVrD/b/J/+CY/JgLTI887i8aJo/qQymFOzeu0sotbFrvdncc/WhofWY5sNkuM9CnYYZDHOePS2v2AwcgEkIqNNlE+67GHvuLpsw/j5n8Ou38DToLd1gC33qs8qhjr0hbycCNTHaGmsFf23pcldfzminX19UdVqGX6S2EjE2YvBO2XoVx1xg9i5yS6XX3KMORVSunJw5tNLm/D8HQ+//SiRGZ/e1hYuhmG4X+5Xa0n
+sidebar_class_name: "get api-method"
+info_path: restapi/docs/mod-io-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import ParamsItem from "@theme/ParamsItem";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get Game Tag Options"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/games/{game-id}/tags"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Get all tags for the corresponding game, that can be applied to any of its mods. Successful request will return an array of [Game Tag Option Objects](/restapi/docs/schemas/game-tag-option-object). We recommended reading the [filtering documentation](/restapi/docs/restapi-getting-started#filtering) to return only the records you want.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"game-id","in":"path","description":"Game id","required":true,"schema":{"type":"integer"},"example":1}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={[]}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Request","content":{"application/json":{"schema":{"title":"Get Game Tag Options","properties":{"data":{"description":"Array containing game tag objects.","items":{"title":"Game Tag Option Object","properties":{"name":{"description":"Name of the tag group.","type":"string","example":"Theme"},"name_localization":{"description":"An object where keys are two-character language codes (e.g., 'en', 'de', 'fr') and values are the localized names.","type":"object","additionalProperties":{"type":"string","description":"Optional two-character language code with its corresponding value.","pattern":"^[a-zA-Z]{2}$"}},"type":{"description":"Can multiple tags be selected via 'checkboxes' or should only a single tag be selected via a 'dropdown'.","type":"string","example":"checkboxes"},"tags":{"description":"Array of tags in this group.","type":"array","items":{"description":"Tag value","type":"string","example":"Horror"}},"tags_localization":{"type":"array","items":{"properties":{"tag":{"description":"The tag.","type":"string"},"translations":{"properties":{"en":{"description":"English translation of the tag.","type":"string","example":""},"de":{"description":"German translation of the tag.","type":"string","example":""},"fr":{"description":"French translation of the tag.","type":"string","example":""}},"type":"object"}},"type":"object"}},"tag_count_map":{"description":"List of tag names and the count of mods with these tags.","type":"object","example":{"Horror":52},"additionalProperties":{"type":"integer","format":"int32"}},"hidden":{"description":"Groups of tags flagged as 'hidden' are intended to be used for filtering (eg. game version), but should not be displayed to users. Hidden tags will only be returned if `show_hidden_tags` is set to `true`.","type":"boolean","example":false},"locked":{"description":"Groups of tags flagged as 'locked' are editable only if the authenticated user is a team member of the parent game. Useful for games to tag special functionality, which users can see and filter on (eg. competition winners).","type":"boolean","example":false}},"type":"object"}},"result_count":{"description":"Number of results returned in this request.","format":"int32","example":70},"result_offset":{"description":"Number of results skipped over. Defaults to 0 unless overridden by `_offset` filter.","format":"int32","example":0},"result_limit":{"description":"Maximum number of results returned in the request. Defaults to 100 (max) unless overridden by `_limit` filter.","format":"int32","example":100},"result_total":{"description":"Total number of results found.","format":"int32","example":70}},"type":"object"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

@@ -1,0 +1,72 @@
+---
+id: authenticate-via-switch
+title: "Nintendo Switch"
+description: "Request an access token on behalf of a Nintendo Switch user. To use this endpoint you will need to setup some additional settings prior to being able to authenticate Nintendo Switch users. [Head here](/platforms/switch/#authentication) for these instructions. A Successful request will return an [Access Token Object](/restapi/docs/schemas/access-token-object)."
+sidebar_label: "Nintendo Switch"
+hide_title: true
+hide_table_of_contents: true
+api: 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
+sidebar_class_name: "post api-method"
+info_path: restapi/docs/mod-io-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import ParamsItem from "@theme/ParamsItem";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Nintendo Switch"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/external/switchauth"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Request an access token on behalf of a Nintendo Switch user. To use this endpoint you will need to setup some additional settings prior to being able to authenticate Nintendo Switch users. [Head here](/platforms/switch/#authentication) for these instructions. A Successful request will return an [Access Token Object](/restapi/docs/schemas/access-token-object).
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/x-www-form-urlencoded":{"schema":{"title":"Switch Authentication Request","required":["id_token"],"properties":{"id_token":{"description":"The NSA ID supplied by the Nintendo Switch SDK.","type":"string","example":"m72VygeZzTSUVRmNvw8v..."},"terms_agreed":{"description":"This MUST be set to `false` unless you have collected the [users agreement](/restapi/docs/terms) prior to calling this endpoint in which case it can be set to `true` and will be recorded.<br /><br />__NOTE:__ If this is set to `false` and the user has not agreed to the latest mod.io Terms of Use and Privacy Policy, an error `403 Forbidden (error_ref 11074)` will be returned and you will need to collect the [users agreement](/restapi/docs/terms) and retry with this value set to `true` to authenticate the user.","type":"boolean","example":true},"email":{"description":"The users email address. If supplied, and the respective user does not have an email registered for their account we will send a confirmation email to confirm they have ownership of the specified email.<br /><br />__WARNING__: We __strongly recommend__ that you prompt your users in a friendly manner at least once to provide their email address to link their Nintendo Service account to mod.io. Failing to provide an email will in-effect generate an orphan account that will only be able to be accessed from the users' Switch device.","type":"string","example":"example@mod.io"},"date_expires":{"description":"Unix timestamp of date in which the returned token will expire. Value cannot be higher than the default value which is a common year (unix timestamp + 31536000 seconds). Using a token after it's expiry time has elapsed will result in a `401 Unauthorized` response.","type":"integer","example":1729236480}},"type":"object"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Request","content":{"application/json":{"schema":{"title":"Access Token Object","description":"Contains user access token.","properties":{"code":{"description":"HTTP Response Code.","type":"integer","format":"int32","example":200},"access_token":{"description":"The user's access token.","type":"string","example":"eyJ0eXAiOiXKV1QibCJhbLciOiJeiUzI1....."},"date_expires":{"description":"Unix timestamp of the date this token will expire. Default is one year from issue date. See [Access Token Lifetime & Expiry](/restapi/docs/making-requests).","type":"integer","format":"int32","example":1570673249}},"type":"object"}}}},"401":{"description":"The NSA ID token was invalid/malformed.","content":{"application/json":{"schema":{"title":"Error Object","properties":{"error":{"description":"Contains error data.","properties":{"code":{"description":"The [HTTP code](/restapi/docs/response-codes).","type":"integer","format":"int32","default":403},"error_ref":{"description":"The mod.io error code.","type":"integer","default":10000},"message":{"description":"The server response to your request. Responses will vary depending on the endpoint, but the object structure will persist.","type":"string","default":"You do not have the required permissions to access this resource."},"errors":{"description":"Optional Validation errors object. This field is only supplied if the response is a validation error `422 Unprocessible Entity`. See [errors documentation](/restapi/docs/errors) for more information.","type":"object"}},"type":"object"}},"type":"object"}}},"x-errorrefs":{"11035":"The NSA ID token was invalid/malformed.","11036":"The NSA ID token is not valid yet.","11037":"The NSA ID token has expired. You should request another token from the Switch SDK and ensure it is delivered to mod.io before it expires.","11039":"mod.io was unable to validate the credentials with Nintendo Servers."}},"403":{"description":"The application ID for the Nintendo Switch title has not been configured, this can be setup in the 'Options' tab within your game profile.","content":{"application/json":{"schema":{"title":"Error Object","properties":{"error":{"description":"Contains error data.","properties":{"code":{"description":"The [HTTP code](/restapi/docs/response-codes).","type":"integer","format":"int32","default":403},"error_ref":{"description":"The mod.io error code.","type":"integer","default":10000},"message":{"description":"The server response to your request. Responses will vary depending on the endpoint, but the object structure will persist.","type":"string","default":"You do not have the required permissions to access this resource."},"errors":{"description":"Optional Validation errors object. This field is only supplied if the response is a validation error `422 Unprocessible Entity`. See [errors documentation](/restapi/docs/errors) for more information.","type":"object"}},"type":"object"}},"type":"object"}}},"x-errorrefs":{"11040":"The application ID for the Nintendo Switch title has not been configured, this can be setup in the 'Options' tab within your game profile.","11041":"The application ID of the originating Switch title is not permitted to authenticate users. Please check the Switch application id submitted on your games' 'Options' tab and ensure it is the same application id of the Switch title making the authentication request.","11074":"The user has not agreed to the mod.io Terms of Use. Please see terms_agreed parameter description and the [Terms](/restapi/docs/terms) endpoint for more information."}}}}
+>
+  
+</StatusCodes>
+
+
+      

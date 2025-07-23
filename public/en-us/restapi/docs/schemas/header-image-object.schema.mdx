@@ -1,0 +1,33 @@
+---
+id: header-image-object
+title: "Header Image Object"
+description: "Contains header data."
+sidebar_label: "Header Image Object"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"filename":"modio-logo-bluedark.png","original":"https://assets.modcdn.io/images/branding/modio-logo-bluedark.png"}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Header Image Object"}
+>
+</Heading>
+
+
+
+Contains header data.
+
+<Schema
+  schema={{"title":"Header Image Object","description":"Contains header data.","properties":{"filename":{"description":"Header image filename including extension.","type":"string","example":"modio-logo-bluedark.png"},"original":{"description":"URL to the full-sized header image.","type":"string","example":"https://assets.modcdn.io/images/branding/modio-logo-bluedark.png"}},"type":"object"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

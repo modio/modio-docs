@@ -1,0 +1,72 @@
+---
+id: delete-mod-tags
+title: "Delete Mod Tags"
+description: "Delete tags from a mod's profile. Deleting tags is identical to adding tags except the request method is `DELETE` instead of `POST`. Successful request will return `204 No Content`."
+sidebar_label: "Delete Mod Tags"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVV9tu20YQ/ZXBvjQBqItlFygI9CFNjDboJYHjtCgEwV5xh+Im5C6zO5TMCvz3YnZJmZblNvBbniyTO7czZ84O94Lkxot0Ka757yoRCn3mdE3aGpGKN1giIfAhyJ2tQEJl1XceamdzXeIUwgltNvGM9qAVGtKZLIEsSKUO7/Auw5qACgSHXxr0BBVSYRVb3b65/O3y+vIWtPGEUoHN4fb9uw/Xt1P40GQZep835cFwp0v+hxpn4HYxv4A/LLy2htDQ7VQkwtboJNfwVolUqFDFTWXVTSg3EbV0skJCx7XvhZEVilRsZIUTrUQiNBdfSyrEMSI/ywohnOFctEMlUnINJsJnBVZSpHtBbc3utCHcoBNdIvBOVnWJIj3rkkO4yqr/i/Y7o/PsYItuFS3R009WtXw8iyjxT1nXpc4CTLO7yW63m+TWVZPGlWgyqzjYfhxIEzsdOMGpMWngKgZ4kOQy8mqViNpxL0ijDz4C2/ZHVQY3ZCH2KRKNaXJEtcstupa5NDrbh/QgwSN3le01lgp2mopAvOUKpA/+PmMLL3Az7R//SHJzloz+Wbxk7vSASudky80hrPwIaE9Om80DnAVK34quO9ja9SfMSHQdP3Poa2t8BGAxv3hc/4jgPZhTJjS3DK4CyVFxZk/07pNnL6daxdGOk2KK5bIpKb4fTU6f78X8/ESLCgTZUBFnm1BB49GBsujBWIJCbhFqdJX2Xlsz6lDUDutCB3yNmc41Ku7tFC6NbxyGN8Gd9lBLRzz8ff+BUFawxtw6BEmEVR3VZqQiciO1eRY+l85ZB+8GYB5yFfnlYyQYLKmNh/AelCQ5fWTL43MaxOUv19fvgd+vXswcepK1nimb+dnAkwm/9GMqDrOdCB5QSfHR+WLcy4v5OVOSc7pxmJ8OzqBr22fOYU4GOfg8m8/n8y4RFXovN08U5NFt0cGQPXe+tY0bujOFq4H/UbW30rWgsEYTrgbmSoGARtVWG0pg3cQ7ItIVPLkmI2ZJsK7Ree1plHc/j2Na/20bUPaelwNZWJtGJA2aI8PoARXacw22cRlOxQDlCbF6F37IEv6UpVaBYRFQ36c8hWt2FlVIe7CmbME3TEhUoPM+nR4uzdK1PXIFtxeLBXw0tbOcnV6XCJeGNLV8HSLCso+obNZUaCjYHhMqnnkZhq/i+dEm8kdbM32kC6fk64SgJeJuEhw7zAM6Z9/Pz3/4NhQipO8xa5ymNlz8ljNe8H21c5pQrPjGvJtk1vim4lH+ikuSDWpnVZM9MgjKwxcFoQmMC0E/YyvScZREbGXZ4FdF4/1hcHCIetpBiM4FxTXrsAiF/YcKkYoZbzx+tu8Xn25WWeVn+7iYdLN+WRoQ+8D6GfVN1vomZHG4FmWtf0W+L/vlZjjRbzdfGnQtj9WA+MGwf5CIvLS74FxXXIOOOt5QYZ3+J1T00ZUiFQVR7dPZLIrZrLQbzSD7zNYxOYeSi70Ka6Qp2wSMPcy2h0waWAfqBJ7xJMTmp+K1NLyyJoBKE7C6D1tGbxw4xCziURrfJL2yvnr/9tEO9xeWma2CMAZdy3OdaVnCvckUWLGCvuXaKEBedKhgFre2AYOoQK5tQ5BZYzAL/A77Te9jq+UDFfWwxtLuuLQtC2bI44zhr62nSobrsG/U0Tp3nP5oY/xmvwZ6phHe0awupTaMRMNk2veTsAy7Pxef3n8E8DDwk8OePuy0hfXENvv9Wnr86Mqu48eR4+lyxePotFwzM5Z7obTn30qkuSw9/gfAL676W+ol3H9nnMx+mDrTjoZfJL00DDWwWDwr+uG74xnBe7i6VZeIAqVCN1K9vi2Ta3bxPN17lTFzvlrzIpVEItb9F1AVdjPxQMHH3zxLTpx155RIHS6M/WkUWHsgysmARxCmkP9JiyfkLNpyNFa9J60PWnlovZOGbsLZbtV13b8tHoAm
+sidebar_class_name: "delete api-method"
+info_path: restapi/docs/mod-io-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import ParamsItem from "@theme/ParamsItem";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Delete Mod Tags"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"delete"}
+  path={"/games/{game-id}/mods/{mod-id}/tags"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Delete tags from a mod's profile. Deleting tags is identical to adding tags except the request method is `DELETE` instead of `POST`. Successful request will return `204 No Content`.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"game-id","in":"path","description":"Game id","required":true,"schema":{"type":"integer"},"example":1},{"name":"mod-id","in":"path","description":"Mod id","required":true,"schema":{"type":"integer"},"example":2}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/x-www-form-urlencoded":{"schema":{"title":"Delete Mod Tags Request","required":["tags"],"properties":{"tags":{"description":"Tags to delete from the mod's profile. Every tag to delete requires a separate field with tags[] as the key (eg. tags[]=tag1, tags[]=tag2).","type":"array","items":{"type":"string"},"example":"easy"}},"type":"object"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"204":{"description":"Successful Request. No Body Returned.","content":{"application/json":{"schema":{"title":"204","type":"object","default":"204 No Content"}}}},"403":{"description":"The authenticated user does not have permission to delete tags for the specified mod. Ensure the user is part of the mod team before attempting the request again.","content":{"application/json":{"schema":{"title":"Error Object","properties":{"error":{"description":"Contains error data.","properties":{"code":{"description":"The [HTTP code](/restapi/docs/response-codes).","type":"integer","format":"int32","default":403},"error_ref":{"description":"The mod.io error code.","type":"integer","default":10000},"message":{"description":"The server response to your request. Responses will vary depending on the endpoint, but the object structure will persist.","type":"string","default":"You do not have the required permissions to access this resource."},"errors":{"description":"Optional Validation errors object. This field is only supplied if the response is a validation error `422 Unprocessible Entity`. See [errors documentation](/restapi/docs/errors) for more information.","type":"object"}},"type":"object"}},"type":"object"}}},"x-errorrefs":{"15038":"The authenticated user does not have permission to delete tags for the specified mod. Ensure the user is part of the mod team before attempting the request again."}}}}
+>
+  
+</StatusCodes>
+
+
+      

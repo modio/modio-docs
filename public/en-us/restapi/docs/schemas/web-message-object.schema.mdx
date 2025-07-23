@@ -1,0 +1,33 @@
+---
+id: web-message-object
+title: "Web Message Object"
+description: ""
+sidebar_label: "Web Message Object"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"code":200,"success":true,"message":"You have successfully logged out of mod.io."}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Web Message Object"}
+>
+</Heading>
+
+
+
+
+
+<Schema
+  schema={{"title":"Web Message Object","properties":{"code":{"description":"HTTP response code.","type":"integer","format":"int32","example":200},"success":{"description":"Was the request completed successfully?","type":"boolean","example":true},"message":{"description":"Optional message to display to the user.","type":"string","example":"You have successfully logged out of mod.io."}},"type":"object"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

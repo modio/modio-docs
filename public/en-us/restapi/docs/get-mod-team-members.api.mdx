@@ -1,0 +1,72 @@
+---
+id: get-mod-team-members
+title: "Get Mod Team Members"
+description: "Get all users that are part of a mod team. Successful request will return an array of [Team Member Objects](/restapi/docs/schemas/team-member-object). We recommended reading the [filtering documentation](/restapi/docs/restapi-getting-started#filtering) to return only the records you want."
+sidebar_label: "Get Mod Team Members"
+hide_title: true
+hide_table_of_contents: true
+api: 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
+sidebar_class_name: "get api-method"
+info_path: restapi/docs/mod-io-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import ParamsItem from "@theme/ParamsItem";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get Mod Team Members"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/games/{game-id}/mods/{mod-id}/team"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Get all users that are part of a mod team. Successful request will return an array of [Team Member Objects](/restapi/docs/schemas/team-member-object). We recommended reading the [filtering documentation](/restapi/docs/restapi-getting-started#filtering) to return only the records you want.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"id","in":"query","description":"Unique id of the team member record.","schema":{"type":"integer"}},{"name":"user_id","in":"query","description":"Unique id of the user.","schema":{"type":"integer"}},{"name":"username","in":"query","description":"Display name of the user.","schema":{"type":"string"}},{"name":"level","in":"query","description":"Level of permission the user has.","schema":{"title":"Team Group Level Enum","type":"integer","enum":[1,4,8],"x-enumDescriptions":{"MEMBER (1)":"Moderator (can moderate comments and content attached)","MANAGER (4)":"Manager (moderator access, including uploading builds and editing settings except supply and team members)","LEADER (8)":"Administrator (full access, including editing the supply and team)"}}},{"name":"date_added","in":"query","description":"Unix timestamp of the date the user was added to the team.","schema":{"type":"integer"}},{"name":"pending","in":"query","description":"Has the user accepted the team invite?","schema":{"title":"Team Invite Enum","type":"integer","enum":[0,1],"x-enumDescriptions":{"ACCEPTED (0)":"Accepted","PENDING (1)":"Pending"}}},{"name":"game-id","in":"path","description":"Game id","required":true,"schema":{"type":"integer"},"example":1},{"name":"mod-id","in":"path","description":"Mod id","required":true,"schema":{"type":"integer"},"example":2}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Request","content":{"application/json":{"schema":{"title":"Get Team Members","properties":{"data":{"description":"Array containing team member objects.","type":"array","items":{"title":"Team Member Object","description":"Array containing team member objects.","properties":{"id":{"description":"Unique team member id.","type":"integer","format":"int32","example":457},"user":{"title":"User Object","description":"Contains user data.","properties":{"id":{"description":"Unique id of the user.","type":"integer","format":"int32","example":1},"name_id":{"description":"Path for the user on mod.io. For example: https://mod.io/u/__name-id-here__","type":"string","example":"xant"},"username":{"description":"Display name of the user.","type":"string","example":"XanT"},"display_name_portal":{"description":"The users' display name for the targeted portal. Value will be `null` if no valid `X-Modio-Portal` portal header value is provided. For more information see [Targeting a Portal](/restapi/docs/targeting-a-portal).","type":"string","example":null},"date_online":{"description":"Unix timestamp of date the user was last online.","type":"integer","format":"int32","example":1509922961},"date_joined":{"description":"Unix timestamp of date the user joined.","type":"integer","format":"int32","example":1509922961},"avatar":{"title":"Avatar Object","description":"Contains avatar data.","properties":{"filename":{"description":"Avatar filename including extension.","type":"string","example":"avatar.png"},"original":{"description":"URL to the full-sized avatar.","type":"string","example":"https://assets.modcdn.io/images/placeholder/avatar.png"},"thumb_50x50":{"description":"URL to the small avatar thumbnail.","type":"string","example":"https://assets.modcdn.io/images/placeholder/avatar_50x50.png"},"thumb_100x100":{"description":"URL to the medium avatar thumbnail.","type":"string","example":"https://assets.modcdn.io/images/placeholder/avatar_100x100.png"}},"type":"object"},"timezone":{"description":"Deprecated: No longer used and will be removed in subsequent API version.","type":"string","example":""},"language":{"description":"Deprecated: No longer used and will be removed in subsequent API version. To [localize the API response](/restapi/docs/localization) we recommend you set the `Accept-Language` header.","type":"string","example":""},"profile_url":{"description":"URL to the users profile.","type":"string","example":"https://mod.io/u/xant"}},"type":"object"},"level":{"title":"Team Group Level Enum","type":"integer","enum":[1,4,8],"x-enumDescriptions":{"MEMBER (1)":"Moderator (can moderate comments and content attached)","MANAGER (4)":"Manager (moderator access, including uploading builds and editing settings except supply and team members)","LEADER (8)":"Administrator (full access, including editing the supply and team)"}},"date_added":{"description":"Unix timestamp of the date the user was added to the team.","type":"integer","format":"int32","example":1492058857},"position":{"description":"Custom title given to the user in this team.","type":"string","example":"Turret Builder"},"invite_pending":{"title":"Team Invite Enum","type":"integer","enum":[0,1],"x-enumDescriptions":{"ACCEPTED (0)":"Accepted","PENDING (1)":"Pending"}}},"type":"object"}},"result_count":{"description":"Number of results returned in this request.","type":"integer","format":"int32","example":70},"result_offset":{"description":"Number of results skipped over. Defaults to 0 unless overridden by `_offset` filter.","type":"integer","format":"int32","example":0},"result_limit":{"description":"Maximum number of results returned in the request. Defaults to 100 (max) unless overridden by `_limit` filter.","type":"integer","format":"int32","example":100},"result_total":{"description":"Total number of results found.","type":"integer","format":"int32","example":70}},"type":"object"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

@@ -1,0 +1,33 @@
+---
+id: key-value-pair-object
+title: "Key-Value Pair Object"
+description: "Contains key-pair data."
+sidebar_label: "Key-Value Pair Object"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"key":"retry-after","value":"98"}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Key-Value Pair Object"}
+>
+</Heading>
+
+
+
+Contains key-pair data.
+
+<Schema
+  schema={{"title":"Key-Value Pair Object","description":"Contains key-pair data.","properties":{"key":{"description":"Key of the key-value pair.","type":"string","example":"retry-after"},"value":{"description":"Value of the key-value pair. Will always be a string, even if numeric.","type":"string","example":"98"}},"type":"object"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

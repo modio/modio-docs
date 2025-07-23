@@ -1,0 +1,74 @@
+---
+id: authenticate-via-google
+title: "Google"
+description: "Request an access token on behalf of a Google user. To use this functionality you *must* add your games Client ID, Secret and Redirect URI from Google, to the [*Game Admin > Settings*](/platforms/google/authentication/) page of your games profile on mod.io. A Successful request will return an [Access Token Object](/restapi/docs/schemas/access-token-object)."
+sidebar_label: "Google"
+hide_title: true
+hide_table_of_contents: true
+api: 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
+sidebar_class_name: "post api-method"
+info_path: restapi/docs/mod-io-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import ParamsItem from "@theme/ParamsItem";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Google"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/external/googleauth"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Request an access token on behalf of a Google user. To use this functionality you *must* add your games Client ID, Secret and Redirect URI from Google, to the [*Game Admin > Settings*](/platforms/google/authentication/) page of your games profile on mod.io. A Successful request will return an [Access Token Object](/restapi/docs/schemas/access-token-object).
+     *
+     __HINT:__ If you want to overlay the mod.io site in-game on Android, we recommend you add `?portal=google` to the end of the URL you open which will prompt the user to login with Google. See [Web Overlay Authentication](/restapi/docs/web-overlay-authentication) for details.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/x-www-form-urlencoded":{"schema":{"title":"Google Authentication Request","required":[""],"properties":{"auth_code":{"description":"The `auth_code` value [returned from Google](https://developers.google.com/identity/sign-in/android/offline-access) after you have authenticated a user in-app. This is required if an id_token is not provided.","type":"string","example":"eyJhbXciOiJIUzI1Lizs...."},"id_token":{"description":"The `id_token` value [returned from Google](https://developers.google.com/identity/sign-in/web/backend-auth#calling-the-tokeninfo-endpoint) after you have authenticated a user via the Google OAuth2 flow. This is required if an auth_code is not provided.","type":"string","example":"eyJhbXciOiJIUzI1Lizs...."},"terms_agreed":{"description":"This MUST be set to `false` unless you have collected the [users agreement](/restapi/docs/terms) prior to calling this endpoint in which case it can be set to `true` and will be recorded.<br /><br />__NOTE:__ If this is set to `false` and the user has not agreed to the latest mod.io Terms of Use and Privacy Policy, an error `403 Forbidden (error_ref 11074)` will be returned and you will need to collect the [users agreement](/restapi/docs/terms) and retry with this value set to `true` to authenticate the user.","type":"boolean","example":true},"date_expires":{"description":"Unix timestamp of date in which the returned token will expire. Value cannot be higher than the default value which is a week (unix timestamp + 604800 seconds). Using a token after it's expiry time has elapsed will result in a `401 Unauthorized` response.","type":"integer","example":1729236480}},"type":"object"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Request","content":{"application/json":{"schema":{"title":"Access Token Object","description":"Contains user access token.","properties":{"code":{"description":"HTTP Response Code.","type":"integer","format":"int32","example":200},"access_token":{"description":"The user's access token.","type":"string","example":"eyJ0eXAiOiXKV1QibCJhbLciOiJeiUzI1....."},"date_expires":{"description":"Unix timestamp of the date this token will expire. Default is one year from issue date. See [Access Token Lifetime & Expiry](/restapi/docs/making-requests).","type":"integer","format":"int32","example":1570673249}},"type":"object"}}}},"400":{"description":"Google authentication settings have not been configured. Please contact support for assistance.","content":{"application/json":{"schema":{"title":"Error Object","properties":{"error":{"description":"Contains error data.","properties":{"code":{"description":"The [HTTP code](/restapi/docs/response-codes).","type":"integer","format":"int32","default":403},"error_ref":{"description":"The mod.io error code.","type":"integer","default":10000},"message":{"description":"The server response to your request. Responses will vary depending on the endpoint, but the object structure will persist.","type":"string","default":"You do not have the required permissions to access this resource."},"errors":{"description":"Optional Validation errors object. This field is only supplied if the response is a validation error `422 Unprocessible Entity`. See [errors documentation](/restapi/docs/errors) for more information.","type":"object"}},"type":"object"}},"type":"object"}}},"x-errorrefs":{"11053":"Google authentication settings have not been configured. Please contact support for assistance."}},"401":{"description":"mod.io was unable to validate the credentials with Google's servers.","content":{"application/json":{"schema":{"title":"Error Object","properties":{"error":{"description":"Contains error data.","properties":{"code":{"description":"The [HTTP code](/restapi/docs/response-codes).","type":"integer","format":"int32","default":403},"error_ref":{"description":"The mod.io error code.","type":"integer","default":10000},"message":{"description":"The server response to your request. Responses will vary depending on the endpoint, but the object structure will persist.","type":"string","default":"You do not have the required permissions to access this resource."},"errors":{"description":"Optional Validation errors object. This field is only supplied if the response is a validation error `422 Unprocessible Entity`. See [errors documentation](/restapi/docs/errors) for more information.","type":"object"}},"type":"object"}},"type":"object"}}},"x-errorrefs":{"11054":"mod.io was unable to validate the credentials with Google's servers."}},"403":{"description":"The user account associated with this email is locked. Please contact support for assistance.","content":{"application/json":{"schema":{"title":"Error Object","properties":{"error":{"description":"Contains error data.","properties":{"code":{"description":"The [HTTP code](/restapi/docs/response-codes).","type":"integer","format":"int32","default":403},"error_ref":{"description":"The mod.io error code.","type":"integer","default":10000},"message":{"description":"The server response to your request. Responses will vary depending on the endpoint, but the object structure will persist.","type":"string","default":"You do not have the required permissions to access this resource."},"errors":{"description":"Optional Validation errors object. This field is only supplied if the response is a validation error `422 Unprocessible Entity`. See [errors documentation](/restapi/docs/errors) for more information.","type":"object"}},"type":"object"}},"type":"object"}}},"x-errorrefs":{"11074":"The user has not agreed to the mod.io Terms of Use. Please see terms_agreed parameter description and the [Terms](/restapi/docs/terms) endpoint for more information.","17053":"The user account associated with this email is locked. Please contact support for assistance."}}}}
+>
+  
+</StatusCodes>
+
+
+      

@@ -1,0 +1,33 @@
+---
+id: guide-stats-object
+title: "Guide Stats Object"
+description: "Contains stats data."
+sidebar_label: "Guide Stats Object"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"guide_id":2,"visits_today":0,"visits_total":0,"comments_total":0}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Guide Stats Object"}
+>
+</Heading>
+
+
+
+Contains stats data.
+
+<Schema
+  schema={{"title":"Guide Stats Object","description":"Contains stats data.","properties":{"guide_id":{"description":"Unique guide id.","type":"integer","format":"int32","example":2},"visits_today":{"description":"Last 24hours of visits for this guide","type":"integer","format":"int32","example":0},"visits_total":{"description":"Total number of visits for this guide","type":"integer","format":"int32","example":0},"comments_total":{"description":"Total number of comments for this guide","type":"integer","format":"int32","example":0}},"type":"object"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

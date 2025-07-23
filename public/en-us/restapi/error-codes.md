@@ -1,11 +1,96 @@
 ---
-id: restapi-error-codes
-title: Error Codes
-slug: /restapi/error-codes/
-sidebar_position: 1
+id: restapi-errors
+title: Errors
+slug: /restapi/errors/
+displayed_sidebar: apisidebar
 ---
 
-# Error Codes
+## Error Object
+
+> Error object
+
+```json
+"error": {
+	"code": 403,
+	"error_ref": 15024,
+	"message": "You do not have the required permissions to access this resource."
+}
+```
+
+If an error occurs, mod.io returns an error object with the HTTP `code`, `error_ref` and `message` to describe what happened and when possible how to avoid repeating the error. It's important to know that if you encounter errors that are not server errors (`500`+ codes) - you should review the error message before continuing to send requests to the endpoint.
+
+When requests contain invalid input data or query parameters (for filtering), an optional field object called `errors` can be supplied inside the `error` object, which contains a list of the invalid inputs. The nested `errors` object is only supplied with `422 Unprocessable Entity` responses. Be sure to review the [Response Codes](#response-codes) to be aware of the HTTP codes that the mod.io API returns.
+
+> Error object with input errors
+
+```json
+"error": {
+	"code": 422,
+	"error_ref": 13009,
+	"message": "Validation Failed. Please see below to fix invalid input.",
+	"errors": {
+		"summary":"The mod summary cannot be more than 200 characters long.",
+	}
+}
+```
+
+Remember that [Rate Limiting](#rate-limiting) applies whether an error is returned or not, so to avoid exceeding your daily quota be sure to always investigate error messages - instead of continually retrying.
+
+## Error Codes
+
+Along with generic [HTTP response codes](#response-codes), we also provide mod.io specific error codes to help you better understand what has gone wrong with a request. Below is a list of the most common `error_ref` codes you could encounter when consuming the API, as well as the reason for the error occuring. For error codes specific to each endpoint, click the 'Show All Responses' dropdown on the specified endpoint documentation.
+
+> Example request with malformed api_key
+
+```shell
+curl -X GET https://*.modapi.io/v1/games?api_key=malformed_key
+```
+
+```json
+{
+    "error": {
+        "code": 401,
+        "error_ref": 11001,
+        "message": "We cannot complete your request due to a malformed/missing api_key in your request. Refer to documentation at https://docs.mod.io"
+    }
+}
+```
+
+## Error Refs
+
+Error Reference Code | Meaning
+---------- | -------
+`10000` | mod.io is currently experiencing an outage. (rare)
+`10001` | Cross-origin request forbidden.
+`10002` | mod.io failed to complete the request, please try again. (rare)
+`10003` | API version supplied is invalid.
+`11000` | api_key is missing from your request.
+`11001` | api_key supplied is malformed.
+`11002` | api_key supplied is invalid.
+`11003` | Access token is missing the write scope to perform the request.
+`11004` | Access token is missing the read scope to perform the request.
+`11005` | Access token is expired, or has been revoked.
+`11006` | Authenticated user account has been deleted.
+`11007` | Authenticated user account has been banned by mod.io admins.
+`11008` | You have been ratelimited globally for making too many requests. See [Rate Limiting](#rate-limiting).
+`11009` | You have been ratelimited from calling this endpoint again, for making too many requests. See [Rate Limiting](#rate-limiting).
+`13001` | The submitted binary file is corrupted.
+`13002` | The submitted binary file is unreadable.
+`13004` | You have used the `input_json` parameter with semantically incorrect JSON.
+`13005` | The Content-Type header is missing from your request.
+`13006` | The Content-Type header is not supported for this endpoint.
+`13007` | You have requested a response format that is not supported (JSON only).
+`13009` | The request contains validation errors for the data supplied. See the attached `errors` field within the [Error Object](#error-object) to determine which input failed.
+`14000` | The requested resource does not exist.
+`14001` | The requested game could not be found.
+`14006` | The requested game has been deleted.
+`15010` | The requested modfile could not be found.
+`15022` | The requested mod could not be found.
+`15023` | The requested mod has been deleted.
+`15026` | The requested comment could not be found.
+`17000` | The requested user could not be found.
+
+# Error Refs
 
 | Constant Name | Value |
 |--------------|-------|

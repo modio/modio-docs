@@ -1,0 +1,33 @@
+---
+id: payment-method-object
+title: "Payment Method Object"
+description: "Contains Payment Method data."
+sidebar_label: "Payment Method Object"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"name":"Visa ending in 1111","id":"123e4567-e89b-12d3-a456-426614174000","amount":199,"display_amount":"USD 1.99"}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Payment Method Object"}
+>
+</Heading>
+
+
+
+Contains Payment Method data.
+
+<Schema
+  schema={{"title":"Payment Method Object","description":"Contains Payment Method data.","properties":{"name":{"description":"The pretty name of the payment method that was used.","type":"string","example":"Visa ending in 1111"},"id":{"description":"The UUID of the payment method id that was used.","type":"string","example":"123e4567-e89b-12d3-a456-426614174000"},"amount":{"description":"The amount the payment method was charged.","type":"integer","example":199},"display_amount":{"description":"A pretty string of the amount the payment method was charged.","type":"string","example":"USD 1.99"}},"type":"object"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

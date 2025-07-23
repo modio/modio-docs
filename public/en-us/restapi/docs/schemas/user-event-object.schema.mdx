@@ -1,0 +1,33 @@
+---
+id: user-event-object
+title: "User Event Object"
+description: ""
+sidebar_label: "User Event Object"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"id":13,"game_id":7,"mod_id":13,"user_id":13,"date_added":1499846132,"event_type":"USER_TEAM_JOIN"}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"User Event Object"}
+>
+</Heading>
+
+
+
+
+
+<Schema
+  schema={{"title":"User Event Object","properties":{"id":{"description":"Unique id of the event object.","type":"integer","format":"int32","example":13},"game_id":{"description":"Unique id of the parent game.","type":"integer","format":"int32","example":7},"mod_id":{"description":"Unique id of the parent mod.","type":"integer","format":"int32","example":13},"user_id":{"description":"Unique id of the user who performed the action.","type":"integer","format":"int32","example":13},"date_added":{"description":"Unix timestamp of date the event occurred.","type":"integer","format":"int32","example":1499846132},"event_type":{"title":"User Event Type Enum","type":"string","enum":["USER_TEAM_JOIN","USER_TEAM_LEAVE","USER_SUBSCRIBE","USER_UNSUBSCRIBE"],"x-enumDescriptions":{"USER_TEAM_JOIN":"User has joined a team.","USER_TEAM_LEAVE":"User has left a team.","USER_SUBSCRIBE":"User has subscribed to a mod.","USER_UNSUBSCRIBE":"User has un-subscribed from a mod."}}},"type":"object"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

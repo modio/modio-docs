@@ -1,0 +1,72 @@
+---
+id: delete-mod-dependencies
+title: "Delete Mod Dependencies"
+description: "Delete mod dependencies the corresponding mod has selected. Successful request will return `204 No Content`."
+sidebar_label: "Delete Mod Dependencies"
+hide_title: true
+hide_table_of_contents: true
+api: eJzNVm1v2zYQ/isHfhhaQLYcJwMGfevaYCv20iJNNwyGkdDiyWInkSp5suMZ+u/DkZKtOM4KdMCwbxLJe3v48LnbC5JrL7KFeIMNGoUm1+jFMhEKfe50Q9oakYk3WCEh1FaBGh0EKhFy6xz6xhqlzTocKaUHjxXmhGoKH9o8R++LtgKHn1v0BFtd8Q+1zsD9fHYFv1p4bQ2hofupSIRt0EkO/VaJTKgQ/K626m4cXCSikU7WSOi4hL0wskaRibWscaKVSITm3BtJpTgt6AdZI4QznJN2qERGrsVE+LzEWopsL2jXsDttCNfoRJcIfJB1U6HILrrkEK626kvRfrHqXwSbd8toiZ6+t2rHx/OIFn/Kpql0HuBKHybb7XZSWFdPWlehya3iYPtxIE3sdLhSTm1893ATAzG6ju+BGOpsLx5Bf0xYOid3XDxh7b9QiJh/dyW6LhnO2NUnzEl0Ha9FDvnofD67ijHHKI6I1Cc5ZeIwJHATyISK2fMMNp88ezkHBUc7TYqvsJBtRXF/xNA+36vZ5dMUb0sE2VKJhjgsKmg9OlAWPRhLUMoNQoOu1t5ra4AsRHY/flaFdUCl9vyakvglcw4B2oNDT07z22JzQllDLY1co/PwDUhVa6M9OUnWebCm2n0VJtfOWQfvBjAecwF582n1DJDUxkPYByVJTp/YMiXPA7f48fb2PfD+8kXKVcpGp8rmPh24MeFN/3J6vK2BZolg0kuKS5fz8f1dzS6ZhZzTncPifPDaqqm2feYc5myQg8+L2Ww26xJRo/dy/UxBHt0GHQzZ83XtbOsGGZzCzcD5qIgb6XY9EVhKmR8lAhrVWG0ogVVLYSVSFDy5NqfWYbRu0HntaZQ388SsH1H5D9uCskcusrtBlEbE9JyrDM8t0s+ht63LcSoGKP3Tmt+FD1nBb7LSKjAsAur7lKdwy84KjZViKjM7wbdMSFSgiz6dHi5mPWxOXMH91XwOH03jLGenVxXCtSFNu/spfECERR9R2byt0VCwPSVUPPMyPLTaOgRtIn+0NdMnWnBOss6IWCIeJsGxwyKgc/Ht7HL+/1WFkLLHvHWadqGBWs5yzuPA1mlCseTOUyOV9tiHQ9ulUmQi5Ubr033fb7u0tsqn+9gPu/SkVw+BPrDURCmQjb77E3fjbtLon5DbSd9bhxN9c/3cotsxA4dED4b9QiKKym6Dc12zzOkoeS2V1um/wv1+dJXIREnU+CxN47tPK7vWhrPMbROTcyi56BuUKuCVgLGHZ+AhlwZWQTZ0oWPfiZhl4rU0IJVKAJUmYCGMl3kwDtAz+My6sej2IvTq/dsnI8TvWOW2DhoSJKAodK5lBUeTKfDjDlJQaKMAN+h2VLKS7GwLBlGBXNmWILfGYE68s9VUDj42Wj4SHA8rrOyWS9uwtoQ8Lhj+xnqqZegc/UU9M02cljEaXP7rmbInCuEDpU0lteFCWubCvif0IkyOnHN2HCGZ07xymPLUyaBcWk9su9+vpMePruo6Xo5UzRbLRGyk03LFF7zYC6U9fyuRFbLy+A/4vLjpdfklHKfVs1UMj8fwQ9nIquU/kYjwtg7jMI+sXxX9ML1+RfAetm7ZJaJEqdAFFOJmfz2TW3ZxNP7yQMulRBev8hwbesY4TDePJOzN9c/Xt9ciEat+jq7DNCJGvpPxT7bgxFk+zmnNQS7351FgCYGoCgMeQV9C/mctnlGlaMvRWLyetT5I3uHqnTR0F852y67r/gYma9WF
+sidebar_class_name: "delete api-method"
+info_path: restapi/docs/mod-io-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import ParamsItem from "@theme/ParamsItem";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Delete Mod Dependencies"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"delete"}
+  path={"/games/{game-id}/mods/{mod-id}/dependencies"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Delete mod dependencies the corresponding mod has selected. Successful request will return `204 No Content`.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"game-id","in":"path","description":"Game id","required":true,"schema":{"type":"integer"},"example":1},{"name":"mod-id","in":"path","description":"Mod id","required":true,"schema":{"type":"integer"},"example":2}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/x-www-form-urlencoded":{"schema":{"title":"Delete Mod Dependencies Request","properties":{"dependencies":{"type":"array","items":{"type":"integer"},"example":"284"}},"type":"object"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"204":{"description":"Successful Request. No Body Returned.","content":{"application/json":{"schema":{"title":"204","type":"object","default":"204 No Content"}}}},"403":{"description":"The authenticated user does not have permission to delete dependencies for this mod, this action is restricted to team managers & administrators only.","content":{"application/json":{"schema":{"title":"Error Object","properties":{"error":{"description":"Contains error data.","properties":{"code":{"description":"The [HTTP code](/restapi/docs/response-codes).","type":"integer","format":"int32","default":403},"error_ref":{"description":"The mod.io error code.","type":"integer","default":10000},"message":{"description":"The server response to your request. Responses will vary depending on the endpoint, but the object structure will persist.","type":"string","default":"You do not have the required permissions to access this resource."},"errors":{"description":"Optional Validation errors object. This field is only supplied if the response is a validation error `422 Unprocessible Entity`. See [errors documentation](/restapi/docs/errors) for more information.","type":"object"}},"type":"object"}},"type":"object"}}},"x-errorrefs":{"15032":"The authenticated user does not have permission to delete dependencies for this mod, this action is restricted to team managers & administrators only."}}}}
+>
+  
+</StatusCodes>
+
+
+      

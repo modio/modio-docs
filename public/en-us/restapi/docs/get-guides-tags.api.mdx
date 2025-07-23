@@ -1,0 +1,64 @@
+---
+id: get-guides-tags
+title: "Get Guides Tags"
+description: "Get all guide tags for a game. Successful request will return an array of [Guide Tag Objects](/restapi/docs/get-guide-tags)."
+sidebar_label: "Get Guides Tags"
+hide_title: true
+hide_table_of_contents: true
+api: eJzFVttu2zgQ/ZXBPLWAYjnZAGn1FnQXQbDYC9oEi0VgpLQ4sthKpEqO7HgF/ftiSF9zQZt92ZfYIYc8Z4ZnznhAVouAxR1e9UZTwFmGmkLpTcfGWSzwihhU08BC9kGioXIeFCxUSxP41JclhVD1DXj61lNgWJlG/uHeW1AWlPdqDa6CuwgBN2oBf8y/UMlh9ib3FFh1JteuDPmC+CTinAjO2wlm6DrySqhcayxwQXwfA8J95J2hp9A5GyhgMeDZdCofxwkcMPyYGGKGpbNMliVadV1jyoiRfwlyZMBQ1tQq+caGG9qUYcdfgDsv1NgkZK1YPYW+jKkLljLW2MW+iOBSBSRFXneCEOuEGRqmNhxBPyobPn6iDwkgHFwvfCZPWFrV0lOWcrPsHHAJ7I1dYIb0oNousri2gX1fypmAYyYZ073SmvTTG2+teQA2rbxt28nbS3QktlIBYsVJH+AZy7QgjxlWzreK09JPZ4cMTs/fv393fnr+7mKU9+vT6z1KpSZQrewJaGQAXJsQoWsVYE5kt/jALlUsTOBGgpaq6SnJ19lmDXPayJh01DzXBMc6ALK6c8byK3M5OxvH3YEkBZQVT6Fv+P6F7H7v2zl5ySzFhT09Y1Oemx58JZ2L6R7bVVWgHwIPX03XkQa3JD+Bn6lScZkdTKG3DYUQt7zRmizM1/B5c/lnqEzD5F/J8oBkY1rzDMff1INp+xbsdwpFuzod0T6dTuFNqx7evkQ/wv5H9qfTA/7sWDXPyFeWn2Ffud6+tl0ups9JbJTFQGXvDa+xuBP7M/dfSb7PxmxAp3quz2QgeFIaZ+Msw5a4dhv7FU9RXGOBuQyAkA/ycWL0mKdeyjfGvAX5JFaa7GcHNew8rzO/kphecqZdRIZG6vGtJ78Ws9my2h3cLGRYNW4VLzet2HhShWw6b/6Jpn7rGyywZu5Ckeet0xPj8sYtjBWWpesSuZhugR9J6dj9GVgnD+B6X1KAUlnxg9ZpU228a+UNC5cPMuS0zoC0YXAeNDXEtD882Rbe2ModOnsiA5d/Xj/x9L+oKV1LIkvRq6sqUxrVwP7IBP52fXKrylgNtCS/5lrGzNr1YIk0qLnrWQaQpZJlZ2W43t6xNCrevfUwccfGrSS1JfmQeJxK+TsXuFV2P0L24zBs5+ER/WE/YP/vHxAbwTA9cN41ylhJqPex+5KS7zAqGTMsNlrGDJOY5bykN8uwdoEldhjmKtCtb8ZRlpNEi7tZhkvljZrLw0orYU1Kk489FkWPl2VJnTRQnDNR7Y9+eRw129UvN5hFKR83TOqPzRe5fbtl10d3bzspgctf6e9ng4chNeI47uLT1osnUtrbYCnqbBzHfwF4BotX
+sidebar_class_name: "get api-method"
+info_path: restapi/docs/mod-io-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import ParamsItem from "@theme/ParamsItem";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get Guides Tags"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/games/{game-id}/guides/tags"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Get all guide tags for a game. Successful request will return an array of [Guide Tag Objects](/restapi/docs/get-guide-tags).
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Request","content":{"application/json":{"schema":{"title":"Get Guide Tags","properties":{"data":{"description":"Array containing guide tag objects.","type":"array","items":{"title":"Guide Tag Object","description":"Contains guide tag data.","properties":{"name":{"description":"Tag name.","type":"string","example":"Instructions"},"date_added":{"description":"Unix timestamp of date tag was applied.","type":"integer","format":"int32","example":1499841487},"count":{"description":"The amount of times this tag has been applied to guides. This value will only be returned for the Get Guide Tags endpoint.","type":"integer","format":"int32","example":22}},"type":"object"}},"result_count":{"description":"Number of results returned in this request.","type":"integer","format":"int32","example":70},"result_offset":{"description":"Number of results skipped over. Defaults to 0 unless overridden by `_offset` filter.","type":"integer","format":"int32","example":0},"result_limit":{"description":"Maximum number of results returned in the request. Defaults to 100 (max) unless overridden by `_limit` filter.","type":"integer","format":"int32","example":100},"result_total":{"description":"Total number of results found.","type":"integer","format":"int32","example":70}},"type":"object"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

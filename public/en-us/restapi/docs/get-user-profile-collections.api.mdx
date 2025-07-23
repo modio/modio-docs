@@ -1,0 +1,72 @@
+---
+id: get-user-profile-collections
+title: "Get User Profile Collections"
+description: "Browse collections the given user is following. Successful request will return an array of [Mod Collection Objects](/restapi/docs/schemas/mod-collection-object)."
+sidebar_label: "Get User Profile Collections"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVWm1PIzkS/iuWvxxIDWnCzOxM63RSBjJstCFhSTLDikON03YS77rtXtudl0X576eyO0kHOkCYnZXuCy/tctVT5apyuewHbMnY4OgWnykhWGK5kgbfBZgyk2iewf84wp+1mhmGkg0NshOGxnzKJMoN04gbNFJCqBmX42PUy5OEGTPKBdLsz5wZi2ZcwD821xIRiYjWZIHUCN1eKoo2wlF3+DtLrLk7qGlmLMl4jarE1EwyYSkxtVTRow2MI+WoD49xgFXGNIGPLYojPGY2BmBxptWICxaXsOMAZ0STlFmmQfcHLEnKcIS7mo+5xAHmoPSEEco0fmwLTwTQC9VAOPzJNaM4sjpnAfZwcfSA7SID1sZqLsd4GWA2J2km4NvE2sxENdDpmCu8vAM+JlPSMANT62EIv7bFl0x77eXjACdKWiYtUJMsEzxxhqj9bmDKQxkNt070BbNoAOt25c2DzrbNo8GalnsclFjyFEjDrSBIJlxyOUapoiUPQX5pDFinsIFbc7CuZakpo6l0gScwOH0Koj8peyXitCSOS8vGbgFHSqfE+k+ndVxag5NlgMckZfEu5jD4BrYhMDaW2NxU8/Vj4EV2S4U34J9yw4fwz2M5X2GAC24XrxE3VEowIsvcwZdBj3yYcmsZjYeL8rI5B1ov1rbsM+8XxmcH8KDjVy3oQPI/c7D4CivMf4NR5K5FvSJ2gkZKr5kjJZGPwGP0RWlUsInQdnjW8locA9cjTo8mTLM43qAqorsc3HMiLYQ7iPDp5TGSc24yQRYIRndoW8H3hsg+8KV+toMUZ0pbIqo9DViafyFalrbS3xI9ZpZR5Bkco69E5Mzn6iFD9zIX4h7xEZIKTYngFN3fHF0qytXRlZtxX8xEPlkCEayeQZlWU04Z9TZNlWaIS79kEKiGMXTbd9IhdRDk2T3O+nZFcUSOvKDDZ60DeME2xLJYScFlhdkHks+R5SnISTMwPJBv3GFGDBLEWOQZ7Ot778NPn+r1Tx9OVjh+V1yyak9/Foef9z3iyZRYossR23BfXoxZP3FH1MJ2Ue3QBfcVAeIyETmF9WVzy6TZzjcVvu3lHmd+o1Ruo61y68F1G1nlTDXKhTgy/C9GC9TPS1jFNDGGWXOcKppQCdHNUzJmppYJkrCJEpTp2jYaO8nTYfw+nL+v2JRLgExKhFhZ0E2ShIu/G5UHso3tJAznJ1UlQwldyijP0x8Pr8DiAS7XzH1N4CDzlP2lquLznGWaJcQyGqGOQkLJMdMQEhQRSde5SbNUTRlFXCKTDw2UQtKixlULTZl+2dUAgyBynJPxj8SA+grdCpUQwf/ysQ2jqyrvcborCF2KPEQzEJCoNGWSooXKkWHWsbhvJAnL7FG7wH9fZN+XNV4Vw7l+PqrcnoEK6tc5x3qX9Btf1ZqDQcdKL3aUccXos0VKBYCGo8GrdEsorcq2IGGdX0sVI2R7N2XfRPvh9DQ8/fAxDFeC8wx+7SnabTTFzDcgOKmf1jcIBJ9W+PJO8eCrMOUNcuvhpw8buZQbMhT7qr6a9Qbxp2HopAuechvLPB0yHaeK7qi1UzLnaZ4iRw7uBaSIwGnVB6+dcPMdNThASYnNNbeLWBWSN5tu6WRzWVChpszTJ/uvG2WoOMyhkcqlg0fK2P491Kj2H/8zjjvdfjOKYwRq+trLRQ+cxjkTRaaibERyYSG4Q5RLwYw/vmdEgxx3xHHWMC7NWIVGgoxRug3nAGq2+0d6mvtCEJfo9gIY+dpi1/EdZK0O7YfHqEGpQ1Iwc+JnRALUMbMTpgNAwyQ4CkpzYXkmNtQO0e3nVv9bq9f0OJ70DYbczrhhR0TSo9Lfh4dVa1wYCkdhgBmsUHQbBidBPXgXfLwL8PwIPp5v1sz5W6fbaaKD8BBHuAMbWoAb7bPuz902OjiBjw2RqIkSOMDn14OLHjqow9dznY/hpP211W03O3108O7QndiUYDIBJs2bq3brrNVHBx9hpDmHYz33mRWyMtQ81e5uFRTkKxpwCKhInM87X/+O42Y9fPexJD/OZaLSTDNjdkW/B1Om+6HIMkEsEO3IBOthXwy5NOBcPM2IhUM0mnE7eTYj7GxiXBW8Uc/tUdUh3kC3/kyzhvLskaegqT70eAfFjXYbB/hbq3Pe/dbDAb5snOEAt1udwQ34Yuf8uts6xwFudWH05nP3pttpFn/1mtetZg/ortqN33r9Rr/V7bzb/vc9DnDvW6t/9jMOcPds0B4An153cH3WhE7hZid+NKk6XAAuBIVAV+u12sCP8DcuqZqZQhFIislanQi3ucznJbUi3JBUK04LBSPcyiZKMrStbYRvhmqOui48y4oXAz2mOTPoiSHcqi6geQLZ+4lhtodLhopwb8ZtMtlYLMLdJBe52Zguwj2V64S5iF4b8RbP1gbIzDt8B4WUa9FWRhcZG0SMUQmHCsJ57+442um6pR2qT3Z4bn8vUU+9tNO6dFaDxRuct7o4wJ8HF19aN01YqLOfm41+q3MBia/ztXXd7Vw2O30c4IvGZRNsjgP866DRbvV/i7tf4nbrC7jwoOUyaG/QaOOd+XkjGZyF+wbEGkWEGznlqowmwp/zMfrC58yUkUX4bMKI9WqVQUa4KadcK5lCC7YEOcKwI0LXpQJ9hH/NievNqRFq8xHz+kRbSrkeXk6Eeewkl34vJAuXFht0yiRs1s5dwB93LW8PxnY1WDcrubMd+l291vopVIxqJoUi1MRWUbLjLOBLOtcTWZEjR76nyPfhlsTcNRdfEumpNpL33onCR2rubM35zbFC2b0rUCfTX8AwvZfM9aQ9ZZ46kdoFhIkzZbjlUxafhjElix3paiN1RY8KBqv9352HTkMEPPa1+/vKQ6dQY1UOhrYaqxcbYDBp7/aX4/z25ldCNH1r6wvw/n09nDIS31o6rYfzk4+vaXw5y/2AvtJTTB/ehfPTD69qd/1zoE7qH8P5T/XnUQko8f4BUFXhUO26LjhL1xCv7b1cLkr3dvi5a5e1hM3NzmuFpIvSjS9291FpSna1kYrBfYX0oeDnBpHnGCwfJYzKdsfmy9sxUGYJF4y+xK1iiZfuEjkXNk5U7q+Et0F21knY05niVr7UCildbO+RgH8KN7LVaGTYq4SbP3iWMYrUlOljdO5P4GarVwFDmlPKJBou0H3BHDoPwu59OVgC6fpBTzFeFu0i+YKh2NpO/5UIoS3sJ2F4kJL54S4VnOg3anASlnTYtdM/2uVXGrie0v7rWuFmS/hoWOK6Qe4RhSK5ndTdEYYN8R08Z0iZnajiOYZ7dWEnOMI1116uPcCvI06Xte23GSumPegZ+U2XZDz+gy1K7ylIxn9hUFcXTzdWFMXbjT9zphduJy1ArScWHwI8goaXu4ZOi9YKCMrtROmiBT+ALvnjBrdQ/omISVTmwWlGQMVrRijcGS4CuC3VzLjTnUEJkXBXkCrKR9y3O2eaW1eYw0MYSgPEKDQmNaJMMMs2k49Xhoa703IV48HAZcKTIuYbE4lK2WqzUaMRTzgRaDPlGP0GfTZoDY64pIhNmV5A22PsGnCSwTXHUOUWen8SFkaO/Xmv4DHlxPFmkmaKS2vQkAk1A9WKiw8c4RN34aCMTYlLlcVCvfDy5FF+XT9s+b94glS4mGVzC1syd7tVcdfiff/WvQcARaPC+93rna2nVxNlLFA+PAyJYQMtlkv47F06ur0L8JRoTtyTj1s48BUPlSAGN634ERGGPWPPg+viydIhqnzRVKmLi8HNMynXcfZXSw/FmL+aKo09eY+0lRcumnDIh6irCtF1RtmEvVyUeEPkIR9MK2wuLB2eyhk7gtnPBWkQ8ztnrzPFasZYE2ljR7u8Wy6X/wM0LWau
+sidebar_class_name: "get api-method"
+info_path: restapi/docs/mod-io-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import ParamsItem from "@theme/ParamsItem";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get User Profile Collections"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/users/{user-id}/collections"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Browse collections the given user is following. Successful request will return an array of [Mod Collection Objects](/restapi/docs/schemas/mod-collection-object).
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"Origin","in":"header","description":"Origin of request.","required":true,"schema":{"type":"string"},"example":"https://mod.io"}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Request","content":{"application/json":{"schema":{"title":"Get User Profile Collections","properties":{"data":{"description":"Array containing mod collection objects.","type":"array","items":{"title":"Mod Collection Object","properties":{"id":{"description":"The collection id.","type":"integer","format":"int32","example":1},"game_id":{"description":"The game id.","type":"integer","format":"int32","example":101},"status":{"description":"The status of the collection.","type":"integer","format":"int32","example":1},"visible":{"description":"Visibility status of the collection.","type":"boolean","example":true},"submitted_by":{"title":"User Object","description":"Contains user data.","properties":{"id":{"description":"Unique id of the user.","type":"integer","format":"int32","example":1},"name_id":{"description":"Path for the user on mod.io. For example: https://mod.io/u/__name-id-here__","type":"string","example":"xant"},"username":{"description":"Display name of the user.","type":"string","example":"XanT"},"display_name_portal":{"description":"The users' display name for the targeted portal. Value will be `null` if no valid `X-Modio-Portal` portal header value is provided. For more information see [Targeting a Portal](/restapi/docs/targeting-a-portal).","type":"string","example":null},"date_online":{"description":"Unix timestamp of date the user was last online.","type":"integer","format":"int32","example":1509922961},"date_joined":{"description":"Unix timestamp of date the user joined.","type":"integer","format":"int32","example":1509922961},"avatar":{"title":"Avatar Object","description":"Contains avatar data.","properties":{"filename":{"description":"Avatar filename including extension.","type":"string","example":"avatar.png"},"original":{"description":"URL to the full-sized avatar.","type":"string","example":"https://assets.modcdn.io/images/placeholder/avatar.png"},"thumb_50x50":{"description":"URL to the small avatar thumbnail.","type":"string","example":"https://assets.modcdn.io/images/placeholder/avatar_50x50.png"},"thumb_100x100":{"description":"URL to the medium avatar thumbnail.","type":"string","example":"https://assets.modcdn.io/images/placeholder/avatar_100x100.png"}},"type":"object"},"timezone":{"description":"Deprecated: No longer used and will be removed in subsequent API version.","type":"string","example":""},"language":{"description":"Deprecated: No longer used and will be removed in subsequent API version. To [localize the API response](/restapi/docs/localization) we recommend you set the `Accept-Language` header.","type":"string","example":""},"profile_url":{"description":"URL to the users profile.","type":"string","example":"https://mod.io/u/xant"}},"type":"object"},"category":{"description":"The category of the collection.","type":"string","example":"Action"},"date_added":{"description":"The date the collection was added.","type":"integer","format":"int32","example":1633036800},"date_updated":{"description":"The date the collection was last updated.","type":"integer","format":"int32","example":1633123200},"date_live":{"description":"The date the collection went live.","type":"integer","format":"int32","example":1633209600},"date_disabled":{"description":"The date the collection was disabled.","type":"integer","format":"int32","example":163330000},"limit_number_mods":{"description":"The maximum limit of mods allowed in this collection.","type":"integer","format":"int32","example":10},"maturity_option":{"title":"Collection Maturity Enum","description":"Mature content found in a collection.<br /><br />__NOTE:__ The value of this field will default to 0 unless the parent game allows you to flag mature content (see `maturity_options` field in [Game Object](/restapi/docs/schemas/game-object)). Add the options you want together, to enable multiple options (see [BITWISE fields](/restapi/docs/bitwise-and-bitwise-and))","type":"integer","default":0,"enum":[0,1,2,4,8],"x-enumDescriptions":{"NONE (0)":"None","ALCOHOL (1)":"Alcohol","DRUGS (2)":"Drugs","VIOLENT (4)":"Violence","EXPLICIT (8)":"Explicit"}},"filesize":{"description":"The total filesize of all mods in the collection.","type":"integer","format":"int32","example":2048},"filesize_uncompressed":{"description":"The total uncompressed filesize of all mods in the collection.","type":"integer","format":"int32","example":2048},"platforms":{"description":"The platforms the mods are compatible within this collection.","type":"array","items":{"title":"Platform String Enum","description":"A [target platform](/restapi/docs/targeting-a-platform).","type":"string","enum":["ALL","WINDOWS","MAC","LINUX","ANDROID","IOS","XBOXONE","XBOXSERIESX","PLAYSTATION4","PLAYSTATION5","SWITCH","OCULUS","SOURCE"],"example":"PLAYSTATION5","x-enumDescriptions":{"ALL":"All Platforms","WINDOWS":"Windows","MAC":"Mac","LINUX":"Linux","ANDROID":"Android","IOS":"Iphone IOS","XBOXONE":"Xbox One","XBOXSERIESX":"Xbox Series X","PLAYSTATION4":"Playstation 4","PLAYSTATION5":"Playstation 5","SWITCH":"Switch","OCULUS":"Oculus","SOURCE":"Source"}},"example":["windows","ps4"]},"tags":{"description":"The tags associated with the collection.","type":"array","items":{"title":"Collection Tag Enum","description":"Tags associated with the collection.","type":"string","enum":["ANIMATION","AUDIO","BUGFIXES","CHEATING","ENVIRONMENT","GAMEPLAY","QUALITY_OF_LIFE","UI","VISUAL"],"x-enumDescriptions":{"ANIMATION":"Animation","AUDIO":"Audio","BUGFIXES":"Bug Fixes","CHEATING":"Cheating","ENVIRONMENT":"Environment","GAMEPLAY":"Gameplay","QUALITY_OF_LIFE":"Quality of Life","UI":"UI","VISUAL":"Visuals"}},"example":["Multiplayer","Adventure"]},"stats":{"title":"Collection Stats Object","properties":{"collection_id":{"description":"The collection id.","type":"integer","format":"int32","example":123},"downloads_today":{"description":"The number of downloads today.","type":"integer","format":"int32","example":50},"downloads_unique":{"description":"The number of unique downloads.","type":"integer","format":"int32","example":200},"downloads_total":{"description":"The total number of downloads.","type":"integer","format":"int32","example":1000},"followers_total":{"description":"The total number of followers.","type":"integer","format":"int32","example":300},"ratings_positive_30_days":{"description":"The number of positive ratings in the last 30 days.","type":"integer","format":"int32","example":25}},"type":"object"},"logo":{"title":"Logo Object","description":"Contains logo data.","properties":{"filename":{"description":"Logo filename including extension.","type":"string","example":"card.png"},"original":{"description":"URL to the full-sized logo.","type":"string","example":"https://assets.modcdn.io/images/placeholder/card.png"},"thumb_320x180":{"description":"URL to the small logo thumbnail.","type":"string","example":"https://assets.modcdn.io/images/placeholder/card.png"},"thumb_640x360":{"description":"URL to the medium logo thumbnail.","type":"string","example":"https://assets.modcdn.io/images/placeholder/card.png"},"thumb_1280x720":{"description":"URL to the large logo thumbnail.","type":"string","example":"https://assets.modcdn.io/images/placeholder/card.png"}},"type":"object"},"name":{"description":"The name of the collection.","type":"string","example":"My Collection"},"name_id":{"description":"The name id of the collection.","type":"string","example":"my-collection"},"summary":{"description":"The summary of the collection.","type":"string","example":"This is a summary of the collection."},"description":{"description":"The description of the collection.","type":"string","example":"This is a detailed description of the collection."}},"type":"object"}},"result_count":{"description":"Number of results returned in this request.","type":"integer","format":"int32","example":70},"result_offset":{"description":"Number of results skipped over. Defaults to 0 unless overridden by `_offset` filter.","type":"integer","format":"int32","example":0},"result_limit":{"description":"Maximum number of results returned in the request.\n    Defaults to 100(max) unless overridden by `_limit` filter.","type":"integer","format":"int32","example":100},"result_total":{"description":"Total number of results found.","type":"integer","format":"int32","example":70}},"type":"object"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

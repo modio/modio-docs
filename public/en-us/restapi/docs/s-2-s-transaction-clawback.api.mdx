@@ -1,0 +1,80 @@
+---
+id: s-2-s-transaction-clawback
+title: "S2S Transaction Clawback"
+description: "Create a service-to-service (S2S) transaction clawback. This is for unwinding a token transaction. You may use the transaction_id or the gateway_uuid from the previous calls. A successful request will return a [Refund Object](/restapi/docs/schemas/refund-object) object. Requires scope of monetization on token."
+sidebar_label: "S2S Transaction Clawback"
+hide_title: true
+hide_table_of_contents: true
+api: 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
+sidebar_class_name: "post api-method"
+info_path: restapi/docs/mod-io-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import ParamsItem from "@theme/ParamsItem";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"S2S Transaction Clawback"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/s2s/transactions/clawback"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Create a service-to-service (S2S) transaction clawback. This is for unwinding a token transaction. You may use the transaction_id or the gateway_uuid from the previous calls. A successful request will return a [Refund Object](/restapi/docs/schemas/refund-object) object. Requires scope of monetization on token.
+
+
+
+:::tip
+
+Rules engine applies here
+
+:::
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/x-www-form-urlencoded":{"schema":{"title":"Clawback Request","required":["refund_reason","portal"],"properties":{"transaction_id":{"description":"The id of the transaction to complete. Required if gateway_uuid is null.","type":"integer","format":"int32"},"gateway_uuid":{"description":"The alpha dash on the transaction. Required if transaction_id is null.","type":"integer","format":"int32"},"portal":{"description":"The portal the transaction is tied to. Valid options are apple, google, xboxlive, psn and steam.","type":"string"},"refund_reason":{"description":"The reason for refunding the transaction.","type":"string"},"clawback_uuid":{"description":"An optional mapping alpha dash string that can be used to group this transaction against other transactions. When a deficit clawback transaction occurs, this clawback id will be set on subsequent clawbacks.","type":"string"}},"type":"object"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Request","content":{"application/json":{"schema":{"title":"Refund Object","properties":{"transaction_id":{"description":"The transaction id.","type":"integer","format":"int32","example":987654321},"gross_amount":{"description":"The gross amount of the purchase in the lowest denomination of currency.","type":"integer","format":"int32","example":2500},"net_amount":{"description":"The net amount of the purchase in the lowest denomination of currency.","type":"integer","format":"int32","example":2300},"platform_fee":{"description":"The platform fee of the purchase in the lowest denomination of currency.","type":"integer","format":"int32","example":100},"gateway_fee":{"description":"The gateway fee of the purchase in the lowest denomination of currency.","type":"integer","format":"int32","example":50},"tax":{"description":"The tax amount of the purchase in cents.","type":"integer","format":"int32","example":150},"tax_type":{"description":"The tax type.","type":"string","example":"GST"},"transaction_type":{"title":"Monetization Transaction Type Enum","description":"The state of the transaction that was processed.","type":"string","enum":["CANCELLED","CLEARED","CREDITED","FAILED","PAID","PENDING","REFUNDED"],"x-enumDescriptions":{"CANCELLED":"Payment cancelled by seller","CLEARED":"Payment taken and earned funds released","FAILED":"Payment failed to process","PAID":"Payment taken but funds not released","PENDING":"Pending transaction no payment taken","REFUNDED":"Payment refunded to buyer"}},"meta":{"description":"A metadata array of objects returned from the transaction.","type":"array","items":{"properties":{"mod_id":{"description":"Mod ID.","type":"integer","example":1234},"game_id":{"description":"Game ID.","type":"integer","example":4567},"buyer_id":{"description":"Buyer ID.","type":"integer","example":8910},"mod_name":{"description":"Name of the mod.","type":"string","example":"my mod"},"game_name":{"description":"Name of the game.","type":"string","example":"my game"},"buyer_name":{"description":"Name of the buyer.","type":"string","example":"buyers name"},"token_name":{"description":"Name of the token.","type":"string","example":"token name"}},"type":"object"},"example":[{"mod_id":1234,"game_id":4567,"buyer_id":8910,"mod_name":"Body Armour","game_name":"Half-Life","buyer_name":"Gordon Freeman","token_name":".22 Magazine"}]},"purchase_date":{"description":"The time of the purchase.","type":"integer","format":"int32","example":1626667557}},"type":"object"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

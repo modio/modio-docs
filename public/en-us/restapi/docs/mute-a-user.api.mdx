@@ -1,0 +1,72 @@
+---
+id: mute-a-user
+title: "Mute a User"
+description: "Mute a user. This will prevent mod.io from returning mods to you authored by the muted user. Successful request will return `204 No Content`."
+sidebar_label: "Mute a User"
+hide_title: true
+hide_table_of_contents: true
+api: eJztV9uO2zYQ/ZUBnxJAvux6gSJ6S4MADYo2wV5aFIaxS4sjiylFKuTQXsfQvxdDSbZ37bRBUKB9yJMNUpw5MzznaLQTJFdB5HNxF9AHsciEwlB43ZB2VuTil0gIEmJAP4bbSgfYaGOg8bhGS1A7NdYOSu9q8EjRW21XvBqAHGxdBBmpch4VLLdAFUIdCVUf7yYWBYZQRgMeP0UM1EXvIsHD5fQKfnXwxllCSw9jkQnXoJeM7Z0SueBg9/Keo4lMNNLLGonryOc7YWWNIhe8OdJKZEJzQY2kSjyvkouH9Azj0B6VyMlHzEQoKqylyHeCtg2H05ZwhV60mcBHWTcGRT67mM1etQs+HRpnAwY+cDm94p+nmY5Kvu5KHnOJPzq1hetUNiqus+hq5gCyaYwuUtGTj4Gj7I5haWIIKVs2gHTLj1hQKrOU0VC3f9RL0bZtm4mr6ewU4h8uQiGtdZQui2/RBzRllu4zVC4aBY3jMFoas+WlDXgM5KW2BNoGQvltVbz13nl4P8BvPN836a6hyJuneLkkqW2AtA9KkhyfnC2cwtOjtxXC/Kfb2w/A+4sXE65CNnqiXBEmw22OeDO8HB/6O5AgE6XztaRuaXZ53PGr6Yw5wpjuPZbnk/f66ZBzmrNJ9jEvptPptM1EjSHI1RcKCujX6GFA3wvRDxIbw/XA0k5ta+m3oLBBq1i8ziadolWN05YyWEZKKx2pIJCPBUWPvROgDzrQEe5AXtvVE/IxpZQDplQl15jCDUrjCLUOQTubTEMmgQCx13gMLvoCx2JoZTit+X36Iw38Jo1WiWFdQ0MPuTeuUqNRoAM4y6SNTEhUoMseTt8uHUDC+lkoeLi6vIQ723jH6PTSILy1pGn7MIYbRJj3GZUrYo2W0tnnhOqeeQml81A7j6Btxx/t7PhEvSzQf15pM/E4SoE9lqk7Fz9MZ6/+TR13TnHGzJhtbK+w0VSlLh66qqBICTj9EqF00X63hO+W8N0S/iNLmE6/SbApWsAiek3bNFY5nugueWTc4FIseOx5HBXOhlizrp6o+nG02WxGXNAoeoOW6cxT1uOo8U7F4uRAsgGerAhtuv6U8k/civw4SybW0kT8qmxtdgiwz3o+QMrOBdVIleMBs3EhmQ4PjbmYcO/CZNePlO2EfVUc+nPD5tWZi2z0fcq6Hxxlo3/GrciGuXR4op9LP0X0W+b00N/9wX4hE6VxmxRc14xZdyaa5mv9OVVw543IRUXUhHwy6ZxkYtxKc1ND4ZoOnEfJxV2jVIn5GVi3F1bglwYzoHZKl7obRzdeE2N5Iy1IpTJApQnYWtEg4eFwYgxzhnl8bOO9rb3+8O5k+v4dTeHq5ErJVMpSF1oaOBwZA9tFMpdSWwW4Rr+lir2J32UWUYFcukhQOGuxIN5JHO9jrLV8YmEBlmjchktbs1slHBfcfr7xWqZ3UX9R/SfQXeiN9wj67vA6+999KfXsIXykSWOktlxdZILsej7P07cRiyE/fCQlSi8yUTHz87nY7ZYy4J03bcvLHU3z+YIV5LVc8uXOd0LpwP+VyEtpAv5Nn15c9y7/Eg6fXWfBDsKx2yO9iqxX8wC5XbSZqFAq9Edm8boosKGv1vmH9ze3IktiOqe8veftzoNiQUGnkQFeUlsyn7MnvqDR7ixnYyl/8fTeAIYTKy8t3adn20Xbtn8BgReGUQ==
+sidebar_class_name: "post api-method"
+info_path: restapi/docs/mod-io-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import ParamsItem from "@theme/ParamsItem";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Mute a User"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/users/{user-id}/mute"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Mute a user. This will prevent mod.io from returning mods to you authored by the muted user. Successful request will return `204 No Content`.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"user-id","in":"path","description":"User id","required":true,"schema":{"type":"integer"},"example":31339}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"204":{"description":"Successful Request. No Body Returned.","content":{"application/json":{"schema":{"title":"204","type":"object","default":"204 No Content"}}}},"403":{"description":"You cannot mute yourself, you should potentially show restraint instead.","content":{"application/json":{"schema":{"title":"Error Object","properties":{"error":{"description":"Contains error data.","properties":{"code":{"description":"The [HTTP code](/restapi/docs/response-codes).","type":"integer","format":"int32","default":403},"error_ref":{"description":"The mod.io error code.","type":"integer","default":10000},"message":{"description":"The server response to your request. Responses will vary depending on the endpoint, but the object structure will persist.","type":"string","default":"You do not have the required permissions to access this resource."},"errors":{"description":"Optional Validation errors object. This field is only supplied if the response is a validation error `422 Unprocessible Entity`. See [errors documentation](/restapi/docs/errors) for more information.","type":"object"}},"type":"object"}},"type":"object"}}},"x-errorrefs":{"17039":"You cannot mute yourself, you should potentially show restraint instead."}},"404":{"description":"The user with the supplied id could not be found.","content":{"application/json":{"schema":{"title":"Error Object","properties":{"error":{"description":"Contains error data.","properties":{"code":{"description":"The [HTTP code](/restapi/docs/response-codes).","type":"integer","format":"int32","default":403},"error_ref":{"description":"The mod.io error code.","type":"integer","default":10000},"message":{"description":"The server response to your request. Responses will vary depending on the endpoint, but the object structure will persist.","type":"string","default":"You do not have the required permissions to access this resource."},"errors":{"description":"Optional Validation errors object. This field is only supplied if the response is a validation error `422 Unprocessible Entity`. See [errors documentation](/restapi/docs/errors) for more information.","type":"object"}},"type":"object"}},"type":"object"}}},"x-errorrefs":{"17000":"The user with the supplied id could not be found."}}}}
+>
+  
+</StatusCodes>
+
+
+      

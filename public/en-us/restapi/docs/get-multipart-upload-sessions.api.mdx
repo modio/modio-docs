@@ -1,0 +1,72 @@
+---
+id: get-multipart-upload-sessions
+title: "Get Multipart Upload Sessions"
+description: "Get all upload sessions belonging to the authenticated user for the corresponding mod. Successful request will return an array of [Multipart Upload Part Objects](/restapi/docs/get-multipart-upload-sessions). We recommended reading the [filtering documentation](/restapi/docs/restapi-getting-started#filtering) to return only the records you want."
+sidebar_label: "Get Multipart Upload Sessions"
+hide_title: true
+hide_table_of_contents: true
+api: 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
+sidebar_class_name: "get api-method"
+info_path: restapi/docs/mod-io-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import ParamsItem from "@theme/ParamsItem";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get Multipart Upload Sessions"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/games/{game-id}/mods/{mod-id}/files/multipart/sessions"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Get all upload sessions belonging to the authenticated user for the corresponding mod. Successful request will return an array of [Multipart Upload Part Objects](/restapi/docs/get-multipart-upload-sessions). We recommended reading the [filtering documentation](/restapi/docs/restapi-getting-started#filtering) to return only the records you want.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"game-id","in":"path","description":"Game id","required":true,"schema":{"type":"integer"},"example":1},{"name":"mod-id","in":"path","description":"Mod id","required":true,"schema":{"type":"integer"},"example":2},{"name":"status","in":"query","description":"Status of the modfile upload session.","required":false,"schema":{"title":"Modfile Upload Status Enum","description":"The status of the upload session.","type":"integer","enum":[0,1,2,3,4],"example":0,"x-enumDescriptions":{"INCOMPLETE (0)":"Incomplete","PENDING (1)":"Pending","PROCESSING (2)":"Processing","COMPLETE (3)":"Complete","CANCELLED (4)":"Cancelled"}}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Request","content":{"application/json":{"schema":{"title":"Get Multipart Upload Sessions","properties":{"data":{"description":"Array containing Multipart Upload Part Objects.","type":"array","items":{"title":"Multipart Upload Object","description":"Contains multipart upload session data.","properties":{"upload_id":{"description":"A universally unique identifier (UUID) that represents the upload session.","type":"string","example":"123e4567-e89b-12d3-a456-426614174000"},"status":{"title":"Modfile Upload Status Enum","description":"The status of the upload session.","type":"integer","enum":[0,1,2,3,4],"example":0,"x-enumDescriptions":{"INCOMPLETE (0)":"Incomplete","PENDING (1)":"Pending","PROCESSING (2)":"Processing","COMPLETE (3)":"Complete","CANCELLED (4)":"Cancelled"}}},"type":"object"}},"result_count":{"description":"Number of results returned in this request.","type":"integer","format":"int32","example":70},"result_offset":{"description":"Number of results skipped over. Defaults to 0 unless overridden by `_offset` filter.","type":"integer","format":"int32","example":0},"result_limit":{"description":"Maximum number of results returned in the request. Defaults to 100(max) unless overridden by `_limit` filter.","type":"integer","format":"int32","example":100},"result_total":{"description":"Total number of results found.","type":"integer","format":"int32","example":70}},"type":"object"}}}},"403":{"description":"The authenticated user has had upload privileges restricted by mod.io admins, this is typically due to spam.","content":{"application/json":{"schema":{"title":"Error Object","properties":{"error":{"description":"Contains error data.","properties":{"code":{"description":"The [HTTP code](/restapi/docs/response-codes).","type":"integer","format":"int32","default":403},"error_ref":{"description":"The mod.io error code.","type":"integer","default":10000},"message":{"description":"The server response to your request. Responses will vary depending on the endpoint, but the object structure will persist.","type":"string","default":"You do not have the required permissions to access this resource."},"errors":{"description":"Optional Validation errors object. This field is only supplied if the response is a validation error `422 Unprocessible Entity`. See [errors documentation](/restapi/docs/errors) for more information.","type":"object"}},"type":"object"}},"type":"object"}}},"x-errorrefs":{"15012":"The authenticated user has had upload privileges restricted by mod.io admins, this is typically due to spam."}}}}
+>
+  
+</StatusCodes>
+
+
+      

@@ -1,0 +1,33 @@
+---
+id: user-delegation-token-object
+title: "User Delegation Token Object"
+description: "Contains User Delegation Token."
+sidebar_label: "User Delegation Token Object"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"entity":"purchase_server","token":"eyJ0eXAiOiXKV1QibCJhbLciOiJeiUzI1....."}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"User Delegation Token Object"}
+>
+</Heading>
+
+
+
+Contains User Delegation Token.
+
+<Schema
+  schema={{"title":"User Delegation Token Object","description":"Contains User Delegation Token.","properties":{"entity":{"description":"The entity the User Delegation Token was created for. Possible Values are `purchase_server`.","type":"string","example":"purchase_server"},"token":{"description":"The user delegation token. This cannot be used to authenticate API requests and instead can only be used as request context for select S2S endpoints.","type":"string","example":"eyJ0eXAiOiXKV1QibCJhbLciOiJeiUzI1....."}},"type":"object"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

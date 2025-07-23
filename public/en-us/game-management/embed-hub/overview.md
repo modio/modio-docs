@@ -26,7 +26,7 @@ Once you've gained access to the Embed Hub, you'll find the settings in your gam
 You can preview your hub at any time during the set up process. You can also create multiple hubs, if you want different designs for use in-game, on your homepage, corporate site, and launcher.
 
 :::info
-The mod.io team can be engaged to design the embed hub to match your homepage or style guide, and assist with advanced features such as SSO (single-sign on) support using your account system. If you are interested support, please contact developers@mod.io.
+The mod.io team can be engaged to design the embed hub to match your homepage or style guide, and assist with advanced features such as SSO (single-sign on) support using your account system. If you are interested in support, please contact developers@mod.io.
 :::
 
 ## Demonstration

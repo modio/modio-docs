@@ -1,0 +1,33 @@
+---
+id: monetization-team-accounts-object
+title: "Monetization Team Accounts Object"
+description: ""
+sidebar_label: "Monetization Team Accounts Object"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"id":1,"name_id":"xant","username":"XanT","monetization_status":0,"monetization_options":0,"split":0}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Monetization Team Accounts Object"}
+>
+</Heading>
+
+
+
+
+
+<Schema
+  schema={{"title":"Monetization Team Accounts Object","properties":{"id":{"description":"Unique id of the user.","type":"integer","format":"int32","example":1},"name_id":{"description":"Path for the user on mod.io. For example: https://mod.io/u/__name-id-here__","type":"string","example":"xant"},"username":{"description":"Display name of the user.","type":"string","example":"XanT"},"monetization_status":{"description":"The monetization status of the user.","type":"integer","format":"int32"},"monetization_options":{"description":"The monetization options of the user.","type":"integer","format":"int32"},"split":{"description":"User monetization split.","type":"integer","format":"int32"}},"type":"object"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

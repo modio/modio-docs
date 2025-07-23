@@ -60,8 +60,12 @@ To authenticate to mod.io via a Google Play account, we support the following cr
 9. Create an OAuth ClientID set application type as web application, add a name, and an authorised Redirect URI. Click create (note your Client ID, Redirect URI and Client Secret as these are required to [enter on mod.io later](#configuring-your-games-google-client-id-secret-and-redirect-uri-on-modio)).
 ![Google Cloud Console Oauth client configuration screen](images/google_create_oauth_web_application.png)
 
-10. Create an OAuth ClientID for Android - select application type as Android from the dropdown, for the package name enter the name of your game as appears in your [AndroidManifest.xml](https://developer.android.com/guide/topics/manifest/manifest-intro) file, and [SHA-1 fingerprint](https://developers.google.com/android/guides/client-auth).
+10. Create an OAuth ClientID for Android - select application type as Android from the dropdown, for the package name enter the name of your game as appears in your [AndroidManifest.xml](https://developer.android.com/guide/topics/manifest/manifest-intro) file [SHA-1 fingerprint](https://developers.google.com/android/guides/client-auth).
 ![Google Cloud Console Android Oauth client configuration screen](images/google_setup_adroid_clientId.png)
+
+:::important
+The above OAuth client with SHA-1 fingerprint is for development builds only. Google will resign your builds with its own fingerprint key which you can find after completing [Setting Up Play Games Services](#setting-up-play-games-services) below. It's recommended to make a separate OAuth client using this resigned fingerprint which you can find the **Google Play Console > Test and Release > App Integrity > App Signing**.
+:::
 
 ### Setting Up Play Games Services
 

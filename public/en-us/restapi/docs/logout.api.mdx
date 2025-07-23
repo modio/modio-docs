@@ -1,0 +1,64 @@
+---
+id: logout
+title: "Logout"
+description: "Log the user out by revoking their current access token. If this request successfully completes, you should remove any tokens/cookies/cached credentials linking to the now-revoked access token so the user is required to login again through your application. Successful request will return a [Message Object](/restapi/docs/schemas/message-object)."
+sidebar_label: "Logout"
+hide_title: true
+hide_table_of_contents: true
+api: eJztVE1v2zgQ/SuDOe0CrJXN3nRZBL1ssF0kaFIEC8MoaHIssaE5KknZ1Rr674uhZMduNsfe6otFaT7e8L03B8y6SVgv8abPLYXsjM6OA64UWkomuq4ca/zADeSWoE8UgfsM6wEi7fjZhfLBRTB9jBQyaGMoJcj8TGEBtxvIrUsQ6WtPKUPqy+dN7/0Ahredp0xJwcA9pJZ7byHSlncEOgxTkVQZ5mdHqTLatGTBRLICVvsE3oUJAxd8gffvCi6yF0Ag8Qv+GY6LZCXPc+MC6Ea7ALmN3DetwImgu87PN7KAhxPw0yx75+WQ+xhAw/JvSkk3BHfrL2Ty6pcqUsq6c5Vlk6pkWtrqVG2nqHdcon5doELuKJYutxZr9Nxwn1FhpNRxSJSwPuD11ZX8XbJyhunjhAkVGg6ZQpboswGqL0lSDjjhkKfssies8YnWcIkdFXZRUGU3dTds6XX7Px8f7+GIEiRGpslDJ1VdyNRQRIUbjludp1e/X6NC+qaFd6yvr65GhbMkXtd/0qmQdrzvo1zshYr+eOm5Zvakw3mLHHsaFc63/rrHXXnQHuYIEYR1qfN6OGpKNHM2WMrRhea8B/7DPbR6R5fq9tw0ZItbeANbtgvHCxzHU6VJAjjKT2Ei00eXB6yXB2Td5/ZanBlJW1yNK5khtywK6bgQ3encYo1Via1OsjnWeRCiJ/p05z4/01BIn1rrzv1FAyoMejufS4RCJ7fytac44KhOOE6J8wuFG8/7UtxtRWRuElyfW47u3yK5T9FjjW3OXaqrapq/KmYTlIa7CVwZsMaPpC1w8IOCwKIq7qOhBEYHWJNcn9s4skLEProsWN7rANpaBWRdBo5gSeTxkrw43q0LGz6X/AQGbu5v8ftN90Te8JaO5PNm44wTfZxSFiB8F/NvXLBAO4pDbmULyRYLJLtnLbQbDoFMli97l9tjjZ3TpTYF27ELOcGaPO9ltB3FNOH4Ta5fmN7q4tuZqA9Hmi9QH15c/3NV/8hVPbsg07dcdV67ICz1IvTD7MflZBFUx0W+UtiKYeslHg5rnehT9OMoryeX1cuVwp2OTq9Fm8vVqLAlbSmWTVB8izfGUCe077TvJ8N+t9ovNsT93cMjqmLH//Puabu87IMwnBUXS8LkMjUDKH7FUb2R8YbLp1zpJsvgzezTCjlmNFGH/LnEjqtxHP8DaTYMbA==
+sidebar_class_name: "post api-method"
+info_path: restapi/docs/mod-io-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import ParamsItem from "@theme/ParamsItem";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Logout"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/oauth/logout"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Log the user out by revoking their current access token. If this request successfully completes, you should remove any tokens/cookies/cached credentials linking to the now-revoked access token so the user is required to login again through your application. Successful request will return a [Message Object](/restapi/docs/schemas/message-object).
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Request","content":{"application/json":{"schema":{"title":"Web Message Object","properties":{"code":{"description":"HTTP response code.","type":"integer","format":"int32","example":200},"success":{"description":"Was the request completed successfully?","type":"boolean","example":true},"message":{"description":"Optional message to display to the user.","type":"string","example":"You have successfully logged out of mod.io."}},"type":"object"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

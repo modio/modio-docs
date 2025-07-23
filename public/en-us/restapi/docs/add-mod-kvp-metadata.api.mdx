@@ -1,0 +1,82 @@
+---
+id: add-mod-kvp-metadata
+title: "Add Mod KVP Metadata"
+description: "Add metadata for this mod as searchable key value pairs. Metadata is useful to define how a mod works, or other information you need to display and manage the mod. Successful request will return [Message Object](/restapi/docs/schemas/message-object).<br /><br />For example: A mod might change gravity and the rate of fire of weapons, you could define these properties as key value pairs. We recommend the mod upload tool you create defines and submits metadata behind the scenes, because if these settings affect gameplay, invalid information may cause problems."
+sidebar_label: "Add Mod KVP Metadata"
+hide_title: true
+hide_table_of_contents: true
+api: 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
+sidebar_class_name: "post api-method"
+info_path: restapi/docs/mod-io-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import ParamsItem from "@theme/ParamsItem";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Add Mod KVP Metadata"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/games/{game-id}/mods/{mod-id}/metadatakvp"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Add metadata for this mod as searchable key value pairs. Metadata is useful to define how a mod works, or other information you need to display and manage the mod. Successful request will return [Message Object](/restapi/docs/schemas/message-object).<br /><br />For example: A mod might change gravity and the rate of fire of weapons, you could define these properties as key value pairs. We recommend the mod upload tool you create defines and submits metadata behind the scenes, because if these settings affect gameplay, invalid information may cause problems.
+
+    __NOTE:__ Metadata can also be stored as `metadata_kvp` in the [Mod Object](/restapi/docs/schemas/mod-object).
+
+
+
+:::tip
+
+Rules engine applies here
+
+:::
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"game-id","in":"path","description":"Game id","required":true,"schema":{"type":"integer"},"example":1},{"name":"mod-id","in":"path","description":"Mod id","required":true,"schema":{"type":"integer"},"example":2}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/x-www-form-urlencoded":{"schema":{"title":"Add Mod Metadata Request","required":["metadata"],"properties":{"metadata":{"description":"Key value pairs you want to add where the the key and value are separated by a colon ':'. Every pair to add requires a separate field with metadata[] as the key (eg. metadata[]=pistol-dmg:800, metadata[]=gravity:9.8).<br /><br />__NOTE:__ If the string contains multiple colons the split will occur on the first matched, eg. sword-speed-power:100:10 will become key: `sword-speed-power`, value: `100:10`). The following restrictions apply to the supplied metadata:<br /><br />- Keys support alphanumeric, '_' and '-' characters only.<br />- Keys can map to multiple values (1-to-many relationship).<br />- Keys and values cannot exceed 255 characters in length.<br />- Key value pairs are searchable by exact match only.","type":"array","items":{"type":"string"},"example":"pistol-dmg:88:400"}},"type":"object"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"201":{"description":"Created","headers":{"Location":{"description":"URL to newly created resource","schema":{"type":"string"}}},"content":{"application/json":{"schema":{"title":"Add Mod Metadata Response","properties":{"code":{"type":"integer","format":"int32","example":201},"message":{"type":"string","example":"You have successfully added new key-value metadata to the specified mod."}},"type":"object"}}}},"403":{"description":"The authenticated user does not have permission to update this mod. Ensure the user is part of the mod team before attempting the request again.","content":{"application/json":{"schema":{"title":"Error Object","properties":{"error":{"description":"Contains error data.","properties":{"code":{"description":"The [HTTP code](/restapi/docs/response-codes).","type":"integer","format":"int32","default":403},"error_ref":{"description":"The mod.io error code.","type":"integer","default":10000},"message":{"description":"The server response to your request. Responses will vary depending on the endpoint, but the object structure will persist.","type":"string","default":"You do not have the required permissions to access this resource."},"errors":{"description":"Optional Validation errors object. This field is only supplied if the response is a validation error `422 Unprocessible Entity`. See [errors documentation](/restapi/docs/errors) for more information.","type":"object"}},"type":"object"}},"type":"object"}}},"x-errorrefs":{"15013":"The authenticated user does not have permission to update this mod. Ensure the user is part of the mod team before attempting the request again."}}}}
+>
+  
+</StatusCodes>
+
+
+      

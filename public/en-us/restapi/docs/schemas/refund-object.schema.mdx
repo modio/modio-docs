@@ -1,0 +1,33 @@
+---
+id: refund-object
+title: "Refund Object"
+description: ""
+sidebar_label: "Refund Object"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"transaction_id":987654321,"gross_amount":2500,"net_amount":2300,"platform_fee":100,"gateway_fee":50,"tax":150,"tax_type":"GST","transaction_type":"CANCELLED","meta":[{"mod_id":1234,"game_id":4567,"buyer_id":8910,"mod_name":"Body Armour","game_name":"Half-Life","buyer_name":"Gordon Freeman","token_name":".22 Magazine"}],"purchase_date":1626667557}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Refund Object"}
+>
+</Heading>
+
+
+
+
+
+<Schema
+  schema={{"title":"Refund Object","properties":{"transaction_id":{"description":"The transaction id.","type":"integer","format":"int32","example":987654321},"gross_amount":{"description":"The gross amount of the purchase in the lowest denomination of currency.","type":"integer","format":"int32","example":2500},"net_amount":{"description":"The net amount of the purchase in the lowest denomination of currency.","type":"integer","format":"int32","example":2300},"platform_fee":{"description":"The platform fee of the purchase in the lowest denomination of currency.","type":"integer","format":"int32","example":100},"gateway_fee":{"description":"The gateway fee of the purchase in the lowest denomination of currency.","type":"integer","format":"int32","example":50},"tax":{"description":"The tax amount of the purchase in cents.","type":"integer","format":"int32","example":150},"tax_type":{"description":"The tax type.","type":"string","example":"GST"},"transaction_type":{"title":"Monetization Transaction Type Enum","description":"The state of the transaction that was processed.","type":"string","enum":["CANCELLED","CLEARED","CREDITED","FAILED","PAID","PENDING","REFUNDED"],"x-enumDescriptions":{"CANCELLED":"Payment cancelled by seller","CLEARED":"Payment taken and earned funds released","FAILED":"Payment failed to process","PAID":"Payment taken but funds not released","PENDING":"Pending transaction no payment taken","REFUNDED":"Payment refunded to buyer"}},"meta":{"description":"A metadata array of objects returned from the transaction.","type":"array","items":{"properties":{"mod_id":{"description":"Mod ID.","type":"integer","example":1234},"game_id":{"description":"Game ID.","type":"integer","example":4567},"buyer_id":{"description":"Buyer ID.","type":"integer","example":8910},"mod_name":{"description":"Name of the mod.","type":"string","example":"my mod"},"game_name":{"description":"Name of the game.","type":"string","example":"my game"},"buyer_name":{"description":"Name of the buyer.","type":"string","example":"buyers name"},"token_name":{"description":"Name of the token.","type":"string","example":"token name"}},"type":"object"},"example":[{"mod_id":1234,"game_id":4567,"buyer_id":8910,"mod_name":"Body Armour","game_name":"Half-Life","buyer_name":"Gordon Freeman","token_name":".22 Magazine"}]},"purchase_date":{"description":"The time of the purchase.","type":"integer","format":"int32","example":1626667557}},"type":"object"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

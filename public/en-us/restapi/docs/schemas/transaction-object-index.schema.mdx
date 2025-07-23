@@ -1,0 +1,33 @@
+---
+id: transaction-object-index
+title: "Transaction Object Index"
+description: ""
+sidebar_label: "Transaction Object Index"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"id":1234,"gateway_uuid":"123e4567-e89b-12d3-a456-426614174000","gateway_name":"tilia","account_id":"12345","gross_amount":199,"net_amount":199,"platform_fee":20,"gateway_fee":30,"tax":0,"tax_type":"sales","currency":"usd","tokens":0,"transaction_type":"paid","monetization_type":"paid","purchase_date":"2024-10-07 02:29:11","created_at":"1728268151123456","payment_method":[{"name":"Visa ending in 1111","id":"123e4567-e89b-12d3-a456-426614174000","amount":199,"display_amount":"USD 1.99"}],"line_items":[{"game_id":0,"buyer_id":0,"game_name":"my game","buyer_name":"smith","token_name":"mio","token_pack_id":0,"token_pack_name":"200 Pack"}]}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Transaction Object Index"}
+>
+</Heading>
+
+
+
+
+
+<Schema
+  schema={{"title":"Transaction Object Index","properties":{"id":{"description":"Unique transaction id.","type":"integer","format":"int32","example":1234},"gateway_uuid":{"description":"The universally unique ID (UUID) that represents a unique tranasction with the payment gateway.","type":"string","example":"123e4567-e89b-12d3-a456-426614174000"},"gateway_name":{"description":"The gateway that processed the transaction.","type":"string","example":"tilia"},"account_id":{"description":"The unique monetization account id that actioned the transaction.","type":"integer","format":"int32","example":"12345"},"gross_amount":{"description":"The gross amount of the transaction.","type":"integer","format":"int32","example":199},"net_amount":{"description":"The net amount of the transaction.","type":"integer","format":"int32","example":199},"platform_fee":{"description":"The platform fee of the transaction.","type":"integer","format":"int32","example":20},"gateway_fee":{"description":"The gateway fee of the transaction.","type":"integer","format":"int32","example":30},"tax":{"description":"The tax amount of the transaction.","type":"integer","format":"int32","example":0},"tax_type":{"description":"The tax type on the processed transaction.","type":"string","example":"sales"},"currency":{"description":"The currency type on the processed transaction.","type":"string","example":"usd"},"tokens":{"description":"The amount of virtual currency associated with the transaction. Will be omitted when no tokens are involved.","type":"integer","format":"int32","example":0},"transaction_type":{"description":"The transaction status type on the processed transaction. I.e. is it paid, pending, refunded or cleared.","type":"string","example":"paid"},"monetization_type":{"description":"The monetizaton type on the processed transaction. I.e. is it fiat, tokens or external.","type":"string","example":"paid"},"purchase_date":{"description":"The beginging purchase date the transaction started on in a human reabled date time stamp.","type":"string","example":"2024-10-07 02:29:11"},"created_at":{"description":"The timestamp of date the transaction status was recorded in micro time precsion.","type":"string","example":"1728268151123456"},"payment_method":{"description":"Array containing payment method objects.","type":"array","items":{"title":"Payment Method Object","description":"Contains Payment Method data.","properties":{"name":{"description":"The pretty name of the payment method that was used.","type":"string","example":"Visa ending in 1111"},"id":{"description":"The UUID of the payment method id that was used.","type":"string","example":"123e4567-e89b-12d3-a456-426614174000"},"amount":{"description":"The amount the payment method was charged.","type":"integer","example":199},"display_amount":{"description":"A pretty string of the amount the payment method was charged.","type":"string","example":"USD 1.99"}},"type":"object"}},"line_items":{"description":"Array containing line item objects.","type":"array","items":{"title":"Line Items Object","description":"Contains line item data.","properties":{"game_id":{"description":"The game id of the transaction.","type":"integer","format":"int32","example":0},"buyer_id":{"description":"The buyer id of the transaction.","type":"integer","format":"int32","example":0},"game_name":{"description":"The name of the game the purchase occured on.","type":"string","example":"my game"},"buyer_name":{"description":"The username of the buyer.","type":"string","example":"smith"},"token_name":{"description":"The pretty name of the virtual currency used in the transaction.","type":"string","example":"mio"},"token_pack_id":{"description":"The id of the virtual currency pack used in the transaction.","type":"integer","format":"int32","example":0},"token_pack_name":{"description":"The pretty name of the virtual currency pack used in the transaction.","type":"string","example":"200 Pack"}},"type":"object"}}},"type":"object"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

@@ -1,0 +1,80 @@
+---
+id: add-guide-comment
+title: "Add Guide Comment"
+description: "Add a comment for the corresponding guide. Successful request will return the newly created [Comment Object](/restapi/docs/schemas/comment-object) and fire a __GUIDE_COMMENT_ADDED__ event."
+sidebar_label: "Add Guide Comment"
+hide_title: true
+hide_table_of_contents: true
+api: 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
+sidebar_class_name: "post api-method"
+info_path: restapi/docs/mod-io-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import ParamsItem from "@theme/ParamsItem";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Add Guide Comment"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/games/{game-id}/guides/{guide-id}/comments"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Add a comment for the corresponding guide. Successful request will return the newly created [Comment Object](/restapi/docs/schemas/comment-object) and fire a __GUIDE_COMMENT_ADDED__ event.
+
+
+
+:::tip
+
+Rules engine applies here
+
+:::
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"game-id","in":"path","description":"Game id","required":true,"schema":{"type":"integer"},"example":1},{"name":"guide-id","in":"path","description":"Guide id","required":true,"schema":{"type":"integer"},"example":2}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/x-www-form-urlencoded":{"schema":{"title":"Add Comment Request","required":["content"],"properties":{"reply_id":{"description":"Id of the parent comment to reply to (can be 0 if the comment is not a reply and thus will not be nested). Default is 0.","type":"integer","example":0},"content":{"description":"Contents of the comment. You can include @mentions to users, which will notify them that they have been tagged in this comment.<br /><br />__Mention Markup__<br />- Format: `@<display-name>`","type":"string","example":"Hey @XanT, you should check out this mod!"}},"type":"object"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"201":{"description":"Resource Created","headers":{"Location":{"description":"URL to newly created resource","schema":{"type":"string"}}},"content":{"application/json":{"schema":{"title":"Comment Object","required":["content"],"properties":{"id":{"description":"Unique id of the comment.","type":"integer","format":"int32","example":2},"game_id":{"description":"Unique game id (if applicable).","type":"integer","format":"int32","example":2},"mod_id":{"description":"Deprecated: Please use resource_id instead, this will be removed in subsequent API version.","type":"integer","format":"int32","example":2},"resource_id":{"description":"Unique id of the parent resource.","type":"integer","format":"int32","example":2},"resource_ownership":{"description":"Bitwise value of the user who published the comment.","type":"integer","format":"int32","default":2},"user":{"title":"User Object","description":"Contains user data.","properties":{"id":{"description":"Unique id of the user.","type":"integer","format":"int32","example":1},"name_id":{"description":"Path for the user on mod.io. For example: https://mod.io/u/__name-id-here__","type":"string","example":"xant"},"username":{"description":"Display name of the user.","type":"string","example":"XanT"},"display_name_portal":{"description":"The users' display name for the targeted portal. Value will be `null` if no valid `X-Modio-Portal` portal header value is provided. For more information see [Targeting a Portal](/restapi/docs/targeting-a-portal).","type":"string","example":null},"date_online":{"description":"Unix timestamp of date the user was last online.","type":"integer","format":"int32","example":1509922961},"date_joined":{"description":"Unix timestamp of date the user joined.","type":"integer","format":"int32","example":1509922961},"avatar":{"title":"Avatar Object","description":"Contains avatar data.","properties":{"filename":{"description":"Avatar filename including extension.","type":"string","example":"avatar.png"},"original":{"description":"URL to the full-sized avatar.","type":"string","example":"https://assets.modcdn.io/images/placeholder/avatar.png"},"thumb_50x50":{"description":"URL to the small avatar thumbnail.","type":"string","example":"https://assets.modcdn.io/images/placeholder/avatar_50x50.png"},"thumb_100x100":{"description":"URL to the medium avatar thumbnail.","type":"string","example":"https://assets.modcdn.io/images/placeholder/avatar_100x100.png"}},"type":"object"},"timezone":{"description":"Deprecated: No longer used and will be removed in subsequent API version.","type":"string","example":""},"language":{"description":"Deprecated: No longer used and will be removed in subsequent API version. To [localize the API response](/restapi/docs/localization) we recommend you set the `Accept-Language` header.","type":"string","example":""},"profile_url":{"description":"URL to the users profile.","type":"string","example":"https://mod.io/u/xant"}},"type":"object"},"date_added":{"description":"Unix timestamp of date the comment was posted.","type":"integer","format":"int32","example":1499841487},"reply_id":{"description":"Id of the parent comment this comment is replying to (can be 0 if the comment is not a reply).","type":"integer","format":"int32","example":0},"thread_position":{"description":"Levels of nesting in a comment thread. How it works:<br /><br />- The first comment will have the position '01'.<br />- The second comment will have the position '02'.<br />- If someone responds to the second comment the position will be '02.01'.<br />- A maximum of 3 levels is supported.","type":"string","example":"01"},"karma":{"description":"Karma received for the comment (can be postive or negative).","type":"integer","format":"int32","example":1},"karma_guest":{"description":"Deprecated: No longer used and will be removed in subsequent API version.","type":"integer","format":"int32","example":0},"content":{"description":"Contents of the comment.","type":"string","example":"Hey <a href=\"https://mod.io/u/guest\">guest</a>, you should check out this mod!"},"options":{"title":"Comment Option Enum","type":"integer","enum":[0,1,2,4],"x-enumDescriptions":{"NONE (0)":"All of the options below are disabled","PINNED (1)":"Pinned comment","LOCKED (2)":"Locked comment"}}},"type":"object"}}}},"403":{"description":"The authenticated user does not have permission to submit comments on mod.io due to their access being revoked.","content":{"application/json":{"schema":{"title":"Error Object","properties":{"error":{"description":"Contains error data.","properties":{"code":{"description":"The [HTTP code](/restapi/docs/response-codes).","type":"integer","format":"int32","default":403},"error_ref":{"description":"The mod.io error code.","type":"integer","default":10000},"message":{"description":"The server response to your request. Responses will vary depending on the endpoint, but the object structure will persist.","type":"string","default":"You do not have the required permissions to access this resource."},"errors":{"description":"Optional Validation errors object. This field is only supplied if the response is a validation error `422 Unprocessible Entity`. See [errors documentation](/restapi/docs/errors) for more information.","type":"object"}},"type":"object"}},"type":"object"}}},"x-errorrefs":{"19042":"The authenticated user does not have permission to submit comments on mod.io due to their access being revoked."}}}}
+>
+  
+</StatusCodes>
+
+
+      

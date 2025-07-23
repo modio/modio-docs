@@ -1,0 +1,72 @@
+---
+id: s-2-s-transaction-intent
+title: "Transaction Intent"
+description: "Create a service-to-service (S2S) transaction intent. This is for performing an external token transaction. You should generate the intent, consume the item on your server's backend before committing the transaction. A successful request will return a [S2S Pay Object](/restapi/docs/schemas/s2s-pay-object) object. Requires scope of monetization on token."
+sidebar_label: "Transaction Intent"
+hide_title: true
+hide_table_of_contents: true
+api: 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
+sidebar_class_name: "post api-method"
+info_path: restapi/docs/mod-io-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import ParamsItem from "@theme/ParamsItem";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Transaction Intent"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/s2s/transactions/intent"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Create a service-to-service (S2S) transaction intent. This is for performing an external token transaction. You should generate the intent, consume the item on your server's backend before committing the transaction. A successful request will return a [S2S Pay Object](/restapi/docs/schemas/s2s-pay-object) object. Requires scope of monetization on token.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"X-Modio-Delegation-Token","in":"header","description":"The Delegation Token of the user you are making the request on behalf of.","required":true,"schema":{"type":"string"},"example":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"},{"name":"X-Modio-Idempotent-Key","in":"header","description":"In the event of a connection error, you can confidently reattempt the request without the concern of inadvertently creating a duplicate purchase or executing the purchase twice. All idempotent keys last 24 hours.","required":false,"schema":{"type":"string"},"example":"d720901c-a8ed-42ff-9343-39d4a3e16b18"}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/x-www-form-urlencoded":{"schema":{"title":"S2S Intent Request","required":["sku","portal"],"properties":{"sku":{"description":"The sku id on the platform that was mapped to the given token pack. required when type\nmonetization_type is EXTERNAL.","type":"string"},"portal":{"description":"The portal that was mapped to the given token pack. required when type monetization_type is\nEXTERNAL.","type":"string"},"gateway_uuid":{"description":"An optional mapping alpha dash string that can be used to track this transaction. It is\nrecommended to use the one from the processing platform if you have one available.","type":"string"}},"type":"object"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Request","content":{"application/json":{"schema":{"title":"S2S Pay Object","properties":{"transaction_id":{"description":"The transaction id.","type":"integer","format":"int32","example":123456789},"gateway_uuid":{"description":"The universally unique ID (UUID) that represents a unique tranasction with the payment gateway.","type":"string","example":"123e4567-e89b-12d3-a456-426614174000"},"gross_amount":{"description":"The gross amount of the purchase in the lowest denomination of currency.","type":"integer","format":"int32","example":1000},"net_amount":{"description":"The net amount of the purchase in the lowest denomination of currency.","type":"integer","format":"int32","example":900},"platform_fee":{"description":"The platform fee of the purchase in the lowest denomination of currency.","type":"integer","format":"int32","example":50},"gateway_fee":{"description":"The gateway fee of the purchase in the lowest denomination of currency.","type":"integer","format":"int32","example":30},"transaction_type":{"title":"Monetization Transaction Type Enum","description":"The state of the transaction that was processed.","type":"string","enum":["CANCELLED","CLEARED","CREDITED","FAILED","PAID","PENDING","REFUNDED"],"x-enumDescriptions":{"CANCELLED":"Payment cancelled by seller","CLEARED":"Payment taken and earned funds released","FAILED":"Payment failed to process","PAID":"Payment taken but funds not released","PENDING":"Pending transaction no payment taken","REFUNDED":"Payment refunded to buyer"}},"meta":{"description":"A metadata array of objects returned from the transaction.","type":"array","items":{"properties":{"mod_id":{"description":"Mod ID.","type":"integer","example":1234},"game_id":{"description":"Game ID.","type":"integer","example":4567},"buyer_id":{"description":"Buyer ID.","type":"integer","example":8910},"mod_name":{"description":"Name of the mod.","type":"string","example":"my mod"},"game_name":{"description":"Name of the game.","type":"string","example":"my game"},"buyer_name":{"description":"Name of the buyer.","type":"string","example":"buyers name"},"token_name":{"description":"Name of the token.","type":"string","example":"token name"}},"type":"object"},"example":[{"mod_id":1234,"game_id":4567,"buyer_id":8910,"mod_name":"Body Armour","game_name":"Half-Life","buyer_name":"Gordon Freeman","token_name":".22 Magazine"}]},"purchase_date":{"description":"The time of the purchase.","type":"integer","format":"int32","example":1626667557}},"type":"object"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

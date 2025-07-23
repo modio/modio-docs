@@ -1,0 +1,82 @@
+---
+id: get-modfiles
+title: "Get Modfiles"
+description: "Get all files that are published for the corresponding mod. Successful request will return an array of [Modfile Objects](/restapi/docs/schemas/modfile-object). We recommended reading the [filtering documentation](/restapi/docs/restapi-getting-started#filtering) to return only the records you want."
+sidebar_label: "Get Modfiles"
+hide_title: true
+hide_table_of_contents: true
+api: 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
+sidebar_class_name: "get api-method"
+info_path: restapi/docs/mod-io-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import ParamsItem from "@theme/ParamsItem";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get Modfiles"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/games/{game-id}/mods/{mod-id}/files"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Get all files that are published for the corresponding mod. Successful request will return an array of [Modfile Objects](/restapi/docs/schemas/modfile-object). We recommended reading the [filtering documentation](/restapi/docs/restapi-getting-started#filtering) to return only the records you want.
+
+    __NOTE:__ If the [game](/restapi/docs/edit-game) requires mod downloads to be initiated via the API, the `binary_url` returned will contain a verification hash. This hash must be supplied to get the modfile, and will expire after a certain period of time. Saving and reusing the `binary_url` won't work in this situation given it's dynamic nature.
+
+
+
+:::info
+
+If the parent game has platform filtering enabled, this endpoint supports the [targeting a platform](/restapi/docs/targeting-a-platform) request header to return the [modfiles](/restapi/docs/schemas/modfile-object) that are approved for the requested platform.
+
+:::
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"id","in":"query","description":"Unique id of the file.","schema":{"type":"integer"}},{"name":"mod_id","in":"query","description":"Unique id of the mod.","schema":{"type":"integer"}},{"name":"date_added","in":"query","description":"Unix timestamp of date file was added.","schema":{"type":"integer"}},{"name":"date_scanned","in":"query","description":"Unix timestamp of date file was virus scanned.","schema":{"type":"integer"}},{"name":"virus_status","in":"query","description":"Current virus scan status of the file. For newly added files that have yet to be scanned this field will change frequently until a scan is complete.","schema":{"title":"Virus Scan Status Enum","description":"Current virus scan status of the file. For newly added files that have yet to be scanned this field will change frequently until a scan is complete.","type":"integer","enum":[0,1,2,3,4,5],"x-enumDescriptions":{"NOT_SCANNED (0)":"Not scanned","SCANNED (1)":"Scan complete","SCAN_IN_PROGRESS (2)":"In progress","FILE_TOO_LARGE (3)":"Too large to scan","FILE_NOT_FOUND (4)":"File not found","SCAN_ERROR (5)":"Error Scanning"}}},{"name":"virus_positive","in":"query","description":"Was a virus detected.","schema":{"title":"Virus Scan Enum","description":"Was a virus detected.","type":"integer","enum":[0,1,2],"x-enumDescriptions":{"NO_THREATS_FOUND (0)":"No threats detected","THREATS_FOUND (1)":"Flagged as malicious","POTENTIALLY_HARMFUL (2)":"Flagged as containing potentially harmful files (i.e. EXEs)"}}},{"name":"filesize","in":"query","description":"Size of the file in bytes.","schema":{"type":"integer"}},{"name":"filehash","in":"query","description":"MD5 hash of the file.","schema":{"type":"string"}},{"name":"filename","in":"query","description":"Filename including extension.","schema":{"type":"string"}},{"name":"version","in":"query","description":"Release version this file represents.","schema":{"type":"string"}},{"name":"changelog","in":"query","description":"Changelog for the file.","schema":{"type":"string"}},{"name":"metadata_blob","in":"query","description":"Metadata that is designed to be handled by the game client and is recommended to not be exposed to content creators when submitting their modfiles. As an example, this may include properties such as what version of the game this file is compatible with.","schema":{"type":"string"}},{"name":"platform_status","in":"query","description":"If the parent game has enabled per-platform files, by default only files which are approved and live for the [target platform](/restapi/docs/targeting-a-platform) will be returned.<br /><br />To QA pending files, you can filter results by their current platform status, using `pending_only`, `approved_only`, `live_and_approved` or `live_and_pending`. With the exception of `approved_only` and `live_and_approved` which is available to everyone, all other values are restricted to game administrators.","schema":{"type":"string"}},{"name":"game-id","in":"path","description":"Game id","required":true,"schema":{"type":"integer"},"example":1},{"name":"mod-id","in":"path","description":"Mod id","required":true,"schema":{"type":"integer"},"example":2}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Request","content":{"application/json":{"schema":{"title":"Get Modfiles","properties":{"data":{"description":"Array containing modfile objects.","type":"array","items":{"title":"Modfile Object","description":"Contains modfile data.","properties":{"id":{"description":"Unique modfile id.","type":"integer","format":"int32","example":2},"mod_id":{"description":"Unique mod id.","type":"integer","format":"int32","example":2},"date_added":{"description":"Unix timestamp of date file was added.","type":"integer","format":"int32","example":1499841487},"date_updated":{"description":"Unix timestamp of date file was updated.","type":"integer","format":"int32","example":1499841487},"date_scanned":{"description":"Unix timestamp of date file was virus scanned.","type":"integer","format":"int32","example":1499841487},"virus_status":{"title":"Virus Scan Status Enum","description":"Current virus scan status of the file. For newly added files that have yet to be scanned this field will change frequently until a scan is complete.","type":"integer","enum":[0,1,2,3,4,5],"x-enumDescriptions":{"NOT_SCANNED (0)":"Not scanned","SCANNED (1)":"Scan complete","SCAN_IN_PROGRESS (2)":"In progress","FILE_TOO_LARGE (3)":"Too large to scan","FILE_NOT_FOUND (4)":"File not found","SCAN_ERROR (5)":"Error Scanning"}},"virus_positive":{"title":"Virus Scan Enum","description":"Was a virus detected.","type":"integer","enum":[0,1,2],"x-enumDescriptions":{"NO_THREATS_FOUND (0)":"No threats detected","THREATS_FOUND (1)":"Flagged as malicious","POTENTIALLY_HARMFUL (2)":"Flagged as containing potentially harmful files (i.e. EXEs)"}},"virustotal_hash":{"description":"Deprecated: No longer used and will be removed in subsequent API version.","type":"string","example":""},"filesize":{"description":"Size of the file in bytes.","type":"integer","format":"int32","example":15181},"filesize_uncompressed":{"description":"The uncompressed filesize of the zip archive.","type":"integer","format":"int32","example":16384},"filehash":{"title":"Filehash Object","description":"Contains filehash data.","properties":{"md5":{"description":"MD5 hash of the file.","type":"string","example":"2d4a0e2d7273db6b0a94b0740a88ad0d"}},"type":"object"},"filename":{"description":"Filename including extension.","type":"string","example":"rogue-knight-v1.zip"},"version":{"description":"Release version this file represents.","type":"string","example":"1.3"},"changelog":{"description":"Changelog for the file.","type":"string","example":"VERSION 1.3 -- Changes -- Fixed critical castle floor bug."},"metadata_blob":{"description":"Metadata stored by the game developer for this file.","type":"string","example":"rogue,hd,high-res,4k,hd textures"},"download":{"title":"Download Object","description":"Contains download data.","properties":{"binary_url":{"description":"URL to download the file from the mod.io CDN.<br /><br />__NOTE:__ If the [game](/restapi/docs/edit-game) requires mod downloads to be initiated via the API, the `binary_url` returned will contain a verification hash. This hash must be supplied to get the modfile, and will expire after a certain period of time. Saving and reusing the `binary_url` won't work in this situation given it's dynamic nature.","type":"string","example":"https://api.mod.io.dev.internal/v1/games/1/mods/1/files/1/download/c489a0354111a4d76640d47f0cdcb294"},"date_expires":{"description":"Unix timestamp of when the `binary_url` will expire.","type":"integer","example":1579316848}},"type":"object"},"platforms":{"description":"Contains modfile platform data.","type":"array","items":{"title":"Modfile Platform Object","description":"Contains platform filtering data for this modfile. This object is only applicable if the parent game has [cross-platform moderation](/restapi/docs/targeting-a-platform) enabled. Otherwise this value will always be `null`.","properties":{"platform":{"title":"Platform String Enum","description":"A [target platform](/restapi/docs/targeting-a-platform).","type":"string","enum":["ALL","WINDOWS","MAC","LINUX","ANDROID","IOS","XBOXONE","XBOXSERIESX","PLAYSTATION4","PLAYSTATION5","SWITCH","OCULUS","SOURCE"],"example":"PLAYSTATION5","x-enumDescriptions":{"ALL":"All Platforms","WINDOWS":"Windows","MAC":"Mac","LINUX":"Linux","ANDROID":"Android","IOS":"Iphone IOS","XBOXONE":"Xbox One","XBOXSERIESX":"Xbox Series X","PLAYSTATION4":"Playstation 4","PLAYSTATION5":"Playstation 5","SWITCH":"Switch","OCULUS":"Oculus","SOURCE":"Source"}},"status":{"title":"Mod Platform Status Enum","description":"The status of the modfile for the corresponding `platform`.","type":"integer","enum":[0,1,2,3],"x-enumDescriptions":{"PENDING (0)":"Pending","APPROVED (1)":"Approved","DENIED (2)":"Denied","TARGETED (3)":"Targeted"}}},"type":"object"}}},"type":"object"}},"result_count":{"description":"Number of results returned in this request.","type":"integer","format":"int32","example":70},"result_offset":{"description":"Number of results skipped over. Defaults to 0 unless overridden by `_offset` filter.","type":"integer","format":"int32","example":0},"result_limit":{"description":"Maximum number of results returned in the request. Defaults to 100 (max) unless overridden by `_limit` filter.","type":"integer","format":"int32","example":100},"result_total":{"description":"Total number of results found.","type":"integer","format":"int32","example":70}},"type":"object"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

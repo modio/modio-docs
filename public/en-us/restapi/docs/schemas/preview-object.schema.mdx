@@ -1,0 +1,33 @@
+---
+id: preview-object
+title: "Preview Object"
+description: "Contains preview URL information for the resource."
+sidebar_label: "Preview Object"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"resource_url":"https://mod.io/g/@rogueknight/m/@some-mod?preview=00000000000000000000000000000000","date_added":1499841487,"date_updated":1499841487}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Preview Object"}
+>
+</Heading>
+
+
+
+Contains preview URL information for the resource.
+
+<Schema
+  schema={{"title":"Preview Object","description":"Contains preview URL information for the resource.","properties":{"resource_url":{"description":"The sharable URL that resource admins can pass around.","type":"string","example":"https://mod.io/g/@rogueknight/m/@some-mod?preview=00000000000000000000000000000000"},"date_added":{"description":"Unix timestamp of the date the hash was first generated.","type":"integer","format":"int32","example":1499841487},"date_updated":{"description":"Unix timestamp of the date the hash was regenerated.","type":"integer","format":"int32","example":1499841487}},"type":"object"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

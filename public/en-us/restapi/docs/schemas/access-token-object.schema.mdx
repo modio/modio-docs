@@ -1,0 +1,33 @@
+---
+id: access-token-object
+title: "Access Token Object"
+description: "Contains user access token."
+sidebar_label: "Access Token Object"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"code":200,"access_token":"eyJ0eXAiOiXKV1QibCJhbLciOiJeiUzI1.....","date_expires":1570673249}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Access Token Object"}
+>
+</Heading>
+
+
+
+Contains user access token.
+
+<Schema
+  schema={{"title":"Access Token Object","description":"Contains user access token.","properties":{"code":{"description":"HTTP Response Code.","type":"integer","format":"int32","example":200},"access_token":{"description":"The user's access token.","type":"string","example":"eyJ0eXAiOiXKV1QibCJhbLciOiJeiUzI1....."},"date_expires":{"description":"Unix timestamp of the date this token will expire. Default is one year from issue date. See [Access Token Lifetime & Expiry](/restapi/docs/making-requests).","type":"integer","format":"int32","example":1570673249}},"type":"object"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

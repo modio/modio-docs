@@ -1,0 +1,72 @@
+---
+id: unfollow-collection
+title: "Unfollow a Collection"
+description: "Unfollow a collection for a game. Successful request will return `204 No Content`."
+sidebar_label: "Unfollow a Collection"
+hide_title: true
+hide_table_of_contents: true
+api: eJy1VlFv2zYQ/isHPrWAbLlpnvTWpgEWbFiLNFkxBEZCiyeLnUSq5NGOZui/D0dJthI7Q1tsT5ZJ3t13dx+/406QXHuR3YkLW1WYk7bGi2UiFPrc6Yb/i0zcmsJWld2ChHx/DgrrQMJa1jiHzyHP0fsiVODwW0BPsNUV/6HgDDycLc7hdwsX1hAaepiLRNgGnWRHV0pkIgwh7g8BRCIa6WSNhI4x7oSRNYpMcMiZViIRmtE1kkrxHPJNiXD1AWwBVGIECWRhW+q8jCuTPFZYWbP2jImxa4dKZOQCJsLnJdZSZDtBbcOhtSFcoxNdl+zhHFz9GKgJBLIwFuAHYSz5tG+s8ej5wNninH+exp1057rvzpy78d6qFq5jh1DNRZeI88Xi2Pq9VAezK7ORlVZw6Aw0zm60Yg+JyPsGsxPZNJXOY4fTr5497aaJaKo4k0vnrIOPq6+YEzfcMS1I98kgbx4DYhZJbTzEfVCS5PzINrcKj025A3e/3Nx8At5fvkodepKNTpXNfTpWcsab/jU7fVbwRBTW1ZL6pbdnscWFDBWJ7Hzxtkt6zPcOi9PBa6vm2g7IOczJIHufbxaLxaJLRI3ey/ULCXl0G3Qwomc2tTa48SbO4XpkSH8pN9K1oLBBo7RZA/OvRECjGqsNJbAKFFds7Ap4ciGn4LC3btB57WmC25PTZj2FLf60AZQFYwlKucHobmQ1e6i196w1jFVGcgKV2nMONrgcIxtjkfxxzh/jh6zgD6ZiZFhfUD9AnsMNOys0Vgq0B2uqFnxgQqICXQxwhnJpDxI2z1zBw/nZGdyaxllGp1cVwqUhTe3DHD4jwt0QUdk81Ggo2j4nVH/mdZTK2joEbXr+aGsmBexRs6h8x0rHix7z4DS1URatDFSesYpvnSYUS1aFx1lujQ8134Ynd/Fxtt1uZwxjFlyFhknIsvU4a5xVIT8yiJc3EfhIaGLTYtC/sBXZNEoiNrIK+F3RWD1HB/uopx3E6JxQjVRaHhUKKySM04FKkYmU1d2nu2EsdOlBWH26e6LOXdqLLA+UQxE/syr1qiEbfR+B7aVWNvpXbEUyqv14YtD5bwFdy2Qdm7A3HBYSUVR2G53rmtPSvToGKq3Tf8ckb10lMlESNT5L014i0squNdfd57bpwTmUnP81ShUpnYCx+xvjIZc8y1hhdKF7Oe75kIkLaUAqlQAqTcCaGWt4MJ6PxGKCTvV50Kt3n66OptkXrHLbz9WoFkWhcy0rOJjMgXUgqkahjQLcoGupZNFpbQCDqECubCDIrTHcJbOGraZy9LHR8ok2+Tis44zcsAxFHG+4/I31VMs4ZIZGTR4tF9M3xZMkdoeJ9f+8cgYyED5S2lRSGwYbuN+7gb938T3DfMwOD5sJhXnj+RPjwOJlIkrrid3sdivp8dZVXcfLPTOzuyXfK6flivt5txNKe/5WIitk5fFfCvLqelDs1/Bzz6mTyY/3yrSTGy+SQQ/GErBC/AdIX35j/QS2p13oll0iSpQK3UQQ3+U5NvTdWvbh8rfLm0uRRD04JR57bd+dBseaAP01H2FGwYgFPGnxgsz0thyN1ehF672G7RvmpKH7eLZbdl33D2+5R5M=
+sidebar_class_name: "delete api-method"
+info_path: restapi/docs/mod-io-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import ParamsItem from "@theme/ParamsItem";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Unfollow a Collection"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"delete"}
+  path={"/games/{game-id}/collections/{collection-id}/followers"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Unfollow a collection for a game. Successful request will return `204 No Content`.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"game-id","in":"path","description":"The ID of the game to which the collection belongs.","required":true,"schema":{"type":"integer"}},{"name":"collection-id","in":"path","description":"The ID of the collection to unfollow.","required":true,"schema":{"type":"integer"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"204":{"description":"Successful Request. No Body Returned."},"400":{"description":"Bad Request. Invalid parameters provided.","content":{"application/json":{"schema":{"title":"Error Object","properties":{"error":{"description":"Contains error data.","properties":{"code":{"description":"The [HTTP code](/restapi/docs/response-codes).","type":"integer","format":"int32","default":403},"error_ref":{"description":"The mod.io error code.","type":"integer","default":10000},"message":{"description":"The server response to your request. Responses will vary depending on the endpoint, but the object structure will persist.","type":"string","default":"You do not have the required permissions to access this resource."},"errors":{"description":"Optional Validation errors object. This field is only supplied if the response is a validation error `422 Unprocessible Entity`. See [errors documentation](/restapi/docs/errors) for more information.","type":"object"}},"type":"object"}},"type":"object"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

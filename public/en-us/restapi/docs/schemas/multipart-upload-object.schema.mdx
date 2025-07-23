@@ -1,0 +1,33 @@
+---
+id: multipart-upload-object
+title: "Multipart Upload Object"
+description: "Contains multipart upload session data."
+sidebar_label: "Multipart Upload Object"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"upload_id":"123e4567-e89b-12d3-a456-426614174000","status":0}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Multipart Upload Object"}
+>
+</Heading>
+
+
+
+Contains multipart upload session data.
+
+<Schema
+  schema={{"title":"Multipart Upload Object","description":"Contains multipart upload session data.","properties":{"upload_id":{"description":"A universally unique identifier (UUID) that represents the upload session.","type":"string","example":"123e4567-e89b-12d3-a456-426614174000"},"status":{"title":"Modfile Upload Status Enum","description":"The status of the upload session.","type":"integer","enum":[0,1,2,3,4],"example":0,"x-enumDescriptions":{"INCOMPLETE (0)":"Incomplete","PENDING (1)":"Pending","PROCESSING (2)":"Processing","COMPLETE (3)":"Complete","CANCELLED (4)":"Cancelled"}}},"type":"object"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

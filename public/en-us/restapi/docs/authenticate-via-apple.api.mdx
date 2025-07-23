@@ -1,0 +1,72 @@
+---
+id: authenticate-via-apple
+title: "Apple"
+description: "Request an access token on behalf of a 'Sign in with Apple' user. To use this functionality you *must* add your games Bundle ID from Apple, to the [*Game Admin > Settings*](/platforms/apple/authentication/) page of your games profile on mod.io. A Successful request will return an [Access Token Object](/restapi/docs/schemas/access-token-object)."
+sidebar_label: "Apple"
+hide_title: true
+hide_table_of_contents: true
+api: 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
+sidebar_class_name: "post api-method"
+info_path: restapi/docs/mod-io-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import ParamsItem from "@theme/ParamsItem";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Apple"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/external/appleauth"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Request an access token on behalf of a 'Sign in with Apple' user. To use this functionality you *must* add your games Bundle ID from Apple, to the [*Game Admin > Settings*](/platforms/apple/authentication/) page of your games profile on mod.io. A Successful request will return an [Access Token Object](/restapi/docs/schemas/access-token-object).
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/x-www-form-urlencoded":{"schema":{"title":"Apple Authentication Request","required":["id_token"],"properties":{"id_token":{"description":"The ID token returned to your iOS application upon using Sign in with Apple functionality.","type":"string","example":"eyJhbXciOiJIUzI1Lizs...."},"terms_agreed":{"description":"This MUST be set to `false` unless you have collected the [users agreement](/restapi/docs/terms) prior to calling this endpoint in which case it can be set to `true` and will be recorded.<br /><br />__NOTE:__ If this is set to `false` and the user has not agreed to the latest mod.io Terms of Use and Privacy Policy, an error `403 Forbidden (error_ref 11074)` will be returned and you will need to collect the [users agreement](/restapi/docs/terms) and retry with this value set to `true` to authenticate the user.","type":"boolean","example":true},"date_expires":{"description":"Unix timestamp of date in which the returned token will expire. Value cannot be higher than the default value which is a week (unix timestamp + 604800 seconds). Using a token after it's expiry time has elapsed will result in a `401 Unauthorized` response.","type":"integer","example":1729236480}},"type":"object"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Request","content":{"application/json":{"schema":{"title":"Access Token Object","description":"Contains user access token.","properties":{"code":{"description":"HTTP Response Code.","type":"integer","format":"int32","example":200},"access_token":{"description":"The user's access token.","type":"string","example":"eyJ0eXAiOiXKV1QibCJhbLciOiJeiUzI1....."},"date_expires":{"description":"Unix timestamp of the date this token will expire. Default is one year from issue date. See [Access Token Lifetime & Expiry](/restapi/docs/making-requests).","type":"integer","format":"int32","example":1570673249}},"type":"object"}}}},"401":{"description":"The game associated with the supplied api_key is currently not available.","content":{"application/json":{"schema":{"title":"Error Object","properties":{"error":{"description":"Contains error data.","properties":{"code":{"description":"The [HTTP code](/restapi/docs/response-codes).","type":"integer","format":"int32","default":403},"error_ref":{"description":"The mod.io error code.","type":"integer","default":10000},"message":{"description":"The server response to your request. Responses will vary depending on the endpoint, but the object structure will persist.","type":"string","default":"You do not have the required permissions to access this resource."},"errors":{"description":"Optional Validation errors object. This field is only supplied if the response is a validation error `422 Unprocessible Entity`. See [errors documentation](/restapi/docs/errors) for more information.","type":"object"}},"type":"object"}},"type":"object"}}},"x-errorrefs":{"11032":"mod.io was unable to verify the credentials against the external service provider.","11201":"The Apple token supplied in the request is invalid.","11202":"The Apple token supplied has expired.","14001":"The game associated with the supplied api_key is currently not available."}},"403":{"description":"The api_key supplied in the request must be associated with a game.","content":{"application/json":{"schema":{"title":"Error Object","properties":{"error":{"description":"Contains error data.","properties":{"code":{"description":"The [HTTP code](/restapi/docs/response-codes).","type":"integer","format":"int32","default":403},"error_ref":{"description":"The mod.io error code.","type":"integer","default":10000},"message":{"description":"The server response to your request. Responses will vary depending on the endpoint, but the object structure will persist.","type":"string","default":"You do not have the required permissions to access this resource."},"errors":{"description":"Optional Validation errors object. This field is only supplied if the response is a validation error `422 Unprocessible Entity`. See [errors documentation](/restapi/docs/errors) for more information.","type":"object"}},"type":"object"}},"type":"object"}}},"x-errorrefs":{"11016":"The api_key supplied in the request must be associated with a game.","11017":"The api_key supplied in the request is for test environment purposes only and cannot be used for this functionality.","11074":"The user has not agreed to the mod.io Terms of Use. Please see terms_agreed parameter description and the [Terms](/restapi/docs/terms) endpoint for more information.","11203":"The Apple Bundle ID associated with this game has not been configured.","11205":"The Apple Bundle ID associated with this game is invalid."}}}}
+>
+  
+</StatusCodes>
+
+
+      

@@ -1,0 +1,33 @@
+---
+id: guide-tag-object
+title: "Guide Tag Object"
+description: "Contains guide tag data."
+sidebar_label: "Guide Tag Object"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"name":"Instructions","date_added":1499841487,"count":22}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Guide Tag Object"}
+>
+</Heading>
+
+
+
+Contains guide tag data.
+
+<Schema
+  schema={{"title":"Guide Tag Object","description":"Contains guide tag data.","properties":{"name":{"description":"Tag name.","type":"string","example":"Instructions"},"date_added":{"description":"Unix timestamp of date tag was applied.","type":"integer","format":"int32","example":1499841487},"count":{"description":"The amount of times this tag has been applied to guides. This value will only be returned for the Get Guide Tags endpoint.","type":"integer","format":"int32","example":22}},"type":"object"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

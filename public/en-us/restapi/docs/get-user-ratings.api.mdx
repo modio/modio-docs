@@ -1,0 +1,72 @@
+---
+id: get-user-ratings
+title: "Get User Ratings"
+description: "Get all mod rating's submitted by the _authenticated user_. Successful request will return an array of [Rating Objects](/restapi/docs/get-user-ratings-2)."
+sidebar_label: "Get User Ratings"
+hide_title: true
+hide_table_of_contents: true
+api: eJzNV21vGzcM/iuEvswBLvFL0qYztgJGmgXBkMRI4w1dYDjyiWervZOuks6JZ/i/D5Tu7HPivBYb9sXGSSL5kCIfUgvm+MSy7jU7QzaMmEAbG5k7qRXrshN0wNMUMi3AcCfV5CcLthhn0jkUMJ6DmyKMeOGmqJyMOa0WFs1oDz4XcYzWJkUKBr8XaB3cypQ+XGEUcAXcGD4HncD1pdcNF+OvGDs7bDQNWsdz2RQ6ts0Jul1Suhsg2N3Ozh6LmM6RFrQ6FazLJuhG3nJ5iEUs54Zn6NCQfwumeIZ0kGc4koJFTJKL3ws0c3bf8YGS3wsEKQge+Zhzg8oBCZNtG08x46y7YG6ek1apHE7QsOUyWlnKtHi9oUyLFxsIrj5t4GqeI+kOZ4HneSpRdH8ZG2h+DL+j0W57NIJf4Rwn3MkZQriPajds9rWVtc0XY0SrCxPjyJ95GdRShEASxI+jUaaF9SjOtCgB2LAT6zTFmDSEA0er7+rcHnzChBeps+B0lwJst0bYOkN+1cEL7nDEhcDnb/EOnMwoa7OcfCDJKua3vFY0z1zuMKKI5VpZtHSg02rR36a5y7Ke1iXGIhZr5VA5Ou0vOfa10fxqSWRRtyldimVxDyyaKk5UMYaKyslgW3DHHxrv+aola1wqcq/0UofiJf+kw8zWTW3U94PoHQVdttJEdvceoKnq9gGgsoRoH6SP772oRizRJuMuLO13WMTwjmc5Qesso6pOH1NM5CcFZVFu0FNcRBwHNxupfQNcidqaFDcglXXI3wJps2oeILtfKTULZRZTjH3SBx6iy0VVZET05WetcNiwbvKJUKxpqqR0FCsMQADe4mqgk1q29CYGMSO69X4eE+4takt/2lEn2o8OonfR++gw+jCM2N0ubX1aO+Dz5+piAI32DkUPTUYR6F+e/tE7+gKNDq32jZzxmGr7pHd2DI19WjwhHohYr38KjQNa6PVPWcTOLs6Pr07/6l2dXpxD4x1tnGmFTv7ti44kBn1ovPcSgz6L2NHFxe+nx5+hcbjjM15/o7SO2OXxb4PzT9D4sOPrOimUIAaqM8+2y3gN27ziPtoHP3fevT9ot/YJQykYCtujMmiL1I1iXQSi2cR1XmRjNGVeer4NvR4FSAVuKm2VNq+Eddha29ZJYvFFxu03mecoQM/QbPQAaEGhUrTWbxkpBCqaZW5K5TeQyNSheSXKGshUZnILxjN+J7MiA/VMoFbltQm73WpBI+N3O4/B92bfiL7dquF32vF0C+3Q8hb0iS7Ua1PtsLUtxZa0aDEujHRzP7VpGi47xFsGuWDDpS/w3GhRxNQYHjY7MuJQ2VD41wv2DeesWxeK2IynBW4TJvUZuqkuZ0o/Rrop67Jmhs31bFlh/ExtNTQonsuRN7Vq6zyXvyMxSjlOVCc2ZolltPJxJVguRCxJ9a1XLjMCGpKKNrUpuWZgUtZlU+dy2202aXqUupnqiVR+0NB5AOeDRwzDBWiVziNQekXdFmKuYOxbnUxkoI1bIx1hOaJJXYgIUEgH2oDAFIluKuG96t6kSnSdxwMYCJS5mUl/YhrrDCmrKd11kshYcv/QKEX24IsuwoshkUoAztDM3ZQYbq4LUIgC+FgXjkYRRY2MuE+6aaVjJrnXjUrkWipnYYypviXXZmhswNGm8Ofauoz7Kam8qC2j0Qb+xXra+n+/kcp8cnjnmnnKpSJ/C+NrO+T1NfMdrsrsYcSm2jpaXyzG3OLApMslLYdspXoS0vJxSp0p4anFJ2Lz3DNqK7xQrutnWlWrjAbzH7BdvqyesLl6sL3R5L/41noC9eoV+KOo/5Nn11OO3Hsqvv3i3zAebQO08fxboxnSh5EEh3WvaXaeIhdoas2mF8eYuxc3mpPjKxZ5Xt/WBFYtcN1Y1Lymm7gdAl1XyD3x+7htlXikXQRZskZd5VHpVS9a1arhyoVbWw6Xy+U/Nc4/1Q==
+sidebar_class_name: "get api-method"
+info_path: restapi/docs/mod-io-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import ParamsItem from "@theme/ParamsItem";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get User Ratings"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/me/ratings"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Get all mod rating's submitted by the _authenticated user_. Successful request will return an array of [Rating Objects](/restapi/docs/get-user-ratings-2).
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"game_id","in":"query","description":"Unique id of the parent game.","schema":{"type":"integer"}},{"name":"mod_id","in":"query","description":"Unique id of the mod.","schema":{"type":"integer"}},{"name":"rating","in":"query","description":"Type of rating applied:<br /><br />__-1__ = Negative Rating<br />__1__ = Positive Rating","schema":{"type":"integer"}},{"name":"resource_type","in":"query","description":"Type of resource:<br><br>__mods__ = Mod Ratings<br>__collections__ = Collection Ratings. Defaults to: mods.","schema":{"type":"string"}},{"name":"date_added","in":"query","description":"Unix timestamp of date rating was submitted.","schema":{"type":"integer"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Request Successful","content":{"application/json":{"schema":{"title":"Get User Ratings","properties":{"data":{"description":"Array containing rating objects.","items":{"title":"Rating Object","description":"Contains rating data.","properties":{"game_id":{"description":"Unique game id.","type":"integer","format":"int32","example":2},"mod_id":{"description":"Unique mod id. Deprecated, use `resource_type` and `resource_id` instead.","type":"integer","format":"int32","example":2},"resource_type":{"description":"Type of resource.","type":"string","default":"mods","enum":["mods","collections"]},"resource_id":{"description":"Unique id of the requested resource type.","type":"integer","format":"int32","example":2},"rating":{"title":"Agreement Type Enum","type":"integer","enum":[1,2,3,4,5,6,7,8],"x-enumDescriptions":{"TOU (1)":"Terms","PRIVACY (2)":"Privacy","GAME (3)":"Game","API (4)":"API","MONETIZATION (5)":"Monetization","AUP (6)":"AUP","COOKIES (7)":"Cookies","REFUND (8)":"Refund"}},"date_added":{"description":"Unix timestamp of date rating was submitted.","type":"integer","format":"int32","example":1492564103}},"type":"object"}},"result_count":{"description":"Number of results returned in this request.","type":"integer","format":"int32","example":70},"result_offset":{"description":"Number of results skipped over. Defaults to 0 unless overridden by `_offset` filter.","type":"integer","format":"int32","example":0},"result_limit":{"description":"Maximum number of results returned in the request. Defaults to 100 (max) unless overridden by `_limit` filter.","type":"integer","format":"int32","example":100},"result_total":{"description":"Total number of results found.","type":"integer","format":"int32","example":70}},"type":"object"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

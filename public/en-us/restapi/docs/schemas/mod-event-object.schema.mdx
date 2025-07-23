@@ -1,0 +1,33 @@
+---
+id: mod-event-object
+title: "Mod Event Object"
+description: ""
+sidebar_label: "Mod Event Object"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"id":13,"mod_id":13,"user_id":13,"date_added":1499846132,"event_type":"string"}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Mod Event Object"}
+>
+</Heading>
+
+
+
+
+
+<Schema
+  schema={{"title":"Mod Event Object","properties":{"id":{"description":"Unique id of the event object.","type":"integer","format":"int32","example":13},"mod_id":{"description":"Unique id of the parent mod.","type":"integer","format":"int32","example":13},"user_id":{"description":"Unique id of the user who performed the action.","type":"integer","format":"int32","example":13},"date_added":{"description":"Unix timestamp of date the event occurred.","type":"integer","format":"int32","example":1499846132},"event_type":{"title":"Mod Event Enum","type":"string","x-enumDescriptions":{"MODFILE_CHANGED":"Live file changed","MOD_AVAILABLE":"Mod is marked as accepted and public","MOD_UNAVAILABLE":"Mod is marked as not accepted, deleted or hidden","MOD_EDITED":"The mod was updated (triggered when any column value changes)","MOD_DELETED":"The mod has been permanently erased. This is an orphan record, looking up this id will return no data","MOD_TEAM_CHANGED":"A user has joined or left the mod team","MOD_COMMENT_ADDED":"A comment has been published for a mod","MOD_COMMENT_DELETED":"A comment has been deleted from a mod"}}},"type":"object"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

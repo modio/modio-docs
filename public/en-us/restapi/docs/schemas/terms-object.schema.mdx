@@ -1,0 +1,33 @@
+---
+id: terms-object
+title: "Terms Object"
+description: "Contains fields required to format User Terms"
+sidebar_label: "Terms Object"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"plaintext":"string","html":"string","buttons":{"agree":{"text":"I Agree"},"disagree":{"text":"No, Thanks"}},"links":{"website":{"text":"Website","url":"https://mod.io","required":false},"terms":{"text":"Terms of Use","url":"https://mod.io/terms","required":true},"privacy":{"text":"Privacy Policy","url":"https://mod.io/privacy","required":true},"refund":{"text":"Refund Policy","url":"https://mod.io/privacy","required":false},"manage":{"text":"Manage Account","url":"https://mod.io/me/account","required":false}}}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Terms Object"}
+>
+</Heading>
+
+
+
+Contains fields required to format User Terms
+
+<Schema
+  schema={{"title":"Terms Object","description":"Contains fields required to format User Terms","properties":{"plaintext":{"description":"Terms text in plaintext formatting.","type":"string"},"html":{"description":"Terms text in HTML formatting.","type":"string"},"buttons":{"description":"Buttons to embed into the Terms.","properties":{"agree":{"description":"I Agree Button.","properties":{"text":{"description":"Button text.","type":"string","example":"I Agree"}},"type":"object"},"disagree":{"description":"Disagree Button.","properties":{"text":{"description":"Button text.","type":"string","example":"No, Thanks"}},"type":"object"}},"type":"object"},"links":{"description":"Links to embed into the Terms.","properties":{"website":{"description":"Website link.","properties":{"text":{"description":"Text for the link.","type":"string","example":"Website"},"url":{"description":"Link to the mod.io website.","type":"string","example":"https://mod.io"},"required":{"description":"Is this link required.","type":"boolean","example":false}},"type":"object"},"terms":{"description":"Terms of Use link.","properties":{"text":{"description":"Text for the link.","type":"string","example":"Terms of Use"},"url":{"description":"Link to the mod.io Terms of Use.","type":"string","example":"https://mod.io/terms"},"required":{"description":"Is this link required.","type":"boolean","example":true}},"type":"object"},"privacy":{"description":"Privacy Policy link.","properties":{"text":{"description":"Text for the link.","type":"string","example":"Privacy Policy"},"url":{"description":"Link to the mod.io Privacy Policy.","type":"string","example":"https://mod.io/privacy"},"required":{"description":"Is this link required.","type":"boolean","example":true}},"type":"object"},"refund":{"description":"Refund Policy link.","properties":{"text":{"description":"Text for the link.","type":"string","example":"Refund Policy"},"url":{"description":"Link to the mod.io Refund Policy.","type":"string","example":"https://mod.io/privacy"},"required":{"description":"Is this link required.","type":"boolean","example":false}},"type":"object"},"manage":{"description":"Manage User Account link.","properties":{"text":{"description":"Text for the link.","type":"string","example":"Manage Account"},"url":{"description":"Link to the mod.io page to manage a User's Account.","type":"string","example":"https://mod.io/me/account"},"required":{"description":"Is this link required.","type":"boolean","example":false}},"type":"object"}},"type":"object"}},"type":"object"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

@@ -1,0 +1,33 @@
+---
+id: collection-stats-object
+title: "Collection Stats Object"
+description: ""
+sidebar_label: "Collection Stats Object"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"collection_id":123,"downloads_today":50,"downloads_unique":200,"downloads_total":1000,"followers_total":300,"ratings_positive_30_days":25}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Collection Stats Object"}
+>
+</Heading>
+
+
+
+
+
+<Schema
+  schema={{"title":"Collection Stats Object","properties":{"collection_id":{"description":"The collection id.","type":"integer","format":"int32","example":123},"downloads_today":{"description":"The number of downloads today.","type":"integer","format":"int32","example":50},"downloads_unique":{"description":"The number of unique downloads.","type":"integer","format":"int32","example":200},"downloads_total":{"description":"The total number of downloads.","type":"integer","format":"int32","example":1000},"followers_total":{"description":"The total number of followers.","type":"integer","format":"int32","example":300},"ratings_positive_30_days":{"description":"The number of positive ratings in the last 30 days.","type":"integer","format":"int32","example":25}},"type":"object"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

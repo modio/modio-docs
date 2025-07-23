@@ -1,0 +1,33 @@
+---
+id: comment-object
+title: "Comment Object"
+description: ""
+sidebar_label: "Comment Object"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"id":2,"game_id":2,"mod_id":2,"resource_id":2,"resource_ownership":2,"user":{"id":1,"name_id":"xant","username":"XanT","display_name_portal":null,"date_online":1509922961,"date_joined":1509922961,"avatar":{"filename":"avatar.png","original":"https://assets.modcdn.io/images/placeholder/avatar.png","thumb_50x50":"https://assets.modcdn.io/images/placeholder/avatar_50x50.png","thumb_100x100":"https://assets.modcdn.io/images/placeholder/avatar_100x100.png"},"timezone":"","language":"","profile_url":"https://mod.io/u/xant"},"date_added":1499841487,"reply_id":0,"thread_position":"01","karma":1,"karma_guest":0,"content":"Hey <a href=\"https://mod.io/u/guest\">guest</a>, you should check out this mod!","options":0}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Comment Object"}
+>
+</Heading>
+
+
+
+
+
+<Schema
+  schema={{"title":"Comment Object","required":["content"],"properties":{"id":{"description":"Unique id of the comment.","type":"integer","format":"int32","example":2},"game_id":{"description":"Unique game id (if applicable).","type":"integer","format":"int32","example":2},"mod_id":{"description":"Deprecated: Please use resource_id instead, this will be removed in subsequent API version.","type":"integer","format":"int32","example":2},"resource_id":{"description":"Unique id of the parent resource.","type":"integer","format":"int32","example":2},"resource_ownership":{"description":"Bitwise value of the user who published the comment.","type":"integer","format":"int32","default":2},"user":{"title":"User Object","description":"Contains user data.","properties":{"id":{"description":"Unique id of the user.","type":"integer","format":"int32","example":1},"name_id":{"description":"Path for the user on mod.io. For example: https://mod.io/u/__name-id-here__","type":"string","example":"xant"},"username":{"description":"Display name of the user.","type":"string","example":"XanT"},"display_name_portal":{"description":"The users' display name for the targeted portal. Value will be `null` if no valid `X-Modio-Portal` portal header value is provided. For more information see [Targeting a Portal](/restapi/docs/targeting-a-portal).","type":"string","example":null},"date_online":{"description":"Unix timestamp of date the user was last online.","type":"integer","format":"int32","example":1509922961},"date_joined":{"description":"Unix timestamp of date the user joined.","type":"integer","format":"int32","example":1509922961},"avatar":{"title":"Avatar Object","description":"Contains avatar data.","properties":{"filename":{"description":"Avatar filename including extension.","type":"string","example":"avatar.png"},"original":{"description":"URL to the full-sized avatar.","type":"string","example":"https://assets.modcdn.io/images/placeholder/avatar.png"},"thumb_50x50":{"description":"URL to the small avatar thumbnail.","type":"string","example":"https://assets.modcdn.io/images/placeholder/avatar_50x50.png"},"thumb_100x100":{"description":"URL to the medium avatar thumbnail.","type":"string","example":"https://assets.modcdn.io/images/placeholder/avatar_100x100.png"}},"type":"object"},"timezone":{"description":"Deprecated: No longer used and will be removed in subsequent API version.","type":"string","example":""},"language":{"description":"Deprecated: No longer used and will be removed in subsequent API version. To [localize the API response](/restapi/docs/localization) we recommend you set the `Accept-Language` header.","type":"string","example":""},"profile_url":{"description":"URL to the users profile.","type":"string","example":"https://mod.io/u/xant"}},"type":"object"},"date_added":{"description":"Unix timestamp of date the comment was posted.","type":"integer","format":"int32","example":1499841487},"reply_id":{"description":"Id of the parent comment this comment is replying to (can be 0 if the comment is not a reply).","type":"integer","format":"int32","example":0},"thread_position":{"description":"Levels of nesting in a comment thread. How it works:<br /><br />- The first comment will have the position '01'.<br />- The second comment will have the position '02'.<br />- If someone responds to the second comment the position will be '02.01'.<br />- A maximum of 3 levels is supported.","type":"string","example":"01"},"karma":{"description":"Karma received for the comment (can be postive or negative).","type":"integer","format":"int32","example":1},"karma_guest":{"description":"Deprecated: No longer used and will be removed in subsequent API version.","type":"integer","format":"int32","example":0},"content":{"description":"Contents of the comment.","type":"string","example":"Hey <a href=\"https://mod.io/u/guest\">guest</a>, you should check out this mod!"},"options":{"title":"Comment Option Enum","type":"integer","enum":[0,1,2,4],"x-enumDescriptions":{"NONE (0)":"All of the options below are disabled","PINNED (1)":"Pinned comment","LOCKED (2)":"Locked comment"}}},"type":"object"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

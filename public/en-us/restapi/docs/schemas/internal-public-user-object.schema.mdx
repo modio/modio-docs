@@ -1,0 +1,33 @@
+---
+id: internal-public-user-object
+title: "Internal Public User Object"
+description: "Contains user data."
+sidebar_label: "Internal Public User Object"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"id":1,"name_id":"xant","username":"XanT","display_name_portal":null,"date_online":1509922961,"date_joined":1509922961,"avatar":{"filename":"avatar.png","original":"https://assets.modcdn.io/images/placeholder/avatar.png","thumb_50x50":"https://assets.modcdn.io/images/placeholder/avatar_50x50.png","thumb_100x100":"https://assets.modcdn.io/images/placeholder/avatar_100x100.png"},"profile_url":"https://mod.io/u/xant","privacy_options":"0","monetization_options":0,"monetization_status":0}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Internal Public User Object"}
+>
+</Heading>
+
+
+
+Contains user data.
+
+<Schema
+  schema={{"title":"Internal Public User Object","description":"Contains user data.","properties":{"id":{"description":"Unique id of the user.","type":"integer","format":"int32","example":1},"name_id":{"description":"Path for the user on mod.io. For example: https://mod.io/u/__name-id-here__","type":"string","example":"xant"},"username":{"description":"Display name of the user.","type":"string","example":"XanT"},"display_name_portal":{"description":"The users' display name for the targeted portal. Value will be `null` if no valid `X-Modio-Portal` portal header value is provided. For more information see [Targeting a Portal](/restapi/docs/targeting-a-portal).","type":"string","example":null},"date_online":{"description":"Unix timestamp of date the user was last online.","type":"integer","format":"int32","example":1509922961},"date_joined":{"description":"Unix timestamp of date the user joined.","type":"integer","format":"int32","example":1509922961},"avatar":{"title":"Avatar Object","description":"Contains avatar data.","properties":{"filename":{"description":"Avatar filename including extension.","type":"string","example":"avatar.png"},"original":{"description":"URL to the full-sized avatar.","type":"string","example":"https://assets.modcdn.io/images/placeholder/avatar.png"},"thumb_50x50":{"description":"URL to the small avatar thumbnail.","type":"string","example":"https://assets.modcdn.io/images/placeholder/avatar_50x50.png"},"thumb_100x100":{"description":"URL to the medium avatar thumbnail.","type":"string","example":"https://assets.modcdn.io/images/placeholder/avatar_100x100.png"}},"type":"object"},"profile_url":{"description":"URL to the users profile.","type":"string","example":"https://mod.io/u/xant"},"privacy_options":{"description":"Users profile privacy setting.","type":"string","example":"0"},"monetization_options":{"title":"User Monetization Permission Enum","type":"integer","enum":[0,1,2],"x-enumDescriptions":{"DISABLED (0)":"Access to monetization features disabled","MONETIZATION (1)":"Access to monetization features enabled by mod.io","MARKETPLACE (2)":"Marketplace enabled"}},"monetization_status":{"title":"User Monetization Status Enum","type":"integer","enum":[0,1,2,4,8,16,32],"x-enumDescriptions":{"UNREGISTERED (0)":"Unregistered","PENDING (1)":"Pending","REJECTED (2)":"Rejected","REVIEW (4)":"Review","ACTION (8)":"Action","APPROVED (16)":"Approved","MEMBER (32)":"Member"}}},"type":"object"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

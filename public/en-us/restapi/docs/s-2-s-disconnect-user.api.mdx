@@ -1,0 +1,72 @@
+---
+id: s-2-s-disconnect-user
+title: "Disconnect User"
+description: "Disconnect a mod.io user from a linked studio user. This will completely remove the SSO connection between the mod.io user and the external user."
+sidebar_label: "Disconnect User"
+hide_title: true
+hide_table_of_contents: true
+api: eJzNVE1v4zYQ/SuDOXUB1t4NetJtu8khaNEW8QZFERgBTY4s7lKkQo7sqIL+ezH6sJ3dpEBv9cWSyJl58+a96ZH1PmPxgBtKB2cIOML8iFuFlrJJrmEXAxZ47bKJIZBh0FBHu3IR2kwJyhRr0OBd+EoWMrd2PlnB58plODrvwcS68cTkO0hUxwMBVwSbze8wJ3UxwI74SBTGo8sKOtjxGz0zpaD9lB0VxoaSltBbiwXmq/xoTygf5RIqbHTSNTEl6bTHoGvCApuYWPsfnUWFTtprNFf4bc+31xDLsfSII3NMZMFNCOdOc5eZalSY6Kl1iSwWnFpSmE1FtcaiR+4aqekC054SDgrpWQsfWHwYthKZmxgyZbl89f4n+XsJZNMaQzmXrYeY4D7k8/sdPbWUeQW/Rfg52g7uiNsUyApBJgamwJJQN413ZmRr/SVL1v4SomOBM1ZXC+C4+0KGR1ZK3XqezqXQpznvID+FmUybHHcjw1G3XF2JrI7JMeFWWqyJqyhDsiQyGOfCFRa4zld5fdZAXven0Qx4zrwRpBNBunGPX6m7IFY37hfqUC3DXW7Mo31qKXXC+oLsFDh/UFj6eByTu1pYchNjLVcxub9Hzu6TxwIr5iYX6/WkzrWPexcEpYnNBC6Rli7vSFuIwXcKQoREObbJUAajReUible6aUQTSQV+0gG0tQrIOpYpT0ydg1cL2y6U8XJms1U+/nH7nYD/JG9iPRpbJBvL0hmnPZxDVvBXbCePli5YoAOljisX9tDFFgKRBb2LLZ+MGvZwdFwtOQ5OT+YMtokucIYd+XiU1g6U8oTjg9DfxMy1HoU3D+pip9xPbn0Bvz/r93+5fmYVMT3zuvHaBemyFaH0s7wfZClNPlwEjgqL8/bZKqxiZrnZ9zud6T75YZDPk2qLh63Cg05O72TWDz1al+XZYlFqn+lfKPvhbt5I7+A/LbJX21qsFsRWB+1beUOFoxMv1umwHRRWpC2lEe50/tEYavgi8rtt9GJJXN/8evP5BtVowdf8etox/evAxIYwOWuBOHoUB/VGxBvOnmKlmiyAN6NPa2OJ2Ccd+HG8O2yHYfgHkieOXw==
+sidebar_class_name: "delete api-method"
+info_path: restapi/docs/mod-io-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import ParamsItem from "@theme/ParamsItem";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Disconnect User"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"delete"}
+  path={"/s2s/connections/{portal-id}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Disconnect a mod.io user from a linked studio user. This will completely remove the SSO connection between the mod.io user and the external user.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"portal-id","in":"path","description":"ID of the user stored in the studio system","required":true,"schema":{"type":"integer"},"example":1}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"204":{"description":"Successful or Unsuccessful Request. No Body Returned.","content":{"application/json":{"schema":{"title":"204","type":"object","default":"204 No Content"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

@@ -1,0 +1,33 @@
+---
+id: game-platforms-object
+title: "Game Platforms Object"
+description: "Contains platform filtering data for this game. This object is only applicable if the game has [cross-platform moderation](/restapi/docs/targeting-a-platform) enabled. Otherwise this value will always be `null`."
+sidebar_label: "Game Platforms Object"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"platform":"PLAYSTATION5","label":"PlayStation 5","moderated":true,"locked":true}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Game Platforms Object"}
+>
+</Heading>
+
+
+
+Contains platform filtering data for this game. This object is only applicable if the game has [cross-platform moderation](/restapi/docs/targeting-a-platform) enabled. Otherwise this value will always be `null`.
+
+<Schema
+  schema={{"title":"Game Platforms Object","description":"Contains platform filtering data for this game. This object is only applicable if the game has [cross-platform moderation](/restapi/docs/targeting-a-platform) enabled. Otherwise this value will always be `null`.","properties":{"platform":{"title":"Platform String Enum","description":"A [target platform](/restapi/docs/targeting-a-platform).","type":"string","enum":["ALL","WINDOWS","MAC","LINUX","ANDROID","IOS","XBOXONE","XBOXSERIESX","PLAYSTATION4","PLAYSTATION5","SWITCH","OCULUS","SOURCE"],"example":"PLAYSTATION5","x-enumDescriptions":{"ALL":"All Platforms","WINDOWS":"Windows","MAC":"Mac","LINUX":"Linux","ANDROID":"Android","IOS":"Iphone IOS","XBOXONE":"Xbox One","XBOXSERIESX":"Xbox Series X","PLAYSTATION4":"Playstation 4","PLAYSTATION5":"Playstation 5","SWITCH":"Switch","OCULUS":"Oculus","SOURCE":"Source"}},"label":{"description":"A presentable label of the platform.","type":"string","example":"PlayStation 5"},"moderated":{"description":"Is this platform moderated by game admins? If false, then user submissions for the platform will be available immediately providing the game has mod curation disabled.","type":"boolean","example":true},"locked":{"description":"Are users able to upload files to this platform? By default, users are able to upload to all supported platforms, platforms set to `true` may only be used by game admins only.","type":"boolean","example":true}},"type":"object"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

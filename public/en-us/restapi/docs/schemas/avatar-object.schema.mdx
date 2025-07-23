@@ -1,0 +1,33 @@
+---
+id: avatar-object
+title: "Avatar Object"
+description: "Contains avatar data."
+sidebar_label: "Avatar Object"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"filename":"avatar.png","original":"https://assets.modcdn.io/images/placeholder/avatar.png","thumb_50x50":"https://assets.modcdn.io/images/placeholder/avatar_50x50.png","thumb_100x100":"https://assets.modcdn.io/images/placeholder/avatar_100x100.png"}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Avatar Object"}
+>
+</Heading>
+
+
+
+Contains avatar data.
+
+<Schema
+  schema={{"title":"Avatar Object","description":"Contains avatar data.","properties":{"filename":{"description":"Avatar filename including extension.","type":"string","example":"avatar.png"},"original":{"description":"URL to the full-sized avatar.","type":"string","example":"https://assets.modcdn.io/images/placeholder/avatar.png"},"thumb_50x50":{"description":"URL to the small avatar thumbnail.","type":"string","example":"https://assets.modcdn.io/images/placeholder/avatar_50x50.png"},"thumb_100x100":{"description":"URL to the medium avatar thumbnail.","type":"string","example":"https://assets.modcdn.io/images/placeholder/avatar_100x100.png"}},"type":"object"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

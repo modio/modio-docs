@@ -1,0 +1,64 @@
+---
+id: delete-guide
+title: "Delete Guide"
+description: "Delete a guide. Successful request will return `204 No Content`."
+sidebar_label: "Delete Guide"
+hide_title: true
+hide_table_of_contents: true
+api: eJzNVtuO2zYQ/ZUBnxpAK3u9fij8liaLNOglwWbTojCMXVocWZNKpEKO7KiG/r0YUr7sDQWKPvRJEsmZOTxzZkZ7xXoT1GKp3nVkMKhVpgyGwlPL5KxaqLdYIyNo2MiBHD51RYEhlF0NHr92GBh2VMsHd97C/Ww6h18dvHGW0fJ9rjLlWvRa3L03aqFMdHgX3alMeQytswGDWuzVbDqXx0MEZxFvUsRcIvzgTA83MSoaCVOkkOJAt21NRYw5+RLEy16FosJGyxsT16gWMVqmuG/lw62/YMFKrl/qrua0f3YVNQzDkKn59OopxNsKQXdcoWUJiwa6gB6MwwDWMVR6i9CibygEchbYQaIhsRpkgSsKsNEN5nBtQ+cRuMLkhwK02jO4Mq7JIWDUDayxdB5BM2PTMtlN3D/kRW802X/FzLX3zsOHAyWtlxQypSShbD7lQGjSZAPEfTCadf7EtnAGn6dv+ePt7UeQ/dV3E4+BdUsT44owOSjkQjbDq/yUM7KMG/QqU6Xzjea0dDU7z+J8ejVkCfOdx/L54I0zObkRuYR5NsjR5+V0Op0OmWowBL154UIB/RY9HNBLinvX+UN2crg5KD8V0Fb7Hgy2aI0kUlRSIaA1rSPLGaw7jitJqBDYdwWLTKJ1iz5Q4DPcgT3ZzQNB/+E6MO6kyINYyKM5k2eUo45Fl1TpMbjOF5irA5Xh6Z0/xBddw2+6JhMVlggNI+QcbsVZSVgbkbSzdQ+hE0GiASpHOCNdFEDD9pEruJ/PZvDZtt4JOlrXCNeWifv7HD4hwnKMaFzRNWg52j4WVDrzCkrnoZH6IZv0Q87mTzqCFP0/rwyZ+nYRHXssIzuX8+ns+/9/b7icT68uR5gxIBTaCq41jjgMmA4TipO987Qhq6Pf0rsGNFhnLwLJrDANWdhVVIcoWT9m8+0vb16Dx9Z5Bl0wbTHBSKfGAZO4DFh0nrhXi+VeOaFvJkNqh2u1GlZSeVy50zSRPqO5Ugs1EQLCZC+PCzLDJJE42cenrKiT90/S+FJj0i3d/Yl9bIIptbqln7BXmbK6Gb/jiUyRyP1rh76XejigOxqOC5kqa7eLzqmRpkupAXdcOU9/RbV99rVaqIq5DYvJJHWhSe02ZAVl4doEzqOWu96gNrFqMrDuWJRBEibZapyhktIs3HliwfJGW9DGZICGJGkHaR2NI9/CuNTA+QgYW+Lrj+/V41+C37EuXHOUhCtLKkjXcDLJQVpNbEwlWQO4Rd9zJWLpXQcW0YBeu46hcNZiEWW0I64OPrakH7S/AGus3U6utpVOF3FcCv2tC9zoOMfGRI1/LO/GH4wH2PenWfhf/NmMGWf8xpO21mQFUSdJ3Y+CXKooSJWpxShJlamkybg2qlL+uyoXWAz2+7UO+NnXwyDLSWiL5SpTW+1JryU9y9WQqQq1QR9LJEpXvS4KbGVgb3XdJc0+mvYPauft9c/Xt9cqi5p8TsDHwjsVhe3P3IsuIUktGyFE0aohe8HiBaknW4kmFfGi9bGODhYbry3fxbPDahiGvwEOcL/O
+sidebar_class_name: "delete api-method"
+info_path: restapi/docs/mod-io-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import ParamsItem from "@theme/ParamsItem";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Delete Guide"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"delete"}
+  path={"/games/{game-id}/guides/{guide-id}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Delete a guide. Successful request will return `204 No Content`.
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"204":{"description":"Successful Request. No Body Returned.","content":{"application/json":{"schema":{"title":"204","type":"object","default":"204 No Content"}}}},"403":{"description":"The authenticated user does not have permission to delete guides to this game. Ensure the user is part of the game team before attempting the request again.","content":{"application/json":{"schema":{"title":"Error Object","properties":{"error":{"description":"Contains error data.","properties":{"code":{"description":"The [HTTP code](/restapi/docs/response-codes).","type":"integer","format":"int32","default":403},"error_ref":{"description":"The mod.io error code.","type":"integer","default":10000},"message":{"description":"The server response to your request. Responses will vary depending on the endpoint, but the object structure will persist.","type":"string","default":"You do not have the required permissions to access this resource."},"errors":{"description":"Optional Validation errors object. This field is only supplied if the response is a validation error `422 Unprocessible Entity`. See [errors documentation](/restapi/docs/errors) for more information.","type":"object"}},"type":"object"}},"type":"object"}}},"x-errorrefs":{"14028":"The authenticated user does not have permission to delete guides to this game. Ensure the user is part of the game team before attempting the request again.","14031":"The guide cannot be deleted due to the request originating from a non-site admin whilst there is a DMCA report active against the guide."}}}}
+>
+  
+</StatusCodes>
+
+
+      

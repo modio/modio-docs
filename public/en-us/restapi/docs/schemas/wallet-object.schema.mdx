@@ -1,0 +1,33 @@
+---
+id: wallet-object
+title: "Wallet Object"
+description: ""
+sidebar_label: "Wallet Object"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"type":"string","payment_method_id":"string","game_id":"string","currency":"string","balance":0,"pending_balance":0,"deficit":0,"monetization_status":0}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Wallet Object"}
+>
+</Heading>
+
+
+
+
+
+<Schema
+  schema={{"title":"Wallet Object","properties":{"type":{"description":"The type of the wallet.","type":"string"},"payment_method_id":{"description":"The payment_method_id of the wallet.","type":"string"},"game_id":{"description":"The game_id if it's a game wallet.","type":"string"},"currency":{"description":"The currency of the wallet.","type":"string"},"balance":{"description":"The balance of the wallet.","type":"integer","format":"int32","example":0},"pending_balance":{"description":"The pending funds of the wallet that are not availble to be spent.","type":"integer","format":"int32","example":0},"deficit":{"description":"The deficit of the wallet.","type":"integer","format":"int32","example":0},"monetization_status":{"title":"User Monetization Status Enum","type":"integer","enum":[0,1,2,4,8,16,32],"x-enumDescriptions":{"UNREGISTERED (0)":"Unregistered","PENDING (1)":"Pending","REJECTED (2)":"Rejected","REVIEW (4)":"Review","ACTION (8)":"Action","APPROVED (16)":"Approved","MEMBER (32)":"Member"}}},"type":"object"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

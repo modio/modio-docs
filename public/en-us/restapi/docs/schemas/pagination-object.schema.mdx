@@ -1,0 +1,33 @@
+---
+id: pagination-object
+title: "Pagination Object"
+description: "Contains pagination data."
+sidebar_label: "Pagination Object"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"per_page":"15","current_page":"/v1/s2s/monetization-teams/{monetization-team-id}/transactions?cursor=eyJjcmVhdGVkX2F0IjoiMjAyNC0xMC0wMiAwMDo1NTozMiIsIl9wb2ludHNUb05leHRJdaAJdsa10","next_page_url":"/v1/s2s/monetization-teams/{monetization-team-id}/transactions?cursor=eyJjcmVhdGVkX2F0IjoiMjAyNC0xMC0wMiAwMDo1NTozMiIsIl9wb2ludHNUb05leHRJdaAJdsa10","prev_page_url":"/v1/s2s/monetization-teams/{monetization-team-id}/transactions?cursor=eyJjcmVhdGVkX2F0IjoiMjAyNC0xMC0wMiAwMDo1NTozMiIsIl9wb2ludHNUb05leHRJdaAJdsa10"}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Pagination Object"}
+>
+</Heading>
+
+
+
+Contains pagination data.
+
+<Schema
+  schema={{"title":"Pagination Object","description":"Contains pagination data.","properties":{"per_page":{"description":"The number of items shown per page.","type":"integer","example":"15"},"current_page":{"description":"The url for the current page.","type":"string","example":"/v1/s2s/monetization-teams/{monetization-team-id}/transactions?cursor=eyJjcmVhdGVkX2F0IjoiMjAyNC0xMC0wMiAwMDo1NTozMiIsIl9wb2ludHNUb05leHRJdaAJdsa10"},"next_page_url":{"description":"The url for the next page if it exists.","type":"integer","example":"/v1/s2s/monetization-teams/{monetization-team-id}/transactions?cursor=eyJjcmVhdGVkX2F0IjoiMjAyNC0xMC0wMiAwMDo1NTozMiIsIl9wb2ludHNUb05leHRJdaAJdsa10"},"prev_page_url":{"description":"The url for the previous page if it exists.","type":"integer","example":"/v1/s2s/monetization-teams/{monetization-team-id}/transactions?cursor=eyJjcmVhdGVkX2F0IjoiMjAyNC0xMC0wMiAwMDo1NTozMiIsIl9wb2ludHNUb05leHRJdaAJdsa10"}},"type":"object"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

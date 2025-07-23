@@ -1,0 +1,76 @@
+---
+id: authenticate-via-openid
+title: "OpenID"
+description: "Request an access token on behalf of an OpenID identity provider. To use this method of authentication, you must configure the OpenID config in your [game's authentication admin page](/web-services/authentication/openid/). A Successful request will return an [Access Token Object](/restapi/docs/schemas/access-token-object)."
+sidebar_label: "OpenID"
+hide_title: true
+hide_table_of_contents: true
+api: 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
+sidebar_class_name: "post api-method"
+info_path: restapi/docs/mod-io-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import ParamsItem from "@theme/ParamsItem";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"OpenID"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/external/openidauth"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Request an access token on behalf of an OpenID identity provider. To use this method of authentication, you must configure the OpenID config in your [game's authentication admin page](/web-services/authentication/openid/). A Successful request will return an [Access Token Object](/restapi/docs/schemas/access-token-object).
+
+     __NOTE:__ The ability to authenticate players using your identity provider is a premium feature. If you are interested in accessing premium features via your games dashboard, please [contact us](mailto:developers@mod.io?subject=OpenID SSO Request).
+
+     __HINT:__ If you want to overlay the mod.io site in-game, we recommend you add `?portal=studio` to the end of the URL you open which will prompt the user to login with your auth provider if they are on your games page. See [Web Overlay Authentication](/restapi/docs/web-overlay-authentication) for details.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/x-www-form-urlencoded":{"schema":{"title":"OpenID Authentication Request","required":["id_token"],"properties":{"id_token":{"description":"The ID token issued by the configured identity provider.","type":"string","example":"eyJhbXciOiJIUzI1Lizs...."},"terms_agreed":{"description":"This MUST be set to `false` unless you have collected the [users agreement](/restapi/docs/terms) prior to calling this endpoint in which case it can be set to `true` and will be recorded.<br /><br />__NOTE:__ If this is set to `false` and the user has not agreed to the latest mod.io Terms of Use and Privacy Policy, an error `403 Forbidden (error_ref 11074)` will be returned and you will need to collect the [users agreement](/restapi/docs/terms) and retry with this value set to `true` to authenticate the user.","type":"boolean","example":true},"email":{"description":"The users email address (optional but recommended to help users recover lost accounts). If supplied, and the respective user does not have an email registered for their account we will send a confirmation email to confirm they have ownership of the specified email.<br /><br />__NOTE__: If the user already has an email on record with us, this parameter will be ignored. This parameter should also be urlencoded before the request is sent.","type":"string","example":"example@mod.io"},"date_expires":{"description":"Unix timestamp of date in which the returned token will expire. Value cannot be higher than the default value which is a week (unix timestamp + 604800 seconds). Using a token after it's expiry time has elapsed will result in a `401 Unauthorized` response.","type":"integer","example":1729236480},"monetization_account":{"description":"Automatically setup this user for monetization.","type":"boolean","example":false}},"type":"object"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Request","content":{"application/json":{"schema":{"title":"Access Token Object","description":"Contains user access token.","properties":{"code":{"description":"HTTP Response Code.","type":"integer","format":"int32","example":200},"access_token":{"description":"The user's access token.","type":"string","example":"eyJ0eXAiOiXKV1QibCJhbLciOiJeiUzI1....."},"date_expires":{"description":"Unix timestamp of the date this token will expire. Default is one year from issue date. See [Access Token Lifetime & Expiry](/restapi/docs/making-requests).","type":"integer","format":"int32","example":1570673249}},"type":"object"}}}},"401":{"description":"The game associated with the supplied api_key is currently not available.","content":{"application/json":{"schema":{"title":"Error Object","properties":{"error":{"description":"Contains error data.","properties":{"code":{"description":"The [HTTP code](/restapi/docs/response-codes).","type":"integer","format":"int32","default":403},"error_ref":{"description":"The mod.io error code.","type":"integer","default":10000},"message":{"description":"The server response to your request. Responses will vary depending on the endpoint, but the object structure will persist.","type":"string","default":"You do not have the required permissions to access this resource."},"errors":{"description":"Optional Validation errors object. This field is only supplied if the response is a validation error `422 Unprocessible Entity`. See [errors documentation](/restapi/docs/errors) for more information.","type":"object"}},"type":"object"}},"type":"object"}}},"x-errorrefs":{"11032":"mod.io was unable to verify the credentials against the external service provider.","11091":"The audience configured in the OpenID config does not match the audience in the ID token.","14001":"The game associated with the supplied api_key is currently not available."}},"403":{"description":"The api_key supplied in the request must be associated with a game.","content":{"application/json":{"schema":{"title":"Error Object","properties":{"error":{"description":"Contains error data.","properties":{"code":{"description":"The [HTTP code](/restapi/docs/response-codes).","type":"integer","format":"int32","default":403},"error_ref":{"description":"The mod.io error code.","type":"integer","default":10000},"message":{"description":"The server response to your request. Responses will vary depending on the endpoint, but the object structure will persist.","type":"string","default":"You do not have the required permissions to access this resource."},"errors":{"description":"Optional Validation errors object. This field is only supplied if the response is a validation error `422 Unprocessible Entity`. See [errors documentation](/restapi/docs/errors) for more information.","type":"object"}},"type":"object"}},"type":"object"}}},"x-errorrefs":{"11016":"The api_key supplied in the request must be associated with a game.","11017":"The api_key supplied in the request is for test environment purposes only and cannot be used for this functionality.","11074":"The user has not agreed to the mod.io Terms of Use. Please see terms_agreed parameter description and the [Terms](/restapi/docs/terms) endpoint for more information.","11086":"You must configure your OpenID config for your game in your game authentication settings before being able to authenticate users.","17053":"The user account associated with this email is locked. Please contact support for assistance."}}}}
+>
+  
+</StatusCodes>
+
+
+      

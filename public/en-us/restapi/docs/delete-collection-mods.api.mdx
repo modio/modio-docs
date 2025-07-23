@@ -1,0 +1,72 @@
+---
+id: delete-collection-mods
+title: "Delete Collection Mods"
+description: "Delete mods from a specific collection. Successful request will return `204 No Content`."
+sidebar_label: "Delete Collection Mods"
+hide_title: true
+hide_table_of_contents: true
+api: eJztV01v2zgQ/SsDnlpAsdw0J93aJosN9qNFmuxiYRgJLY6s6UqkSlJ2XUP/fTGkZDm2s9sW21tvEsUZvnkzbzTcCi+XTmQz8cZUFeaejHZingiFLrfU8LvIxCVW6BFqoxwU1tQgwTWYU0E55DvDCbxv8xydK9oKLH5s0XlYU8UvvrUaHs6nF/C7gTdGe9T+YSISYRq0kq2vlciECgfdjz7v+UyRiEZaWaNHy2C3QssaRSaWssYzUiIRxDAb6UtxiP22RLi+BFOALxHYAryBdUl5GVbGs2CBldFLx7AYPllUIvO2xUS4vMRaimwr/Kbho0l7XKIVXZfs4Iyuvg7UHoTAbgQX2A70LRAiMeoroc3jbnT+tVEb3pJH6vlRNk1FeeA+/XS2Xq/PCmPrs9ZWqHOj+IDtvnPyFY61MNYL/MZAb+I5j/DNRG3UPalQUY3lVHtCx96GD9n2gJlXGqS1csPc1EbB9aXjfMX4Ofw+yLCJOfZYn3AzEiyDm1MuBp4SwYFLH5denotE1KSpbmuRvei6bmdgFh8w96ILaxZdY7SL4ZxPL44x7KmhZ2fC1c+pgJugCE5ol4iL6fTY+rVUo9m1XsmKFIwygMaaFalYEk9k9YNjT6eSeGWtsfA2xnOYG+SPx4BYtZK0g/AdlPRycmTLhXM6G7Ofb2/fAX+fP0stOi8bSpXJXTowecYf3fMvy5DCQraVF9nF9GWXRMz3FovTh9dGTcj0yPmYk4fsfL6YTqfTLhE1OieXTwTk0K7QwoCeS2xjWjt0vgncDBUSVbySdgMKG9SK9BKMDtpHrRpD2iewaH1YiVUGzts2963FaN2gdeT8Hm7nLenlPmzxl2lBGdDGQylXGNwNcmQPNTnHHZ6xylCc4EtyHINpbY6hGgNJJyT1NjzICv7gUgwVFgl1PeQJ3LKzgrBSQA6MrjbgWi5IVEBFD6enixxIWB24goeL83O40401jI4WFcKV9uQ3DxN4jwiz/kRl8rZG7YPtYUHFPc+hMBZqYxFIx/rhn5Q4lvOXrHRBpy+PafnJ2AUphZrDR5CtL1F7liAqaB1aUAbdmJMxDWNT2vuzhnzs/VN/qPuHun+o+/uru0uEw7y15DdhwjQs5HOeYdaWPIo5D1M1+tKMc2qYS30pMpHyXOnSbT+QdumoYJduH82FXdqPtMNx71m/UV+yofu/cbM3y8mGfkGec/oRc9jRD5cfW7QbTusAd2fYLySiqMw6OKeaewfFPtL60lj6HEi7s5XIROl947I0jWJKK7MkzShz00RwFiWHfoNSheQnoM2uthzkkgdo1iIVFMeSyFwm3kgNUqkEUJEH7i6x6+2MJ0MKOJX7naxX9qt310cj9J9Y5SYO80FXRUE5yQpGkwmwYoK+CtIKcIV240uW58a0oBEVyIVpPeRGa06QXsKafDn4WJF8pGIXbghrDm3Fgg04XjD9jXG+lqEd94k6PSYfRrE3kH/PS1ZfEx4/+bSpJGnG3HLat30Fz8JdivFl46Vqr4j5w+H1JtTxPBGlcZ49bLcL6fDOVl3Hy7E2s9k8EStpSS44o7OtUOT4WYmskJXDf2Hk2U3f3Z7Dt93iTsY9KEuzilayavlNJCIIb3el5Gvd/4D0665234D3cVK6eZeIEqVCG7iOe/pSOLtlT6OP/74AMgnRxas8x8Y/YRwmkUf98fLq16vbK5GIRX/vrMPkIPZ8J/sv2YyBc1c61cJ2vXh7mgzuTBCbzUBLaFsB/0mLJ5pdtOXTuCc+ab3rpLuisVL7+7C3m3dd9w8FRwm9
+sidebar_class_name: "delete api-method"
+info_path: restapi/docs/mod-io-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import ParamsItem from "@theme/ParamsItem";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Delete Collection Mods"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"delete"}
+  path={"/games/{game-id}/collections/{collection-id}/mods"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Delete mods from a specific collection. Successful request will return `204 No Content`.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"game-id","in":"path","description":"The ID of the game to which the collection belongs.","required":true,"schema":{"type":"integer"}},{"name":"collection-id","in":"path","description":"The ID of the collection from which mods will be deleted.","required":true,"schema":{"type":"integer"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/x-www-form-urlencoded":{"schema":{"title":"Delete Collection Mods Request","required":["mod_ids"],"properties":{"mod_ids":{"description":"An array of mod IDs to delete.","type":"array","items":{"description":"The ID of a mod to delete.","type":"integer","format":"int32","minimum":1}}},"type":"object"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"204":{"description":"Successful Request. No Body Returned."},"400":{"description":"Bad Request. Invalid parameters provided.","content":{"application/json":{"schema":{"title":"Error Object","properties":{"error":{"description":"Contains error data.","properties":{"code":{"description":"The [HTTP code](/restapi/docs/response-codes).","type":"integer","format":"int32","default":403},"error_ref":{"description":"The mod.io error code.","type":"integer","default":10000},"message":{"description":"The server response to your request. Responses will vary depending on the endpoint, but the object structure will persist.","type":"string","default":"You do not have the required permissions to access this resource."},"errors":{"description":"Optional Validation errors object. This field is only supplied if the response is a validation error `422 Unprocessible Entity`. See [errors documentation](/restapi/docs/errors) for more information.","type":"object"}},"type":"object"}},"type":"object"}}}},"403":{"description":"Forbidden. The authenticated user does not have permission to delete mods from this collection.","content":{"application/json":{"schema":{"title":"Error Object","properties":{"error":{"description":"Contains error data.","properties":{"code":{"description":"The [HTTP code](/restapi/docs/response-codes).","type":"integer","format":"int32","default":403},"error_ref":{"description":"The mod.io error code.","type":"integer","default":10000},"message":{"description":"The server response to your request. Responses will vary depending on the endpoint, but the object structure will persist.","type":"string","default":"You do not have the required permissions to access this resource."},"errors":{"description":"Optional Validation errors object. This field is only supplied if the response is a validation error `422 Unprocessible Entity`. See [errors documentation](/restapi/docs/errors) for more information.","type":"object"}},"type":"object"}},"type":"object"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

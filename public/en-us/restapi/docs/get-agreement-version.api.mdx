@@ -1,0 +1,72 @@
+---
+id: get-agreement-version
+title: "Get Agreement Version"
+description: "Get the specified agreement version. Successful request will return an [Agreement Version Object](/restapi/docs/schemas/agreement-version-object)."
+sidebar_label: "Get Agreement Version"
+hide_title: true
+hide_table_of_contents: true
+api: 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
+sidebar_class_name: "get api-method"
+info_path: restapi/docs/mod-io-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import ParamsItem from "@theme/ParamsItem";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get Agreement Version"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/agreements/versions/{agreement-version-id}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Get the specified agreement version. Successful request will return an [Agreement Version Object](/restapi/docs/schemas/agreement-version-object).
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"agreement-version-id","in":"path","description":"Agreement Version id","required":true,"schema":{"type":"integer"},"example":1}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Request","content":{"application/json":{"schema":{"title":"Agreement Version Object","description":"Contains Agreement data.","properties":{"id":{"description":"Unique id of the agreement.","type":"integer","format":"int32","example":1},"is_active":{"description":"Is the agreement currently active? (This can also be determined if date_live <= the current time).","type":"boolean","example":true},"is_latest":{"description":"Is this the latest version of the agreement?","type":"boolean","example":true},"type":{"title":"Agreement Type Enum","type":"integer","enum":[1,2,3,4,5,6,7,8],"x-enumDescriptions":{"TOU (1)":"Terms","PRIVACY (2)":"Privacy","GAME (3)":"Game","API (4)":"API","MONETIZATION (5)":"Monetization","AUP (6)":"AUP","COOKIES (7)":"Cookies","REFUND (8)":"Refund"}},"user":{"title":"User Object","description":"Contains user data.","properties":{"id":{"description":"Unique id of the user.","type":"integer","format":"int32","example":1},"name_id":{"description":"Path for the user on mod.io. For example: https://mod.io/u/__name-id-here__","type":"string","example":"xant"},"username":{"description":"Display name of the user.","type":"string","example":"XanT"},"display_name_portal":{"description":"The users' display name for the targeted portal. Value will be `null` if no valid `X-Modio-Portal` portal header value is provided. For more information see [Targeting a Portal](/restapi/docs/targeting-a-portal).","type":"string","example":null},"date_online":{"description":"Unix timestamp of date the user was last online.","type":"integer","format":"int32","example":1509922961},"date_joined":{"description":"Unix timestamp of date the user joined.","type":"integer","format":"int32","example":1509922961},"avatar":{"title":"Avatar Object","description":"Contains avatar data.","properties":{"filename":{"description":"Avatar filename including extension.","type":"string","example":"avatar.png"},"original":{"description":"URL to the full-sized avatar.","type":"string","example":"https://assets.modcdn.io/images/placeholder/avatar.png"},"thumb_50x50":{"description":"URL to the small avatar thumbnail.","type":"string","example":"https://assets.modcdn.io/images/placeholder/avatar_50x50.png"},"thumb_100x100":{"description":"URL to the medium avatar thumbnail.","type":"string","example":"https://assets.modcdn.io/images/placeholder/avatar_100x100.png"}},"type":"object"},"timezone":{"description":"Deprecated: No longer used and will be removed in subsequent API version.","type":"string","example":""},"language":{"description":"Deprecated: No longer used and will be removed in subsequent API version. To [localize the API response](/restapi/docs/localization) we recommend you set the `Accept-Language` header.","type":"string","example":""},"profile_url":{"description":"URL to the users profile.","type":"string","example":"https://mod.io/u/xant"}},"type":"object"},"date_added":{"description":"Unix timestamp of the date the agreement was added.","type":"integer","format":"int32","example":1509922961},"date_updated":{"description":"Unix timestamp of the date the agreement was updated.","type":"integer","format":"int32","example":1509922961},"date_live":{"description":"Unix timestamp of the date the agreement was set live.","type":"integer","format":"int32","example":1509922961},"name":{"description":"Name of the agreement.","type":"string","example":"Terms of Use"},"changelog":{"description":"Changelog for version of this agreement.","type":"string","example":""},"description":{"description":"The contents of the agreement.","type":"string","example":"Privacy Agreement - 20/11/2020....."},"adjacent_versions":{"description":"The previous and next versions of the agreement.","type":"object","example":"'previous': { 'id': 13, 'date_live': 1592381157 }, 'next': { 'id': 31, 'date_live': 1722400117 }"}},"type":"object"}}}},"403":{"description":"Only administrators can view agreement templates.","content":{"application/json":{"schema":{"title":"Error Object","properties":{"error":{"description":"Contains error data.","properties":{"code":{"description":"The [HTTP code](/restapi/docs/response-codes).","type":"integer","format":"int32","default":403},"error_ref":{"description":"The mod.io error code.","type":"integer","default":10000},"message":{"description":"The server response to your request. Responses will vary depending on the endpoint, but the object structure will persist.","type":"string","default":"You do not have the required permissions to access this resource."},"errors":{"description":"Optional Validation errors object. This field is only supplied if the response is a validation error `422 Unprocessible Entity`. See [errors documentation](/restapi/docs/errors) for more information.","type":"object"}},"type":"object"}},"type":"object"}}},"x-errorrefs":{"14019":"Only administrators can view agreement templates."}},"404":{"description":"Agreement could not be found.","content":{"application/json":{"schema":{"title":"Error Object","properties":{"error":{"description":"Contains error data.","properties":{"code":{"description":"The [HTTP code](/restapi/docs/response-codes).","type":"integer","format":"int32","default":403},"error_ref":{"description":"The mod.io error code.","type":"integer","default":10000},"message":{"description":"The server response to your request. Responses will vary depending on the endpoint, but the object structure will persist.","type":"string","default":"You do not have the required permissions to access this resource."},"errors":{"description":"Optional Validation errors object. This field is only supplied if the response is a validation error `422 Unprocessible Entity`. See [errors documentation](/restapi/docs/errors) for more information.","type":"object"}},"type":"object"}},"type":"object"}}},"x-errorrefs":{"14000":"Agreement could not be found."}}}}
+>
+  
+</StatusCodes>
+
+
+      

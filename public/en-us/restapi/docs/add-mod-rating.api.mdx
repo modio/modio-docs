@@ -1,0 +1,74 @@
+---
+id: add-mod-rating
+title: "Add Mod Rating"
+description: "Submit a positive or negative rating for a mod. Each user can supply only one rating for a mod, subsequent ratings will override the old value. Successful request will return [Message Object](/restapi/docs/schemas/message-object)."
+sidebar_label: "Add Mod Rating"
+hide_title: true
+hide_table_of_contents: true
+api: eJztV21v2zYQ/isHflkLyK9NgUHfuiLYiqFLkaQbBjdwafEcsZNIlTzZ0Qz99+FISXZqpwmCYZ/2JTEo3ttzd88dd4LkrRfpQlxK0ubWi5tEKPSZ0xVpa0QqrupVqQkkVNZr0hsE68DgrQy/XRCDtXUgobRqDOcyy6H26CCTBnxdVUUD1oQ/x/cT8PXK49caDXUfPWx1UYDdoHNaIVCOYAsFG1nUOIarOsvQ+3VdgGM5T/G+Q6qdgcV79F7eIlysvmBGNy8mDj3JSk+UzfzEZzmW0k/KeGtkw62X40/mkwEAWC5/u7g+T5dL+NPWIQLrFDp21cOqYWe06xxNQBoFG43be8egTfB58d6qx7ywavBAJMJWyCqseadEKqRSy9KqZdQqElFJJ0skdJywnTCyRJGKW1niSCuRCM3pqiTl4tsc/ixLhHCHIdMOlUjJ1ZiI6IlId4KaitVpQ3iLTrSJwDtZVgWKdNYmgzl2+RFrHPfzjc3bmyiJnn6yquHrmTWEhvinrKpCZwGlyd1ou92O1taVo9oVaDKr2Nju0JAmVireKAWxxOEy6mZAHSNOGj1f7XA+9u7AOTEL0VYOM0l9YG2b9CIxmaJt+cyhr6zxUft8OuN/95F66zCoSR6K8Ivne48GFO0cRcR4nIyHIZMUj17NDwOcT2dtIrruOJD15GIR7qHgBsnlBsEPHVk03M6lJkIF8rDZuSF8hZlea1SBKMRDsJ1Np8dIXecIsqYcDekAfaSYXHqQhUOpvmNZ+2jwGSifO2dd18RH8CJ/PJFUa0hq4yF8ByVJjh9MzXGUi1+urz8Af/+WNfp6GvFHHxjj8cwqXMu6IJGeTV9xm7FPS4fr08YZJ207z9nMSSODztl0Op3er5djnR7dBh303gNZaGztevYeD/XbEf9GugYUVmgU59BGNkWjKqsNJbCqKc6EkBXw5OqMaodRukLntacDv4fSHdwOpassGEuxglldT1asodTea2s8+ypDcccycuht7TIcix5KfxzzRfghC/hdFlqFCouA+s7lMVyzsrXGQoH2cTiGQcm9odedOx1c2oPk2XdPFXw+m8/ho6mcZe/0qkA4N6Sp+TyGK0RYdBaVzeoSDQXZbwsq3nkZ2qS0DkGbWD/amgMAh+58ykmbiLtRUOxwHdCZvZ7Of/zXWnj2enr26mFt2gO5hgXJgsMNOtrrolwSKIve/ECAd6FMgsces9ppasJctax2zjvR1mlCccMD6W6UWePrkrv3CTOIBSpnVZ0dCQSyYR4lNKHIgtG/sBHpoZVEhH3nSdZ4PPcKBqunFQTrHFCJlFteMyobZyFP8lRMeJ3wk123VbS8ovjJLk79dtJtaGIP2RVzZuQ0WellcGOYGrLSv2Ijkn556G9028PXGl3DrdRDPgh2B4lYF3YblOuSg9CRu2vKrdN/h5A+ukKkIieqfDqZRAKbFPZWM8o+s1U33VFytJcoVWi4BIwd+tmHTW8V+C9MKK60mP1UvJUGpFIJoNLEy6/CAgn3wqGIuIy4fQ6nR8embz68O9qR/sAis2Ugw8Bl67XOtCxgLzIOG2jgtLU2CriWG8q5jhtbg0HukpWtCTJrDGahwrea8l7HRst7zOlhhYXdcmgbJsngx4zh5xIoZRiBXaJ4u+A17rLfPe95f7CQ/f88+O+eB11vEN7RpCqkNpy7mst/17XvIrwGuD3T/bOAfeOTYXN3+6dezs2fLsRut5IeP7qibfk4Nma6uGEScVquuJwXO6G0599KpGtZePxOWby47MbpS9g/Pk4G0FOFaQ4oSyQdofVhMMU9y/rwGHmG8Q6x9qZNRI5SoTvg6rfR2uiaVTyPrd9kGVb0ZKb+cHF1LRKx6h5FZVghxb2pc/gMWrDbTJWneHUYcrvTGDBdQmTAHo3ApcH7kxIPMHCUZWtM1A9KD/Q+JN5JQ8twt71p2/YfzEnLTQ==
+sidebar_class_name: "post api-method"
+info_path: restapi/docs/mod-io-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import ParamsItem from "@theme/ParamsItem";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Add Mod Rating"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/games/{game-id}/mods/{mod-id}/ratings"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Submit a positive or negative rating for a mod. Each user can supply only one rating for a mod, subsequent ratings will override the old value. Successful request will return [Message Object](/restapi/docs/schemas/message-object).
+
+    __NOTE:__ You can order mods by their rating, and view their rating in the [Mod Object](/restapi/docs/schemas/mod-object).
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"game-id","in":"path","description":"Game id","required":true,"schema":{"type":"integer"},"example":1},{"name":"mod-id","in":"path","description":"Mod id","required":true,"schema":{"type":"integer"},"example":2}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/x-www-form-urlencoded":{"schema":{"title":"Add Rating Request","properties":{"rating":{"type":"integer","example":"1","deprecated":true}},"type":"object"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"201":{"description":"Created","content":{"application/json":{"schema":{"title":"Add Rating Response","properties":{"code":{"type":"integer","format":"int32","example":201},"message":{"type":"string","example":"You have successfully submitted a rating for the specified mod."}},"type":"object"}}}},"400":{"description":"The authenticated user has already submitted a rating for this mod.","content":{"application/json":{"schema":{"title":"Error Object","properties":{"error":{"description":"Contains error data.","properties":{"code":{"description":"The [HTTP code](/restapi/docs/response-codes).","type":"integer","format":"int32","default":403},"error_ref":{"description":"The mod.io error code.","type":"integer","default":10000},"message":{"description":"The server response to your request. Responses will vary depending on the endpoint, but the object structure will persist.","type":"string","default":"You do not have the required permissions to access this resource."},"errors":{"description":"Optional Validation errors object. This field is only supplied if the response is a validation error `422 Unprocessible Entity`. See [errors documentation](/restapi/docs/errors) for more information.","type":"object"}},"type":"object"}},"type":"object"}}},"x-errorrefs":{"15028":"The authenticated user has already submitted a rating for this mod.","15043":"The authenticated user is trying to revert a rating that doesn't exist."}}}}
+>
+  
+</StatusCodes>
+
+
+      

@@ -1,0 +1,33 @@
+---
+id: game-stats-object
+title: "Game Stats Object"
+description: "Contains stats data."
+sidebar_label: "Game Stats Object"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"game_id":2,"mods_count_total":13,"mods_downloads_today":204,"mods_downloads_total":27492,"mods_downloads_daily_average":1230,"mods_subscribers_total":16394,"date_expires":1492564103}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Game Stats Object"}
+>
+</Heading>
+
+
+
+Contains stats data.
+
+<Schema
+  schema={{"title":"Game Stats Object","description":"Contains stats data.","properties":{"game_id":{"description":"Unique game id.","type":"integer","format":"int32","example":2},"mods_count_total":{"description":"Available mod count for the game.","type":"integer","format":"int32","example":13},"mods_downloads_today":{"description":"Last 24hours of mod downloads for the game.","type":"integer","format":"int32","example":204},"mods_downloads_total":{"description":"Total mods downloaded for the game.","type":"integer","format":"int32","example":27492},"mods_downloads_daily_average":{"description":"Average mods downloaded on a daily basis.","type":"integer","format":"int32","example":1230},"mods_subscribers_total":{"description":"Total users who have subscribed to the mods for the game.","type":"integer","format":"int32","example":16394},"date_expires":{"description":"Unix timestamp until this game's statistics are considered stale.","type":"integer","format":"int32","example":1492564103}},"type":"object"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

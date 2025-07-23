@@ -1,0 +1,72 @@
+---
+id: get-game-stats
+title: "Get Game Stats"
+description: "Get game stats for the corresponding game. Successful request will return a single [Game Stats Object](/restapi/docs/schemas/game-stats-object)."
+sidebar_label: "Get Game Stats"
+hide_title: true
+hide_table_of_contents: true
+api: eJzNVk1vIzcM/SuCLt0FxnbipFtkbsGiCBYt0CLZoCgCw5BHtIdbjTSRKH/UmP++oOSxnbXbbpBLfbDHI5LvkRIftZWkFkGWT/KBFAU5KaSGUHlsCZ2VpbwDEgvVgAi8LubOC6pBVM57CK2zGu0iGQzFQ6wqCGEejfDwHCGQWKHhPxS9FUoEtAsD4umO4yU88dvsC1Q0eTfyEEi1ONKuCqNQ1dCoMOK4gwQ8cMnw/VAW0rXgFdP7pGUpF0BTtpsmO1nIVnnVAIHntLbSqgbYjEOhloVETqtVVMuTXJlXsmH+6EHLknyEQmZCstxK2rQcDi3BArzsCglr1bQGZHnZTdiTqxIgsPH44oJ/XqIclek+l0kWsnKWwBJbq7Y1WKUER18Cu2yP8ZEYS57U8CSbj86SQht2O6cVKa5e67l+hJlhqhzqU5aPFp8j5K1HzY7fZF7IufONovzqaiyPKjHuCtk4HaaVi5am5EiZU4jbpUKjZgZE47RIpvvzlU7U60Avr3pU7VbWOKXDlJxWm1PkX1UgMb6uXfRBuHnC3zu9hcP44vocibPpf+bXDB322KDfBP7T9c34FF4rNJupWoJXCzi3C2nhhIjjjk2+YqYChtfuxvjqoucS4owRZ+D/oxgxgA9iVTtRqyWIvZ8W5FJVEsm3nJEPVze8Q1oRTGHdos9tcHL214KwYUlqWhEtoRFUY0iQP+SOwkBYBaE8i6ENqMGD5hXzalLXN+MfP1xfXlx13d4x653s+FPIAFX0SJukaKrF6V/Az5Ou2EqnItVjlnAPSssJq9B6wJxiw9m9EJT1YLVaDZjLIHoDtnIaWPDWg9Y7HasTh6RATJbABnQ2i2qCP0Yp5FKZCN+FxqT7AHvU8wESOifUANVuJ/dJ46mWpUwDIoy2O3HvRv0M6Ov1wLqZt3hftb2GqxZ/gY0s+hHRW+xGxHMEv2GB7wu8d9y9KOTcuFUKjg1zxqzfkWrn8e+UwaM3spQ1URvK0ahxeohuZNwCuaihcm0ml3aulPeguPHMphDWCQ/BRV9BEJWyYpZOP84RkhqvPBJz+aisUFoXAjSScF5oMEBwcB72Zwjt3B1PkExG3P7+6WR0/AGmcg30Xefmc6wwi9XOZSj+dDGP9zlaLWAJfkM1XwY2LgoLoIWauUjcHBYq4pUVUt3HWKJKscHq1qGlIGZg3IpTW4IPmccll791gRqVxuBuo/hOcph/37LfHobp//H2sjtDBGsatUah5RyjT5qYj/VTmsqcV3m4tYT+ela7QGyz3c5UgEdvuo5f59NaPk24kTzyWE2dqjHws5blXJkA/1Krd/e7S897cbgInWXb94/dHLWtLHZN3XPuJl0ha1Aa/JFm3FYVtPTd7X7382dZpJZ62bi5T3cPHP0sp0NHZ3D+ZvU5a7zdZkHour19XvpHj1zz3phrM+m67itU+uba
+sidebar_class_name: "get api-method"
+info_path: restapi/docs/mod-io-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import ParamsItem from "@theme/ParamsItem";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get Game Stats"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/games/{game-id}/stats"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Get game stats for the corresponding game. Successful request will return a single [Game Stats Object](/restapi/docs/schemas/game-stats-object).
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"game-id","in":"path","description":"Game id","required":true,"schema":{"type":"integer"},"example":1}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Request","content":{"application/json":{"schema":{"title":"Game Stats Object","description":"Contains stats data.","properties":{"game_id":{"description":"Unique game id.","type":"integer","format":"int32","example":2},"mods_count_total":{"description":"Available mod count for the game.","type":"integer","format":"int32","example":13},"mods_downloads_today":{"description":"Last 24hours of mod downloads for the game.","type":"integer","format":"int32","example":204},"mods_downloads_total":{"description":"Total mods downloaded for the game.","type":"integer","format":"int32","example":27492},"mods_downloads_daily_average":{"description":"Average mods downloaded on a daily basis.","type":"integer","format":"int32","example":1230},"mods_subscribers_total":{"description":"Total users who have subscribed to the mods for the game.","type":"integer","format":"int32","example":16394},"date_expires":{"description":"Unix timestamp until this game's statistics are considered stale.","type":"integer","format":"int32","example":1492564103}},"type":"object"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

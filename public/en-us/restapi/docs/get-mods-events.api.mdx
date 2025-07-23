@@ -1,0 +1,74 @@
+---
+id: get-mods-events
+title: "Get Mods Events"
+description: "Get all mods events for the corresponding game sorted by latest event first. Successful request will return an array of [Event Objects](/restapi/docs/get-mod-events-2)."
+sidebar_label: "Get Mods Events"
+hide_title: true
+hide_table_of_contents: true
+api: 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
+sidebar_class_name: "get api-method"
+info_path: restapi/docs/mod-io-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import ParamsItem from "@theme/ParamsItem";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get Mods Events"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/games/{game-id}/mods/events"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Get all mods events for the corresponding game sorted by latest event first. Successful request will return an array of [Event Objects](/restapi/docs/get-mod-events-2).
+ *
+* __NOTE:__ We recommend you poll this endpoint to keep mods up-to-date. If polling this endpoint for updates you should store the `id` or `date_added` of the latest event, and on subsequent requests use that information [in the filter](/restapi/docs/restapi-getting-started#filtering), to return only newer events to process.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"game-id","in":"path","description":"Game id","required":true,"schema":{"type":"integer"},"example":1},{"name":"id","in":"query","description":"Unique id of the event object.","schema":{"type":"integer"}},{"name":"mod_id","in":"query","description":"Unique id of the parent mod.","schema":{"type":"integer"}},{"name":"user_id","in":"query","description":"Unique id of the user who performed the action.","schema":{"type":"integer"}},{"name":"date_added","in":"query","description":"Unix timestamp of date mod event occurred.","schema":{"type":"integer"}},{"name":"event_type","in":"query","description":"Type of change that occurred.","schema":{"title":"Mod Event Enum","type":"string","x-enumDescriptions":{"MODFILE_CHANGED":"Live file changed","MOD_AVAILABLE":"Mod is marked as accepted and public","MOD_UNAVAILABLE":"Mod is marked as not accepted, deleted or hidden","MOD_EDITED":"The mod was updated (triggered when any column value changes)","MOD_DELETED":"The mod has been permanently erased. This is an orphan record, looking up this id will return no data","MOD_TEAM_CHANGED":"A user has joined or left the mod team","MOD_COMMENT_ADDED":"A comment has been published for a mod","MOD_COMMENT_DELETED":"A comment has been deleted from a mod"}}},{"name":"latest","in":"query","description":"_Default value is true_. Returns only the latest unique events, which is useful for checking if the live `modfile` has changed.","schema":{"type":"boolean"}},{"name":"subscribed","in":"query","description":"_Default value is false_. Returns only events connected to mods the __authenticated user__ is subscribed to, which is useful for keeping the users mods up-to-date.","schema":{"type":"boolean"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Request","content":{"application/json":{"schema":{"title":"Get Mod Events","properties":{"data":{"description":"Array containing mod event objects.","type":"array","items":{"title":"Mod Event Object","properties":{"id":{"description":"Unique id of the event object.","type":"integer","format":"int32","example":13},"mod_id":{"description":"Unique id of the parent mod.","type":"integer","format":"int32","example":13},"user_id":{"description":"Unique id of the user who performed the action.","type":"integer","format":"int32","example":13},"date_added":{"description":"Unix timestamp of date the event occurred.","type":"integer","format":"int32","example":1499846132},"event_type":{"title":"Mod Event Enum","type":"string","x-enumDescriptions":{"MODFILE_CHANGED":"Live file changed","MOD_AVAILABLE":"Mod is marked as accepted and public","MOD_UNAVAILABLE":"Mod is marked as not accepted, deleted or hidden","MOD_EDITED":"The mod was updated (triggered when any column value changes)","MOD_DELETED":"The mod has been permanently erased. This is an orphan record, looking up this id will return no data","MOD_TEAM_CHANGED":"A user has joined or left the mod team","MOD_COMMENT_ADDED":"A comment has been published for a mod","MOD_COMMENT_DELETED":"A comment has been deleted from a mod"}}},"type":"object"}},"result_count":{"description":"Number of results returned in this request.","type":"integer","format":"int32","example":70},"result_offset":{"description":"Number of results skipped over. Defaults to 0 unless overridden by `_offset` filter.","type":"integer","format":"int32","example":0},"result_limit":{"description":"Maximum number of results returned in the request. Defaults to 100 (max) unless overridden by `_limit` filter.","type":"integer","format":"int32","example":100},"result_total":{"description":"Total number of results found.","type":"integer","format":"int32","example":70}},"type":"object"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

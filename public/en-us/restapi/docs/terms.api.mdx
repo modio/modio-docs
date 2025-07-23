@@ -1,0 +1,81 @@
+---
+id: terms
+title: "Terms"
+description: "The purpose of this endpoint is to provide the text, links and buttons you can use to get a users agreement and consent prior to authenticating them in-game (your dialog should look similar to the example below). This text will be localized based on the `Accept-Language` header, into one of our [supported languages](/restapi/docs/localization) (note: our full Terms of Use and Privacy Policy are currently in English-only). If you are authenticating using platform SSO, you must call this endpoint with the `X-Modio-Portal` [header set](/restapi/docs/targeting-a-portal), so the text is localized to match the platforms requirements. A successful response will return a [Terms Object](/restapi/docs/schemas/terms-object)."
+sidebar_label: "Terms"
+hide_title: true
+hide_table_of_contents: true
+api: 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
+sidebar_class_name: "get api-method"
+info_path: restapi/docs/mod-io-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import ParamsItem from "@theme/ParamsItem";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Terms"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/authenticate/terms"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+The purpose of this endpoint is to provide the text, links and buttons you can use to get a users agreement and consent prior to authenticating them in-game (your dialog should look similar to the example below). This text will be localized based on the `Accept-Language` header, into one of our [supported languages](/restapi/docs/localization) (note: our full Terms of Use and Privacy Policy are currently in English-only). If you are authenticating using platform SSO, you must call this endpoint with the `X-Modio-Portal` [header set](/restapi/docs/targeting-a-portal), so the text is localized to match the platforms requirements. A successful response will return a [Terms Object](/restapi/docs/schemas/terms-object).
+
+     __Example Dialog:__
+
+
+
+     __IMPORTANT:__ It is a requirement of the [Game Terms](https://mod.io/gameterms) with mod.io, and the platforms mod.io is used on, to ensure the user provides consent and has agreed to the latest mod.io [Terms of Use](https://mod.io/terms/widget) and [Privacy Policy](https://mod.io/privacy/widget). The users agreement must be collected prior to using a 3rd party authentication flow (including but not limited to Steam, PSN, Nintendo and Xbox Live). You only need to collect the users agreement once, and also each time these policies are updated.
+
+     To make this easy to manage, all of the 3rd party authentication flows have a `terms_agreed` field which should be set to `false` by default. If the user has agreed to the latest policies, their authentication will proceed as normal, however if their agreement is required and `terms_agreed` is set to `false` an error `403 Forbidden (error_ref 11074)` will be returned. When you receive this error, you must collect the users agreement before resubmitting the authentication flow with `terms_agreed` set to `true`, which will be recorded.
+
+     __NOTE:__ You must make sure the Terms of Use and Privacy Policy are correctly linked, or displayed inline using the [agreements endpoints](/restapi/docs/agreements) to get the latest versions.
+
+     If you wish to display the agreements in a web browser overlay, we recommend adding __/widget__ and __?no_links=true__ to the end of the agreement URLs, to remove the menus and external links, for example:
+
+     - [https://mod.io/terms`/widget?no_links=true`](https://mod.io/terms/widget?no_links=true)<br />
+     - [https://mod.io/privacy`/widget?no_links=true`](https://mod.io/privacy/widget?no_links=true)
+
+     __NOTE:__ You can use your own text and process, but be aware that you are responsible for ensuring that the users agreement is properly collected and reported. Failure to do so correctly is a breach of the [mod.io Game Terms](https://mod.io/gameterms/widget). If your game does not authenticate users or only uses the email authentication flow, you do not need to implement this dialog, but you should link to the mod.io Terms of Use and Privacy Policy in your Privacy Policy/EULA.
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Request","content":{"application/json":{"schema":{"title":"Terms Object","description":"Contains fields required to format User Terms","properties":{"plaintext":{"description":"Terms text in plaintext formatting.","type":"string"},"html":{"description":"Terms text in HTML formatting.","type":"string"},"buttons":{"description":"Buttons to embed into the Terms.","properties":{"agree":{"description":"I Agree Button.","properties":{"text":{"description":"Button text.","type":"string","example":"I Agree"}},"type":"object"},"disagree":{"description":"Disagree Button.","properties":{"text":{"description":"Button text.","type":"string","example":"No, Thanks"}},"type":"object"}},"type":"object"},"links":{"description":"Links to embed into the Terms.","properties":{"website":{"description":"Website link.","properties":{"text":{"description":"Text for the link.","type":"string","example":"Website"},"url":{"description":"Link to the mod.io website.","type":"string","example":"https://mod.io"},"required":{"description":"Is this link required.","type":"boolean","example":false}},"type":"object"},"terms":{"description":"Terms of Use link.","properties":{"text":{"description":"Text for the link.","type":"string","example":"Terms of Use"},"url":{"description":"Link to the mod.io Terms of Use.","type":"string","example":"https://mod.io/terms"},"required":{"description":"Is this link required.","type":"boolean","example":true}},"type":"object"},"privacy":{"description":"Privacy Policy link.","properties":{"text":{"description":"Text for the link.","type":"string","example":"Privacy Policy"},"url":{"description":"Link to the mod.io Privacy Policy.","type":"string","example":"https://mod.io/privacy"},"required":{"description":"Is this link required.","type":"boolean","example":true}},"type":"object"},"refund":{"description":"Refund Policy link.","properties":{"text":{"description":"Text for the link.","type":"string","example":"Refund Policy"},"url":{"description":"Link to the mod.io Refund Policy.","type":"string","example":"https://mod.io/privacy"},"required":{"description":"Is this link required.","type":"boolean","example":false}},"type":"object"},"manage":{"description":"Manage User Account link.","properties":{"text":{"description":"Text for the link.","type":"string","example":"Manage Account"},"url":{"description":"Link to the mod.io page to manage a User's Account.","type":"string","example":"https://mod.io/me/account"},"required":{"description":"Is this link required.","type":"boolean","example":false}},"type":"object"}},"type":"object"}},"type":"object"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

@@ -1,0 +1,76 @@
+---
+id: authenticate-via-psn
+title: "PlayStation™Network"
+description: "Request an access token on behalf of a PlayStation Network (PSN) user. To use this endpoint you will need to setup some additional settings prior to being able to authenticate PlayStation users. [Head here](/platforms/playstation/#authentication) for these instructions. A Successful request will return an [Access Token Object](/restapi/docs/schemas/access-token-object)."
+sidebar_label: "PlayStation™Network"
+hide_title: true
+hide_table_of_contents: true
+api: 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
+sidebar_class_name: "post api-method"
+info_path: restapi/docs/mod-io-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import ParamsItem from "@theme/ParamsItem";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"PlayStation™Network"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/external/psnauth"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Request an access token on behalf of a PlayStation Network (PSN) user. To use this endpoint you will need to setup some additional settings prior to being able to authenticate PlayStation users. [Head here](/platforms/playstation/#authentication) for these instructions. A Successful request will return an [Access Token Object](/restapi/docs/schemas/access-token-object).
+
+     __HINT:__ If you want to overlay the mod.io site in-game on PlayStation, we recommend you add `?portal=psn` to the end of the URL you open which will prompt the user to login with PlayStation Network. See [Web Overlay Authentication](/restapi/docs/web-overlay-authentication) for details.
+
+     "PlayStation" and "DualSense" are registered trademarks or trademarks of Sony Interactive Entertainment Inc.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/x-www-form-urlencoded":{"schema":{"title":"PSN Authentication Request","required":["auth_code"],"properties":{"auth_code":{"description":"The auth code returned from the PlayStation Network API.","type":"string","example":"MAXfj2TMqpHnaUMJdwCDbZUi2L3usnV7aw7xwHX2PEqT5hLkFF2VUyhlnCAMC0tQR3trpFQot0zvMMEtBzekilqeVD1Qm9nEcs9FljneaL3hCWPFSf6jjDSxOxOSytGD"},"env":{"description":"The PlayStation Network environment you are targeting. If omitted, the request will default to targeting PlayStation Network's production environment.","type":"integer","example":1},"terms_agreed":{"description":"The users email address (optional but recommended to help users recover lost accounts). If supplied, and the respective user does not have an email registered for their account we will send a confirmation email to confirm they have ownership of the specified email.<br /><br />__NOTE__: If the user already has an email on record with us, this parameter will be ignored. This parameter should also be urlencoded before the request is sent.","type":"boolean","example":true},"email":{"description":"The users email address (optional but recommended to help users recover lost accounts). If supplied, and the respective user does not have an email registered for their account we will send a confirmation email to confirm they have ownership of the specified email.<br /><br />__NOTE__: If the user already has an email on record with us, this parameter will be ignored. This parameter should also be urlencoded before the request is sent.","type":"string","example":"example@mod.io"},"date_expires":{"description":"Unix timestamp of date in which the returned token will expire. Value cannot be higher than the default value which is a common year (unix timestamp + 31536000 seconds). Using a token after it's expiry time has elapsed will result in a `401 Unauthorized` response.","type":"integer","example":1729236480}},"type":"object"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Request","content":{"application/json":{"schema":{"title":"Access Token Object","description":"Contains user access token.","properties":{"code":{"description":"HTTP Response Code.","type":"integer","format":"int32","example":200},"access_token":{"description":"The user's access token.","type":"string","example":"eyJ0eXAiOiXKV1QibCJhbLciOiJeiUzI1....."},"date_expires":{"description":"Unix timestamp of the date this token will expire. Default is one year from issue date. See [Access Token Lifetime & Expiry](/restapi/docs/making-requests).","type":"integer","format":"int32","example":1570673249}},"type":"object"}}}},"403":{"description":"The user has not agreed to the mod.io Terms of Use. Please see terms_agreed parameter description and the [Terms](/restapi/docs/terms) endpoint for more information.","content":{"application/json":{"schema":{"title":"Error Object","properties":{"error":{"description":"Contains error data.","properties":{"code":{"description":"The [HTTP code](/restapi/docs/response-codes).","type":"integer","format":"int32","default":403},"error_ref":{"description":"The mod.io error code.","type":"integer","default":10000},"message":{"description":"The server response to your request. Responses will vary depending on the endpoint, but the object structure will persist.","type":"string","default":"You do not have the required permissions to access this resource."},"errors":{"description":"Optional Validation errors object. This field is only supplied if the response is a validation error `422 Unprocessible Entity`. See [errors documentation](/restapi/docs/errors) for more information.","type":"object"}},"type":"object"}},"type":"object"}}},"x-errorrefs":{"11074":"The user has not agreed to the mod.io Terms of Use. Please see terms_agreed parameter description and the [Terms](/restapi/docs/terms) endpoint for more information."}}}}
+>
+  
+</StatusCodes>
+
+
+      

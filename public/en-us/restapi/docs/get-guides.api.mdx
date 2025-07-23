@@ -1,0 +1,131 @@
+---
+id: get-guides
+title: "Get Guides"
+description: "Get all guides for a game. Successful request will return an array of [Guide Objects](/restapi/docs/schemas/guide-object)."
+sidebar_label: "Get Guides"
+hide_title: true
+hide_table_of_contents: true
+api: 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
+sidebar_class_name: "get api-method"
+info_path: restapi/docs/mod-io-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import ParamsItem from "@theme/ParamsItem";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get Guides"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/games/{game-id}/guides"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Get all guides for a game. Successful request will return an array of [Guide Objects](/restapi/docs/schemas/guide-object).
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"id","in":"query","description":"Unique id of the guide.","schema":{"type":"integer"}},{"name":"game_id","in":"query","description":"Unique id of the parent game.","schema":{"type":"integer"}},{"name":"status","in":"query","description":"Status of the guide","schema":{"title":"Guide Permission Enum","description":"Status of the guide, see [status and visibility](/restapi/docs/status-amp-visibility) for details).","type":"integer","enum":[0,1,3],"example":"1","x-enumDescriptions":{"NOT_ACCEPTED (0)":"Not accepted.","ACCEPTED (1)":"Accepted and live.","DELETED (3)":"Deleted."}}},{"name":"submitted_by","in":"query","description":"Unique id of the user who has ownership of the guide.","schema":{"type":"integer"}},{"name":"submitted_by_display_name","in":"query","description":"The display name of the user who has ownership  author.","schema":{"type":"string"}},{"name":"visits_today","in":"query","description":"Sort results by the number of visits in the last 24hours using the [_sort query parameter](/restapi/docs/restapi-getting-started#sorting) `visits_today`. For example `_sort=-visits_today` would return the most popular guides from the last 24hours based on the number of visits.","schema":{"type":"integer"}},{"name":"visits_total","in":"query","description":"Sort results by the total number of visits using the [_sort query parameter](/restapi/docs/restapi-getting-started#sorting) `visits_total`. For example `_sort=-visits_total` would return the most popular guides based on the number of visits.","schema":{"type":"integer"}},{"name":"comments_total","in":"query","description":"Sort results by the total number of comments using the [_sort query parameter](/restapi/docs/restapi-getting-started#sorting) `comments_total`. For example `_sort=-comments_total` would return the guides with the most comments.","schema":{"type":"integer"}},{"name":"date_added","in":"query","description":"Unix timestamp of date guide was registered.","schema":{"type":"integer"}},{"name":"date_updated","in":"query","description":"Unix timestamp of date guide was updated.","schema":{"type":"integer"}},{"name":"date_live","in":"query","description":"Unix timestamp of date guide was set live.","schema":{"type":"integer"}},{"name":"name_id","in":"query","description":"Path for the guide on mod.io. For example: https://mod.io/g/gamename/r/__guide-name-id-here__","schema":{"type":"string"}},{"name":"tags","in":"query","description":"Comma-separated values representing the tags you want to filter the results by: <br /><br /> `tags` = Return guides matching all of these tags, for instance tags=one,two,three.<br /> `tags-in` returns guides with any of the tags included in the request. For instance, tags-in=one,two,three returns all guides for the game having any of these tags<br /> `tags-not-in` If you want to ensure guides returned do not contain particular tag(s), you can use the `tags-not-in` filter","schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<h2
+  id={"sorting"}
+  className={"openapi-tabs__heading"}
+>
+  Sorting filters
+</h2><details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"required":false,"in":"query","name":"name","description":"Sort results alphabetically by name using the [_sort query parameter](/restapi/docs/sorting) `name`. For example `_sort=name` would return guides from A-Z.","schema":{"type":"string"}}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"required":false,"in":"query","name":"date_live","description":"Sort results by the date they went live using the [_sort query parameter](/restapi/docs/sorting) `date_live`. For example `_sort=-date_live` would return the most recently live guides.","schema":{"type":"string"}}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"required":false,"in":"query","name":"date_updated","description":"Sort results by the date they were last updated using the [_sort query parameter](/restapi/docs/sorting) `date_updated`. For example `_sort=-date_updated` would return the most recently updated guides.","schema":{"type":"string"}}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"required":false,"in":"query","name":"submitted_by","description":"Sort results by the authors ID using the [_sort query parameter](/restapi/docs/sorting) `submitted_by`. For example `_sort=submitted_by` would return guides from authors who have been registered the longest.","schema":{"type":"string"}}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"required":false,"in":"query","name":"visits_today","description":"Sort results by the number of visits in the last 24hours using the [_sort query parameter](/restapi/docs/sorting) `visits_today`. For example `_sort=-visits_today` would return the most popular guides from the last 24hours based on the number of visits.","schema":{"type":"string"}}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"required":false,"in":"query","name":"visits_total","description":"Sort results by the total number of visits using the [_sort query parameter](/restapi/docs/sorting) `visits_total`. For example `_sort=-visits_total` would return the most popular guides based on the number of visits.","schema":{"type":"string"}}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"required":false,"in":"query","name":"comments_total","description":"Sort results by the total number of comments using the [_sort query parameter](/restapi/docs/sorting) `comments_total`. For example `_sort=-comments_total` would return the guides with the most comments.","schema":{"type":"string"}}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Request","content":{"application/json":{"schema":{"title":"Get Guides","properties":{"data":{"description":"Array containing guide objects.","type":"array","items":{"title":"Guide Object","description":"Contains Guide data.","properties":{"id":{"description":"Unique id of the guide.","type":"integer","format":"int32","example":1209},"game_id":{"description":"Unique id of the parent game.","type":"integer","format":"int32","example":3},"game_name":{"description":"Name of the parent game.","type":"string","example":"My Awesome Game"},"logo":{"title":"Logo Object","description":"Contains logo data.","properties":{"filename":{"description":"Logo filename including extension.","type":"string","example":"card.png"},"original":{"description":"URL to the full-sized logo.","type":"string","example":"https://assets.modcdn.io/images/placeholder/card.png"},"thumb_320x180":{"description":"URL to the small logo thumbnail.","type":"string","example":"https://assets.modcdn.io/images/placeholder/card.png"},"thumb_640x360":{"description":"URL to the medium logo thumbnail.","type":"string","example":"https://assets.modcdn.io/images/placeholder/card.png"},"thumb_1280x720":{"description":"URL to the large logo thumbnail.","type":"string","example":"https://assets.modcdn.io/images/placeholder/card.png"}},"type":"object"},"user":{"title":"User Object","description":"Contains user data.","properties":{"id":{"description":"Unique id of the user.","type":"integer","format":"int32","example":1},"name_id":{"description":"Path for the user on mod.io. For example: https://mod.io/u/__name-id-here__","type":"string","example":"xant"},"username":{"description":"Display name of the user.","type":"string","example":"XanT"},"display_name_portal":{"description":"The users' display name for the targeted portal. Value will be `null` if no valid `X-Modio-Portal` portal header value is provided. For more information see [Targeting a Portal](/restapi/docs/targeting-a-portal).","type":"string","example":null},"date_online":{"description":"Unix timestamp of date the user was last online.","type":"integer","format":"int32","example":1509922961},"date_joined":{"description":"Unix timestamp of date the user joined.","type":"integer","format":"int32","example":1509922961},"avatar":{"title":"Avatar Object","description":"Contains avatar data.","properties":{"filename":{"description":"Avatar filename including extension.","type":"string","example":"avatar.png"},"original":{"description":"URL to the full-sized avatar.","type":"string","example":"https://assets.modcdn.io/images/placeholder/avatar.png"},"thumb_50x50":{"description":"URL to the small avatar thumbnail.","type":"string","example":"https://assets.modcdn.io/images/placeholder/avatar_50x50.png"},"thumb_100x100":{"description":"URL to the medium avatar thumbnail.","type":"string","example":"https://assets.modcdn.io/images/placeholder/avatar_100x100.png"}},"type":"object"},"timezone":{"description":"Deprecated: No longer used and will be removed in subsequent API version.","type":"string","example":""},"language":{"description":"Deprecated: No longer used and will be removed in subsequent API version. To [localize the API response](/restapi/docs/localization) we recommend you set the `Accept-Language` header.","type":"string","example":""},"profile_url":{"description":"URL to the users profile.","type":"string","example":"https://mod.io/u/xant"}},"type":"object"},"date_added":{"description":"Unix timestamp of the date the guide was made.","type":"integer","format":"int32","example":1509922961},"date_updated":{"description":"Unix timestamp of the date the guide was updated.","type":"integer","format":"int32","example":1509922961},"date_live":{"description":"Unix timestamp of the date the guide was set live.","type":"integer","format":"int32","example":1509922961},"status":{"title":"Guide Permission Enum","description":"Status of the guide, see [status and visibility](/restapi/docs/status-amp-visibility) for details).","type":"integer","enum":[0,1,3],"example":"1","x-enumDescriptions":{"NOT_ACCEPTED (0)":"Not accepted.","ACCEPTED (1)":"Accepted and live.","DELETED (3)":"Deleted."}},"url":{"description":"URL to the guide.","type":"string","example":"https://mod.io/g/rogue-knight/r/getting-started"},"name":{"description":"The name of the guide","type":"string","example":"Getting Started"},"name_id":{"description":"Path for the guide on mod.io. For example: https://mod.io/g/rogue-knight/r/__getting-started__","type":"string","example":"getting-started"},"summary":{"description":"The summary of the guide","type":"string","example":"Alright, so let's get started with modding on mod.io"},"description":{"description":"Detailed description of the guide (the contents) which allows HTML.","type":"string","example":"<h1>Getting Started</h2><p>Download this suspiciou...."},"community_options":{"title":"Guide Community Options Enum","description":"The bitwise community options that are applied to this guide, allowing or disabling guide comments. Can be one of","type":"integer","enum":[0,2048],"example":"2048","x-enumDescriptions":{"DISABLED (0)":"Disabled","ALLOWS_COMMENTS (2048)":"Allows comments (default)"}},"tags":{"description":"Contains guide tag data.","type":"array","items":{"title":"Guide Tag Object","description":"Contains guide tag data.","properties":{"name":{"description":"Tag name.","type":"string","example":"Instructions"},"date_added":{"description":"Unix timestamp of date tag was applied.","type":"integer","format":"int32","example":1499841487},"count":{"description":"The amount of times this tag has been applied to guides. This value will only be returned for the Get Guide Tags endpoint.","type":"integer","format":"int32","example":22}},"type":"object"}},"stats":{"description":"Contains stats data.","type":"array","items":{"title":"Guide Stats Object","description":"Contains stats data.","properties":{"guide_id":{"description":"Unique guide id.","type":"integer","format":"int32","example":2},"visits_today":{"description":"Last 24hours of visits for this guide","type":"integer","format":"int32","example":0},"visits_total":{"description":"Total number of visits for this guide","type":"integer","format":"int32","example":0},"comments_total":{"description":"Total number of comments for this guide","type":"integer","format":"int32","example":0}},"type":"object"}}},"type":"object"}},"result_count":{"description":"Number of results returned in this request.","type":"integer","format":"int32","example":70},"result_offset":{"description":"Number of results skipped over. Defaults to 0 unless overridden by `_offset` filter.","type":"integer","format":"int32","example":0},"result_limit":{"description":"Maximum number of results returned in the request. Defaults to 100 (max) unless overridden by `_limit` filter.","type":"integer","format":"int32","example":100},"result_total":{"description":"Total number of results found.","type":"integer","format":"int32","example":70}},"type":"object"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

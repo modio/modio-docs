@@ -1,0 +1,33 @@
+---
+id: multipart-upload-part-object
+title: "Multipart Upload Part Object"
+description: "Contains data about a particular part that was uploaded to a multipart upload session."
+sidebar_label: "Multipart Upload Part Object"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"upload_id":"123e4567-e89b-12d3-a456-426614174000","part_number":1,"part_size":52428800,"date_added":1499846132}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Multipart Upload Part Object"}
+>
+</Heading>
+
+
+
+Contains data about a particular part that was uploaded to a multipart upload session.
+
+<Schema
+  schema={{"title":"Multipart Upload Part Object","description":"Contains data about a particular part that was uploaded to a multipart upload session.","properties":{"upload_id":{"description":"A universally unique identifier (UUID) that represents the upload session.","type":"string","example":"123e4567-e89b-12d3-a456-426614174000"},"part_number":{"description":"The part number this object represents.","type":"integer","format":"int32","example":1},"part_size":{"description":"The size of this part in bytes.","type":"integer","format":"int32","example":52428800},"date_added":{"description":"Unix timestamp of date the part was uploaded.","type":"integer","format":"int32","example":1499846132}},"type":"object"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

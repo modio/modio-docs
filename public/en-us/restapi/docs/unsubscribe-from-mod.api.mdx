@@ -1,0 +1,75 @@
+---
+id: unsubscribe-from-mod
+title: "Unsubscribe From Mod"
+description: "Unsubscribe the _authenticated user_ from the corresponding mod. No body parameters are"
+sidebar_label: "Unsubscribe From Mod"
+hide_title: true
+hide_table_of_contents: true
+api: eJztVt1v2zYQ/1cOfGoAxXLc9EUYBnSd1xVbP5AmGwbPcGjxZLGVSJU82fEM/e/DkZLtJO4KBHvYw/Lg2CTv+3e/u50gufIim4m3VnkxT4RCnzvdkLZGZOLG+HbJB0sEKhEWsqUSDelcEipoPboFFM7W4Ta3zqFvrFHarKC2agTvLCyt2kIjnayR0HmQDv80wH8Ov7TaoYLCOqBSe5A5Gx7BxzbP0fuircIj9AQbXfEPap2B28n4klW/sobQ0O3ou6WD9Pv4uVi8e389zRYLuPFsL5cG2kMcve3gdG2Vh7WWwVdtE9ggOMxtXaNRsLUtNLaqwDrIZVWFGGevkeCtVTBdoyE/f5Y69CQbnSqb+3SFdF5bdY7h9gzQqMZqQ7Ap0fSmDaJClQBZ+IzYgAx59NGb3FYVhixA2/ATJQlHIhG2QSf5/I0SmTgKaMGhLGqrRCIOaRbZbCeMrFFkYiVrPNd8r7mojaRSPKz0a1kjhDdDVURGrsVE+LzEWopsJ2jbsDptCFfoRJcIvJN1U6HILrpkb47j/4Y1TuDTjU26OUsy0jx6fjwZX/K/+0aOQHQVQRTw+APj8SoACRVnNo8oYgWyaSrGtrYm/eRZy+7YJU1sPlhLBgft8hPmFCIsZFtRvD9Cp+i6rkvE5Xj82MXrEgeA9+0E2oOxBHnrHBqqtrAvtGI40D0Jxu1TIpg6Zx28H1xvHKOLdEwm8uVjXzkcqY2HcM+4lKNHsrlVeDrM2c/X1x+A7x/2zFDJc770Z6NDbofiJ6KwrpYUj55PjrN9OX7O2GCfFg6L08Zjf/ees5mTRvY6L8bj8bhLRI3ey9VXAvLo1uhg8J6Ls7WtG6ozgqsBoZG71tJtQWGDkR6tCbUcCCKBZUvhJAIKPLk2p9ZhlG7Qee3pyG9PTpvVPeD9YVtQNuCnlGvcgyWQbIOu1t5razz7KkNzRNp16G3rchyJIZX+cczvwxdZwW+y0iogLCbU9y6P4JqVFRorxTC2JqCXAYkKdNG706eL2R7WD1TB7eVkAjemcZa908sKYWpI0/Z2BB8RYdZbVDZvazQUZB8CKr45C2Oltg5Bm4gfni2POpeb89snXSLuzoNih0XIzsWL8fjFv9XDwYDHvHWatoG7LY/aCY/mjdOEYs6kVyOVlvlfYYWEgfGpFJlImeN9uuupvkt5mKS7SMVdurcvDlY+MivErpWNXnzG7RHtykb/gluRDJw+vOhJ/UuLbstgGbzcC/YHiSgquwnKdc2MpCM7tVRap/8KpbhxlchESdT4LE1ji6aVXWnDXua2ic45lBzxFUoVIJWAsXvExvG+DB2uCx0JPSYsE6+kAalUAqg08RSPWTsIh7xz5hkgx/zY88XLD28eja7fscptjUMdbVHoXMsKDiIj4D4MXVtoowDX6LZUctPzSsHjH+TStgS5NYaHvVnBRlM56OCN5JgbPCyxshsObc00EPy44PQ31lMtA8n3hTre2H7iHedtWAzuxbA7DIz/N7z/zobXdxDhHaVNJbXhCrfcJLu+zWdhlfMiEdlhp2OlfLJfuw7NPk9EaT2x4G63lB5vXNV1fBwbOJvNE7GWTsslw362E0p7/q5EVsjK4z8A59lVX9szOOyOJ0MYKMUwfaxl1fIvkYjAOPvllBfIJ1nf75JPMN7nrJt3iShRKnQhC/HyZZ5jQ0dij3are5T84/TX6fVUJIHkTjHintF3p71iooPIXYN/gQVDak5KfIU7oyxbY4r9qvSemPelcNLQIrzt5l3X/Q39s+Db
+sidebar_class_name: "delete api-method"
+info_path: restapi/docs/mod-io-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import ParamsItem from "@theme/ParamsItem";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Unsubscribe From Mod"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"delete"}
+  path={"/games/{game-id}/mods/{mod-id}/subscribe"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Unsubscribe the _authenticated user_ from the corresponding mod. No body parameters are
+     required for this action. Successful request will return `204 No Content`.<br /><br />__NOTE:__ Users can unsubscribe
+     from mods via mod.io, we recommend you poll or call the [Get Mod Events](/restapi/docs/get-mod-events) endpoint when
+     needed, to keep a users mods collection up to date.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"game-id","in":"path","description":"Game id","required":true,"schema":{"type":"integer"},"example":1},{"name":"mod-id","in":"path","description":"Mod id","required":true,"schema":{"type":"integer"},"example":2}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"204":{"description":"Successful Request. No Body Returned.","content":{"application/json":{"schema":{"title":"204","type":"object","default":"204 No Content"}}}},"400":{"description":"The requested user is not currently subscribed to the requested mod.","content":{"application/json":{"schema":{"title":"Error Object","properties":{"error":{"description":"Contains error data.","properties":{"code":{"description":"The [HTTP code](/restapi/docs/response-codes).","type":"integer","format":"int32","default":403},"error_ref":{"description":"The mod.io error code.","type":"integer","default":10000},"message":{"description":"The server response to your request. Responses will vary depending on the endpoint, but the object structure will persist.","type":"string","default":"You do not have the required permissions to access this resource."},"errors":{"description":"Optional Validation errors object. This field is only supplied if the response is a validation error `422 Unprocessible Entity`. See [errors documentation](/restapi/docs/errors) for more information.","type":"object"}},"type":"object"}},"type":"object"}}},"x-errorrefs":{"15005":"The requested user is not currently subscribed to the requested mod."}}}}
+>
+  
+</StatusCodes>
+
+
+      

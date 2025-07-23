@@ -1,0 +1,72 @@
+---
+id: delete-guide-comment
+title: "Delete Guide Comment"
+description: "Delete a comment from a guide profile. Successful request will return `204 No Content`  and fire a __GUIDE_COMMENT_DELETED__ event."
+sidebar_label: "Delete Guide Comment"
+hide_title: true
+hide_table_of_contents: true
+api: eJzNVm1v2zYQ/isHfhgaQLUcJ8BQfesSoyu2viAvG4bAcGjxZLGTSJU8OfEM/ffhSMl2ancBsi/9FIci7567e+652wiSSy+yO3Fh6xoNeTFLhEKfO92QtkZk4hIrJAQJebwChbM1SFi2WiE0zha6whFct3mO3hdtBQ6/tugJHnTF/1DrDNxPxufw0cKFNYSG7gGkUVBox5bn83e37y+n84tPHz5MP97ML6e/T2+ml/M54AoNjUQibINOMqL3SmRCBUzzAGHe4xKJaKSTNRI6DmkjjKxRZGIpa3ytlUiE5ngaSaX4Nsh3skYIdxi8dqhERq7FRPi8xFqKbCNo3bA5bQiX6ESXCHyUdVOhyE67ZOeOQT3rLyTv5Q4new77+J9z2Vf4fzg962b80jfWePR8eTI+5z9PHe0x4SoyYcSV/8WqNVwFNqDikuaRCmxANk2l81Df9ItnK5t9SJrYffCWDADt4gvmFKIsZFtR/L5HMdF1XZeI8/HZIcSbEkG2VKIhdosKWo8OlEUPxhKUcoXQoKu199oaIAuRckMTeCisAyq1j32QxN8yZwegPTj05HTOpskCUxAIZQ21NHKJzsNPIFWtjfbkJFnnwZpq/aK0TJ2zDj4N+Wgc9wrpWCHkj4cJ4BxJbTyE76AkydHB29wqPJ67u19vbj4Df5+9SjlU2ehU2dynAz1e80d/MtoVbGBUIgrraknx6GyyX8Lz8RkTjjHNHRbHnddWjbTtkbObo062Nk/H4/G4S0SN3svldwLy6FboYEDPNVvb1g1SNoKrgfZR1VbSrUFhg0ZpswSmSImARjVWG0pg0VI4iSwFT67NqXUYXzfovPa0h5vJYpZP2PyXbUHZHR3Z3NC2e9z0jFWGjoscdOht63IciSGV/jDmT+GHrOAPWWkVGBYT6nvII7hhY4XGSjGfmZ3gWyYkKtBFD6dPF1MfVt+YgvvzyQRuTeMso9OLCmFqSNP6fgTXiHDXe1Q2b7mpwttvCRXvnIR+q61D0CbyR1szOpAD7vjnT7pEPL4Ohh0WITunb8aTn39oYQioPeat07QO480y0AkP7wenCcWM5blGKu1uRIahSKXIRMqufLrpp2GXBnh80M+rLh1CSDe7kdKJnddrlp4oDbLR879xvTcwZKN/w7VIhqk03OhH0tcW3ZoZOaDePuwPElFU9iEY1zXLno4S2FJpnf4n1PvWVSITJVHjszSNOpBWdqkNo8xtE8E5lJyBK5QqJC8BY7dt4SGXBhZBRnSh4yiKCczEhTQglUoAlSZgYYzF3T4OdeBKMAv3RbgXpbef3x8M3j+xym0dNCVIQlHoXMsKdk9GwM0epKHQRvHW49ZUsrKsbQsGUYFc2JYgt8ZgTvzlQVM52Fhp+USAPCywsg8c2oq1JuA45fQ31lMtwyTpC9Xvd3EjudjuUk9i2Oym0g+yD/bkIXyktKmkNhxcy/zY9Iy/C4ufF4nIdhtgJH04261pA+/5eG+ZmiWitJ7Y0mazkB5vXdV1fBzJnN3NErGSTssFU+BuI5T2/FuJrJCVx/9I4qurXslPYLd6Ho1paC/DrbSSVcv/iUSE7tvutrwOvsz7bhF9ifshiS/2/2QrfQGCvXp1sy4RJUqFLlQjXnib59jQ3tODpeqJbEaqiSQIzzGV2qru5jgyFh+IejJgDMoUUnT0xXf0LL5lbyx73329FcttTZw0NA93u1nXdf8CQyfI0A==
+sidebar_class_name: "delete api-method"
+info_path: restapi/docs/mod-io-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import ParamsItem from "@theme/ParamsItem";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Delete Guide Comment"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"delete"}
+  path={"/games/{game-id}/guides/{guide-id}/comments/{comment-id}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Delete a comment from a guide profile. Successful request will return `204 No Content`  and fire a __GUIDE_COMMENT_DELETED__ event.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"game-id","in":"path","description":"Game id","required":true,"schema":{"type":"integer"},"example":1},{"name":"guide-id","in":"path","description":"Guide id","required":true,"schema":{"type":"integer"},"example":2},{"name":"comment-id","in":"path","description":"Comment id","required":true,"schema":{"type":"integer"},"example":3}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"204":{"description":"Successful Request. No Body Returned.","content":{"application/json":{"schema":{"title":"204","type":"object","default":"204 No Content"}}}},"403":{"description":"The authenticated user does not have permission to delete comments for this guide, this action is restricted to game team managers & administrators only.","content":{"application/json":{"schema":{"title":"Error Object","properties":{"error":{"description":"Contains error data.","properties":{"code":{"description":"The [HTTP code](/restapi/docs/response-codes).","type":"integer","format":"int32","default":403},"error_ref":{"description":"The mod.io error code.","type":"integer","default":10000},"message":{"description":"The server response to your request. Responses will vary depending on the endpoint, but the object structure will persist.","type":"string","default":"You do not have the required permissions to access this resource."},"errors":{"description":"Optional Validation errors object. This field is only supplied if the response is a validation error `422 Unprocessible Entity`. See [errors documentation](/restapi/docs/errors) for more information.","type":"object"}},"type":"object"}},"type":"object"}}},"x-errorrefs":{"19027":"The authenticated user does not have permission to delete comments for this guide, this action is restricted to game team managers & administrators only."}}}}
+>
+  
+</StatusCodes>
+
+
+      

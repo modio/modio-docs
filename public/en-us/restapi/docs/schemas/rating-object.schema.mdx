@@ -1,0 +1,33 @@
+---
+id: rating-object
+title: "Rating Object"
+description: "Contains rating data."
+sidebar_label: "Rating Object"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"game_id":2,"mod_id":2,"resource_type":"mods","resource_id":2,"rating":1,"date_added":1492564103}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Rating Object"}
+>
+</Heading>
+
+
+
+Contains rating data.
+
+<Schema
+  schema={{"title":"Rating Object","description":"Contains rating data.","properties":{"game_id":{"description":"Unique game id.","type":"integer","format":"int32","example":2},"mod_id":{"description":"Unique mod id. Deprecated, use `resource_type` and `resource_id` instead.","type":"integer","format":"int32","example":2},"resource_type":{"description":"Type of resource.","type":"string","default":"mods","enum":["mods","collections"]},"resource_id":{"description":"Unique id of the requested resource type.","type":"integer","format":"int32","example":2},"rating":{"title":"Agreement Type Enum","type":"integer","enum":[1,2,3,4,5,6,7,8],"x-enumDescriptions":{"TOU (1)":"Terms","PRIVACY (2)":"Privacy","GAME (3)":"Game","API (4)":"API","MONETIZATION (5)":"Monetization","AUP (6)":"AUP","COOKIES (7)":"Cookies","REFUND (8)":"Refund"}},"date_added":{"description":"Unix timestamp of date rating was submitted.","type":"integer","format":"int32","example":1492564103}},"type":"object"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            
