@@ -1,11 +1,12 @@
 ---
 id: support-trademarks
-title: Trademarks
-slug: /support/trademarks/
+title: Third Party Trademark Notices
+slug: /support/trademarks
 sidebar_position: 3
 ---
 
-# Third Party Trademark and Copyright Notices
+# Third Party Trademark Notices
+
 "PlayStation Family Mark", "PlayStation", "PS5 logo" and "PS5" are registered trademarks or trademarks of Sony Interactive Entertainment Inc.
 
 "PlayStation" and the "PS" Family logo are registered trademarks and "PS4" is a trademark of Sony Interactive Entertainment Inc.

@@ -1,7 +1,7 @@
 ---
 id: unity-unity-ref
 title: Unity
-slug: /unity/unity-ref/
+slug: /unity/unity-ref
 sidebar_position: 1
 ---
 
@@ -42,6 +42,17 @@ ___
 ```csharp
 public class ModioAPIUnityClient : IModioAPIInterface
 ```
+
+
+###### Property
+
+
+#### `bool UseUnityClient`
+
+```csharp
+[ModioDebugMenu(ShowInSettingsMenu = true, ShowInBrowserMenu = false)]  public static bool UseUnityClient
+```
+`get` `set`
 
 
 ###### Method
@@ -194,7 +205,7 @@ ___
 ### ModioUnitySettings{#Modio.Unity.ModioUnitySettings}
 
 ```csharp
-[CreateAssetMenu(fileName
+[CreateAssetMenu(fileName = "config.asset", menuName = "Modio/v3/config")]  public class ModioUnitySettings : ScriptableObject
 ```
 
 
@@ -224,6 +235,16 @@ string DefaultResourceNameOverride = "mod.io/v3_config_local"
 public ModioSettings Settings
 ```
 `get`
+
+
+###### Method
+
+
+#### InvokeOnChanged{#Modio.Unity.ModioUnitySettings.InvokeOnChanged}
+
+```csharp
+public void InvokeOnChanged()
+```
 
 ___
 

@@ -1,7 +1,7 @@
 ---
 id: unity-unityref
 title: Unity Reference Docs
-slug: /legacy/unity/unityref/
+slug: /legacy/unity/unityref
 sidebar_position: 10
 ---
 
@@ -9627,7 +9627,7 @@ string languageCode
 ```
 
 Language code for the localizing message responses.
-See https://docs.mod.io/restapiref/#localization for possible values.
+See https://docs.mod.io/restapi/localization for possible values.
 
 
 

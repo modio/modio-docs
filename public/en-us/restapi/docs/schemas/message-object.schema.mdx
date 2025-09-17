@@ -1,7 +1,7 @@
 ---
 id: message-object
 title: "Message Object"
-description: ""
+description: "Standard API message response."
 sidebar_label: "Message Object"
 hide_title: true
 hide_table_of_contents: true
@@ -22,10 +22,10 @@ import Heading from "@theme/Heading";
 
 
 
-
+Standard API message response.
 
 <Schema
-  schema={{"title":"Message Object","properties":{"code":{"description":"[HTTP status code](/restapi/docs/response-codes) of response.","type":"integer","format":"int32","default":200},"message":{"description":"The server response to your request. Responses will vary depending on the endpoint, but the object structure will persist.","type":"string","default":"Your request was successful."}},"type":"object"}}
+  schema={{"title":"Message Object","description":"Standard API message response.","properties":{"code":{"description":"[HTTP status code](/restapi/introduction#response-codes) of response.","type":"integer","format":"int32","default":200},"message":{"description":"The server response to your request. Responses will vary depending on the endpoint, but the object structure will persist.","type":"string","default":"Your request was successful."}},"type":"object"}}
   schemaType={"response"}
 >
   

@@ -5,7 +5,7 @@ description: "Get a monetization transaction for the given monetization team by 
 sidebar_label: "Get Transaction"
 hide_title: true
 hide_table_of_contents: true
-api: eJzNVE1v2zAM/SsEz2rc5ejbMAxFscvQDwxDEKSKRMfCbMmV6GSe4f8+0M6H07X35RKJ4iMfpffcI+tdwnyFjxT3zhBwgOMS1wotJRNdwy54zPGOGDTUwRO7P1qCwFH7pM24LkIELgl2bk/+TRrpGrbd7HgOdHYBj60xlFLRVhDptaXEcHCVbLiNHjS8LG9v4eaU9wKRUhN8ogUqDA3FsdG9xRx3xJt5982sFyo8ARPmPS5vb+Xves4Zl4eJCw6DwkSmjY47zFc9Bt1yuZSbi6QtKpx3xPWwVlgTl+FICBU2mkvMMUvLlM2Tb+RyUtb/E7txdshm3FPWz3ZyihdSj6akeppJN27zizpZctcQ5hL5Rh0q9Lo+7scMhU7mfW0pdjio81Bn4DGgsKjCYSzu6qZyxvHYqOUyxCPl51hhjiVzk/Isq4NduJBVYefkzpMJzURuvK0cH0hbCL7qFPggbxnaaCiB0R62BHWwrnBk5XEP0bFw+aI9aGsVkHUMIYKlipgu4AUO8pOhijAO4bgS5EQGPn+/x7eS/kGVCfUoe9FmKApnnK7gAlnAz9BOWiyct0B7ih2Xzu+gCy14Igt6G1oGE7wnw3JycFyeauydHmuTt01wnhNsqQoHGW1PMU08Psn1NyFxrb1QPz6UOO7pSr1X9Hs0wTN5/p/NeZQS02/Omko7L6O2opb+6IkVpmV6Y6HJFagwf88XUnZmDEm7toZ8vMqQWIr3/VYneo7VMEh4Unu+Wivc6+j0VjSyWg8zw959fUI1yvs9L5ytf/GXFy/tddXKTiQOk2oVjkac9I+D+gDxgWsmrHQTc32IPlvyhNhF7Xkz5g7rYRj+AjGYEJM=
+api: eJzNVMFu2zgQ/ZXBnFqAsVIfdVtsiyAoChRJisUiMFJaHFlEKVIlR3a1gv59MZKcKI6zC+RUXyxRM5z33sy8HlnvEub3eEtxbwsCDjA/4kahoVRE27ANHnO8IgYNdfDE9h8th8BR+6SL8bkMEbgi2Nk9+ZMw0jVsu8XnZaI1K7hti4JSKlsHkX62lBgO1skLt9GDhu/ry0u4OMZ9h0ipCT7RChWGhuJY6Npgjjvih2X1h0UtVNjoqGtiisK7R69rwhyXCRcC98IaVGiFd6O5wlMxviz53Qm/64+oUMDbSAZzji0pTEVFtca8R+4aKWQ9044iDgrpl64bR5h/GNQjkAXY/4Nwt9Dw7cXXw0YyJzWTBK8vL+XvebFFg26mBuEwKExUtNFyN2oZdMvVWsYpkhbsS1VxI4Vq4irMXRqbwRXmmKV1yl60IGX9ubYM2UKjlPXPFRvwCdSt8J846cY+/KBuoYVu7GfqUB2FP0bMiv9sKXYi1JHUY+J8oLB04TBebuvG2cLyWKjlKsQZ8rfoMMeKuUl5ltXBrGzIXNhZGcRUhGYCN6qV4w1pA8G7ToEPMuChjQUlKLSHLUEdjC0tGZn4Q7QsWP7UHrQxCshYhhDBkCOmp+QVDvITUmUYSVh208ALGPjj6/WLufqLXBHq0QtkYUNZ2sJqB08pK/g7tNOCltYboD3Fjivrd9CFFjyRAb0NLUMRvKeC5cvBcnW8Y2/1eDd50wTrOcGWXDgItT3FNOH4IPI3IXGtvUCfGyU2dPdspZ/B77EInsnz7+xY8ygx/eKscdp6odrKtPTzTtxjWqeTFZq2AhXmr9jVcjEk7MRMNgqrkFgu7/utTvQtumGQ42na8/uNwr2OVm9lRu57NDbJs8G81C7Rf0j97mY2n/fwijWe5XxcRi+Lt9eulTdUOO7qeVcWs3wTrhd++QZEJ4oOm2HhaVef7lCNDnDOLh7dsT9fQ1wApsU+VhstYiR8NuMVY5lypZr4z6vZj651zNhF7flhjB02wzD8C4XX0lw=
 sidebar_class_name: "get api-method"
 info_path: restapi/docs/mod-io-api
 custom_edit_url: null
@@ -13,7 +13,6 @@ custom_edit_url: null
 
 import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
 import ParamsDetails from "@theme/ParamsDetails";
-import ParamsItem from "@theme/ParamsItem";
 import RequestSchema from "@theme/RequestSchema";
 import StatusCodes from "@theme/StatusCodes";
 import OperationTabs from "@theme/OperationTabs";
@@ -39,8 +38,16 @@ import Heading from "@theme/Heading";
 
 Get a monetization transaction for the given monetization team by the given transaction id. Successful request will return a `200 - Success` response.
 
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
 <ParamsDetails
-  parameters={undefined}
+  parameters={[{"name":"monetization-team-id","in":"path","description":"Monetization Team ID","required":true,"schema":{"type":"integer"},"example":1},{"name":"transaction-id","in":"path","description":"Transaction ID","required":true,"schema":{"type":"integer"},"example":2}]}
 >
   
 </ParamsDetails>

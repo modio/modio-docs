@@ -1,0 +1,71 @@
+---
+id: follow-user
+title: "Follow User"
+description: "Follow the given user. Successful request will return `204 No Content`."
+sidebar_label: "Follow User"
+hide_title: true
+hide_table_of_contents: true
+api: eJztWNtu4zYQ/ZUB+7ILyJfEKYrqbbvdokGBbpA4LQrDSGhxZHFXIlVe7LiG/r0YUrKVWNm220WBAnmTRc7Mmcs5Frlnjq8tSxfsB12WeovGsmXCBNrMyNpJrVjaLoErENZygwq8RTOGG59laG3uSzD4u0frYCtL+uG8UXB/Pr2AnzW81cqhcvdjljBdo+Hk9VKwlOXB7x15YwmrueEVOkKQLvZM8QpZymhxJAVLmCQoNXcFe4rv8nvQeYBHuyG6lWrNEkbApEHBUmc8JsxmBVacpXvmdjX5l8rhGg1rEoYPvKpLZOnsbDb7tllGa7TuOy12ZJLFTOiR13Ups5DK5GG03W5HuTbVyJsSVaYFBdz3gh1hLEJGd1JQmWtDBXESLW3qFtL9k/zmBYIUj3JcoVTrNlMUVNqn+TSHV3r1ATPHmobeGbS1VjZGPJ9enEbrtfU65j+mNlIR4Dq0NgZ8phofLHnpJ++ko6qGaE9BUStz7ksX13vz0uK9mE6HC8K9K1A5CosiFkVa4KVBLnZg/YoMVijA6UPZPgv2O2O0gfdHvI+K5bgS3Ah4c3UJGHZ2FaZgjxsc1k+zoYS5VLa1F9zxU1saquFCLH6cz6+A1pevJgat47WcSOWMFj6jfV91iEa0yb4emJaE0fhyF1/Nzvt9uZjOiByE7c5gPgyi0mIsdZsBhRkMcvB5Np1Op03CKrSWr59JzKLZ4LGe1Mid9qYTmzFcd7McdWfDzQ4E1qgEkUOr0HdUotZSuQRW3oU3cfTAOuMz5w1G6xqNldb1cFtnoogcR/Q37UFoUNpBwTcY3HXcJg+VtFZqZQkrDzQCV0hLOWhvMhyzrpT2NOf34YGX8AsvpQhjGQtqW8hjmJOzXGIpaNi1KmnSaYpRgMxbOG25iA2weeIK7i/Oz+FW1UYTOrkqEd4pJ93ufgw3iLBoIwqd+QqVC7a9wYrLryHXBiptEKSKoyO1Gp/Qe0iFBnQpYQ+j4NhgHgpz9vWUpOlfED1qx2x4stoJ6txlXFFHV/jE2woz7m3o8g64QVhx9bni96IiLyryoiL/sYqcnc2mX4zy5O3sn3kTHqNTmqSKm48oQGCJjjxGhRr4AJt3H3mZ9qWA1nOuvXqRnhfpeZGe/4X0fDOdTv+Ky8HQYuaNdLtw6NX0sXNOp8StkQ7Zkk6hD6M6UIF4dEp5Orc6VKFrwcdH3LG0b5SwDS89DhmT+wpdoek4XmvrwjncFSxlE4JtJ/v2AN5M+sfqDvQNiU3kN6/lXQh9OFrzWv6EO5Z0R/luR3uU/92j2dE4dUkfDNsXCctLvQ3OZUXAZRQ97wpt5B8hjVtTspQVztU2nUwiiSelXksqjM10HcHRtyJL2TVyEYYuAaUPM21Jv6ktlRYyl1HtY/1T9pYr4EIkgEI6IHUL+n00Dm2kRtIc9WW3VZQ3V5cnovsrlpmusPti1XkuM8lLOJqMgZgaeJ1LJQA3aHauIFnYaQ8KUQBfae8g00ph5mhlK13R+dhI/kg9LKyw1FtKbUNCEXCcUfmp7RUP/x1to9r7nlvbal4Peu8S5AteC7V9d/jgJnXJpSJcnlq7b8cxXpvQLKfHG6HjRC4TVtD0pgu236+4xVtTNg29jlOWLpbEAiP5inqz2DMhLT0Llua8tPiJNF9dt/r4Gj5x0TSYQkcEteuRkCUtRbtEmmWTsAK5QNMjcFuf0Zx8DFN4+OKpSToXb7IMa/e3+X/1/mbOErZqb7uq8IfNep6T/o90QbCJjEPMPQjZfrgIREiIHOvKEdga0A9aPMPxaEvRSAqetT4ISGexNly5u7C3WTZN8ycdWlkh
+sidebar_class_name: "post api-method"
+info_path: restapi/docs/mod-io-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Follow User"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/users/{user-id}/following"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Follow the given user. Successful request will return `204 No Content`.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"user-id","in":"path","description":"ID of the user following","required":true,"schema":{"type":"integer"},"example":31339}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/x-www-form-urlencoded":{"schema":{"required":["user_id"],"properties":{"user_id":{"description":"The id of the user being followed.","type":"integer"}},"type":"object"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"204":{"description":"Successful Request. No Body Returned.","content":{"application/json":{"schema":{"title":"204","type":"object","default":"204 No Content"}}}},"400":{"description":"The authenticated user is already subscribed to the user.","content":{"application/json":{"schema":{"title":"Error Object","description":"Standard API error response.","properties":{"error":{"description":"Contains error data.","properties":{"code":{"description":"The [HTTP code](/restapi/introduction#response-codes).","type":"integer","format":"int32","default":403},"error_ref":{"description":"The mod.io error code.","type":"integer","default":10000},"message":{"description":"The server response to your request. Responses will vary depending on the endpoint, but the object structure will persist.","type":"string","default":"You do not have the required permissions to access this resource."},"errors":{"description":"Optional Validation errors object. This field is only supplied if the response is a validation error `422 Unprocessible Entity`. See [errors documentation](/restapi/errors) for more information.","type":"object"}},"type":"object"}},"type":"object"}}},"x-errorrefs":{"15004":"The authenticated user is already subscribed to the user."}},"403":{"description":"The requested user cannot be subscribed to because they are banned.","content":{"application/json":{"schema":{"title":"Error Object","description":"Standard API error response.","properties":{"error":{"description":"Contains error data.","properties":{"code":{"description":"The [HTTP code](/restapi/introduction#response-codes).","type":"integer","format":"int32","default":403},"error_ref":{"description":"The mod.io error code.","type":"integer","default":10000},"message":{"description":"The server response to your request. Responses will vary depending on the endpoint, but the object structure will persist.","type":"string","default":"You do not have the required permissions to access this resource."},"errors":{"description":"Optional Validation errors object. This field is only supplied if the response is a validation error `422 Unprocessible Entity`. See [errors documentation](/restapi/errors) for more information.","type":"object"}},"type":"object"}},"type":"object"}}},"x-errorrefs":{"11130":"The requested user cannot be subscribed to because they are banned.","11131":"The requested user cannot be subscribed to due to being marked deleted."}},"404":{"description":"The user could not be found.","content":{"application/json":{"schema":{"title":"Error Object","description":"Standard API error response.","properties":{"error":{"description":"Contains error data.","properties":{"code":{"description":"The [HTTP code](/restapi/introduction#response-codes).","type":"integer","format":"int32","default":403},"error_ref":{"description":"The mod.io error code.","type":"integer","default":10000},"message":{"description":"The server response to your request. Responses will vary depending on the endpoint, but the object structure will persist.","type":"string","default":"You do not have the required permissions to access this resource."},"errors":{"description":"Optional Validation errors object. This field is only supplied if the response is a validation error `422 Unprocessible Entity`. See [errors documentation](/restapi/errors) for more information.","type":"object"}},"type":"object"}},"type":"object"}}},"x-errorrefs":{"17000":"The user could not be found."}}}}
+>
+  
+</StatusCodes>
+
+
+      

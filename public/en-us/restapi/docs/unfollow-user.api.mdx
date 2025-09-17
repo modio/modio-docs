@@ -1,0 +1,71 @@
+---
+id: unfollow-user
+title: "Unfollow User"
+description: "Unfollow the given user from the target user. Successful request will return `204 No Content`."
+sidebar_label: "Unfollow User"
+hide_title: true
+hide_table_of_contents: true
+api: eJy1Vm1v2zYQ/isH7ksLyC9x0g/Tt67NsGDDWuRlw2AYCS2eLHYSqZJHO5qh/z4cJdlO7HZF0H0IklC8u+funnuOW0Fy5UU6Fz/bsrQbdF4sEqHQZ07XpK0RqbgzefwIVCCs9BoNBI8OcmereEbSrZDi4RhuQpah93koweHngJ5go0v+h4Iz8DCbXsDvFt5ZQ2joYSwSYWt0koNdKZGK0Ie7Z38iEbV0skJiaOl8K4yskG95dCOtRCI0Y6wlFeI58Kv3YPOIsMMb3WqzEolgaNqhEim5gInwWYGVFOlWUFOzf20IV+hEmwh8lFVdokjPz87Pf2yTHYYu79ELoCxRmxUMmaJ6KaJZu2BLX1vj0fPl2fSCfz2NftCT664nY+7BT1Y1cB37goobkXVNYQeyrkudxa5MPnn2sj2EpInDx2jJANAuP2FGMfVchpK67wfNFm3btom4mJ4fQ7wtcOALqq5ImTTGEvDPEiEYH5ZssUQFS8xk8MgFbUA6jJf231+SyqVz1sGHfQ5PCkjSKOkUvP14BRhvDlXnutWOKUy6a0H8fpwhF0Fq43t7JUke22ZW4enizH+5vf0I/H3xauLQk6z1RBtyVoWM7/0wIBrxJf96vO/MQJ1E5NZVkrqj89lhry6m58wsxnbvMD8NorJqrG2fAYc5GWTn82w6nU7bRFTovVx9ITGPbo37egJZaGxwAxvGcD3wuxOStXQNKKzRKB4ia+JYoVG11YYSWAaKJx0dwZMLGQWHnXWNzmtPB7g9uU4T9rT9ywZQNpKqkOtIMxjmkz1U2nttjWesMo4WUKE952CDy3AshlL645w/xD9kCX/IUqtIy66gvoc8hlt2lmssFWgP1pQN+MAsRgU67+H05dIeJKyfuYKHi9kM7kztLKPTyxLh0pCm5mEMN4gw7yMqm4UKDUXbA2J1n19Dbh1U1iFo01FHWzM+Gnme6v8+aRPxOIqOHeaxMGdvptM33334YySPWXCamrgzrAxUzHjNbZwmFAuWzcdRZo0PFQ/eE414HG02mxGnOwquRMM8Z0l5HNVx2I4MoqiwKhOayIsY9G9sRHoYJRFrWQb8pmi8ZQYHu6inHcTonFCFVFjeoApLJIyrkwqRiglX1E+2/aJqJ7tNONk+3WGt2FfuhiWyUyVZ6/uIZreMZK1/xUYkwyocbvQ78HNA1/AQDJXfGfYHichLu4nOdcW56E6qAxXW6X9iZneuFKkoiGqfTiad9ExKu9JcbJ/ZugPnUHLS1yhVHJUEjN1NomciMYMqq3SuuzXXkSAV76QBqVQCqDQBa3Is3N54HDdWy0nl9nBZ9Dr49uPV0ar4E8vMVlHGogrluc60LGFvMgbWl6hGuTYKcI2uoYLFrLEBDKICubSBILPGYEb8ZaOpGHystXyieR6WWNoNp7ZmeYs4zrj8tfVUybjx+kbtHnN3vtfqA/Db/dr8/199PSEIH2lSl1IbBhy459ueuPP4ymPep/s31uErLn32AlskorCe2HK7XUqPd65sWz7uCJnOFzxDTsslt3G+FUp7/luJNJelx6/U49V1vwBew1felSeTGmbGNAcjLJJ+wAfwPPLfA86Jt+ULUD2rbLtoE1GgVOgOxO1tlmFN36xL7y9/u7y9FEkc81OasNPp7Wl0POrQTe+AM+pArN1Jiy+oR2fL0Vhkvmi9k6bBYuWkoft4t120bfsvMlaaVQ==
+sidebar_class_name: "delete api-method"
+info_path: restapi/docs/mod-io-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Unfollow User"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"delete"}
+  path={"/users/{user-id}/following/{target-user-id}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Unfollow the given user from the target user. Successful request will return `204 No Content`.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"user-id","in":"path","description":"ID of the user following","required":true,"schema":{"type":"integer"},"example":31339},{"name":"target-user-id","in":"path","description":"ID of the user being unfollowed","required":true,"schema":{"type":"integer"},"example":2}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"204":{"description":"Successful Request. No Body Returned.","content":{"application/json":{"schema":{"title":"204","type":"object","default":"204 No Content"}}}},"403":{"description":"The requested user cannot not be unsubscribed because they are not subscribed","content":{"application/json":{"schema":{"title":"Error Object","description":"Standard API error response.","properties":{"error":{"description":"Contains error data.","properties":{"code":{"description":"The [HTTP code](/restapi/introduction#response-codes).","type":"integer","format":"int32","default":403},"error_ref":{"description":"The mod.io error code.","type":"integer","default":10000},"message":{"description":"The server response to your request. Responses will vary depending on the endpoint, but the object structure will persist.","type":"string","default":"You do not have the required permissions to access this resource."},"errors":{"description":"Optional Validation errors object. This field is only supplied if the response is a validation error `422 Unprocessible Entity`. See [errors documentation](/restapi/errors) for more information.","type":"object"}},"type":"object"}},"type":"object"}}},"x-errorrefs":{"15005":"The requested user cannot not be unsubscribed because they are not subscribed"}}}}
+>
+  
+</StatusCodes>
+
+
+      

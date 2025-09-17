@@ -1,7 +1,7 @@
 ---
 id: unity-marketplace
 title: Marketplace
-slug: /legacy/unity/marketplace/
+slug: /legacy/unity/marketplace
 sidebar_position: 4
 ---
 
@@ -15,11 +15,12 @@ mod.io Marketplace features are enabled either during the onboarding process whe
 
 Please follow the below guides for setting up Virtual Currency for mod.io Marketplace on your required platforms:
 
-* [Google](/platforms/google/marketplace/)
-* [Meta](/platforms/meta/marketplace/)
-* [Steam](/platforms/steam/marketplace/)
+* [Steam](/platforms/steam/marketplace)
+* [Meta Quest](/platforms/meta/marketplace)
+* [Google](/platforms/google/marketplace)
+* [Apple](/platforms/apple/marketplace)
 
-The following platforms require approval, see [Console SDKs](/platforms/console-sdks/) for details:
+The following platforms require approval, see [Console SDKs](https://docs.mod.io/platforms/console-sdks/) for details:
 
 * [PlayStation®4](https://docs.mod.io/partners/ps4/marketplace/)
 * [PlayStation®5](https://docs.mod.io/partners/ps5/marketplace/)
@@ -180,7 +181,7 @@ The plugin will automatically subscribe to purchased mods. If you have previousl
 
 ### Getting User's Purchases
 
-To install purchased mods the user should be subscribed to them (this happens automatically on purchase), and they will be automatically installed and updated after enabling mod management. See [Installing Mods](/legacy/unity/getting-started/#installing-mods) in the [Getting Started](/legacy/unity/getting-started/) guide for more information.
+To install purchased mods the user should be subscribed to them (this happens automatically on purchase), and they will be automatically installed and updated after enabling mod management. See [Installing Mods](/legacy/unity/getting-started#installing-mods) in the [Getting Started](/legacy/unity/getting-started) guide for more information.
 
 To get a list of all of the authenticated user's purchased mods, use the synchronous method `ModIOUnity.GetPurchasedMods()`:
 

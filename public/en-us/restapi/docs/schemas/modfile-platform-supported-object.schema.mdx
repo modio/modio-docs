@@ -1,7 +1,7 @@
 ---
 id: modfile-platform-supported-object
 title: "Modfile Platform Supported Object"
-description: "Contains platform filtering data for this modfile. This object is only applicable if the parent game has [cross-platform moderation](/restapi/docs/targeting-a-platform) enabled. Otherwise this value will always be `null`."
+description: "Contains platform filtering data for this modfile. This object is only applicable if the parent game has [cross-platform moderation](/restapi/platforms#targeting-a-platform) enabled. Otherwise this value will always be `null`."
 sidebar_label: "Modfile Platform Supported Object"
 hide_title: true
 hide_table_of_contents: true
@@ -22,10 +22,10 @@ import Heading from "@theme/Heading";
 
 
 
-Contains platform filtering data for this modfile. This object is only applicable if the parent game has [cross-platform moderation](/restapi/docs/targeting-a-platform) enabled. Otherwise this value will always be `null`.
+Contains platform filtering data for this modfile. This object is only applicable if the parent game has [cross-platform moderation](/restapi/platforms#targeting-a-platform) enabled. Otherwise this value will always be `null`.
 
 <Schema
-  schema={{"title":"Modfile Platform Supported Object","description":"Contains platform filtering data for this modfile. This object is only applicable if the parent game has [cross-platform moderation](/restapi/docs/targeting-a-platform) enabled. Otherwise this value will always be `null`.","properties":{"targetted":{"description":"Array of [valid platform strings](/restapi/docs/targeting-a-platform) showing which platforms the  modfile has targeted for release.","type":"array","items":{"type":"string"}},"approved":{"description":"Array of [valid platform strings](/restapi/docs/targeting-a-platform) showing which platforms the modfile has been approved for.","type":"array","items":{"type":"string"}},"denied":{"description":"Array of [valid platform strings](/restapi/docs/targeting-a-platform) showing which platforms the modfile has been denied for.","type":"array","items":{"type":"string"}},"live":{"description":"Array of [valid platform strings](/restapi/docs/targeting-a-platform) showing which platforms the modfile is currently marked as live on.","type":"array","items":{"type":"string"}},"pending":{"description":"Array of [valid platform strings](/restapi/docs/targeting-a-platform) showing which platforms the modfile is currently marked as pending on.","type":"array","items":{"type":"string"}}},"type":"object"}}
+  schema={{"title":"Modfile Platform Supported Object","description":"Contains platform filtering data for this modfile. This object is only applicable if the parent game has [cross-platform moderation](/restapi/platforms#targeting-a-platform) enabled. Otherwise this value will always be `null`.","properties":{"targetted":{"description":"Array of [valid platform strings](/restapi/platforms#targeting-a-platform) showing which platforms the  modfile has targeted for release.","type":"array","items":{"type":"string"}},"approved":{"description":"Array of [valid platform strings](/restapi/platforms#targeting-a-platform) showing which platforms the modfile has been approved for.","type":"array","items":{"type":"string"}},"denied":{"description":"Array of [valid platform strings](/restapi/platforms#targeting-a-platform) showing which platforms the modfile has been denied for.","type":"array","items":{"type":"string"}},"live":{"description":"Array of [valid platform strings](/restapi/platforms#targeting-a-platform) showing which platforms the modfile is currently marked as live on.","type":"array","items":{"type":"string"}},"pending":{"description":"Array of [valid platform strings](/restapi/platforms#targeting-a-platform) showing which platforms the modfile is currently marked as pending on.","type":"array","items":{"type":"string"}}},"type":"object"}}
   schemaType={"response"}
 >
   

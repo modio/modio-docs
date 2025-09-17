@@ -1,7 +1,7 @@
 ---
 id: unity-builder-ref
 title: Builder
-slug: /unity/builder-ref/
+slug: /unity/builder-ref
 sidebar_position: 3
 ---
 
@@ -440,6 +440,18 @@ changes, then process the remaining data as separate publish tasks.
 `Error.None` if the initial request succeeds. Use [`Results`](#Modio.Mods.Builder.ModBuilder.Results) to inspect the results
 of each publish task.
 
+
+#### ArchiveMod{#Modio.Mods.Builder.ModBuilder.ArchiveMod}
+
+```csharp
+public async Task<Error> ArchiveMod()
+```
+
+Delete a mod on the mod.io backend. Note that this puts it into
+an 'archived' state, and mods can only be permanently deleted
+from the mod.io website
+
+
 ___
 
 ### ModfileBuilder{#Modio.Mods.Builder.ModfileBuilder}
@@ -542,6 +554,17 @@ This will overwrite all platforms on this modfile.
 
 ```csharp
 public ModfileBuilder SetPlatforms(ICollection<Platform> platforms)
+```
+
+###### Remarks
+
+This will overwrite all platforms on this modfile.
+
+
+#### SetPlatforms{#Modio.Mods.Builder.ModfileBuilder.SetPlatforms}
+
+```csharp
+public ModfileBuilder SetPlatforms(params Platform[] platforms)
 ```
 
 ###### Remarks

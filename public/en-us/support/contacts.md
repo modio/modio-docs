@@ -1,14 +1,28 @@
 ---
 id: support-contacts
-title: Contacts
-slug: /support/contacts/
+title: Contacts Us
+slug: /support/contacts
 sidebar_position: 1
 ---
 
-# Contacts
+# Contact Us
 
-For all game integration enquiries (Unity, Unreal, SDK and REST API), please contact us at developers@mod.io, or you can reach our team on Discord: https://discord.mod.io.
+For all business or game integration enquiries (Unity, Unreal, SDK and REST API), please contact us either of the below:
 
-For all business development enquiries, please contact us at developers@mod.io.
+<div className="simplecard-grid">
 
-For general queries you can search our knowledge base here: https://support.mod.io.
+  <SimpleCard
+    shadow="tl"
+    title="Email"
+    image="/img/icon_email.svg"
+    text="Our team is available to help with all business and support enquiries at developers@mod.io."
+    moreLink="mailto:developers@mod.io"
+  />
+    <SimpleCard
+    shadow="tl"
+    title="Discord"
+    image="/img/icon_discord.svg"
+    text="Our Discord is a more casual way to chat with the team and other developers using mod.io."
+    moreLink="https://discord.mod.io"
+  />
+</div>

@@ -1,7 +1,7 @@
 ---
 id: unity-getting-started
 title: Getting Started
-slug: /legacy/unity/getting-started/
+slug: /legacy/unity/getting-started
 sidebar_position: 2
 ---
 
@@ -487,7 +487,7 @@ new SearchFilter(2, 10); // Will return results 21-30
 ```
 
 :::note 
-Search Filters have a number of options for filtering and ordering your results. See the [reference documentation](/legacy/unity/unityref/) (or use code completion in your IDE) for its available options.
+Search Filters have a number of options for filtering and ordering your results. See the [reference documentation](/legacy/unity/unityref) (or use code completion in your IDE) for its available options.
 :::
 
 ### Downloading Images
@@ -529,7 +529,7 @@ async void SetRandomMod()
 The code above relies on `allMods`, which is set in the first [searching for mods](#searching-for-mods) section. **Ensure that `allMods` has been set before running this method.**
 :::
 
-This method is downloading the smallest version of the logo, `logoImage_320x180`. However, Mod Profiles have a number of sizes for each image. See the [reference documentation](/legacy/unity/unityref/) (or use code completion in your IDE) to view available options. 
+This method is downloading the smallest version of the logo, `logoImage_320x180`. However, Mod Profiles have a number of sizes for each image. See the [reference documentation](/legacy/unity/unityref) (or use code completion in your IDE) to view available options. 
 
 ## Getting Subscribed Mods
 
@@ -676,7 +676,7 @@ void Update()
 In a real implementation, you'll likely track the `modId`'s download and install progress separately to display in your UI. But, this should give you an idea of what's possible with the mod management feature.
 
 :::note 
-There are a number of mod management events available. See the [reference documentation](/legacy/unity/unityref/) (or use code completion in your IDE) for a complete list.
+There are a number of mod management events available. See the [reference documentation](/legacy/unity/unityref) (or use code completion in your IDE) for a complete list.
 :::
 
 ## Using Mods
@@ -1154,12 +1154,12 @@ namespace ModIO
     }
 }
 ```
-# Metrics Play Sessions
+## Playtime Metrics
 
-The mod.io SDK supports all of the mod.io metrics features, allowing you to start a metrics play sesion, keeping that session alive via a heartbeat (automatically called, or manually handled) and then ending that session. Metric sessions allow you to track which mods your players interact with most frequently. Visit https://docs.mod.io/metrics/ for an overview of the mod.io metrics system.
+The mod.io SDK supports all of the mod.io [Metrics](/metrics) features, including [Playtime Metrics](/metrics/playtime), which allows you to track which mods your players interact with most frequently. 
 
 :::note
-Running metrics play sessions is a premium feature. If you are interested in mod.io premium features, please contact developers@mod.io.
+Playtime Metrics is a premium feature. If you are interested in activating this for your game, please contact developers@mod.io.
 :::
 
 The following documentation walks you through the setup process and gives example usages.

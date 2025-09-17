@@ -1,14 +1,34 @@
 ---
 id: index-sdk
 title: Overview
-slug: /cppsdk/
-sidebar_position: 0
-custom_edit_url: https://github.com/modio/modio-sdk-internal/blob/develop/doc/index-sdk.mdx
+slug: /cppsdk
 ---
 
-Welcome to the mod.io SDK, built using C++. It allows game developers to host and automatically install user-generated content in their games. It connects to the [mod.io REST API](https://docs.mod.io/restapiref/).
+# C++ SDK
 
-You can download the [mod.io C++ SDK from GitHub](https://github.com/modio/modio-sdk). Once you have, follow the [installation guide](/cppsdk/setup/) to set up your game or application to use the SDK. If you are using Unreal Engine, you can get our official Unreal Engine plugin [on GitHub](https://github.com/modio/modio-ue).
+The mod.io C++ SDK makes it possible to host and automatically install **user-generated content (UGC)** in your game via the [mod.io REST API](/restapi).
+
+<div className="simplecard-grid">
+
+  <SimpleCard
+    shadow="tl"
+    title="Core SDK"
+    image="/img/icon_modio.svg"
+    text="Facilitates core mod.io service functionality, such as authentication, filtering and subscription management."
+    moreLink="/cppsdk/installation/"
+  />
+    <SimpleCard
+    shadow="tl"
+    title="Features"
+    image="/img/icon_tui.svg"
+    text="Explore a variety of customizable offerings that work alongside the UE Plugin to enhance UGC in your game."
+    moreLink="/features/"
+  />
+</div>
+
+You can download the mod.io C++ SDK [from GitHub](https://github.com/modio/modio-sdk). Once you have, follow the [C++ SDK Getting Started guides](/cppsdk/#c-sdk-core-setup-guides) below to set up your game or application to use the SDK. 
+
+We also have official plugins for [Unreal Engine](/unreal/) or [Unity](/unity/).
 
 ## Features
 
@@ -20,19 +40,38 @@ You can download the [mod.io C++ SDK from GitHub](https://github.com/modio/modio
 * UGC browsing and filtering
 * Header-only, direct compilation or static library support with C++17 compiler
 
+## C++ SDK core setup guides
+
+Below are a series of guides with code samples demonstrating the C ++ SDK's core functionality.
+
+### Getting started
+
+* [Installation](/cppsdk/installation/)
+* [Initialization](/cppsdk/initialization/)
+* [Structure & Error Handling](/cppsdk/structure/)
+* [User Authentication](/cppsdk/user-authentication/)
+* [Searching for UGC](/cppsdk/searching-ugc/)
+* [Subscribing to UGC](/cppsdk/subscribing/)
+* [Adding UGC](/cppsdk/adding-ugc/)
+* [Collections](/cppsdk/collections/)
+
+## Feature Guides
+
+The C++ SDK is compatitable with a variety of mod.io's features. These are additions to the core plugin that are designed to streamline and elevate your game's UGC. Check out the specific [Feature Guides for C++ SDK](/cppsdk/feature-guides) 
+
 ## Platform Support
 
-The mod.io SDK supports all current-generation desktop platforms, mobile and consoles. For access to Windows (GDK), XBox, PlayStation®4, PlayStation®5 or Switch, follow the [instructions here](/platforms/console-sdks/).
+The mod.io SDK supports all current-generation desktop platforms, mobile and consoles. You'll need to request [SDK Access](/platforms/console-sdks/) for Windows (GDK), Xbox, PlayStation®4, PlayStation®5 or Switch.
 
 | Platform | Support | Compiler |
 | --- | --- | --- |
 | Windows | ✔ | MSVC C++ 2019+ |
 | Windows (GDK) | ✔ | Vendor-provided |
 | Nintendo Switch | ✔ | Vendor-provided |
-| XBox (GDK) | ✔ | Vendor-provided |
+| Xbox (GDK) | ✔ | Vendor-provided |
 | PlayStation®4 | ✔ | Vendor-provided |
 | PlayStation®5 | ✔ | Vendor-provided |
 | Linux | ✔ | Clang 10 |
-| macOS | ✔ | Clang 10 |
+| MacOS | ✔ | Clang 10 |
 | iOS   | ✔ | Clang 10 |
 | Android   | ✔ | Clang 10 |

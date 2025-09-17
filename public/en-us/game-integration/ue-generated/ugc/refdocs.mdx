@@ -1,7 +1,7 @@
 ---
 id: modio-ugc-refdocs
-title: Modio UGC API Reference
-slug: /unreal/ugc-refdocs/
+title: ModioUGC API Reference
+slug: /unreal/ugc-refdocs
 ---
 
 
@@ -22,8 +22,6 @@ slug: /unreal/ugc-refdocs/
 #### Request Mod Enabled State Change
 
 
-
-![nd_img_ModEnabledStateProvider_RequestModEnabledStateChange.png](img/refdocs/nd_img_ModEnabledStateProvider_RequestModEnabledStateChange.png)
 
 ```cpp
 bool RequestModEnabledStateChange(FGenericModID ID, bool bNewEnabledState)
@@ -61,8 +59,6 @@ true if the mod's state was successfully changed, else false
 #### Query Is Mod Enabled
 
 
-
-![nd_img_ModEnabledStateProvider_QueryIsModEnabled.png](img/refdocs/nd_img_ModEnabledStateProvider_QueryIsModEnabled.png)
 
 ```cpp
 bool QueryIsModEnabled(FGenericModID ModID)
@@ -151,8 +147,6 @@ true if the mod is enabled, else false
 
 
 
-![nd_img_UGCProvider_IsProviderEnabled.png](img/refdocs/nd_img_UGCProvider_IsProviderEnabled.png)
-
 ```cpp
 bool IsProviderEnabled()
 ```
@@ -188,8 +182,6 @@ bool indicating whether the UGC provider is enabled
 
 
 
-![nd_img_UGCProvider_InitializeProvider.png](img/refdocs/nd_img_UGCProvider_InitializeProvider.png)
-
 ```cpp
 void InitializeProvider(FOnUGCProviderInitializedDelegate Handler)
 ```
@@ -223,8 +215,6 @@ void InitializeProvider(FOnUGCProviderInitializedDelegate Handler)
 #### Get Installed UGC Paths
 
 
-
-![nd_img_UGCProvider_GetInstalledUGCPaths.png](img/refdocs/nd_img_UGCProvider_GetInstalledUGCPaths.png)
 
 ```cpp
 FModUGCPathMap GetInstalledUGCPaths()
@@ -260,8 +250,6 @@ A map of installed UGC paths to their IDs.
 #### Deinitialize Provider
 
 
-
-![nd_img_UGCProvider_DeinitializeProvider.png](img/refdocs/nd_img_UGCProvider_DeinitializeProvider.png)
 
 ```cpp
 void DeinitializeProvider(FOnUGCProviderDeinitializedDelegate Handler)
@@ -314,8 +302,6 @@ void DeinitializeProvider(FOnUGCProviderDeinitializedDelegate Handler)
 
 
 
-![nd_img_UGCSubsystem_UnmountUGCPackageByModID.png](img/refdocs/nd_img_UGCSubsystem_UnmountUGCPackageByModID.png)
-
 ```cpp
 void UnmountUGCPackageByModID(FGenericModID ModID, bool bRemoveUGCPackage)
 ```
@@ -351,8 +337,6 @@ void UnmountUGCPackageByModID(FGenericModID ModID, bool bRemoveUGCPackage)
 
 
 
-![nd_img_UGCSubsystem_UnmountUGCPackage.png](img/refdocs/nd_img_UGCSubsystem_UnmountUGCPackage.png)
-
 ```cpp
 void UnmountUGCPackage(FUGCPackage Package, bool bRemoveUGCPackage)
 ```
@@ -384,10 +368,42 @@ void UnmountUGCPackage(FUGCPackage Package, bool bRemoveUGCPackage)
 
 
 
+#### Unload UGCBy Mod ID
+
+
+
+```cpp
+bool UnloadUGCByModID(FGenericModID ModID)
+```
+
+
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`UGCSubsystem`|
+|`ModID`|Mod ID of the mod to remove UGC for|
+</RefTable>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #### Unload All UGC Packages
 
-
-![nd_img_UGCSubsystem_UnloadAllUGCPackages.png](img/refdocs/nd_img_UGCSubsystem_UnloadAllUGCPackages.png)
 
 ```cpp
 void UnloadAllUGCPackages()
@@ -402,8 +418,6 @@ void UnloadAllUGCPackages()
 #### Set UGC Provider
 
 
-
-![nd_img_UGCSubsystem_SetUGCProvider.png](img/refdocs/nd_img_UGCSubsystem_SetUGCProvider.png)
 
 ```cpp
 void SetUGCProvider(TScriptInterface<IUGCProvider> InUGCProvider)
@@ -439,8 +453,6 @@ void SetUGCProvider(TScriptInterface<IUGCProvider> InUGCProvider)
 
 
 
-![nd_img_UGCSubsystem_SetUGCEnabledStateProvider.png](img/refdocs/nd_img_UGCSubsystem_SetUGCEnabledStateProvider.png)
-
 ```cpp
 void SetUGCEnabledStateProvider(TScriptInterface<IModEnabledStateProvider> NewProvider)
 ```
@@ -455,7 +467,7 @@ void SetUGCEnabledStateProvider(TScriptInterface<IModEnabledStateProvider> NewPr
 | | |
 |-|-|
 |`Target`|`UGCSubsystem`|
-|`NewProvider`|The new object to query via IRavenModEnabledStateProvider|
+|`NewProvider`|The new object to query via IModEnabledStateProvider|
 </RefTable>
 
 
@@ -474,8 +486,6 @@ void SetUGCEnabledStateProvider(TScriptInterface<IModEnabledStateProvider> NewPr
 #### Remove UGC Changed Handler
 
 
-
-![nd_img_UGCSubsystem_RemoveUGCChangedHandler.png](img/refdocs/nd_img_UGCSubsystem_RemoveUGCChangedHandler.png)
 
 ```cpp
 void RemoveUGCChangedHandler(FOnUGCPackagesChangedDelegate Handler)
@@ -511,8 +521,6 @@ void RemoveUGCChangedHandler(FOnUGCPackagesChangedDelegate Handler)
 
 
 
-![nd_img_UGCSubsystem_RemoveModEnabledStateChangeHandler.png](img/refdocs/nd_img_UGCSubsystem_RemoveModEnabledStateChangeHandler.png)
-
 ```cpp
 void RemoveModEnabledStateChangeHandler(FModEnabledStateChangeHandler Handler)
 ```
@@ -546,8 +554,6 @@ void RemoveModEnabledStateChangeHandler(FModEnabledStateChangeHandler Handler)
 #### Refresh UGC
 
 
-![nd_img_UGCSubsystem_RefreshUGC.png](img/refdocs/nd_img_UGCSubsystem_RefreshUGC.png)
-
 ```cpp
 void RefreshUGC()
 ```
@@ -561,8 +567,6 @@ void RefreshUGC()
 #### Enumerate All UGC Packages
 
 
-
-![nd_img_UGCSubsystem_K2_EnumerateAllUGCPackages.png](img/refdocs/nd_img_UGCSubsystem_K2_EnumerateAllUGCPackages.png)
 
 ```cpp
 void K2_EnumerateAllUGCPackages(FUGCPackageEnumeratorDelegate Enumerator) const
@@ -598,8 +602,6 @@ void K2_EnumerateAllUGCPackages(FUGCPackageEnumeratorDelegate Enumerator) const
 
 
 
-![nd_img_UGCSubsystem_IsUGCFeatureEnabled.png](img/refdocs/nd_img_UGCSubsystem_IsUGCFeatureEnabled.png)
-
 ```cpp
 bool IsUGCFeatureEnabled(EUGCSubsystemFeature Feature)
 ```
@@ -632,11 +634,43 @@ bool indicating the state of the specified feature
 
 
 
+#### Is UPlugin Compatible
+
+
+
+```cpp
+bool IsUGCCompatible(FString UPluginFilePath)
+```
+
+
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`UGCSubsystem`|
+|`UPluginFilePath`||
+</RefTable>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #### Is Provider Enabled
 
 
-
-![nd_img_UGCSubsystem_IsProviderEnabled.png](img/refdocs/nd_img_UGCSubsystem_IsProviderEnabled.png)
 
 ```cpp
 bool IsProviderEnabled()
@@ -673,8 +707,6 @@ bool indicating whether the UGC provider is enabled
 
 
 
-![nd_img_UGCSubsystem_InitializeUGCProvider.png](img/refdocs/nd_img_UGCSubsystem_InitializeUGCProvider.png)
-
 ```cpp
 void InitializeUGCProvider(FOnUGCProviderInitializedDelegate Handler)
 ```
@@ -708,8 +740,6 @@ void InitializeUGCProvider(FOnUGCProviderInitializedDelegate Handler)
 #### Get UGC Package By Mod ID
 
 
-
-![nd_img_UGCSubsystem_GetUGCPackageByModID.png](img/refdocs/nd_img_UGCSubsystem_GetUGCPackageByModID.png)
 
 ```cpp
 bool GetUGCPackageByModID(FGenericModID ModID, FUGCPackage UGCPackage) const
@@ -748,8 +778,6 @@ true if the package was found, false otherwise
 
 
 
-![nd_img_UGCSubsystem_GetPackageNamesFromUGCPackage.png](img/refdocs/nd_img_UGCSubsystem_GetPackageNamesFromUGCPackage.png)
-
 ```cpp
 TArray<FName> GetPackageNamesFromUGCPackage(FUGCPackage UGCPackage) const
 ```
@@ -786,8 +814,6 @@ Array of package names
 
 
 
-![nd_img_UGCSubsystem_DeinitializeUGCProvider.png](img/refdocs/nd_img_UGCSubsystem_DeinitializeUGCProvider.png)
-
 ```cpp
 void DeinitializeUGCProvider(FOnUGCProviderDeinitializedDelegate Handler)
 ```
@@ -821,8 +847,6 @@ void DeinitializeUGCProvider(FOnUGCProviderDeinitializedDelegate Handler)
 #### Add UGC From Path
 
 
-
-![nd_img_UGCSubsystem_AddUGCFromPath.png](img/refdocs/nd_img_UGCSubsystem_AddUGCFromPath.png)
 
 ```cpp
 void AddUGCFromPath(FString Path)
@@ -858,8 +882,6 @@ void AddUGCFromPath(FString Path)
 
 
 
-![nd_img_UGCSubsystem_AddUGCChangedHandler.png](img/refdocs/nd_img_UGCSubsystem_AddUGCChangedHandler.png)
-
 ```cpp
 void AddUGCChangedHandler(FOnUGCPackagesChangedDelegate Handler)
 ```
@@ -893,8 +915,6 @@ void AddUGCChangedHandler(FOnUGCPackagesChangedDelegate Handler)
 #### Add Mod Enabled State Change Handler
 
 
-
-![nd_img_UGCSubsystem_AddModEnabledStateChangeHandler.png](img/refdocs/nd_img_UGCSubsystem_AddModEnabledStateChangeHandler.png)
 
 ```cpp
 void AddModEnabledStateChangeHandler(FModEnabledStateChangeHandler Handler)
@@ -1034,8 +1054,6 @@ void AddModEnabledStateChangeHandler(FModEnabledStateChangeHandler Handler)
 
 ### GetModID (FUGCPackage)
 
-
-![nd_img_UGCLibrary_GetModID.png](img/refdocs/nd_img_UGCLibrary_GetModID.png)
 
 ```cpp
 bool GetModID(FUGCPackage UGCPackage, FGenericModID ModID)

@@ -1,0 +1,71 @@
+---
+id: authenticate-via-meta
+title: "Meta Quest"
+description: "Request an access token on behalf of an Meta Quest user. To use this functionality you *must* add your games [AppId and secret](https://dashboard.oculus.com/) from the Meta Quest Dashboard, to the *Game Admin > Settings* page of your games profile on mod.io. A Successful request will return an [Access Token Object](/restapi/docs/schemas/access-token-object)."
+sidebar_label: "Meta Quest"
+hide_title: true
+hide_table_of_contents: true
+api: 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
+sidebar_class_name: "post api-method"
+info_path: restapi/docs/mod-io-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Meta Quest"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/external/oculusauth"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Request an access token on behalf of an Meta Quest user. To use this functionality you *must* add your games [AppId and secret](https://dashboard.oculus.com/) from the Meta Quest Dashboard, to the *Game Admin > Settings* page of your games profile on mod.io. A Successful request will return an [Access Token Object](/restapi/docs/schemas/access-token-object).
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/x-www-form-urlencoded":{"schema":{"title":"Meta Quest Authentication Request","required":["device","nonce","user_id","access_token"],"properties":{"device":{"description":"The Meta Quest device being used for authentication.","type":"string","enum":["quest","rift"],"example":"rift"},"nonce":{"description":"The nonce provided by calling [ovr_User_GetUserProof()](https://developers.meta.com/horizon/documentation/native/ps-ownership/) from the Meta Quest SDK. <br /><br />__NOTE:__ Due to the `nonce` potentially containing special characters, you must URL encode the string before sending the request to ensure it is successfully sent to our servers otherwise you may encounter an `422 Unprocessable Entity` response. For example, [cURL](https://ec.haxx.se/http-post.html) will do this for you by using the `--data-urlencode` option.","type":"string","example":"m72VygeZzTSUVRmNvw8v..."},"user_id":{"description":"The user's Meta Quest id providing by calling [ovr_GetLoggedInUserID()](https://developers.meta.com/horizon/documentation/native/ps-ownership/) from the Meta Quest SDK.","type":"integer","example":"1829770514091149"},"access_token":{"description":"The user's access token, providing by calling [ovr_User_GetAccessToken()](https://developers.meta.com/horizon/documentation/native/ps-ownership/) from the Meta Quest SDK. mod.io uses this access token on the first login only to obtain the user's alias and is not saved on our servers.","type":"integer","example":"OCAf5kD1SbVNE..."},"email":{"description":"The users email address. If supplied, and the respective user does not have an email registered for their account we will send a confirmation email to confirm they have ownership of the specified email.<br /><br />__WARNING__: We __strongly recommend__ that you prompt your users in a friendly manner at least once to provide their email address to link their Meta Quest account. Due to how Meta Quest handles user IDs - if we are not supplied with an email for a user at least once we will __never__ be able to link that user with their existing account at a later date as Meta Quest IDs operate at the game-scope, not globally. Failing to provide an email will in-effect generate an orphan account that will only be able to be accessed from your title.","type":"string","example":"example@mod.io"},"date_expires":{"description":"Unix timestamp of date in which the returned token will expire. Value cannot be higher than the default value which is a common year (unix timestamp + 31536000 seconds). Using a token after it's expiry time has elapsed will result in a `401 Unauthorized` response.","type":"integer","example":1729236480},"terms_agreed":{"description":"This MUST be set to `false` unless you have collected the [users agreement](/restapi/docs/terms) prior to calling this endpoint in which case it can be set to `true` in that request and will be recorded. <br><br>__NOTE:__ If this is set to `false` and the user has not agreed to the latest mod.io Terms of Use and Privacy Policy, an error `403 Forbidden (error_ref 11074)` will be returned and you will need to collect the [users agreement](/restapi/docs/terms) and retry with this value set to `true` to authenticate the user. See the full details of the [mod.io authentication process](/terms).","type":"boolean","example":true}},"type":"object"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Successful Request","content":{"application/json":{"schema":{"title":"Access Token Object","description":"Contains user access token.","properties":{"code":{"description":"HTTP Response Code.","type":"integer","format":"int32","example":200},"access_token":{"description":"The user's access token.","type":"string","example":"eyJ0eXAiOiXKV1QibCJhbLciOiJeiUzI1....."},"date_expires":{"description":"Unix timestamp of the date this token will expire. Default is one year from issue date. See [Access Token Lifetime & Expiry](/restapi/docs/making-requests).","type":"integer","format":"int32","example":1570673249}},"type":"object"}}}},"401":{"description":"The game associated with the supplied api_key is currently not available.","content":{"application/json":{"schema":{"title":"Error Object","description":"Standard API error response.","properties":{"error":{"description":"Contains error data.","properties":{"code":{"description":"The [HTTP code](/restapi/introduction#response-codes).","type":"integer","format":"int32","default":403},"error_ref":{"description":"The mod.io error code.","type":"integer","default":10000},"message":{"description":"The server response to your request. Responses will vary depending on the endpoint, but the object structure will persist.","type":"string","default":"You do not have the required permissions to access this resource."},"errors":{"description":"Optional Validation errors object. This field is only supplied if the response is a validation error `422 Unprocessible Entity`. See [errors documentation](/restapi/errors) for more information.","type":"object"}},"type":"object"}},"type":"object"}}},"x-errorrefs":{"11032":"mod.io was unable to verify the credentials against the external service provider.","14001":"The game associated with the supplied api_key is currently not available."}},"403":{"description":"The api_key supplied in the request must be associated with a game.","content":{"application/json":{"schema":{"title":"Error Object","description":"Standard API error response.","properties":{"error":{"description":"Contains error data.","properties":{"code":{"description":"The [HTTP code](/restapi/introduction#response-codes).","type":"integer","format":"int32","default":403},"error_ref":{"description":"The mod.io error code.","type":"integer","default":10000},"message":{"description":"The server response to your request. Responses will vary depending on the endpoint, but the object structure will persist.","type":"string","default":"You do not have the required permissions to access this resource."},"errors":{"description":"Optional Validation errors object. This field is only supplied if the response is a validation error `422 Unprocessible Entity`. See [errors documentation](/restapi/errors) for more information.","type":"object"}},"type":"object"}},"type":"object"}}},"x-errorrefs":{"11016":"The api_key supplied in the request must be associated with a game.","11017":"The api_key supplied in the request is for test environment purposes only and cannot be used for this functionality.","11024":"The secret Oculus Rift app ticket associated with this game has not been configured.","11025":"The secret Oculus Quest app ticket associated with this game has not been configured.","11074":"The user has not agreed to the mod.io Terms of Use. Please see terms_agreed parameter description and the [Terms](/restapi/docs/terms) endpoint for more information.","11133":"The user account for Oculusquest already exists, please login by email and connect your Oculusquest account to your modio account instead."}}}}
+>
+  
+</StatusCodes>
+
+
+      

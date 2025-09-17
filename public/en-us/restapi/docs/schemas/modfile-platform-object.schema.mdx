@@ -1,7 +1,7 @@
 ---
 id: modfile-platform-object
 title: "Modfile Platform Object"
-description: "Contains platform filtering data for this modfile. This object is only applicable if the parent game has [cross-platform moderation](/restapi/docs/targeting-a-platform) enabled. Otherwise this value will always be `null`."
+description: "Contains platform filtering data for this modfile. This object is only applicable if the parent game has [cross-platform moderation](/restapi/platforms#targeting-a-platform) enabled. Otherwise this value will always be `null`."
 sidebar_label: "Modfile Platform Object"
 hide_title: true
 hide_table_of_contents: true
@@ -22,10 +22,10 @@ import Heading from "@theme/Heading";
 
 
 
-Contains platform filtering data for this modfile. This object is only applicable if the parent game has [cross-platform moderation](/restapi/docs/targeting-a-platform) enabled. Otherwise this value will always be `null`.
+Contains platform filtering data for this modfile. This object is only applicable if the parent game has [cross-platform moderation](/restapi/platforms#targeting-a-platform) enabled. Otherwise this value will always be `null`.
 
 <Schema
-  schema={{"title":"Modfile Platform Object","description":"Contains platform filtering data for this modfile. This object is only applicable if the parent game has [cross-platform moderation](/restapi/docs/targeting-a-platform) enabled. Otherwise this value will always be `null`.","properties":{"platform":{"title":"Platform String Enum","description":"A [target platform](/restapi/docs/targeting-a-platform).","type":"string","enum":["ALL","WINDOWS","MAC","LINUX","ANDROID","IOS","XBOXONE","XBOXSERIESX","PLAYSTATION4","PLAYSTATION5","SWITCH","OCULUS","SOURCE"],"example":"PLAYSTATION5","x-enumDescriptions":{"ALL":"All Platforms","WINDOWS":"Windows","MAC":"Mac","LINUX":"Linux","ANDROID":"Android","IOS":"Iphone IOS","XBOXONE":"Xbox One","XBOXSERIESX":"Xbox Series X","PLAYSTATION4":"Playstation 4","PLAYSTATION5":"Playstation 5","SWITCH":"Switch","OCULUS":"Oculus","SOURCE":"Source"}},"status":{"title":"Mod Platform Status Enum","description":"The status of the modfile for the corresponding `platform`.","type":"integer","enum":[0,1,2,3],"x-enumDescriptions":{"PENDING (0)":"Pending","APPROVED (1)":"Approved","DENIED (2)":"Denied","TARGETED (3)":"Targeted"}}},"type":"object"}}
+  schema={{"title":"Modfile Platform Object","description":"Contains platform filtering data for this modfile. This object is only applicable if the parent game has [cross-platform moderation](/restapi/platforms#targeting-a-platform) enabled. Otherwise this value will always be `null`.","properties":{"platform":{"title":"Platform String Enum","description":"A [target platform](/restapi/platforms#targeting-a-platform).","type":"string","enum":["ALL","WINDOWS","MAC","LINUX","ANDROID","IOS","XBOXONE","XBOXSERIESX","PLAYSTATION4","PLAYSTATION5","SWITCH","OCULUS","SOURCE","SWITCH2","WINDOWSSERVER","LINUXSERVER"],"example":"PLAYSTATION5","x-enumDescriptions":{"ALL":"All Platforms","WINDOWS":"Windows","MAC":"Mac","LINUX":"Linux","ANDROID":"Android","IOS":"Iphone IOS","XBOXONE":"Xbox One","XBOXSERIESX":"Xbox Series X","PLAYSTATION4":"Playstation 4","PLAYSTATION5":"Playstation 5","SWITCH":"Switch","OCULUS":"Oculus","SOURCE":"Source","SWITCH2":"Nintendo Switch 2","WINDOWSSERVER":"Windows Server","LINUXSERVER":"Linux Server"}},"status":{"title":"Mod Platform Status Enum","description":"The status of the modfile for the corresponding `platform`.","type":"integer","enum":[0,1,2,3],"x-enumDescriptions":{"PENDING (0)":"Pending","APPROVED (1)":"Approved","DENIED (2)":"Denied","TARGETED (3)":"Targeted"}}},"type":"object"}}
   schemaType={"response"}
 >
   

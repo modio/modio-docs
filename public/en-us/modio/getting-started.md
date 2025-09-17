@@ -1,48 +1,83 @@
 ---
-id: modio-getting-started
+id: modio-starter
 title: Getting Started
-slug: /
-sidebar_position: 0
+slug: /getting-started
 ---
 
 # Getting Started
 
-Starting your journey with [mod.io](https://mod.io) is easy. In just a few simple steps you’ll be able to offer your players a seamless, cross-platform UGC experience.
+Starting your journey with mod.io is easy. This documentation will help you curate a seamless **user-generated content (UGC)** experience for your game on any platform.
 
-## Add Your Game
+![Setup Journey Map](img/game-journey-final.png)
 
-Add your game by clicking the “Getting Started” button on the [mod.io homepage](https://mod.io). If you’ve never used mod.io before, you’ll be prompted to create an account. 
+### Your mod.io journey
+
+1. [Set up a game account](#set-up-a-game-account)
+2. [Connect to mod.io](#connect-to-modio)
+3. [Expand with cross-play functionality](#expand-with-cross-platform-functionality)
+4. [Customize your experience](#customize-your-experience)
+
+## Set up a game account
+
+Your **game account** acts as the hub for all user-generated content. To create an account, click the “get started” button on the [mod.io](https://mod.io) homepage where you'll be prompted to link a trusted service, such as Steam or Google, or sign up using an email.
+
+You'll then be able to establish the main UGC parameters for your game. As you set up your profile, use the ? buttons for more information when in doubt. With mod.io, you have full control over what content your users can create and experience within your game. 
 
 :::tip
-Game ownership can be transferred at any time, don’t worry about who creates your game profile. 
+You can change your settings (including game name) at any time via your **game admin settings** on the [My Content](https://mod.io/content) page.
 :::
 
-Follow the prompts to set up your game’s profile. All information can be edited later on, so unannounced titles are free to use a code name during development. We recommend using our preview settings to hide your game until launch. If your title is already released and you require a separate, private environment, you can set up a new, hidden game profile for testing purposes. 
+**Invite team members**: The teams feature allows multiple people to work on a game with varying levels of access. Before you can invite them, each team member will first need to create a profile by clicking the “Log in” button on the [homepage](https://mod.io/). You can also invite team members at a later date using the **Team** tab in your game admin settings (found on the [My Content](https://mod.io/content) page).
 
-After you’ve added your game, set its content and moderation rules, such as whether you want to restrict mature content or not. 
+**Preview system**: Your game will be hidden automatically when you first create your Game Account. This is done to give you time to prepare and test your mod.io settings ahead of launching your game with UGC. We recommend keeping your game hidden until it is ready to launch. To give collaborators access to a hidden game, see the [Preview System](/launch-checklist#test-with-preview-system) guide. If your title is already released and you require a private environment for testing purposes, you can also set up a second hidden game profile.
 
-:::tip
-You can change these rules at any time from your game’s admin page.
+## Connect to mod.io
+
+To unlock UGC in your game, the next step is to integrate mod.io. All games are designed differently, and we offer support for a variety of builds. 
+
+First, you'll need the keys to the kingdom. Locate your API Key in the “API” section of your Game Admin Settings, as this will ensure the API can identify your title. 
+
+From here, select one of three pathways to begin integration:
+
+<div className="simplecard-grid grid-cols-3">
+  <SimpleCard
+    shadow="tl"
+    title="Unreal Engine"
+    image="/img/icon_ue.svg"
+    text="For UE builds, this plugin connects your game with our API to unlock user-generated content."
+    moreLink="/unreal"
+  />
+  <SimpleCard
+    shadow="tl"
+    title="Unity"
+    image="/img/icon_unity.svg"
+    text="For Unity builds, this plugin connects your game with our API to unlock user-generated content."
+    moreLink="/unity"
+  />
+  <SimpleCard
+    shadow="tl"
+    title="Custom"
+    image="/img/icon_modio.svg"
+    text="For custom builds, this plugin connects your game with our API to unlock user-generated content."
+    moreLink="/cppsdk"
+  />
+</div>
+
+:::note[REST API]
+The [REST API](/restapi) powers all our UGC functions. The three options above use the API as a base to provide the mod.io UGC experience.
 :::
 
-## Integrate mod.io 
+## Expand with cross-platform functionality
 
-First, you’ll need your API key, you can find it in the “API” section of your game’s admin page. Once you have your key, there are three primary methods of integrating mod.io into your game. 
+Our service is a recognized middleware solution that spans a variety of platforms. To add a platform, you'll first need to gain approval from your platform's account manager. Once you're connected, our service works behind the scenes to streamline the cross-platform UGC experience. 
 
-### Unreal Engine and Unity Plugins
+* **[PC](/platforms/pc)**: Set up UGC for *Steam*, *GOG Galaxy* and *Epic Games* on desktop or handheld devices.
+* **[Console](/platforms/console)**: Set up UGC for *PlayStation®4*, *PlayStation®5*, *Xbox One*, *Xbox Series X*, *Nintendo Switch* and *Nintendo Switch 2*.
+* **[VR](/platforms/vr)**: Set up UGC for *Meta Quest*.
+* **[Mobile](/platforms/mobile)**: Set up UGC for *iOS* and *Android* devices.
 
-Our dedicated engine-plugins are the simplest way to implement mod.io in your [Unreal](/unreal/) or [Unity](/unity/) game. Alongside enabling streamlined use of all of mod.io’s features, both solutions also include an optional, robust, drop-in UGC browser UI.
+![modio on all platforms](img/hero-image.png)
 
-### C++ SDK
+## Customize your experience
 
-If your game uses a custom engine, our full-featured [C++ SDK](/cppsdk/) provides a fast and efficient solution for integrating mod.io. Just like our Unreal and Unity plugins, the C++ SDK also includes a powerful file management system that can automatically download and update players’ subscribed UGC files across all platforms.
-
-### REST API
-
-Web-apps or games that require atomic control over their mod.io implementation are free to access our [REST API](https://docs.mod.io/restapiref/#getting-started) directly. The REST API powers both of our official plugins, as well as the C++ SDK. Which means that all of mod.io’s features are available, to help create your ideal custom implementation.
-
-## Enable Cross-Platform UGC
-
-mod.io is an authorized middleware provider for PlayStation®4 & PlayStation®5, Xbox and Switch. We offer [full support and compliance with certification](/platforms/), native SDKs and single sign-on. mod.io enables seamless, cross-platform UGC, and helps your creators to reach their audience across PC, consoles and mobile.
-
-To get started, speak to your platform account managers about adding mod.io and UGC to your game. You can also reach out to us directly, where we can introduce you to our dedicated account managers who are experienced in (and enthusiastic about) [mod.io](https://mod.io) and UGC.
+mod.io offers a variety of options to enhance and optimize your UGC experience. Whether you are looking to hone your strategy, streamline the player experience, or increase revenue, we've got you covered. Explore our list of [Features](/features) to learn how to get the most of UGC in your game. 

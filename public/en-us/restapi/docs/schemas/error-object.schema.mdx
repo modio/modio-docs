@@ -1,7 +1,7 @@
 ---
 id: error-object
 title: "Error Object"
-description: ""
+description: "Standard API error response."
 sidebar_label: "Error Object"
 hide_title: true
 hide_table_of_contents: true
@@ -22,10 +22,10 @@ import Heading from "@theme/Heading";
 
 
 
-
+Standard API error response.
 
 <Schema
-  schema={{"title":"Error Object","properties":{"error":{"description":"Contains error data.","properties":{"code":{"description":"The [HTTP code](/restapi/docs/response-codes).","type":"integer","format":"int32","default":403},"error_ref":{"description":"The mod.io error code.","type":"integer","default":10000},"message":{"description":"The server response to your request. Responses will vary depending on the endpoint, but the object structure will persist.","type":"string","default":"You do not have the required permissions to access this resource."},"errors":{"description":"Optional Validation errors object. This field is only supplied if the response is a validation error `422 Unprocessible Entity`. See [errors documentation](/restapi/docs/errors) for more information.","type":"object"}},"type":"object"}},"type":"object"}}
+  schema={{"title":"Error Object","description":"Standard API error response.","properties":{"error":{"description":"Contains error data.","properties":{"code":{"description":"The [HTTP code](/restapi/introduction#response-codes).","type":"integer","format":"int32","default":403},"error_ref":{"description":"The mod.io error code.","type":"integer","default":10000},"message":{"description":"The server response to your request. Responses will vary depending on the endpoint, but the object structure will persist.","type":"string","default":"You do not have the required permissions to access this resource."},"errors":{"description":"Optional Validation errors object. This field is only supplied if the response is a validation error `422 Unprocessible Entity`. See [errors documentation](/restapi/errors) for more information.","type":"object"}},"type":"object"}},"type":"object"}}
   schemaType={"response"}
 >
   

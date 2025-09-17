@@ -1,0 +1,125 @@
+---
+id: cpp-metrics
+title: Metrics
+slug: /cppsdk/metrics
+---
+
+# Metrics for C++ SDK
+
+The mod.io SDK supports all of the mod.io metrics features. 
+
+Check out [Metrics](https://docs.mod.io/metrics/) for an overview of what the various Metrics dashboard options offer.
+
+## Playtime Metrics
+
+The main focus of this guide will be [Playtime Metrics](https://docs.mod.io/metrics/playtime/), allowing you to track which UGC your players interact with most frequently. Once you start a play session, you can keep that session alive via a heartbeat (automatically called, or manually handled) before ending that session. 
+
+:::note[Premium Feature]
+Playtime Metrics is a premium feature. If you are interested in activating this feature, contact us at developers@mod.io.
+:::
+
+This guide covers:
+
+* [Initialization](#initialization)
+* [Starting a session](#starting-a-session)
+* [Metrics heartbeat](#metrics-heartbeat)
+* [Ending a session](#ending-a-session)
+
+Metrics based on the platform and portal, are transparently taken care of with no additional consideration needed when using the SDK.
+
+### Initialization
+
+The mod.io metrics features are enabled as part of generating a Metrics Secret Key your API settings in your game dashboard, e.g. https://mod.io/g/game-name/admin/api-key. Once this key has been generated, you need to pass it in as an ExtendedParameters field in your InitializeOptions when Initializing the mod.io SDK, e.g.:
+
+
+```cpp
+Modio::InitializeOptions initializeOptions;
+initializeOptions.ExtendedParameters["MetricsSecretKey"] = "00000000-1111-2222-3333-444444444444";
+```
+
+Failing to set up the Metrics Secret Key will result in a `Modio::MetricsError::SessionNotInitialized` error being returned when using the metrics functionality.
+
+### Starting a session
+
+You can call [`MetricsSessionStartAsync`](/cppsdk/refdocs/#metricssessionstartasync) to start a new session tracking the usage of mods in the context of your game. You'll notice that `MetricsSessionStartAsync` takes a [`MetricsSessionParams`](/cppsdk/refdocs/#metricssessionparams) object as its parameter. This contains an optional Session Id, as well as a required vector of mods to track.
+
+:::note
+If a Session Id is not provided, a random one will be created for you.
+:::
+
+```cpp
+Modio::MetricsSessionParams Params = Modio::MetricsSessionParams {{}, ModIds};
+
+Modio::MetricsSessionStartAsync(Params, [](Modio::ErrorCode ec) {
+{
+	if (ec)
+	{
+		// Error has occurred while attempting to start a session
+	}
+	else
+	{
+		// Session started successfully
+	}
+});
+```
+
+The Metrics Session Params accepts an optional Session Id in the form of a `Modio::Guid` which you may want to use to associate the new session with any supplementary telemetry you are gathering in your game.
+
+### Metrics heartbeat
+
+To ensure that the session is kept alive, a heartbeat is required to be submitted at most every 5 minutes. We recommend doing this a bit earlier than the threshold to ensure you do not miss the window.
+
+There are two methods provided to control the behaviour of the heart beat, [`MetricsSessionSendHeartbeatOnceAsync`](/cppsdk/refdocs/#metricssessionsendheartbeatonceasync) which you can call at your desired precision, as well as a single call and forget [`MetricsSessionSendHeartbeatAtIntervalAsync`](/cppsdk/refdocs/#metricssessionsendheartbeatintervalasync) with a desired interval.
+
+Calling `MetricsSessionSendHeartbeatOnceAsync` will submit a single heartbeat, and return an error code if something went wrong. If no error has occured, the heartbeat has been successfully sent.
+
+
+```cpp
+Modio::MetricsSessionSendHeartbeatOnceAsync([](Modio::ErrorCode ec) 
+{
+	if (ec)
+	{
+		// Error has occurred while submitting a heartbeat
+	}
+	else
+	{
+		// Heartbeat successfully sent
+	}
+});
+```
+
+Calling `MetricsSessionSendHeartbeatAtIntervalAsync` requires a parameter with the desired interval frequency in seconds. An error code will be returned if something went wrong, otherwise you will receive a false-y error if the interval loop has been shut down successfully (such as ending a session).
+
+```cpp
+uint32_t IntervalSeconds = 150;
+Modio::MetricsSessionSendHeartbeatAtIntervalAsync(IntervalSeconds, [](Modio::ErrorCode ec) 
+{
+	if (ec)
+	{
+		// Error has occurred while submitting a heartbeat
+	}
+	else
+	{
+		// Heartbeat interval loop has been shut down successfully
+	}
+});
+```
+
+### Ending a session
+
+To complete a session, for example when finishing a match, or quitting out of your game, you can call [`MetricsSessionEndAsync`](/cppsdk/refdocs/#metricssessionendasync).
+As with the other calls, you will receive an error if anything has gone wrong, otherwise the operation successfully completed.
+
+```cpp
+Modio::MetricsSessionEndAsync([](Modio::ErrorCode ec) 
+{
+	if (ec)
+	{
+		// Error has occurred while attempting to end a session
+	}
+	else
+	{
+		// Metrics session successfully completed
+	}
+});
+```

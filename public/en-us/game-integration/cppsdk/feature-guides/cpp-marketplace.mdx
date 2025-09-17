@@ -1,0 +1,155 @@
+---
+id: cpp-marketplace
+title: Marketplace
+slug: /cppsdk/marketplace
+---
+
+# Marketplace for C++ SDK
+
+The C++ SDK supports a range of [Monetization](https://docs.mod.io/monetization/) features, allowing you to sell a per-game virtual currency to your players that they can use to purchase UGC, with a share of the revenue split between creators and your studio.
+
+[Marketplace](https://docs.mod.io/monetization/marketplace) is one such feature, exposing the data and functions required to build a UGC store in-game.
+
+Every platform requires specific setup for monetization features to work, particularly with respect to the virtual currency configuration and API calls. The following documentation is generically applicable within the C++ SDK. Platform-specific information is available in the relevant [Platform Guides](https://docs.mod.io/getting-started/#expand-with-cross-platform-functionality).
+
+Monetization features need to be enabled through the web UI and, if selling the virtual currency through a platform store, will need a service to consume the virtual currency entitlements and apply them to player's mod.io account.
+
+:::note
+You can use our sandbox test environment at test.mod.io for testing monetization functionality, which allows for simulating real-world payments using dummy credit cards and credentials. When you initialize the SDK, use ``Modio::Environment::Test`` as the environment parameter, along with your test.mod.io title's GameID and APIKey.
+:::
+
+This guide covers:
+
+* [Setup](#setup)
+* [Querying & purchasing UGC](#querying--purchasing-ugc)
+
+## Setup
+
+### Initialization
+
+The mod.io monetization features are enabled as part of the onboarding process on your game profile. Once that is setup, there is nothing further you need to do for initialization in the SDK.
+
+Ensure that you have set the appropriate Portal when initializing the SDK for the portal you are using for purchasing - for instance, on Steam, you must initialize with Modio::Portal::Steam in order to redeem entitlements for Steam.
+
+### Getting the user's wallet
+
+On startup, you can make a call to `<<GetUserWalletBalanceAsync>>` to get the balance of the current user's wallet. If no wallet exists for the user, one will be created for them automatically. This call returns the users wallet balance for the current game. On startup is the only time you need to make this call.
+
+We recommend that you cache the value of this result in your game code rather than making consistent calls to `<<GetUserWalletBalanceAsync>>` and update your local state from the return values of other calls that affect wallet balance.
+
+```cpp
+		Modio::GetUserWalletBalanceAsync([](Modio::ErrorCode ec, Modio::Optional<uint64_t> WalletBalance) {
+			if (!ec && WalletBalance.has_value())
+			{
+				GlobalState.WalletAmount = WalletBalance.value();
+			}
+            else 
+            {
+                // Error handling
+            }
+		});
+```
+
+### Syncing Entitlements
+
+:::note
+This functionality is demonstrated in example 12_RefreshEntitlements.
+For Steam, this functionality is demonstrated in advanced example 01_SteamAuthAndEntitlements.
+For consoles, check the examples folder in the platform module.
+:::
+
+If you are supporting the purchase of virtual currency packs on platform storefronts, entitlement refreshing is the method by which those virtual currency packs are consumed and converted into mod.io virtual currency credits for users to purchase UGC with.
+
+Each platform has a specific way of setting up entitlements for consumption, but generally speaking the way you consume those entitlements is the same. Read each platform's Marketplace documentation for how to configure entitlements and any platform-specific information for entitlement consumption.
+
+You should always start by calling `GetUserWalletBalanceAsync` to ensure that a user has a wallet created, or entitlements cannot be consumed. To consume entitlements, call `RefreshUserEntitlementsAsync` as follows:
+
+```cpp
+const Modio::EntitlementParams EntitlementParams;
+Modio::RefreshUserEntitlementsAsync(
+	EntitlementParams,
+	[&](Modio::ErrorCode ec, Modio::Optional<Modio::EntitlementConsumptionStatusList> Entitlements) {
+		if (ec)
+		{
+			std::cout << "Failed to refresh user entitlements: " << ec.message() << std::endl;
+		}
+		else
+		{
+			if (Entitlements.has_value() && Entitlements->Size() > 0)
+			{
+				if (Entitlements->WalletBalance.has_value())
+				{
+					UserWalletBalance = Entitlements->WalletBalance->Balance;
+
+					std::cout << "Entitlements consumed: " << Entitlements->Size() << std::endl;
+					std::cout << "Updated UserWalletBalance is " << UserWalletBalance;
+				}
+			}
+			else
+			{
+				std::cout << "No entitlements synced; nothing further to do." << std::endl;
+			}
+		}
+	});
+```
+
+:::note
+The `WalletBalance` returned in `Modio::EntitlementConsumptionStatusList` will be 0 if no entitlements have been consumed. You should conditionally update your local state based on whether any entitlements have actually been consumed.
+:::
+
+Generally speaking, you should do this on startup in case the user has made a purchase outside of the game, and after a user has made a purchase on a platform - most platforms will have some callback or indicator that this has occurred. Check that the `Modio::Optional<Modio::EntitlementConsumptionStatusList>` is valid and its size is greater than 0. 
+
+## Querying & purchasing UGC
+
+As part `<<ListAllModsAsync>>`, you can include an additional filter for whether you list paid UGC. By default, only free UGC are shown, but you can set `RevenueType` on the `<<FilterParams>>` object passed to `<<ListAllModsAsync>>` to include free and paid content, or just paid content. All UGC returned will have a `Price` property, indicating the virtual currency price that must be paid in order to purchase.
+
+```cpp
+Modio::ListAllModsAsync(Modio::FilterParams().RevenueType(Modio::FilterParams::RevenueFilterType::FreeAndPaid), [](Modio::ErrorCode ec, Modio::Optional<Modio::ModInfoList> Results)
+{
+    if (ec)
+    {
+        // Error handling
+    }
+    else
+    {
+        for (Modio::ModInfo& CurrentModProfile : *Results)
+        {
+            std::cout << CurrentModProfile.Price;
+        }
+    }
+});
+```
+
+### Purchasing UGC
+
+You can call `<<PurchaseModAsync>>` to purchase any given UGC. PurchaseModAsync takes two parameters = the ModID of the UGC to purchase, and the ExpectedPrice, which is the price displayed to the user from `<<ListAllModsAsync>>`. You must include this parameter for safety, so the user is not charged more or less than the price displayed to them in case the price of the UGC has changed between the call to ListAllModsAsync and purchase time.
+Once UGC is purchased, it is automatically subscribed to for the user.
+
+You should validate that the user has enough virtual currency to make the purchase by comparing it to the balance you received from `GetUserWalletBalanceAsync`. Note this is purely for user experience (ie for graying out the purchase button in the UI, or upselling the user a virtual currenct pack), and `PurchaseModAsync` will return an error if the user does not have enough in their wallet.
+
+The updated wallet balance after the purchase amount is subtracted is returned in the callback of `<<PurchaseModAsync>>`.
+
+```cpp
+Modio::PurchaseModAsync(ModId, ModPrice, [](Modio::ErrorCode ec, Modio::Optional<Modio::TransactionRecord> Transaction) {
+    if (ec)
+    {
+        // Error handling
+    }
+    else
+    {
+        if (Transaction.has_value())
+        {
+            GlobalState.WalletAmount =
+                Transaction.value().UpdatedUserWalletBalance;
+        }
+    }
+});
+```
+
+### Showing user purchases
+
+Even though all purchased UGC is automatically subscribed, the user can still unsubscribe from them and uninstall them; however, they still remain owned and purchased by the user. They must re-subscribe to the UGC in order to have it installed. This is facilitated by `<<FetchUserPurchasesAsync>>`, which will fetch a list of a users purchased UGC. After a successful call, you can then display them with `<<QueryUserPurchases>>`, allowing re-subscription if necessary.
+
+### Getting a User Delegation Token
+
+User Delegation Tokens can be used by a backend server for S2S (Server to Server) transactions/functionality. You can get one for the current user by calling `<<GetUserDelegationToken>>`, the callback for which contains the Token as a `std::string`.
