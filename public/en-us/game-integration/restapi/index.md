@@ -51,8 +51,8 @@ Plugins and wrappers made or supported by the mod.io team.
 
 | &nbsp; | &nbsp; | &nbsp; | &nbsp;
 -- | -- | -- | ---
-![Unity Logo](img/tool-unity.png) |  __Unity Plugin__<br />[SDK](https://github.com/modio/modio-unity)<br />[Documentation](/unity)<br />[Sample Project](https://github.com/modio/modio-unity-sample)<br /> | ![Unreal Logo](img/tool-unreal.png) | __Unreal Plugin__<br />[SDK](https://github.com/modio/modio-ue)<br />[Documentation](/unreal)<br />[UE4 Sample Project](https://github.com/modio/modio-ue4-sample)<br />[UE5 Sample Project](https://github.com/modio/modio-ue5-sample)<br />
-| ![C++ SDK](img/tool-ccpp.png) | __C/C++ SDK__<br />[SDK](https://github.com/modio/modio-sdk)<br />[Documentation](/cppsdk)<br /> | ![Game Maker Logo](img/tool-gm.png) | __GameMaker__<br />[SDK](https://github.com/YoYoGames/GMEXT-mod.io)<br />[Getting Started](https://github.com/YoYoGames/GMEXT-mod.io/wiki)<br />
+![Unreal Logo](img/tool-unreal.png) | __Unreal Plugin__<br />[SDK](https://github.com/modio/modio-ue)<br />[Documentation](/unreal)<br />[UE4 Sample Project](https://github.com/modio/modio-ue4-sample)<br />[UE5 Sample Project](https://github.com/modio/modio-ue5-sample)<br /> | ![Unity Logo](img/tool-unity.png) |  __Unity Plugin__<br />[SDK](https://github.com/modio/modio-unity)<br />[Documentation](/unity)<br />[Sample Project](https://github.com/modio/modio-unity-sample)<br />
+| ![C++ SDK](img/tool-ccpp.png) | __C++ SDK__<br />[SDK](https://github.com/modio/modio-sdk)<br />[Documentation](/cppsdk)<br /> | ![Game Maker Logo](img/tool-gm.png) | __GameMaker__<br />[SDK](https://github.com/YoYoGames/GMEXT-mod.io)<br />[Getting Started](https://github.com/YoYoGames/GMEXT-mod.io/wiki)<br />
 
 ### Community tools
 

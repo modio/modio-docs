@@ -9,7 +9,7 @@ slug: /monetization/enabling
 You can request an introduction to [Marketplace](/monetization/marketplace) from your game’s dashboard. Our experts will work with you to help set up and integrate your game and dashboard with the Marketplace functionality.
 
 :::tip[Game Dashboard]
-Your game's dashboard settings can be accessed via your mod.io [**My Content**](https://mod.io/content) page.
+Your game's dashboard settings can be accessed via your mod.io [My Content](https://mod.io/content) page.
 :::
 
 ![Register Your Interest FLow](img/register-your-interest.png)

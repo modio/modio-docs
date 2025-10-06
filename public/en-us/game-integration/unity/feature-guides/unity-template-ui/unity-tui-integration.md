@@ -13,7 +13,7 @@ slug: /unity/template-ui/integration
 Check out the [Template UI Functionality](/unity/template-ui) and [Template UI Layouts](/unity/template-ui/layouts) guides for a full list of Template UI has to offer. 
 
 :::important
-Template UI relies on the config file that is configured during the following setup instructions on the main [**Unity Plugin Installation Guide**](/unity/installation). Please ensure you have completed all of those steps before proceeding.
+Template UI relies on the config file that is configured during the following setup instructions on the main [Unity Plugin Installation Guide](/unity/installation). Please ensure you have completed all of those steps before proceeding.
 :::  
 
 This guide covers:

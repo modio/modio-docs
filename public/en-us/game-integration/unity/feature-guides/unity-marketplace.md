@@ -15,9 +15,9 @@ This guide covers the end-to-end flow for implementing mod.io [Marketplace](http
 Please follow the below guides for setting up Virtual Currency for mod.io Marketplace on your required platforms:
 
 * [Steam](/platforms/steam/marketplace)
+* [Apple (iOS)](/platforms/apple/marketplace)
+* [Google Play (Android)](/platforms/google/marketplace)
 * [Meta Quest](/platforms/meta/marketplace)
-* [Google](/platforms/google/marketplace)
-* [Apple](/platforms/apple/marketplace)
 
 :::note[Mobile Setup]
 If you are implementing Marketplace for mobile platforms such as Google or Apple, refer to our [Mobile In-App Purchases Guide](/unity/marketplace-mobile-iap).

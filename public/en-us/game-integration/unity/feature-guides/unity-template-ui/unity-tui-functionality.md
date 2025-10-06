@@ -100,8 +100,6 @@ After pressing **Subscribe** on a piece of UGC with dependencies, the list of re
 :::note
 This does not apply to premium UGC — only free UGC can have dependencies, or be used as dependencies.  See [Dependency Management](https://docs.mod.io/dependency-management/) for more information.
 :::
-\
-&nbsp;
 
 ## UGC Management
 Developers can allow users to enable or disable UGC they have subscribed to as a way of managing their library. This is separate from unsubscribing — disabling UGC will keep it installed on the user's hard drive, but make it inactive in their game. Check **Enable Mod Enable/Disable support widgets in UI** in **Project Settings -> mod,io -> Settings**, then – to toggle the visibility of the relevant widgets for this feature – you'll need to add ModioComponentUISettings, so you can set "Show Enabled Mod Toggle" on that.

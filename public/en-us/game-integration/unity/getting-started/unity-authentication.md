@@ -141,13 +141,13 @@ There are two types of SSO to consider:
 	The platforms included in this process are:
 
 	* [Steam](https://docs.mod.io/platforms/steam/authentication)
-	* [Meta Quest](https://docs.mod.io/platforms/meta/authentication)
-	* [Google](https://docs.mod.io/platforms/google/authentication)
-	* [Apple](https://docs.mod.io/platforms/apple/authentication)
-	* [GOG Galaxy](https://docs.mod.io/platforms/gog/authentication)
-	* [Nintendo Switch](https://docs.mod.io/platforms/switch#authentication)
 	* [PlayStation™Network](https://docs.mod.io/platforms/playstation#authentication)
 	* [Xbox Live](https://docs.mod.io/platforms/gdk#authentication)
+	* [Nintendo Switch](https://docs.mod.io/platforms/switch#authentication)
+	* [Google Play (Android)](https://docs.mod.io/platforms/google/authentication)
+	* [Apple (iOS)](https://docs.mod.io/platforms/apple/authentication)
+	* [Meta Quest](https://docs.mod.io/platforms/meta/authentication)
+	* [GOG Galaxy](https://docs.mod.io/platforms/gog/authentication)
 
 Each platform has their own requirements and prerequisites for performing SSO.  Platform-specific authentication can be found in the respective [platform documentation](https://docs.mod.io/getting-started#expand-with-cross-platform-functionality).
 
@@ -221,4 +221,4 @@ And that should be it! Log into Steam, accept the Terms of Use and you should se
 
 Now that you've set up the authentication process, it's time to load UGC into your game by [Adding UGC](/unity/adding-ugc).
 
-If you've already done this, we recommend working your way through the [Unity Getting Started Guides](/unity#unity-engine-core-plugin-guides) as they will teach you how to implement the fundamentals before moving onto exploring our [Features](https://docs.mod.io/features).
+If you've already done this, we recommend working your way through the [Unity Getting Started Guides](/unity#unity-core-plugin-guides) as they will teach you how to implement the fundamentals before moving onto exploring our [Features](/features).

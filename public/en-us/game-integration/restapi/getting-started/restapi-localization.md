@@ -44,9 +44,15 @@ The list of supported codes includes:
 Language Code | Language
 ---------- | ----------  
 `en` | English (US) _default_
+`ar` | Arabic _limited support terms dialog only_
 `bg` | Bulgarian
+`zh-CN` | Chinese (Simplified)
+`zh-TW` | Chinese (Traditional)
+`cs` | Czech
 `fr` | French
 `de` | German
+`el` | Greek
+`id` | Indonesian _limited support terms dialog only_
 `it` | Italian
 `pl` | Polish
 `pt` | Portuguese
@@ -54,10 +60,11 @@ Language Code | Language
 `ja` | Japanese
 `ko` | Korean
 `ru` | Russian
-`es` | Spanish
+`es` | Spanish (Spain)
+`es-419` | Spanish (Latin America)
 `th` | Thai
-`zh-CN` | Chinese (Simplified)
-`zh-TW` | Chinese (Traditional)
+`tr` | Turkish
+`uk` | Ukrainian
 
 > Example request updating specified fields with Polish translations.
 
@@ -101,4 +108,3 @@ A brief summary of things you should be aware of when dealing with localized req
 - If you don't supply a valid `Accept-Language` header value, all response data will be in English.
 - If you supply a valid `Accept-Language` header value, all response data will be in English unless translations exist in the requested language.
 - Only fields that contain the localization icon in the parameter section of the endpoint can be submitted in different languages.
-

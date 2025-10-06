@@ -36,7 +36,7 @@ For Nintendo Switch access, use the verification link at the bottom of this [Nin
 
 ![Screenshot of the contact form used for NDA verification via the Nintendo Dev Portal](img/nintendo_verification.png)
 
-Once verified, your mod.io contact will provide access to the Nintendo Switch support module for your integration solution. Alternatively, contact us directly at developers@mod.io.
+Once verified, your [mod.io contact](mailto:developers@mod.io) will provide access to the [Nintendo Switch support module](/platforms/console-sdks#console-sdks) for your integration solution.
 
 ## Authentication
 
@@ -46,11 +46,9 @@ On Nintendo platforms, you can authenticate the user with Nintendo Network ID au
 We do not currently support login via Nintendo on the mod.io site. Users who are authenticated using a Nintendo Network ID will be limited to only the in-game experience, unless you provide an optional email during the authentication process. As such we recommend using Nintendo Network ID authentication where a full in-game integration has been implemented, and where possible we recommend you give the users the option to provide their email, to offer the most connected UGC user experience in-game and out. We are currently negotiating with Nintendo to support authentication on mod.io website with Nintendo Network ID in a future update.
 :::
 
-Please contact us for more details on how to authenticate with Nintendo Switch: developers@mod.io.
-
 ## Consent
 
-If you choose to use Nintendo Network ID authentication (this isn’t required for email), you are required to collect the user's consent before they are authenticated for the first time. So when a user clicks the “UGC” button in-game, you must display an [acceptance dialog](/terms).
+If you choose to use *Nintendo Network ID* authentication, it is a requirement from Nintendo that consent is collected before a user is authenticated for the first time. So when a user clicks the “UGC” button in-game, you must display an acceptance dialog similar to the one explained in the [Terms & User Consent](/terms) guide.
 
 ## Networking & storage
 

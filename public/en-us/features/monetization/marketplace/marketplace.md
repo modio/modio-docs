@@ -17,7 +17,7 @@ Below is a list of the supported engines and the relevant setup guides.
 | [Unreal Engine](/unreal)  | Yes    | [Setup Guide](/unreal/marketplace)    |
 | [Unity](/unity) | Yes     | [Setup Guide](/unity/marketplace)   |
 | [C++ SDK](/cppsdk)   | Yes    | [Setup Guide](/cppsdk/marketplace)   |
-| [REST API](/restapi/overview)  |  Yes  | [Endpoints Guide](/restapi/monetization) |
+| [REST API](/restapi)  |  Yes  | [Endpoints Guide](/restapi/monetization) |
 
 ## Marketplace at a glance
 

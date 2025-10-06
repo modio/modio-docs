@@ -106,8 +106,8 @@ Leaderboard of the most active creators, ranked by UGC created and downloaded.
 * Can be viewed across different time periods (1W, 1M, 3M, 6M, 1Y, All-time).  
 * Supports filtering by platform, category, and tag, allowing focused analysis of specific creator segments.
 
-:::note
-Premium Feature: Filtering by Category and Tag is only available with a premium subscription.
+:::note[Premium Feature]
+Filtering UGC Metrics by Category and Tag is a premium feature. Sign up to one of our [advanced service tiers](https://mod.io/pricing) which includes [Play Sessions](/metrics/game#play-sessions) to activate detailed data analytics, or contact us at developers@mod.io for more information.
 :::
 
 #### Top UGC
@@ -120,8 +120,8 @@ Leaderboard of the most downloaded UGC within the selected range.
 * Can be viewed across different time periods (1W, 1M, 3M, 6M, 1Y, All-time).  
 * Supports filtering by platform, category, and tag to refine results by audience or content type.
 
-:::note
-Premium Feature: Filtering by Category and Tag is only available with a premium subscription.
+:::note[Premium Feature]
+Filtering UGC Metrics by Category and Tag is a premium feature. Sign up to one of our [advanced service tiers](https://mod.io/pricing) which includes [Play Sessions](/metrics/game#play-sessions) to activate detailed data analytics, or contact us at developers@mod.io for more information.
 :::
 
 #### Locations
@@ -136,17 +136,17 @@ Interactive world map showing downloads by country or continent.
 ## User Activity Metrics
 
 ![UGC Metrics](img/ugc-mau.png)
-Monitor active users, comments, guide engagement, and creator growth, with segmentation by logged-in vs. anonymous users and geographic breakdowns.
+Monitor UGC users, comments, guide engagement, and creator growth, with segmentation by logged-in vs. anonymous users and geographic breakdowns.
 
 ### Definitions
 
-#### UGC Active Users
+#### UGC MAU
 
 **What it measures**  
-The number of unique users active within the UGC ecosystem. 
+The number of unique users for the current and previous month. 
 
 **How it's measured**  
-An active user is defined as anyone performing a qualifying action such as downloading, subscribing, rating, or commenting on a UGC.
+An UGC user is defined as anyone performing a qualifying action such as downloading, subscribing, rating, or commenting on a UGC.
 
 **Deduplication**  
 Events are deduplicated on a 24-hour rolling period based on the combination of:
@@ -155,7 +155,23 @@ Events are deduplicated on a 24-hour rolling period based on the combination of:
 * UGC ID  
 * Platform
 
-This ensures that multiple interactions by the same user with the same UGC on the same platform within a day count only once toward active user totals.
+
+#### UGC Users
+
+**What it measures**  
+The number of unique users within the game's UGC ecosystem. 
+
+**How it's measured**  
+An UGC user is defined as anyone performing a qualifying action such as downloading, subscribing, rating, or commenting on a UGC.
+
+**Deduplication**  
+Events are deduplicated on a 24-hour rolling period based on the combination of:
+
+* User IP  
+* UGC ID  
+* Platform
+
+This ensures that multiple interactions by the same user with the same UGC on the same platform within a day count only once toward UGC user totals.
 
 #### Impressions
 
@@ -163,7 +179,7 @@ This ensures that multiple interactions by the same user with the same UGC on th
 The number of unique users who have received information or interacted with a game’s UGC via the mod.io API. This includes both:
 
 * Exposure events such as visiting a game profile, browsing mod lists, or viewing mod details.  
-* Engagement events also used in UGC Active Users (e.g., downloading, subscribing, rating, or commenting).
+* Engagement events also used in UGC Users (e.g., downloading, subscribing, rating, or commenting).
 
 **How it's measured**  
  An impression is recorded whenever a user’s client makes a qualifying API request that returns UGC-related information for a game. This includes endpoints that power browsing experiences as well as those that log direct user interactions.
@@ -218,12 +234,12 @@ Interactive world map showing subscriptions by country or continent.
 #### Timeseries Graph Impressions Trendline
 
 ![Timeseries Graph Impressions Trendline](img/impression-trend.png)
-An impressions trend line is overlaid on the UGC Active Users timeseries graph, allowing you to compare audience exposure (impressions) with direct engagement (UGC active users).
+An impressions trend line is overlaid on the UGC Users timeseries graph, allowing you to compare audience exposure (impressions) with direct engagement (UGC users).
 
 #### Unique Impressions vs. UGC Users
 
 ![Unique Impressions vs. UGC Users](img/stackauthlogged.png)
-The graph overlays these metrics, stacking logged-in and anonymous impressions with a UGC active user trend line, making it easy to compare overall reach against actual engagement.
+The graph overlays these metrics, stacking logged-in and anonymous impressions with a UGC user trend line, making it easy to compare overall reach against actual engagement.
 
 ## Health Metrics
 
@@ -243,7 +259,7 @@ An event is logged whenever a user submits a report against a UGC.
 #### UGC Reports Closed
 
 **What it measures**  
-The number of UGC reports that have been reviewed and resolved (closed) by UGCerators or automated systems.
+The number of UGC reports that have been reviewed and resolved (closed) by moderators or automated systems.
 
 **How it's measured**  
 An event is recorded whenever a previously opened report is marked as closed, regardless of the resolution outcome.
@@ -251,7 +267,7 @@ An event is recorded whenever a previously opened report is marked as closed, re
 #### UGC Deleted
 
 **What it measures**  
-The total number of UGC permanently removed from the mod.io.
+The total number of UGC permanently removed from mod.io.
 
 **How it's measured**  
 An event is recorded whenever a UGC is deleted, whether by the creator, a game admin, or automated enforcement.
@@ -262,15 +278,15 @@ An event is recorded whenever a UGC is deleted, whether by the creator, a game a
 The number of reports submitted against users, such as abuse, harassment, or other policy violations.
 
 **How it's measured**  
-An event is logged whenever a user or UGCerator submits a report against another user via the mod.io.
+An event is logged whenever a user or moderator submits a report against another user.
 
 ## Play Sessions
 
 ![Play Sessions](img/play-sessions.png)
 Gain insights into real play behavior, including concurrent players, sessions, playtime, and UGC usage per session, with breakdowns by session length, platform, and most played UGC.
 
-:::note
-Premium Feature: Play session dashboard only available for premium subscription.
+:::note[Premium Feature]
+Play Sessions is a premium feature. Sign up to one of our [advanced service tiers](https://mod.io/pricing) to activate detailed data analytics, or contact us at developers@mod.io for more information.
 :::
 
 ### Definitions
@@ -284,7 +300,7 @@ The number of players simultaneously active in play sessions at a given point in
 Concurrent player counts are recorded continuously from live session data. A player is considered “online” if they have been active within the last 30 minutes, across any supported platform.
 
 **Deduplication**  
-Each player is counted once per measurement interval, regardless of how many UGC they are playing.
+Each player is counted once per measurement interval, regardless of how much UGC they are playing.
 
 #### Concurrent UGC
 

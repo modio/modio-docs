@@ -49,9 +49,9 @@ Once you have your App Id & App Secret, go to your game admin page on mod.io. Un
 
 If your game is using an official mod.io plugin, follow the relevant link below for authenticating players using Meta Quest SSO, or another supported platform authentication method:
 
-* [C++ SDK](/cppsdk/user-authentication#ssoexternal-authentication)
 * [Unreal Engine](/unreal/user-authentication#single-sign-on-authentication)
 * [Unity](/unity/user-authentication#single-sign-on)
+* [C++ SDK](/cppsdk/user-authentication#ssoexternal-authentication)
 
 If you are building something custom using the mod.io REST API, follow the [Meta Quest API instructions](/restapi/docs/authenticate-via-meta) to authenticate players using Meta Quest SSO, by calling the `/external/oculusauth` endpoint.
 

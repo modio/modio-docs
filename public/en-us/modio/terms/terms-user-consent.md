@@ -7,13 +7,13 @@ sidebar_position: 7
 
 # Terms & User Consent
 
-Before downloading UGC, players need to give consent to both the [mod.io](https://mod.io) Terms of Use as well as any applicable terms from the platform the game is using. The simplest way to ensure this is to use our Unreal Engine or Unity plugins. These include acceptance dialog functionality that meets the required standards. 
+Before downloading UGC, players need to give consent to both the mod.io Terms of Use as well as any applicable terms from the platform the game is using. The simplest way to ensure this is to use our Unreal Engine or Unity plugins. These include acceptance dialog functionality that meets the required standards. 
 
 Consent is important so users are aware a mod.io account is being created, inline with global privacy laws. It also allows mod.io to set out the Terms of Use of which all users must adhere to, or else their account and access to the service and content available might be revoked.
 
 ## Frequency of application
 
-It is a requirement of the [Game Terms](https://mod.io/gameterms) with mod.io, and the platforms mod.io is used on, to ensure the user provides consent and has agreed to the latest [Terms of Use](https://mod.io/terms) and [Privacy Policy](https://mod.io/privacy) of mod.io. You only need to collect the users agreement once, and also each time the terms are updated. The users agreement must be collected prior to using a 3rd party authentication flow (including but not limited to Steam, PSN, Nintendo and Xbox Live). You only need to collect the users agreement once, and also each time these policies are updated.
+It is a requirement of the [Game Terms](https://mod.io/gameterms) with mod.io, and the platforms mod.io is used on, to ensure the user provides consent and has agreed to the latest [Terms of Use](https://mod.io/terms) and [Privacy Policy](https://mod.io/privacy) of mod.io. The users agreement must be collected prior to using a 3rd party authentication flow (including but not limited to Steam, PSN, Nintendo and Xbox Live). You only need to collect the users agreement once, and also each time these policies are updated.
 
 ## What are the terms?
 
@@ -87,7 +87,7 @@ flowchart TD
 
 ## Implementation
 
-If you are using the official mod.io [Unity](/unity), [Unreal](/unreal) or [C++ SDK](/cppsdk), the acceptance dialog functionality is built into those plugins, and should be utilized. Please check those plugins documentation for details using their implementation.
+If you are using the official mod.io [Unreal Engine](/unreal), [Unity](/unity) or [C++ SDK](/cppsdk), the acceptance dialog functionality is built into those plugins, and should be utilized. Please check those plugins documentation for details using their implementation.
 
 If you are building the acceptance and consent process yourself, you should implement the steps detailed above, paired with a dialog and authentication process following the instructions detailed below.
 

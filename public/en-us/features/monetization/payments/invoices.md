@@ -11,7 +11,7 @@ For any Virtual Currency Pack SKU sales made on external platforms (ex: Steam, M
 Studios will have the ability to pay the invoice through their **Game Admin** dashboard. Please note you will need to have sufficient funds in your game or individual wallet in order to pay the transaction.
 
 :::tip[Game Admin]
-Your Game Admin dashboard can be accessed via your mod.io [**My Content**](https://mod.io/content) page.
+Your Game Admin dashboard can be accessed via your mod.io [My Content](https://mod.io/content) page.
 :::
 
 In order to top up your wallet you will be able to wire funds directly to our payment partner, Tilia. Wire details are available to be viewed on your game admin dashboard on mod.io.

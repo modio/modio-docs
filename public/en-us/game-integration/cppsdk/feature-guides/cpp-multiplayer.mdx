@@ -1,10 +1,7 @@
 ---
-id: multiplayer
+id: cpp-multiplayer
 title: Multiplayer
-sidebar_label: Multiplayer
 slug: /cppsdk/multiplayer
-sidebar_position: 11
-custom_edit_url: https://github.com/modio/modio-sdk-internal/blob/develop/doc/multiplayer.mdx
 ---
 
 # Multiplayer
@@ -19,7 +16,7 @@ This framework does *not* take the place of any kind of online matchmaking, serv
 
 ## P2P Servers
 
-A P2P Server is expected to initialize in the exact same way a normal user would; the handling of UGC by joining clients (as well as the UGC in use by those clients) should be initialized as [Temporary Mod Sets](/cppsdk/getting-started#temporary-mod-set). P2P Servers are not intended to be used with the Mod.io Dedicated Server framework.
+A P2P Server is expected to initialize in the exact same way a normal user would; the handling of UGC by joining clients (as well as the UGC in use by those clients) should be initialized as [Temporary Mod Sets](/cppsdk/getting-started#temporary-mod-sets). P2P Servers are not intended to be used with the Mod.io Dedicated Server framework.
 
 A basic example would be as follows:
 
@@ -119,10 +116,3 @@ These additional options are, in brief:
 **Token**: This is required to allow the SDK to interact with the mod.io service without requiring human intervention in the authentication process. This Token needs to be generated on the mod.io website, and operates in a read-only capacity on behalf of the creating user. There should be a single token per dedicated server. You should ensure that this token cannot be accessed by clients at any point.
 
 **Mods**: The list of ModIDs the server should download upon calling `InstallOrUpdateServerModsAsync()`. This list of ModIDs should generally be shared with every client as part of the joining process.
-
-
-
-## References
-
-* [Multiplayer Introduction](/cppsdk/getting-started#multiplayer)
-* [Temporary Mods Sets](/cppsdk/getting-started#temporary-mod-set)

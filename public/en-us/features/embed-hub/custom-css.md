@@ -6,7 +6,7 @@ slug: /embed-hub/custom-css
 
 # Custom CSS
 
-If the style and settings options in the previous sections are insufficient, you can directly override Embed Hub's CSS for even more control over your site's look and feel.
+If the style and settings options in the previous sections are insufficient, you can directly override Embed Hub's CSS for even more control over your site's look and feel. Using this feature you can create [highly stylized UI's](/embed-hub#on-the-web) such as the Baldur's Gate 3 example.
 
 Embed Hub provides various semantic class names to assist in applying style to common elements on the page. These are detailed below. Alternatively, you can use your browser's developer tools to inspect the element you wish to style and look for an appropriate class name.
 

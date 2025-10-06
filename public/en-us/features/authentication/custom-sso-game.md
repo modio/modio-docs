@@ -10,7 +10,7 @@ sidebar_position: 2
 Custom SSO uses your studio's identity provider as the single required authentication source for a user to access UGC in your game. This is one of our premium features, and the recommended authentication method for any studio with an established login system.
 
 :::note[Premium Feature]
-If you are interested in activating this feature, contact us at developers@mod.io.
+Custom SSO is a premium feature. Sign up to one of our [advanced service tiers](https://mod.io/pricing) to activate this white label feature, or contact us at developers@mod.io for more information.
 :::
 
 For more auth methods, check out our [Authentication](/authentication) guide.
@@ -35,7 +35,7 @@ Upon a user signing into your identity provider, your web service can generate a
 OIDC has proven to be a less complicated, modern SSO solution than SAML 2.0 and is the recommended in-game authentication solution if your implementation requires your web service to act as the identity provider.
 
 :::note[What about Web SSO?]
-For single sign-on web functionality that uses your studio's identity provider, check out [**Custom SSO (Web)**](/authentication/openid-website).
+For single sign-on web functionality that uses your studio's identity provider, check out [Custom SSO (Web)](/authentication/openid-website).
 :::
 
 ## Glossary
@@ -130,6 +130,8 @@ To add your JWK URL to the mod.io dashboard follow these steps:
 - On the left-hand side menu, click 'Studio Authentication'
 - Scroll to the OpenID form and fill in the details
 - Save the details
+
+Full instructions with screenshots can be found on the [Custom SSO (Web)](/authentication/openid-website#setting-up-your-identity-provider-on-the-modio-dashboard) page.
 
 ![OpenID setup](img/openid-setup.png)
 

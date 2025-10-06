@@ -121,3 +121,20 @@ The number of combinations makes using _equals_, _in_ and other filters a little
 
 - `?maturity_option-bitwise-and=5` - Will match the `maturity_option` field values 1, 3, 4, 5, 6, 7, 9, 11, 12, 13, 14, 15 (since these values contain the bits 1, 4 or both).
 
+### or_fields (Filter grouping)
+
+By default, multiple filters are combined using an "AND" operation. However, with or_fields, you can group filters together to be combined using an "OR" operation.
+
+For example, if you want to find all mods that have been tagged with "Level" but also include mods made by the creator "UltimateModder", you can achieve this with the following query parameters:
+
+```
+v1/games/your-game/mods?tags=level&submitted_by_display_name=UltimateModder&or_fields[]=tags,submitted_by_display_name
+```
+
+This would be interpreted as "Fetch all mods where (tags in level **OR** submitted_by like UltimateModder)". Without the `or_fields` parameter, it would be treated as AND.
+
+A few things to note:
+
+* The `or_fields` parameter must be provided as an array.
+* A maximum of 2 `or_fields` can be present in a query at any time.
+* A maximum of 3 fields per `or_fields`.

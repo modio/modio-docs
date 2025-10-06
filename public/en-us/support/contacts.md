@@ -1,6 +1,6 @@
 ---
 id: support-contacts
-title: Contacts Us
+title: Contact Us
 slug: /support/contacts
 sidebar_position: 1
 ---
@@ -10,7 +10,6 @@ sidebar_position: 1
 For all business or game integration enquiries (Unity, Unreal, SDK and REST API), please contact us either of the below:
 
 <div className="simplecard-grid">
-
   <SimpleCard
     shadow="tl"
     title="Email"
@@ -26,3 +25,7 @@ For all business or game integration enquiries (Unity, Unreal, SDK and REST API)
     moreLink="https://discord.mod.io"
   />
 </div>
+
+:::note
+Private support via Slack and Teams with business day response time, is available as a premium feature on our [advanced service tiers](https://mod.io/pricing).
+:::

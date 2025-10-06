@@ -12,7 +12,7 @@ Only <Link to="/restapi/docs/schemas/mod-object">mods</Link> use the `visible` a
 
 Meaning | Value | Description | Modify Authorization | Filter Authorization
 ---------- | ------- | ---------- | ------- | ----------
-Hidden | 0 | Resource is hidden and not returned when browsing.<br /><br />If requested directly it will be returned provided the user is an admin or subscribed to the content. All resources are always returned via the [/me](#me) endpoints. | Game & Mod Admins | Game & Mod Admins
+Hidden | 0 | Resource is hidden and not returned when browsing.<br /><br />If requested directly it will be returned provided the user is an admin or subscribed to the content. All resources are always returned via the [/me](/restapi/docs/get-authenticated-user) endpoints. | Game & Mod Admins | Game & Mod Admins
 Public | 1 | Resource is visible and returned via all endpoints. | Game & Mod Admins | Everyone
 
 ### Status attribute states & privileges
@@ -21,9 +21,9 @@ Public | 1 | Resource is visible and returned via all endpoints. | Game & Mod Ad
 
 Meaning | Value | Description | Modify Authorization | Filter Authorization
 ---------- | ------- | ------- | ------- | ----------
-Not Accepted | 0 | Resource is not accepted and not returned when browsing.<br /><br />Games will be returned if requested [directly](#get-game) provided the user is an admin or the `api_key` used belongs to the game.<br /><br />Mods will be returned if requested [directly](#get-mod) provided the user is an admin or subscribed to the content. All resources are always returned via the [/me](#me) endpoints. | Game Admins Only | Game Admins Only
+Not Accepted | 0 | Resource is not accepted and not returned when browsing.<br /><br />Games will be returned if requested [directly](/restapi/docs/get-game) provided the user is an admin or the `api_key` used belongs to the game.<br /><br />Mods will be returned if requested [directly](/restapi/docs/get-mod) provided the user is an admin or subscribed to the content. All resources are always returned via the [/me](/restapi/docs/get-authenticated-user) endpoints. | Game Admins Only | Game Admins Only
 Accepted | 1 | Resource is accepted and returned via all endpoints. | Game Admins Only | Everyone
-Deleted | 3 | Resource is deleted and only returned via the [/me](#me) endpoints. | Game Admins Only | Game Admins Only
+Deleted | 3 | Resource is deleted and only returned via the [/me](/restapi/docs/get-authenticated-user) endpoints. | Game Admins Only | Game Admins Only
 
 ### Game team member privileges
 

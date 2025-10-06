@@ -6,6 +6,8 @@ slug: /embed-hub/settings
 
 # Settings
 
+The following settings can be changed anytime, to control how your embed hub functions, from number of mods shown, to which social and community features like comments are activated.
+
 ## Visible when game is hidden
 
 This checkbox will only appear if your game is not yet live. It must be checked in order for your Embed Hub to be accessible and previewable. Members of your game's team will be able to log in to view the hub.
@@ -25,15 +27,15 @@ Here you can customize various options such as:
 
 ## Authentication
 
-You can choose whether your users log in to your Embed Hub using your studio/game's SSO or with their email. At least one option is required.
+You can choose whether your users log in to your Embed Hub using your studio/game's SSO or with any of the supported built-in authentication methods such as email. At least one option is required.
 
 The minimum age is a required field and is shown as part of the mod.io terms agreement when logging in.
 
 :::note[Custom SSO]
-In order to utilize [Custom SSO](/authentication/openid-website), you must have configured this in your game's dashboard.
+In order to utilize your [studio/game's SSO](/authentication/openid-website), you must have configured this in your game's dashboard.
 :::
 
-For other authentication methods initiated externally, see the [communication](/embed-hub/communication) page.
+In scenarios where the user is already authenticated (such as in-game) and you are opening the embed hub, you can automate the authentication so it is a seamless process. Follow the instructions on the [communication page](/embed-hub/communication#authentication) to set this up.
 
 ## Agreements
 

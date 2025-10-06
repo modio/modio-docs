@@ -6,7 +6,7 @@ slug: /moderation/rules-engine/configuration
 
 # Configuration
 
-[Rules-Based Moderation](/moderation/rules-engine/overview) works by automatically running all content submitted through a series of checks defined by you. If the checks match, then action(s) will be taken, as defined by you. Content can match multiple rules and run multiple actions, unless it encounters a Deny which will return an error to the user and stop processing further rules.
+[Rules-Based Moderation](/moderation/rules-engine) works by automatically running all content submitted through a series of checks defined by you. If the checks match, then action(s) will be taken, as defined by you. Content can match multiple rules and run multiple actions, unless it encounters a Deny which will return an error to the user and stop processing further rules.
 
 This applied to a game, impacts the outcome of user behaviors. Example being, a user who submits a piece of UGC which is declined due to a rule, won’t be able to submit this piece of content. They will receive an error message explaining the reason for the content being refused submission. Collectively, all of the rules you define are grouped as rulesets under each of the actions (endpoints) they are targeting. Active rules you have created can be enabled or disabled, and you can view the last 24 hours of history.
 

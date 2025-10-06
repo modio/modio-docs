@@ -113,9 +113,9 @@ Modio::AuthenticationParams AuthParams;
 AuthParams.bUserHasAcceptedTerms = false;
 AuthParams.AuthToken = AccessTokenResponseString;
 AuthParams.UserEmail = "example@gmail.com";
-AuthParams.ExtendedParameters[Modio::Detail::Constants::APIStrings::Device] = "quest"; // Use "rift" for Oculus Rift
-AuthParams.ExtendedParameters[Modio::Detail::Constants::APIStrings::Nonce] = UserProofResponseString;
-AuthParams.ExtendedParameters[Modio::Detail::Constants::APIStrings::UserID] = UserIdString;
+AuthParams.ExtendedParameters["device"] = "quest"; // Use "rift" for Oculus Rift
+AuthParams.ExtendedParameters["nonce"] = UserProofResponseString;
+AuthParams.ExtendedParameters["user_id"] = UserIdString;
 
 Modio::AuthenticateUserExternalAsync(AuthParams, Modio::AuthenticationProvider::Oculus, [](Modio::ErrorCode ec) {
 	// Handle authentication result

@@ -37,18 +37,16 @@ All games supporting UGC must be approved individually, and you will be required
 
 ## SDK access
 
-Locate mod.io in the *PS4* and/or *PS5* middleware directory, and click the verify button to confirm your developer status. 
-
-This will alert our team, and we reach out regarding next steps. If you have any questions, please contact us via: [developers@mod.io](mailto:developers@mod.io).
+Locate mod.io in the *PS4* and/or *PS5* middleware directory, and click the verify button to confirm your developer status:
 
 * [**PlayStation®4**](https://ps4.develop.playstation.net/tm/verify/mod_io) 
 * [**PlayStation®5**](https://game.develop.playstation.net/tm/verify/mod_io)
 
+Once verified, your [mod.io contact](mailto:developers@mod.io) will provide access to the [PlayStation support module](/platforms/console-sdks#console-sdks) for your integration solution.
+
 ## Authentication
 
-On *PS4/PS5*, you can authenticate the user via our PlayStation™Network authentication flow, or by using their email address. We highly recommend using the authentication flow where possible, as it is instant and accessible vs email which is not, and more importantly synchronizes a user's *PlayStation™Network* blocklist. The ability to be able to block content from users is a TRC requirement, therefore users must be authenticated before they can access your UGC content via mod.io. Detailed instructions can be found in the [mod.io PlayStation®5 SDK](https://docs.mod.io/partners/ps5/authentication/) (to access this documentation you must complete the required [SDK Access step](#sdk-access)).
-
-If you choose to use *PlayStation™Network* authentication, Sony Interactive Entertainment requires that you collect user consent before they are authenticated for the first time. So when a user clicks the “UGC” button in-game, you must display an [acceptance dialog](/terms).
+On *PS4/PS5*, you can authenticate the user via our PlayStation™Network authentication flow, or by using their email address. We highly recommend using the authentication flow where possible, as it is instant and accessible vs email which is not, and more importantly synchronizes a user's *PlayStation™Network* blocklist. The ability to be able to block content from users is a TRC requirement, therefore users must be authenticated before they can access your UGC content via mod.io. Detailed instructions can be found in the mod.io [PlayStation®4 SDK](https://docs.mod.io/partners/ps4/authentication/) and [PlayStation®5 SDK](https://docs.mod.io/partners/ps5/authentication/) (to access this documentation you must complete the required [SDK Access step](#sdk-access)).
 
 If your implementation displays the mod.io website or custom web app through a browser overlay, we recommend adding the following query strings to the URL depending on the authentication method you have chosen to support:
 * *PlayStation®4 / PlayStation®5* authentication: `?portal=psn&login=auto`
@@ -58,7 +56,9 @@ This will provide users with a streamlined login experience tailored to the appr
 
 ![PlayStation Network log in interface available in the mod.io web UI](img/psn_auth_web.png)
 
-Please contact us for more details on how to authenticate with PSN: developers@mod.io.
+## Consent
+
+If you choose to use *PlayStation™Network* authentication, it is a requirement from Sony Interactive Entertainment that consent is collected before a user is authenticated for the first time. So when a user clicks the “UGC” button in-game, you must display an acceptance dialog similar to the one explained in the [Terms & User Consent](/terms) guide.
 
 ## Networking & storage
 

@@ -134,7 +134,7 @@ extern "C"
     const char* receipt = env->GetStringUTFChars(jsonReceipt, nullptr);
 
     Modio::EntitlementParams EntitlementParams;
-    EntitlementParams.ExtendedParameters.emplace(Modio::Detail::Constants::APIStrings::Receipt, receipt);
+    EntitlementParams.ExtendedParameters.emplace("receipt", receipt);
     Modio::RefreshUserEntitlementsAsync(
       EntitlementParams,
       [](Modio::ErrorCode ec, Modio::Optional<Modio::EntitlementConsumptionStatusList> entitlementList) {

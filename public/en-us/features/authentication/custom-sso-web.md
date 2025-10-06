@@ -9,6 +9,10 @@ sidebar_position: 3
 
 Custom SSO for web uses your studio's identity provider to authenticate users who choose to explore and curate your game's UGC via the [mod.io Game Portal](https://mod.io/g). Alongside the [in-game Custom SSO](/authentication/openid) functionality, this is the recommended authentication method for any studio with an established login system.
 
+:::note[Premium Feature]
+Custom SSO is a premium feature. Sign up to one of our [advanced service tiers](https://mod.io/pricing) to activate this white label feature, or contact us at developers@mod.io for more information.
+:::
+
 For more auth methods, check out our [Authentication](/authentication) guide.
 
 This guide covers:

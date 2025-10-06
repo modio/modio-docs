@@ -1,0 +1,35 @@
+---
+id: overview
+title: Overview
+slug: /unreal/modio-action-rpg
+custom_edit_url: https://github.com/modio/modio-ue4-internal/tree/main/Doc/doc_root/en-us/modio-action-rpg/overview.mdx
+---
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+The Action Role Playing Game (ARPG) sample project, originally created by Epic Games, demonstrates best practices for developing cross-platform games in Unreal Engine. It highlights features such as the Ability System, Gameplay Tags, and data-driven design, as well as common action RPG systems like character customization, inventory management, and combat mechanics.
+
+:::note
+This project is intended as a sample to showcase mod.io integration, not as a complete game.
+:::
+
+There is a live game profile of the Action RPG project available on [mod.io](https://mod.io/g/action-rpg), which can be used to test the mod.io integration and explore the features available in the project.
+
+# Purpose of Action RPG
+This example demonstrates the end-to-end process of authoring user-generated content (UGC) as DLC plugins using the ModioUGC plugin, and then loading that UGC at runtime within the Action RPG project. It showcases how to integrate mod.io features to support browsing, downloading, and managing UGC, providing a practical reference for enabling mod support in Unreal Engine projects.
+
+## Engine Compatibility
+Support for this project is generally maintained to support the 3 most recent versions of Unreal Engine. However, the example UGC that has been uploaded to the game profile is only compatible with our lowest supported version of Unreal Engine. If you are using a different version, you will need to create your own UGC to be compatible with your version, and upload that to your own game profile.
+
+For example, when Unreal Engine 5.6 is supported, we will recook the UGC for Unreal Engine 5.4.
+
+Refer to [github repository](https://github.com/modio/modio-ue-actionrpg?tab=readme-ov-file#engine-compatibility) for the latest supported versions of Unreal Engine.
+
+# mod.io Plugin integration
+This project includes our other plugins as submodules, relevant resources can be found here:
+
+| Plugin |  |  |
+|------------|--------------|--------------|
+| Modio Core | [Respository](https://github.com/modio/modio-ue) | [Documentation](https://docs.mod.io/unreal/core-plugin/) |
+| Component UI | [Respository](https://github.com/modio/modio-ue-component-ui) | [Documentation](https://docs.mod.io/unreal/component-ui) |
+| ModioUGC | [Respository](https://github.com/modio/modio-ue-modiougc) | [Documentation](https://docs.mod.io/unreal/modio-ugc) |

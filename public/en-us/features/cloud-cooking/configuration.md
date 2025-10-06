@@ -6,7 +6,7 @@ slug: /cloud-cooking/configuration
 
 # Cloud Cooking Configuration
 
-To onboard to Cloud Cooking, you need start with the relevant [Cloud Cooking Setup Guides](/cloud-cooking#supported-setup-guides) tooling to work with the mod.io infrastructure and Cloud Cooking process. This differs per engine, and we recommend performing these steps and locally validating your engine before configuring Cloud Coking on mod.io.
+To onboard to Cloud Cooking, you need start with the relevant [Cloud Cooking Setup Guides](/cloud-cooking#supported-enginessetup-guides) tooling to work with the mod.io infrastructure and Cloud Cooking process. This differs per engine, and we recommend performing these steps and locally validating your engine before configuring Cloud Coking on mod.io.
 
 Once Cloud Cooking has been enabled for your game, you can begin the onboarding process. To begin the onboarding process, navigate to your Game Admin page and select "Cloud Cooking" under General Settings. From here, click Enable Cloud Cooking. This will begin the process of provisioning the infrastructure.
 

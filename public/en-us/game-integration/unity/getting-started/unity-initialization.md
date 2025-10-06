@@ -75,4 +75,4 @@ Now, return to your scene in Unity, enter Play mode and you should see the logge
 
 Now that you have set up the Unity Plugin, we recommend working through the [User Authentication](/unity/user-authentication) guide. Or if you are eager to get things moving, you can skip directly to [Adding UGC](/unity/adding-ugc).
 
-All other core setup information can be found in the [Unity Getting Started Guides](/unity#unity-engine-core-plugin-guides), which are designed to teach you how to implement the fundamentals of the Unity Plugin.
+All other core setup information can be found in the [Unity Getting Started Guides](/unity#unity-core-plugin-guides), which are designed to teach you how to implement the fundamentals of the Unity Plugin.

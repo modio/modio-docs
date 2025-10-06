@@ -34,7 +34,7 @@ Platform validation rules typically cover profanity filters and 18+ content chec
 
 ## Rules-Based Moderation
 
-[Rules-Based Moderation](/moderation/rules-engine/overview) is a premium feature that runs all UGC through a series of checks defined by you. For example, you can flag UGC from users with a history of stolen content, UGC with particular words in the title, particular file types detected inside the zip file, and many more options. The Rules Engine also allows you to define the action taken for each failed check. For example, to reject the UGC, flag it for manual moderation or call a webhook for custom actions.
+[Rules-Based Moderation](/moderation/rules-engine) runs all UGC through a series of checks defined by you. For example, you can flag UGC from users with a history of stolen content, UGC with particular words in the title, particular file types detected inside the zip file, and many more options. The Rules Engine also allows you to define the action taken for each failed check. For example, to reject the UGC, flag it for manual moderation or call a webhook for custom actions.
 
 ## Content Approval
 

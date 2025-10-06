@@ -65,7 +65,7 @@ curl -X GET https://g-1.modapi.io/v1/games/1/mods \
 
 All <Link to="/restapi/docs/schemas/user-object">User Objects</Link> which are nested in the <Link to="/restapi/docs/schemas/user-object">Mod Objects</Link> returned will have the field `display_name_portal` returned, which is determined by the `X-Modio-Portal` value in the request.
 
-You can also instruct the mod.io website to authenticate the player using a portal from the list above (provided it is supported), as explained in [Web Overlay Authentication](#authentication). For example, if your game client has logged the player into mod.io on PlayStation using their PlayStation™Network account, and you want to open the mod.io website in-game with the player logged in using the same authentication method, you would add `?portal=psn` to the end of the URL: `https://mod.io/g/gamename?portal=psn`. You can optionally add `&login=auto` as well to automatically start the login process.
+You can also instruct the mod.io website to authenticate the player using a portal from the list above (provided it is supported), as explained in [Web Overlay Authentication](/restapi/introduction#authentication). For example, if your game client has logged the player into mod.io on PlayStation using their PlayStation™Network account, and you want to open the mod.io website in-game with the player logged in using the same authentication method, you would add `?portal=psn` to the end of the URL: `https://mod.io/g/gamename?portal=psn`. You can optionally add `&login=auto` as well to automatically start the login process.
 
 Target Portal | Header Value
 ---------- | ----------  

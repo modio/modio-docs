@@ -22,7 +22,7 @@ If an error occurs, mod.io returns an error object with the HTTP `code`, `error_
 }
 ```
 
-When requests contain invalid input data or query parameters (for filtering), an optional field object called `errors` can be supplied inside the `error` object, which contains a list of the invalid inputs. The nested `errors` object is only supplied with `422 Unprocessable Entity` responses. Be sure to review the [Response Codes](#response-codes) to be aware of the HTTP codes that the mod.io API returns.
+When requests contain invalid input data or query parameters (for filtering), an optional field object called `errors` can be supplied inside the `error` object, which contains a list of the invalid inputs. The nested `errors` object is only supplied with `422 Unprocessable Entity` responses. Be sure to review the [Response Codes](/restapi/introduction#response-codes) to be aware of the HTTP codes that the mod.io API returns.
 
 > Error object with input errors
 

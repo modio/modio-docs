@@ -89,7 +89,7 @@ More specifically: downloading a piece of *UGC's* images. We'll cover subscribin
 
 A common feature when listing mods is to display an image along with its name and summary. Metadata images such as logos, screenshots, and avatars don't require subscribing to a mod to view them, and can be downloaded separately from a mod's in-game files.
 
-As we know, [all pieces of UGC have a logo](#submitting-UGC). So let's write a short method that selects a random mod, downloads its logo and displays it alongside its name:
+As we know, [all pieces of UGC have a logo](/unity/adding-ugc). So let's write a short method that selects a random mod, downloads its logo and displays it alongside its name:
 
 ```csharp
 [SerializeField] Text randomName;
@@ -114,13 +114,13 @@ async void SetRandomMod()
 ```
 
 :::warning
-tThe code above relies on `allmods`, which is set in the first [searching for mods](#searching-for-ugc) section. **Ensure that `allmods` has been set before running this method.**
+The code above relies on `allmods`, which is set in the first [searching with get mods](#searching-with-getmods) section. **Ensure that `allmods` has been set before running this method.**
 :::
 
-This method is downloading the smallest version of the logo, `320x180`. However, UGC have a number of sizes for each image as defined in `Mod.LogoResolution` &amp; `Mod.GalleryResolution`. See the [documentation](https://sdkdocs.mod.io/unity/) (or use code completion in your IDE) to view available options.
+This method is downloading the smallest version of the logo, `320x180`. However, UGC have a number of sizes for each image as defined in `Mod.LogoResolution` &amp; `Mod.GalleryResolution`. See the [documentation](/unity/cs-ref) (or use code completion in your IDE) to view available options.
 
 ## Next steps
 
 Now your users can add and search for UGC, it's time to set up the ability to subscribe to and download UGC by implementing the [Subscribing to UGC Guide](/unity/subscribing).
 
-If you've already done this, we recommend working your way through the [Unity Getting Started Guides](/unity#unity-engine-core-plugin-guides) as they will teach you how to implement the fundamentals before moving onto exploring our [Features](https://docs.mod.io/features).
+If you've already done this, we recommend working your way through the [Unity Getting Started Guides](/unity#unity-core-plugin-guides) as they will teach you how to implement the fundamentals before moving onto exploring our [Features](/features).

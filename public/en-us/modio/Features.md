@@ -24,21 +24,21 @@ Every game uses UGC differently, and the right features will help enhance and op
     title="In-Game UI"
     image="/img/icon_tui.svg"
     text="Allow players to browse UGC in-game with a variety of options."
-    moreLink="/in-game-ui/"
+    moreLink="/in-game-ui"
   />
   <SimpleCard
     shadow="tl"
     title="Multiplayer"
     image="/img/icon_cui.svg"
     text="Support online sessions without jeopardizing content security."
-    moreLink="/multiplayer/"
+    moreLink="/multiplayer"
   />
   <SimpleCard
     shadow="tl"
     title="Marketplace"
     image="/img/icon_tui.svg"
     text="Activate paid UGC in your game."
-    moreLink="/monetization/marketplace/"
+    moreLink="/monetization/marketplace"
   />
   <SimpleCard
     shadow="tl"
@@ -52,21 +52,21 @@ Every game uses UGC differently, and the right features will help enhance and op
     title="Metrics"
     image="/img/icon_modio.svg"
     text="Better understand your players and creators."
-    moreLink="/metrics/"
+    moreLink="/metrics"
   />  
   <SimpleCard
     shadow="tl"
     title="Dependencies"
     image="/img/icon_cui.svg"
     text="Ensure required UGC is linked and installed for your players."
-    moreLink="/dependency-management/"
+    moreLink="/dependency-management"
   />     
   <SimpleCard
     shadow="tl"
     title="Moderation"
     image="/img/icon_modio.svg"
     text="Protect players with a curated environment."
-    moreLink="/moderation/"
+    moreLink="/moderation"
   />  
   <SimpleCard
     shadow="tl"
@@ -94,7 +94,7 @@ Every game uses UGC differently, and the right features will help enhance and op
     title="Discord Bot"
     image="/img/icon_discord.svg"
     text="Automated UGC notifications for your Discord community."
-    moreLink="/discord/"
+    moreLink="/discord"
   />
 
 </div>

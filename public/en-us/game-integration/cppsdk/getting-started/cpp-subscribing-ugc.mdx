@@ -44,6 +44,10 @@ if (!Modio::IsModManagementBusy())
 
 ```
 
+:::note
+Events are emitted based on actual changes to a mod's local state. For example, if a user unsubscribes to a mod that is in the middle of downloading, the download will be cancelled. Because the mod was never installed, however, a BeginUninstall event will **not** be emitted. Likewise, if a user subscribes to a mod which was already installed by another user on the system, Download/Install events will not be emitted because no download or installation is actually occurring (the mod files are shared, so there is no need to redownload or reinstall them).
+:::
+
 ## UGC subscriptions
 
 To build on the above, a user indicates they want to install UGC by 'subscribing' to it. The mod.io servers store these subscriptions, associating them with a particular user's mod.io account. When a user 'unsubscribes' UGC, they indicate that piece of UGC should be uninstalled from any device they're logged in on.
@@ -140,7 +144,7 @@ A distinction exists between functions [`QueryUserInstallations`](/cppsdk/refdoc
 
 If local space is a concern, here are some options to manage storage:
 
-* Execute [`QuerySystemInstallation`s](/cppsdk/refdocs/#querysysteminstallations), let the user know space is limited and provide the chance to select UGC to uninstall. Then call [`ForceUninstallModAsync`](/cppsdk/refdocs/#ForceUninstallModAsync) to remove UGC selected by the user.
+* Execute [`QuerySystemInstallation`s](/cppsdk/refdocs/#querysysteminstallations), let the user know space is limited and provide the chance to select UGC to uninstall. Then call [`ForceUninstallModAsync`](/cppsdk/refdocs/#forceuninstallmodasync) to remove UGC selected by the user.
 * Execute [`QueryUserInstallations`](/cppsdk/refdocs/#queryuserinstallations) and prompt the user to unsubscribe from large UGC.
 
 The first option focuses on the removal of any UGC the user has not interacted with, whereas the second option would actively uninstall UGC the user has previously considered and subscribed to. Consider other alternatives when designing your game to support UGC.
@@ -172,4 +176,4 @@ for (Modio::filesystem::path& Path : ModPaths)
 
 Now your users can search for and subscribe to UGC, you might want to start exploring ways for users to [Add UGC](/cppsdk/adding-ugc) to your game.
 
-If you've already done this, we recommend working your way through the [C++ SDK Getting Started Guides](/cppsdk/#c-sdk-core-setup-guides) as they will teach you how to implement the fundamentals of the C++ SDK before moving onto exploring our [Features](https://docs.mod.io/features).
+If you've already done this, we recommend working your way through the [C++ SDK Getting Started Guides](/cppsdk/#c-sdk-core-setup-guides) as they will teach you how to implement the fundamentals of the C++ SDK before moving onto exploring our [Features](/features).

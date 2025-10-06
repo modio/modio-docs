@@ -12,7 +12,7 @@ This guide will show you how to set up your game up on Google Play Console and m
 The mod.io platform will use the Google Play Android Developer API to verify purchases and grant associated entitlements to users who have purchased [Creator Credits](#glossary-of-terms) in your game. Conversely, if a user requests a refund, mod.io will revoke the entitlements associated with the refunded purchase.
 
 :::note
-To revoke entitlements after refunds, you must tick the remove entitlements checkbox in the refund request, you can also set this value to true programmatically. [**Voided Purchases Documentation**](https://developers.google.com/android-publisher/voided-purchases).
+To revoke entitlements after refunds, you must tick the remove entitlements checkbox in the refund request, you can also set this value to true programmatically. [Voided Purchases Documentation](https://developers.google.com/android-publisher/voided-purchases).
 :::
 
 ## Glossary of Terms
@@ -37,9 +37,9 @@ In-app virtual currency credits purchases for a game published on Google Play St
 
 ### Setting In App Products on Google Play Console
 
-This section assumes you have a game set up on Google play console. Follow the official documentation (linked above) if that's not the case.
+This section assumes you have a game set up on Google Play console. Follow the official documentation (linked above) if that's not the case.
 
-1. To set up in-app products on Google play console, go into your game's dashboard, then navigate to the **Monetise > In-app products** section on the Google Play Console and click **Create product**.
+1. To set up in-app products on Google Play console, go into your game's dashboard, then navigate to the **Monetise > In-app products** section on the Google Play Console and click **Create product**.
 
     ![Create new in-app product](img/google_create_iap.png)
 

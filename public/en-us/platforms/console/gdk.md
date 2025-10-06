@@ -43,7 +43,7 @@ Select "mod.io" from the Middleware Partner list, and submit your details which 
 * Your Title/Game Name
 * The email domain/address registered with Microsoft. (eg. \*@mod.io)
 
-Once verified, your mod.io contact will provide access to the GDK support module for your integration solution.
+Once verified, your [mod.io contact](mailto:developers@mod.io) will provide access to the [GDK support module](/platforms/console-sdks#console-sdks) for your integration solution.
 
 ## Authentication
 
@@ -57,11 +57,9 @@ This will provide users with a streamlined login experience tailored to the appr
 
 ![Xbox Live log in interface available in the mod.io web UI](img/xbox_auth_web.png)
 
-Please contact us for further instructions for authenticating with *Xbox Live*: developers@mod.io.
-
 ## Consent
 
-If you choose to use *Xbox Live* authentication (this isn’t required for email), it is a requirement from Microsoft that consent is collected before a user is authenticated for the first time. So when a user clicks the “UGC” button in-game, you must display an acceptance dialog similar to the one explained in the [Terms & User Consent](/terms) guide.
+If you choose to use *Xbox Live* authentication, it is a requirement from Microsoft that consent is collected before a user is authenticated for the first time. So when a user clicks the “UGC” button in-game, you must display an acceptance dialog similar to the one explained in the [Terms & User Consent](/terms) guide.
 
 ## Networking & storage
 

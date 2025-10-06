@@ -202,7 +202,7 @@ Upon successful consumption of the entitlement against the Platforms Entitlement
 
 #### Request
 
-Create a service-to-service (S2S) transaction commit. This is for performing an external credit transaction. This step finalizes the transaction and will issue creator credits to the user associated to it. A successful request will return a [S2S Pay Object](/restapi/docs/schemas/s2s-pay-object) object. Requires scope of monetization on token.
+Create a service-to-service (S2S) transaction commit. This is for performing an external credit transaction. This step finalizes the transaction and will issue creator credits to the user associated to it. A successful request will return a [S2S Pay Object](/restapi/docs/schemas/s-2-s-pay-object) object. Requires scope of monetization on token.
 
 `POST https://g-{your-game-id}.modapi.io/v1/s2s/transactions/commit`
 

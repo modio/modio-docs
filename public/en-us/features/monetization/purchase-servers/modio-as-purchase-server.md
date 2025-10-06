@@ -29,10 +29,9 @@ To use mod.io Marketplace, you must have the following steps completed:
 
 We also strongly encourage developers to utilize our official plugins and SDKs whenever possible, as these tools are specifically designed to abstract away much of the underlying complexity and get you up and running sooner. For implementation details related to specific plugins and SDK's, please see the following implementation guides:
 
-- [SDK](/cppsdk/marketplace)
 - [Unreal Engine](/unreal/marketplace)
 - [Unity](/unity/marketplace)
-
+- [C++ SDK](/cppsdk/marketplace)
 
 ## Testing environment
 
@@ -62,12 +61,12 @@ Entitlement | A user-purchased digital right to a currency pack, which is always
 
 Entitlement Mapping is the process of associating a third-party platform store entitlement with a mod.io currency pack. This step is essential for informing mod.io what amount of virtual currency should be attributed to a player when they purchase and [sync a platform store-purchased entitlement](#3-sync-platform-entitlements-to-modio). Depending on the store used, please see the following guides for registering the mappings.
 
-- [Apple](/platforms/apple/marketplace)
-- [Google Play](/platforms/google/marketplace)
 - [Steam](/platforms/steam/marketplace)
-- [Meta Quest](/platforms/meta/marketplace)
 - [PlayStation™Network](https://docs.mod.io/partners/ps5/marketplace/) ([NDA access required](/platforms/console-sdks))
 - [Xbox Live](https://docs.mod.io/partners/xbox/marketplace/) ([NDA access required](/platforms/console-sdks))
+- [Apple (iOS)](/platforms/apple/marketplace)
+- [Google Play (Android)](/platforms/google/marketplace)
+- [Meta Quest](/platforms/meta/marketplace)
 
 ## Implementation
 

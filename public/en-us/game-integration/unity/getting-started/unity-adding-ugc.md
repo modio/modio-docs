@@ -227,4 +227,4 @@ That’s it! Enter Play mode now and, after authentication, the Unity console sh
 
 Now your users can add UGC to your game via the plugin and API, the next step is to allow users to find UGC by implementing the [Searching for UGC Guide](/unity/searching-ugc).
 
-If you've already done this, we recommend working your way through the [Unity Getting Started Guides](/unity#unity-engine-core-plugin-guides) as they will teach you how to implement the fundamentals before moving on to explore our [Features](https://docs.mod.io/features).
+If you've already done this, we recommend working your way through the [Unity Getting Started Guides](/unity#unity-core-plugin-guides) as they will teach you how to implement the fundamentals before moving on to explore our [Features](/features).

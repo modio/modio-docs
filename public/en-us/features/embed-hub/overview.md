@@ -6,10 +6,10 @@ slug: /embed-hub
 
 # Embed Hub
 
-Embed Hub gives you the ability to embed the [mod.io](https://mod.io/) browser into your site, launcher or game. It is highly customizable, offering many style options and control over which features are enabled or disabled.
+Embed Hub gives you the ability to embed the mod.io browser into your site, launcher or game. It is highly customizable, offering many style options and control over which features are enabled or disabled.
 
 :::note[Premium Feature]
-Embed Hub is a premium feature. If you are interested in mod.io premium features, please contact developers@mod.io.
+Embed Hub is a premium feature. Sign up to one of our [advanced service tiers](https://mod.io/pricing) to activate this white label feature, or contact us at developers@mod.io for more information.
 :::
 
 ## Setup
@@ -36,13 +36,17 @@ You can see a live example of Embed Hub running on the [Baldur's Gate 3](https:/
 
 ![Baldur's Gate 3 embed hub](img/embed_hub_demo_baldurs_gate_3.png)
 
-Another example is [Anno 1800](https://www.anno-union.com/mods/), a Ubisoft game.
+Another example is [Anno 1800](https://www.anno-union.com/mods/), an Ubisoft game.
 
 ![Anno 1800 embed hub](img/embed_hub_demo_anno_1800.png)
 
-### Embedded in-game
+### In-game
 
-Embed Hub can also be used as an in-game UI or overlay for browsing and managing a user's UGC collection. The [Javascript API](/embed-hub/communication#javascript-api) can be used to communicate between the game client and the web UI. The Anno 1800 team also used Embed Hub as their in-game UI, embedding it natively using the [Ultralight](https://ultralig.ht) plugin, an HTML renderer. You can view the hub in your [browser here](https://anno1800.modhub.io/) and see how it looks in-game in the video below.
+Embed Hub can also be used as an in-game UI or overlay for browsing and managing a user's UGC library. The [Javascript API and URL parameters](/embed-hub/communication) can be used to communicate between the game client and the web UI. The Anno 1800 team also used Embed Hub as their in-game UI, embedding it natively using the [Ultralight](https://ultralig.ht) plugin, an HTML renderer. You can view the hub in your [browser here](https://anno1800.modhub.io/) and see how it looks in-game in the video below.
+
+:::tip[Recommendation]
+If you intend on linking to mod.io mod profiles in-game, we highly recommend the usage of the embed hub feature, to make the experience look and feel tailored for your game. When doing this you should pass an authentication token to the embed hub, so it loads with the user automatically logged in. See [communicating with embed hub](/embed-hub/communication#authentication) for instructions.
+:::
 
 <video width="100%" height="auto" controls poster="/video/embed_hub_demo_anno_1800_poster.jpg">
   <source src="/video/embed_hub_demo_anno_1800.mp4" type="video/mp4" />
@@ -50,7 +54,7 @@ Embed Hub can also be used as an in-game UI or overlay for browsing and managing
 
 ## Supported engines/setup guides
 
-Below is a list of the supported engines and the relevant setup guides. Embed Hub as a web browser is available for all games. Embedding the hub in the game itself has different requirements depending on the engine. Contact us at developers@mod.io to learn more.
+Below is a list of the supported engines and the relevant setup guides. Embed Hub as a web browser is available for all games. Embedding the hub in the game itself has different requirements depending on the engine. You could open it, using the platform supplied web overlay, or use a tool like [Ultralight](https://ultralig.ht) to natively embed it. Contact us at developers@mod.io to learn more.
 
 | Engine    | Supported | Guide |
 | -------- | ------- | ------- |

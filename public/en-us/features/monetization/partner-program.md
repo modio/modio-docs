@@ -13,7 +13,7 @@ The Partner Program is a [Monetization](/monetization) feature that provides the
 It's up to you to define any criteria required for creators to be able to monetize their content for your game. This can all be done from your **Game Admin Dashboard** found via the [My Content](https://mod.io/content) page.
 
 :::note
-Make sure you have read the [**Onboarding**](/monetization/onboarding) section of the Marketplace documentation before proceeding.
+Make sure you have read the [Onboarding](/monetization/onboarding) section of the Marketplace documentation before proceeding.
 :::
 
 When setting up the Partner Program, the criteria you’re able to use is as follows:

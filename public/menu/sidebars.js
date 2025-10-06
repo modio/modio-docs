@@ -112,7 +112,7 @@ const sidebars = {
               items: [
                 'game-integration/unreal/template-ui/ue-tui-functionality',
                 'game-integration/unreal/template-ui/ue-tui-layouts',
-              ]
+              ],
             },
             {
               type: 'category',
@@ -128,7 +128,17 @@ const sidebars = {
             'game-integration/unreal/feature-guides/ue-metrics',
             'game-integration/unreal/feature-guides/ue-cloud-cooking',
           ],
-        },
+        }, {
+        type: 'category',
+        label: 'Sample Project',
+        link: {type: 'doc', id: 'game-integration/unreal/modio-action-rpg/overview'},
+        items: [
+          'game-integration/unreal/modio-action-rpg/getting-started',
+          'game-integration/unreal/modio-action-rpg/modio-plugin-integration',
+          'game-integration/unreal/modio-action-rpg/moddable-weapons',
+          'game-integration/unreal/modio-action-rpg/troubleshooting',
+        ],
+    },
         'game-integration/ue-generated/core/ue-refdocs',
         'game-integration/unreal-legacy/ue4-quicklook',
       ],
@@ -224,7 +234,7 @@ const sidebars = {
                   items: [
                     'game-integration/cppsdk/win32/windows-getting-started',
                     'game-integration/cppsdk/win32/windows-cmake-integration',
-                  ]
+                  ],
                 },
                 {
                   type: 'category',
@@ -232,7 +242,7 @@ const sidebars = {
                   items: [
                     'game-integration/cppsdk/linux/linux-getting-started',
                     'game-integration/cppsdk/linux/linux-cmake-integration',
-                  ]
+                  ],
                 },
                 {
                   type: 'category',
@@ -240,7 +250,7 @@ const sidebars = {
                   items: [
                     'game-integration/cppsdk/macos/mac-getting-started',
                     'game-integration/cppsdk/macos/mac-cmake-integration',
-                  ]
+                  ],
                 },
                 {
                   type: 'category',
@@ -248,7 +258,7 @@ const sidebars = {
                   items: [
                     'game-integration/cppsdk/ios/ios-getting-started',
                     'game-integration/cppsdk/ios/ios-cmake-integration',
-                  ]
+                  ],
                 },
                 {
                   type: 'category',
@@ -256,7 +266,7 @@ const sidebars = {
                   items: [
                     'game-integration/cppsdk/android/android-getting-started',
                     'game-integration/cppsdk/android/android-cmake-integration',
-                  ]
+                  ],
                 },
                 {
                   type: 'category',
@@ -264,7 +274,7 @@ const sidebars = {
                   items: [
                     'game-integration/cppsdk/meta/meta-getting-started',
                     'game-integration/cppsdk/meta/meta-cmake-integration',
-                  ]
+                  ],
                 },
               ],
             },
@@ -273,6 +283,7 @@ const sidebars = {
             'game-integration/cppsdk/getting-started/cpp-searching-ugc',
             'game-integration/cppsdk/getting-started/cpp-subscribing',
             'game-integration/cppsdk/getting-started/cpp-adding-ugc',
+            'game-integration/cppsdk/getting-started/cpp-collections',
           ],
         },
         {
@@ -282,6 +293,7 @@ const sidebars = {
             'game-integration/cppsdk/feature-guides/cpp-feature-list',
             'game-integration/cppsdk/feature-guides/cpp-marketplace',
             'game-integration/cppsdk/feature-guides/cpp-metrics',
+            'game-integration/cppsdk/feature-guides/cpp-multiplayer',
             'game-integration/cppsdk/feature-guides/cpp-temporary-mods',
           ],
         },
@@ -330,6 +342,14 @@ const sidebars = {
         'platforms/pc/pc',
         {
           type: 'category',
+          label: 'Steam',
+          items: [
+            'platforms/pc/steam/authentication',
+            'platforms/pc/steam/marketplace',
+          ],
+        },
+        {
+          type: 'category',
           label: 'Epic Games',
           items: ['platforms/pc/epic/authentication'],
         },
@@ -337,14 +357,6 @@ const sidebars = {
           type: 'category',
           label: 'GOG Galaxy',
           items: ['platforms/pc/gog/authentication'],
-        },
-        {
-          type: 'category',
-          label: 'Steam',
-          items: [
-            'platforms/pc/steam/authentication',
-            'platforms/pc/steam/marketplace',
-          ],
         },
       ],
     },
@@ -367,10 +379,7 @@ const sidebars = {
         {
           type: 'category',
           label: 'Meta Quest',
-          items: [
-            'platforms/vr/meta/authentication',
-            'platforms/vr/meta/marketplace',
-          ],
+          items: ['platforms/vr/meta/authentication', 'platforms/vr/meta/marketplace'],
         },
       ],
     },
@@ -382,18 +391,12 @@ const sidebars = {
         {
           type: 'category',
           label: 'iOS',
-          items: [
-            'platforms/mobile/apple/authentication',
-            'platforms/mobile/apple/marketplace',
-          ],
+          items: ['platforms/mobile/apple/authentication', 'platforms/mobile/apple/marketplace'],
         },
         {
           type: 'category',
           label: 'Android',
-          items: [
-            'platforms/mobile/google/authentication',
-            'platforms/mobile/google/marketplace',
-          ],
+          items: ['platforms/mobile/google/authentication', 'platforms/mobile/google/marketplace'],
         },
       ],
     },
@@ -451,10 +454,7 @@ const sidebars = {
     {
       type: 'category',
       label: 'Discord',
-      items: [
-        'features/discord/discord',
-        'features/discord/discord-configuration',
-      ],
+      items: ['features/discord/discord', 'features/discord/discord-configuration'],
     },
     {
       type: 'category',
@@ -464,9 +464,9 @@ const sidebars = {
         'features/embed-hub/embed-hub-theme',
         'features/embed-hub/embed-hub-settings',
         'features/embed-hub/embed-hub-custom-css',
+        'features/embed-hub/embed-hub-communication',
         'features/embed-hub/embed-hub-add-ugc',
         'features/embed-hub/embed-hub-deployment',
-        'features/embed-hub/embed-hub-communication',
       ],
     },
     {
@@ -483,15 +483,11 @@ const sidebars = {
       label: 'Metrics',
       items: [
         {
-          type: 'doc',
-          label: 'Overview',
-          id: 'features/metrics/metrics-data',
-        },
-        {
           type: 'category',
           label: 'Dashboards',
           items: [
-            'features/metrics/dashboards/how-it-works-data',
+            'features/metrics/metrics-overview',
+            'features/metrics/metrics-how-it-works',
             'features/metrics/dashboards/game-dashboard-data',
             'features/metrics/dashboards/ugc-dashboard-data',
             'features/metrics/dashboards/creator-dashboard-data',

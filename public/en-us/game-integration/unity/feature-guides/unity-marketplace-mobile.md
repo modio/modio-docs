@@ -18,8 +18,8 @@ Before we can begin you'll need to have installed & setup the Unity In-App Purch
 
 Additionally, please follow the below guides for setting up Virtual Currency for mod.io Marketplace on your required platforms:
 
-* [Google](https://docs.mod.io/platforms/google/marketplace/)
-* [Apple](https://docs.mod.io/platforms/apple/marketplace/)
+* [Apple (iOS)](https://docs.mod.io/platforms/apple/marketplace/)
+* [Google Play (Android)](https://docs.mod.io/platforms/google/marketplace/)
 
 :::note[Platform Setup]
 If you are implementing Marketplace for non-mobile platforms such as Steam or Xbox, refer to our [Unity Marketplace Guide](/unity/marketplace).

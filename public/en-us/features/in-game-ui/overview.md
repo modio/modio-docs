@@ -4,7 +4,7 @@ title: Overview
 slug: /in-game-ui
 ---
 
-# In-Game User Interfaces
+# In-Game User Interface
 
 ![in-game ui overview](img/customize.png)
 
@@ -16,17 +16,17 @@ We offer a variety of UI solutions for both our **Unity** and **Unreal Engine** 
     title="Component UI"
     image="/img/icon_cui.svg"
     text="A UI framework that gives you complete control over your UI implementation, allowing you to create a white label system that perfectly suits your game."
-    moreLink="/in-game-ui/component/"
+    moreLink="/in-game-ui/component"
   />
     <SimpleCard
     shadow="tl"
     title="Template UI"
     image="/img/icon_tui.svg"
     text="A ready-made UGC browser built using Component UI. It can be used as a functional template  or as a reference for implementing your own UI."
-    moreLink="/in-game-ui/template/"
+    moreLink="/in-game-ui/template"
   />
 </div>
 
 :::tip[Embed Hub]
-For a streamlined browser experience, **[Embed Hub](/embed-hub)** is a premium feature that enables your studio to embed the mod.io browser into your site, launcher or game.
+For a streamlined browser experience, [Embed Hub](/embed-hub) is a premium feature that enables your studio to embed the mod.io browser into your site, launcher or game.
 :::

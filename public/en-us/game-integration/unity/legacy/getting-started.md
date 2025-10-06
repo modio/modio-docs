@@ -40,7 +40,7 @@ Once you've created the above class:
 ## Initialization
 
 :::info 
-The plugin relies on the *config file* that is configured during the [setup instructions](#setup) above. Please ensure you have completed all of those steps before proceeding.
+The plugin relies on the *config file* that is configured during the [setup instructions](#initial-setup) above. Please ensure you have completed all of those steps before proceeding.
 :::
 
 Before the plugin can be used, it needs to be initialized for the current player. This usually only needs to happen once, so let's implement Unity's `Start` method in our `ModIOExample.cs` file:
@@ -1156,10 +1156,10 @@ namespace ModIO
 ```
 ## Playtime Metrics
 
-The mod.io SDK supports all of the mod.io [Metrics](/metrics) features, including [Playtime Metrics](/metrics/playtime), which allows you to track which mods your players interact with most frequently. 
+The mod.io SDK supports all of the mod.io [Metrics](/metrics) features, including [Playtime Metrics](/metrics/game#play-sessions), which allows you to track which mods your players interact with most frequently. 
 
-:::note
-Playtime Metrics is a premium feature. If you are interested in activating this for your game, please contact developers@mod.io.
+:::note[Premium Feature]
+Play Sessions is a premium feature. Sign up to one of our [advanced service tiers](https://mod.io/pricing) to activate detailed data analytics, or contact us at developers@mod.io for more information.
 :::
 
 The following documentation walks you through the setup process and gives example usages.

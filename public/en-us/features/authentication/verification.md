@@ -1,17 +1,17 @@
 ---
 id: authentication-verification
-title: User Auth Best Practices
+title: User Verification
 slug: /authentication/verification
 sidebar_position: 6
 ---
 
-# User Authentication Best Practices
+# User Verification
 
-User verification is a critical part of the mod.io authentication process. It ensures that the user is who they say they are and that they have access to the email address they provided. This is important for security reasons and account recovery.
+Additional user verification is available as part of the mod.io authentication process. It optionally allows users to connect an email address to their account (where one is not already provided by the SSO provider). This is important for security reasons, account recovery and access to advanced functionality such as creator dashboards and monetization features.
 
 ## Verification process
 
-The verification process is simple. After a user signs up, they will receive an email with a verification link. They must click this link to verify their email address. If they do not verify their email address, their account may be significantly limited.
+The verification process is simple. In-game, you can optionally add the ability for users to include an email address with their authentication request. When this occurs, if a verified email is not already connected to their account, the user will receive an email with a verification link. They must click this link to verify their email address. If they do not verify their email address, their account may be limited.
 
 Games should help to facilitate this verification process when encountering unverified users. For example, if a user tries to upload a mod, but their account is unverified, the game should prompt them to verify their email address.
 

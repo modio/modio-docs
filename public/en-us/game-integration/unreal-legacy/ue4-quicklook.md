@@ -36,7 +36,7 @@ A sample UE4 project showcasing a simple integration is available here: [UE4 Sam
 
 ## Approach to Mod Loading for UE
 
-Guidance on best practice for mod loading with UE4 is provided. We recommend building for cross-platform file support and multi-platform (i.e. PC and Console SKUs). Even for UE4 projects where multi-platform mod support isn’t a focus, adopting best practice approaches will improve overall player experience when playing with mods. The document is available here: [UE Mod Loading](/unreal/mod-loading)
+Guidance on best practice for mod loading with UE4 is provided. We recommend building for cross-platform file support and multi-platform (i.e. PC and Console SKUs). Even for UE4 projects where multi-platform mod support isn’t a focus, adopting best practice approaches will improve overall player experience when playing with mods. The document is available here: [UE Mod Loading](/unreal/ugc-best-practices#ugc-loading)
 
 # UI compatible with UE4 plugin
 

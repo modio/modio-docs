@@ -24,7 +24,7 @@ This guide covers:
 To facilitate HTTP requests to mod.io's Service To Service (S2S) APIs, your backend server must first authenticate and generate credentials that your backend service will use. Credentials required by S2S APIs are separate from mod.io's public API endpoints and cannot be used interchangeably.
 
 :::warning[Security Requirement]
-All S2S API endpoints defined in this section must only ever be called by a secure backend, and never from a client-side device. By design, the endpoints require credentials such as OAuth Client Secrets which must remain private at all times and should never be shared outside of your secure systems. Failure to follow these guidelines could result in [**Marketplace**](/monetization/marketplace) being disabled for all titles within your organization.
+All S2S API endpoints defined in this section must only ever be called by a secure backend, and never from a client-side device. By design, the endpoints require credentials such as OAuth Client Secrets which must remain private at all times and should never be shared outside of your secure systems. Failure to follow these guidelines could result in [Marketplace](/monetization/marketplace) being disabled for all titles within your organization.
 :::
 
 ## Glossary

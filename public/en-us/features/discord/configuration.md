@@ -27,7 +27,7 @@ This guide covers:
 
 ## Discord commands
 
-Once you have invited ModBot to your server, you can set the default game using the command <code>/settings default-game ID</code>. 
+Once you have invited ModBot to your server, you can set the default game using the command <code>/settings [defaultGameID or defaultGameName]</code>.
 
 Now when a user issues the command <code>/mods</code>, all of the UGC for the game you specified will be returned. You can change the default game at any time.
 
@@ -77,7 +77,7 @@ Popular commands include:
 
 ModBot is written in Rust, so you'll need to grab a [Rust installation](https://www.rust-lang.org/tools/install) in order to compile it. 
 
-Building is easy:
+Building is easy from the [Github repo](https://github.com/nickelc/modio-bot):
 
 ```
 $ git clone https://github.com/nickelc/modio-bot

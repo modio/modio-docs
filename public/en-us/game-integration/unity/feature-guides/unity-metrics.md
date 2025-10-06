@@ -13,7 +13,7 @@ The mod.io Unity Plugin supports all of our [Metrics](https://docs.mod.io/metric
 [Playtime Metrics](https://docs.mod.io/metricsics/playtime/) lets you track what UGC your players interact with most frequently. The process involves starting a metrics play session, keeping that session alive via a heartbeat, and then ending that session.
 
 :::note[Premium Feature]
-Playtime Metrics is a premium feature. If you're interested, reach out to us at developers@mod.io.
+Play Sessions is a premium feature. Sign up to one of our [advanced service tiers](https://mod.io/pricing) to activate detailed data analytics, or contact us at developers@mod.io for more information.
 :::
 
 ### Initial Setup

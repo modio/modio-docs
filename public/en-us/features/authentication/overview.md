@@ -7,12 +7,16 @@ sidebar_position: 0
 
 # Authentication
 
-Authentication is a necessary process for games, users, and servers to connect with both mod.io and the API.
+Authentication is a necessary process for games, users, and servers to connect with both mod.io and the API. Authentication allows creators to submit UGC, subscribe to favorites, share colections, enhances safety and plenty more.
 
 The authentication guides cover two separate buckets:
 
 1. [**Users**](#user-authentication-methods): In order for users to engage with UGC in your game, they'll need to authenticate to mod.io. Each platform has its own authentication system, and you can either work alongside the native systems or implement your own.
 2. [**Web Servers**](/authentication/s2s): If you are looking to run in-app UGC purchases or utilize our dedicated servers using S2S tokens, you'll need your backend system to authenticate to mod.io. 
+
+:::note
+Prior to authenticating a user for the first time, terms and user consent must be collected, which is [covered here](/terms). 
+:::
 
 ## User authentication methods
 

@@ -6,7 +6,7 @@ slug: /
 
 # Welcome to mod.io
 
-We're here to enhance your game by unlocking mods or **user generated content (UGC)**. Whether it's empowering players to create new skins, game modes, VFX, SFX or anything else, our service provides the framework for player customization and creativity within your game without jeopardising security and stability.
+We're here to enhance your game by unlocking mods or **user generated content (UGC)**. Whether it's empowering players to create new skins, game modes, VFX, SFX or anything else, our service provides the framework for player customization and creativity within your game.
 
 ![mod.io welcome image](img/ugc-cover.webp)
 

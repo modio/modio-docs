@@ -1,10 +1,11 @@
 ---
-id: metrics-data
-title: Data
-slug: /metrics/data
+id: metrics-overview
+title: Overview
+slug: /metrics
 ---
 
-# Overall
+# Metrics
+
 The metrics dashboards provide game studios with end-to-end visibility into their UGC ecosystem. Each dashboard highlights key activity, performance trends, and user engagement, making it easier to track growth, identify issues, and optimise your UGC strategy.
 
 Dashboards combine at-a-glance metric tiles with detailed drill-down views, allowing both quick monitoring and deep analysis.

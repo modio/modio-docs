@@ -10,7 +10,7 @@ sidebar_position: 1
 The mod.io [Marketplace](/monetization/marketplace) support for Steam utilizes the Steam Inventory System for configuring entitlements to be consumed for virtual currency. This allows players to make Virtual Currency Pack purchases via Steam's microtransaction system, and have the mod.io purchase server exchange them for creator credits.
 
 :::note[Authentication]
-Make sure to set up **[Steam Authentication](/platforms/steam/authentication)** before proceeding.
+Make sure to set up [Steam Authentication](/platforms/steam/authentication) before proceeding.
 :::
 
 ## Configure a Web API Key

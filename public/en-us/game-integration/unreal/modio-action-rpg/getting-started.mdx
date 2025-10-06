@@ -1,0 +1,35 @@
+---
+id: getting-started
+title: Getting Started
+slug: /unreal/modio-action-rpg/getting-started
+custom_edit_url: https://github.com/modio/modio-ue4-internal/tree/main/Doc/doc_root/en-us/modio-action-rpg/getting-started.mdx
+---
+
+# Prerequisites
+This project already includes all the relevant mod.io plugins as submodules, so you do not need to install them separately. 
+
+If you intend to test UGC that has been uploaded to the ARPG game profile, then it is required have the lowest supported Unreal Engine installed on your machine, as the project is compatible with these versions of the engine. Refer to the [Engine Compatibility](/unreal/modio-action-rpg#engine-compatibility) section for more details.
+
+## Cloning the Project
+Detailed instructions on setting up the project can be found in the [Action RPG GitHub repository](https://github.com/modio/modio-ue-actionrpg?tab=readme-ov-file#installation)
+
+# Core Concepts
+ARPG was developed as a hybrid C++/Blueprint project, integration of mod.io features is done primarily in C++ inside the **ActionRPGModio** module. Some functionality has been implemented in either C++ or Blueprints, extending the existing functionality of the original ARPG source.
+
+## Data Driven design and Asset Management
+ARPG has been designed in a data driven nature, using Unreal Engine's AssetManager and AssetRegistry to manage and discover assets (such as the inventory items). This is a very effective pattern for handling user-generated content (UGC) effectively.
+
+## Moddable Content
+As mentioned above, ARPG is designed in a way where inventory items are data driven. These items (such as weapons and potions), are defined by their own **RPGItem** DataAsset, making it simple to query and load them dynamically at runtime through their **PrimaryAssetType**.
+
+We have some examples of weapons as UGC in the project, leveraging the ModioUGC plugin to mount UGC and register new weapons to the AssetManager, which is then loaded in the same way as the original weapons. The section in [Moddable Weapons](/unreal/modio-action-rpg/moddable-weapons) provides more details on how this is achieved.
+
+We've also implemented a simple example of how to create and load new maps as UGC, displaying them in a map browser UI. 
+
+In the future we plan to explore more complex UGC scenarios, such as gameplay mutators and using gameplay messaging systems to modify existing gameplay mechanics.
+
+## Source Files Overview
+Source files used in the ActionRPGModio module:
+- **ActionRPGModioSubsystem**: This is the main subsystem for the Action RPG mod.io integration. It handles the initialization of the mod.io service, manages user authentication, and provides access to various mod.io features.
+- **UActionRPG_UGCProvider**: This is an ARPG implementation of the UGC provider interface, providing a way to load UGC uploaded to the mod.io service, as well as side loaded UGC for rapid iteration.
+- **MapBrowserWidgetBase**: This is the Map Browser UI, which allows players to browse and select maps to play. It shows examples of loading all UWorlds in the project, via either the AssetManager or AssetRegistry.

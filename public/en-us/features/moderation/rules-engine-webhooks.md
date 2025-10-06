@@ -6,7 +6,7 @@ slug: /moderation/rules-engine/webhooks
 
 # Webhooks
 
-Webhooks can be used as part of [Rules-Based Moderation](/moderation/rules-engine/overview) to connect any external vendor to run custom post processing and checks. The possibilities are endless, but examples we’ve seen include:
+Webhooks can be used as part of [Rules-Based Moderation](/moderation/rules-engine) to connect any external vendor to run custom post processing and checks. The possibilities are endless, but examples we’ve seen include:
 
 * Automation: Verify and auto build mod files
 * Safety: Use AI to check image appropriateness, check for banned words or incorporate 3rd party moderation scanner

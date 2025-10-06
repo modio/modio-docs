@@ -7,7 +7,11 @@ sidebar_position: 0
 
 # Collections
 
-The Collections feature allows users to curate and organize their own lists of user-generated content (UGC) for players to discover and subscribe to. These collections are displayed on both the user's game profile and creator profile pages, making them easy to share. Users can follow a collection, and optionally subscribe to the UGC it contains.
+The Collections feature allows users to curate and organize their own playlists of user-generated content (UGC) for players to discover and subscribe to. These collections are displayed on both the user's game profile and creator profile pages, making them easy to share. Users can follow a collection, and optionally subscribe to the UGC it contains. 
+
+:::tip
+Collections are a fantastic way to grow your games reach, as they allow influencers, to share their favorite combinations of UGC for their viewers and friends to play.
+:::
 
 ## Features
 

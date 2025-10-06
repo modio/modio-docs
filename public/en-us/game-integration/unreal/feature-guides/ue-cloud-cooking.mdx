@@ -6,7 +6,7 @@ slug: /unreal/cloud-cooking
 
 # Cloud Cooking for Unreal
 
-[Cloud Cooking](https://docs.mod.io/cloud-cooking/overview/) provides mod.io managed infrastructure that supports preparation of content for platforms that are only available under non-disclosure agreements, such as consoles.
+[Cloud Cooking](https://docs.mod.io/cloud-cooking) provides mod.io managed infrastructure that supports preparation of content for platforms that are only available under non-disclosure agreements, such as consoles.
 
 This feature is fully functional for games utilizing our Unreal Engine Plugin.
 
@@ -33,6 +33,10 @@ For each platform you want to cook for, you should set up an [AutoSDK](https://d
 
 :::note
 The build agents will automatically have the `UE_SDKS_ROOT` environment variable set as part of the provisioning process
+:::
+
+:::warning
+If you are intending to use Cloud Cooking for GDK-based platforms and are using a version of UE prior to 5.4, you need to incorporate CL 28337709 from Epic's Perforce, or the following GitHub Commit (https://github.com/EpicGames/UnrealEngine/commit/ce4c0b8039a54f8ca841d50ca05dad6e4c018204) to fix a GDK AutoSDK installation issue.
 :::
 
 ## Add a BuildGraph script for cooking a piece of content

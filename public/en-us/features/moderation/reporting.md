@@ -7,7 +7,7 @@ sidebar_position: 4
 
 # Reporting
 
-mod.io provides built-in reporting tools, through [our website](https://mod.io/report) and the interface provided as a part of our [Unity](/unity) and [Unreal Engine](/unreal) plugins. These tools allow users to report content that may be broken, is stolen, or violates our [Terms of Use](/terms). We also provide endpoints in our [REST API](/restapi/docs/submit-report) and SDK, allowing reporting functionality to be integrated directly into custom engines, games, apps and websites. Reporting forms one layer of our four layer [Moderation](/moderation) system.
+mod.io provides built-in reporting tools, through [our website](https://mod.io/report) and the interface provided as a part of our [Unreal Engine](/unreal) and [Unity](/unity) plugins. These tools allow users to report content that may be broken, is stolen, or violates our [Terms of Use](/terms). We also provide endpoints in our [REST API](/restapi/docs/submit-report) and SDK, allowing reporting functionality to be integrated directly into custom engines, games, apps and websites. Reporting forms one layer of our four layer [Moderation](/moderation) system.
 
 This guide covers:
 

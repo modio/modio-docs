@@ -1,5 +1,5 @@
 ---
-id: how-it-works-data
+id: metrics-how-it-works
 title: How It Works
 slug: /metrics/how-it-works
 ---
@@ -30,8 +30,8 @@ Displays the selected metric over time (daily or monthly view).
 * Adjustable with predefined ranges (1W, 1M, 3M, 6M, 1Y, All-time) or a custom range.  
 * Toggle between cumulative (running totals) or non-cumulative (per-period counts).
 
-:::note
-Premium Feature: Filtering by Category and Tag is only available with a premium subscription.
+:::note[Premium Feature]
+Filtering UGC Metrics by Category and Tag is a premium feature. Sign up to one of our [advanced service tiers](https://mod.io/pricing) which includes [Play Sessions](/metrics/game#play-sessions) to activate detailed data analytics, or contact us at developers@mod.io for more information.
 :::
 
 ## Monthly Summary

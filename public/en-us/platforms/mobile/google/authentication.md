@@ -43,7 +43,7 @@ To begin, we require the following scopes to authenticate a user against your Go
 * openid
 
 :::note
-Play Games Services Version 2 (PGSV2) no longer supports additional OAuth2.0 scopes out of the box, therefore we recommend using Google sign-in SDK as outlined in their [**OAuth scopes on PGSV2**](https://developer.android.com/games/pgs/signin#oauth-scopes) and [**OAuth scopes and PGSV1**](https://developers.google.com/games/services/common/concepts/v1/sign-in#oauth-scopes) guides.
+Play Games Services Version 2 (PGSV2) no longer supports additional OAuth2.0 scopes out of the box, therefore we recommend using Google sign-in SDK as outlined in their [OAuth scopes on PGSV2](https://developer.android.com/games/pgs/signin#oauth-scopes) and [OAuth scopes and PGSV1](https://developers.google.com/games/services/common/concepts/v1/sign-in#oauth-scopes) guides.
 :::
 
 To authenticate to mod.io via a Google Play account, we support the following credential flows:
@@ -85,7 +85,7 @@ The next step is to set up Google Console Project by actioning the following ste
     ![Google Cloud Console Android Oauth client configuration screen](img/google_setup_adroid_clientId.png)
 
 :::important
-The above OAuth client with SHA-1 fingerprint is for development builds only. Google will resign your builds with its own fingerprint key which you can find after completing [Setting Up Play Games Services](#setting-up-play-games-services) below. It's recommended to make a separate OAuth client using this resigned fingerprint which you can find the **Google Play Console > Test and Release > App Integrity > App Signing**.
+The above OAuth client with SHA-1 fingerprint is for development builds only. Google will resign your builds with its own fingerprint key which you can find after completing [Setting Up Play Games Services](#play-games-services) below. It's recommended to make a separate OAuth client using this resigned fingerprint which you can find the **Google Play Console > Test and Release > App Integrity > App Signing**.
 :::
 
 ## Play Games services
@@ -98,19 +98,19 @@ Now it's time to set up Google's Play Games services. To do so, work through the
 
 3. Within the console of your game, navigate to **Play Games Services > Setup and management > Configuration** tab. Select **Create new Play Games Services project** then use the dropdown to select the Google cloud project we set up in previous steps, or if you have and click **use**.
 
-    ![Google play games services configuration screen](img/google_play_games_services_configuration_screen.png)
+    ![Google Play games services configuration screen](img/google_play_games_services_configuration_screen.png)
 
 4. Click on **Edit properties** and fill out the display name, description, category, icon, feature graphic and scroll down to make sure that the cloud project platform project is listed under **External Integrations** for your game, **save changes**.
 
-    ![Google play external integrations](img/google_play_console_external_integrations.png)
+    ![Google Play external integrations](img/google_play_console_external_integrations.png)
 
 5. Click on **Add Credential** then select **Game Server**. On the following page, fill out the details and select the OAuth 2.0 client ID set up (on Step 4, previous section) **save changes**.
 
-    ![Google play external integrations](img/google_PGS_config_game_server_oauth_client.png)
+    ![Google Play external integrations](img/google_PGS_config_game_server_oauth_client.png)
 
 6. Return to the play games services setup page and click on **Add Credential**, then select the **Android** option and the Android OAuth2.0 client ID from the dropdown (Step 5, previous section) **save changes**.
 
-    ![Google play external integrations](img/google_PGS_config_android_oauth_client.png)
+    ![Google Play external integrations](img/google_PGS_config_android_oauth_client.png)
 
 ## Google Client ID, Secret and Redirect URI
 
@@ -128,9 +128,9 @@ At this point, we are looking to configure Google Client ID, Secret and Redirect
 
 If your game is using the official mod.io SDK, Unreal or Unity plugin, follow the instructions provided with it to authenticate players using Google SSO, or other supported platform authentication methods.
 
-* [C++ SDK](/cppsdk/user-authentication#ssoexternal-authentication)
 * [Unreal Engine](/unreal/user-authentication#single-sign-on-authentication)
 * [Unity](/unity/user-authentication#single-sign-on)
+* [C++ SDK](/cppsdk/user-authentication#ssoexternal-authentication)
 
 If you are building something custom using the mod.io REST API, follow the [Google Play API instructions](/restapi/docs/authenticate-via-google) to authenticate players using Google SSO, by calling the `/external/googleauth` endpoint.
 

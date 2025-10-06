@@ -20,7 +20,7 @@ This guide covers:
 * [Purchasing UGC](#purchasing-ugc)
 * [Showing user purchases](#showing-user-purchases)
 * [Getting a user delegation token](#getting-a-user-delegation-token)
-* [Listing and purchasing premium currency](#listing-and-purchasing-premium-currency)
+* [Listing and purchasing premium currency](#listing-and-purchasing-virtual-currency)
 * [Consuming User Entitlements](#consuming-user-entitlements)
 
 ## Initialization
@@ -182,9 +182,9 @@ void UModioManagerSubsystem::OnGetUserDelegationTokenCallback(FModioErrorCode Er
 </Tabs>
 
 
-## Listing and purchasing premium currency
+## Listing and purchasing virtual currency
 
-The Monetization premium features mod.io includes the ability to show the relevant platform store (where possible), which allows the user to purchase virtual currency, top up their wallet, and purchase Premium UGC all without leaving the game.
+The Monetization features of mod.io includes the ability to show the relevant platform store (where possible). This allows the user to purchase virtual currency, top up their wallet, and purchase Premium UGC all without leaving the game.
 
 While Unreal provides built-in methods for accessing a given platform's storefront, not all platforms are fully supported, and as such the Component UI framework provides an alternative for unsupported platform, with the following logic:
 

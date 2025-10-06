@@ -16,9 +16,9 @@ mod.io Marketplace features are enabled either during the onboarding process whe
 Please follow the below guides for setting up Virtual Currency for mod.io Marketplace on your required platforms:
 
 * [Steam](/platforms/steam/marketplace)
+* [Apple (iOS)](/platforms/apple/marketplace)
+* [Google Play (Android)](/platforms/google/marketplace)
 * [Meta Quest](/platforms/meta/marketplace)
-* [Google](/platforms/google/marketplace)
-* [Apple](/platforms/apple/marketplace)
 
 The following platforms require approval, see [Console SDKs](https://docs.mod.io/platforms/console-sdks/) for details:
 

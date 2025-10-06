@@ -6,7 +6,7 @@ slug: /embed-hub/communication
 
 # Communicating with Embed Hub
 
-There are several methods of sending data to [Embed Hub](/embed-hub/overview) to modify it on load or in real-time. This page explores controls that allow you to manipulate Embed Hub from your own site.
+There are several methods of sending data to [Embed Hub](/embed-hub) to modify it on load or in real-time. This page explores controls that allow you to manipulate Embed Hub from your own site.
 
 This guide covers:
 
@@ -180,3 +180,11 @@ The Hub expects an interface named `modio` on the global JS object which support
 | notifySubscriptionChange    | modId: int, isSubscribed: boolean | Used to notify the SDK that a mod has been subscribed to or unsubscribed from |
 | notifyActivationChange      | modId: int, isActivated: boolean  | Used to notify the SDK that a mod has been activated or deactivated           |
 | notifyLocalActivationChange | modId: int, isActivated: boolean  | Used to notify the SDK that a local mod has been activated or deactivated     |
+
+## Authentication
+
+There are 3 ways to automatically authenticate users when opening the embed hub in-game or in your web browser as explained above. We recommend using one of these approaches when the user is already authenticated (i.e. by the game client), to ensure a seamless experience. 
+
+1. **Recommended:** Passing in a [User Delegated Token (UDT)](#query-parameters) which the mod.io SDK and plugins can generate for you, as a URL query parameter when loading the embed hub.
+1. Using the JavaScript message event `modioAuth` key, to pass in a UDT or the users access token (which is what you pass in to make authenticated calls to the REST API).
+1. Using the JavaScript API `setAuthToken` function, to pass in a UDT or the users access token (which is what you pass in to make authenticated calls to the REST API).

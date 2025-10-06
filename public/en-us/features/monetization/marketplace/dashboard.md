@@ -9,7 +9,7 @@ slug: /monetization/dashboard
 Once you’ve worked through the [Onboarding Guide](/monetization/onboarding) for [Marketplace](/monetization/marketplace), you should see new menu options appear in the Marketplace section of your mod.io **Game Admin** panel.
 
 :::tip[Game Admin]
-Your Game Admin settings can be accessed via your mod.io [**My Content**](https://mod.io/content) page.
+Your Game Admin settings can be accessed via your mod.io [My Content](https://mod.io/content) page.
 :::
 
 This guide covers:

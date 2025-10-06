@@ -144,12 +144,12 @@ void Update()
 In a real implementation, you'll likely track the `modId`'s download and install progress separately to display in your UI. But, this should give you an idea of what's possible with the mod management feature.
 
 :::note
-There are a number of mod management events available. See the [documentation](https://sdkdocs.mod.io/unity/) (or use code completion in your IDE) for a complete list.
+There are a number of mod management events available. See the [documentation](/unity/cs-ref) (or use code completion in your IDE) for a complete list.
 :::
 
 ## Using UGC
 
-We’re nearing the end now. You've [initialized](/unity/initialization). You've [authenticated](/unity/user-authentication). You've [uploaded](/unity/adding-UGC). You've [searched](/unity/searching-UGC). You've subscribed and installed. It's all led to this single question:
+We’re nearing the end now. You've [initialized](/unity/initialization). You've [authenticated](/unity/user-authentication). You've [uploaded](/unity/adding-ugc). You've [searched](/unity/searching-ugc). You've subscribed and installed. It's all led to this single question:
 
 *"How do I find installed UGC?"*
 
@@ -582,6 +582,6 @@ public class ModioUnityExample : MonoBehaviour
 
 Congratulations! You have completed all the [Unity Getting Started Guides](/unity#unity-core-plugin-guides)! Your Unity game should now be equipped with mod.io's core UGC functionally.
 
-The time's come to customize your game by exploring our [Features](https://docs.mod.io/features) section. Here you can select features that meet your game's needs and elevate your UGC experience.
+The time's come to customize your game by exploring our [Features](/features) section. Here you can select features that meet your game's needs and elevate your UGC experience.
 
 You can also learn more about UGC and loading methods in our [UGC Best Practices Guide](/unity/ugc-best-practices).

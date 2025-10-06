@@ -22,7 +22,13 @@ Before initializing the plugin, ensure [`RunPendingHandlers`](/unreal/refdocs/#r
 ## Initialization process
 The mod.io Unreal Engine plugin is initialized by calling [`InitializeAsync`](/unreal/refdocs/#initializeasync), passing in a [`ModioInitializeOptions`](/unreal/refdocs/#modioinitializeoptions) with the relevant information for the current session, and a callback containing a [`ModioErrorCode`](/unreal/refdocs/#modioerrorcode) that will contain the result of the initialization on completion.  
 
-Use [`GetProjectInitializeOptionsForSessionId`](/unreal/refdocs/#get-project-initialize-options-for-session-id) to initialize the plugin using the information entered in the [mod.io project settings](/unreal/installation/#plugin-configuration).  On Windows, [`GetDefaultSessionIdWindows`](/unreal/refdocs/#get-default-session-id-windows) can be used as the [Session ID](/unreal/plugin-structure/#user-sessions).  Some platforms also require additional parameters added to `ModioInitializeOptions.ExtendedInitializationParameters`.  Refer to the relevant [platform documentation](https://docs.mod.io/getting-started/#expand-with-cross-platform-functionality) for more information.
+Use [`GetProjectInitializeOptionsForSessionId`](/unreal/refdocs/#get-project-initialize-options-for-session-id) to initialize the plugin using the information entered in the [mod.io project settings](/unreal/installation/#plugin-configuration).  You should use `FPlatformProcess::UserName()` to get a default username for the [Session ID](/unreal/plugin-structure/#user-sessions).  Some platforms also require additional parameters added to `ModioInitializeOptions.ExtendedInitializationParameters`.  Refer to the relevant [platform documentation](https://docs.mod.io/getting-started/#expand-with-cross-platform-functionality) for more information.
+
+The plugin also provides a set of helper functions in `UModioPlatformHelpersLibrary` to facilitate setting up platform and portal configurations. You can use [`GetDefaultPortalForCurrentPlatform`](/unreal/refdocs/#get-default-portal-for-current-platform) to get the appropriate default portal for the current platform, which you can then set in `ModioInitializeOptions.PortalInUse`.
+
+:::note
+`GetDefaultPortalForCurrentPlatform` will return `EModioPortal::Steam` as the default portal on PC platforms. If you are using a different portal, you should set this value explicitly.
+:::
 
 <Tabs groupId="languages">
 <TabItem value="blueprint" label="Blueprint">
@@ -37,7 +43,10 @@ void UModioManagerSubsystem::Init()
 {	
 	if (UModioSubsystem* Subsystem = GEngine->GetEngineSubsystem<UModioSubsystem>())
 	{
-		Subsystem->InitializeAsync(UModioSDKLibrary::GetProjectInitializeOptionsForSessionId(UModioSDKLibrary::GetDefaultSessionIdWindows()), FOnErrorOnlyDelegateFast::CreateUObject(this, &UModioManagerSubsystem::OnInitCallback));
+		FModioInitializeOptions Options = UModioSDKLibrary::GetProjectInitializeOptionsForSessionId(FPlatformProcess::UserName())
+
+		Options.PortalInUse = UModioPlatformHelpersLibrary::GetDefaultPortalForCurrentPlatform();
+		Subsystem->InitializeAsync(Options, FOnErrorOnlyDelegateFast::CreateUObject(this, &UModioManagerSubsystem::OnInitCallback));
 	}
 	UE_LOG(LogModioGame, Log, TEXT("Initializing mod.io"));
 }
@@ -94,7 +103,7 @@ void UModioManagerSubsystem::OnShutdownComplete(FModioErrorCode ErrorCode)
 
 
 :::note
-* You must continue to call [**`RunPendingHandlers`**](/unreal/refdocs/#run-pending-handlers) while shutdown is in progress to allow intermediate handlers to complete.
+* You must continue to call [`RunPendingHandlers`](/unreal/refdocs/#run-pending-handlers) while shutdown is in progress to allow intermediate handlers to complete.
 * Any in-flight mod.io async calls will complete with an error code indicating cancellation.
 * You *must not* call **`ShutdownAsync`** from within another completion handler/callback. This may cause the application to deadlock. 
 :::

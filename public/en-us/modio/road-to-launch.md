@@ -23,11 +23,19 @@ Categories and tags are a way of sorting and identifying the different types of 
 
 A category tree may look like the following:
 
+* Type [Category]
+    * Vehicle [Tag]
+    * Map [Tag]
+    * Gameplay [Tag]
+    * UI [Tag]
+    * QoL [Tag]
 * Vehicle [Category]
     * Motorbike [Tag]
     * 4x4 [Tag]
     * Trucks [Tag]
     * Other [Tag]
+
+You can also setup private tags, which are not shown to end users or creators, and admin-only tags which can only be set by game moderators. These are useful for featuring content.
 
 ![Categories and Tags example](img/tags_example.png)
 
@@ -35,7 +43,7 @@ A category tree may look like the following:
 
 ## Enable platform support
 
-If your game uses cross-platform UGC, make sure you have activated these platforms in **General settings** > **Platform approvals**. You will need authorization from each platform to do so. This allows users to upload UGC for your game's supported platforms.
+If your game uses [cross-platform UGC](/getting-started#expand-with-cross-platform-functionality), make sure you have activated these platforms in **General settings** > **Platform approvals**. You will need authorization from each platform to do so. This allows users to upload UGC for your game's supported platforms.
 
 ![platform-settings](img/platform-support.png)
 
@@ -83,4 +91,4 @@ You can also invite non-team members to preview or help test your game by using 
 
 Once you're satisfied that your game is ready to go live, simply click ‘Publish' in the ‘General settings' tab of your game admin settings. 
 
-Congratulations! Your game now supports UGC!
+Congratulations! Your game now supports UGC, and your creator community is live on mod.io!

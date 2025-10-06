@@ -17,10 +17,6 @@ This guide covers:
 * [Installing the Unity Plugin](#installing-the-unity-plugin)
 * [Connecting to mod.io](#connecting-to-modio)
 
-:::tip[navigation tip]
-Use the menu on the right to navigate the key points of this guide &rarr;
-:::
-
 ## Installing the Unity Plugin
 
 The mod.io Unity Plugin requires the functionality of two other Unity plugins to run.

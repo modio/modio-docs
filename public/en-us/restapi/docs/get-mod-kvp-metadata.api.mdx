@@ -1,11 +1,11 @@
 ---
 id: get-mod-kvp-metadata
 title: "Get Mod KVP Metadata"
-description: "Get all metadata stored by the game developer for this mod as searchable key value pairs. Successful request will return an array of [Metadata KVP Objects](/restapi/docs/get-mod-kvp-metadata-2).<br /><br />__NOTE:__ Metadata can also be stored as `metadata_blob` in the [Mod Object](/restapi/docs/schemas/mod-object)."
+description: "Get all metadata stored by the game developer for this mod as searchable key value pairs. Successful request will return an array of [Metadata KVP Objects](/restapi/docs/get-mod-kvp-metadata)."
 sidebar_label: "Get Mod KVP Metadata"
 hide_title: true
 hide_table_of_contents: true
-api: eJztVttuGzcQ/RWCTzGw0sruQ4tFUSBogsAInAS5tCgMQaaWs1pGXJIhZ3WJsP9eDLkrrWulcdzXvsgyRc45czszB45iFXhxy28AhRQo+DzjEkLplUNlDS/4K0AmtGZNf4MFtB4kW+4Z1sBWogEmYQPaOvCssp5hrQJrrGQisADCl7VYamBr2LON0C0wJ5QPU/ahLUsIoWo18/ClhYBsqzT9g603TBgmvBd7Zit2O/Bjr/94x94uP0OJYf4s9xBQOJVLW4Z8BThprJysN24ysJ1cXUx/XXqW/5Y+F4s3bz++LBYLdrRYEpAOli1h8E0EdjdYWCy1Xd4xZaK7tzdW9vj/hA9lDY0IOVGw8cbFlGecwiIolteSF3wFuGisXKw3bjEg8Iw74UUDCJ6SceBGNECXRQMTJXnGFWXCCaz5g/RQ/K9f8IxTDJUHyQv0LWQ88eHFgePekTllEFbgeZdx2InGaeDFZZcd4Yj4d9DI+6eDXXVzehmcNQECXb6azejPfZBRXbxPdcEzXlqDYJBuC+e0KmNM88+BnhzG+AoJK9Yt0aWCuRlF2lNCUCX8ePiAwPNYdoQolFFmdar99caxlNtAue19jWVKcUNowpjDmap9QIFsr2H/kMXHOvWMrWLlrWE/ObXPCD2gV2bFR3HmTgW0eiKbFcWfEOLL8xjJ6BNQfpnNeNcdb6S4xBMPodW4KG2bMnYf9E3bLMETYroX+o4HmbpMhUEPRvhDPWW8sr4RmI5+uhoz+nl2wrZVFeBR4GGtnAPJ7Ab8lL2ASsRjtGzGWqMhhPiTV1KCIdm7643fsUppBP+DLEcktWrUGY43YqeatmHmO4GCY5zu0b6czdizRuwuvkU/wj6R/eVsxB8tCn2mquj4DPvKtkb+eE7PlFhHhwHK1ivcR8kUTi1iG93OSdKsaLG+osnmQUg+J+XZTUprQttQ390Tkd1ku91OiMOk9RpMaSWQDu4mzlvZlg8eRNUhkggmKGuSakf4MUrG+7Z7BBqRHgwcUc8biOjkUANY236qxCGCNS94TmMj5Id+enQ0kEJ+SOre5YOWrTeOn2L4gfQzCdIxkkctF069BhK4flAMN/pJ8aUFvyehGYJ+fNgfZLzSdhuNq4b8SEVPP1qvvkavPnnNC14julDkRHmqbK7tSlGgQ2ldIhezWfD3ICSzRu8zZizVl219CSHO8iXQ8qEqBbHWtl4hcfmdxryUGQOpkFnPJGhAOD2eDnWlTGXHKp7IsOfvrh/Mwz9Bl7YB6jpqR1tVqlRCs9OTKfvLtmmvqZSRDDbg91jTVNnblhmgdWNpW6R5Y6BE+mWrsB5sbJSItsFIZ5XBwJag7ZZc24APicclhd/ZgI2I47BP1Ddm4D0fDqfR+v+u9x93vb7sEXaYOy2UobS0Pkpk6s7buNRRZxen7Y4alE6OC9i4R+cZr21Aeno4LEWAT153HR2nvitu5yQTXlHgow5JFei75EUldIB/yfez9/0ad8FOe+RZJwYlMPuRKPGsl6zBFRKxJ6Ef98ongPdR6+ZdxmsQEvxIjZ+XJTh8tJC+evmRZ1GY7stfUrv+C1k/S+mkiwmcPikkZy8fDklWu+54P/30zRcp38NlCs2867q/ASUNvQE=
+api: eJztVttuGzcQ/RWCTzawuth9aLFvRlMERuA2cJIWhSPY1HJWy4hLMuSsLhX234shd6VVJTeO0ce+2BJFzjlzOzM7jmIReP7A7wCFFCj4LOMSQuGVQ2UNz/lbQCa0ZnV3gwW0HiSbbxlWwBaiBiZhBdo68Ky0nmGlAqutZCKwAMIXlZhrYEvYspXQDTAnlA9j9qEpCgihbDTz8LWBgGytNH3BxhsmDBPeiy2zJXvo+bF3v79nv82/QIFhdjHxEFA4NZG2CJMF4Ki2crRcuVHP9nL82Xw2jDGW57mxCOnL3lxBKDpYNofeMRHYU//8ca7t/IkpE319uLOyA/8ndigqqEWYEL6NNwi5w+UZp+AIiuit5DlfAD7WVj4uV+6xh+IZd8KLGhA8pWTHjaiBLosaRkryjCvKhxNY8ZMkURZu3/CMUySVB8lz9A1kPBHj+Y7j1pE5ZRAW4HmbcdiI2mng+VWb7eHIg2+gURheD3bdzuhlcNYECHT5ejqlf8cgg+q4T9XBM15Yg2CQbgvntCpiTCdfAj3ZDfEVElasXqJLZXM3iLSnhKBK+PHwhMBNLD5CFMooszh0wHLlWEpyGPOs9zUWK8UNoQ5DDmdq94QC2V7C9pTFxyp1ji1jCS5hOzo00QA9oFdmwQdx5k4FtHok6wXFnxDiy/MYyegrUH6aTnnb7m+kuMQTD6HR+FjYJmXsGPTXpp6DJ8R0L3R9DzK1mwq9Kgzw+3rKeGl9LTAd/XA9ZPTj9IBtyzLAi8DDUjkHktkV+DF7A6WIx2jZlDVGQwjxJ6+kBEPi99QZf2Kl0gj+O1kOSGpVqzMc78RG1U3NzDcCBfs4HdG+mk7ZRS02l8/Rj7CvZH81HfBHi0KfqSo6PsO+tI2R35/TMyXW0mGAovEKt1EyhVOPsY0eZiRpVjRYXdN88yAkn5HybEaFNaGpqe+ORGQzWq/XI+IwarwGU1gJpIObkfNWNsXJg6g6RBLBBGVNUu0IP0TJeNd2L0Aj0r2BPep5AxGdHKoBK9tNlThEsOI5n9DYCJNdNz1amkxhskvq3k56LVuuHD/E8APpZxKkfST3Wi6cegckcN2g6G90k+JrA35LQtMHff+wO8h4qe06Glc1+ZGKnn60Xv0VvfrkNc95hehCPiHKY2Un2i4UBToU1iVyMZs5vwchmTV6mzFjqb5s4wsIcajPgVYQVSqItbb2ConLzzTvpcwYSIXMeiZBA8Lh8bivK2VKO1TxRIbdvL89mYd/gC5sDdR11I62LFWhhGaHJ2P2p23SdlMqIxmswG+xoqmytQ0zQHvH3DZI88ZAgfTLWmHV21gpEW2Dkc4qg4HNQds1ubYCHxKPKwq/swFrEcdhl6hnZuCRD7vDaP1/4/tPNr6u+BE2OHFaKEPJaXwUytSjD3G1o/7ODzsetSmd7NewYafOMl7ZgPR0t5uLAJ+8bls6Tt2XP8xILLyi8Ec1kirQZ8nzUugA/5L1i/tumbtkh23yrBO9HpjtQJp41glX7wpJ2avQ99vlK8C7qLWzNuMVCAl+oMk3RQEOXyynb3/5yLMoT8cimDSv+0DWz1I6qGMCp78UkrOXd7skrm27v59+evZFynd/mUIza9v2b/fPvys=
 sidebar_class_name: "get api-method"
 info_path: restapi/docs/mod-io-api
 custom_edit_url: null
@@ -36,7 +36,11 @@ import Heading from "@theme/Heading";
 
 
 
-Get all metadata stored by the game developer for this mod as searchable key value pairs. Successful request will return an array of [Metadata KVP Objects](/restapi/docs/get-mod-kvp-metadata-2).<br /><br />__NOTE:__ Metadata can also be stored as `metadata_blob` in the [Mod Object](/restapi/docs/schemas/mod-object).
+Get all metadata stored by the game developer for this mod as searchable key value pairs. Successful request will return an array of [Metadata KVP Objects](/restapi/docs/get-mod-kvp-metadata).
+
+    :::note
+    Metadata can also be stored as `metadata_blob` in the [Mod Object](/restapi/docs/schemas/mod-object).
+    :::
 
 <Heading
   id={"request"}

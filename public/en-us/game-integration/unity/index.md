@@ -15,7 +15,7 @@ Our Unity Plugin is the simplest and fastest way to integrate UGC into your **Un
     title="Core Plugin"
     image="/img/icon_unity.svg"
     text="Facilitates core mod.io service functionality, such as authentication, filtering, and subscription management."
-    moreLink="/unity/installation/"
+    moreLink="/unity/installation"
   />
 
   <SimpleCard
@@ -23,7 +23,7 @@ Our Unity Plugin is the simplest and fastest way to integrate UGC into your **Un
     title="Features"
     image="/img/icon_tui.svg"
     text="Explore a variety of customizable offerings to streamline and elevate UGC in your game."
-    moreLink="/features/"
+    moreLink="/features"
   />
 
   <SimpleCard
@@ -31,7 +31,7 @@ Our Unity Plugin is the simplest and fastest way to integrate UGC into your **Un
     title="Legacy"
     image="/img/icon_modio.svg"
     text="For games operating Unity 2020.3+, our Legacy Plugin supports core mod.io UGC functionality."
-    moreLink="/legacy/unity/"
+    moreLink="/legacy/unity"
   />
   </div>
 

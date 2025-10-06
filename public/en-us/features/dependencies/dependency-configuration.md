@@ -14,36 +14,21 @@ All games start with depenency support turned off. To enable it, go into the 'Co
 
 The 'Dependency support' dropdown has four options:
 
-1. Disallow dependencies
-1. Allow dependencies opt-in
-1. Allow dependencies opt-out
-1. Allow dependencies with no restrictions
-
-These options can be changed at any time. 
-
-#### Disallow dependencies
-
-All games start with this setting. All UGC must be self-contained, and neither have dependents nor rely on other UGC.  
+1. **Disallow dependencies** - All games start with this setting. All UGC must be self-contained, and neither have dependents nor rely on other UGC.
 
 :::note
 If you change to 'disallow dependencies' while UGC in your game already have dependencies, the individual settings for each UGC will not change, so you will be able to revert this change in future. However, the mod.io API will return 'no dependencies' for each UGC, overwriting the individual UGC settings for as long as this option is enabled. 
 :::
 
-#### Allow dependencies opt-in
-
-UGC will start with dependencies disallowed, but may choose to allow other UGC to list them as a dependency. Under this setting, UGC that opts into dependencies will not be able to monetize. 
-
-#### Allow dependencies opt-out
-
-UGC will start with dependencies allowed, and must opt-out from allowing other UGC to list them as a dependency. Under this setting, UGC must first opt-out of dependencies before being able to monetize. 
-
-#### Allow dependencies with no restrictions
-
-Under this setting, UGC may always list other UGC as a dependency. No UGC may opt out - creators can never prevent other content from nominating their UGC as a dependency. Furthermore, a game cannot be monetized as long as this setting is enabled. 
+2. **Allow dependencies opt-in** - UGC will start with dependencies disallowed, but may choose to allow other UGC to list them as a dependency. Under this setting, UGC that opts into dependencies will not be able to monetize.
+3. **Allow dependencies opt-out** - UGC will start with dependencies allowed, and must opt-out from allowing other UGC to list them as a dependency. Under this setting, UGC must first opt-out of dependencies before being able to monetize. 
+4. **Allow dependencies with no restrictions** - Under this setting, UGC may always list other UGC as a dependency. No UGC may opt out - creators can never prevent other content from nominating their UGC as a dependency. Furthermore, a game cannot be monetized as long as this setting is enabled.
 
 :::warning
 With the 'no restrictions' setting enabled, UGC *can* be deleted even if it has content depending on it. This can make that other content unusable. 
 :::
+
+These options can be changed at any time. 
 
 ## UGC Dependency Settings
 

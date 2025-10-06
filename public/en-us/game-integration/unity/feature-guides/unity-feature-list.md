@@ -11,7 +11,7 @@ The [Unity Plugin](/unity) is compatible with a variety of mod.io's features. Th
 Recommended process:
 
 1. **Core Functions**: Work through the [Unity Getting Started Guides](/unity#unity-core-plugin-guides) to fully integrate the core functionality of the plugin.
-2. **Features**: Explore the [Features section](https://docs.mod.io/features) to find what suits your game. 
+2. **Features**: Explore the [Features section](/features) to find what suits your game. 
 3. **Features Setup Guides**: Use the below setup guides to implement your chosen features. These are split into: 
     * [Unity Plugin specific](/unity/feature-guides#unity-plugin-specific): Features that require configuration within the Unity Plugin. 
     * [Additional features](/unity/feature-guides#additional-features): Features that work alongside the Unity Plugin but are configured elsewhere.
@@ -42,15 +42,15 @@ The below are a list of setup guides to integrate the following **features** int
 | [Marketplace](https://docs.mod.io/monetization/marketplace/)   | Yes    | [Setup Guide](/unity/marketplace)   |
 | [Metrics](https://docs.mod.io/metrics/)   | Yes    | [Setup Guide](/unity/metrics)   |
 | [Temporary Mod Sets](https://docs.mod.io/multiplayer/temporary-mods)   | Yes    | WIP   |
-| [Cloud Cooking](https://docs.mod.io/cloud-cooking/overview/)   | Contact Us    | TBC   |
+| [Cloud Cooking](https://docs.mod.io/cloud-cooking)   | Contact Us    | TBC   |
 
 ### Additional features
 
 The below are features that work alongside your game to enhance UGC without specific setup needs for the Unity Plugin.
 
-* [Collections](https://docs.mod.io/collections/overview/)
+* [Collections](https://docs.mod.io/collections)
 * [Dependency Management](https://docs.mod.io/dependency-management/)
 * [Moderation](https://docs.mod.io/moderation/)
 * [Custom SSO](https://docs.mod.io/authentication/openid/)
-* [Embed Hub](https://docs.mod.io/embed-hub/overview/)
+* [Embed Hub](https://docs.mod.io/embed-hub)
 * [Discord Bot](https://docs.mod.io/discord/)

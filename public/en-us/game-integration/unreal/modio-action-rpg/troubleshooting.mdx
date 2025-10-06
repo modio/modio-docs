@@ -1,0 +1,21 @@
+---
+id: troubleshooting
+title: Troubleshooting
+slug: /unreal/modio-action-rpg/troubleshooting
+custom_edit_url: https://github.com/modio/modio-ue4-internal/tree/main/Doc/doc_root/en-us/modio-action-rpg/troubleshooting.mdx
+---
+
+## UGC is not showing up after subscribing
+There are a few common reasons why UGC might not show up after subscribing:
+- If you are testing in editor, ensure that the `Enable UGC Provider in Editor` option is enabled in the **mod.io UGC** project settings. This warning will be displayed in the log if it is not enabled:
+  ```
+  LogModioUGC: Warning: UGC provider is not enabled, skipping UGC refresh
+  ``` 
+- If you have just authored new UGC, ensure that the source content is not present in the `/Mods/` directory. This will cause Unreal to prioritize the source content over the UGC, with this error:
+  ```
+  LogPluginManager: Display: A version of the 'MyUGC' plugin has already been enabled (C:/MyProject/Mods/MyUGC/MyUGC.uplugin); prioritizing that over the newly discovered version (C:/MyProject/Modio/MyUGC_Windows/MyUGC.uplugin).
+  ```
+- Ensure that the version of Unreal Engine you are using is compatible with the UGC you have authored and packaged. If it's not, this error will appear for example:
+  ```
+  LogModioUGC: Error: UGC plugin version mismatch for MyUGC. Current Engine: 5.3.2-29314046+++UE5+Release-5.3, Plugin requires Engine: 5.5.0-0+UE5. Assuming incompatible.
+  ```

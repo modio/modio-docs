@@ -129,7 +129,9 @@ curl -X POST https://g-1.modapi.io/v1/games/1/mods/1/team \
 
 For POST & PUT requests that do _not submit files_ you have the option to supply your data as HTTP POST parameters, or as a _UTF-8 encoded_ JSON object inside the parameter `input_json` which contains all payload data. Regardless, whether you use JSON or not the `Content-Type` of your request still needs to be `application/x-www-form-urlencoded` with the data provided in the body of the request.
 
-__NOTE:__ If you supply identical key-value pairs as a request parameter and also as a parameter in your JSON object, the JSON object will take priority.
+:::note
+If you supply identical key-value pairs as a request parameter and also as a parameter in your JSON object, the JSON object will take priority.
+:::
 
 ### Response Content-Type
 
