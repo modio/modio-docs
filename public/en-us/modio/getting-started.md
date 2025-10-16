@@ -80,4 +80,4 @@ Our service is a recognized middleware solution that spans a variety of platform
 
 ## Customize your experience
 
-mod.io offers a variety of options to enhance and optimize your UGC experience. Whether you are looking to hone your strategy, streamline the player experience, or increase revenue, we've got you covered. Explore our list of [Features](/features) to learn how to get the most of UGC in your game. 
+mod.io offers a variety of options to enhance and optimize your UGC experience. Whether you are looking to hone your strategy, streamline the player experience, or increase revenue, we've got you covered. Explore our list of [Features](/features) to learn how to get the most out of UGC in your game. 
