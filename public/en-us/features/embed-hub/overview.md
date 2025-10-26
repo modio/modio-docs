@@ -32,17 +32,17 @@ The mod.io team can be engaged to design Embed Hub to match your homepage or sty
 
 ### On the web
 
-You can see a live example of Embed Hub running on the [Baldur's Gate 3](https://baldursgate3.game/mods#/) official homepage. It shows the level of customization possible, to match the look and feel of the Baldur's Gate 3 site, and also uses Larian Accounts to sign in.
+You can see a live example of Embed Hub running on the [Baldur's Gate 3](https://baldursgate3.game/mods) official homepage. It shows the level of customization possible, to match the look and feel of the Baldur's Gate 3 site, and also uses Larian Accounts to sign in.
 
 ![Baldur's Gate 3 embed hub](img/embed_hub_demo_baldurs_gate_3.png)
 
-Another example is [Anno 1800](https://www.anno-union.com/mods/), an Ubisoft game.
+Another example is [Anno 1800](https://www.anno-union.com/mods), an Ubisoft game.
 
 ![Anno 1800 embed hub](img/embed_hub_demo_anno_1800.png)
 
 ### In-game
 
-Embed Hub can also be used as an in-game UI or overlay for browsing and managing a user's UGC library. The [Javascript API and URL parameters](/embed-hub/communication) can be used to communicate between the game client and the web UI. The Anno 1800 team also used Embed Hub as their in-game UI, embedding it natively using the [Ultralight](https://ultralig.ht) plugin, an HTML renderer. You can view the hub in your [browser here](https://anno1800.modhub.io/) and see how it looks in-game in the video below.
+Embed Hub can also be used as an in-game UI or overlay for browsing and managing a user's UGC library. The [Javascript API and URL parameters](/embed-hub/communication) can be used to communicate between the game client and the web UI. The Anno 1800 team also used Embed Hub as their in-game UI, embedding it natively using the [Ultralight](https://ultralig.ht) plugin, an HTML renderer. You can view the hub in your [browser here](https://anno1800.modhub.io) and see how it looks in-game in the video below.
 
 :::tip[Recommendation]
 If you intend on linking to mod.io mod profiles in-game, we highly recommend the usage of the embed hub feature, to make the experience look and feel tailored for your game. When doing this you should pass an authentication token to the embed hub, so it loads with the user automatically logged in. See [communicating with embed hub](/embed-hub/communication#authentication) for instructions.

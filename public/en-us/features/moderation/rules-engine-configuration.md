@@ -170,9 +170,9 @@ Some fields like “Country” have a fixed set of values. In these instances yo
 
 ## Regular expression
 
-When checking textual content, advanced pattern matching can be achieved using regular expressions. All regular expressions should follow the [syntax supported by Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions/Cheatsheet) (or refer to this handy [cheat sheet](https://cheatography.com/davechild/cheat-sheets/regular-expressions/)). Note that string replacement and pattern modifiers are not supported. Basic examples of different regular expressions are provided below.
+When checking textual content, advanced pattern matching can be achieved using regular expressions. All regular expressions should follow the [syntax supported by Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions/Cheatsheet) (or refer to this handy [cheat sheet](https://cheatography.com/davechild/cheat-sheets/regular-expressions)). Note that string replacement and pattern modifiers are not supported. Basic examples of different regular expressions are provided below.
 
-All regular expression checks should begin and end with `//`, and any metacharacters like `[](){}.*+?|<>\/` will likely need to be escaped by `\`. We recommend you use [Regex101](https://regex101.com/) to test your regular expression rules. 
+All regular expression checks should begin and end with `//`, and any metacharacters like `[](){}.*+?|<>\/` will likely need to be escaped by `\`. We recommend you use [Regex101](https://regex101.com) to test your regular expression rules. 
 
 For example:
 

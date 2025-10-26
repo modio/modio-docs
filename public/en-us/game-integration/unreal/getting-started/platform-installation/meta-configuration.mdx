@@ -5,8 +5,10 @@ slug: /unreal/meta-configuration
 custom_edit_url: https://github.com/modio/modio-ue4-internal/blob/develop/Plugins/Modio/Doc/doc_root/en-us/meta/meta-configuration.mdx
 ---
 
+# Meta Quest Configuration
+
 :::important[Find your guide]
-This setup guide is intended for those building for Meta Quest. If that's not you, continue to work through the [Unreal Engine Getting Started Guides](/unreal/#unreal-engine-core-plugin-guides) to implement mod.io's core functionality.
+This setup guide is intended for those building for Meta Quest. If that's not you, continue to work through the [Unreal Engine Getting Started Guides](/unreal#unreal-engine-core-plugin-guides) to implement mod.io's core functionality.
 :::
 
 ### Configuration
@@ -14,11 +16,11 @@ This setup guide is intended for those building for Meta Quest. If that's not yo
 To access Meta Quest-specific APIs, including authentication, you need to download and integrate the MetaXR and MetaXR Platform plugins into your Unreal Engine project. Follow these steps:
 
 1. **Download the MetaXR Plugin**:
-   - Visit the [Meta Unreal Engine 5 Integration](https://developers.meta.com/horizon/downloads/package/unreal-engine-5-integration/) and download the plugin.
+   - Visit the [Meta Unreal Engine 5 Integration](https://developers.meta.com/horizon/downloads/package/unreal-engine-5-integration) and download the plugin.
    - Extract the plugin into your project's `Plugins` directory.
 
 2. **Download the Meta Platform SDK Plugin**:
-   - Visit the [Meta Unreal Engine 5 Platform SDK](https://developers.meta.com/horizon/downloads/package/unreal-5-platform-sdk-plugin/) and download the plugin.
+   - Visit the [Meta Unreal Engine 5 Platform SDK](https://developers.meta.com/horizon/downloads/package/unreal-5-platform-sdk-plugin) and download the plugin.
    - Extract the plugin into your project's `Plugins` directory.
 
 3. **Enable the Plugins**:
@@ -35,7 +37,7 @@ These plugins provide access to Meta Quest-specific functionality, such as achie
 
 ### Authentication
 
-Before Meta authentication with Modio can work, you must create an app on the [Meta Horizon Dashboard](https://developers.meta.com/horizon/) and link it to an app on the mod.io dashboard. [Instructions on how to do this are here](https://docs.mod.io/platforms/meta/authentication). 
+Before Meta authentication with Modio can work, you must create an app on the [Meta Horizon Dashboard](https://developers.meta.com/horizon) and link it to an app on the mod.io dashboard. [Instructions on how to do this are here](/platforms/meta/authentication). 
 
 Once the apps are set up, add the following to `DefaultEngine.ini`, replacing `YOUR_META_APP_ID` with your Meta App Id from the Meta Horizon Dashboard: 
 

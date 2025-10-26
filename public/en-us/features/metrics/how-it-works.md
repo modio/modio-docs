@@ -7,8 +7,9 @@ slug: /metrics/how-it-works
 
 ## Metric Tiles
 
-![Metric Tiles](img/spark-charts.png)
 Each dashboard presents a series of metric tiles that showcase key activity across your game’s UGC ecosystem.
+
+![Metric Tiles](img/spark-charts.png)
 
 * Each Tile displays the all-time total for its metric, along with a trend line that provides historical context.  
 * Clicking a tile opens a dedicated detail page with graphs and charts tailored to that metric, including:  

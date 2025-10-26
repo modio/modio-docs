@@ -4,6 +4,8 @@ title: Sorting
 slug: /restapi/sorting
 ---
 
+# Sorting
+
 All endpoints are sorted by the `id` field in ascending order by default (oldest first). You can override this by including a `_sort` with the field you want to sort by in the request. You cannot sort on fields in nested objects, so if a game contains a tags object you cannot sort on the `tag name` field, but you can sort by the games `name` since the games `name` resides in the parent object.
 
 :::note

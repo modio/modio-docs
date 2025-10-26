@@ -62,8 +62,8 @@ Entitlement | A user-purchased digital right to a currency pack, which is always
 Entitlement Mapping is the process of associating a third-party platform store entitlement with a mod.io currency pack. This step is essential for informing mod.io what amount of virtual currency should be attributed to a player when they purchase and [sync a platform store-purchased entitlement](#3-sync-platform-entitlements-to-modio). Depending on the store used, please see the following guides for registering the mappings.
 
 - [Steam](/platforms/steam/marketplace)
-- [PlayStation™Network](https://docs.mod.io/partners/ps5/marketplace/) ([NDA access required](/platforms/console-sdks))
-- [Xbox Live](https://docs.mod.io/partners/xbox/marketplace/) ([NDA access required](/platforms/console-sdks))
+- [PlayStation™Network](https://docs.mod.io/partners/ps5/marketplace) ([NDA access required](/platforms/console-sdks))
+- [Xbox Live](https://docs.mod.io/partners/xbox/marketplace) ([NDA access required](/platforms/console-sdks))
 - [Apple (iOS)](/platforms/apple/marketplace)
 - [Google Play (Android)](/platforms/google/marketplace)
 - [Meta Quest](/platforms/meta/marketplace)
@@ -393,7 +393,7 @@ Authorization|string|true|The user's mod.io access token.
 Parameter|Type|Required|Description
 -------|---|---|---|
 device|string|true|The Meta device being used for authentication. Possible Options are `rift` and `quest`.
-user_id|integer|true|The user's Meta Quest id providing by calling [ovr_GetLoggedInUserID()](https://developers.meta.com/horizon/documentation/native/ps-ownership/) from the Meta Quest SDK.
+user_id|integer|true|The user's Meta Quest id providing by calling [ovr_GetLoggedInUserID()](https://developers.meta.com/horizon/documentation/native/ps-ownership) from the Meta Quest SDK.
 
 ```
 POST https://g-{your-game-id}.modapi.io/v1/me/iap/meta/sync HTTP/1.1

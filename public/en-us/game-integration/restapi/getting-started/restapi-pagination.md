@@ -4,6 +4,8 @@ title: Pagination
 slug: /restapi/pagination
 ---
 
+# Pagination
+
 When requesting data from endpoints that contain more than one object, you can supply an `_offset` and `_limit` to paginate through the results. Think of it as a page 1, 2, 3... system but you control the number of results per page, and the page to start from. Appended to each response will be the pagination metadata:
 
 > Metadata example

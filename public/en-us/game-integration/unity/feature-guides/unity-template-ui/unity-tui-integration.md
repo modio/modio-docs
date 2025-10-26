@@ -8,7 +8,7 @@ slug: /unity/template-ui/integration
 
 ![template ui unity integration](img/integration_unity.png)
 
-[Template UI](https://docs.mod.io/in-game-ui/template) has two key goals: provide a series of components that are easier to integrate into all designs, and a robust UI suitable for dropping into your project as is or with as much customization as you'd like.
+[Template UI](/in-game-ui/template) has two key goals: provide a series of components that are easier to integrate into all designs, and a robust UI suitable for dropping into your project as is or with as much customization as you'd like.
 
 Check out the [Template UI Functionality](/unity/template-ui) and [Template UI Layouts](/unity/template-ui/layouts) guides for a full list of Template UI has to offer. 
 

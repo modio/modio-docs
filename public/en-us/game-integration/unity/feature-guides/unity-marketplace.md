@@ -6,9 +6,9 @@ slug: /unity/marketplace
 
 # Marketplace for Unity
 
-The Unity Plugin supports a range of [Monetization](https://docs.mod.io/monetization/) features, allowing you to sell a per-game virtual currency to your players that they can use to purchase UGC, with a share of the revenue split between creators and your studio.
+The Unity Plugin supports a range of [Monetization](/monetization) features, allowing you to sell a per-game virtual currency to your players that they can use to purchase UGC, with a share of the revenue split between creators and your studio.
 
-This guide covers the end-to-end flow for implementing mod.io [Marketplace](https://docs.mod.io/monetization/marketplace/) into your Unity title, a feature that exposes the data and functions required to build a UGC store in-game. We recommend reading this guide for a thorough understanding of the plugin's features so you can decide what is the best approach for your game.
+This guide covers the end-to-end flow for implementing mod.io [Marketplace](/monetization/marketplace) into your Unity title, a feature that exposes the data and functions required to build a UGC store in-game. We recommend reading this guide for a thorough understanding of the plugin's features so you can decide what is the best approach for your game.
 
 ## Initial Setup
 
@@ -25,13 +25,13 @@ If you are implementing Marketplace for mobile platforms such as Google or Apple
 
 The following platforms require approval, see [Console SDKs](/platforms/console-sdks) for details:
 
-* [PlayStation®4](https://docs.mod.io/partners/ps4/marketplace/)
-* [PlayStation®5](https://docs.mod.io/partners/ps5/marketplace/)
-* [Xbox](https://docs.mod.io/partners/xbox/marketplace/)
+* [PlayStation®4](https://docs.mod.io/partners/ps4/marketplace)
+* [PlayStation®5](https://docs.mod.io/partners/ps5/marketplace)
+* [Xbox](https://docs.mod.io/partners/xbox/marketplace)
 
 ## Template UI
 
-The mod.io Unity Plugin features [Component UI](https://docs.mod.io/in-game-ui/component) & [Template UI](https://docs.mod.io/in-game-ui/template) which both have built-in support for [Monetization](https://docs.mod.io/monetization/), including conveniently purchasing through multiple platform storefronts. If you'd like to try it out, unpack the 'Experimental UI' .unitypackage found within the plugin. Once mod.io & your platform are configured with your SKUs, no additional work is required to integrate this into the UI solutions!
+The mod.io Unity Plugin features [Component UI](/in-game-ui/component) & [Template UI](/in-game-ui/template) which both have built-in support for [Monetization](/monetization), including conveniently purchasing through multiple platform storefronts. If you'd like to try it out, unpack the 'Experimental UI' .unitypackage found within the plugin. Once mod.io & your platform are configured with your SKUs, no additional work is required to integrate this into the UI solutions!
 
 ## Integration
 
@@ -157,7 +157,7 @@ void GetUserPurchases()
 
 ## Support and Contact
 
-We've now successfully integrated [Marketplace](https://docs.mod.io/monetization/marketplace/)! All that's left is to invite your creators to start making premium UGC.
+We've now successfully integrated [Marketplace](/monetization/marketplace)! All that's left is to invite your creators to start making premium UGC.
 
 For any support queries, please join us in our [Discord server](https://discord.mod.io), we'd love to chat and help support you.
 

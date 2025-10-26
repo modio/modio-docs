@@ -6,11 +6,11 @@ slug: /unity/metrics
 
 # Metrics for Unity
 
-The mod.io Unity Plugin supports all of our [Metrics](https://docs.mod.io/metricsics/) dashboards. This guide covers the end-to-end flow for implementing Playtime Metrics to your Unity game.
+The mod.io Unity Plugin supports all of our [Metrics](/metrics) dashboards. This guide covers the end-to-end flow for implementing Play Sessions Metrics to your Unity game.
 
-## Playtime Metrics
+## Play Sessions Metrics
 
-[Playtime Metrics](https://docs.mod.io/metricsics/playtime/) lets you track what UGC your players interact with most frequently. The process involves starting a metrics play session, keeping that session alive via a heartbeat, and then ending that session.
+[Play Sessions Metrics](/metrics/game#play-sessions) lets you track what UGC your players interact with most frequently, including concurrent players, sessions, playtime, and UGC usage per session. The process involves starting a metrics play session, keeping that session alive via a heartbeat, and then ending that session.
 
 :::note[Premium Feature]
 Play Sessions is a premium feature. Sign up to one of our [advanced service tiers](https://mod.io/pricing) to activate detailed data analytics, or contact us at developers@mod.io for more information.
@@ -18,7 +18,7 @@ Play Sessions is a premium feature. Sign up to one of our [advanced service tier
 
 ### Initial Setup
 
-Playtime Metrics requires generating a Metrics Secret Key from your API Settings in your game dashboard. Once this key has been generated, you need to input into mod.io config inside Unity.
+Play Sessions Metrics requires generating a Metrics Secret Key from your API Settings in your game dashboard. Once this key has been generated, you need to input into mod.io config inside Unity.
 
 ### Starting Metrics Sessions
 

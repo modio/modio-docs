@@ -31,7 +31,7 @@ Typical requirements for using mod.io on Apple games include:
 
 This guide will show you how to setup authentication to mod.io using Apple SSO for their players on Apple devices.
 
-Before you can integrate sign in with Apple on mod.io platform you need a paid Apple developer account. Sign up for one at [developer.apple.com](https://developer.apple.com/).
+Before you can integrate sign in with Apple on mod.io platform you need a paid Apple developer account. Sign up for one at [developer.apple.com](https://developer.apple.com).
 
 :::note[Verification Time]
 It takes about 48 hours for your Apple developer account to be verified. Once it is verified, you can proceed with the following steps.
@@ -39,7 +39,7 @@ It takes about 48 hours for your Apple developer account to be verified. Once it
 
 ## Setting up Apple SSO via Apple Developer Account
 
-1. Sign in to your Apple developer account and click on your [account](https://developer.apple.com/account/).
+1. Sign in to your Apple developer account and click on your [account](https://developer.apple.com/account).
 
     ![apple_developer_account_settings.png](img/apple_developer_account_settings.png)
 

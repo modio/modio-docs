@@ -38,7 +38,7 @@ Platform validation rules typically cover profanity filters and 18+ content chec
 
 ## Content Approval
 
-[Content Approval](/moderation/manual-curation) lets you define settings such as how mature content will be handled, whether comments will be allowed, whether UGC will be hidden once it has received a certain number of player reports and whether UGC requires manual approval before going live. These settings are applied to UGC after Automated Scanning and Rules-Based Moderation.
+[Content Approval](/moderation/manual-curation) lets you define settings such as whether UGC requires manual approval before going live, how mature content will be handled, are comments allowed, and the threshold before UGC will be hidden once it has received a certain number of player reports. These settings are applied to UGC after Automated Scanning and Rules-Based Moderation.
 
 ## Reporting
 

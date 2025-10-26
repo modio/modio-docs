@@ -4,6 +4,8 @@ title: Status & Visibility
 slug: /restapi/status-and-visibility
 ---
 
+# Status & Visibility
+
 To manage the status and visibility of games and mods via the API we use the fields `status` and `visible` fields and want to draw additional attention to them as the values of these fields determines what data is returned. It is important to understand who is authorized to view what content on mod.io.
 
 ### Visible attribute states & privileges

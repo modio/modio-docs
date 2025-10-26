@@ -34,7 +34,7 @@ The implementation requirements differ slightly for each platform. The typical s
     - [Xbox Live](https://docs.mod.io/partners/xbox/authentication)*
     - [Nintendo Switch Online](https://docs.mod.io/partners/switch/authentication)*
 
-    **These platforms require [NDA access](/platforms/console-sdks) before being able to view the documentation.**
+    **Console platforms require [NDA access](/platforms/console-sdks) before being able to view the documentation.**
 
     **VR**:
     - [Meta Quest](/platforms/meta/authentication)

@@ -9627,7 +9627,7 @@ string languageCode
 ```
 
 Language code for the localizing message responses.
-See https://docs.mod.io/restapi/docs/localization for possible values.
+See /restapi/docs/localization for possible values.
 
 
 

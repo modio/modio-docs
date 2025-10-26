@@ -17,7 +17,7 @@ A custom built ready-made UI for UGC discovery is included, along with installat
 
 ## Platform Support
 
-To access console platforms and documentation, see [Supporting Console Platforms](https://docs.mod.io/getting-started#expand-with-cross-platform-functionality).
+To access console platforms and documentation, see [Supporting Console Platforms](/getting-started#expand-with-cross-platform-functionality).
 
 | Platform        | Support |
 |-----------------|:-------:|

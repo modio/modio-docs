@@ -6,7 +6,7 @@ slug: /unreal/template-ui
 
 # Template UI Functionality
 
-[Template UI](https://docs.mod.io/in-game-ui/template) is a fully featured in-game UGC browser that's built using [Component UI](https://docs.mod.io/in-game-ui/component). Template UI is designed to work straight out of the box. You can use it as is, or customize the UI to suit your needs. Below we'll take a look at the many aspects Template UI has to offer.
+[Template UI](/in-game-ui/template) is a fully featured in-game UGC browser that's built using [Component UI](/in-game-ui/component). Template UI is designed to work straight out of the box. You can use it as is, or customize the UI to suit your needs. Below we'll take a look at the many aspects Template UI has to offer.
 
 This guide covers:
 
@@ -35,7 +35,7 @@ On each page, use the **Search** or **Filter** options to find specific UGC or n
 ![mod browser library page](img/feature_modbrowser_2.png)
 
 :::note
-[Marketplace](https://docs.mod.io/monetization/marketplace/) features must be enabled to allow the purchase of premium UGC.
+[Marketplace](/monetization/marketplace) features must be enabled to allow the purchase of premium UGC.
 :::
 
 The browser’s footer has the **Storage Tracker** widget to show the total size of all installed UGC. It also features the **Operation Tracker** widget to show the number of UGC queued for installation, and the progress of the UGC currently being installed. The **Operation Tracker** will show the downloading and extracting operations in sequence.
@@ -75,7 +75,7 @@ This page is viewed after clicking on a **UGC Tile** from the main browser page.
 |**Mod name**|The name of the mod concatenated to two lines|
 |**Creator name**|The creator's mod.io username OR the console platform user name (with a platform icon). This name is clickable with the mouse or accessed with a face button on gamepad, and leads to a search of mods created by that user.|
 |**Description**|A brief mod summary limited to 250 characters. If a longer description is available, **Expand Description** will be shown.  Clicking this button displays a modal with the full description.|
-|**Subscribe / Unsubscribe**| This will toggle the mod's state between subscribed and unsubscribed, queuing it for installation or uninstallation. If the mod has dependencies, a modal listing these will be presented upon pressing subscribe.  This enables users to subscribe to the mod and all its dependencies at the same time. If [Marketplace](https://docs.mod.io/monetization/marketplace/) features are enabled, **Subscribe** will be replaced with **Purchase Mod** for any premium mods.|
+|**Subscribe / Unsubscribe**| This will toggle the mod's state between subscribed and unsubscribed, queuing it for installation or uninstallation. If the mod has dependencies, a modal listing these will be presented upon pressing subscribe.  This enables users to subscribe to the mod and all its dependencies at the same time. If [Marketplace](/monetization/marketplace) features are enabled, **Subscribe** will be replaced with **Purchase Mod** for any premium mods.|
 |**Like / Dislike**| Mods can be rated with likes or dislikes. The buttons act as a toggle — only one can be active at a time. The ability to dislike a mod can be toggled on or off by checking **Enable Mod Downvoting in UI** in **Project Settings -> Plugins -> mod.io**.|
 |**Mod Options**| This button opens a tooltip with a list of contextual options depending on the mod's current state.|
 |**Dependencies**| If a mod is dependent on other mods, this button will be available to display a list of dependencies. This list is not interactive — it simply lists the names, size, and subscribed/downloaded state of each mod.|
@@ -97,7 +97,7 @@ After pressing **Subscribe** on a piece of UGC with dependencies, the list of re
 ![mod dependencies confirmation](img/feature_dependencies_2.png)
 
 :::note
-This does not apply to premium UGC — only free UGC can have dependencies, or be used as dependencies.  See [Dependency Management](https://docs.mod.io/dependency-management/) for more information.
+This does not apply to premium UGC — only free UGC can have dependencies, or be used as dependencies.  See [Dependency Management](/dependency-management) for more information.
 :::
 \
 &nbsp;
@@ -109,7 +109,7 @@ Developers can allow users to enable or disable UGC they have subscribed to as a
 
 A piece of UGC's enable/disable state can be toggled via the **Mod Options** menu of the **UGC Tile** or **UGC View**. UGC's installation status icon will be updated accordingly as either *Installed* or *Disabled*.
 
-If [Marketplace](https://docs.mod.io/monetization/marketplace/) features are enabled, a state indicator for a purchased piece of UGC will show:
+If [Marketplace](/monetization/marketplace) features are enabled, a state indicator for a purchased piece of UGC will show:
 - **Subscribed** and **Enabled** = "Installed"
 - **Subscribed** and **Disabled** = "Disabled"
 - **Unsubscribed** = "Purchased"
@@ -144,7 +144,7 @@ When any gamepad or keyboard & mouse input is detected, the UI will swap its key
 &nbsp;
 
 ## Marketplace features
-If you have [Marketplace](https://docs.mod.io/monetization/marketplace/) features enabled for your game, check **Enable Monetization widgets in UI** in **Project Settings -> Plugins -> mod.io**.  The Template UI will automatically toggle on the relevant UI elements and modify the user flows to accommodate the addition of the Marketplace features.
+If you have [Marketplace](/monetization/marketplace) features enabled for your game, check **Enable Monetization widgets in UI** in **Project Settings -> Plugins -> mod.io**.  The Template UI will automatically toggle on the relevant UI elements and modify the user flows to accommodate the addition of the Marketplace features.
 
 ### UGC tokens & premium UGC
 The main change Marketplace brings to the mod browser is the addition of **Mod Tokens**. This is a currency unique to each game, and as such should be represented by an icon and name unique to your game.

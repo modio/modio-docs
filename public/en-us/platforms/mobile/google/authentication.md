@@ -54,7 +54,7 @@ To authenticate to mod.io via a Google Play account, we support the following cr
 
 The next step is to set up Google Console Project by actioning the following steps:
 
-1. Create or open a project on Google’s APIs Console: [Google API Console](https://console.cloud.google.com/).
+1. Create or open a project on Google’s APIs Console: [Google API Console](https://console.cloud.google.com).
 
 2. Navigate to the OAuth consent screen page and fill out the App Information that will display on the consent screen for users of your Game.
 

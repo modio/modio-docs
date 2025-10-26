@@ -10,7 +10,7 @@ slug: /platforms/meta/authentication
 
 To access any user data from Meta's services, you'll need to complete Data Use Checkups for Meta's team to verify.
 
-Navigate to your game's [Meta Developer Dashboard](https://developers.meta.com/horizon/), go to Requirements > Data Use Checkup:
+Navigate to your game's [Meta Developer Dashboard](https://developers.meta.com/horizon), go to Requirements > Data Use Checkup:
 
 ![duc_dashboard.png](img/duc_dashboard.png)
 

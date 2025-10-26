@@ -27,7 +27,7 @@ You'll then be able to configure your games UGC settings, including moderation r
 You can change your settings (including game name) at any time via your **game admin settings** on the [My Content](https://mod.io/content) page.
 :::
 
-**Invite team members**: The teams feature allows multiple people to work on a game with varying levels of access. Before you can invite them, each team member will first need to create a profile by clicking the “Log in” button on the [homepage](https://mod.io/). You can also invite team members at a later date using the **Team** tab in your game admin settings (found on the [My Content](https://mod.io/content) page).
+**Invite team members**: The teams feature allows multiple people to work on a game with varying levels of access. Before you can invite them, each team member will first need to create a profile by clicking the “Log in” button on the [homepage](https://mod.io). You can also invite team members at a later date using the **Team** tab in your game admin settings (found on the [My Content](https://mod.io/content) page).
 
 **Preview system**: Your game will be hidden automatically when you first create your Game Account. This is done to give you time to prepare and test your mod.io settings ahead of launching your game with UGC. We recommend keeping your game hidden until it is ready to launch. To give UGC creators, testers and collaborators access to a hidden game, see the [Preview System](/launch-checklist#test-with-preview-system) guide. If your title is already released and you require a private environment for testing purposes, you can also set up a second hidden game profile.
 

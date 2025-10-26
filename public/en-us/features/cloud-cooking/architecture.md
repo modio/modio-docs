@@ -5,7 +5,9 @@ slug: /cloud-cooking/architecture
 sidebar_position: 1
 ---
 
-### How it works
+# Architecture
+
+## How it works
 
 The mod.io Cloud Cooking service is hosted inside Azure, with each customer having their own isolated resource group and network for security purposes. Below is a flow diagram that demonstrates how information flows from the mod.io REST API and between all of the individual components of the cloud cooking infrastructure.
 

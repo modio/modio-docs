@@ -4,6 +4,8 @@ title: Filtering
 slug: /restapi/filtering
 ---
 
+# Filtering
+
 mod.io has powerful filtering available to assist you when making requests to the API. You can filter on most fields __in the parent object only__. You cannot apply filters to fields in nested objects, so if a game contains a tags object you cannot filter by the `tag name` field, but you can filter by the games `name` since the games `name` resides in the parent object.
 
 ### _q (Full text search)

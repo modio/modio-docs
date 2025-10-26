@@ -18,15 +18,15 @@ This guide will go through:
 
 For studios that have gained [platform approval](#gaining-platform-approval) by signing the appropriate NDA, we offer console modules for each SDK and accompanying documentation:  
 
-* [PlayStation®4](https://docs.mod.io/partners/ps4/)
-* [PlayStation®5](https://docs.mod.io/partners/ps5/)
-* [Xbox One/Series X GDK](https://docs.mod.io/partners/xbox/)
-* [Nintendo Switch/2](https://docs.mod.io/partners/switch/)
+* [PlayStation®4](https://docs.mod.io/partners/ps4)
+* [PlayStation®5](https://docs.mod.io/partners/ps5)
+* [Xbox One/Series X GDK](https://docs.mod.io/partners/xbox)
+* [Nintendo Switch](https://docs.mod.io/partners/switch)
 
 :::note
 These links will only work for studios who we have verified as being under the applicable NDA.
 
-If you believe you are but cannot access the documentation, follow the links below to confirm your NDA status, or [<u>contact us</u>](mailto:developers@mod.io) for assistance.
+If you believe you are but cannot access the documentation, follow the links below to confirm your NDA status, or [contact us](mailto:developers@mod.io) for assistance.
 
 * [PlayStation®4 / PlayStation®5](/platforms/playstation#sdk-access)
 * [Xbox](/platforms/gdk#sdk-access)

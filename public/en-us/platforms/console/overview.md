@@ -33,7 +33,7 @@ These include:
 
 * [Console SDKs](/platforms/console-sdks) and [engine plugins](/getting-started#connect-to-modio) for Unity and Unreal that have abstracted networking and data storage layers to allow any platform or future system to be supported with minimal engineering effort required.
 * [Moderation](/moderation) that is fully compliant with platform requirements, allowing you to control UGC released on each platform.
-* Authentication with each platforms SSO system.
+* [Authentication](/authentication) with each platforms SSO system.
 * Ability to upload platform-specific UGC files, helpful if you need to “compile” UGC to work with each respective platform.
 * Tagging and metadata systems to manage UGC on a per-platform basis.
 * [Platform and portal headers](/restapi/platforms) used to localize content (i.e. display names) and other settings automatically.

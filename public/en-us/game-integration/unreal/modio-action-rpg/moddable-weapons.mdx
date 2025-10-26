@@ -8,6 +8,8 @@ custom_edit_url: https://github.com/modio/modio-ue4-internal/tree/main/Doc/doc_r
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+# Moddable Weapons
+
 Each inventory item type in ARPG has their own native C++ class that inherits from **URPGItem** and are defined using lines in the AssetManagerSettings section of the DefaultGame.ini. In this case with weapons, the **URPGWeaponItem** exists as DataAssets, this defines base characteristics to display in UI, but more importantly what **PrimaryAssetType** the item is, and which Weapon actor to spawn when requested. 
 
 This allows the ModioUGC integration to mount UGC, and register new weapons to the AssetManager and allow them to be loaded dynamically at runtime through the standard mechanics of the game - this enables the addition of new Weapons without requiring a full game update.

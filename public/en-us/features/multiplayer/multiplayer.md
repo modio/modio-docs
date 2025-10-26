@@ -12,7 +12,7 @@ If your game has multiplayer functionality, there are a few specific mod.io feat
     <SimpleCard
     shadow="tl"
     title="Dedicated Servers"
-    image="/img/icon_tui.svg"
+    image="/img/icon_server.svg"
     text="Allow players to join and play on a wide range of modded (and unmodded) servers without the need for extraneous setup beyond authentication."
     moreLink="/multiplayer/dedicated-servers"
   />

@@ -15,6 +15,7 @@ This guide includes:
 * [SDK access](#sdk-access)
 * [Authentication](#authentication)
 * [Consent](#consent)
+* [Moderation & Reporting](#moderation--reporting)
 * [Networking & storage](#networking--storage)
 
 ## Typical requirements
@@ -47,7 +48,7 @@ Once verified, your [mod.io contact](mailto:developers@mod.io) will provide acce
 
 ## Authentication
 
-On *Xbox* platforms, you can authenticate the user via our *Xbox Live* authentication flow, or using their email address. We highly recommend using *Xbox Live* authentication where possible, as it is instant and accessible vs email which is not. Detailed instructions can be found in the [mod.io Xbox/GDK SDK](https://docs.mod.io/partners/xbox/authentication/) (to access this documentation you must complete the required [SDK Access step](#sdk-access)).
+On *Xbox* platforms, you can authenticate the user via our *Xbox Live* authentication flow, or using their email address. We highly recommend using *Xbox Live* authentication where possible, as it is instant and accessible vs email which is not. Detailed instructions can be found in the [mod.io Xbox/GDK SDK](https://docs.mod.io/partners/xbox/authentication) (to access this documentation you must complete the required [SDK Access step](#sdk-access)).
 
 If your implementation displays the mod.io website or custom web app through a browser overlay, we recommend adding the following query strings to the URL depending on the authentication method you have chosen to support:
 * *Xbox Live* authentication: `?portal=xboxlive&login=auto`
@@ -60,6 +61,12 @@ This will provide users with a streamlined login experience tailored to the appr
 ## Consent
 
 If you choose to use *Xbox Live* authentication, it is a requirement from Microsoft that consent is collected before a user is authenticated for the first time. So when a user clicks the “UGC” button in-game, you must display an acceptance dialog similar to the one explained in the [Terms & User Consent](/terms) guide.
+
+## Moderation & Reporting
+
+On the Xbox, only UGC that follows the rules you have agreed with the first party should be made available to download and play. Our [moderation tools and web dashboard](/moderation) allow you to control this process and manage the types of UGC available without any additional development required. See [curation rules](/moderation/manual-curation#curation-rules) for how you can control what goes live.
+
+Another requirement, is that users can report UGC, and those reports must be actioned as appropiate. Our plugins have a process for reporting UGC built in. See [reporting](/moderation/community-reports) for details of how mod.io aggregates community reports so they can be easily managed.
 
 ## Networking & storage
 

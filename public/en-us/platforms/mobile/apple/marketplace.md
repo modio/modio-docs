@@ -44,7 +44,7 @@ In order to configure mod.io with your newly created In-App Purchase, we'll need
 
 1. Log into your [App Store Connect](https://appstoreconnect.apple.com) account and select **Users and Access**.
 
-2. Navigate to the **Integrations** tab and select **Shared Secrets** from the **Keys** section. If you can't find any secret here, you'll have to [generate a new shared secret](https://developer.apple.com/help/app-store-connect/configure-in-app-purchase-settings/generate-a-shared-secret-to-verify-receipts/). Once you have this secret, copy it.
+2. Navigate to the **Integrations** tab and select **Shared Secrets** from the **Keys** section. If you can't find any secret here, you'll have to [generate a new shared secret](https://developer.apple.com/help/app-store-connect/configure-in-app-purchase-settings/generate-a-shared-secret-to-verify-receipts). Once you have this secret, copy it.
 
     ![Apple Shared Secret](img/apple_shared_secret.png)
 

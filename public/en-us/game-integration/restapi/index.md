@@ -52,7 +52,7 @@ Plugins and wrappers made or supported by the mod.io team.
 | &nbsp; | &nbsp; | &nbsp; | &nbsp;
 -- | -- | -- | ---
 ![Unreal Logo](img/tool-unreal.png) | __Unreal Plugin__<br />[SDK](https://github.com/modio/modio-ue)<br />[Documentation](/unreal)<br />[UE4 Sample Project](https://github.com/modio/modio-ue4-sample)<br />[UE5 Sample Project](https://github.com/modio/modio-ue5-sample)<br /> | ![Unity Logo](img/tool-unity.png) |  __Unity Plugin__<br />[SDK](https://github.com/modio/modio-unity)<br />[Documentation](/unity)<br />[Sample Project](https://github.com/modio/modio-unity-sample)<br />
-| ![C++ SDK](img/tool-ccpp.png) | __C++ SDK__<br />[SDK](https://github.com/modio/modio-sdk)<br />[Documentation](/cppsdk)<br /> | ![Game Maker Logo](img/tool-gm.png) | __GameMaker__<br />[SDK](https://github.com/YoYoGames/GMEXT-mod.io)<br />[Getting Started](https://github.com/YoYoGames/GMEXT-mod.io/wiki)<br />
+| ![C++ SDK](img/tool-cpp.png) | __C++ SDK__<br />[SDK](https://github.com/modio/modio-sdk)<br />[Documentation](/cppsdk)<br /> | ![Game Maker Logo](img/tool-gm.png) | __GameMaker__<br />[SDK](https://github.com/YoYoGames/GMEXT-mod.io)<br />[Getting Started](https://github.com/YoYoGames/GMEXT-mod.io/wiki)<br />
 
 ### Community tools
 
@@ -66,7 +66,7 @@ Is there a tool out there that should be added to the list? Let us know at devel
 --- | --- | --- | ---
 ![Construct 2 Logo](img/tool-c2.png) | __Construct 2 Plugin__<br />[SDK](https://github.com/modio/modio-construct2)<br />[Getting Started](https://github.com/modio/modio-construct2)<br /> | ![Haxe Logo](img/tool-haxe.png) | __Haxe Wrapper__<br />[SDK](https://github.com/modio/modio-haxe)<br />[Getting Started](https://github.com/Turupawn/modioOpenFLExample#openfl-integration)<br />
 ![modiodotnet Logo](img/tool-dotnet.png)  | __Modio.NET__<br />[SDK](https://github.com/nickelc/modio.net)<br />[Getting Started](https://github.com/nickelc/modio.net)<br /> | ![Rust Logo](img/tool-rust.png) | __Rust Wrapper__<br />[SDK](https://crates.io/crates/modio)<br />[Getting Started](https://github.com/nickelc/modio-rs)<br />[Tutorials](https://github.com/nickelc/modio-rs/tree/master/examples)<br />
-![Python Logo](img/tool-python.png) | __Python Wrapper__<br />[SDK](https://github.com/ClementJ18/mod.io)<br />[Getting Started](https://github.com/ClementJ18/mod.io#example)<br />[Tutorials](https://github.com/ClementJ18/mod.io/tree/master/examples)<br /> | ![Common Lisp Logo](img/tool-commonlisp.png) | __Common Lisp__<br />[Github](https://github.com/Shinmera/cl-modio)<br />[Getting Started](https://shinmera.github.io/cl-modio/)<br />
+![Python Logo](img/tool-python.png) | __Python Wrapper__<br />[SDK](https://github.com/ClementJ18/mod.io)<br />[Getting Started](https://github.com/ClementJ18/mod.io#example)<br />[Tutorials](https://github.com/ClementJ18/mod.io/tree/master/examples)<br /> | ![Common Lisp Logo](img/tool-commonlisp.png) | __Common Lisp__<br />[Github](https://github.com/Shinmera/cl-modio)<br />[Getting Started](https://shinmera.github.io/cl-modio)<br />
 ![Command Line Logo](img/tool-cmd.png) | __Command Line Tool__<br />[CMD](https://github.com/nickelc/modiom)<br />[Getting Started](https://github.com/nickelc/modiom)<br /> | ![GitHub Logo](img/tool-actions.png) | __GitHub Action Mod Uploader__<br />[GitHub](https://github.com/nickelc/upload-to-modio)<br />[Usage](https://github.com/nickelc/upload-to-modio#usage)<br />
 
 ## Explore the API

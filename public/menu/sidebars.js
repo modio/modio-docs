@@ -322,6 +322,7 @@ const sidebars = {
             'game-integration/restapi/getting-started/restapi-localization',
             'game-integration/restapi/getting-started/restapi-rate-limiting',
             'game-integration/restapi/getting-started/restapi-errors',
+            'game-integration/restapi/getting-started/restapi-reports',
           ],
         },
         ...restApiSidebar,

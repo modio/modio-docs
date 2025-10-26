@@ -8,7 +8,7 @@ slug: /unity/installation
 
 The Unity Core Plugin is the foundation that the rest of our features depend on. It provides functionality to interact with mod.io's services, such as user authentication, content searching & filtering, subscription management and more. This and the following [Unity Getting Started Guides](/unity#unity-core-plugin-guides) will take you through the fundamentals of what the plugin offers.
 
-You can also dive straight into the [Unity Core Plugin GitHub repo](https://github.com/modio/modio-unity/).
+You can also dive straight into the [Unity Core Plugin GitHub repo](https://github.com/modio/modio-unity).
 
 But before you activate UGC functionality, you'll need to set up the Unity Plugin in a way that's suitable for your game, as well as connect it to your mod.io Game Account. 
 
@@ -41,7 +41,7 @@ If you have a previous version of the plugin installed, we recommend deleting it
 
 ## Connecting to mod.io
 
-If you haven't already, you'll need to create a **Game Account** with mod.io. You can do so by following Step 1 of the [mod.io Getting Started Guide](https://docs.mod.io/getting-started/).
+If you haven't already, you'll need to create a **Game Account** with mod.io. You can do so by following Step 1 of the [mod.io Getting Started Guide](/getting-started).
 
 :::important  
 You'll need your `Game Id`, `API key` and `API Path` for the following steps.

@@ -6,7 +6,7 @@ slug: /unity/initialization
 
 # Initialization 
 
-The mod.io Unity Plugin was built around [asynchronous programming](https://learn.microsoft.com/en-us/dotnet/csharp/asynchronous-programming/) to ensure a smooth experience for the user by never blocking the main thread. 
+The mod.io Unity Plugin was built around [asynchronous programming](https://learn.microsoft.com/en-us/dotnet/csharp/asynchronous-programming) to ensure a smooth experience for the user by never blocking the main thread. 
 
 This guide covers:
 

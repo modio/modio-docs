@@ -20,11 +20,11 @@ Please follow the below guides for setting up Virtual Currency for mod.io Market
 * [Google Play (Android)](/platforms/google/marketplace)
 * [Meta Quest](/platforms/meta/marketplace)
 
-The following platforms require approval, see [Console SDKs](https://docs.mod.io/platforms/console-sdks/) for details:
+The following platforms require approval, see [Console SDKs](/platforms/console-sdks) for details:
 
-* [PlayStation®4](https://docs.mod.io/partners/ps4/marketplace/)
-* [PlayStation®5](https://docs.mod.io/partners/ps5/marketplace/)
-* [Xbox](https://docs.mod.io/partners/xbox/marketplace/)
+* [PlayStation®4](https://docs.mod.io/partners/ps4/marketplace)
+* [PlayStation®5](https://docs.mod.io/partners/ps5/marketplace)
+* [Xbox](https://docs.mod.io/partners/xbox/marketplace)
 
 ## Template UI
 

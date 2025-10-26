@@ -6,7 +6,7 @@ slug: /unity/component-ui
 
 # Component UI for Unity
 
-Component UI is the backbone of any [in-game UI](https://docs.mod.io/in-game-ui/) you may want to implement for UGC and can be completely customized to suit your brand and game.
+Component UI is the backbone of any [in-game UI](/in-game-ui) you may want to implement for UGC and can be completely customized to suit your brand and game.
 
 ## UI framework for Unity
 

@@ -6,7 +6,7 @@ slug: /unreal/template-ui/layouts
 
 # Template UI Layouts
 
-Now you have familiarized yourself with the [Template UI Functionality](/unreal/template-ui) guide, here's a brief breakdown of the main layouts and widgets that make up [Template UI](https://docs.mod.io/in-game-ui/template), and how to modify them to suit your needs. 
+Now you have familiarized yourself with the [Template UI Functionality](/unreal/template-ui) guide, here's a brief breakdown of the main layouts and widgets that make up [Template UI](/in-game-ui/template), and how to modify them to suit your needs. 
 
 This guide covers:
 
@@ -17,10 +17,10 @@ This guide covers:
 ## Layouts and widgets
 
 :::note[Customization]
-For a comprehensive look at creating and substituting your own components into Template UI, see [Creating Custom Component](/unreal/component-ui/custom-components/) and [Substituting Components](/unreal/component-ui/substitute-components/)
+For a comprehensive look at creating and substituting your own components into Template UI, see [**Creating Custom Component**](/unreal/component-ui/custom-components) and [**Substituting Components**](/unreal/component-ui/substitute-components)
 :::
 
-### [WBP_ModioModBrowser](/unreal/ui-refdocs/#wbp_modiomodbrowser)
+### [WBP_ModioModBrowser](/unreal/ui-refdocs#wbp_modiomodbrowser)
 
 ![modio mod browser](img/modiomodbrowser.png)
 
@@ -29,19 +29,19 @@ The layouts are built to be navigable on both keyboard & mouse and gamepad.  The
  \
 &nbsp;
 
-### [WBP_ModioDefaultModTile](/unreal/ui-refdocs/#wbp_modiodefaultmodtile)
+### [WBP_ModioDefaultModTile](/unreal/ui-refdocs#wbp_modiodefaultmodtile)
 
 ![modio mod tile](img/modtileview.png)
 
 The mod tile that will populate the browser. Their scale and padding in the browser can be set via the `WBP_ModioDefaultModTile` layout in the `WBP_ModioModBrowser` layout.
 
-### [WBP_ModioModDetailsDialog](/unreal/ui-refdocs/#wbp_modiomoddetailsdialog)
+### [WBP_ModioModDetailsDialog](/unreal/ui-refdocs#wbp_modiomoddetailsdialog)
 
 ![modio mod details dialog](img/modiomoddetailsdialog.png)
 
 While the thumbnail gallery should be kept at a consistent aspect ratio of 16:9, the rest of the layout & widgets can be scaled to suit your current layout.
 
-### [WBP_ModioFilterPanel](/unreal/ui-refdocs/#wbp_modiofilterpanel)
+### [WBP_ModioFilterPanel](/unreal/ui-refdocs#wbp_modiofilterpanel)
 
 ![modio mod filter panel](img/modiofilterpanel.png)
 

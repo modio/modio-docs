@@ -15,7 +15,7 @@ Every game uses UGC differently, and the right features will help enhance and op
   <SimpleCard
     shadow="tl"
     title="Cross-Platform"
-    image="/img/icon_modio.svg"
+    image="/img/icon_gamepad.svg"
     text="Activate UGC across a wide variety of platforms."
     moreLink="/getting-started#expand-with-cross-platform-functionality"
   />
@@ -29,63 +29,63 @@ Every game uses UGC differently, and the right features will help enhance and op
   <SimpleCard
     shadow="tl"
     title="Multiplayer"
-    image="/img/icon_cui.svg"
+    image="/img/icon_users.svg"
     text="Support online sessions without jeopardizing content security."
     moreLink="/multiplayer"
   />
   <SimpleCard
     shadow="tl"
     title="Marketplace"
-    image="/img/icon_tui.svg"
+    image="/img/icon_coins.svg"
     text="Activate paid UGC in your game."
     moreLink="/monetization/marketplace"
   />
   <SimpleCard
     shadow="tl"
     title="Collections"
-    image="/img/icon_cui.svg"
+    image="/img/icon_group.svg"
     text="Bundle together pre-defined UGC sets for your players."
     moreLink="/collections"
   />
   <SimpleCard
     shadow="tl"
     title="Metrics"
-    image="/img/icon_modio.svg"
+    image="/img/icon_chart.svg"
     text="Better understand your players and creators."
     moreLink="/metrics"
   />  
   <SimpleCard
     shadow="tl"
     title="Dependencies"
-    image="/img/icon_cui.svg"
+    image="/img/icon_link.svg"
     text="Ensure required UGC is linked and installed for your players."
     moreLink="/dependency-management"
   />     
   <SimpleCard
     shadow="tl"
     title="Moderation"
-    image="/img/icon_modio.svg"
+    image="/img/icon_tasks.svg"
     text="Protect players with a curated environment."
     moreLink="/moderation"
   />  
   <SimpleCard
     shadow="tl"
     title="Custom SSO"
-    image="/img/icon_tui.svg"
+    image="/img/icon_key.svg"
     text="Streamline your user journeys across all platforms."
     moreLink="/authentication/openid"
   />
     <SimpleCard
     shadow="tl"
     title="Cloud Cooking"
-    image="/img/icon_modio.svg"
+    image="/img/icon_cloud.svg"
     text="Infrastructure that connects and prepares content for all platforms."
     moreLink="/cloud-cooking"
   />
   <SimpleCard
     shadow="tl"
     title="Embed Hub"
-    image="/img/icon_tui.svg"
+    image="/img/icon_globe.svg"
     text="Customize your bowser-based UGC hub."
     moreLink="/embed-hub"
   />

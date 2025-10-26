@@ -8,11 +8,11 @@ slug: /cppsdk/metrics
 
 The mod.io SDK supports all of the mod.io metrics features. 
 
-Check out [Metrics](https://docs.mod.io/metrics/) for an overview of what the various Metrics dashboard options offer.
+Check out [Metrics](/metrics) for an overview of what the various Metrics dashboard options offer.
 
 ## Playtime Metrics
 
-The main focus of this guide will be [Playtime Metrics](https://docs.mod.io/metrics/game#play-sessions), allowing you to track which UGC your players interact with most frequently. Once you start a play session, you can keep that session alive via a heartbeat (automatically called, or manually handled) before ending that session. 
+The main focus of this guide will be [Playtime Metrics](/metrics/game#play-sessions), allowing you to track which UGC your players interact with most frequently. Once you start a play session, you can keep that session alive via a heartbeat (automatically called, or manually handled) before ending that session. 
 
 :::note[Premium Feature]
 Playtime Metrics is a premium feature. If you are interested in activating this feature, contact us at developers@mod.io.
@@ -41,7 +41,7 @@ Failing to set up the Metrics Secret Key will result in a `Modio::MetricsError::
 
 ### Starting a session
 
-You can call [`MetricsSessionStartAsync`](/cppsdk/refdocs/#metricssessionstartasync) to start a new session tracking the usage of mods in the context of your game. You'll notice that `MetricsSessionStartAsync` takes a [`MetricsSessionParams`](/cppsdk/refdocs/#MetricsSessionParams) object as its parameter. This contains an optional Session Id, as well as a required vector of mods to track.
+You can call [`MetricsSessionStartAsync`](/cppsdk/refdocs#metricssessionstartasync) to start a new session tracking the usage of mods in the context of your game. You'll notice that `MetricsSessionStartAsync` takes a [`MetricsSessionParams`](/cppsdk/refdocs#MetricsSessionParams) object as its parameter. This contains an optional Session Id, as well as a required vector of mods to track.
 
 :::note
 If a Session Id is not provided, a random one will be created for you.
@@ -69,7 +69,7 @@ The Metrics Session Params accepts an optional Session Id in the form of a `Modi
 
 To ensure that the session is kept alive, a heartbeat is required to be submitted at most every 5 minutes. We recommend doing this a bit earlier than the threshold to ensure you do not miss the window.
 
-There are two methods provided to control the behaviour of the heart beat, [`MetricsSessionSendHeartbeatOnceAsync`](/cppsdk/refdocs/#metricssessionsendheartbeatonceasync) which you can call at your desired precision, as well as a single call and forget [`MetricsSessionSendHeartbeatAtIntervalAsync`](/cppsdk/refdocs/#metricssessionsendheartbeatatintervalasync) with a desired interval.
+There are two methods provided to control the behaviour of the heart beat, [`MetricsSessionSendHeartbeatOnceAsync`](/cppsdk/refdocs#metricssessionsendheartbeatonceasync) which you can call at your desired precision, as well as a single call and forget [`MetricsSessionSendHeartbeatAtIntervalAsync`](/cppsdk/refdocs#metricssessionsendheartbeatatintervalasync) with a desired interval.
 
 Calling `MetricsSessionSendHeartbeatOnceAsync` will submit a single heartbeat, and return an error code if something went wrong. If no error has occured, the heartbeat has been successfully sent.
 
@@ -107,7 +107,7 @@ Modio::MetricsSessionSendHeartbeatAtIntervalAsync(IntervalSeconds, [](Modio::Err
 
 ### Ending a session
 
-To complete a session, for example when finishing a match, or quitting out of your game, you can call [`MetricsSessionEndAsync`](/cppsdk/refdocs/#metricssessionendasync).
+To complete a session, for example when finishing a match, or quitting out of your game, you can call [`MetricsSessionEndAsync`](/cppsdk/refdocs#metricssessionendasync).
 As with the other calls, you will receive an error if anything has gone wrong, otherwise the operation successfully completed.
 
 ```cpp

@@ -6,7 +6,7 @@ slug: /unity/template-ui/layouts
 
 # Layouts
 
-Modifying [Template UI](https://docs.mod.io/in-game-ui/template) in the **ModioComponentUI** scene to suit your game is simple, assuming you are already familiar with UI Layouts in Unity.
+Modifying [Template UI](/in-game-ui/template) in the **ModioComponentUI** scene to suit your game is simple, assuming you are already familiar with UI Layouts in Unity.
 
 This guide covers:
 
