@@ -16,23 +16,29 @@ This guide covers:
 
 ## Virtual Currency
 
-Players are able to purchase [Virtual Currency Packs](/monetization/onboarding#virtual-currency-packs), either directly through your game page on mod.io or any platform you wish to make this available on (PC storefronts, console stores, or your own). Players can then use this currency to purchase premium UGC, the currency is paid to creators and the game publisher, in the form of credits, based on the revenue split you set in the [Monetization settings](/monetization/onboarding#monetization-settings).
+Players are able to purchase [virtual currency packs](/monetization/onboarding#virtual-currency-packs), either directly through your game page on mod.io or any platform you wish to make this available on (PC storefronts, console stores, or your own). Players can then use this currency to purchase premium UGC, the currency is paid to creators and the game publisher, in the form of credits, based on the revenue split you set in the [Monetization settings](/monetization/onboarding#monetization-settings).
+
+## USD Pricing
+
+Alternatively, you can set up the Marketplace to use USD pricing, in which case end users will purchase premium content for a set price in USD (it'll be USD only on the web, but converted to local currencies on external platforms). Virtual currency will still be used in the background to process the transaction, but it'll be essentially invisible to the end user.
 
 ## Wholesale Virtual Currency price and fees
 
 Virtual Currency Packs are sold at a price of USD$0.01 per-credit, so $1 for 100, on which we charge a fixed wholesale rate of USD$0.0052 per-credit which covers our fee and payouts to creators which we manage for you. The remaining USD$0.0048 per-credit goes to the game publisher after payment processor fees are applied.
 
+When the Marketplace is set up with USD pricing, a pack of currency of the value corresponding to the price of the content in USD will be automatically purchased and spent as part of the transaction. This means the two steps described below (first purchasing the currency pack, and then the premium UGC) become two parts of a single transaction. The breakdown & examples below, and the way costs are applied remain the same.
+
 ### Detailed breakdown
 
 When $1 is spent to purchase 100 credits, and this Virtual Currency is then used to purchase a piece of content:
 
-* USD$0.48 (48%) is used to cover the payment processor fee (e.g. Steam, PlayStation™Store, Xbox, iOS, Android, or Tilia on Web), and the remainder is profit for the game studio
+* USD$0.48 (48%) is used to cover the payment processor fee (e.g. Steam, PlayStation™Store, Xbox, iOS, Android, or Thunes on Web), and the remainder is profit for the game studio
 * USD$0.52 (52%) is used to cover the fixed wholesale rate of the Virtual Currency, broken down as follows:
     - USD$0.4 (40%) is allocated to the Virtual Currency earnings pool (i.e. the Marketplace economy)
         - When these 100 credits are spent, the default is for 70% of the currency to go to the creator, and 30% go to the studio (this split can be adjusted in your dashboard)
     - USD$0.12 (12%) is charged as a fee by mod.io
 
-A studio can expect a 20% to 61% share of the revenue from UGC sales, depending on the payment processor fee, and the revenue split configured. Creators can expect from 40% to 20%. Standards for creators’ payouts vary, but the industry norm from games like Roblox and Counter-Strike 2 is established around 25%.
+A studio can expect a 20% to 61% share of the revenue from UGC sales, depending on the payment processor fee, and the revenue split configured. Creators can expect from 40% to 20%.
 
 ![Monetization Revenue Split](img/store-revenue-split-black.png)
 
@@ -44,7 +50,7 @@ However, sales made through external platforms (e.g. Steam, PlayStation Store, i
 
 mod.io's fee is always a fixed $0.0012 per credit, taken from the Virtual Currency wholesale rate.
 
-Our payment processing partner; Tilia’s fees are 5% plus $0.20 for transactions made directly through the mod.io web app.
+Our payment processing partner; Thunes' fees are 5% plus $0.20 for transactions made directly through the mod.io web app.
 
 ### Invoices
 
@@ -58,7 +64,7 @@ Here are some more detailed examples and illustrations of both sales originating
 
 Player purchases Virtual Currency directly on mod.io (or using our web site or embedded web app). The price is $0.01 per credit. In this example, we’ll assume the sale of a currency pack of 1000 credits for $10.
 
-From there Tilia will charge their fee, which is 5% of the total amount + $0.20 flat fee for each transaction. In this example, Tilia's fee is $0.7, leaving $9.3. 
+From there Thunes will charge their fee, which is 5% of the total amount + $0.20 flat fee for each transaction. In this example, Thunes' fee is $0.7, leaving $9.3. 
 
 We charge the Virtual Currency wholesale amount ($0.0052 per credit sold). The Virtual Currency wholesale amount covers mod.io's fee, and the value of the currency in the economy.
 
@@ -70,7 +76,7 @@ In this scenario, this leaves $4.1 that goes directly to the studio.
 
 |            | **fee**           |**100 credits for $1** |**500 credits for $5** |**1000 credits for $10** |
 |------------|-------------------|-----------------------|-----------------------|-------------------------|
-| Tilia      | 5%+$0.2           | $0.25                 | $0.45                 | $0.70                   |
+| Thunes     | 5%+$0.2           | $0.25                 | $0.45                 | $0.70                   |
 | mod.io     | $0.0012 / credit  | $0.12                 | $0.60                 | $1.20                   |
 | VC pool    | $0.004 / credit   | $0.40                 | $2.00                 | $4.00                   |
 | Studio     | What's left       | $0.23                 | $1.95                 | $4.10                   |

@@ -189,7 +189,7 @@ sequenceDiagram
 
 1. The game client uses the native platform store to purchase one or more entitlements which are mapped to Token packs on mod.io.
 2. Platform allocates entitlement to player upon purchase.
-3. The game client authenticates with mod.io via the platform that tracks the entitlements. As an example, if you purchase an entitlement on the Microsoft Store, you *must* authenticate with mod.io via the Xbox Live authentication flow.
+3. The game client authenticates with mod.io via the platform that tracks the entitlements. As an example, if you purchase an entitlement on the Microsoft Store, you *must* authenticate with mod.io via [the Xbox Live authentication flow](/restapi/docs/authenticate-via-xbox-live).
 4. A mod.io access token is returned to the game client.
 5. Game Client instructs mod.io to sync the users platform entitlements to their mod.io account.
 6. mod.io consumes _mapped_ entitlements on behalf of the user against the platform's inventory system.
@@ -273,9 +273,9 @@ Authorization|string|true|The user's mod.io access token.
 
 Parameter|Type|Required|Description
 -------|---|---|---|
-auth_code|string|true|The auth code returned from the PlayStation™Network API.
-env|integer|false|The PlayStation™Network environment you are targeting. If omitted, the request will default to targeting the production environment.
-service_label|integer|false|The service label where the entitlements for mod.io reside. If omitted the default value will be 0.
+psn_token|string|true|The auth code returned from the PlayStation™Network API.
+psn_env|integer|false|The PlayStation™Network environment you are targeting. If omitted, the request will default to targeting the production environment.
+psn_service_label|integer|false|The service label where the entitlements for mod.io reside. If omitted the default value will be 0.
 
 ```
 POST https://g-{your-game-id}.modapi.io/v1/me/iap/psn/sync HTTP/1.1
@@ -283,7 +283,7 @@ Content-Type: application/x-www-form-urlencoded
 Accept: application/json
 Authorization: Bearer {access-token}
 
-auth_code=v3.AbCdE&env=0&service_label=1
+psn_token=v3.AbCdE&psn_env=0&psn_service_label=1
 ```
 
 ##### Response
@@ -392,8 +392,8 @@ Authorization|string|true|The user's mod.io access token.
 
 Parameter|Type|Required|Description
 -------|---|---|---|
-device|string|true|The Meta device being used for authentication. Possible Options are `rift` and `quest`.
-user_id|integer|true|The user's Meta Quest id providing by calling [ovr_GetLoggedInUserID()](https://developers.meta.com/horizon/documentation/native/ps-ownership) from the Meta Quest SDK.
+meta_device|string|true|The Meta device being used for authentication. Possible Options are `rift` and `quest`.
+meta_user_id|integer|true|The user's Meta Quest id providing by calling [ovr_GetLoggedInUserID()](https://developers.meta.com/horizon/documentation/native/ps-ownership/) from the Meta Quest SDK.
 
 ```
 POST https://g-{your-game-id}.modapi.io/v1/me/iap/meta/sync HTTP/1.1
@@ -401,7 +401,7 @@ Content-Type: application/x-www-form-urlencoded
 Accept: application/json
 Authorization: Bearer {access-token}
 
-device=rift&user_id=32732194120
+meta_device=rift&meta_user_id=32732194120
 ```
 
 ##### Response

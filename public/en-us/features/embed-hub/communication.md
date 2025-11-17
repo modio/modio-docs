@@ -183,8 +183,8 @@ The Hub expects an interface named `modio` on the global JS object which support
 
 ## Authentication
 
-There are 3 ways to automatically authenticate users when opening the embed hub in-game or in your web browser as explained above. We recommend using one of these approaches when the user is already authenticated (i.e. by the game client), to ensure a seamless experience. 
+There are 3 ways to automatically authenticate users when opening the Embed Hub in-game or in your web browser as explained above. We recommend using one of these approaches when the user is already authenticated (i.e. by the game client), to ensure a seamless experience. 
 
-1. **Recommended:** Passing in a [User Delegated Token (UDT)](#query-parameters) which the mod.io SDK and plugins can generate for you, as a URL query parameter when loading the embed hub.
-1. Using the JavaScript message event `modioAuth` key, to pass in a UDT or the users access token (which is what you pass in to make authenticated calls to the REST API).
-1. Using the JavaScript API `setAuthToken` function, to pass in a UDT or the users access token (which is what you pass in to make authenticated calls to the REST API).
+1. **Recommended:** Passing in a [User Delegated Token (UDT)](#query-parameters) which the mod.io SDK and plugins can generate for you, as a URL query parameter when loading the Embed Hub.
+1. Using the JavaScript message event `modioAuth` key, to pass in an ID token or the user's access token (which is what you pass in to make authenticated calls to the REST API).
+1. Using the JavaScript API `setAuthToken` function, to pass the user's access token (which is what you pass in to make authenticated calls to the REST API).

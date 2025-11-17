@@ -7,9 +7,9 @@ sidebar_position: 0
 
 # Purchase Servers
 
-If you are selling mod.io [Virtual Currency](/monetization/how-it-works#virtual-currency) through a platform store, you will need a service to consume the Virtual Currency entitlements and apply them to players mod.io accounts. 
+If you are selling content (either [virtual currency](/monetization/how-it-works#virtual-currency) packs, or USD priced premium UGC) through a platform store, you will need a service to consume the virtual currency entitlements and apply them to players' mod.io accounts. 
 
-The implementation option chosen should factor in the [Monetization](/monetization) goals of your studio and whether your organization has existing systems setup for handling In-App Purchases against third-party platforms or whether you want mod.io to assume responsibility for doing so.
+The implementation option chosen should factor in the [Monetization](/monetization) goals of your studio and whether your organization has existing systems set up for handling In-App Purchases against third-party platforms or whether you want mod.io to assume responsibility for doing so.
 
 ## mod.io as purchase server (recommended)
 

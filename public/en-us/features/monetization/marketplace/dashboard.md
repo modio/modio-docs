@@ -32,8 +32,7 @@ Your dashboard provides you a snapshot into the latest activity within your mark
 
 ## Settings
 
-- **Marketplace** - You will be able to adjust the settings you configured as part of your onboarding here. These are the same controls and options you enabled in [Monetization settings](/monetization/onboarding#monetization-settings).
-- **Manage SKUs** - You will be able to enable and disable any Virtual Currency Packs sold on the Marketplace here. These are the same [Virtual Currency Packs](/monetization/onboarding#virtual-currency-packs) set up during onboarding. Please note that you will need to adjust any configurations of SKUs on external platforms to ensure compatibility.
+- **Marketplace** - You will be able to adjust the settings you configured as part of your onboarding here. These are the same controls and options you enabled in [Monetization settings](/monetization/onboarding#monetization-settings). This is where you manage your SKUs, content pricing and revenue share.
 - **Partner Program** - Direct access to the configuration of [Partner Program](/monetization/partner) settings can also be found here.
 - **Financial Contact Info**  - If you wish to update or change the assigned Financial Contact, you can access these details at any time. We will use this information to send any invoices owing.
 - **In-App Purchases** - To enable cross-platform functionality for Marketplace purchases, it's essential to configure your available platforms. Enter your API keys and pertinent details for these platforms in this section.

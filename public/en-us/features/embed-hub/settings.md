@@ -6,7 +6,7 @@ slug: /embed-hub/settings
 
 # Settings
 
-The following settings can be changed anytime, to control how your embed hub functions, from number of mods shown, to which social and community features like comments are activated.
+The following settings can be changed anytime, to control how your Embed Hub functions, from number of mods shown, to which social and community features like comments are activated.
 
 ## Visible when game is hidden
 
@@ -35,7 +35,7 @@ The minimum age is a required field and is shown as part of the mod.io terms agr
 In order to utilize your [studio/game's SSO](/authentication/openid-website), you must have configured this in your game's dashboard.
 :::
 
-In scenarios where the user is already authenticated (such as in-game) and you are opening the embed hub, you can automate the authentication so it is a seamless process. Follow the instructions on the [communication page](/embed-hub/communication#authentication) to set this up.
+In scenarios where the user is already authenticated (such as in-game) and you are opening the Embed Hub, you can automate the authentication so it is a seamless process. Follow the instructions on the [communication page](/embed-hub/communication#authentication) to set this up.
 
 ## Agreements
 

@@ -22,8 +22,6 @@ When setting up the Partner Program, the criteria you’re able to use is as fol
 - **Min number of mods created** - Requires a creator to have this many mods uploaded to mod.io in order to apply. Mod counts are platform-wide and not game-specific.
 - **Min number of subscribers** - Requires a creator to have this many subscribers on mod.io in order to apply. Subscriptions are platform-wide and not game-specific.
 - **Min average mod rating** - Requires a creator to meet this minimum average rating for their content in order to apply.
-- **Max DMCA strikes** - Defines the maximum amount of DMCA strikes a creator has had before they can be rejected. DMCA strikes are platform-wide and not game-specific.
-- **Max number of reports** - Defines the maximum number of reports a creator can have before they can be rejected. Count is platform-wide and not game-specific.
 - **Allow creators to request for special access** - Toggling this will allow creators to manually apply even if they don’t meet the pre-set criteria. Applications will go to the Partner Program queue under Moderation and need to be approved by the game team. This is helpful if you want to allow established creators to be able to apply to be a Monetization Partner.
 - **Enable manual moderation** - Toggling this will require all applicants who have met the above criteria to be manually approved as the final step by the game team before they can be in the Partner Program (by default, applications meeting your set criteria are approved automatically). Applications will go to the Partner Program queue under Moderation and need to be approved by the game team.
 

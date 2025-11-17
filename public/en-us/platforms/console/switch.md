@@ -33,7 +33,10 @@ All games supporting UGC must be approved individually, and you will be required
 
 ## SDK access
 
-For Nintendo Switch access, use the verification link at the bottom of this [Nintendo authorization page](https://developer.nintendo.com/group/development/getting-started/g1kr9vj6/middleware/mod.io).
+For Nintendo Switch access, fill in the verification form at the bottom of the mod.io middleware page:
+
+* [Nintendo Switch](https://developer.nintendo.com/group/development/getting-started/g1kr9vj6/middleware/mod.io)
+* [Nintendo Switch 2](https://developer.nintendo.com/group/development/p67qwg2b/middleware/mod.io)
 
 ![Screenshot of the contact form used for NDA verification via the Nintendo Dev Portal](img/nintendo_verification.png)
 

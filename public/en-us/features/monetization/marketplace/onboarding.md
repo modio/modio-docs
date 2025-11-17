@@ -49,16 +49,16 @@ The financial contact will be used for invoicing and onboarding purposes.
 
 ### Application form
 
-Once you’ve entered the details of the financial contact, a KYB application form will be generated and emailed directly to the contact you entered. This form will need to be filled out with all the required information in order to verify your business. Once filled out, it needs to be sent to Tilia for processing.
+Once you’ve entered the details of the financial contact, a KYB application form will be generated and emailed directly to the contact you entered. This form will need to be filled out with all the required information in order to verify your business. Once filled out, it needs to be sent to Thunes for processing.
 
 :::note
-This process is manual and can take up to 3 business days. At times a representative from Tilia may reach out by email to gather new information or clarify information you have provided as part of the application process.
+This process is manual and can take up to 3 business days. At times a representative from Thunes may reach out by email to gather new information or clarify information you have provided as part of the application process.
 :::
 
-![Entity Onboard Form For Tilia](img/entity-onboard-2.png)
+![Entity Onboard Form For Thunes](img/entity-onboard-2.png)
 
 :::note
-The verification services are provided by our partner Tilia.
+The verification services are provided by our partner Thunes.
 :::
 
 ### Setup entity team
@@ -77,14 +77,14 @@ If you choose to onboard as (an) individual(s), you will see the following steps
 
 ### Team leader account verification
 
-In order to start, we first need to verify your identity. We provide an easy-to-use automated solution with the help of our payment partner, Tilia. The verification process will ask you for information such as your email, location, tax and contact information. 
+In order to start, we first need to verify your identity. We provide an easy-to-use automated solution with the help of our payment partner, Thunes. The verification process will ask you for information such as your email, location, tax and contact information. 
 
 This information is stored confidentially and the process is automated, though in some cases, it can take up to 48 hours if a manual verification is required.
 
 ![KYC Flow Example](img/kyc-setup.png)
 
 :::note
-The verification services are provided by our partner Tilia.
+The verification services are provided by our partner Thunes.
 :::
 
 ### Financial contact
@@ -111,7 +111,8 @@ Revenue share splits can be adjusted at any time and will affect all future tran
 
 Now that you’ve verified and onboarded your team, you are able to turn on and adjust the marketplace functionality for your game:
 
-- **Virtual Currency name** - This defaults to ‘creator credits’ but allows you to change the name of your Virtual Currency. This name will be shown anywhere the Virtual Currency is referenced within your marketplace.
+- Virtual Currency or USD Pricing - Define if content will be sold with a price in virtual currency (players buy virtual currency packs, and then use that virtual currency to purchase content) or USD Pricing (players purchase content directly at a set price in USD or local currency on external platforms).
+- **Virtual Currency name** - The default name for virtual currency is cogs, but you can change the name of your virtual currency to something that matches your game context. This name will be shown anywhere the virtual currency is referenced within your marketplace.
 - **Minimum and maximum price** - These values restrict content sold in the marketplace to be limited to prices within this range.
 - **Default price** - Sets the default/recommended value populated in the price field when creators set up their content for sale.
 - **Transaction revenue split** - Allows you to change the default revenue share split between creators and you as the game publisher. You can see which share each party will get in the split calculator on the right side.
