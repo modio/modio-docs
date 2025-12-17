@@ -2,7 +2,7 @@
 id: ue-custom-components
 title: Creating Custom Components
 slug: /unreal/component-ui/custom-components
-custom_edit_url: https://github.com/modio/modio-ue4-internal/tree/main/Plugins/ModioComponentUI/Doc/doc_root/en-us/component-ui/custom_components.mdx
+custom_edit_url: https://github.com/modio/modio-ue4-internal/blob/develop/Plugins/ModioComponentUI/Doc/doc_root/en-us/component-ui/custom_components.mdx
 ---
 
 # Creating Custom Components
@@ -79,7 +79,7 @@ Once the required interface functions are implemented, the widget is ready for u
 
 The mod.io component UI framework [emphasises flexibility and composability for widgets](/unreal/component-ui#emphasise-flexibility-and-composability-for-widgets).  This allows developers to easily create new widgets by combining existing components.  
 
- :::note
+:::note
 This example uses generic Unreal Engine widgets, but you can use mod.io components or a combination of both as long as the required interfaces are correctly implemented!
 :::
 
@@ -187,7 +187,7 @@ FText UMyTextButtonComponent::NativeGetText()
 }
 ```
 
- :::note
+:::note
 Interface functions can be implemented in C++, Blueprint, or both.  For brevity, this example only implements a few of the available interface functions.
 :::
 
@@ -201,8 +201,8 @@ Interface functions can be implemented in C++, Blueprint, or both.  For brevity,
 
 7. Implement any remaining interface functions.  You may override native functions, or implement functions that have been omitted from the native implementation.  Once the required interface functions are implemented, the widget is ready for use. 
 
- :::note
-Refer to the [**Wrapping an existing button**](/unreal/component-ui/custom-components#wrapping-an-existing-button) section for a demonstration of implementing interface functions in Blueprint.
+:::note
+Refer to the [Wrapping an existing button](/unreal/component-ui/custom-components#wrapping-an-existing-button) section for a demonstration of implementing interface functions in Blueprint.
 :::
 
 ## Subclassing an existing widget

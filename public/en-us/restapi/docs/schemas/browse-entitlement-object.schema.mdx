@@ -1,0 +1,33 @@
+---
+id: browse-entitlement-object
+title: "Browse_Entitlement_Object"
+description: ""
+sidebar_label: "Browse_Entitlement_Object"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"sku_id":"string","entitlement_type":0}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Browse_Entitlement_Object"}
+>
+</Heading>
+
+
+
+
+
+<Schema
+  schema={{"properties":{"sku_id":{"description":"The SKU id for a mapped entitlement.","type":"string"},"entitlement_type":{"description":"0 - virtual token pack, 1 - a sku product","type":"integer","enum":[0,1]}},"type":"object","title":"Browse_Entitlement_Object"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

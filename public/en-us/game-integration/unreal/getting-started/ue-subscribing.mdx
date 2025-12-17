@@ -2,6 +2,7 @@
 id: ue-subscribing
 title: Subscribing to UGC
 slug: /unreal/subscribing
+custom_edit_url: https://github.com/modio/modio-ue4-internal/blob/develop/Plugins/Modio/Doc/doc_root/en-us/getting-started/ue-subscribing.mdx
 ---
 
 # Subscribing to UGC
@@ -23,7 +24,7 @@ Users indicate they want to install UGC by **subscribing** to it. Subscriptions 
 Subscriptions are managed with calls to either [`SubscribeToModAsync`](/unreal/refdocs#subscribetomodasync) or [`UnsubscribeFromModAsync`](/unreal/refdocs#unsubscribefrommodasync) containing the desired `ModioModID` and a delegate to receive the status of the request.
 
 :::note
-To subscribe or unsubscribe from UGC, [**`EnableModManagement`**](/unreal/refdocs#enablemodmanagement) *must* be called beforehand.
+To subscribe or unsubscribe from UGC, [`EnableModManagement`](/unreal/refdocs#enablemodmanagement) *must* be called beforehand.
 :::
 
 `SubscribeToModAsync` also takes a bool indicating whether or not to to subscribe to any and all dependencies for the given `ModioModID`. 
@@ -123,7 +124,7 @@ Call [`FetchExternalUpdatesAsync`](/unreal/refdocs#fetchexternalupdatesasync) sp
 To see which UGC the user has subscribed to, call [`QueryUserSubscriptions`](/unreal/refdocs#query-user-subscriptions).  This retrieves a `TMap` of [`ModioModCollectionEntry`](/unreal/refdocs#modiomodcollectionentry) objects, one for each subscribed piece of UGC. Each `ModioModCollectionEntry` object contains the UGC's state, profile information, ID and more.
 
 :::note
-This collection includes UGC that are still in the process of being installed! Make sure to check the result of [`GetModState`](/unreal/refdocs#get-mod-state) before attempting to load files from the UGC in this collection.  Alternatively, use [`QueryUserInstallations`](/unreal/refdocs#query-user-installations) as described in [**Retrieving UGC directory paths for loading**](#retrieving-ugc-directory-paths-for-loading).
+This collection includes UGC that are still in the process of being installed! Make sure to check the result of [`GetModState`](/unreal/refdocs#get-mod-state) before attempting to load files from the UGC in this collection.  Alternatively, use [`QueryUserInstallations`](/unreal/refdocs#query-user-installations) as described in [Retrieving UGC directory paths for loading](#retrieving-ugc-directory-paths-for-loading).
 :::
 
 <Tabs group-id="languages">

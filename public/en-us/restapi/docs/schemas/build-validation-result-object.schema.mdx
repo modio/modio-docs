@@ -1,0 +1,33 @@
+---
+id: build-validation-result-object
+title: "Build Validation Result Object"
+description: "A single cloud cooking build validation result with a message."
+sidebar_label: "Build Validation Result Object"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"notification_type":"Success","name":"string","description":"string"}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Build Validation Result Object"}
+>
+</Heading>
+
+
+
+A single cloud cooking build validation result with a message.
+
+<Schema
+  schema={{"title":"Build Validation Result Object","description":"A single cloud cooking build validation result with a message.","properties":{"notification_type":{"title":"Cloud Cooking Build Validation Message Enum","type":"string","enum":["Success","Failed","Information"],"x-enumDescriptions":{"SUCCESS":"Passed validation for this item.","FAILED":"Failed validation for this item.","INFORMATION":"Informational message, does not fail validation."}},"name":{"description":"Unix timestamp of date tag was applied.","type":"string"},"description":{"description":"A message explaining what failed.","type":"string"}},"type":"object"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

@@ -2,6 +2,7 @@
 id: ue-plugin-structure
 title: Structure & Error Handling
 slug: /unreal/plugin-structure
+custom_edit_url: https://github.com/modio/modio-ue4-internal/blob/develop/Plugins/Modio/Doc/doc_root/en-us/getting-started/ue-plugin-structure.mdx
 ---
 
 # Unreal Engine Plugin Structure
@@ -183,19 +184,19 @@ However, this value can be overridden in one of two ways:
 
 ### Globally for a system account
 
-  On first run of a game using the plugin, `${FOLDERID_LocalAppData}/mod.io/globalsettings.json` will be created. 
+On first run of a game using the plugin, `${FOLDERID_LocalAppData}/mod.io/globalsettings.json` will be created. 
 
-  This JSON object contains a `RootLocalStoragePath` element - changing the string here to a valid path on disk will globally redirect the mod installation directory for **ALL** games using the mod.io Unreal Engine Plugin or Native SDK for the current system account. 
+This JSON object contains a `RootLocalStoragePath` element - changing the string here to a valid path on disk will globally redirect the mod installation directory for **ALL** games using the mod.io Unreal Engine Plugin or Native SDK for the current system account. 
 
-  :::warning
-  Changing this value while the SDK is initialized is not supported and behaviour is undefined.
-  :::
+:::warning
+Changing this value while the SDK is initialized is not supported and behaviour is undefined.
+:::
 
 ### Per-game for a system account   
 
-  Per-game settings are stored in `${FOLDERID_LocalAppData}/mod.io/${GameId}/${mod.io user string}/user.json`. 
+Per-game settings are stored in `${FOLDERID_LocalAppData}/mod.io/${GameId}/${mod.io user string}/user.json`. 
 
-  Adding a `RootLocalStoragePath` element to this file will redirect the mod installation directory for this specific game only for the current system account. Removing this value will cause the game to revert back to the global value in `globalsettings.json`.
+Adding a `RootLocalStoragePath` element to this file will redirect the mod installation directory for this specific game only for the current system account. Removing this value will cause the game to revert back to the global value in `globalsettings.json`.
 
 :::note 
 In Linux and macOS, mods and cached data binds to a single user. Other client have their own instance in their home directory.

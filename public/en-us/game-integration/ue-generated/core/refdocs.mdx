@@ -75,7 +75,7 @@ Utility functions for checking error conditions
 
 ---
 
-### ModioExampleLibrary
+### ModioExampleLibrary 
 
 
 
@@ -95,6 +95,23 @@ Utility functions for checking error conditions
 ### ModioImageLibrary 
 
 Utility functions for loading and managing images
+
+##### Inheritance Hierarchy
+-> BlueprintFunctionLibrary-> Object
+
+
+
+
+
+
+
+
+
+---
+
+### ModioModCollectionInfoListLibrary 
+
+Utility functions for accessing and managing lists of mod information
 
 ##### Inheritance Hierarchy
 -> BlueprintFunctionLibrary-> Object
@@ -295,6 +312,8 @@ A utility class providing various helper functions for mod.io SDK integration in
 
 Edits the parameters of a mod, by updating any fields set in the Params object to match the passed-in values. Fields left empty on the Params object will not be updated. This method also accepts a Png binary file for uploading a new logo.
 
+![nd_img_ModioSubmissionExtensionLibrary_K2_SubmitModChangesFromMemoryAsync.png](img/refdocs/nd_img_ModioSubmissionExtensionLibrary_K2_SubmitModChangesFromMemoryAsync.png)
+
 ```cpp
 void K2_SubmitModChangesFromMemoryAsync(FModioModID Mod, FModioEditModParams Params, TArray<uint8> PngData, FOnGetModInfoDelegate Callback)
 ```
@@ -362,6 +381,8 @@ void K2_SubmitModChangesFromMemoryAsync(FModioModID Mod, FModioEditModParams Par
 
 Sets the global logging level.
 
+![nd_img_ModioSubsystem_SetLogLevel.png](img/refdocs/nd_img_ModioSubsystem_SetLogLevel.png)
+
 ```cpp
 void SetLogLevel(EModioLogLevel UnrealLogLevel)
 ```
@@ -396,6 +417,8 @@ void SetLogLevel(EModioLogLevel UnrealLogLevel)
 
 Runs any pending mod.io work on the calling thread and invokes any callbacks passed to asynchronous operations.
 
+![nd_img_ModioSubsystem_RunPendingHandlers.png](img/refdocs/nd_img_ModioSubsystem_RunPendingHandlers.png)
+
 ```cpp
 void RunPendingHandlers()
 ```
@@ -428,6 +451,8 @@ void RunPendingHandlers()
 #### Query User Subscriptions
 
 Fetches the local view of the user's subscribed mods, including mods that are subscribed but not yet installed
+
+![nd_img_ModioSubsystem_QueryUserSubscriptions.png](img/refdocs/nd_img_ModioSubsystem_QueryUserSubscriptions.png)
 
 ```cpp
 TMap<FModioModID,FModioModCollectionEntry> QueryUserSubscriptions()
@@ -463,6 +488,8 @@ TMap<FModioModID,FModioModCollectionEntry> QueryUserSubscriptions()
 #### Query User Purchased Mods
 
 Returns the user's purchased mods. [`FetchUserPurchasesAsync`](#fetchuserpurchasesasync) must be called first to populate the cache.
+
+![nd_img_ModioSubsystem_QueryUserPurchasedMods.png](img/refdocs/nd_img_ModioSubsystem_QueryUserPurchasedMods.png)
 
 ```cpp
 TMap<FModioModID,FModioModInfo> QueryUserPurchasedMods()
@@ -503,6 +530,8 @@ A `TMap<FModioModID, FModioModInfo>` of all purchases a user has made.
 
 Fetches the subset of the user's subscribed mods that are installed and ready for loading
 
+![nd_img_ModioSubsystem_QueryUserInstallations.png](img/refdocs/nd_img_ModioSubsystem_QueryUserInstallations.png)
+
 ```cpp
 TMap<FModioModID,FModioModCollectionEntry> QueryUserInstallations(bool bIncludeOutdatedMods)
 ```
@@ -539,6 +568,8 @@ TMap<FModioModID,FModioModCollectionEntry> QueryUserInstallations(bool bIncludeO
 
 Fetches all mods installed on the system, including those installed by other users.
 
+![nd_img_ModioSubsystem_QuerySystemInstallations.png](img/refdocs/nd_img_ModioSubsystem_QuerySystemInstallations.png)
+
 ```cpp
 TMap<FModioModID,FModioModCollectionEntry> QuerySystemInstallations()
 ```
@@ -573,6 +604,8 @@ A `TMap<FModioModID, FModioModCollectionEntry>` of all mods installed on the sys
 #### Prioritize Transfer for Mod
 
 Cancels or suspends the current mod update, installation, or upload, and begins processing a pending operation for the specified mod ID
+
+![nd_img_ModioSubsystem_PrioritizeTransferForMod.png](img/refdocs/nd_img_ModioSubsystem_PrioritizeTransferForMod.png)
 
 ```cpp
 FModioErrorCode PrioritizeTransferForMod(FModioModID ModToPrioritize)
@@ -619,6 +652,8 @@ Error code indicating the status of the prioritization request. Will be empty if
 
 Kills the background thread if it is running
 
+![nd_img_ModioSubsystem_KillBackgroundThread.png](img/refdocs/nd_img_ModioSubsystem_KillBackgroundThread.png)
+
 ```cpp
 void KillBackgroundThread()
 ```
@@ -651,6 +686,8 @@ void KillBackgroundThread()
 #### VerifyUserAuthenticationAsync
 
 Queries the server to verify the state of the currently authenticated user if there is one present
+
+![nd_img_ModioSubsystem_K2_VerifyUserAuthenticationAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_VerifyUserAuthenticationAsync.png)
 
 ```cpp
 void K2_VerifyUserAuthenticationAsync(FOnErrorOnlyDelegate Callback)
@@ -694,9 +731,60 @@ void K2_VerifyUserAuthenticationAsync(FOnErrorOnlyDelegate Callback)
 
 
 
+#### UnsubscribeFromModCollectionAsync
+
+Sends a request to the mod.io server to remove the specified mod collection to the user's list of subscriptions.
+
+![nd_img_ModioSubsystem_K2_UnsubscribeFromModCollectionAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_UnsubscribeFromModCollectionAsync.png)
+
+```cpp
+void K2_UnsubscribeFromModCollectionAsync(FModioModCollectionID ModCollectionToUnsubscribeFrom, FOnErrorOnlyDelegate Callback)
+```
+
+
+##### Requirements
+* _initialized-sdk_
+* _no-rate-limiting_
+* _authenticated-user_
+* _management-enabled_
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModioSubsystem`|
+|`ModCollectionToUnsubscribeFrom`|Mod Collection ID of the mod collection requiring unsubscription.|
+|`Callback`|Callback providing a status code to indicate if the unsubscription was successful.|
+</RefTable>
+
+
+
+
+
+
+##### Error Values
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|NetworkError|Couldn't connect to mod.io servers
+|EntityNotFoundError|Specified mod collection does not exist or was deleted
+</RefTable>
+
+
+
+
+
+
+
+
 #### UnsubscribeFromModAsync
 
 Sends a request to the mod.io server to remove the specified mod from the user's list of subscriptions. If no other local users are subscribed to the specified mod this function will also mark the mod for uninstallation by the SDK.
+
+![nd_img_ModioSubsystem_K2_UnsubscribeFromModAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_UnsubscribeFromModAsync.png)
 
 ```cpp
 void K2_UnsubscribeFromModAsync(FModioModID ModToUnsubscribeFrom, FOnErrorOnlyDelegate OnUnsubscribeComplete)
@@ -747,6 +835,8 @@ void K2_UnsubscribeFromModAsync(FModioModID ModToUnsubscribeFrom, FOnErrorOnlyDe
 
 Unmute a user. This allows mod.io to display mods authored by the now unmuted user when performing searches.
 
+![nd_img_ModioSubsystem_K2_UnmuteUserAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_UnmuteUserAsync.png)
+
 ```cpp
 void K2_UnmuteUserAsync(FModioUserID UserID, FOnErrorOnlyDelegate Callback)
 ```
@@ -789,9 +879,111 @@ void K2_UnmuteUserAsync(FModioUserID UserID, FOnErrorOnlyDelegate Callback)
 
 
 
+#### UnfollowModCollectionAsync
+
+Sends a request to the mod.io server to remove the specified mod collection to the user's list of followed collections.
+
+![nd_img_ModioSubsystem_K2_UnfollowModCollectionAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_UnfollowModCollectionAsync.png)
+
+```cpp
+void K2_UnfollowModCollectionAsync(FModioModCollectionID ModCollectionToUnfollow, FOnErrorOnlyDelegate Callback)
+```
+
+
+##### Requirements
+* _initialized-sdk_
+* _no-rate-limiting_
+* _authenticated-user_
+* _management-enabled_
+* _mod-not-pending-uninstall_
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModioSubsystem`|
+|`ModCollectionToUnfollow`|Mod Collection ID of the mod collection to unfollow.|
+|`Callback`|Callback invoked when the unfollow request is completed.|
+</RefTable>
+
+
+
+
+
+
+##### Error Values
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|NetworkError|Couldn't connect to mod.io servers
+|EntityNotFoundError|Specified mod collection does not exist or was deleted
+</RefTable>
+
+
+
+
+
+
+
+
+#### SubscribeToModCollectionAsync
+
+Sends a request to the mod.io server to add the specified mod collection to the user's list of subscriptions.
+
+![nd_img_ModioSubsystem_K2_SubscribeToModCollectionAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_SubscribeToModCollectionAsync.png)
+
+```cpp
+void K2_SubscribeToModCollectionAsync(FModioModCollectionID ModCollectionToSubscribeTo, FOnErrorOnlyDelegate Callback)
+```
+
+
+##### Requirements
+* _initialized-sdk_
+* _no-rate-limiting_
+* _authenticated-user_
+* _management-enabled_
+* _mod-not-pending-uninstall_
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModioSubsystem`|
+|`ModCollectionToSubscribeTo`|Mod Collection ID of the mod collection requiring a subscription.|
+|`Callback`|Callback providing a status code to indicate if the subscription was successful.|
+</RefTable>
+
+
+
+
+
+
+##### Error Values
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|NetworkError|Couldn't connect to mod.io servers
+|EntityNotFoundError|Specified mod collection does not exist or was deleted
+</RefTable>
+
+
+
+
+
+
+
+
 #### SubscribeToModAsync
 
 Sends a request to the mod.io server to add the specified mod to the user's list of subscriptions, and marks the mod for local installation by the SDK
+
+![nd_img_ModioSubsystem_K2_SubscribeToModAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_SubscribeToModAsync.png)
 
 ```cpp
 void K2_SubscribeToModAsync(FModioModID ModToSubscribeTo, bool IncludeDependencies, FOnErrorOnlyDelegate OnSubscribeComplete)
@@ -843,6 +1035,8 @@ void K2_SubscribeToModAsync(FModioModID ModToSubscribeTo, bool IncludeDependenci
 
 Queues the upload of source files for a modfile to defined platforms. This function takes a Modio::CreateSourceFileParams struct that defines the options needed to upload the source files. The files present in the root folder defined in the params will be compressed to a .zip archive and uploaded.
 
+![nd_img_ModioSubsystem_K2_SubmitNewSourceFileForMod.png](img/refdocs/nd_img_ModioSubsystem_K2_SubmitNewSourceFileForMod.png)
+
 ```cpp
 void K2_SubmitNewSourceFileForMod(FModioModID Mod, FModioCreateSourceFileParams Params)
 ```
@@ -891,6 +1085,8 @@ Queues the upload of a new modfile release for the specified mod using the submi
 :::warning[Experimental Feature]
 This function is part of an experimental feature and is subject to change. 
 :::
+
+![nd_img_ModioSubsystem_K2_SubmitNewModFileForMod.png](img/refdocs/nd_img_ModioSubsystem_K2_SubmitNewModFileForMod.png)
 
 ```cpp
 void K2_SubmitNewModFileForMod(FModioModID Mod, FModioCreateModFileParams Params)
@@ -941,6 +1137,8 @@ Requests the creation of a new mod on the server with the specified parameters
 This function is part of an experimental feature and is subject to change. 
 :::
 
+![nd_img_ModioSubsystem_K2_SubmitNewModAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_SubmitNewModAsync.png)
+
 ```cpp
 void K2_SubmitNewModAsync(FModioModCreationHandle Handle, FModioCreateModParams Params, FOnSubmitNewModDelegate Callback)
 ```
@@ -990,6 +1188,8 @@ void K2_SubmitNewModAsync(FModioModCreationHandle Handle, FModioCreateModParams 
 
 Submits a rating for a mod on behalf of the current user. Submit a neutral rating to effectively clear a rating already submitted by a user. Submitting other values will overwrite any existing rating submitted by this user.
 
+![nd_img_ModioSubsystem_K2_SubmitModRatingAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_SubmitModRatingAsync.png)
+
 ```cpp
 void K2_SubmitModRatingAsync(FModioModID Mod, EModioRating Rating, FOnErrorOnlyDelegate Callback)
 ```
@@ -1036,9 +1236,60 @@ void K2_SubmitModRatingAsync(FModioModID Mod, EModioRating Rating, FOnErrorOnlyD
 
 
 
+#### SubmitModCollectionRatingAsync
+
+Submits a rating for a mod collection on behalf of the current user. Submit a neutral rating to effectively clear a rating already submitted by a user. Submitting other values will overwrite any existing rating submitted by this user.
+
+![nd_img_ModioSubsystem_K2_SubmitModCollectionRatingAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_SubmitModCollectionRatingAsync.png)
+
+```cpp
+void K2_SubmitModCollectionRatingAsync(FModioModCollectionID ModCollectionId, EModioRating Rating, FOnErrorOnlyDelegate Callback)
+```
+
+
+##### Requirements
+* _initialized-sdk_
+* _no-rate-limiting_
+* _authenticated-user_
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModioSubsystem`|
+|`ModCollectionId`|The mod collection the user is rating|
+|`Rating`|The rating the user wishes to submit|
+|`Callback`|Callback providing a status code indicating success or failure of the rating submission|
+</RefTable>
+
+
+
+
+
+
+##### Error Values
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|NetworkError|Couldn't connect to mod.io servers
+|EntityNotFoundError|Specified mod collection does not exist or was deleted
+</RefTable>
+
+
+
+
+
+
+
+
 #### SubmitModChangesAsync
 
 Edits the parameters of a mod by updating any fields set in the `Params` object to match the passed-in values. Fields left empty on the `Params` object will not be updated.
+
+![nd_img_ModioSubsystem_K2_SubmitModChangesAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_SubmitModChangesAsync.png)
 
 ```cpp
 void K2_SubmitModChangesAsync(FModioModID Mod, FModioEditModParams Params, FOnGetModInfoDelegate Callback)
@@ -1090,6 +1341,8 @@ void K2_SubmitModChangesAsync(FModioModID Mod, FModioEditModParams Params, FOnGe
 
 Cancels any running internal operations, frees SDK resources, and invokes any pending callbacks with an `OperationCanceled` error category. This function will NOT block while the deinitialization occurs.
 
+![nd_img_ModioSubsystem_K2_ShutdownAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_ShutdownAsync.png)
+
 ```cpp
 void K2_ShutdownAsync(FOnErrorOnlyDelegate OnShutdownComplete)
 ```
@@ -1124,6 +1377,8 @@ void K2_ShutdownAsync(FOnErrorOnlyDelegate OnShutdownComplete)
 
 Set language to get corresponding data from the server
 
+![nd_img_ModioSubsystem_K2_SetLanguage.png](img/refdocs/nd_img_ModioSubsystem_K2_SetLanguage.png)
+
 ```cpp
 void K2_SetLanguage(EModioLanguage Locale)
 ```
@@ -1157,6 +1412,8 @@ void K2_SetLanguage(EModioLanguage Locale)
 #### RequestEmailAuthCodeAsync
 
 Begins email authentication for the current session by requesting a one-time code be sent to the specified email address.
+
+![nd_img_ModioSubsystem_K2_RequestEmailAuthCodeAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_RequestEmailAuthCodeAsync.png)
 
 ```cpp
 void K2_RequestEmailAuthCodeAsync(FModioEmailAddress EmailAddress, FOnErrorOnlyDelegate Callback)
@@ -1205,6 +1462,8 @@ void K2_RequestEmailAuthCodeAsync(FModioEmailAddress EmailAddress, FOnErrorOnlyD
 
 Sends a content report to mod.io. When using this function, please inform your users that if they provide their contact name or details in the `Report` parameter, this data may be shared with the person responsible for the content being reported. For more information on what data in a report will be shared with whom, please see [our website's report form](https://mod.io/report).
 
+![nd_img_ModioSubsystem_K2_ReportContentAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_ReportContentAsync.png)
+
 ```cpp
 void K2_ReportContentAsync(FModioReportParams Report, FOnErrorOnlyDelegate Callback)
 ```
@@ -1249,6 +1508,8 @@ void K2_ReportContentAsync(FModioReportParams Report, FOnErrorOnlyDelegate Callb
 #### RemoveFromTempModSet
 
 Remove mods from a temp mod set.  Every temp mod specified by `ModIds` will be uninstalled unless the user is already subscribed.
+
+![nd_img_ModioSubsystem_K2_RemoveFromTempModSet.png](img/refdocs/nd_img_ModioSubsystem_K2_RemoveFromTempModSet.png)
 
 ```cpp
 FModioErrorCode K2_RemoveFromTempModSet(TArray<FModioModID> ModIds)
@@ -1298,6 +1559,8 @@ Error code indicating the status of the `TempModSet`. Will be empty if it was su
 
 Requests mod.io refresh the available entitlements for the current user purchased through the portal and currently authenticated.
 
+![nd_img_ModioSubsystem_K2_RefreshUserEntitlementsAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_RefreshUserEntitlementsAsync.png)
+
 ```cpp
 void K2_RefreshUserEntitlementsAsync(FModioEntitlementParams Params, FOnRefreshUserEntitlementsDelegate Callback)
 ```
@@ -1337,6 +1600,8 @@ void K2_RefreshUserEntitlementsAsync(FModioEntitlementParams Params, FOnRefreshU
 
 Fetches the currently authenticated mod.io user profile if there is one
 
+![nd_img_ModioSubsystem_K2_QueryUserProfile.png](img/refdocs/nd_img_ModioSubsystem_K2_QueryUserProfile.png)
+
 ```cpp
 FModioOptionalUser K2_QueryUserProfile()
 ```
@@ -1371,6 +1636,8 @@ FModioOptionalUser K2_QueryUserProfile()
 #### QueryTempModSet
 
 Query every system and temp mod in `TempModSet`
+
+![nd_img_ModioSubsystem_K2_QueryTempModSet.png](img/refdocs/nd_img_ModioSubsystem_K2_QueryTempModSet.png)
 
 ```cpp
 TMap<FModioModID,FModioModCollectionEntry> K2_QueryTempModSet()
@@ -1407,6 +1674,8 @@ TMap using `ModioModID` as keys and `ModioModCollectionEntry` objects providing 
 
 Fetches storage related information, including total availability and how much is being consumed by mod installations.
 
+![nd_img_ModioSubsystem_K2_QueryStorageInfo.png](img/refdocs/nd_img_ModioSubsystem_K2_QueryStorageInfo.png)
+
 ```cpp
 FModioStorageInfo K2_QueryStorageInfo()
 ```
@@ -1442,6 +1711,8 @@ An `FModioStorageInfo` structure containing storage information
 
 Provides progress information for a mod installation or update operation if one is currently in progress.
 
+![nd_img_ModioSubsystem_K2_QueryCurrentModUpdate.png](img/refdocs/nd_img_ModioSubsystem_K2_QueryCurrentModUpdate.png)
+
 ```cpp
 FModioOptionalModProgressInfo K2_QueryCurrentModUpdate()
 ```
@@ -1476,6 +1747,8 @@ FModioOptionalModProgressInfo K2_QueryCurrentModUpdate()
 #### PurchaseModAsync
 
 Purchases a mod for the current player
+
+![nd_img_ModioSubsystem_K2_PurchaseModAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_PurchaseModAsync.png)
 
 ```cpp
 void K2_PurchaseModAsync(FModioModID ModID, FModioUnsigned64 ExpectedPrice, FOnPurchaseModDelegate Callback)
@@ -1517,6 +1790,8 @@ void K2_PurchaseModAsync(FModioModID ModID, FModioUnsigned64 ExpectedPrice, FOnP
 
 Retrieve a list of updates between the users local mod state, and the server-side state. This allows you to identify which mods will be modified by the next call to [`FetchExternalUpdatesAsync`](#fetchexternalupdatesasync) in order to perform any content management (such as unloading files) that might be required.
 
+![nd_img_ModioSubsystem_K2_PreviewExternalUpdatesAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_PreviewExternalUpdatesAsync.png)
+
 ```cpp
 void K2_PreviewExternalUpdatesAsync(FOnPreviewExternalUpdatesDelegate OnPreviewDone)
 ```
@@ -1550,6 +1825,8 @@ void K2_PreviewExternalUpdatesAsync(FOnPreviewExternalUpdatesDelegate OnPreviewD
 #### MuteUserAsync
 
 Mute a user. This will prevent mod.io from returning mods authored by the muted user. when performing searches.
+
+![nd_img_ModioSubsystem_K2_MuteUserAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_MuteUserAsync.png)
 
 ```cpp
 void K2_MuteUserAsync(FModioUserID UserID, FOnErrorOnlyDelegate Callback)
@@ -1597,8 +1874,10 @@ void K2_MuteUserAsync(FModioUserID UserID, FOnErrorOnlyDelegate Callback)
 
 Start a metrics play session
 :::info[Premium Feature]
-This function requires the **Metrics** premium feature. Please contact your mod.io representative for more details.
+This function requires the **Metrics** premium feature. Sign up to one of our [advanced service tiers](https://mod.io/pricing) to activate it, or contact us at developers@mod.io for more information.
 :::
+
+![nd_img_ModioSubsystem_K2_MetricsSessionStartAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_MetricsSessionStartAsync.png)
 
 ```cpp
 void K2_MetricsSessionStartAsync(FModioMetricsSessionParams Params, FOnErrorOnlyDelegate Callback)
@@ -1646,8 +1925,10 @@ void K2_MetricsSessionStartAsync(FModioMetricsSessionParams Params, FOnErrorOnly
 
 Sends a single heartbeat to the mod.io server to indicate a session is still active
 :::info[Premium Feature]
-This function requires the **Metrics** premium feature. Please contact your mod.io representative for more details.
+This function requires the **Metrics** premium feature. Sign up to one of our [advanced service tiers](https://mod.io/pricing) to activate it, or contact us at developers@mod.io for more information.
 :::
+
+![nd_img_ModioSubsystem_K2_MetricsSessionSendHeartbeatOnceAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_MetricsSessionSendHeartbeatOnceAsync.png)
 
 ```cpp
 void K2_MetricsSessionSendHeartbeatOnceAsync(FOnErrorOnlyDelegate Callback)
@@ -1691,6 +1972,8 @@ void K2_MetricsSessionSendHeartbeatOnceAsync(FOnErrorOnlyDelegate Callback)
 #### MetricsSessionSendHeartbeatAtIntervalAsync
 
 Sends a constant heartbeat at a given interval to the mod.io server to indicate a session is still active
+
+![nd_img_ModioSubsystem_K2_MetricsSessionSendHeartbeatAtIntervalAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_MetricsSessionSendHeartbeatAtIntervalAsync.png)
 
 ```cpp
 void K2_MetricsSessionSendHeartbeatAtIntervalAsync(FModioUnsigned64 IntervalSeconds, FOnErrorOnlyDelegate Callback)
@@ -1736,8 +2019,10 @@ void K2_MetricsSessionSendHeartbeatAtIntervalAsync(FModioUnsigned64 IntervalSeco
 
 Ends a metrics play session
 :::info[Premium Feature]
-This function requires the **Metrics** premium feature. Please contact your mod.io representative for more details.
+This function requires the **Metrics** premium feature. Sign up to one of our [advanced service tiers](https://mod.io/pricing) to activate it, or contact us at developers@mod.io for more information.
 :::
+
+![nd_img_ModioSubsystem_K2_MetricsSessionEndAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_MetricsSessionEndAsync.png)
 
 ```cpp
 void K2_MetricsSessionEndAsync(FOnErrorOnlyDelegate Callback)
@@ -1783,6 +2068,8 @@ void K2_MetricsSessionEndAsync(FOnErrorOnlyDelegate Callback)
 
 Provides a list of games for the current user that match the parameters specified in the filter
 
+![nd_img_ModioSubsystem_K2_ListUserGamesAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_ListUserGamesAsync.png)
+
 ```cpp
 void K2_ListUserGamesAsync(FModioFilterParams Filter, FOnListUserGamesDelegate Callback)
 ```
@@ -1826,9 +2113,57 @@ void K2_ListUserGamesAsync(FModioFilterParams Filter, FOnListUserGamesDelegate C
 
 
 
+#### ListUserFollowedModCollectionsAsync
+
+Provides a list of followed mod collections for the current game, that match the parameters specified in the filter.
+
+![nd_img_ModioSubsystem_K2_ListUserFollowedModCollectionsAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_ListUserFollowedModCollectionsAsync.png)
+
+```cpp
+void K2_ListUserFollowedModCollectionsAsync(FModioFilterParams Filter, FOnListFollowedModCollectionsDelegate Callback)
+```
+
+
+##### Requirements
+* _initialized-sdk_
+* _no-rate-limiting_
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModioSubsystem`|
+|`Filter`|`FModioFilterParams` object containing any filters that should be applied to the query.|
+|`Callback`|Callback providing a status code and an optional `FModioModCollectionInfoList` object with the mod collection's extended information.|
+</RefTable>
+
+
+
+
+
+
+##### Error Values
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|NetworkError|Couldn't connect to mod.io servers
+</RefTable>
+
+
+
+
+
+
+
+
 #### ListUserCreatedModsAsync
 
 Provides a list of mods that the user has submitted or is a team member of for the current game, applying the parameters specified in the filter.
+
+![nd_img_ModioSubsystem_K2_ListUserCreatedModsAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_ListUserCreatedModsAsync.png)
 
 ```cpp
 void K2_ListUserCreatedModsAsync(FModioFilterParams Filter, FOnListUserCreatedModsDelegate Callback)
@@ -1873,9 +2208,58 @@ void K2_ListUserCreatedModsAsync(FModioFilterParams Filter, FOnListUserCreatedMo
 
 
 
+#### ListModCollectionsAsync
+
+Provides a list of mod collections for the current game, that match the parameters specified in the filter.
+
+![nd_img_ModioSubsystem_K2_ListModCollectionsAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_ListModCollectionsAsync.png)
+
+```cpp
+void K2_ListModCollectionsAsync(FModioFilterParams Filter, FOnListModCollectionsDelegate Callback)
+```
+
+
+##### Requirements
+* _initialized-sdk_
+* _no-rate-limiting_
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModioSubsystem`|
+|`Filter`|[`ModioFilterParams`](#modiofilterparams) object containing any filters that should be applied to the query.|
+|`Callback`|Callback invoked with a status code and an optional `FModioModCollectionInfoList` providing mod collection profiles.|
+</RefTable>
+
+
+
+
+
+
+##### Error Values
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`NetworkError`|Couldn't connect to mod.io servers
+|`SDKNotInitialized`|SDK not initialized
+</RefTable>
+
+
+
+
+
+
+
+
 #### ListAllModsAsync
 
 Provides a list of mods for the current game that match the parameters specified in the filter
+
+![nd_img_ModioSubsystem_K2_ListAllModsAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_ListAllModsAsync.png)
 
 ```cpp
 void K2_ListAllModsAsync(FModioFilterParams Filter, FOnListAllModsDelegate Callback)
@@ -1921,6 +2305,8 @@ void K2_ListAllModsAsync(FModioFilterParams Filter, FOnListAllModsDelegate Callb
 #### InitTempModSet
 
 Install every temp mod specified by `ModIds` if not already installed.
+
+![nd_img_ModioSubsystem_K2_InitTempModSet.png](img/refdocs/nd_img_ModioSubsystem_K2_InitTempModSet.png)
 
 ```cpp
 FModioErrorCode K2_InitTempModSet(TArray<FModioModID> ModIds)
@@ -1968,6 +2354,8 @@ Error code indicating the status of the `TempModSet`. Will be empty if it was su
 
 Initializes the SDK for the given user. Loads the state of mods installed on the system as well as the set of mods the specified user has installed on this device
 
+![nd_img_ModioSubsystem_K2_InitializeAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_InitializeAsync.png)
+
 ```cpp
 void K2_InitializeAsync(FModioInitializeOptions InitializeOptions, FOnErrorOnlyDelegate OnInitComplete)
 ```
@@ -2012,6 +2400,8 @@ void K2_InitializeAsync(FModioInitializeOptions InitializeOptions, FOnErrorOnlyD
 
 Gets the users current wallet balance. This will also create a wallet for a user if one does not exist. You should ensure this is called prior to calling [`PurchaseModAsync`](#purchasemodasync) purchase will fail.
 
+![nd_img_ModioSubsystem_K2_GetUserWalletBalanceAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_GetUserWalletBalanceAsync.png)
+
 ```cpp
 void K2_GetUserWalletBalanceAsync(FOnGetUserWalletBalanceDelegate Callback)
 ```
@@ -2049,6 +2439,8 @@ void K2_GetUserWalletBalanceAsync(FOnGetUserWalletBalanceDelegate Callback)
 #### GetUserMediaAsync (Avatar)
 
 Downloads the avatar of the currently authenticated user. Will only perform a download if there is no local cache of the avatar or if that cached copy is out-of-date.
+
+![nd_img_ModioSubsystem_K2_GetUserMediaAvatarAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_GetUserMediaAvatarAsync.png)
 
 ```cpp
 void K2_GetUserMediaAvatarAsync(EModioAvatarSize AvatarSize, FOnGetMediaDelegate Callback)
@@ -2097,6 +2489,8 @@ void K2_GetUserMediaAvatarAsync(EModioAvatarSize AvatarSize, FOnGetMediaDelegate
 
 Get a user delegation token that can be used for S2S service calls
 
+![nd_img_ModioSubsystem_K2_GetUserDelegationTokenAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_GetUserDelegationTokenAsync.png)
+
 ```cpp
 void K2_GetUserDelegationTokenAsync(FOnGetUserDelegationTokenDelegate Callback)
 ```
@@ -2134,6 +2528,8 @@ void K2_GetUserDelegationTokenAsync(FOnGetUserDelegationTokenDelegate Callback)
 #### GetTermsOfUseAsync
 
 This function retrieves the information required for a game to display the mod.io terms of use to a player who wishes to create a mod.io account
+
+![nd_img_ModioSubsystem_K2_GetTermsOfUseAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_GetTermsOfUseAsync.png)
 
 ```cpp
 void K2_GetTermsOfUseAsync(FOnGetTermsOfUseDelegate Callback)
@@ -2177,6 +2573,8 @@ void K2_GetTermsOfUseAsync(FOnGetTermsOfUseDelegate Callback)
 #### GetMutedUsersAsync
 
 List all the users that have been muted by the current user.
+
+![nd_img_ModioSubsystem_K2_GetMutedUsersAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_GetMutedUsersAsync.png)
 
 ```cpp
 void K2_GetMutedUsersAsync(FOnMuteUsersDelegate Callback)
@@ -2222,6 +2620,8 @@ void K2_GetMutedUsersAsync(FOnMuteUsersDelegate Callback)
 
 Fetches the available tags used on mods for the current game. These tags can them be used in conjunction with the FilterParams passed to [`ListAllModsAsync`](#listallmodsasync) Will be cached when first received
 
+![nd_img_ModioSubsystem_K2_GetModTagOptionsAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_GetModTagOptionsAsync.png)
+
 ```cpp
 void K2_GetModTagOptionsAsync(FOnGetModTagOptionsDelegate Callback)
 ```
@@ -2265,6 +2665,8 @@ void K2_GetModTagOptionsAsync(FOnGetModTagOptionsDelegate Callback)
 #### GetModMediaAsync (Logo)
 
 Downloads the logo for the specified mod. Will use existing file if it is already present on disk
+
+![nd_img_ModioSubsystem_K2_GetModMediaLogoAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_GetModMediaLogoAsync.png)
 
 ```cpp
 void K2_GetModMediaLogoAsync(FModioModID ModId, EModioLogoSize LogoSize, FOnGetMediaDelegate Callback)
@@ -2314,6 +2716,8 @@ void K2_GetModMediaLogoAsync(FModioModID ModId, EModioLogoSize LogoSize, FOnGetM
 #### GetModMediaAsync (Gallery Image)
 
 Get a gallery image for the specified mod ID. If it already exists on disk the file will be reused unless it is outdated
+
+![nd_img_ModioSubsystem_K2_GetModMediaGalleryImageAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_GetModMediaGalleryImageAsync.png)
 
 ```cpp
 void K2_GetModMediaGalleryImageAsync(FModioModID ModId, EModioGallerySize GallerySize, int32 Index, FOnGetMediaDelegate Callback)
@@ -2365,6 +2769,8 @@ void K2_GetModMediaGalleryImageAsync(FModioModID ModId, EModioGallerySize Galler
 
 Downloads the creator avatar for a specified mod. Will use existing file if it is already present on disk and not outdated
 
+![nd_img_ModioSubsystem_K2_GetModMediaAvatarAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_GetModMediaAvatarAsync.png)
+
 ```cpp
 void K2_GetModMediaAvatarAsync(FModioModID ModId, EModioAvatarSize AvatarSize, FOnGetMediaDelegate Callback)
 ```
@@ -2413,6 +2819,8 @@ void K2_GetModMediaAvatarAsync(FModioModID ModId, EModioAvatarSize AvatarSize, F
 #### GetModInfoAsync
 
 Fetches detailed information about the specified mod, including description and file metadata for the most recent release
+
+![nd_img_ModioSubsystem_K2_GetModInfoAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_GetModInfoAsync.png)
 
 ```cpp
 void K2_GetModInfoAsync(FModioModID ModId, FOnGetModInfoDelegate Callback)
@@ -2464,6 +2872,8 @@ For a given Mod ID, fetches a list of any mods that the creator has marked as de
 This function is part of an experimental feature and is subject to change. 
 :::
 
+![nd_img_ModioSubsystem_K2_GetModDependenciesAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_GetModDependenciesAsync.png)
+
 ```cpp
 void K2_GetModDependenciesAsync(FModioModID ModID, bool Recursive, FOnGetModDependenciesDelegate Callback)
 ```
@@ -2514,6 +2924,8 @@ Gets a new mod handle for use with [`SubmitNewModAsync`](#submitnewmodasync).
 This function is part of an experimental feature and is subject to change. 
 :::
 
+![nd_img_ModioSubsystem_K2_GetModCreationHandle.png](img/refdocs/nd_img_ModioSubsystem_K2_GetModCreationHandle.png)
+
 ```cpp
 FModioModCreationHandle K2_GetModCreationHandle()
 ```
@@ -2543,9 +2955,201 @@ FModioModCreationHandle K2_GetModCreationHandle()
 
 
 
+#### GetModCollectionModsAsync
+
+Get a list of Mods contained within the specified mod collection.
+
+![nd_img_ModioSubsystem_K2_GetModCollectionModsAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_GetModCollectionModsAsync.png)
+
+```cpp
+void K2_GetModCollectionModsAsync(FModioModCollectionID ModCollectionId, FOnGetModCollectionModsDelegate Callback)
+```
+
+
+##### Requirements
+* _initialized-sdk_
+* _no-rate-limiting_
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModioSubsystem`|
+|`ModCollectionId`|Mod Collection ID of the mod collection to fetch data.|
+|`Callback`|Callback providing a status code and an optional `FModioModCollectionInfoList` object with the mod collection's extended information.|
+</RefTable>
+
+
+
+
+
+
+##### Error Values
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|NetworkError|Couldn't connect to mod.io servers
+|EntityNotFoundError|Specified mod collection does not exist or was deleted
+</RefTable>
+
+
+
+
+
+
+
+
+#### GetModCollectionMediaAsync (Logo)
+
+Downloads the logo for the specified mod collection. Will use existing file if it is already present on disk.
+
+![nd_img_ModioSubsystem_K2_GetModCollectionLogoAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_GetModCollectionLogoAsync.png)
+
+```cpp
+void K2_GetModCollectionLogoAsync(FModioModCollectionID ModCollectionId, EModioLogoSize LogoSize, FOnGetModCollectionMediaDelegate Callback)
+```
+
+
+##### Requirements
+* _initialized-sdk_
+* _no-rate-limiting_
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModioSubsystem`|
+|`ModCollectionId`|Mod Collection ID for use in logo retrieval.|
+|`LogoSize`|Parameter indicating the size of logo that's required.|
+|`Callback`|Callback providing a status code and an optional path object pointing to the location of the downloaded image|
+</RefTable>
+
+
+
+
+
+
+##### Error Values
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|NetworkError|Couldn't connect to mod.io servers
+|EntityNotFoundError|Specified mod collection media does not exist or was deleted
+</RefTable>
+
+
+
+
+
+
+
+
+#### GetModCollectionInfoAsync
+
+Fetches detailed information about the specified mod collection, including description and file metadata for the most recent release.
+
+![nd_img_ModioSubsystem_K2_GetModCollectionInfoAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_GetModCollectionInfoAsync.png)
+
+```cpp
+void K2_GetModCollectionInfoAsync(FModioModCollectionID ModCollectionId, FOnGetModCollectionInfoDelegate Callback)
+```
+
+
+##### Requirements
+* _initialized-sdk_
+* _no-rate-limiting_
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModioSubsystem`|
+|`ModCollectionId`|Mod Collection ID of the mod collection to fetch data.|
+|`Callback`|Callback providing a status code and an optional `FModioModCollectionInfo` object with the mod collection's extended information.|
+</RefTable>
+
+
+
+
+
+
+##### Error Values
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|NetworkError|Couldn't connect to mod.io servers
+|EntityNotFoundError|Specified mod collection does not exist or was deleted
+</RefTable>
+
+
+
+
+
+
+
+
+#### GetModCollectionMediaAsync (Avatar)
+
+Downloads the creator avatar for a specified mod collection. Will use existing file if it is already present on disk and not outdated.
+
+![nd_img_ModioSubsystem_K2_GetModCollectionAvatarAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_GetModCollectionAvatarAsync.png)
+
+```cpp
+void K2_GetModCollectionAvatarAsync(FModioModCollectionID ModCollectionId, EModioAvatarSize AvatarSize, FOnGetModCollectionMediaDelegate Callback)
+```
+
+
+##### Requirements
+* _initialized-sdk_
+* _no-rate-limiting_
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModioSubsystem`|
+|`ModCollectionId`|Mod Collection ID for use in creator avatar retrieval.|
+|`AvatarSize`|Parameter indicating the size of avatar image that's required.|
+|`Callback`|Callback providing a status code and an optional path object pointing to the location of the downloaded image|
+</RefTable>
+
+
+
+
+
+
+##### Error Values
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|NetworkError|Couldn't connect to mod.io servers
+|EntityNotFoundError|Specified mod collection media does not exist or was deleted
+</RefTable>
+
+
+
+
+
+
+
+
 #### GetLanguage
 
 Get the currently applied language
+
+![nd_img_ModioSubsystem_K2_GetLanguage.png](img/refdocs/nd_img_ModioSubsystem_K2_GetLanguage.png)
 
 ```cpp
 EModioLanguage K2_GetLanguage()
@@ -2581,6 +3185,8 @@ Current language
 #### GetGameInfoAsync
 
 Fetches detailed information about the specified game
+
+![nd_img_ModioSubsystem_K2_GetGameInfoAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_GetGameInfoAsync.png)
 
 ```cpp
 void K2_GetGameInfoAsync(FModioGameID GameID, FOnGetGameInfoDelegate Callback)
@@ -2629,6 +3235,8 @@ void K2_GetGameInfoAsync(FModioGameID GameID, FOnGetGameInfoDelegate Callback)
 
 Forcibly uninstalls a mod from the system. This can be used when the host application requires additional space for other mods. The current user must not be subscribed to the mod to force uninstall. To remove a mod the current user is subscribed to, first use [`UnsubscribeFromModAsync`](#unsubscribefrommodasync). If the mod does not uninstall (due to a different user on the same system remaining subscribed), `ForceUninstallModAsync` can be called next.
 
+![nd_img_ModioSubsystem_K2_ForceUninstallModAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_ForceUninstallModAsync.png)
+
 ```cpp
 void K2_ForceUninstallModAsync(FModioModID ModToRemove, FOnErrorOnlyDelegate Callback)
 ```
@@ -2669,9 +3277,61 @@ void K2_ForceUninstallModAsync(FModioModID ModToRemove, FOnErrorOnlyDelegate Cal
 
 
 
+#### FollowModCollectionAsync
+
+Sends a request to the mod.io server to add the specified mod collection to the user's list of followed collections.
+
+![nd_img_ModioSubsystem_K2_FollowModCollectionAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_FollowModCollectionAsync.png)
+
+```cpp
+void K2_FollowModCollectionAsync(FModioModCollectionID ModCollectionToFollow, FOnFollowModCollectionDelegate Callback)
+```
+
+
+##### Requirements
+* _initialized-sdk_
+* _no-rate-limiting_
+* _authenticated-user_
+* _management-enabled_
+* _mod-not-pending-uninstall_
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModioSubsystem`|
+|`ModCollectionToFollow`|Mod Collection ID of the mod collection requiring a subscription.|
+|`Callback`|Callback invoked when the follow request is completed.|
+</RefTable>
+
+
+
+
+
+
+##### Error Values
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|NetworkError|Couldn't connect to mod.io servers
+|EntityNotFoundError|Specified mod collection does not exist or was deleted
+</RefTable>
+
+
+
+
+
+
+
+
 #### FetchUserPurchasesAsync
 
 Fetches the user's purchases. This populates a runtime cache of purchase information that can be accessed using [`QueryUserPurchasedMods`](#query-user-purchased-mods).
+
+![nd_img_ModioSubsystem_K2_FetchUserPurchasesAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_FetchUserPurchasesAsync.png)
 
 ```cpp
 void K2_FetchUserPurchasesAsync(FOnFetchUserPurchasesDelegate Callback)
@@ -2711,6 +3371,8 @@ void K2_FetchUserPurchasesAsync(FOnFetchUserPurchasesDelegate Callback)
 
 Synchronises the local list of the current user's subscribed mods with the server. Any mods that have been externally subscribed will be automatically marked for installation, and mods that have been externally removed from the user's subscriptions may be uninstalled if no other local users have a current subscription.
 
+![nd_img_ModioSubsystem_K2_FetchExternalUpdatesAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_FetchExternalUpdatesAsync.png)
+
 ```cpp
 void K2_FetchExternalUpdatesAsync(FOnErrorOnlyDelegate OnFetchDone)
 ```
@@ -2744,6 +3406,8 @@ void K2_FetchExternalUpdatesAsync(FOnErrorOnlyDelegate OnFetchDone)
 #### EnableModManagement
 
 Enables the automatic management of installed mods on the system based on the user's subscriptions.
+
+![nd_img_ModioSubsystem_K2_EnableModManagement.png](img/refdocs/nd_img_ModioSubsystem_K2_EnableModManagement.png)
 
 ```cpp
 FModioErrorCode K2_EnableModManagement(FOnModManagementDelegate Callback)
@@ -2787,6 +3451,8 @@ An error code indicating success or failure of enabling mod management.  Note th
 #### DeleteModDependenciesAsync
 
 Deletes dependencies from a specified mod, unlinking it from other mods that are no longer required.
+
+![nd_img_ModioSubsystem_K2_DeleteModDependenciesAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_DeleteModDependenciesAsync.png)
 
 ```cpp
 void K2_DeleteModDependenciesAsync(FModioModID ModID, TArray<FModioModID> Dependencies, FOnErrorOnlyDelegate Callback)
@@ -2839,6 +3505,8 @@ void K2_DeleteModDependenciesAsync(FModioModID ModID, TArray<FModioModID> Depend
 
 Uninstall every temp mod unless the user is subscribed.
 
+![nd_img_ModioSubsystem_K2_CloseTempModSet.png](img/refdocs/nd_img_ModioSubsystem_K2_CloseTempModSet.png)
+
 ```cpp
 FModioErrorCode K2_CloseTempModSet()
 ```
@@ -2886,6 +3554,8 @@ Error code indicating the status of the `TempModSet`. Will be empty if it was su
 
 De-authenticates the current mod.io user for the current session, and clears all user-specific data stored on the current device. Any subscribed mods that are installed but do not have other local users subscribed will be uninstalled
 
+![nd_img_ModioSubsystem_K2_ClearUserDataAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_ClearUserDataAsync.png)
+
 ```cpp
 void K2_ClearUserDataAsync(FOnErrorOnlyDelegate Callback)
 ```
@@ -2930,6 +3600,8 @@ void K2_ClearUserDataAsync(FOnErrorOnlyDelegate Callback)
 #### AuthenticateUserExternalAsync
 
 Uses platform-specific authentication to associate a mod.io user account with the current platform user
+
+![nd_img_ModioSubsystem_K2_AuthenticateUserExternalAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_AuthenticateUserExternalAsync.png)
 
 ```cpp
 void K2_AuthenticateUserExternalAsync(FModioAuthenticationParams User, EModioAuthenticationProvider Provider, FOnErrorOnlyDelegate Callback)
@@ -2982,6 +3654,8 @@ void K2_AuthenticateUserExternalAsync(FModioAuthenticationParams User, EModioAut
 
 Completes email authentication for the current session by submitting the one-time code sent to the user's email address
 
+![nd_img_ModioSubsystem_K2_AuthenticateUserEmailAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_AuthenticateUserEmailAsync.png)
+
 ```cpp
 void K2_AuthenticateUserEmailAsync(FModioEmailAuthCode AuthenticationCode, FOnErrorOnlyDelegate Callback)
 ```
@@ -3028,6 +3702,8 @@ void K2_AuthenticateUserEmailAsync(FModioEmailAuthCode AuthenticationCode, FOnEr
 #### ArchiveModAsync
 
 Archives a mod. This mod will no longer be able to be viewed or retrieved via the SDK, but it will still exist should you choose to restore it at a later date. Archiving is restricted to team managers and administrators only. Note that restoration and permanent deletion of a mod is possible only via web interface.
+
+![nd_img_ModioSubsystem_K2_ArchiveModAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_ArchiveModAsync.png)
 
 ```cpp
 void K2_ArchiveModAsync(FModioModID Mod, FOnErrorOnlyDelegate Callback)
@@ -3078,6 +3754,8 @@ void K2_ArchiveModAsync(FModioModID Mod, FOnErrorOnlyDelegate Callback)
 
 Add mods to a Temp Mod Set.  Every temp mod specified by `ModIds` will be installed if not already installed.
 
+![nd_img_ModioSubsystem_K2_AddToTempModSet.png](img/refdocs/nd_img_ModioSubsystem_K2_AddToTempModSet.png)
+
 ```cpp
 FModioErrorCode K2_AddToTempModSet(TArray<FModioModID> ModIds)
 ```
@@ -3125,6 +3803,8 @@ Error code indicating the status of the `TempModSet`. Will be empty if it was su
 #### AddModDependenciesAsync
 
 Adds dependencies to a specified mod, linking it with other mods that are required for it to function
+
+![nd_img_ModioSubsystem_K2_AddModDependenciesAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_AddModDependenciesAsync.png)
 
 ```cpp
 void K2_AddModDependenciesAsync(FModioModID ModID, TArray<FModioModID> Dependencies, FOnErrorOnlyDelegate Callback)
@@ -3177,6 +3857,8 @@ void K2_AddModDependenciesAsync(FModioModID ModID, TArray<FModioModID> Dependenc
 
 Returns if the background thread is being used or not
 
+![nd_img_ModioSubsystem_IsUsingBackgroundThread.png](img/refdocs/nd_img_ModioSubsystem_IsUsingBackgroundThread.png)
+
 ```cpp
 bool IsUsingBackgroundThread()
 ```
@@ -3209,6 +3891,8 @@ bool IsUsingBackgroundThread()
 #### Is Mod Management Busy
 
 Checks if the automatic management process is currently installing or removing mods
+
+![nd_img_ModioSubsystem_IsModManagementBusy.png](img/refdocs/nd_img_ModioSubsystem_IsModManagementBusy.png)
 
 ```cpp
 bool IsModManagementBusy()
@@ -3244,6 +3928,8 @@ True if automatic management is currently performing an operation
 #### Get Storage Quota
 
 Get the storage quota for a given `EModioStorageLocation` if one has been set.
+
+![nd_img_ModioSubsystem_GetStorageQuota.png](img/refdocs/nd_img_ModioSubsystem_GetStorageQuota.png)
 
 ```cpp
 FModioOptionalUInt64 GetStorageQuota(EModioStorageLocation Location)
@@ -3281,6 +3967,8 @@ FModioOptionalUInt64 GetStorageQuota(EModioStorageLocation Location)
 
 If the last request to the mod.io servers returned a validation failure, this function returns extended information describing the fields that failed validation.
 
+![nd_img_ModioSubsystem_GetLastValidationError.png](img/refdocs/nd_img_ModioSubsystem_GetLastValidationError.png)
+
 ```cpp
 TArray<FModioValidationError> GetLastValidationError()
 ```
@@ -3317,6 +4005,8 @@ Collection of `ModioValidationError` objects, or empty collection if there were 
 #### Disable Mod Management
 
 Disables automatic installation or uninstallation of mods based on the user's subscriptions. Allows currently processing installation to complete. Will cancel any pending operations when called.
+
+![nd_img_ModioSubsystem_DisableModManagement.png](img/refdocs/nd_img_ModioSubsystem_DisableModManagement.png)
 
 ```cpp
 void DisableModManagement()
@@ -3478,6 +4168,7 @@ Full game profile with extended information
 | `FString` | `VirtualTokenName` | Name of the Virtual Tokens for this game |
 | `TArray<FModioGamePlatform>` | `PlatformSupport` | Platforms that are supported by this title |
 | `TArray<FModioModTagInfo>` | `TagOptions` | Tags available for this game |
+| `EModioGameCloudCookingStatus` | `CloudCookingStatus` | Cloud Cooking status for this game |
 </RefTable>
 
 
@@ -3777,6 +4468,173 @@ Strong type struct to acknowledge the position of a result relative to the API e
 
 ---
 
+### ModioModCollectionInfoList 
+
+Strong type struct to wrap multiple ModCollectionInfo indexed by a paged result
+
+
+
+
+
+
+
+
+
+
+
+---
+
+### ModioModCollectionInfo 
+
+Information about a given mod collection
+
+
+
+
+
+
+
+
+##### Variables
+<RefTable colWidths={['10%', '10%', '20%']} stripes="odd">
+| | | |
+|-|-|-|
+| `FModioModCollectionID` | `Id` | The unique ID of the collection. |
+| `FModioGameID` | `GameId` | The unique ID of the game the collection belongs to. |
+| `FString` | `GameName` | the game name |
+| `EModioModServerSideStatus` | `CollectionStatus` | The current ModStatus on the server: Accepted, NotAccepted, or Deleted. |
+| `EModioObjectVisibilityFlags` | `Visibility` | The mod collection's visibility status. Defaults to Public (1) |
+| `FModioUser` | `ProfileSubmittedBy` | Information on the user who submitted the collection |
+| `FString` | `Category` | Chosen category of the collection |
+| `FDateTime` | `ProfileDateAdded` | Unix timestamp of the date the mod was registered |
+| `FDateTime` | `ProfileDateUpdated` | Unix timestamp of the date the mod was updated |
+| `FDateTime` | `ProfileDateLive` | Unix timestamp of the date the mod was marked live |
+| `bool` | `Incomplete` | boolean to indicate whether the collection contains hidden mods |
+| `EModioMaturityFlags` | `ProfileMaturityOption` | Maturity options flagged by the mod developer. This is only relevant if the parent game allows collections to be labeled as mature. The value of this field will default to None unless the parent game allows to flag mature content. |
+| `FModioUnsigned64` | `FileSize` | Size of collection in bytes |
+| `FModioUnsigned64` | `FileSizeUncompressed` | Size of the uncompressed collection in bytes |
+| `TArray<EModioModfilePlatform>` | `Platforms` | Supported platform for this collection |
+| `TArray<FString>` | `Tags` | Tags this mod collection has set |
+| `FModioModCollectionStats` | `Stats` | Stats and rating information for the mod collection. |
+| `FModioLogo` | `Logo` | Media data related to the mod collection logo |
+| `FString` | `ProfileName` | Name of the mod collection |
+| `FString` | `ProfileNameId` | Name id of the mod collection |
+| `FString` | `ProfileSummary` | Summary of the mod collection |
+| `FString` | `ProfileDescription` | Detailed description in HTML format |
+| `FString` | `ProfileDescriptionPlaintext` | Detailed description in plaintext format |
+</RefTable>
+
+
+
+---
+
+### ModioModCollectionStats 
+
+Contains download stats and ratings for a mod collection
+
+
+
+
+
+
+
+
+##### Variables
+<RefTable colWidths={['10%', '10%', '20%']} stripes="odd">
+| | | |
+|-|-|-|
+| `int64` | `DownloadsToday` | Number of mod collection downloads today. |
+| `int64` | `DownloadsTotal` | Number of total mod collection downloads. |
+| `int64` | `DownloadsUnique` | Number of unique mod collection downloads. |
+| `int64` | `RatingTotal30Days` | Number of rating over 30 days. |
+| `int64` | `RatingPositive30Days` | Number of positive ratings over 30 days. |
+| `int64` | `RatingNegative30Days` | Number of negative ratings over 30 days. |
+| `int64` | `RatingTotal` | Number of times this mod collection has been rated. |
+| `int64` | `RatingPositive` | Number of positive ratings. |
+| `int64` | `RatingNegative` | Number of negative ratings. |
+| `int64` | `NumberOfComments` | Number of comments. |
+| `int64` | `NumberOfFollowers` | Number of followers. |
+| `int64` | `NumberOfMods` | Number of mods in the collection. |
+</RefTable>
+
+
+
+---
+
+### ModioUnsigned64 
+
+Trivial Blueprint-compatible wrapper around an unsigned 64-bit integer
+
+
+
+
+
+
+
+
+
+
+
+---
+
+### ModioUser 
+
+Object representing a mod.io user profile information
+
+
+
+
+
+
+
+
+##### Variables
+<RefTable colWidths={['10%', '10%', '20%']} stripes="odd">
+| | | |
+|-|-|-|
+| `FModioUserID` | `UserId` | User's unique ID |
+| `FString` | `Username` | Name chosen by the user |
+| `FDateTime` | `DateOnline` | Unix timestamp of the last time the user was online |
+| `FString` | `ProfileUrl` | URL of the user's mod.io profile |
+| `FString` | `DisplayNamePortal` | Display name of this User for the given Portal, if their account is linked |
+</RefTable>
+
+
+
+---
+
+### ModioUserID 
+
+Strong type struct to wrap a UserID which uniquely identifies a user in mod.io
+
+
+
+
+
+
+
+
+
+
+
+---
+
+### ModioModCollectionID 
+
+Strong type struct to wrap a ModCollectionID to uniquely identify collections of user-generated content.
+
+
+
+
+
+
+
+
+
+
+
+---
+
 ### ModioModInfoList 
 
 Strong type struct to wrap multiple ModInfo indexed by a paged result
@@ -3834,22 +4692,6 @@ Full mod profile including current release information, media links, and stats
 | `EModioModServerSideStatus` | `ModStatus` | Status of the mod |
 | `FModioUnsigned64` | `Price` | Price of this mod |
 </RefTable>
-
-
-
----
-
-### ModioUnsigned64 
-
-Trivial Blueprint-compatible wrapper around an unsigned 64-bit integer
-
-
-
-
-
-
-
-
 
 
 
@@ -4028,48 +4870,6 @@ Strong type struct to store the associated metadata to a mod file
 
 ---
 
-### ModioUser 
-
-Object representing a mod.io user profile information
-
-
-
-
-
-
-
-
-##### Variables
-<RefTable colWidths={['10%', '10%', '20%']} stripes="odd">
-| | | |
-|-|-|-|
-| `FModioUserID` | `UserId` | User's unique ID |
-| `FString` | `Username` | Name chosen by the user |
-| `FDateTime` | `DateOnline` | Unix timestamp of the last time the user was online |
-| `FString` | `ProfileUrl` | URL of the user's mod.io profile |
-| `FString` | `DisplayNamePortal` | Display name of this User for the given Portal, if their account is linked |
-</RefTable>
-
-
-
----
-
-### ModioUserID 
-
-Strong type struct to wrap a UserID which uniquely identifies a user in mod.io
-
-
-
-
-
-
-
-
-
-
-
----
-
 ### ModioModTagOptions 
 
 Strong type struct to wrap multiple ModTagInfo indexed by a paged result
@@ -4134,6 +4934,22 @@ Wrapper around `Modio::ErrorCode`
 
 ---
 
+### ModioOptionalModCollectionInfo 
+
+Struct to wrap ModCollectionInfo into an optional parameter
+
+
+
+
+
+
+
+
+
+
+
+---
+
 ### ModioOptionalGameInfo 
 
 Strong type struct to store an optional GameInfo parameter
@@ -4153,6 +4969,22 @@ Strong type struct to store an optional GameInfo parameter
 ### ModioOptionalImage 
 
 Strong type struct to wrap Image data as an optional value
+
+
+
+
+
+
+
+
+
+
+
+---
+
+### ModioOptionalModInfoList 
+
+Struct to wrap ModInfoList into an optional parameter
 
 
 
@@ -4246,9 +5078,9 @@ Strong type struct to wrap uint64 as an optional value
 
 ---
 
-### ModioOptionalModInfoList 
+### ModioOptionalModCollectionInfoList 
 
-Struct to wrap ModInfoList into an optional parameter
+Struct to wrap ModCollectionInfoList into an optional parameter
 
 
 
@@ -5233,6 +6065,8 @@ Strong type struct to wrap multiple Users indexed by a paged result
 
 Returns the localized string table `FText` for a given enum value's `FName`.  Only works with enums registered via `ModioUI::RegisterEnumAsLocalizable`.
 
+![nd_img_ModioUIEnumLocalizationLibrary_GetLocalizedTextForEnumByName.png](img/refdocs/nd_img_ModioUIEnumLocalizationLibrary_GetLocalizedTextForEnumByName.png)
+
 ```cpp
 FText GetLocalizedTextForEnumByName(FName EnumName)
 ```
@@ -5268,6 +6102,8 @@ Localized `FText` for the specified enum value, or a dummy FText if not found
 ### FileSizeToText (Unsigned64)
 
 Converts an Unsigned64 filesize to a human-readable string with the appropriate unit. * The function attempts to display the size in the largest unit that will have an integral  part > 0, or in the specified unit if `Unit` is set to something other than `Largest`.
+
+![nd_img_ModioUIEnumLocalizationLibrary_FileSizeUnsigned64_ToText.png](img/refdocs/nd_img_ModioUIEnumLocalizationLibrary_FileSizeUnsigned64_ToText.png)
 
 ```cpp
 FText FileSizeUnsigned64_ToText(FModioUnsigned64 FileSize, int32 MinDecimals, int32 MaxDecimals, TEnumAsByte<EFileSizeUnit> Unit, bool bIncludeUnitName)
@@ -5309,6 +6145,8 @@ An FText formatted with the specified filesize and unit
 
 Returns the localized string table Text for a given string key
 
+![nd_img_ModioUILocalizationLibrary_GetLocalizedTextFromDefaultTableByKey.png](img/refdocs/nd_img_ModioUILocalizationLibrary_GetLocalizedTextFromDefaultTableByKey.png)
+
 ```cpp
 FText GetLocalizedTextFromDefaultTableByKey(FString StringKey)
 ```
@@ -5344,6 +6182,8 @@ Localized FText for the specified key, or StringKey itself if not found
 ### Get Total Progress
 
 Retrieve the total amount of progress required for a specified state
+
+![nd_img_ModioModProgressInfoLibrary_GetTotalProgress.png](img/refdocs/nd_img_ModioModProgressInfoLibrary_GetTotalProgress.png)
 
 ```cpp
 FModioUnsigned64 GetTotalProgress(FModioModProgressInfo Info, EModioModProgressState State)
@@ -5382,6 +6222,8 @@ An FModioUnsigned64 representing the total progress in bytes
 
 Get the current state of the mod operation
 
+![nd_img_ModioModProgressInfoLibrary_GetCurrentState.png](img/refdocs/nd_img_ModioModProgressInfoLibrary_GetCurrentState.png)
+
 ```cpp
 EModioModProgressState GetCurrentState(FModioModProgressInfo Info)
 ```
@@ -5417,6 +6259,8 @@ An EModioModProgressState indicating the current state of the mod operation
 ### Get Current Progress
 
 Retrieve the progress value for a specified state If the state has completed, `CurrentProgress` will equal `TotalProgress`. For example, if a mod  is currently in the Extracting state, querying progress for the Downloading state will return a value  equal to the total download size because the download is complete.
+
+![nd_img_ModioModProgressInfoLibrary_GetCurrentProgress.png](img/refdocs/nd_img_ModioModProgressInfoLibrary_GetCurrentProgress.png)
 
 ```cpp
 FModioUnsigned64 GetCurrentProgress(FModioModProgressInfo Info, EModioModProgressState State)
@@ -5455,6 +6299,8 @@ An FModioUnsigned64 representing the current progress in bytes
 
 
 
+![nd_img_ModioStorageInfoLibrary_GetSpaceByKey.png](img/refdocs/nd_img_ModioStorageInfoLibrary_GetSpaceByKey.png)
+
 ```cpp
 FModioUnsigned64 GetSpaceByKey(FModioStorageInfo Info, FStorageInfoKey StorageKey)
 ```
@@ -5491,6 +6337,8 @@ Total storage space in bytes
 ### Get Space
 
 
+
+![nd_img_ModioStorageInfoLibrary_GetSpace.png](img/refdocs/nd_img_ModioStorageInfoLibrary_GetSpace.png)
 
 ```cpp
 FModioUnsigned64 GetSpace(FModioStorageInfo Info, EModioStorageLocation Location, EModioStorageUsage Usage)
@@ -5530,6 +6378,8 @@ Total storage space in bytes
 
 Check if the token pack is purchasable
 
+![nd_img_ModioTokenPackLibrary_IsPurchasable.png](img/refdocs/nd_img_ModioTokenPackLibrary_IsPurchasable.png)
+
 ```cpp
 bool IsPurchasable(FModioTokenPack In)
 ```
@@ -5565,6 +6415,8 @@ True if the token pack is purchasable, false otherwise
 ### Get Title
 
 Get the title of the token pack
+
+![nd_img_ModioTokenPackLibrary_GetTitle.png](img/refdocs/nd_img_ModioTokenPackLibrary_GetTitle.png)
 
 ```cpp
 FText GetTitle(FModioTokenPack In)
@@ -5602,6 +6454,8 @@ The title text of the token pack
 
 Get the regular price of the token pack
 
+![nd_img_ModioTokenPackLibrary_GetRegularPrice.png](img/refdocs/nd_img_ModioTokenPackLibrary_GetRegularPrice.png)
+
 ```cpp
 FText GetRegularPrice(FModioTokenPack In)
 ```
@@ -5637,6 +6491,8 @@ The regular price text of the token pack
 ### Get Numeric Price
 
 Get the numeric price of the token pack
+
+![nd_img_ModioTokenPackLibrary_GetNumericPrice.png](img/refdocs/nd_img_ModioTokenPackLibrary_GetNumericPrice.png)
 
 ```cpp
 int64 GetNumericPrice(FModioTokenPack In)
@@ -5674,6 +6530,8 @@ The numeric price of the token pack
 
 Get the Modio ID for this token pack
 
+![nd_img_ModioTokenPackLibrary_GetModioId.png](img/refdocs/nd_img_ModioTokenPackLibrary_GetModioId.png)
+
 ```cpp
 FModioTokenPackID GetModioId(FModioTokenPack In)
 ```
@@ -5709,6 +6567,8 @@ The Modio ID of the token pack
 ### Get Long Description
 
 Get the long description of the token pack
+
+![nd_img_ModioTokenPackLibrary_GetLongDescription.png](img/refdocs/nd_img_ModioTokenPackLibrary_GetLongDescription.png)
 
 ```cpp
 FText GetLongDescription(FModioTokenPack In)
@@ -5746,6 +6606,8 @@ The long description text of the token pack
 
 Get the ID of the token pack
 
+![nd_img_ModioTokenPackLibrary_GetId.png](img/refdocs/nd_img_ModioTokenPackLibrary_GetId.png)
+
 ```cpp
 FString GetId(FModioTokenPack In)
 ```
@@ -5781,6 +6643,8 @@ The ID of the token pack
 ### Get Fields
 
 Get any dynamic fields associated with the token pack
+
+![nd_img_ModioTokenPackLibrary_GetFields.png](img/refdocs/nd_img_ModioTokenPackLibrary_GetFields.png)
 
 ```cpp
 TMap<FString,FString> GetFields(FModioTokenPack In)
@@ -5818,6 +6682,8 @@ A map of dynamic fields for the token pack
 
 Get the display price of the token pack
 
+![nd_img_ModioTokenPackLibrary_GetDisplayPrice.png](img/refdocs/nd_img_ModioTokenPackLibrary_GetDisplayPrice.png)
+
 ```cpp
 FText GetDisplayPrice(FModioTokenPack In)
 ```
@@ -5853,6 +6719,8 @@ The display price text of the token pack
 ### Get Description
 
 Get the description of the token pack
+
+![nd_img_ModioTokenPackLibrary_GetDescription.png](img/refdocs/nd_img_ModioTokenPackLibrary_GetDescription.png)
 
 ```cpp
 FText GetDescription(FModioTokenPack In)
@@ -5890,6 +6758,8 @@ The description text of the token pack
 
 Subtracts one FModioUnsigned64 from another
 
+![nd_img_ModioUnsigned64Library_Subtract.png](img/refdocs/nd_img_ModioUnsigned64Library_Subtract.png)
+
 ```cpp
 FModioUnsigned64 Subtract(FModioUnsigned64 LHS, FModioUnsigned64 RHS)
 ```
@@ -5924,6 +6794,8 @@ FModioUnsigned64 Subtract(FModioUnsigned64 LHS, FModioUnsigned64 RHS)
 ### Percentage Unsigned 64
 
 Calculates the percentage of one FModioUnsigned64 value in relation to another
+
+![nd_img_ModioUnsigned64Library_Percentage_Unsigned64.png](img/refdocs/nd_img_ModioUnsigned64Library_Percentage_Unsigned64.png)
 
 ```cpp
 float Percentage_Unsigned64(FModioUnsigned64 LHS, FModioUnsigned64 RHS)
@@ -5960,6 +6832,8 @@ float Percentage_Unsigned64(FModioUnsigned64 LHS, FModioUnsigned64 RHS)
 
 Compares two FModioUnsigned64 values for inequality
 
+![nd_img_ModioUnsigned64Library_NotEqualTo.png](img/refdocs/nd_img_ModioUnsigned64Library_NotEqualTo.png)
+
 ```cpp
 bool NotEqualTo(FModioUnsigned64 LHS, FModioUnsigned64 RHS)
 ```
@@ -5994,6 +6868,8 @@ bool NotEqualTo(FModioUnsigned64 LHS, FModioUnsigned64 RHS)
 ### Make from Components
 
 Creates an FModioUnsigned64 from two 32-bit components
+
+![nd_img_ModioUnsigned64Library_MakeFromComponents.png](img/refdocs/nd_img_ModioUnsigned64Library_MakeFromComponents.png)
 
 ```cpp
 FModioUnsigned64 MakeFromComponents(int32 High, int32 Low)
@@ -6030,6 +6906,8 @@ FModioUnsigned64 MakeFromComponents(int32 High, int32 Low)
 
 Compares two FModioUnsigned64 values to see if the left-hand side is less than the right-hand side
 
+![nd_img_ModioUnsigned64Library_LessThan.png](img/refdocs/nd_img_ModioUnsigned64Library_LessThan.png)
+
 ```cpp
 bool LessThan(FModioUnsigned64 LHS, FModioUnsigned64 RHS)
 ```
@@ -6065,6 +6943,8 @@ bool LessThan(FModioUnsigned64 LHS, FModioUnsigned64 RHS)
 
 Checks if FModioUnsigned64 is greater than zero
 
+![nd_img_ModioUnsigned64Library_GreaterThanZero.png](img/refdocs/nd_img_ModioUnsigned64Library_GreaterThanZero.png)
+
 ```cpp
 bool GreaterThanZero(FModioUnsigned64 In)
 ```
@@ -6098,6 +6978,8 @@ bool GreaterThanZero(FModioUnsigned64 In)
 ### ModioUnsigned64 > ModioUnsigned64
 
 Compares two FModioUnsigned64 values to see if the left-hand side is greater than the right-hand side
+
+![nd_img_ModioUnsigned64Library_GreaterThan.png](img/refdocs/nd_img_ModioUnsigned64Library_GreaterThan.png)
 
 ```cpp
 bool GreaterThan(FModioUnsigned64 LHS, FModioUnsigned64 RHS)
@@ -6134,6 +7016,8 @@ bool GreaterThan(FModioUnsigned64 LHS, FModioUnsigned64 RHS)
 
 Compares two FModioUnsigned64 values for equality
 
+![nd_img_ModioUnsigned64Library_EqualTo.png](img/refdocs/nd_img_ModioUnsigned64Library_EqualTo.png)
+
 ```cpp
 bool EqualTo(FModioUnsigned64 LHS, FModioUnsigned64 RHS)
 ```
@@ -6168,6 +7052,8 @@ bool EqualTo(FModioUnsigned64 LHS, FModioUnsigned64 RHS)
 ### ModioUnsigned64 / ModioUnsigned64
 
 Divides two FModioUnsigned64 values and returns the result as a float
+
+![nd_img_ModioUnsigned64Library_DivideToFloat.png](img/refdocs/nd_img_ModioUnsigned64Library_DivideToFloat.png)
 
 ```cpp
 float DivideToFloat(FModioUnsigned64 LHS, FModioUnsigned64 RHS)
@@ -6204,6 +7090,8 @@ float DivideToFloat(FModioUnsigned64 LHS, FModioUnsigned64 RHS)
 
 Divides an FModioUnsigned64 by a float and returns the result as a float
 
+![nd_img_ModioUnsigned64Library_DivideFloat.png](img/refdocs/nd_img_ModioUnsigned64Library_DivideFloat.png)
+
 ```cpp
 float DivideFloat(FModioUnsigned64 LHS, float RHS)
 ```
@@ -6239,6 +7127,8 @@ float DivideFloat(FModioUnsigned64 LHS, float RHS)
 
 Divides two FModioUnsigned64 values (truncate result)
 
+![nd_img_ModioUnsigned64Library_Divide.png](img/refdocs/nd_img_ModioUnsigned64Library_Divide.png)
+
 ```cpp
 FModioUnsigned64 Divide(FModioUnsigned64 LHS, FModioUnsigned64 RHS)
 ```
@@ -6273,6 +7163,8 @@ FModioUnsigned64 Divide(FModioUnsigned64 LHS, FModioUnsigned64 RHS)
 ### Break to Components
 
 Breaks a FModioUnsigned64 into two components: high and low 32-bits
+
+![nd_img_ModioUnsigned64Library_BreakToComponents.png](img/refdocs/nd_img_ModioUnsigned64Library_BreakToComponents.png)
 
 ```cpp
 void BreakToComponents(FModioUnsigned64 In, int32 High, int32 Low)
@@ -6310,6 +7202,8 @@ void BreakToComponents(FModioUnsigned64 In, int32 High, int32 Low)
 
 Adds two FModioUnsigned64 values together
 
+![nd_img_ModioUnsigned64Library_Add.png](img/refdocs/nd_img_ModioUnsigned64Library_Add.png)
+
 ```cpp
 FModioUnsigned64 Add(FModioUnsigned64 LHS, FModioUnsigned64 RHS)
 ```
@@ -6344,6 +7238,8 @@ FModioUnsigned64 Add(FModioUnsigned64 LHS, FModioUnsigned64 RHS)
 ### Set Session Identifier
 
 Changes the session identifier for the provided set of [`ModioInitializeOptions`](#modioinitializeoptions)
+
+![nd_img_ModioCommonTypesLibrary_SetSessionIdentifier.png](img/refdocs/nd_img_ModioCommonTypesLibrary_SetSessionIdentifier.png)
 
 ```cpp
 FModioInitializeOptions SetSessionIdentifier(FModioInitializeOptions Options, FString SessionIdentifier)
@@ -6382,6 +7278,8 @@ New [`ModioInitializeOptions`](#modioinitializeoptions) object with the session 
 
 Changes the session identifier for the provided Metrics Session parameters
 
+![nd_img_ModioCommonTypesLibrary_SetSessionId.png](img/refdocs/nd_img_ModioCommonTypesLibrary_SetSessionId.png)
+
 ```cpp
 FModioMetricsSessionParams SetSessionId(FModioMetricsSessionParams Params, FModioGuid Id)
 ```
@@ -6416,6 +7314,8 @@ FModioMetricsSessionParams SetSessionId(FModioMetricsSessionParams Params, FModi
 ### Set Portal
 
 Changes the portal for the provided set of [`ModioInitializeOptions`](#modioinitializeoptions)
+
+![nd_img_ModioCommonTypesLibrary_SetPortal.png](img/refdocs/nd_img_ModioCommonTypesLibrary_SetPortal.png)
 
 ```cpp
 FModioInitializeOptions SetPortal(FModioInitializeOptions Options, EModioPortal PortalToUse)
@@ -6454,6 +7354,8 @@ New [`ModioInitializeOptions`](#modioinitializeoptions) object with the portal s
 
 Changes the game id for the provided set of [`ModioInitializeOptions`](#modioinitializeoptions)
 
+![nd_img_ModioCommonTypesLibrary_SetGameId.png](img/refdocs/nd_img_ModioCommonTypesLibrary_SetGameId.png)
+
 ```cpp
 FModioInitializeOptions SetGameId(FModioInitializeOptions Options, int64 GameId)
 ```
@@ -6490,6 +7392,8 @@ New [`ModioInitializeOptions`](#modioinitializeoptions) object with the game id 
 ### Set Game Environment
 
 Changes the game environment for the provided set of [`ModioInitializeOptions`](#modioinitializeoptions)
+
+![nd_img_ModioCommonTypesLibrary_SetGameEnvironment.png](img/refdocs/nd_img_ModioCommonTypesLibrary_SetGameEnvironment.png)
 
 ```cpp
 FModioInitializeOptions SetGameEnvironment(FModioInitializeOptions Options, EModioEnvironment GameEnvironment)
@@ -6528,6 +7432,8 @@ New [`ModioInitializeOptions`](#modioinitializeoptions) object with the game env
 
 Sets extended initialization parameters for the provided set of [`ModioInitializeOptions`](#modioinitializeoptions)
 
+![nd_img_ModioCommonTypesLibrary_SetExtendedInitializationParameters.png](img/refdocs/nd_img_ModioCommonTypesLibrary_SetExtendedInitializationParameters.png)
+
 ```cpp
 FModioInitializeOptions SetExtendedInitializationParameters(FModioInitializeOptions Options, TMap<FString,FString> ExtendedParameters)
 ```
@@ -6564,6 +7470,8 @@ New [`ModioInitializeOptions`](#modioinitializeoptions) object with the extended
 ### Set Background Thread
 
 Changes the background thread usage for the provided set of [`ModioInitializeOptions`](#modioinitializeoptions)
+
+![nd_img_ModioCommonTypesLibrary_SetBackgroundThread.png](img/refdocs/nd_img_ModioCommonTypesLibrary_SetBackgroundThread.png)
 
 ```cpp
 FModioInitializeOptions SetBackgroundThread(FModioInitializeOptions Options, bool bUseBackgroundThread)
@@ -6602,6 +7510,8 @@ New [`ModioInitializeOptions`](#modioinitializeoptions) object with the backgrou
 
 Changes the API key for the provided set of [`ModioInitializeOptions`](#modioinitializeoptions)
 
+![nd_img_ModioCommonTypesLibrary_SetAPIKey.png](img/refdocs/nd_img_ModioCommonTypesLibrary_SetAPIKey.png)
+
 ```cpp
 FModioInitializeOptions SetAPIKey(FModioInitializeOptions Options, FString APIKey)
 ```
@@ -6639,6 +7549,8 @@ New [`ModioInitializeOptions`](#modioinitializeoptions) object with the API key 
 
 Compares two mod IDs to check whether they're not equal
 
+![nd_img_ModioCommonTypesLibrary_NotEqualTo.png](img/refdocs/nd_img_ModioCommonTypesLibrary_NotEqualTo.png)
+
 ```cpp
 bool NotEqualTo(FModioModID A, FModioModID B)
 ```
@@ -6674,6 +7586,8 @@ bool NotEqualTo(FModioModID A, FModioModID B)
 
 Create Metrics Session parameters
 
+![nd_img_ModioCommonTypesLibrary_MakeMetricsSessionParams.png](img/refdocs/nd_img_ModioCommonTypesLibrary_MakeMetricsSessionParams.png)
+
 ```cpp
 FModioMetricsSessionParams MakeMetricsSessionParams(TArray<FModioModID> Ids)
 ```
@@ -6707,6 +7621,8 @@ FModioMetricsSessionParams MakeMetricsSessionParams(TArray<FModioModID> Ids)
 ### Make Initialize Options
 
 Make [`ModioInitializeOptions`](#modioinitializeoptions). Should only be used in conjunction with [`InitializeAsync`](#initializeasync).
+
+![nd_img_ModioCommonTypesLibrary_MakeInitializeOptions.png](img/refdocs/nd_img_ModioCommonTypesLibrary_MakeInitializeOptions.png)
 
 ```cpp
 FModioInitializeOptions MakeInitializeOptions(int64 GameId, FString APIKey, EModioEnvironment GameEnvironment, EModioPortal PortalInUse, bool bUseBackgroundThread)
@@ -6746,6 +7662,8 @@ FModioInitializeOptions MakeInitializeOptions(int64 GameId, FString APIKey, EMod
 
 Create a Guid from a string
 
+![nd_img_ModioCommonTypesLibrary_MakeGuid.png](img/refdocs/nd_img_ModioCommonTypesLibrary_MakeGuid.png)
+
 ```cpp
 FModioGuid MakeGuid(FString Guid)
 ```
@@ -6779,6 +7697,8 @@ FModioGuid MakeGuid(FString Guid)
 ### Make Game Id
 
 Create a game id from a integer. Should only be used in conjunction with [`InitializeAsync`](#initializeasync)
+
+![nd_img_ModioCommonTypesLibrary_MakeGameId.png](img/refdocs/nd_img_ModioCommonTypesLibrary_MakeGameId.png)
 
 ```cpp
 FModioGameID MakeGameId(int64 GameId)
@@ -6814,6 +7734,8 @@ FModioGameID MakeGameId(int64 GameId)
 
 Create entitlement parameters
 
+![nd_img_ModioCommonTypesLibrary_MakeEntitlementParams.png](img/refdocs/nd_img_ModioCommonTypesLibrary_MakeEntitlementParams.png)
+
 ```cpp
 FModioEntitlementParams MakeEntitlementParams(TMap<FString,FString> ExtendedParameters)
 ```
@@ -6847,6 +7769,8 @@ FModioEntitlementParams MakeEntitlementParams(TMap<FString,FString> ExtendedPara
 ### Make Auth Params
 
 Creates a `ModioAuthenticationParams` object
+
+![nd_img_ModioCommonTypesLibrary_MakeAuthParams.png](img/refdocs/nd_img_ModioCommonTypesLibrary_MakeAuthParams.png)
 
 ```cpp
 FModioAuthenticationParams MakeAuthParams(FString AuthToken, FString EmailAddress, bool bHasAcceptedTOS)
@@ -6886,6 +7810,8 @@ The constructed `ModioAuthenticationParams` object for use with [`AuthenticateUs
 
 Create an ApiKey id from a string. Should only be used in conjunction with [`InitializeAsync`](#initializeasync)
 
+![nd_img_ModioCommonTypesLibrary_MakeApiKey.png](img/refdocs/nd_img_ModioCommonTypesLibrary_MakeApiKey.png)
+
 ```cpp
 FModioApiKey MakeApiKey(FString ApiKey)
 ```
@@ -6920,6 +7846,8 @@ FModioApiKey MakeApiKey(FString ApiKey)
 
 Retrieves the raw underlying value from an `ModioModID`. `ModioModID`s are intended as opaque types, so use with care.
 
+![nd_img_ModioCommonTypesLibrary_GetRawValueFromModID.png](img/refdocs/nd_img_ModioCommonTypesLibrary_GetRawValueFromModID.png)
+
 ```cpp
 int64 GetRawValueFromModID(FModioModID In)
 ```
@@ -6952,9 +7880,86 @@ The underlying value
 
 
 
+### Get Raw Value from Mod Collection ID
+
+Retrieves the raw underlying value from an `ModioModCollectionID`. `ModioModCollectionID`s are intended as opaque types, so use with care.
+
+![nd_img_ModioCommonTypesLibrary_GetRawValueFromModCollectionID.png](img/refdocs/nd_img_ModioCommonTypesLibrary_GetRawValueFromModCollectionID.png)
+
+```cpp
+int64 GetRawValueFromModCollectionID(FModioModCollectionID In)
+```
+
+
+
+
+
+
+#### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`In`|The `ModioModCollectionID` to retrieve the value for|
+</RefTable>
+
+
+
+#### Returns
+The underlying value
+
+
+
+
+
+
+
+
+---
+
+
+
+### ModioModCollectionID == ModioModCollectionID
+
+Compares two mod Collection IDs to check whether they're equal
+
+![nd_img_ModioCommonTypesLibrary_EqualToModCollectionID.png](img/refdocs/nd_img_ModioCommonTypesLibrary_EqualToModCollectionID.png)
+
+```cpp
+bool EqualToModCollectionID(FModioModCollectionID A, FModioModCollectionID B)
+```
+
+
+
+
+
+
+#### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`A`||
+|`B`||
+</RefTable>
+
+
+
+
+
+
+
+
+
+
+
+---
+
+
+
 ### ModioModID == ModioModID
 
 Compares two mod IDs to check whether they're equal
+
+![nd_img_ModioCommonTypesLibrary_EqualTo.png](img/refdocs/nd_img_ModioCommonTypesLibrary_EqualTo.png)
 
 ```cpp
 bool EqualTo(FModioModID A, FModioModID B)
@@ -6991,6 +7996,8 @@ bool EqualTo(FModioModID A, FModioModID B)
 
 Sets the version string of the mod file
 
+![nd_img_ModioCreateModLibrary_SetVersionString.png](img/refdocs/nd_img_ModioCreateModLibrary_SetVersionString.png)
+
 ```cpp
 void SetVersionString(FModioCreateModFileParams In, FString Version)
 ```
@@ -7025,6 +8032,8 @@ void SetVersionString(FModioCreateModFileParams In, FString Version)
 ### Set Tags
 
 Sets tags for the mod
+
+![nd_img_ModioCreateModLibrary_SetTags.png](img/refdocs/nd_img_ModioCreateModLibrary_SetTags.png)
 
 ```cpp
 void SetTags(FModioCreateModParams In, TArray<FString> Tags)
@@ -7061,6 +8070,8 @@ void SetTags(FModioCreateModParams In, TArray<FString> Tags)
 
 Sets the version string of the source file
 
+![nd_img_ModioCreateModLibrary_SetSourceFileVersionString.png](img/refdocs/nd_img_ModioCreateModLibrary_SetSourceFileVersionString.png)
+
 ```cpp
 void SetSourceFileVersionString(FModioCreateSourceFileParams In, FString Version)
 ```
@@ -7095,6 +8106,8 @@ void SetSourceFileVersionString(FModioCreateSourceFileParams In, FString Version
 ### Set Source File Platforms
 
 Sets the source file platforms of the source file
+
+![nd_img_ModioCreateModLibrary_SetSourceFilePlatforms.png](img/refdocs/nd_img_ModioCreateModLibrary_SetSourceFilePlatforms.png)
 
 ```cpp
 void SetSourceFilePlatforms(FModioCreateSourceFileParams In, TArray<EModioModfilePlatform> Platforms)
@@ -7131,6 +8144,8 @@ void SetSourceFilePlatforms(FModioCreateSourceFileParams In, TArray<EModioModfil
 
 Sets the source file metadata blob of the source file
 
+![nd_img_ModioCreateModLibrary_SetSourceFileMetadataBlob.png](img/refdocs/nd_img_ModioCreateModLibrary_SetSourceFileMetadataBlob.png)
+
 ```cpp
 void SetSourceFileMetadataBlob(FModioCreateSourceFileParams In, FString MetadataBlob)
 ```
@@ -7165,6 +8180,8 @@ void SetSourceFileMetadataBlob(FModioCreateSourceFileParams In, FString Metadata
 ### Set Source File Changelog String
 
 Sets the changelog string of the source file
+
+![nd_img_ModioCreateModLibrary_SetSourceFileChangelogString.png](img/refdocs/nd_img_ModioCreateModLibrary_SetSourceFileChangelogString.png)
 
 ```cpp
 void SetSourceFileChangelogString(FModioCreateSourceFileParams In, FString Changelog)
@@ -7201,6 +8218,8 @@ void SetSourceFileChangelogString(FModioCreateSourceFileParams In, FString Chang
 
 Sets the mod file platforms of the mod file
 
+![nd_img_ModioCreateModLibrary_SetModfilePlatforms.png](img/refdocs/nd_img_ModioCreateModLibrary_SetModfilePlatforms.png)
+
 ```cpp
 void SetModfilePlatforms(FModioCreateModFileParams In, TArray<EModioModfilePlatform> Platforms)
 ```
@@ -7236,6 +8255,8 @@ void SetModfilePlatforms(FModioCreateModFileParams In, TArray<EModioModfilePlatf
 
 Sets the mod file metadata blob of the mod file
 
+![nd_img_ModioCreateModLibrary_SetModFileMetadataBlob.png](img/refdocs/nd_img_ModioCreateModLibrary_SetModFileMetadataBlob.png)
+
 ```cpp
 void SetModFileMetadataBlob(FModioCreateModFileParams In, FString MetadataBlob)
 ```
@@ -7270,6 +8291,8 @@ void SetModFileMetadataBlob(FModioCreateModFileParams In, FString MetadataBlob)
 ### Set Metadata Blob
 
 
+![nd_img_ModioCreateModLibrary_SetMetadataBlob.png](img/refdocs/nd_img_ModioCreateModLibrary_SetMetadataBlob.png)
+
 ```cpp
 void SetMetadataBlob(FModioCreateModParams In, FString MetadataBlob)
 ```
@@ -7284,6 +8307,8 @@ void SetMetadataBlob(FModioCreateModParams In, FString MetadataBlob)
 ### Set Maturity Flags
 
 Sets the metadata blob of the mod
+
+![nd_img_ModioCreateModLibrary_SetMaturityFlags.png](img/refdocs/nd_img_ModioCreateModLibrary_SetMaturityFlags.png)
 
 ```cpp
 void SetMaturityFlags(FModioCreateModParams In, EModioMaturityFlags MaturityFlags)
@@ -7320,6 +8345,8 @@ void SetMaturityFlags(FModioCreateModParams In, EModioMaturityFlags MaturityFlag
 
 Sets the MarkAsActiveRelease flag of the mod file
 
+![nd_img_ModioCreateModLibrary_SetMarkAsActiveRelease.png](img/refdocs/nd_img_ModioCreateModLibrary_SetMarkAsActiveRelease.png)
+
 ```cpp
 void SetMarkAsActiveRelease(FModioCreateModFileParams In, bool bMarkAsActiveRelease)
 ```
@@ -7354,6 +8381,8 @@ void SetMarkAsActiveRelease(FModioCreateModFileParams In, bool bMarkAsActiveRele
 ### Set Initial Visibility DEPRECATED
 
 
+![nd_img_ModioCreateModLibrary_SetInitialVisibility_DEPRECATED.png](img/refdocs/nd_img_ModioCreateModLibrary_SetInitialVisibility_DEPRECATED.png)
+
 ```cpp
 void SetInitialVisibility_DEPRECATED(FModioCreateModParams In, bool InitialVisibility)
 ```
@@ -7368,6 +8397,8 @@ void SetInitialVisibility_DEPRECATED(FModioCreateModParams In, bool InitialVisib
 ### Set Initial Visibility
 
 Sets the initial visibility of the mod
+
+![nd_img_ModioCreateModLibrary_SetInitialVisibility.png](img/refdocs/nd_img_ModioCreateModLibrary_SetInitialVisibility.png)
 
 ```cpp
 void SetInitialVisibility(FModioCreateModParams In, EModioObjectVisibilityFlags InitialVisibility)
@@ -7404,6 +8435,8 @@ void SetInitialVisibility(FModioCreateModParams In, EModioObjectVisibilityFlags 
 
 Sets the homepage URL of the mod
 
+![nd_img_ModioCreateModLibrary_SetHomepageURL.png](img/refdocs/nd_img_ModioCreateModLibrary_SetHomepageURL.png)
+
 ```cpp
 void SetHomepageURL(FModioCreateModParams In, FString HomepageURL)
 ```
@@ -7439,6 +8472,8 @@ void SetHomepageURL(FModioCreateModParams In, FString HomepageURL)
 
 Sets the description of the mod
 
+![nd_img_ModioCreateModLibrary_SetDescription.png](img/refdocs/nd_img_ModioCreateModLibrary_SetDescription.png)
+
 ```cpp
 void SetDescription(FModioCreateModParams In, FString Description)
 ```
@@ -7473,6 +8508,8 @@ void SetDescription(FModioCreateModParams In, FString Description)
 ### Set Community Options Flags
 
 
+![nd_img_ModioCreateModLibrary_SetCommunityOptionsFlags.png](img/refdocs/nd_img_ModioCreateModLibrary_SetCommunityOptionsFlags.png)
+
 ```cpp
 void SetCommunityOptionsFlags(FModioCreateModParams In, EModioModCommunityOptionsFlags CommunityOptionsFlags)
 ```
@@ -7487,6 +8524,8 @@ void SetCommunityOptionsFlags(FModioCreateModParams In, EModioModCommunityOption
 ### Set Changelog String
 
 Sets the changelog string of the mod file
+
+![nd_img_ModioCreateModLibrary_SetChangelogString.png](img/refdocs/nd_img_ModioCreateModLibrary_SetChangelogString.png)
 
 ```cpp
 void SetChangelogString(FModioCreateModFileParams In, FString Changelog)
@@ -7523,6 +8562,8 @@ void SetChangelogString(FModioCreateModFileParams In, FString Changelog)
 
 Helper method to reconstruct a mod.io error passed via code that cannot reference mod.io types
 
+![nd_img_ModioErrorCodeLibrary_ReconstructError.png](img/refdocs/nd_img_ModioErrorCodeLibrary_ReconstructError.png)
+
 ```cpp
 FModioErrorCode ReconstructError(int32 Value, int32 Category)
 ```
@@ -7557,6 +8598,8 @@ FModioErrorCode ReconstructError(int32 Value, int32 Category)
 ### IsError
 
 Checks if an error code contains a error
+
+![nd_img_ModioErrorCodeLibrary_IsErrorAsExec.png](img/refdocs/nd_img_ModioErrorCodeLibrary_IsErrorAsExec.png)
 
 ```cpp
 bool IsErrorAsExec(FModioErrorCode Error)
@@ -7594,6 +8637,8 @@ true if the error code is an error
 
 Get underlying error code for an FModioErrorCode.
 
+![nd_img_ModioErrorCodeLibrary_GetValue.png](img/refdocs/nd_img_ModioErrorCodeLibrary_GetValue.png)
+
 ```cpp
 int32 GetValue(FModioErrorCode Error)
 ```
@@ -7630,6 +8675,8 @@ The underlying error code.  0 represents no error.
 
 Get the textual representation of the error
 
+![nd_img_ModioErrorCodeLibrary_GetMessage.png](img/refdocs/nd_img_ModioErrorCodeLibrary_GetMessage.png)
+
 ```cpp
 FString GetMessage(FModioErrorCode Error)
 ```
@@ -7665,6 +8712,8 @@ An `FString` message describing the error
 ### Error Code Matches
 
 Checks if the passed-in ErrorCode matches the specified error condition
+
+![nd_img_ModioErrorConditionLibrary_ErrorCodeMatches.png](img/refdocs/nd_img_ModioErrorConditionLibrary_ErrorCodeMatches.png)
 
 ```cpp
 bool ErrorCodeMatches(FModioErrorCode ErrorCode, EModioErrorCondition Condition)
@@ -7703,6 +8752,8 @@ True if the code matches the condition
 
 Load the texture into memory asynchronously. If it's already in memory, it will be returned immediately.
 
+![nd_img_ModioImageLibrary_LoadAsync.png](img/refdocs/nd_img_ModioImageLibrary_LoadAsync.png)
+
 ```cpp
 void LoadAsync(FModioImageWrapper Image, FOnLoadImageDelegate OnImageLoaded)
 ```
@@ -7737,6 +8788,8 @@ void LoadAsync(FModioImageWrapper Image, FOnLoadImageDelegate OnImageLoaded)
 ### Get Texture
 
 Get the texture if it has been loaded by any FModioImage instance
+
+![nd_img_ModioImageLibrary_GetTexture.png](img/refdocs/nd_img_ModioImageLibrary_GetTexture.png)
 
 ```cpp
 UTexture2DDynamic* GetTexture(FModioImageWrapper Image)
@@ -7774,6 +8827,8 @@ The texture if it has been loaded, otherwise nullptr
 
 Get the current state of the image
 
+![nd_img_ModioImageLibrary_GetState.png](img/refdocs/nd_img_ModioImageLibrary_GetState.png)
+
 ```cpp
 EModioImageState GetState(FModioImageWrapper Image)
 ```
@@ -7809,6 +8864,8 @@ The state of the image
 ### Get Logo Size
 
 If the logo size is EModioLogoSize::Original, the original logo size is returned.  Otherwise, the thumbnail size of the logo is returned.
+
+![nd_img_ModioImageLibrary_GetLogoSize.png](img/refdocs/nd_img_ModioImageLibrary_GetLogoSize.png)
 
 ```cpp
 FVector2D GetLogoSize(UTexture* Logo, EModioLogoSize LogoSize)
@@ -7847,6 +8904,8 @@ Dimensions of the logo when displayed in a 1:1 pixel ratio
 
 If the gallery image size is EModioGallerySize::Original, the original gallery image size is returned.  Otherwise, the thumbnail size of the gallery image is returned.
 
+![nd_img_ModioImageLibrary_GetGallerySize.png](img/refdocs/nd_img_ModioImageLibrary_GetGallerySize.png)
+
 ```cpp
 FVector2D GetGallerySize(UTexture* GalleryImage, EModioGallerySize GallerySize)
 ```
@@ -7884,6 +8943,8 @@ Dimensions of the gallery image when displayed in a 1:1 pixel ratio
 
 If the avatar size is EModioAvatarSize::Original, the original avatar size is returned.  Otherwise, the thumbnail size of the avatar is returned.
 
+![nd_img_ModioImageLibrary_GetAvatarSize.png](img/refdocs/nd_img_ModioImageLibrary_GetAvatarSize.png)
+
 ```cpp
 FVector2D GetAvatarSize(UTexture* Avatar, EModioAvatarSize AvatarSize)
 ```
@@ -7917,9 +8978,87 @@ Dimensions of the avatar when displayed in a 1:1 pixel ratio
 
 
 
+### Get Paged Result
+
+Retrieve paged result information for a mod collection info list
+
+![nd_img_ModioModCollectionInfoListLibrary_GetPagedResult.png](img/refdocs/nd_img_ModioModCollectionInfoListLibrary_GetPagedResult.png)
+
+```cpp
+FModioPagedResult GetPagedResult(FModioModCollectionInfoList ModCollectionInfoList)
+```
+
+
+
+
+
+
+#### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`ModCollectionInfoList`|The mod collection info list to retrieve paged result information from|
+</RefTable>
+
+
+
+#### Returns
+An FModioPagedResult containing metadata about the paginated data
+
+
+
+
+
+
+
+
+---
+
+
+
+### Get Collections
+
+Retrieve the list of mod collections from the mod collection info list
+
+![nd_img_ModioModCollectionInfoListLibrary_GetCollections.png](img/refdocs/nd_img_ModioModCollectionInfoListLibrary_GetCollections.png)
+
+```cpp
+TArray<FModioModCollectionInfo> GetCollections(FModioModCollectionInfoList ModCollectionInfoList)
+```
+
+
+
+
+
+
+#### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`ModCollectionInfoList`|The mod collection info list to retrieve the mod collections from|
+</RefTable>
+
+
+
+#### Returns
+An array of FModioModCollectionInfo objects representing the mod collections in the list
+
+
+
+
+
+
+
+
+---
+
+
+
 ### Get Path
 
 Get the installation path for a mod on disk
+
+![nd_img_ModioModCollectionLibrary_GetPath.png](img/refdocs/nd_img_ModioModCollectionLibrary_GetPath.png)
 
 ```cpp
 FString GetPath(FModioModCollectionEntry Entry)
@@ -7957,6 +9096,8 @@ A FString representing the path to the mod's installation folder.  If the mod is
 
 Get the current state of a mod within the collection
 
+![nd_img_ModioModCollectionLibrary_GetModState.png](img/refdocs/nd_img_ModioModCollectionLibrary_GetModState.png)
+
 ```cpp
 EModioModState GetModState(FModioModCollectionEntry Entry)
 ```
@@ -7992,6 +9133,8 @@ An EModioModState enum representing the current state of the mod
 ### Get Mod Profile
 
 Get the profile information of a mod
+
+![nd_img_ModioModCollectionLibrary_GetModProfile.png](img/refdocs/nd_img_ModioModCollectionLibrary_GetModProfile.png)
 
 ```cpp
 FModioModInfo GetModProfile(FModioModCollectionEntry Entry)
@@ -8029,6 +9172,8 @@ An FModioModInfo structure containing the mod's profile data
 
 Retrieve the Mod ID from the mod collection entry
 
+![nd_img_ModioModCollectionLibrary_GetID.png](img/refdocs/nd_img_ModioModCollectionLibrary_GetID.png)
+
 ```cpp
 FModioModID GetID(FModioModCollectionEntry Entry)
 ```
@@ -8064,6 +9209,8 @@ A FModioModID representing the ID of the mod
 ### Get Total Filesize Uncompressed
 
 Get the total size of all uncompressed dependency files in bytes
+
+![nd_img_ModioModDependenciesLibrary_GetTotalFilesizeUncompressed.png](img/refdocs/nd_img_ModioModDependenciesLibrary_GetTotalFilesizeUncompressed.png)
 
 ```cpp
 FModioUnsigned64 GetTotalFilesizeUncompressed(FModioModDependencyList DependencyList)
@@ -8101,6 +9248,8 @@ An int64 representing the total size of all uncompressed dependency files in byt
 
 Get the total size of all dependency files in bytes
 
+![nd_img_ModioModDependenciesLibrary_GetTotalFilesize.png](img/refdocs/nd_img_ModioModDependenciesLibrary_GetTotalFilesize.png)
+
 ```cpp
 FModioUnsigned64 GetTotalFilesize(FModioModDependencyList DependencyList)
 ```
@@ -8136,6 +9285,8 @@ An int64 representing the total size of all dependency files in bytes
 ### Get Paged Result
 
 Retrieve paged result information for a dependency list
+
+![nd_img_ModioModDependenciesLibrary_GetPagedResult.png](img/refdocs/nd_img_ModioModDependenciesLibrary_GetPagedResult.png)
 
 ```cpp
 FModioPagedResult GetPagedResult(FModioModDependencyList DependencyList)
@@ -8173,6 +9324,8 @@ An FModioPagedResult containing metadata about the paginated data
 
 Retrieve the list of mod dependencies from the dependency list
 
+![nd_img_ModioModDependenciesLibrary_GetDependencies.png](img/refdocs/nd_img_ModioModDependenciesLibrary_GetDependencies.png)
+
 ```cpp
 TArray<FModioModDependency> GetDependencies(FModioModDependencyList DependencyList)
 ```
@@ -8208,6 +9361,8 @@ An array of FModioModDependency representing the dependencies of a mod
 ### Get Paged Result
 
 Retrieve paged result information for a mod info list
+
+![nd_img_ModioModInfoListLibrary_GetPagedResult.png](img/refdocs/nd_img_ModioModInfoListLibrary_GetPagedResult.png)
 
 ```cpp
 FModioPagedResult GetPagedResult(FModioModInfoList ModInfoList)
@@ -8245,6 +9400,8 @@ An FModioPagedResult containing metadata about the paginated data
 
 Retrieve the list of mods from the mod info list
 
+![nd_img_ModioModInfoListLibrary_GetMods.png](img/refdocs/nd_img_ModioModInfoListLibrary_GetMods.png)
+
 ```cpp
 TArray<FModioModInfo> GetMods(FModioModInfoList ModInfoList)
 ```
@@ -8280,6 +9437,8 @@ An array of FModioModInfo objects representing the mods in the list
 ### Get Tags
 
 Retrieve the tags from a mod tag options list
+
+![nd_img_ModioModTagOptionsLibrary_GetTags.png](img/refdocs/nd_img_ModioModTagOptionsLibrary_GetTags.png)
 
 ```cpp
 TArray<FModioModTagInfo> GetTags(FModioModTagOptions ModTags)
@@ -8317,6 +9476,8 @@ An array of FModioModTagInfo representing the tags available for a mod
 
 Retrieve paged result information for a mod tag options list
 
+![nd_img_ModioModTagOptionsLibrary_GetPagedResult.png](img/refdocs/nd_img_ModioModTagOptionsLibrary_GetPagedResult.png)
+
 ```cpp
 FModioPagedResult GetPagedResult(FModioModTagOptions ModTags)
 ```
@@ -8353,6 +9514,8 @@ An FModioPagedResult containing metadata about the paginated data
 
 Get the default portal for the platform the game is running on.
 
+![nd_img_ModioPlatformHelpersLibrary_GetDefaultPortalForCurrentPlatform.png](img/refdocs/nd_img_ModioPlatformHelpersLibrary_GetDefaultPortalForCurrentPlatform.png)
+
 ```cpp
 EModioPortal GetDefaultPortalForCurrentPlatform()
 ```
@@ -8387,6 +9550,8 @@ EModioPortal of the portal to use
 ### Get Default Auth Provider for Current Platform
 
 Get the default Authentication Provider for the current platform the game is running on
+
+![nd_img_ModioPlatformHelpersLibrary_GetDefaultAuthProviderForCurrentPlatform.png](img/refdocs/nd_img_ModioPlatformHelpersLibrary_GetDefaultAuthProviderForCurrentPlatform.png)
 
 ```cpp
 EModioAuthenticationProvider GetDefaultAuthProviderForCurrentPlatform()
@@ -8423,6 +9588,8 @@ EModioAuthenticationProvider to use for authentication calls
 
 Gets the current platform that the game is running on
 
+![nd_img_ModioPlatformHelpersLibrary_GetCurrentPlatform.png](img/refdocs/nd_img_ModioPlatformHelpersLibrary_GetCurrentPlatform.png)
+
 ```cpp
 EModioPlatformName GetCurrentPlatform()
 ```
@@ -8457,6 +9624,8 @@ EModioPlatformName of the current platform
 ### Make Report for User
 
 Creates a content report for a user.
+
+![nd_img_ModioReportLibrary_MakeReportForUser.png](img/refdocs/nd_img_ModioReportLibrary_MakeReportForUser.png)
 
 ```cpp
 FModioReportParams MakeReportForUser(FModioUserID User, EModioReportType Type, FString ReportDescription, FString ReporterName, FString ReporterContact)
@@ -8498,6 +9667,8 @@ A struct containing the report parameters
 
 Creates a content report for a mod.
 
+![nd_img_ModioReportLibrary_MakeReportForMod.png](img/refdocs/nd_img_ModioReportLibrary_MakeReportForMod.png)
+
 ```cpp
 FModioReportParams MakeReportForMod(FModioModID Mod, EModioReportType Type, FString ReportDescription, FString ReporterName, FString ReporterContact)
 ```
@@ -8537,6 +9708,8 @@ A struct containing the report parameters
 ### Make Report for Game
 
 Creates a content report for a game.
+
+![nd_img_ModioReportLibrary_MakeReportForGame.png](img/refdocs/nd_img_ModioReportLibrary_MakeReportForGame.png)
 
 ```cpp
 FModioReportParams MakeReportForGame(FModioGameID Game, EModioReportType Type, FString ReportDescription, FString ReporterName, FString ReporterContact)
@@ -8578,6 +9751,8 @@ A struct containing the report parameters
 
 Round a number string based on the file size or speed.
 
+![nd_img_ModioSDKLibrary_RoundNumberString.png](img/refdocs/nd_img_ModioSDKLibrary_RoundNumberString.png)
+
 ```cpp
 FText RoundNumberString(FText inputText)
 ```
@@ -8613,6 +9788,8 @@ The rounded number string.
 ### Get Percent (integer64/integer64)
 
 Calculate the percentage between two `int64` values.
+
+![nd_img_ModioSDKLibrary_Pct_Int64Int64.png](img/refdocs/nd_img_ModioSDKLibrary_Pct_Int64Int64.png)
 
 ```cpp
 float Pct_Int64Int64(int64 Dividend, int64 Divisor)
@@ -8651,6 +9828,8 @@ The floating-point result of Dividend/Divisor.
 
 Check if the supplied string has the format of a valid mod.io security code.
 
+![nd_img_ModioSDKLibrary_IsValidSecurityCodeFormat.png](img/refdocs/nd_img_ModioSDKLibrary_IsValidSecurityCodeFormat.png)
+
 ```cpp
 bool IsValidSecurityCodeFormat(FString String)
 ```
@@ -8686,6 +9865,8 @@ True if the string matches the mod.io security code format.
 ### Is Valid Email Address Format
 
 Validate if the supplied email address has a valid format.
+
+![nd_img_ModioSDKLibrary_IsValidEmailAddressFormat.png](img/refdocs/nd_img_ModioSDKLibrary_IsValidEmailAddressFormat.png)
 
 ```cpp
 bool IsValidEmailAddressFormat(FString String)
@@ -8723,6 +9904,8 @@ True if the email address is valid.
 
 Get the time span between the present and a specified past date as a string.
 
+![nd_img_ModioSDKLibrary_GetTimeSpanAsString.png](img/refdocs/nd_img_ModioSDKLibrary_GetTimeSpanAsString.png)
+
 ```cpp
 FString GetTimeSpanAsString(FString PastDateString)
 ```
@@ -8758,6 +9941,8 @@ The time span as a string (e.g., "2 days ago").
 ### Get Shortened Number as String
 
 Shorten a large number for better readability.
+
+![nd_img_ModioSDKLibrary_GetShortenedNumberAsString.png](img/refdocs/nd_img_ModioSDKLibrary_GetShortenedNumberAsString.png)
 
 ```cpp
 FString GetShortenedNumberAsString(int64 Number)
@@ -8795,6 +9980,8 @@ The shortened number as a string.
 
 Get the options needed to initialize the mod.io SDK specified in the project settings.
 
+![nd_img_ModioSDKLibrary_GetProjectInitializeOptionsForSessionId.png](img/refdocs/nd_img_ModioSDKLibrary_GetProjectInitializeOptionsForSessionId.png)
+
 ```cpp
 FModioInitializeOptions GetProjectInitializeOptionsForSessionId(FString SessionId)
 ```
@@ -8831,6 +10018,8 @@ The mod.io initialization options for the provided session ID.
 
 Get the game ID specified in the mod.io project settings.
 
+![nd_img_ModioSDKLibrary_GetProjectGameId.png](img/refdocs/nd_img_ModioSDKLibrary_GetProjectGameId.png)
+
 ```cpp
 FModioGameID GetProjectGameId()
 ```
@@ -8865,6 +10054,8 @@ The project game ID.
 ### Get Project Environment
 
 Get the environment specified in the mod.io project settings.
+
+![nd_img_ModioSDKLibrary_GetProjectEnvironment.png](img/refdocs/nd_img_ModioSDKLibrary_GetProjectEnvironment.png)
 
 ```cpp
 EModioEnvironment GetProjectEnvironment()
@@ -8901,6 +10092,8 @@ The project environment type (e.g., production, staging).
 
 Get the API key specified in the mod.io project settings.
 
+![nd_img_ModioSDKLibrary_GetProjectApiKey.png](img/refdocs/nd_img_ModioSDKLibrary_GetProjectApiKey.png)
+
 ```cpp
 FModioApiKey GetProjectApiKey()
 ```
@@ -8935,6 +10128,8 @@ The project API key.
 ### Get Monetization Purchase Category
 
 Get the purchase category ID for the store overlay UI for a given portal.
+
+![nd_img_ModioSDKLibrary_GetMonetizationPurchaseCategory.png](img/refdocs/nd_img_ModioSDKLibrary_GetMonetizationPurchaseCategory.png)
 
 ```cpp
 FString GetMonetizationPurchaseCategory(EModioPortal Portal)
@@ -8972,6 +10167,8 @@ The purchase category ID as a string, or empty if not defined.
 
 Get the language code string (ISO 639-1 format) for localization purposes.
 
+![nd_img_ModioSDKLibrary_GetLanguageCodeString.png](img/refdocs/nd_img_ModioSDKLibrary_GetLanguageCodeString.png)
+
 ```cpp
 FString GetLanguageCodeString(EModioLanguage Language)
 ```
@@ -9007,6 +10204,8 @@ The language code as a string (e.g., "en", "fr", "de").
 ### Get Language Code from String
 
 Convert a language code string to the corresponding language enum.
+
+![nd_img_ModioSDKLibrary_GetLanguageCodeFromString.png](img/refdocs/nd_img_ModioSDKLibrary_GetLanguageCodeFromString.png)
 
 ```cpp
 EModioLanguage GetLanguageCodeFromString(FString LanguageCode)
@@ -9044,6 +10243,8 @@ The corresponding language enum.
 
 Get the appropriate file size unit based on the file size in bytes.
 
+![nd_img_ModioSDKLibrary_GetDesiredFileSizeUnit_Unsigned64.png](img/refdocs/nd_img_ModioSDKLibrary_GetDesiredFileSizeUnit_Unsigned64.png)
+
 ```cpp
 TEnumAsByte<EFileSizeUnit> GetDesiredFileSizeUnit_Unsigned64(FModioUnsigned64 FileSize)
 ```
@@ -9080,6 +10281,8 @@ The desired file size unit.
 
 Get the session ID for Windows to initialize the SDK.
 
+![nd_img_ModioSDKLibrary_GetDefaultSessionIdWindows.png](img/refdocs/nd_img_ModioSDKLibrary_GetDefaultSessionIdWindows.png)
+
 ```cpp
 FString GetDefaultSessionIdWindows()
 ```
@@ -9114,6 +10317,8 @@ The Windows session ID, or an empty string if the platform is not Windows.
 ### ToString (ModioUnsigned64)
 
 Convert a file size to a human-readable string with the appropriate unit.
+
+![nd_img_ModioSDKLibrary_Filesize_ToString_Unsigned64.png](img/refdocs/nd_img_ModioSDKLibrary_Filesize_ToString_Unsigned64.png)
 
 ```cpp
 FText Filesize_ToString_Unsigned64(FModioUnsigned64 FileSize, int32 MinDecimals, int32 MaxDecimals, TEnumAsByte<EFileSizeUnit> Unit, bool bIncludeUnitName)
@@ -9155,6 +10360,8 @@ A formatted string representing the file size.
 
 Returns the default mod installation directory for this game and platform, ignoring overrides and without requiring the SDK to be initialized.
 
+![nd_img_ModioSubsystem_K2_GetDefaultModInstallationDirectory.png](img/refdocs/nd_img_ModioSubsystem_K2_GetDefaultModInstallationDirectory.png)
+
 ```cpp
 FString K2_GetDefaultModInstallationDirectory(FModioGameID GameID)
 ```
@@ -9190,6 +10397,8 @@ The default mod installation directory for the specified game on the current pla
 ### To Filter Params
 
 Converts a preset filter into a concrete set of filter parameters that can be passed to the mod.io plugin
+
+![nd_img_ModioPresetFilterParamsLibrary_ToFilterParams.png](img/refdocs/nd_img_ModioPresetFilterParamsLibrary_ToFilterParams.png)
 
 ```cpp
 FModioFilterParams ToFilterParams(FModioPresetFilterParams Preset)
@@ -9227,6 +10436,8 @@ The converted filter params
 
 Runs a filter over the user's subscription list
 
+![nd_img_ModioExampleLibrary_ListUserSubscriptionAsync.png](img/refdocs/nd_img_ModioExampleLibrary_ListUserSubscriptionAsync.png)
+
 ```cpp
 void ListUserSubscriptionAsync(FModioFilterParams FilterParams, FOnListAllModsDelegate Callback)
 ```
@@ -9261,6 +10472,8 @@ void ListUserSubscriptionAsync(FModioFilterParams FilterParams, FOnListAllModsDe
 ### Get Logo Thumbnail Size
 
 
+![nd_img_ModioExampleLibrary_GetLogoThumbnailSize.png](img/refdocs/nd_img_ModioExampleLibrary_GetLogoThumbnailSize.png)
+
 ```cpp
 EModioLogoSize GetLogoThumbnailSize()
 ```
@@ -9274,6 +10487,8 @@ EModioLogoSize GetLogoThumbnailSize()
 
 ### Get Logo Full Size
 
+
+![nd_img_ModioExampleLibrary_GetLogoFullSize.png](img/refdocs/nd_img_ModioExampleLibrary_GetLogoFullSize.png)
 
 ```cpp
 EModioLogoSize GetLogoFullSize()
@@ -9289,6 +10504,8 @@ EModioLogoSize GetLogoFullSize()
 ### Get Avatar Thumbnail Size
 
 
+![nd_img_ModioExampleLibrary_GetAvatarThumbnailSize.png](img/refdocs/nd_img_ModioExampleLibrary_GetAvatarThumbnailSize.png)
+
 ```cpp
 EModioAvatarSize GetAvatarThumbnailSize()
 ```
@@ -9303,6 +10520,8 @@ EModioAvatarSize GetAvatarThumbnailSize()
 ### SubmitNewModFromMemoryAsync
 
 Submit a new mod, with its logo data coming from an in-memory buffer rather than a file.
+
+![nd_img_ModioSubmissionExtensionLibrary_K2_SubmitNewModFromMemoryAsync.png](img/refdocs/nd_img_ModioSubmissionExtensionLibrary_K2_SubmitNewModFromMemoryAsync.png)
 
 ```cpp
 void K2_SubmitNewModFromMemoryAsync(FModioModCreationHandle Handle, FModioCreateModParams Params, TArray<uint8> PngData, FOnSubmitNewModDelegate Callback)
@@ -9340,6 +10559,8 @@ void K2_SubmitNewModFromMemoryAsync(FModioModCreationHandle Handle, FModioCreate
 ### SubmitNewModFileForModFromMemory
 
 Queues the upload of a new mod file release for the specified mod, using the submitted parameters. This upload method accepts a block of memory `TArray<uint8>` rather than a file path. The upload's progress can be tracked in the same way as downloads; when completed, a Mod Management Event will be triggered with the result code for the upload.
+
+![nd_img_ModioSubmissionExtensionLibrary_K2_SubmitNewModFileForModFromMemory.png](img/refdocs/nd_img_ModioSubmissionExtensionLibrary_K2_SubmitNewModFileForModFromMemory.png)
 
 ```cpp
 void K2_SubmitNewModFileForModFromMemory(UModioSubsystem* Target, FModioModID Mod, FModioCreateModFileMemoryParams Params)
@@ -9380,6 +10601,8 @@ void K2_SubmitNewModFileForModFromMemory(UModioSubsystem* Target, FModioModID Mo
 
 Loads an installed mod file into memory.
 
+![nd_img_ModioSubmissionExtensionLibrary_K2_LoadModFileToMemory.png](img/refdocs/nd_img_ModioSubmissionExtensionLibrary_K2_LoadModFileToMemory.png)
+
 ```cpp
 bool K2_LoadModFileToMemory(UModioSubsystem* Target, FModioModID ModId, TArray<uint8> ModData)
 ```
@@ -9416,6 +10639,25 @@ bool K2_LoadModFileToMemory(UModioSubsystem* Target, FModioModID ModId, TArray<u
 
 
 ## Enums
+
+### EModioGameCloudCookingStatus {#EModioGameCloudCookingStatus} 
+
+Cloud Cooking status for this game
+
+
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+| `Disabled` |  |
+| `Initializing` |  |
+| `Initialized` |  |
+| `Finalizing` |  |
+| `Enabled` |  |
+| `ActionRequired` |  |
+| `TearingDown` |  |
+</RefTable>
+
+---
 
 ### EModioModfilePlatform {#EModioModfilePlatform} 
 
@@ -9474,6 +10716,37 @@ Monetization properties of a game
 
 ---
 
+### EModioMaturityFlags {#EModioMaturityFlags} 
+
+Enum representing mature content that a mod may contain
+
+
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+| `None` | No maturity |
+| `Alcohol` | Content contains alcohol references |
+| `Drugs` | Content contains drug references |
+| `Violence` | Content contains violence references |
+| `Explicit` | Content contains sexual references |
+</RefTable>
+
+---
+
+### EModioObjectVisibilityFlags {#EModioObjectVisibilityFlags} 
+
+Enum representing whether or not a mod is visible to users
+
+
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+| `Hidden` | Mod is concealed from users |
+| `Public` | Mod is openly available |
+</RefTable>
+
+---
+
 ### EModioModServerSideStatus {#EModioModServerSideStatus} 
 
 Enum representing a mod's server-side status
@@ -9522,20 +10795,6 @@ Current state of the scanned file
 
 ---
 
-### EModioObjectVisibilityFlags {#EModioObjectVisibilityFlags} 
-
-Enum representing whether or not a mod is visible to users
-
-
-<RefTable colWidths={['30%', '70%']} stripes="odd">
-| | |
-|-|-|
-| `Hidden` | Mod is concealed from users |
-| `Public` | Mod is openly available |
-</RefTable>
-
----
-
 ### EModioModCommunityOptionsFlags {#EModioModCommunityOptionsFlags} 
 
 Enum representing community options for a mod Unreal's Enum class flags don't support uint32, so we use uint8 for bitmask handling
@@ -9549,23 +10808,6 @@ Enum representing community options for a mod Unreal's Enum class flags don't su
 | `EnablePreviews` | Enable Previews |
 | `EnablePreviewURLs` | Enable Preview URLs |
 | `AllowDependencies` | Allow mod dependencies |
-</RefTable>
-
----
-
-### EModioMaturityFlags {#EModioMaturityFlags} 
-
-Enum representing mature content that a mod may contain
-
-
-<RefTable colWidths={['30%', '70%']} stripes="odd">
-| | |
-|-|-|
-| `None` | No maturity |
-| `Alcohol` | Content contains alcohol references |
-| `Drugs` | Content contains drug references |
-| `Violence` | Content contains violence references |
-| `Explicit` | Content contains sexual references |
 </RefTable>
 
 ---
@@ -9697,6 +10939,7 @@ Type of entitlement that was consumed
 | `ModCannotDeleteDependency` | This mod is a dependency of other mods and cannot be deleted. |
 | `RequestInProgress` | The asynchronous operation is already running. Please wait for it to complete before calling it again |
 | `InvalidZipFile` | The zip file submitted is invalid. |
+| `CloudCookingDisabled` | Cloud Cooking is disabled for this game. |
 </RefTable>
 
 ---
@@ -9930,6 +11173,7 @@ Enum representing the languages mod.io supports responses in
 | `Italian` |  |
 | `Polish` |  |
 | `Portuguese` |  |
+| `PortugueseBrazilian` |  |
 | `Hungarian` |  |
 | `Japanese` |  |
 | `Korean` |  |
@@ -9941,6 +11185,7 @@ Enum representing the languages mod.io supports responses in
 | `Turkish` |  |
 | `Ukrainian` |  |
 | `Arabic` |  |
+| `Czech` |  |
 </RefTable>
 
 ---

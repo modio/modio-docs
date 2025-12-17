@@ -1,0 +1,33 @@
+---
+id: user-status-object
+title: "User Status Object"
+description: "Contains user data including status."
+sidebar_label: "User Status Object"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"id":1,"name_id":"xant","username":"XanT","display_name_portal":null,"date_online":1509922961,"date_joined":1509922961,"avatar":{"filename":"avatar.png","original":"https://assets.modcdn.io/images/placeholder/avatar.png","thumb_50x50":"https://assets.modcdn.io/images/placeholder/avatar_50x50.png","thumb_100x100":"https://assets.modcdn.io/images/placeholder/avatar_100x100.png"},"timezone":"","language":"","country":"US","privacy_options":3,"status":1,"monetization_status":0,"profile_url":"https://mod.io/u/xant"}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"User Status Object"}
+>
+</Heading>
+
+
+
+Contains user data including status.
+
+<Schema
+  schema={{"title":"User Status Object","description":"Contains user data including status.","properties":{"id":{"description":"Unique id of the user.","type":"integer","format":"int32","example":1},"name_id":{"description":"Path for the user on mod.io. For example: https://mod.io/u/__name-id-here__","type":"string","example":"xant"},"username":{"description":"Display name of the user.","type":"string","example":"XanT"},"display_name_portal":{"description":"The user's display name for the targeted portal. Value will be `null`\n                if no valid `X-Modio-Portal` portal header value is provided. For more\n                information see [Targeting a Portal](/restapi/platforms#targeting-a-portal).","type":"string","example":null},"date_online":{"description":"Unix timestamp of date the user was last online.","type":"integer","format":"int32","example":1509922961},"date_joined":{"description":"Unix timestamp of date the user joined.","type":"integer","format":"int32","example":1509922961},"avatar":{"title":"Avatar Object","description":"Contains avatar data.","properties":{"filename":{"description":"Avatar filename including extension.","type":"string","example":"avatar.png"},"original":{"description":"URL to the full-sized avatar.","type":"string","example":"https://assets.modcdn.io/images/placeholder/avatar.png"},"thumb_50x50":{"description":"URL to the small avatar thumbnail.","type":"string","example":"https://assets.modcdn.io/images/placeholder/avatar_50x50.png"},"thumb_100x100":{"description":"URL to the medium avatar thumbnail.","type":"string","example":"https://assets.modcdn.io/images/placeholder/avatar_100x100.png"}},"type":"object"},"timezone":{"description":"Deprecated: No longer used and will be removed in subsequent API version.","type":"string","example":""},"language":{"description":"Deprecated: No longer used and will be removed in subsequent API version.\n                To [localize the API response](/restapi/localization) we recommend you set the\n                `Accept-Language` header.","type":"string","example":""},"country":{"description":"2 character country code\n                [in ISO 3166-1 Alpha 2 format](/restapi/docs/https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).","type":"string","example":"US"},"privacy_options":{"description":"Bitmask of the user's privacy options.","type":"integer","format":"int32","example":3},"status":{"description":"Status of the user<br /><br />__0__ = Unconfirmed<br />\n                __1__ = Confirmed & Accepted<br />__3__ = Deleted<br />__4__= Banned","type":"integer","format":"int32","example":1},"monetization_status":{"description":"User's monetization status.","type":"integer","format":"int32","example":0},"profile_url":{"description":"URL to the user's profile.","type":"string","example":"https://mod.io/u/xant"}},"type":"object"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

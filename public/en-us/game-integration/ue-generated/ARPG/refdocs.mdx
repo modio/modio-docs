@@ -1,0 +1,280 @@
+---
+id: modio-action-rpg-refdocs
+title: Modio Action RPG API Reference
+slug: /unreal/modio-action-rpg-refdocs
+---
+
+
+## Classes
+
+
+### ActionRPGModioSubsystem 
+
+
+
+##### Inheritance Hierarchy
+-> EngineSubsystem-> DynamicSubsystem-> Subsystem-> Object
+
+
+
+
+
+
+#### Get Override Portal
+
+
+
+![nd_img_ActionRPGModioSubsystem_GetOverridePortal.png](img/refdocs/nd_img_ActionRPGModioSubsystem_GetOverridePortal.png)
+
+```cpp
+bool GetOverridePortal(EModioPortal OutPortal) const
+```
+
+
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ActionRPGModioSubsystem`|
+|`Out Portal`|The output parameter to receive the portal value|
+</RefTable>
+
+
+
+##### Returns
+true if the portal was overridden, false otherwise
+
+
+
+
+
+
+
+
+
+
+
+#### Get Override Game Environment
+
+
+
+![nd_img_ActionRPGModioSubsystem_GetOverrideGameEnvironment.png](img/refdocs/nd_img_ActionRPGModioSubsystem_GetOverrideGameEnvironment.png)
+
+```cpp
+bool GetOverrideGameEnvironment(EModioEnvironment OutEnvironment) const
+```
+
+
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ActionRPGModioSubsystem`|
+|`Out Environment`|The environment to get|
+</RefTable>
+
+
+
+##### Returns
+true if the environment was overridden, false otherwise
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+### ModioAuthSubsystem 
+
+
+
+##### Inheritance Hierarchy
+-> LocalPlayerSubsystem-> Subsystem-> Object
+
+
+
+
+
+
+#### Begin Modio Authentication
+
+
+![nd_img_ModioAuthSubsystem_BeginModioAuthentication.png](img/refdocs/nd_img_ModioAuthSubsystem_BeginModioAuthentication.png)
+
+```cpp
+void BeginModioAuthentication(TEnumAsByte<EUIMode> UIMode)
+```
+
+
+
+
+
+
+
+
+
+
+---
+
+### ModioEntitlementSubsystem 
+
+
+
+##### Inheritance Hierarchy
+-> EngineSubsystem-> DynamicSubsystem-> Subsystem-> Object
+
+
+
+
+
+
+#### Refresh User Entitlements with Handler
+
+
+![nd_img_ModioEntitlementSubsystem_RefreshUserEntitlementsWithHandler.png](img/refdocs/nd_img_ModioEntitlementSubsystem_RefreshUserEntitlementsWithHandler.png)
+
+```cpp
+void RefreshUserEntitlementsWithHandler(FOnUserEntitlementsRefreshedDelegate Handler)
+```
+
+
+
+
+
+
+
+#### Refresh User Entitlements
+
+
+![nd_img_ModioEntitlementSubsystem_RefreshUserEntitlements.png](img/refdocs/nd_img_ModioEntitlementSubsystem_RefreshUserEntitlements.png)
+
+```cpp
+void RefreshUserEntitlements()
+```
+
+
+
+
+
+
+
+
+
+
+---
+
+### ModioOculusAuthSubsystem 
+
+
+
+##### Inheritance Hierarchy
+-> GameInstanceSubsystem-> Subsystem-> Object
+
+
+
+
+
+
+#### Begin Modio Authentication
+
+
+![nd_img_ModioOculusAuthSubsystem_BeginModioAuthentication.png](img/refdocs/nd_img_ModioOculusAuthSubsystem_BeginModioAuthentication.png)
+
+```cpp
+void BeginModioAuthentication(TEnumAsByte<EUIMode> UIMode)
+```
+
+
+
+
+
+
+
+
+
+
+---
+
+
+
+## Structs
+
+
+
+## Functions 
+
+
+
+### Add Item to Steam Inventory
+
+
+
+![nd_img_ActionRPGModioSubsystem_AddItemToSteamInventory.png](img/refdocs/nd_img_ActionRPGModioSubsystem_AddItemToSteamInventory.png)
+
+```cpp
+void AddItemToSteamInventory(int32 Result, int32 ItemId, int32 Quantity)
+```
+
+
+
+
+
+
+#### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`ItemId`|The ID of the Item to add, defaults to 101 which is the 200 token pack in the Monetization Test Game|
+|`Quantity`|How many of the item to add to the user's inventory.|
+|`Result`|The result returned from the Steam API, -1 indicates an error.|
+</RefTable>
+
+
+
+
+
+
+
+
+
+
+
+---
+
+
+
+## Enums
+
+### EUIMode {#EUIMode} 
+
+Enum for selecting between Template UI screens and Example UI Screens
+
+
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+| `Template` |  |
+| `Example` |  |
+</RefTable>
+
+---
+
+
+

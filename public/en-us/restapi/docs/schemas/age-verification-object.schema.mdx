@@ -1,0 +1,33 @@
+---
+id: age-verification-object
+title: "Age Verification Object"
+description: "Contains age verification data."
+sidebar_label: "Age Verification Object"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"age_group":0,"age_gate_status":0,"restrictions":0}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Age Verification Object"}
+>
+</Heading>
+
+
+
+Contains age verification data.
+
+<Schema
+  schema={{"title":"Age Verification Object","description":"Contains age verification data.","properties":{"age_group":{"description":"Age group category of this user:<br /><br />__0__ = Unknown <br />__1__ = Minor <br />__2__ = Youth <br />__3__ = Adult.","type":"integer","format":"int32","example":0},"age_gate_status":{"description":"The status of an age verification request for this user:<br /><br />__0__ = Pending <br />__1__ = Rejected <br />__2__ = Approved.","type":"integer","format":"int32","example":0},"restrictions":{"description":"The bitmask permissions assigned to a user account, specifying the actions the user is permitted to perform.","type":"integer","format":"int32","example":0}},"type":"object"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

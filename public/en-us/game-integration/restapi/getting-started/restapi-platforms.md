@@ -42,6 +42,7 @@ Xbox Series X | `xboxseriesx`
 PlayStation 4 | `ps4`
 PlayStation 5 | `ps5`
 Switch | `switch`
+Switch 2 | `switch2`
 Oculus | `oculus`
 Windows Server | `windowsserver`
 Linux Server | `linuxserver`

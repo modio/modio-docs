@@ -2,6 +2,7 @@
 id: ue-initialization
 title: Initialization
 slug: /unreal/initialization
+custom_edit_url: https://github.com/modio/modio-ue4-internal/blob/develop/Plugins/Modio/Doc/doc_root/en-us/getting-started/ue-initialization.mdx
 ---
 
 # Initialization
@@ -103,7 +104,7 @@ void UModioManagerSubsystem::OnShutdownComplete(FModioErrorCode ErrorCode)
 
 
 :::note
-* You must continue to call [**`RunPendingHandlers`**](/unreal/refdocs#run-pending-handlers) while shutdown is in progress to allow intermediate handlers to complete.
+* You must continue to call [`RunPendingHandlers`](/unreal/refdocs#run-pending-handlers) while shutdown is in progress to allow intermediate handlers to complete.
 * Any in-flight mod.io async calls will complete with an error code indicating cancellation.
 * You *must not* call **`ShutdownAsync`** from within another completion handler/callback. This may cause the application to deadlock. 
 :::

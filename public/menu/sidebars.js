@@ -284,7 +284,7 @@ const sidebars = {
         {
           type: 'category',
           label: 'Epic Games',
-          items: ['platforms/pc/epic/authentication'],
+          items: ['platforms/pc/epic/authentication', 'platforms/pc/epic/marketplace'],
         },
         {
           type: 'category',

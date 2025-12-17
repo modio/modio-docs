@@ -53,7 +53,7 @@ Premium UGC | User generated content that can be bought or sold from the Marketp
 Virtual Currency | The currency that a player exchanges in return for premium UGC - irrespective of the vanity name your game uses for it. | mod.io
 Currency Pack | A pre-configured pack containing a specific amount of virtual currency. | mod.io
 Wallet | A wallet where any virtual currency you own resides. | mod.io
-Entitlement | A user-purchased digital right to a currency pack, which is always purchased through platform stores such as Steam, Xbox Live, PlayStation™Network, Meta, etc and exchanged with mod.io for virtual currency. | Third-party platforms
+Entitlement | A user-purchased digital right to a currency pack, which is always purchased through platform stores such as Steam, Xbox Live, PlayStation™Network, Meta, Epic Games Store, etc and exchanged with mod.io for virtual currency. | Third-party platforms
 
 ## Concepts
 
@@ -67,6 +67,7 @@ Entitlement Mapping is the process of associating a third-party platform store e
 - [Apple (iOS)](/platforms/apple/marketplace)
 - [Google Play (Android)](/platforms/google/marketplace)
 - [Meta Quest](/platforms/meta/marketplace)
+- [Epic Games Store](/platforms/epic/marketplace)
 
 ## Implementation
 
@@ -143,8 +144,8 @@ When it comes to a user purchasing virtual currency it depends on where your mod
   </tr>
   <tr>
     <td>Xbox Live</td>
-    <td rowspan="4">Entitlement</td>
-    <td rowspan="4">Player purchases consumable entitlement via platform store. Game client syncs entitlements to mod.io in-game, converting the entitlement(s) into mod.io virtual currency.</td>
+    <td rowspan="5">Entitlement</td>
+    <td rowspan="5">Player purchases consumable entitlement via platform store. Game client syncs entitlements to mod.io in-game, converting the entitlement(s) into mod.io virtual currency.</td>
   </tr>
   <tr>
     <td>PlayStation™Network</td>
@@ -154,6 +155,9 @@ When it comes to a user purchasing virtual currency it depends on where your mod
   </tr>
   <tr>
     <td>Meta</td>
+  </tr>
+  <tr>
+    <td>Epic Games Store</td>
   </tr>
 </table>
 
@@ -236,7 +240,7 @@ xbox_token=ey32954mg490fejnf823
       "transaction_state": 2,
       "sku_id": "PACK001",
       "entitlement_consumed": true,
-      "entitlement_type": 1,
+      "entitlement_type": 0,
       "details": null
     }
   ]
@@ -299,7 +303,7 @@ psn_token=v3.AbCdE&psn_env=0&psn_service_label=1
       "transaction_state": 2,
       "sku_id": "PACK001",
       "entitlement_consumed": true,
-      "entitlement_type": 1,
+      "entitlement_type": 0,
       "details": null
     }
   ]
@@ -355,7 +359,7 @@ Authorization: Bearer {access-token}
       "transaction_state": 2,
       "sku_id": "PACK001",
       "entitlement_consumed": true,
-      "entitlement_type": 1,
+      "entitlement_type": 0,
       "details": null
     }
   ]
@@ -417,7 +421,69 @@ meta_device=rift&meta_user_id=32732194120
       "transaction_state": 2,
       "sku_id": "PACK001",
       "entitlement_consumed": true,
-      "entitlement_type": 1,
+      "entitlement_type": 0,
+      "details": null
+    }
+  ]
+}
+```
+
+##### Response schema
+
+Name|Type|Description
+---|---|---
+wallet | object | Contains wallet data.
+wallet.balance | integer | The amount of virtual currency in the wallet.
+data | array | Contains entitlement data.
+data[].transaction_id | string | The mod.io transaction ID for the entitlement transfer.
+data[].transaction_state | integer | The mod.io transaction state from converting the portal entitlements into mod.io assets / currency. Possible values:<ul><li><strong>0</strong> = Failed</li><li><strong>1</strong> = Pending</li><li><strong>2</strong> = Fulfilled</li><li><strong>3</strong> = Consume Limit Exceeded</li></ul> 
+data[].sku_id | string | The portal SKU ID associated with the transaction. This will be the ID as defined by the portal (i.e. Xbox Live).
+data[].entitlement_consumed | boolean | Has the entitlement been consumed in the third-party portal?
+data[].entitlement_type | integer | The entitlement type, once consumed and the entitlement is transferred to mod.io. Possible values:<ul><li><strong>0</strong> = Virtual Currency</li></ul>
+details | object (nullable) | Additional information associated with the transaction.
+
+#### Epic Game Store
+
+##### Request
+
+`POST https://g-{your-game-id}.modapi.io/v1/me/iap/epicgames/sync`
+
+##### Headers
+
+Header|Type|Required|Description
+---|---|---|---|
+Authorization|string|true|The user's mod.io access token.
+
+##### Body
+
+Parameter|Type|Required|Description
+-------|---|---|---|
+epicgames_token|string|true|The bearer token which can act on behalf of the user. Refer to ["requesting an access token"](https://dev.epicgames.com/docs/web-api-ref/authentication#requesting-an-access-token) in the Epic Games documentation.
+epicgames_sandbox_id|string|true|The environment to target. Refer to ["what is a sandbox?"](https://dev.epicgames.com/docs/dev-portal/product-management#what-is-a-sandbox) in the Epic Games documentation.
+
+```
+POST https://g-{your-game-id}.modapi.io/v1/me/iap/epicgames/sync HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+Accept: application/json
+Authorization: Bearer {access-token}
+
+epicgames_token=eyJraWQiOiJWbWdpMDFoQ...&epicgames_sandbox_id=p-k3t9v0mdqzgsx4hpl8w2nfc5ry7bj4
+```
+
+##### Response
+
+```json
+{
+  "wallet": {
+    "balance": 200
+  },
+  "data": [
+    {
+      "transaction_id": "3925648920",
+      "transaction_state": 2,
+      "sku_id": "PACK001",
+      "entitlement_consumed": true,
+      "entitlement_type": 0,
       "details": null
     }
   ]
@@ -987,7 +1053,7 @@ mod.io recommends that by default you set the level of access to the following:
 
 - Third party access - Checked
 - Direct Downloads - Checked
-- Allow downloads for authenticated users - Unchecked
+- Allow downloads for unauthenticated users - Unchecked
 - Allow downloads for paid mods without purchase - Unchecked
 
 ## Error reference

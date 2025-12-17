@@ -1,0 +1,33 @@
+---
+id: moderation-rules-history-request-object
+title: "Moderation Rules History Request Object"
+description: ""
+sidebar_label: "Moderation Rules History Request Object"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"timeframe":"string"}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Moderation Rules History Request Object"}
+>
+</Heading>
+
+
+
+
+
+<Schema
+  schema={{"title":"Moderation Rules History Request Object","required":["timeframe"],"properties":{"timeframe":{"description":"The timeframe for the moderation rules history. May be one of: <br /><br />__last_minute__ = The last 60 seconds of activity.<br />__last_5_minutes__ = The last 5 minutes of activity.<br />__last_15_minutes__ = The last 15 minutes of activity.<br />__last_30_minutes__ = The last 30 minutes of activity.<br />__last_hour__ = The last 60 minutes of activity.<br />__last_day__ = The last 24 hours of activity.","type":"string"}},"type":"object"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            
