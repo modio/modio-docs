@@ -66,4 +66,4 @@ Storage space available for UGC will be limited, and allocation for space dedica
 
 ## More information
 
-Head to our console [SDK Access](/platforms/console-sdks) page, for detailed information about using mod.io on the Nintendo Switch, and access to the relevant console module SDK. Be aware that accessing this information requires completion of the appropriate NDA.
+Head to our console [SDK Access](/platforms/console-sdks) page, for detailed information about using mod.io on the Nintendo Switch or Switch 2, and access to the relevant console module SDK. Be aware that accessing this information requires completion of the appropriate NDA.

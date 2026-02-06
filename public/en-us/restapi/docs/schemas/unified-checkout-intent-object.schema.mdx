@@ -1,0 +1,33 @@
+---
+id: unified-checkout-intent-object
+title: "Unified Checkout Intent Object"
+description: ""
+sidebar_label: "Unified Checkout Intent Object"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"transaction_id":0,"gateway_uuid":"123e4567-e89b-12d3-a456-426614174000","gross_amount":0,"net_amount":0,"platform_fee":0,"gateway_fee":0,"tax":0,"tax_type":"string","transaction_type":"string","meta":[{"token_pack_id":1234,"token_pack_name":"100 Coins","game_id":4567,"game_name":"my game","buyer_id":8910,"buyer_name":"buyers name","token_name":"token name"}],"purchase_date":0}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Unified Checkout Intent Object"}
+>
+</Heading>
+
+
+
+
+
+<Schema
+  schema={{"title":"Unified Checkout Intent Object","properties":{"transaction_id":{"description":"The transaction id.","type":"integer","format":"int32"},"gateway_uuid":{"description":"The universally unique ID (UUID) that represents a unique transaction with the payment gateway.","type":"string","example":"123e4567-e89b-12d3-a456-426614174000"},"gross_amount":{"description":"The gross amount of the purchase in the lowest denomination of currency.","type":"integer","format":"int32"},"net_amount":{"description":"The net amount of the purchase in the lowest denomination of currency.","type":"integer","format":"int32"},"platform_fee":{"description":"The platform fee of the purchase in the lowest denomination of currency.","type":"integer","format":"int32"},"gateway_fee":{"description":"The gateway fee of the purchase in the lowest denomination of currency.","type":"integer","format":"int32"},"tax":{"description":"The tax amount of the purchase in cents.","type":"integer","format":"int32"},"tax_type":{"description":"The tax type.","type":"string"},"transaction_type":{"description":"The state of the transaction that was processed. E.g. CANCELLED, CLEARED, FAILED, PAID, PENDING, REFUNDED.","type":"string"},"meta":{"description":"A metadata array of objects returned from the transaction.","type":"array","items":{"properties":{"token_pack_id":{"description":"Token Pack ID.","type":"integer","example":1234},"token_pack_name":{"description":"Name of the token pack.","type":"string","example":"100 Coins"},"game_id":{"description":"Game ID.","type":"integer","example":4567},"game_name":{"description":"Name of the game.","type":"string","example":"my game"},"buyer_id":{"description":"Buyer ID.","type":"integer","example":8910},"buyer_name":{"description":"Name of the buyer.","type":"string","example":"buyers name"},"token_name":{"description":"Name of the token.","type":"string","example":"token name"}},"type":"object"}},"purchase_date":{"description":"The time of the purchase.","type":"integer","format":"int32"}},"type":"object"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

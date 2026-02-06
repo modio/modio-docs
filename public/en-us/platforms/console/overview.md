@@ -17,13 +17,14 @@ Adding UGC to consoles requires approval from the corresponding platform in orde
 
 The following platforms are able to integrate mod.io.
 
-|      | **Service Availability** | **Certification Support** | **Native SDK** | **Single Sign-On** |
-|------|:----:|:----:|:----:|:----:|
-| **[Xbox One](/platforms/gdk)**       | ✓ | ✓ | ✓ | ✓ |
-| **[Xbox Series X](/platforms/gdk)**   | ✓ | ✓ | ✓ | ✓ |
-| **[PlayStation®4](/platforms/playstation)**   | ✓ | ✓ | ✓ | ✓ |
-| **[PlayStation®5](/platforms/playstation)**   | ✓ | ✓ | ✓ | ✓ |
-| **[Nintendo Switch](/platforms/switch)** | ✓ | ✓ | ✓ | ✓ |
+|      | **Service Availability** | **Certification Support** | **Native SDK** | **Single Sign-On** | **Monetization** |
+|------|:----:|:----:|:----:|:----:|:----:|
+| **[Xbox One](/platforms/gdk)**       | ✓ | ✓ | ✓ | ✓ | ✓ |
+| **[Xbox Series X](/platforms/gdk)**   | ✓ | ✓ | ✓ | ✓ | ✓ |
+| **[PlayStation®4](/platforms/playstation)**   | ✓ | ✓ | ✓ | ✓ | ✓ |
+| **[PlayStation®5](/platforms/playstation)**   | ✓ | ✓ | ✓ | ✓ | ✓ |
+| **[Nintendo Switch](/platforms/switch)** | ✓ | ✓ | ✓ | ✓ | |
+| **[Nintendo Switch 2](/platforms/switch)** | ✓ | ✓ | ✓ | ✓ | |
 
 ## Feature set for consoles
 

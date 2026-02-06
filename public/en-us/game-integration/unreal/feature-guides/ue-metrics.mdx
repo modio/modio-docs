@@ -7,7 +7,7 @@ custom_edit_url: https://github.com/modio/modio-ue4-internal/blob/develop/Plugin
 
 # Metrics for Unreal
 
-The mod.io Unreal Engine Plugin supports all of our [Metrics](/metrics) features, allowing you to track play sessions as well as deliver more basic profiling and stats. This page will guide you through how to implement each into your dashboard.
+The mod.io Unreal Engine Plugin supports all of our [Metrics](https://docs.mod.io/metrics) features, allowing you to track play sessions as well as deliver more basic profiling and stats. This page will guide you through how to implement each into your dashboard.
 
 This guide covers:
 
@@ -16,11 +16,9 @@ This guide covers:
 
 ## Play Sessions Metrics
 
-[Play Sessions Metrics](/metrics/game#play-sessions) lets you track what UGC your players interact with most frequently, including concurrent players, sessions, playtime, and UGC usage per session. The process involves starting a Metrics play session, keeping that session alive via a heartbeat, and then ending that session.
+[Play Sessions Metrics](https://docs.mod.io/metrics/game#play-sessions) lets you track what UGC your players interact with most frequently, including concurrent players, sessions, playtime, and UGC usage per session. The process involves starting a Metrics play session, keeping that session alive via a heartbeat, and then ending that session.
 
-:::note[Premium Feature]
-Play Sessions is a premium feature. Sign up to one of our [advanced service tiers](https://mod.io/pricing) to activate detailed data analytics, or contact us at developers@mod.io for more information.
-:::
+:::note[Premium Feature] Play Sessions and & Metrics is a premium feature. Please contact us at developers@mod.io for more information. :::
 
 The Metrics session functionality is all accessible through the `ModioSubsystem` class.
 

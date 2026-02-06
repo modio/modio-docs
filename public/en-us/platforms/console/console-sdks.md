@@ -22,6 +22,7 @@ For studios that have gained [platform approval](#gaining-platform-approval) by 
 * [PlayStation®5](https://docs.mod.io/partners/ps5)
 * [Xbox One/Series X GDK](https://docs.mod.io/partners/xbox)
 * [Nintendo Switch](https://docs.mod.io/partners/switch)
+* [Nintendo Switch 2](https://docs.mod.io/partners/switch2)
 
 :::note
 These links will only work for studios who we have verified as being under the applicable NDA.

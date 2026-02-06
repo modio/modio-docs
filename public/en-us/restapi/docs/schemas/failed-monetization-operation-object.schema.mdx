@@ -1,0 +1,33 @@
+---
+id: failed-monetization-operation-object
+title: "Failed Monetization Operation Object"
+description: ""
+sidebar_label: "Failed Monetization Operation Object"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"id":123456,"user_id":789012,"operation_type":"REFUND","transaction_id":345678,"payload":{"checkout_type":"unified","checkout_payload":{"mod_id":1,"transaction_id":456,"idempotent_key":1}},"error":"Transaction could not be processed as the payment provider is unavailable.","attempts":3,"failed_at":"1764558726"}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Failed Monetization Operation Object"}
+>
+</Heading>
+
+
+
+
+
+<Schema
+  schema={{"title":"Failed Monetization Operation Object","properties":{"id":{"description":"The unique identifier of the failed monetization operation.","type":"integer","format":"int32","example":123456},"user_id":{"description":"The user ID associated with this failed operation.","type":"integer","format":"int32","example":789012},"operation_type":{"description":"The type of monetization operation that failed.","type":"string","enum":["TRANSACTION","REFUND"],"example":"REFUND"},"transaction_id":{"description":"The transaction ID associated with this failed operation.","type":"integer","format":"int32","example":345678},"payload":{"description":"The payload data that was being processed when the operation failed.","type":"object","example":{"checkout_type":"unified","checkout_payload":{"mod_id":1,"transaction_id":456,"idempotent_key":1}}},"error":{"description":"The error message describing why the operation failed.","type":"string","example":"Transaction could not be processed as the payment provider is unavailable."},"attempts":{"description":"The number of attempts made to process this operation after it was logged as failed.","type":"integer","format":"int32","example":3},"failed_at":{"description":"The unix timestamp of when the operation originally failed.","type":"integer","format":"int32","example":"1764558726"}},"type":"object"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            
