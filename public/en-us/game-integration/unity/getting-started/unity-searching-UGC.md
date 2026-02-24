@@ -2,6 +2,7 @@
 id: unity-searching-ugc
 title: Searching for UGC
 slug: /unity/searching-ugc
+custom_edit_url: https://github.com/modio/modio-unity-internal/tree/main/docs/public/getting-started/unity-searching-ugc.md
 ---
 
 # Searching for UGC

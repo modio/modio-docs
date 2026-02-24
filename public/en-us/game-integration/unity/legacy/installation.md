@@ -2,7 +2,7 @@
 id: unity-setup
 title: Installation & Setup
 slug: /legacy/unity/setup
-sidebar_position: 1
+custom_edit_url: https://github.com/modio/modio-unity-internal/tree/main/docs/public/legacy/installation.md
 ---
 
 # Installation & Setup

@@ -24,19 +24,21 @@ For studios that have gained [platform approval](#gaining-platform-approval) by 
 * [Nintendo Switch](https://docs.mod.io/partners/switch)
 * [Nintendo Switch 2](https://docs.mod.io/partners/switch2)
 
-:::note
-These links will only work for studios who we have verified as being under the applicable NDA.
+:::note[Premium Feature]
+Console support is a premium feature. These links will only work for studios who have signed up to one of our advanced service tiers and we have verified as being under the [applicable platform NDA](#gaining-platform-approval).
 
-If you believe you are but cannot access the documentation, follow the links below to confirm your NDA status, or [contact us](mailto:developers@mod.io) for assistance.
-
-* [PlayStation®4 / PlayStation®5](/platforms/playstation#sdk-access)
-* [Xbox](/platforms/gdk#sdk-access)
-* [Nintendo Switch](/platforms/switch#sdk-access)
+If you believe you are but cannot access the documentation, [contact us](mailto:developers@mod.io) for assistance.
 :::
 
 ## Gaining platform approval
 
-Before embarking on your UGC support journey with any new platform, your first step should be to speak to your account manager and let them know you intend on supporting UGC using mod.io. This allows you to begin the process of understanding what rules exist and information they require from you in order for your plans to pass certification.
+Before embarking on your UGC support journey with any new platform, your first step is to verify your access under the applicable NDA:
+
+* [PlayStation®4 / PlayStation®5](/platforms/playstation#sdk-access)
+* [Xbox](/platforms/gdk#sdk-access)
+* [Nintendo Switch](/platforms/switch#sdk-access)
+
+The next step should be to speak to your account manager and let them know you intend on supporting UGC using mod.io. This allows you to begin the process of understanding what rules exist and information they require from you in order for your plans to pass certification.
 
 ### We can help connect you
 

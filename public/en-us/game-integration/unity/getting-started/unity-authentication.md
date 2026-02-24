@@ -2,13 +2,14 @@
 id: unity-authentication
 title: User Authentication
 slug: /unity/user-authentication
+custom_edit_url: https://github.com/modio/modio-unity-internal/tree/main/docs/public/getting-started/unity-authentication.md
 ---
 
 # User Authentication for Unity
 
-Most of the API’s functionality requires player authentication. The Unity Plugin offers a range of SSO (single-sign on) authentication options, including *Steam, Meta, Epic Games, Apple, Google, Xbox, PS4™/PS5®, Nintendo Switch* and more. 
+Most of the API’s functionality requires player authentication. The Unity Plugin offers a range of SSO (single-sign on) authentication options, including *Steam, Meta, Epic Games, Apple, Google, Xbox, PS4™/PS5®, Nintendo Switch/2,* and more. 
 
-We strongly recommend using these options as they provide a frictionless user experience and don't require multiple steps. You can further explore these options below and in our [Authentication Guide](/authentication).
+We strongly recommend using these options as they provide a frictionless user experience and don't require multiple steps. You can further explore these options below and in our [Authentication Guide](https://docs.mod.io/authentication).
 
 This guide covers:
 
@@ -134,25 +135,22 @@ if your email provider supports it, you can use plus-addressing to test multiple
 
 There are two types of SSO to consider:
 
-1. [**Custom SSO**](/authentication/openid): Custom SSO harnesses your studio's authentication process as the single point of authentication. 
+1. [**Custom SSO**](https://docs.mod.io/authentication/openid): Custom SSO harnesses your studio's authentication process as the single point of authentication. 
 
-2. [**Platform SSO**](/authentication/platform): Platform SSO uses a given platform's authentication process as the single point of authentication. 
+2. [**Platform SSO**](https://docs.mod.io/authentication/platform): Platform SSO uses a given platform's authentication process as the single point of authentication. 
 
 	The platforms included in this process are:
 
-	* [Steam](/platforms/steam/authentication)
-	* [PlayStation™Network](/platforms/playstation#authentication)
-	* [Xbox Live](/platforms/gdk#authentication)
-	* [Nintendo Switch](/platforms/switch#authentication)
-	* [Apple (iOS)](/platforms/apple/authentication)
-	* [Google Play (Android)](/platforms/google/authentication)
-	* [Meta Quest](/platforms/meta/authentication)
-	* [GOG Galaxy](/platforms/gog/authentication)
-	* [Epic Online Services](/platforms/epic/authentication)
-	* itch.io
-	* Discord
+	* [Steam](https://docs.mod.io/platforms/steam/authentication)
+	* [PlayStation™Network](https://docs.mod.io/platforms/playstation#authentication)
+	* [Xbox Live](https://docs.mod.io/platforms/gdk#authentication)
+	* [Nintendo Switch](https://docs.mod.io/platforms/switch#authentication)
+	* [Apple (iOS)](https://docs.mod.io/platforms/apple/authentication)
+	* [Google Play (Android)](https://docs.mod.io/platforms/google/authentication)
+	* [Meta Quest](https://docs.mod.io/platforms/meta/authentication)
+	* [GOG Galaxy](https://docs.mod.io/platforms/gog/authentication)
 
-Each platform has their own requirements and prerequisites for performing SSO.  Platform-specific authentication can be found in the respective [platform documentation](/getting-started#expand-with-cross-platform-functionality).
+Each platform has their own requirements and prerequisites for performing SSO.  Platform-specific authentication can be found in the respective [platform documentation](https://docs.mod.io/getting-started#expand-with-cross-platform-functionality).
 
 ### Steam Single Sign-On
 
@@ -161,7 +159,7 @@ As an example, let's have a look at setting up your game to use *Steam's* authen
 Feel free to come back to this section later! Authentication is agnostic of the rest of this guide's behavior.
 
 :::important
-Before we can implement single sign-on, we need to configure Steam SSO for your game on the mod.io website. Please read our [documentation](/platforms/steam/authentication) on how to do this before continuing with the implementation below.
+Before we can implement single sign-on, we need to configure Steam SSO for your game on the mod.io website. Please read our [documentation](https://docs.mod.io/platforms/steam/authentication) on how to do this before continuing with the implementation below.
 :::
 >
 
@@ -186,7 +184,7 @@ this next section requires the `steamclient` to have been initialized before exe
 
 ### Include Terms of Use
 
-In order to authenticate a user with mod.io, they must agree to the mod.io Terms of Use. This differs from Email authentication as the Terms of Use is built into the email sign-up process, not requiring it in-game. You can learn more about this in our [Terms of Use](/terms-user-consent) section. This window requires links to the mod.io Terms of Use &amp; the mod.io Privacy Policy to be valid.
+In order to authenticate a user with mod.io, they must agree to the mod.io Terms of Use. This differs from Email authentication as the Terms of Use is built into the email sign-up process, not requiring it in-game. You can learn more about this in our [Terms of Use](https://docs.mod.io/terms-user-consent) section. This window requires links to the mod.io Terms of Use &amp; the mod.io Privacy Policy to be valid.
 
 :::note
 While creating the UI layout referenced below is outside the scope of this guide, there are great Unity UI tutorials available.

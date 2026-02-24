@@ -2,11 +2,12 @@
 id: unity-mobile-iap
 title: Mobile Marketplace
 slug: /unity/marketplace-mobile-iap
+custom_edit_url: https://github.com/modio/modio-unity-internal/tree/main/docs/public/feature-guides/unity-marketplace-mobile.md
 ---
 
 # Mobile In-App Purchasing
 
-This guide covers hooking up mod.io's [Marketplace](/monetization/marketplace) feature with Unity's In-App Purchasing service for mobile games.
+This guide covers hooking up mod.io's [Marketplace](https://docs.mod.io/monetization/marketplace) feature with Unity's In-App Purchasing service for mobile games.
 
 mod.io Marketplace features are enabled either during the onboarding process when creating your game profile, or later through your game's Admin menu. Once enabled, you'll need to create Virtual Currency SKUs on each supported platform.
 
@@ -18,8 +19,8 @@ Before we can begin you'll need to have installed & setup the Unity In-App Purch
 
 Additionally, please follow the below guides for setting up Virtual Currency for mod.io Marketplace on your required platforms:
 
-* [Apple (iOS)](/platforms/apple/marketplace)
-* [Google Play (Android)](/platforms/google/marketplace)
+* [Apple (iOS)](https://docs.mod.io/platforms/apple/marketplace)
+* [Google Play (Android)](https://docs.mod.io/platforms/google/marketplace)
 
 :::note[Platform Setup]
 If you are implementing Marketplace for non-mobile platforms such as Steam or Xbox, refer to our [Unity Marketplace Guide](/unity/marketplace).
@@ -27,7 +28,7 @@ If you are implementing Marketplace for non-mobile platforms such as Steam or Xb
 
 ## Template UI
 
-The mod.io Unity Plugin features [Component UI](/in-game-ui/component) & [Template UI](/in-game-ui/template) which both have built-in support for [Monetization](/monetization), including conveniently purchasing through multiple platform storefronts. If you'd like to try it out, unpack the 'Experimental UI' .unitypackage found within the plugin. Once mod.io & your platform are configured with your SKUs, no additional work is required to integrate this into the UI solutions!
+The mod.io Unity Plugin features [Component UI](https://docs.mod.io/in-game-ui/component) & [Template UI](https://docs.mod.io/in-game-ui/template) which both have built-in support for [Monetization](https://docs.mod.io/monetization), including conveniently purchasing through multiple platform storefronts. If you'd like to try it out, unpack the 'Experimental UI' .unitypackage found within the plugin. Once mod.io & your platform are configured with your SKUs, no additional work is required to integrate this into the UI solutions!
 
 ## Integration
 

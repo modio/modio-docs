@@ -9,8 +9,8 @@ sidebar_position: 0
 
 mod.io is a fully authorized middleware provider for *Xbox One*, *Xbox Series X*, *PlayStation®4*, *PlayStation®5*, *Nintendo Switch* and *Nintendo Switch 2*. 
 
-:::important[Platform Approval]
-Adding UGC to consoles requires approval from the corresponding platform in order to gain [SDK Access](/platforms/console-sdks).
+:::note[Premium Feature]
+Console support is a premium feature. Sign up to one of our advanced service tiers and complete the approval process for the corresponding platform to gain [SDK Access](/platforms/console-sdks), or contact us at developers@mod.io for more information.
 :::
 
 ## Supported platforms

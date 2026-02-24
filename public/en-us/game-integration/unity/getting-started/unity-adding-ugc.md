@@ -2,6 +2,7 @@
 id: unity-adding-ugc
 title: Adding UGC
 slug: /unity/adding-ugc
+custom_edit_url: https://github.com/modio/modio-unity-internal/tree/main/docs/public/getting-started/unity-adding-ugc.md
 ---
 
 # Adding UGC

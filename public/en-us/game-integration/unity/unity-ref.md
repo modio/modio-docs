@@ -2,7 +2,6 @@
 id: unity-unity-ref
 title: Unity
 slug: /unity/unity-ref
-sidebar_position: 1
 ---
 
 ## Modio.Unity
@@ -15,7 +14,9 @@ sidebar_position: 1
 | [`ModioImageTexture2DExtensions`](#Modio.Unity.ModioImageTexture2DExtensions) |  |
 | [`ModioPreInitializer`](#Modio.Unity.ModioPreInitializer) |  |
 | [`ModioUnityLogger`](#Modio.Unity.ModioUnityLogger) |  |
+| [`ModioUnityMultiplatformAuthResolver`](#Modio.Unity.ModioUnityMultiplatformAuthResolver) |  |
 | [`ModioUnitySettings`](#Modio.Unity.ModioUnitySettings) |  |
+| [`ModioUnityThreadSync`](#Modio.Unity.ModioUnityThreadSync) |  |
 | [`UnityRootPathProvider`](#Modio.Unity.UnityRootPathProvider) | Provides a default root path for non-windows Unity platforms. |
 | [`UnityWebBrowserHandler`](#Modio.Unity.UnityWebBrowserHandler) |  |
 
@@ -124,14 +125,14 @@ public void RemoveDefaultHeader(string name)
 #### GetJson{#Modio.Unity.ModioAPIUnityClient.GetJson}
 
 ```csharp
-public Task<(Error error, T? result)> GetJson<T>(ModioAPIRequest request) where T : struct
+public Task<(Error error, T? result)> GetJson<T>(ModioAPIRequest request, bool allowReauth
 ```
 
 
 #### GetJson{#Modio.Unity.ModioAPIUnityClient.GetJson}
 
 ```csharp
-public Task<(Error error, JToken)> GetJson(ModioAPIRequest request)
+public Task<(Error error, JToken)> GetJson(ModioAPIRequest request, bool allowReauth
 ```
 
 
@@ -202,6 +203,35 @@ public void LogHandler(LogLevel logLevel, object message)
 
 ___
 
+### ModioUnityMultiplatformAuthResolver{#Modio.Unity.ModioUnityMultiplatformAuthResolver}
+
+```csharp
+public class ModioUnityMultiplatformAuthResolver : ModioMultiplatformAuthResolver,  IExternalAvatarProviderService<Texture2D>
+```
+
+
+###### Property
+
+
+#### `bool IsSupportedPlatform`
+
+```csharp
+public static bool IsSupportedPlatform
+```
+
+
+
+###### Method
+
+
+#### TryGetAvatarImage{#Modio.Unity.ModioUnityMultiplatformAuthResolver.TryGetAvatarImage}
+
+```csharp
+public Task<(Error error, Texture2D image)> TryGetAvatarImage()
+```
+
+___
+
 ### ModioUnitySettings{#Modio.Unity.ModioUnitySettings}
 
 ```csharp
@@ -248,6 +278,35 @@ public void InvokeOnChanged()
 
 ___
 
+### ModioUnityThreadSync{#Modio.Unity.ModioUnityThreadSync}
+
+```csharp
+public static class ModioUnityThreadSync
+```
+
+
+###### Property
+
+
+#### [`SynchronizationContext`](#Modio.Unity.ModioUnityThreadSync.SynchronizationContext) `SynchronizationContext`
+
+```csharp
+public static SynchronizationContext SynchronizationContext
+```
+`get`
+
+
+###### Method
+
+
+#### InitializeThreadSync{#Modio.Unity.ModioUnityThreadSync.InitializeThreadSync}
+
+```csharp
+public static void InitializeThreadSync()
+```
+
+___
+
 ### UnityRootPathProvider{#Modio.Unity.UnityRootPathProvider}
 
 ```csharp
@@ -270,22 +329,22 @@ public string Path
 
 Path to the shared public folder;
 
-Typically returns "C:\Users\Public\"
+Returns a value based on `Application.persistentDataPath`
 
 
 
+###### Method
 
-#### `string UserPath`
+
+#### GetUserPath{#Modio.Unity.UnityRootPathProvider.GetUserPath}
 
 ```csharp
-public string UserPath
+public Task<string> GetUserPath()
 ```
-
 
 Path to the local user app data folder;
 
-Typically returns "C:\Users\&lt;UserName&gt;\AppData\Roaming"
-
+Typically returns `Application.persistentDataPath`
 
 
 ___
@@ -324,13 +383,6 @@ ___
 ###### Field
 
 
-#### `bool ShowMonetizationUI`
-
-```csharp
-bool ShowMonetizationUI
-```
-
-
 #### `bool ShowEnableModToggle`
 
 ```csharp
@@ -342,6 +394,13 @@ bool ShowEnableModToggle
 
 ```csharp
 bool FallbackToEmailAuthentication
+```
+
+
+#### `bool EnableAuthSelection`
+
+```csharp
+bool EnableAuthSelection
 ```
 
 ___

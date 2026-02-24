@@ -10,7 +10,7 @@ sidebar_position: 2
 Custom SSO uses your studio's identity provider as the single required authentication source for a user to access UGC in your game. This is one of our premium features, and the recommended authentication method for any studio with an established login system.
 
 :::note[Premium Feature]
-Custom SSO is a premium feature. Sign up to one of our [advanced service tiers](https://mod.io/pricing) to activate this white label feature, or contact us at developers@mod.io for more information.
+Custom SSO is a premium feature. Please contact us at developers@mod.io for more information.
 :::
 
 For more auth methods, check out our [Authentication](/authentication) guide.

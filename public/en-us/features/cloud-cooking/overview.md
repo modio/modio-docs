@@ -9,7 +9,7 @@ slug: /cloud-cooking
 The mod.io Cloud Cooking service provides mod.io managed infrastructure that supports preparation of content for platforms that are only available under non-disclosure agreements, such as consoles.
 
 :::note[Premium Feature]
-Cloud Cooking is a premium feature. Sign up to one of our [advanced service tiers](https://mod.io/pricing) to activate it, or contact us at developers@mod.io for more information.
+Cloud Cooking is a premium feature. Please contact us at developers@mod.io for more information.
 :::
 
 ## Functionality

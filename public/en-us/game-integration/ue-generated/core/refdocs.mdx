@@ -473,7 +473,7 @@ TMap<FModioModID,FModioModCollectionEntry> QueryUserSubscriptions()
 
 
 ##### Returns
-`TMap<FModioID, FModioModCollectionEntry>` providing information about the subscribed mods
+`TMap<FModioModID, FModioModCollectionEntry>` providing information about the subscribed mods
 
 
 
@@ -552,7 +552,7 @@ TMap<FModioModID,FModioModCollectionEntry> QueryUserInstallations(bool bIncludeO
 
 
 ##### Returns
-`TMap<FModioID, FModioModCollectionEntry>` providing information about the subscribed mods
+`TMap<FModioModID, FModioModCollectionEntry>` providing information about the subscribed mods
 
 
 
@@ -5152,7 +5152,7 @@ Struct to wrap UserList into an optional parameter
 
 ### ModioOptionalModChangeMap 
 
-Strong type struct to wrap a ModDependencyList data as an optional value
+Strong type struct to wrap a ModChangeMap as an optional value
 
 
 
@@ -5555,7 +5555,7 @@ Struct strong type to wrap an optional value for the ModProgressInfo
 
 ### StorageInfoKey 
 
-
+Composite key for looking up storage metrics by location and usage type. * Combines an `EModioStorageLocation` (where the data lives) with an `EModioStorageUsage` (whether reporting consumed vs. available space). Implements equality and hashing so it can be used as a key in hashed containers (e.g., `TMap`).
 
 
 
@@ -5578,7 +5578,7 @@ Struct strong type to wrap an optional value for the ModProgressInfo
 
 ### ModioStorageInfo 
 
-
+Strongly-typed container for storage space metrics (consumed/available) across storage locations. * Stores storage values (in bytes) keyed by `EModioStorageLocation` and `EModioStorageUsage`, and provides convenience accessors via `GetSpace(...)` to query the recorded amount for a given key.
 
 
 
@@ -6297,7 +6297,7 @@ An FModioUnsigned64 representing the current progress in bytes
 
 ### Get Space by Key
 
-
+Returns the recorded storage space for a given storage location and usage type
 
 ![nd_img_ModioStorageInfoLibrary_GetSpaceByKey.png](img/refdocs/nd_img_ModioStorageInfoLibrary_GetSpaceByKey.png)
 
@@ -6336,7 +6336,7 @@ Total storage space in bytes
 
 ### Get Space
 
-
+Returns the recorded storage space for a given storage location and usage type
 
 ![nd_img_ModioStorageInfoLibrary_GetSpace.png](img/refdocs/nd_img_ModioStorageInfoLibrary_GetSpace.png)
 
@@ -10471,6 +10471,7 @@ void ListUserSubscriptionAsync(FModioFilterParams FilterParams, FOnListAllModsDe
 
 ### Get Logo Thumbnail Size
 
+Get the project specified logo thumbnail size
 
 ![nd_img_ModioExampleLibrary_GetLogoThumbnailSize.png](img/refdocs/nd_img_ModioExampleLibrary_GetLogoThumbnailSize.png)
 
@@ -10481,12 +10482,31 @@ EModioLogoSize GetLogoThumbnailSize()
 
 
 
+
+
+#### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+</RefTable>
+
+
+
+
+
+
+
+
+
+
+
 ---
 
 
 
 ### Get Logo Full Size
 
+Get the project specified logo full size
 
 ![nd_img_ModioExampleLibrary_GetLogoFullSize.png](img/refdocs/nd_img_ModioExampleLibrary_GetLogoFullSize.png)
 
@@ -10497,18 +10517,55 @@ EModioLogoSize GetLogoFullSize()
 
 
 
+
+
+#### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+</RefTable>
+
+
+
+
+
+
+
+
+
+
+
 ---
 
 
 
 ### Get Avatar Thumbnail Size
 
+Get the project specified avatar thumbnail size
 
 ![nd_img_ModioExampleLibrary_GetAvatarThumbnailSize.png](img/refdocs/nd_img_ModioExampleLibrary_GetAvatarThumbnailSize.png)
 
 ```cpp
 EModioAvatarSize GetAvatarThumbnailSize()
 ```
+
+
+
+
+
+
+#### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+</RefTable>
+
+
+
+
+
+
+
 
 
 
@@ -10580,7 +10637,7 @@ void K2_SubmitNewModFileForModFromMemory(UModioSubsystem* Target, FModioModID Mo
 |-|-|
 |`Target`|`UModioSubsystem*`|
 |`Mod`|The ID of the mod you are submitting a file for|
-|`Params`|Information about the mod file being created, including the memory that wiull be uploaded as a mod|
+|`Params`|Information about the mod file being created, including the memory that will be uploaded as a mod|
 </RefTable>
 
 
@@ -11010,7 +11067,7 @@ Enumerator with the rating a mod can receive
 
 ### EModioStorageLocation {#EModioStorageLocation} 
 
-
+Identifies the backing location used to store data.
 
 
 <RefTable colWidths={['30%', '70%']} stripes="odd">
@@ -11024,7 +11081,7 @@ Enumerator with the rating a mod can receive
 
 ### EModioStorageUsage {#EModioStorageUsage} 
 
-
+Indicates how a storage amount should be interpreted when reporting disk usage. * Use `Consumed` for space already used by mod.io data, and `Available` for free space that can be used for downloads/installs.
 
 
 <RefTable colWidths={['30%', '70%']} stripes="odd">
@@ -11097,7 +11154,7 @@ Enum representing a named platform that the plugin is running on.
 
 ### EModioLogoSize {#EModioLogoSize} 
 
-
+Enum representing mod logo sizes
 
 
 <RefTable colWidths={['30%', '70%']} stripes="odd">
@@ -11113,7 +11170,7 @@ Enum representing a named platform that the plugin is running on.
 
 ### EModioAvatarSize {#EModioAvatarSize} 
 
-
+Enum representing avatar image sizes
 
 
 <RefTable colWidths={['30%', '70%']} stripes="odd">
@@ -11128,7 +11185,7 @@ Enum representing a named platform that the plugin is running on.
 
 ### EModioGallerySize {#EModioGallerySize} 
 
-
+Enum for the standard size a gallery image can use
 
 
 <RefTable colWidths={['30%', '70%']} stripes="odd">
@@ -11143,7 +11200,7 @@ Enum representing a named platform that the plugin is running on.
 
 ### EModioLogLevel {#EModioLogLevel} 
 
-
+Degree of severity for the log output
 
 
 <RefTable colWidths={['30%', '70%']} stripes="odd">

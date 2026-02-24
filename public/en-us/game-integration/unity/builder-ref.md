@@ -2,14 +2,13 @@
 id: unity-builder-ref
 title: Builder
 slug: /unity/builder-ref
-sidebar_position: 3
 ---
 
 ## Modio.Mods.Builder
 
 | Type | Description |
 |------|-------------|
-| [`ModBuilder`](#Modio.Mods.Builder.ModBuilder) | A programmatic interface for Creating a new [`Mod`](#Modio.Mods.Mod). This class will handle all the publishing tasks that need to be performed intelligently, minimizing the amount of requests made. |
+| [`ModBuilder`](#Modio.Mods.Builder.ModBuilder) | A programmatic interface for Creating a new [`Mod`](#ModioResourceType.Mod). This class will handle all the publishing tasks that need to be performed intelligently, minimizing the amount of requests made. |
 | [`ModfileBuilder`](#Modio.Mods.Builder.ModfileBuilder) |  |
 
 ### ModBuilder{#Modio.Mods.Builder.ModBuilder}
@@ -17,7 +16,7 @@ sidebar_position: 3
 ```csharp
 public class ModBuilder
 ```
-A programmatic interface for Creating a new [`Mod`](#Modio.Mods.Mod). This class will handle all the publishing
+A programmatic interface for Creating a new [`Mod`](#ModioResourceType.Mod). This class will handle all the publishing
 tasks that need to be performed intelligently, minimizing the amount of requests made.
 
 ###### Remarks
@@ -174,7 +173,7 @@ public bool IsEditMode
 
 
 
-#### [`Mod`](#Modio.Mods.Mod) `EditTarget`
+#### [`Mod`](#ModioResourceType.Mod) `EditTarget`
 
 ```csharp
 public Mod EditTarget
@@ -504,6 +503,14 @@ public Platform[] Platforms
 `get`
 
 
+#### `bool IsSource`
+
+```csharp
+public bool IsSource
+```
+`get`
+
+
 ###### Method
 
 
@@ -584,6 +591,22 @@ public ModfileBuilder AppendPlatform(Platform platform)
 ```csharp
 public ModfileBuilder AppendPlatforms(ICollection<Platform> platforms)
 ```
+
+
+#### SetSourceFile{#Modio.Mods.Builder.ModfileBuilder.SetSourceFile}
+
+```csharp
+public ModfileBuilder SetSourceFile(bool isSourceFile)
+```
+
+This will configure the ModfileBuilder to upload the modfile to mod.io's Cloud Cooking solution. Files should
+be loose in a directory, with files that need to be cooked living in a 'Bundle' directory.
+
+
+###### Remarks
+
+Requires Cloud Cooking to be enabled for the game. Publishing will return an error if Cloud
+Cooking is not enabled for the game.
 
 
 #### FinishModfile{#Modio.Mods.Builder.ModfileBuilder.FinishModfile}

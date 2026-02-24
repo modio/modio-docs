@@ -2,7 +2,7 @@
 id: unity
 title: Overview
 slug: /legacy/unity
-sidebar_position: 0
+custom_edit_url: https://github.com/modio/modio-unity-internal/tree/main/docs/public/legacy/overview.md
 ---
 
 # Unity Legacy Plugin
@@ -17,7 +17,7 @@ A custom built ready-made UI for UGC discovery is included, along with installat
 
 ## Platform Support
 
-To access console platforms and documentation, see [Supporting Console Platforms](/getting-started#expand-with-cross-platform-functionality).
+To access console platforms and documentation, see [Supporting Console Platforms](https://docs.mod.io/getting-started#expand-with-cross-platform-functionality).
 
 | Platform        | Support |
 |-----------------|:-------:|

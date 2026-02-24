@@ -9,7 +9,7 @@ slug: /embed-hub
 Embed Hub gives you the ability to embed the mod.io browser into your site, launcher or game. It is highly customizable, offering many style options and control over which features are enabled or disabled.
 
 :::note[Premium Feature]
-Embed Hub is a premium feature. Sign up to one of our [advanced service tiers](https://mod.io/pricing) to activate this white label feature, or contact us at developers@mod.io for more information.
+Embed Hub is a premium feature. Please contact us at developers@mod.io for more information.
 :::
 
 ## Setup

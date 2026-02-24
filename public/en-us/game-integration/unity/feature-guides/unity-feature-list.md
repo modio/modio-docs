@@ -2,6 +2,7 @@
 id: unity-feature-guides
 title: List of Features
 slug: /unity/feature-guides
+custom_edit_url: https://github.com/modio/modio-unity-internal/tree/main/docs/public/feature-guides/unity-feature-list.md
 ---
 
 # List of Features
@@ -37,20 +38,20 @@ The below are a list of setup guides to integrate the following **features** int
 
 | **Feature Info**    | **Supported** | **Feature Setup Guides** |
 | -------- | ------- | ------- |
-| [Component UI](/in-game-ui/component)  | Yes    | [Limited](/unity/component-ui)    |
-| [Template UI](/in-game-ui/template) | Yes     | [Setup Guide](/unity/template-ui/integration)   |
-| [Marketplace](/monetization/marketplace)   | Yes    | [Setup Guide](/unity/marketplace)   |
-| [Metrics](/metrics)   | Yes    | [Setup Guide](/unity/metrics)   |
-| [Temporary Mod Sets](/multiplayer/temporary-mods)   | Yes    | WIP   |
-| [Cloud Cooking](/cloud-cooking)   | Contact Us    | TBC   |
+| [Component UI](https://docs.mod.io/in-game-ui/component)  | Yes    | [Limited](/unity/component-ui)    |
+| [Template UI](https://docs.mod.io/in-game-ui/template) | Yes     | [Setup Guide](/unity/template-ui/integration)   |
+| [Marketplace](https://docs.mod.io/monetization/marketplace)   | Yes    | [Setup Guide](/unity/marketplace)   |
+| [Metrics](https://docs.mod.io/metrics)   | Yes    | [Setup Guide](/unity/metrics)   |
+| [Temporary Mod Sets](https://docs.mod.io/multiplayer/temporary-mods)   | Yes    | [Setup Guide](/unity/tempmods) |
+| [Cloud Cooking](https://docs.mod.io/cloud-cooking)   | Contact Us    | TBC   |
 
 ### Additional features
 
 The below are features that work alongside your game to enhance UGC without specific setup needs for the Unity Plugin.
 
-* [Collections](/collections)
-* [Dependency Management](/dependency-management)
-* [Moderation](/moderation)
-* [Custom SSO](/authentication/openid)
-* [Embed Hub](/embed-hub)
-* [Discord Bot](/discord)
+* [Collections](https://docs.mod.io/collections)
+* [Dependency Management](https://docs.mod.io/dependency-management)
+* [Moderation](https://docs.mod.io/moderation)
+* [Custom SSO](https://docs.mod.io/authentication/openid)
+* [Embed Hub](https://docs.mod.io/embed-hub)
+* [Discord Bot](https://docs.mod.io/discord)

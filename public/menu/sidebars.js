@@ -129,17 +129,18 @@ const sidebars = {
             'game-integration/unreal/feature-guides/ue-metrics',
             'game-integration/unreal/feature-guides/ue-cloud-cooking',
           ],
-        }, {
-        type: 'category',
-        label: 'Sample Project',
-        link: {type: 'doc', id: 'game-integration/unreal/modio-action-rpg/overview'},
-        items: [
-          'game-integration/unreal/modio-action-rpg/getting-started',
-          'game-integration/unreal/modio-action-rpg/modio-plugin-integration',
-          'game-integration/unreal/modio-action-rpg/moddable-weapons',
-          'game-integration/unreal/modio-action-rpg/troubleshooting',
-        ],
-    },
+        },
+        {
+          type: 'category',
+          label: 'Sample Project',
+          link: { type: 'doc', id: 'game-integration/unreal/modio-action-rpg/overview' },
+          items: [
+            'game-integration/unreal/modio-action-rpg/getting-started',
+            'game-integration/unreal/modio-action-rpg/modio-plugin-integration',
+            'game-integration/unreal/modio-action-rpg/moddable-weapons',
+            'game-integration/unreal/modio-action-rpg/troubleshooting',
+          ],
+        },
         'game-integration/ue-generated/core/ue-refdocs',
         'game-integration/unreal-legacy/ue4-quicklook',
       ],
@@ -276,10 +277,7 @@ const sidebars = {
         {
           type: 'category',
           label: 'Steam',
-          items: [
-            'platforms/pc/steam/authentication',
-            'platforms/pc/steam/marketplace',
-          ],
+          items: ['platforms/pc/steam/authentication', 'platforms/pc/steam/marketplace'],
         },
         {
           type: 'category',

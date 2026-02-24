@@ -2,6 +2,7 @@
 id: unity-subscribing
 title: Subscribing to UGC
 slug: /unity/subscribing
+custom_edit_url: https://github.com/modio/modio-unity-internal/tree/main/docs/public/getting-started/unity-subscribing-to-ugc.md
 ---
 
 # Subscribing to UGC

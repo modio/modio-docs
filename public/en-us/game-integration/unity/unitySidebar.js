@@ -45,6 +45,7 @@ const unitySidebar = {
                     ]
                 },
                 'game-integration/unity/feature-guides/unity-metrics',
+                'game-integration/unity/feature-guides/unity-tempmods',
             ]
         },
         {

@@ -2,6 +2,7 @@
 id: unity-installation
 title: Installation
 slug: /unity/installation
+custom_edit_url: https://github.com/modio/modio-unity-internal/tree/main/docs/public/getting-started/unity-installation.md
 ---
 
 # Installation
@@ -41,7 +42,7 @@ If you have a previous version of the plugin installed, we recommend deleting it
 
 ## Connecting to mod.io
 
-If you haven't already, you'll need to create a **Game Account** with mod.io. You can do so by following Step 1 of the [mod.io Getting Started Guide](/getting-started).
+If you haven't already, you'll need to create a **Game Account** with mod.io. You can do so by following Step 1 of the [mod.io Getting Started Guide](https://docs.mod.io/getting-started).
 
 :::important  
 You'll need your `Game Id`, `API key` and `API Path` for the following steps.

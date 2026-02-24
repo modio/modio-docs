@@ -2,11 +2,12 @@
 id: unity-component-ui
 title: Component UI
 slug: /unity/component-ui
+custom_edit_url: https://github.com/modio/modio-unity-internal/tree/main/docs/public/feature-guides/unity-component-ui.md
 ---
 
 # Component UI for Unity
 
-Component UI is the backbone of any [in-game UI](/in-game-ui) you may want to implement for UGC and can be completely customized to suit your brand and game.
+Component UI is the backbone of any [in-game UI](https://docs.mod.io/in-game-ui) you may want to implement for UGC and can be completely customized to suit your brand and game.
 
 ## UI framework for Unity
 

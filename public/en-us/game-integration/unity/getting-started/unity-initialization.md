@@ -2,6 +2,7 @@
 id: unity-initialization
 title: Initialization
 slug: /unity/initialization
+custom_edit_url: https://github.com/modio/modio-unity-internal/tree/main/docs/public/getting-started/unity-initialization.md
 ---
 
 # Initialization 

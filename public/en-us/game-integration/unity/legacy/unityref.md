@@ -2,7 +2,7 @@
 id: unity-unityref
 title: Unity Reference Docs
 slug: /legacy/unity/unityref
-sidebar_position: 10
+custom_edit_url: https://github.com/modio/modio-unity-internal/tree/main/docs/public/legacy/unityref.md
 ---
 
 ## ModIO
@@ -9627,7 +9627,7 @@ string languageCode
 ```
 
 Language code for the localizing message responses.
-See /restapi/docs/localization for possible values.
+See https://docs.mod.io/restapi/docs/localization for possible values.
 
 
 

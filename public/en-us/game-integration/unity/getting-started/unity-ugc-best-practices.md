@@ -2,6 +2,7 @@
 id: unity-ugc-best-practices
 title: UGC Best Practices
 slug: /unity/ugc-best-practices
+custom_edit_url: https://github.com/modio/modio-unity-internal/tree/main/docs/public/getting-started/unity-ugc-best-practices.md
 ---
 
 # UGC Best Practices

@@ -2,11 +2,12 @@
 id: unity-tui-layouts
 title: Layouts
 slug: /unity/template-ui/layouts
+custom_edit_url: https://github.com/modio/modio-unity-internal/tree/main/docs/public/feature-guides/unity-template-ui/unity-tui-layouts.md
 ---
 
 # Layouts
 
-Modifying [Template UI](/in-game-ui/template) in the **ModioComponentUI** scene to suit your game is simple, assuming you are already familiar with UI Layouts in Unity.
+Modifying [Template UI](https://docs.mod.io/in-game-ui/template) in the **ModioComponentUI** scene to suit your game is simple, assuming you are already familiar with UI Layouts in Unity.
 
 This guide covers:
 

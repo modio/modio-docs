@@ -2,6 +2,7 @@
 id: unity
 title: Overview
 slug: /unity
+custom_edit_url: https://github.com/modio/modio-unity-internal/tree/main/docs/public/index.md
 ---
 
 # Unity Plugin

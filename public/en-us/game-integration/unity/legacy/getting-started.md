@@ -2,7 +2,7 @@
 id: unity-getting-started
 title: Getting Started
 slug: /legacy/unity/getting-started
-sidebar_position: 2
+custom_edit_url: https://github.com/modio/modio-unity-internal/tree/main/docs/public/legacy/getting-started.md
 ---
 
 # Getting Started
@@ -1158,7 +1158,7 @@ namespace ModIO
 
 The mod.io SDK supports all of the mod.io [Metrics](/metrics) features, including [Play Sessions Metrics](/metrics/game#play-sessions), which allows you to track which mods your players interact with most frequently, including concurrent players, sessions, playtime, and UGC usage per session.
 
-:::note[Premium Feature]
+:::note
 Play Sessions is a premium feature. Sign up to one of our [advanced service tiers](https://mod.io/pricing) to activate detailed data analytics, or contact us at developers@mod.io for more information.
 :::
 
