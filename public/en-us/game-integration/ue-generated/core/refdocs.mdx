@@ -2436,6 +2436,57 @@ void K2_GetUserWalletBalanceAsync(FOnGetUserWalletBalanceDelegate Callback)
 
 
 
+#### GetUserRatingsAsync
+
+Provides a list of mod ratings for the current user
+:::warning[Experimental Feature]
+This function is part of an experimental feature and is subject to change. 
+:::
+
+![nd_img_ModioSubsystem_K2_GetUserRatingsAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_GetUserRatingsAsync.png)
+
+```cpp
+void K2_GetUserRatingsAsync(FOnGetUserModRatingsDelegate Callback)
+```
+
+
+##### Requirements
+* _initialized-sdk_
+* _no-rate-limiting_
+* _user-authenticated_
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModioSubsystem`|
+|`Callback`|Callback invoked with a status code and an optional UserModRatingList providing ratings for each|
+</RefTable>
+
+
+
+
+
+
+##### Error Values
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|GenericError::SDKNotInitialized|SDK not initialized
+|HttpError::RateLimited|Too many frequent calls to the API. Wait some time and try again.
+|NetworkError|Couldn't connect to mod.io servers
+</RefTable>
+
+
+
+
+
+
+
+
 #### GetUserMediaAsync (Avatar)
 
 Downloads the avatar of the currently authenticated user. Will only perform a download if there is no local cache of the avatar or if that cached copy is out-of-date.
@@ -4918,6 +4969,53 @@ A wrapper type around the Unreal Engine type FOnlineStoreOffer, representing a p
 
 ---
 
+### ModioUserModRatingList 
+
+Strong type struct to wrap multiple user ratings indexed by a paged result
+
+
+
+
+
+
+
+
+##### Variables
+<RefTable colWidths={['10%', '10%', '20%']} stripes="odd">
+| | | |
+|-|-|-|
+| `FModioPagedResult` | `PagedResult` | A paged result property |
+| `TArray<FModioUserModRating>` | `InternalList` | Internal array of user ratings |
+</RefTable>
+
+
+
+---
+
+### ModioUserModRating 
+
+
+
+
+
+
+
+
+
+
+##### Variables
+<RefTable colWidths={['10%', '10%', '20%']} stripes="odd">
+| | | |
+|-|-|-|
+| `FModioGameID` | `GameId` |  |
+| `FModioModID` | `ModId` |  |
+| `EModioRating` | `Rating` |  |
+</RefTable>
+
+
+
+---
+
 ### ModioErrorCode 
 
 Wrapper around `Modio::ErrorCode`
@@ -5049,6 +5147,22 @@ Strong type struct that wraps mod tag options in an optional value
 ### ModioOptionalTerms 
 
 Struct to store an optional value for the terms of service
+
+
+
+
+
+
+
+
+
+
+
+---
+
+### ModioOptionalUserModRatingList 
+
+Struct to wrap UserModRatingList into an optional parameter
 
 
 
@@ -10869,6 +10983,21 @@ Enum representing community options for a mod Unreal's Enum class flags don't su
 
 ---
 
+### EModioRating {#EModioRating} 
+
+Enumerator with the rating a mod can receive
+
+
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+| `Neutral` | A neutral rating |
+| `Positive` | A positive rating |
+| `Negative` | A negative rating |
+</RefTable>
+
+---
+
 ### EModioModManagementEventType {#EModioModManagementEventType} 
 
 What type of event occurred
@@ -11046,21 +11175,6 @@ Enumerator of potential results on attempting to open a native platform store
 | `FailedInactive` | Monetization not active * |
 | `FailedUnsupportedPlatform` | The current platform does not support a native store * |
 | `FailedUnknown` | Failed to open for an unknown reason * |
-</RefTable>
-
----
-
-### EModioRating {#EModioRating} 
-
-Enumerator with the rating a mod can receive
-
-
-<RefTable colWidths={['30%', '70%']} stripes="odd">
-| | |
-|-|-|
-| `Neutral` | A neutral rating |
-| `Positive` | A positive rating |
-| `Negative` | A negative rating |
 </RefTable>
 
 ---

@@ -89,6 +89,12 @@ You can also invite non-team members to preview or help test your game by using 
 
 ## Launch!
 
-Once you're satisfied that your game is ready to go live, simply click ‘Publish' in the ‘General settings' tab of your game admin settings. 
+Once you're satisfied that your game is ready to go live, simply click 'Publish' in the 'General settings' tab of your game admin settings.
 
-Congratulations! Your game now supports UGC, and your creator community is live on mod.io!
+Your game will then be reviewed for acceptance by mod.io. This will normally happen within 48 hours of pressing the 'Publish' button.
+
+After your game is accepted, congratulations! Your game now supports UGC, and your creator community is live on mod.io!
+
+:::note[Can't see the publish button?]
+Only game administrators are able to publish a game.
+:::

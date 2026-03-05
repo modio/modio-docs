@@ -10,25 +10,25 @@ There are several methods of sending data to [Embed Hub](/embed-hub) to modify i
 
 This guide covers:
 
-* [Query parameters](#query-parameters)
-* [Message events](#message-events)
-* [JavaScript API](#javascript-api)
+- [Query parameters](#query-parameters)
+- [Message events](#message-events)
+- [JavaScript API](#javascript-api)
 
 ## Query parameters
 
 The following table details the available query parameters available by modifying the URL passed into the `src` attribute of the `<iframe>`.
 
-| Parameter      | Required?           | Description                                                                                                          |
-| -------------- | ------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| game_id        | Yes                 | Your game's ID                                                                                                       |
-| version        | Yes                 | An identifier for your Embed Hub                                                                                |
-| hash           | If game is not live | A random string of characters required to view a hidden game's hub                                                   |
-| tags           |                     | Default to filtering on a specfic tag (users will be unable to deselect this from the filters)                       |
-| portal         |                     | Sets a portal header on every request. See [Targeting a portal](/restapi/platforms#targeting-a-portal) for more info       |
-| platform       |                     | Sets a platform header on every request. See [Targeting a platform](/restapi/platforms#targeting-a-platform) for more info |
-| lang           |                     | Sets the language of Embed Hub. See [Localization](/restapi/localization) for available languages       |
-| featured       |                     | Shows a number of trending mods that have the specified tag in a carousel at the top of the mod browse page          |
-| featured_count |                     | The number of featured mods to show if the 'featured' parameter is set (defaults to 5)                               |
+| Parameter      | Required?           | Description                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| -------------- | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| game_id        | Yes                 | Your game's ID                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| version        | Yes                 | An identifier for your Embed Hub                                                                                                                                                                                                                                                                                                                                                                                                              |
+| hash           | If game is not live | A random string of characters required to view a hidden game's hub                                                                                                                                                                                                                                                                                                                                                                            |
+| tags           |                     | Default to filtering on a specfic tag (users will be unable to deselect this from the filters)                                                                                                                                                                                                                                                                                                                                                |
+| portal         |                     | Sets a portal header on every request. See [Targeting a portal](/restapi/platforms#targeting-a-portal) for more info                                                                                                                                                                                                                                                                                                                          |
+| platform       |                     | Sets a platform header on every request. See [Targeting a platform](/restapi/platforms#targeting-a-platform) for more info                                                                                                                                                                                                                                                                                                                    |
+| lang           |                     | Sets the language of Embed Hub. See [Localization](/restapi/localization) for available languages                                                                                                                                                                                                                                                                                                                                             |
+| featured       |                     | Shows a number of trending mods that have the specified tag in a carousel at the top of the mod browse page                                                                                                                                                                                                                                                                                                                                   |
+| featured_count |                     | The number of featured mods to show if the 'featured' parameter is set (defaults to 5)                                                                                                                                                                                                                                                                                                                                                        |
 | udt            |                     | Authenticate a user by passing in a User Delegated Token (for example if you are using the mod.io SDK and have authenticated the user, the UDT can be fetched by calling `GetUserDelegationTokenAsync`). Note: If your browser rejects the UDT because of its length, you can increase the buffer size of the browser, or [contact us](mailto:developers@mod.io?subject=UDT%20Support) to discuss different ways to pass the UDT to Embed Hub |
 
 ## Message events
@@ -37,21 +37,21 @@ A number of commands can be sent to and received from Embed Hub using the JavaSc
 
 ### To Embed Hub
 
-| Key           | Data type      | Description                                                                                                                                                       |
-| ------------- | -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Key           | Data type      | Description                                                                                                                                         |
+| ------------- | -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
 | modioAuth     | IModioAuth     | Authenticate a user by passing in either an ID token from your game's [Open ID](/authentication/openid) setup or an access token and optional email |
-| modioCSS      | string         | Sets Custom CSS, as described on the [Custom CSS](/embed-hub/custom-css) page                                                                                            |
-| modioFilter   | IModioFilter   | Sets a tag to force filtering on, or a featured tag                                                                                                               |
-| modioHome     | true           | Navigates Embed Hub back to the home page                                                                                                                |
-| modioLang     | string         | Sets the language of Embed Hub. See [Localization](/restapi/localization) for available languages                                                    |
-| modioPlatform | string         | Sets a platform header on every request. See [Targeting a platform](/restapi/platforms#targeting-a-platform) for more info                                              |
-| modioPortal   | string         | Sets a portal header on every request. See [Targeting a portal](/restapi/platforms#targeting-a-portal) for more info                                                    |
-| modioQuery    | IModioQuery    | Search or filter mods by name or tags                                                                                                                             |
-| modioScroll   | IModioScroll   | Sets the scroll position of the containing site                                                                                                                   |
-| modioSettings | IModioSettings | Modify the settings of your Embed Hub, as described on the [settings page](/embed-hub/settings)                                                                     |
-| modioStyle    | IModioStyle    | Modify the style of your Embed Hub, as described on the [theme page](/embed-hub/theme)                                                                              |
-| modioUrl      | string         | Informs Embed Hub of the URL of the containing site                                                                                                      |
-| modioWindow   | number         | Informs Embed Hub of the height of the user's browser window                                                                                             |
+| modioCSS      | string         | Sets Custom CSS, as described on the [Custom CSS](/embed-hub/custom-css) page                                                                       |
+| modioFilter   | IModioFilter   | Sets a tag to force filtering on, or a featured tag                                                                                                 |
+| modioHome     | true           | Navigates Embed Hub back to the home page                                                                                                           |
+| modioLang     | string         | Sets the language of Embed Hub. See [Localization](/restapi/localization) for available languages                                                   |
+| modioPlatform | string         | Sets a platform header on every request. See [Targeting a platform](/restapi/platforms#targeting-a-platform) for more info                          |
+| modioPortal   | string         | Sets a portal header on every request. See [Targeting a portal](/restapi/platforms#targeting-a-portal) for more info                                |
+| modioQuery    | IModioQuery    | Search or filter mods by name or tags                                                                                                               |
+| modioScroll   | IModioScroll   | Sets the scroll position of the containing site                                                                                                     |
+| modioSettings | IModioSettings | Modify the settings of your Embed Hub, as described on the [settings page](/embed-hub/settings)                                                     |
+| modioStyle    | IModioStyle    | Modify the style of your Embed Hub, as described on the [theme page](/embed-hub/theme)                                                              |
+| modioUrl      | string         | Informs Embed Hub of the URL of the containing site                                                                                                 |
+| modioWindow   | number         | Informs Embed Hub of the height of the user's browser window                                                                                        |
 
 #### IModioAuth
 
@@ -152,39 +152,53 @@ A number of commands can be sent to and received from Embed Hub using the JavaSc
 | Key         | Data type | Description                                                                                              |
 | ----------- | --------- | -------------------------------------------------------------------------------------------------------- |
 | modioAuth   | 'refresh' | Informs the containing site that the provided ID token has expired or is invalid and should be refreshed |
-| modioHeight | number    | Informs the containing site of Embed Hub's scroll height                                        |
-| modioInit   | true      | Informs the containing site that Embed Hub has loaded                                           |
-| modioPage   | string    | Informs the containing site of the current page Embed Hub is on                                 |
+| modioHeight | number    | Informs the containing site of Embed Hub's scroll height                                                 |
+| modioInit   | true      | Informs the containing site that Embed Hub has loaded                                                    |
+| modioPage   | string    | Informs the containing site of the current page Embed Hub is on                                          |
 | modioScroll | number    | Used to control the vertical scroll position of the containing window                                    |
 
 ## JavaScript API
 
-Embed Hub exposes a JavaScript API that is useful for calling functions directly when the hub is embedded in-game.
-These are listed below, with their relevant detail and required parameters.
+The Embed Hub has a JavaScript API that is useful for calling functions directly when the Hub is embedded in-game.
+These are listed below, with their relevant details and required parameters.
 
-The Hub expects an interface named `modio` on the global JS object which supports the following functions:
+### From the Embed Hub
 
-| Function                    | Parameters                        | Description                                                                   |
-| --------------------------- | --------------------------------- | ----------------------------------------------------------------------------- |
-| getAuthToken                |                                   | Used to get the logged in user's access token from the SDK                    |
-| getActivatedIds             |                                   | Used to get the list of activated mod IDs from the SDK                        |
-| getLocalMods                |                                   | Used to get the list of locally installed mods from the SDK                   |
-| getLocalActivatedIds        |                                   | Used to get the list of activated local mod IDs from the SDK                  |
-| getLanguage                 |                                   | Used to get the language the SDK is using                                     |
-| getPlatform                 |                                   | Used to get the platform the SDK is running on                                |
-| getPortal                   |                                   | Used to get the portal the SDK is authenticated with                          |
-| setAuthToken                | token: string                     | Used to set the logged in user's access token on the SDK                      |
-| setUserId                   | userId: int                       | Used to set the logged in user's ID on the SDK                                |
-| setActivatedIds             | modIds: array&lt;int&gt;          | Used to set the list of activated mod IDs on the SDK                          |
-| setLocalActivatedIds        | modIds: array&lt;string&gt;       | Used to set the list of activated local mod IDs on the SDK                    |
-| notifySubscriptionChange    | modId: int, isSubscribed: boolean | Used to notify the SDK that a mod has been subscribed to or unsubscribed from |
-| notifyActivationChange      | modId: int, isActivated: boolean  | Used to notify the SDK that a mod has been activated or deactivated           |
-| notifyLocalActivationChange | modId: int, isActivated: boolean  | Used to notify the SDK that a local mod has been activated or deactivated     |
+To receive data from the game, the Embed Hub expects a JavaScript object named `modio` on the global JS object which supports the following functions:
+
+| Function                    | Parameters                        | Description                                                                                       |
+| --------------------------- | --------------------------------- | ------------------------------------------------------------------------------------------------- |
+| getAuthToken                |                                   | Used to get a UDT for the logged in user from the game                                             |
+| getActivatedIds             |                                   | Used to get the list of activated mod IDs from the game                                            |
+| getLocalMods                |                                   | Used to get the list of locally installed mods from the game                                       |
+| getLocalActivatedIds        |                                   | Used to get the list of activated local mod IDs from the game                                      |
+| getLanguage                 |                                   | Used to get the language the game is using                                                         |
+| getPlatform                 |                                   | Used to get the platform the game is running on                                                    |
+| getPortal                   |                                   | Used to get the portal the game is authenticated with                                              |
+| setAuthToken                | token: string                     | Used to provide a UDT of the logged in user to the game which can be exchanged for an access token |
+| setUserId                   | userId: int                       | Used to set the logged in user's ID on the game                                                    |
+| setActivatedIds             | modIds: array&lt;int&gt;          | Used to set the list of activated mod IDs on the game                                              |
+| setLocalActivatedIds        | modIds: array&lt;string&gt;       | Used to set the list of activated local mod IDs on the game                                        |
+| notifySubscriptionChange    | modId: int, isSubscribed: boolean | Used to notify the game that a mod has been subscribed to or unsubscribed from                     |
+| notifyActivationChange      | modId: int, isActivated: boolean  | Used to notify the game that a mod has been activated or deactivated                               |
+| notifyLocalActivationChange | modId: int, isActivated: boolean  | Used to notify the game that a local mod has been activated or deactivated                         |
+
+### To the Embed Hub
+
+To call functions on the Embed Hub from in-game, The Hub exposes a JavaScript object named `modioEmbedHub` on the global JS object which supports the following functions.
+
+| Function            | Parameters | Description                                                                        |
+| ------------------- | ---------- | ---------------------------------------------------------------------------------- |
+| echo                | args       | Returns an array of the parameters supplied to the function                        |
+| getAuthToken        |            | Used to get a UDT of the currently authenticated user from the Embed Hub           |
+| setAuthToken        | string     | Used to provide a UDT to the Embed Hub which will be used to authenticate the user |
+| isUserAuthenticated |            | Returns true if the current user is authenticated within the Embed Hub             |
+| logout              |            | Used to log the current user out of the Embed Hub                                  |
 
 ## Authentication
 
-There are 3 ways to automatically authenticate users when opening the Embed Hub in-game or in your web browser as explained above. We recommend using one of these approaches when the user is already authenticated (i.e. by the game client), to ensure a seamless experience. 
+There are 3 ways to automatically authenticate users when opening the Embed Hub in-game or in your web browser as explained above. We recommend using one of these approaches when the user is already authenticated (i.e. by the game client), to ensure a seamless experience.
 
 1. **Recommended:** Passing in a [User Delegated Token (UDT)](#query-parameters) which the mod.io SDK and plugins can generate for you, as a URL query parameter when loading the Embed Hub.
-1. Using the JavaScript message event `modioAuth` key, to pass in an ID token or the user's access token (which is what you pass in to make authenticated calls to the REST API).
-1. Using the JavaScript API `setAuthToken` function, to pass the user's access token (which is what you pass in to make authenticated calls to the REST API).
+2. Using the JavaScript message event `modioAuth` key, to pass in an ID token or the user's access token (which is what you pass in to make authenticated calls to the REST API).
+3. Using the JavaScript API `setAuthToken` function, to pass a UDT for the current user.
