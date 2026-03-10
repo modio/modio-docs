@@ -14,22 +14,26 @@ This guide covers:
 - [Message events](#message-events)
 - [JavaScript API](#javascript-api)
 
+## User Delegated Token
+
+A User Delegated Token (UDT) can be used to securely authenticate users in game via the Embed Hub or vice versa. If you are using the mod.io SDK and have authenticated the user, the UDT can be fetched by calling `GetUserDelegationTokenAsync`. Note: If your browser rejects the UDT because of its length, you can increase the buffer size of the browser, or [contact us](mailto:developers@mod.io?subject=UDT%20Support) to discuss different ways to pass the UDT to Embed Hub.
+
 ## Query parameters
 
 The following table details the available query parameters available by modifying the URL passed into the `src` attribute of the `<iframe>`.
 
-| Parameter      | Required?           | Description                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| -------------- | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| game_id        | Yes                 | Your game's ID                                                                                                                                                                                                                                                                                                                                                                                                                                |
-| version        | Yes                 | An identifier for your Embed Hub                                                                                                                                                                                                                                                                                                                                                                                                              |
-| hash           | If game is not live | A random string of characters required to view a hidden game's hub                                                                                                                                                                                                                                                                                                                                                                            |
-| tags           |                     | Default to filtering on a specfic tag (users will be unable to deselect this from the filters)                                                                                                                                                                                                                                                                                                                                                |
-| portal         |                     | Sets a portal header on every request. See [Targeting a portal](/restapi/platforms#targeting-a-portal) for more info                                                                                                                                                                                                                                                                                                                          |
-| platform       |                     | Sets a platform header on every request. See [Targeting a platform](/restapi/platforms#targeting-a-platform) for more info                                                                                                                                                                                                                                                                                                                    |
-| lang           |                     | Sets the language of Embed Hub. See [Localization](/restapi/localization) for available languages                                                                                                                                                                                                                                                                                                                                             |
-| featured       |                     | Shows a number of trending mods that have the specified tag in a carousel at the top of the mod browse page                                                                                                                                                                                                                                                                                                                                   |
-| featured_count |                     | The number of featured mods to show if the 'featured' parameter is set (defaults to 5)                                                                                                                                                                                                                                                                                                                                                        |
-| udt            |                     | Authenticate a user by passing in a User Delegated Token (for example if you are using the mod.io SDK and have authenticated the user, the UDT can be fetched by calling `GetUserDelegationTokenAsync`). Note: If your browser rejects the UDT because of its length, you can increase the buffer size of the browser, or [contact us](mailto:developers@mod.io?subject=UDT%20Support) to discuss different ways to pass the UDT to Embed Hub |
+| Parameter      | Required?           | Description                                                                                                                |
+| -------------- | ------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| game_id        | Yes                 | Your game's ID                                                                                                             |
+| version        | Yes                 | An identifier for your Embed Hub                                                                                           |
+| hash           | If game is not live | A random string of characters required to view a hidden game's hub                                                         |
+| tags           |                     | Default to filtering on a specfic tag (users will be unable to deselect this from the filters)                             |
+| portal         |                     | Sets a portal header on every request. See [Targeting a portal](/restapi/platforms#targeting-a-portal) for more info       |
+| platform       |                     | Sets a platform header on every request. See [Targeting a platform](/restapi/platforms#targeting-a-platform) for more info |
+| lang           |                     | Sets the language of Embed Hub. See [Localization](/restapi/localization) for available languages                          |
+| featured       |                     | Shows a number of trending mods that have the specified tag in a carousel at the top of the mod browse page                |
+| featured_count |                     | The number of featured mods to show if the 'featured' parameter is set (defaults to 5)                                     |
+| udt            |                     | Authenticate a user by passing in a User Delegated Token                                                                   |
 
 ## Message events
 
@@ -37,21 +41,21 @@ A number of commands can be sent to and received from Embed Hub using the JavaSc
 
 ### To Embed Hub
 
-| Key           | Data type      | Description                                                                                                                                         |
-| ------------- | -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| modioAuth     | IModioAuth     | Authenticate a user by passing in either an ID token from your game's [Open ID](/authentication/openid) setup or an access token and optional email |
-| modioCSS      | string         | Sets Custom CSS, as described on the [Custom CSS](/embed-hub/custom-css) page                                                                       |
-| modioFilter   | IModioFilter   | Sets a tag to force filtering on, or a featured tag                                                                                                 |
-| modioHome     | true           | Navigates Embed Hub back to the home page                                                                                                           |
-| modioLang     | string         | Sets the language of Embed Hub. See [Localization](/restapi/localization) for available languages                                                   |
-| modioPlatform | string         | Sets a platform header on every request. See [Targeting a platform](/restapi/platforms#targeting-a-platform) for more info                          |
-| modioPortal   | string         | Sets a portal header on every request. See [Targeting a portal](/restapi/platforms#targeting-a-portal) for more info                                |
-| modioQuery    | IModioQuery    | Search or filter mods by name or tags                                                                                                               |
-| modioScroll   | IModioScroll   | Sets the scroll position of the containing site                                                                                                     |
-| modioSettings | IModioSettings | Modify the settings of your Embed Hub, as described on the [settings page](/embed-hub/settings)                                                     |
-| modioStyle    | IModioStyle    | Modify the style of your Embed Hub, as described on the [theme page](/embed-hub/theme)                                                              |
-| modioUrl      | string         | Informs Embed Hub of the URL of the containing site                                                                                                 |
-| modioWindow   | number         | Informs Embed Hub of the height of the user's browser window                                                                                        |
+| Key           | Data type      | Description                                                                                                                                |
+| ------------- | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| modioAuth     | IModioAuth     | Authenticate a user by passing in either an ID token from your game's [Open ID](/authentication/openid) setup and optional email, or a UDT |
+| modioCSS      | string         | Sets Custom CSS, as described on the [Custom CSS](/embed-hub/custom-css) page                                                              |
+| modioFilter   | IModioFilter   | Sets a tag to force filtering on, or a featured tag                                                                                        |
+| modioHome     | true           | Navigates Embed Hub back to the home page                                                                                                  |
+| modioLang     | string         | Sets the language of Embed Hub. See [Localization](/restapi/localization) for available languages                                          |
+| modioPlatform | string         | Sets a platform header on every request. See [Targeting a platform](/restapi/platforms#targeting-a-platform) for more info                 |
+| modioPortal   | string         | Sets a portal header on every request. See [Targeting a portal](/restapi/platforms#targeting-a-portal) for more info                       |
+| modioQuery    | IModioQuery    | Search or filter mods by name or tags                                                                                                      |
+| modioScroll   | IModioScroll   | Sets the scroll position of the containing site                                                                                            |
+| modioSettings | IModioSettings | Modify the settings of your Embed Hub, as described on the [settings page](/embed-hub/settings)                                            |
+| modioStyle    | IModioStyle    | Modify the style of your Embed Hub, as described on the [theme page](/embed-hub/theme)                                                     |
+| modioUrl      | string         | Informs Embed Hub of the URL of the containing site                                                                                        |
+| modioWindow   | number         | Informs Embed Hub of the height of the user's browser window                                                                               |
 
 #### IModioAuth
 
@@ -166,8 +170,8 @@ These are listed below, with their relevant details and required parameters.
 
 To receive data from the game, the Embed Hub expects a JavaScript object named `modio` on the global JS object which supports the following functions:
 
-| Function                    | Parameters                        | Description                                                                                       |
-| --------------------------- | --------------------------------- | ------------------------------------------------------------------------------------------------- |
+| Function                    | Parameters                        | Description                                                                                        |
+| --------------------------- | --------------------------------- | -------------------------------------------------------------------------------------------------- |
 | getAuthToken                |                                   | Used to get a UDT for the logged in user from the game                                             |
 | getActivatedIds             |                                   | Used to get the list of activated mod IDs from the game                                            |
 | getLocalMods                |                                   | Used to get the list of locally installed mods from the game                                       |
@@ -187,18 +191,18 @@ To receive data from the game, the Embed Hub expects a JavaScript object named `
 
 To call functions on the Embed Hub from in-game, The Hub exposes a JavaScript object named `modioEmbedHub` on the global JS object which supports the following functions.
 
-| Function            | Parameters | Description                                                                        |
-| ------------------- | ---------- | ---------------------------------------------------------------------------------- |
-| echo                | args       | Returns an array of the parameters supplied to the function                        |
-| getAuthToken        |            | Used to get a UDT of the currently authenticated user from the Embed Hub           |
-| setAuthToken        | string     | Used to provide a UDT to the Embed Hub which will be used to authenticate the user |
-| isUserAuthenticated |            | Returns true if the current user is authenticated within the Embed Hub             |
-| logout              |            | Used to log the current user out of the Embed Hub                                  |
+| Function            | Parameters    | Description                                                                                                                                                                                    |
+| ------------------- | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| echo                | ...args: any  | Returns an array of the parameters supplied to the function                                                                                                                                    |
+| getAuthToken        |               | Used to get a UDT of the currently authenticated user from the Embed Hub. **Note**: as this operation is asynchronous, it will call `setAuthToken` with the UDT on the `modio` JS object above |
+| setAuthToken        | token: string | Used to provide a UDT to the Embed Hub which will authenticate the user                                                                                                                        |
+| isUserAuthenticated |               | Returns true if the current user is authenticated within the Embed Hub                                                                                                                         |
+| logout              |               | Used to log the current user out of the Embed Hub                                                                                                                                              |
 
 ## Authentication
 
 There are 3 ways to automatically authenticate users when opening the Embed Hub in-game or in your web browser as explained above. We recommend using one of these approaches when the user is already authenticated (i.e. by the game client), to ensure a seamless experience.
 
-1. **Recommended:** Passing in a [User Delegated Token (UDT)](#query-parameters) which the mod.io SDK and plugins can generate for you, as a URL query parameter when loading the Embed Hub.
-2. Using the JavaScript message event `modioAuth` key, to pass in an ID token or the user's access token (which is what you pass in to make authenticated calls to the REST API).
+1. Passing in a UDT as a URL query parameter when loading the Embed Hub.
+2. Using the JavaScript message event `modioAuth` key, to pass in a user's ID token or UDT.
 3. Using the JavaScript API `setAuthToken` function, to pass a UDT for the current user.

@@ -12,13 +12,12 @@ Together, they provide a comprehensive view of creation, engagement, and player 
 
 Your game's data is available directly on mod.io dashboards. To access them:
 
-* Click the ‘Stats’ icon at the top-right of your game page on the mod.io website, or
-* Go to https://mod.io/g/gamename/admin/stats, replacing gamename with your game’s name.
+- Click the ‘Stats’ icon at the top-right of your game page on the mod.io website, or
+- Go to https://mod.io/g/gamename/admin/stats, replacing gamename with your game’s name.
 
 ![Get To Game Dashboard](img/get-to-game-dashboard.png)
 
 By default, you’ll first see the UGC Dashboard, and you can switch to other dashboards using the ‘Stats’ dropdown in the game admin menu.
-
 
 ## UGC Metrics
 
@@ -33,7 +32,7 @@ Below is a breakdown of how each metric is measured, collected, and transformed.
 #### Downloads
 
 **What it measures**  
-The total number of times UGC files are downloaded. 
+The total number of times UGC files are downloaded.
 
 **How it's measured**  
 Download events are recorded whenever a file is downloaded, regardless of whether the user is authenticated or not.
@@ -41,9 +40,9 @@ Download events are recorded whenever a file is downloaded, regardless of whethe
 **Deduplication**  
 To avoid inflating totals from repeated requests, events are deduplicated on a 24-hour period based on the combination of:
 
-* User IP  
-* UGC ID  
-* Platform
+- User IP
+- UGC ID
+- Platform
 
 This ensures that repeated downloads of the same file by the same user on the same platform within 24 hours count only once.
 
@@ -58,7 +57,7 @@ Subscription movement is recorded whenever a player subscribes or unsubscribes.
 **Deduplication**  
 No deduplication is applied. Each successful subscribe or unsubscribe action is counted individually.
 
-#### UGC Added 
+#### UGC Added
 
 **What it measures**  
 The total number of new UGC created by creators. Each entry represents a brand-new UGC published into the ecosystem.
@@ -101,10 +100,10 @@ Bandwidth usage is recorded at the network level for every file download request
 
 Leaderboard of the most active creators, ranked by UGC created and downloaded.
 
-* Shows creator name, number of UGC created, and total downloads.  
-* Includes rank movement indicators to highlight emerging or declining creators.  
-* Can be viewed across different time periods (1W, 1M, 3M, 6M, 1Y, All-time).  
-* Supports filtering by platform, category, and tag, allowing focused analysis of specific creator segments.
+- Shows creator name, number of UGC created, and total downloads.
+- Includes rank movement indicators to highlight emerging or declining creators.
+- Can be viewed across different time periods (1W, 1M, 3M, 6M, 1Y, All-time).
+- Supports filtering by platform, category, and tag, allowing focused analysis of specific creator segments.
 
 :::note[Premium Feature]
 Filtering UGC Metrics by Category and Tag is a premium feature. Sign up to one of our [advanced service tiers](https://mod.io/pricing) which includes [Play Sessions](/metrics/game#play-sessions) to activate detailed data analytics, or contact us at developers@mod.io for more information.
@@ -115,10 +114,10 @@ Filtering UGC Metrics by Category and Tag is a premium feature. Sign up to one o
 ![Top UGC](img/top-mods.png)
 Leaderboard of the most downloaded UGC within the selected range.
 
-* Shows rank, UGC name, and total downloads.  
-* Includes rank movement indicators to highlight new entries, climbs, or drops.  
-* Can be viewed across different time periods (1W, 1M, 3M, 6M, 1Y, All-time).  
-* Supports filtering by platform, category, and tag to refine results by audience or content type.
+- Shows rank, UGC name, and total downloads.
+- Includes rank movement indicators to highlight new entries, climbs, or drops.
+- Can be viewed across different time periods (1W, 1M, 3M, 6M, 1Y, All-time).
+- Supports filtering by platform, category, and tag to refine results by audience or content type.
 
 :::note[Premium Feature]
 Filtering UGC Metrics by Category and Tag is a premium feature. Sign up to one of our [advanced service tiers](https://mod.io/pricing) which includes [Play Sessions](/metrics/game#play-sessions) to activate detailed data analytics, or contact us at developers@mod.io for more information.
@@ -129,57 +128,55 @@ Filtering UGC Metrics by Category and Tag is a premium feature. Sign up to one o
 ![Locations](img/download-locations.png)
 Interactive world map showing downloads by country or continent.
 
-* Accompanied by a table view with exact counts and percentages.  
-* Can be viewed across different time periods (1W, 1M, 3M, 6M, 1Y, All-time).  
-* Useful for understanding regional adoption patterns and audience distribution.
+- Accompanied by a table view with exact counts and percentages.
+- Can be viewed across different time periods (1W, 1M, 3M, 6M, 1Y, All-time).
+- Useful for understanding regional adoption patterns and audience distribution.
 
 ## User Activity Metrics
 
 ![UGC Metrics](img/ugc-mau.png)
-Monitor UGC users, comments, guide engagement, and creator growth, with segmentation by logged-in vs. anonymous users and geographic breakdowns.
+Monitor UGC MAU, comments, guide engagement, and creator growth, with segmentation by logged-in vs. anonymous users and geographic breakdowns.
 
 ### Definitions
 
 #### UGC MAU
 
 **What it measures**  
-The number of unique users for the current and previous month. 
+The number of unique monthly active users (MAU) for the current and previous calendar month.
 
 **How it's measured**  
-An UGC user is defined as anyone performing a qualifying action such as downloading, subscribing, rating, or commenting on a UGC.
+A UGC MAU is a unique user identified by IP address that performs at least one qualifying action on UGC.
+
+**Qualifying actions**
+
+- Downloading UGC
+- Subscribing to UGC
+- Unsubscribing from UGC
+- Rating UGC
+- Commenting on UGC
 
 **Deduplication**  
 Events are deduplicated on a 24-hour rolling period based on the combination of:
 
-* User IP  
-* UGC ID  
-* Platform
+- User IP
+- UGC ID
+- Platform
 
+This ensures that repeated interactions with the same UGC by the same user on the same platform within 24 hours count only once.
 
-#### UGC Users
+**Monthly aggregation**  
+Across a full calendar month, each user IP is counted once in the unfiltered MAU total, even if they interact on multiple days.
 
-**What it measures**  
-The number of unique users within the game's UGC ecosystem. 
-
-**How it's measured**  
-An UGC user is defined as anyone performing a qualifying action such as downloading, subscribing, rating, or commenting on a UGC.
-
-**Deduplication**  
-Events are deduplicated on a 24-hour rolling period based on the combination of:
-
-* User IP  
-* UGC ID  
-* Platform
-
-This ensures that multiple interactions by the same user with the same UGC on the same platform within a day count only once toward UGC user totals.
+**Platform behavior**  
+At the platform level, the same user IP can contribute to separate counts on different platforms. Without a platform filter, MAU is deduplicated by IP across the full month.
 
 #### Impressions
 
 **What it measures**  
 The number of unique users who have received information or interacted with a game’s UGC via the mod.io API. This includes both:
 
-* Exposure events such as visiting a game profile, browsing mod lists, or viewing mod details.  
-* Engagement events also used in UGC Users (e.g., downloading, subscribing, rating, or commenting).
+- Exposure events such as visiting a game profile, browsing mod lists, or viewing mod details.
+- Engagement events also used in UGC MAU (e.g., downloading, subscribing, unsubscribing, rating, or commenting).
 
 **How it's measured**  
  An impression is recorded whenever a user’s client makes a qualifying API request that returns UGC-related information for a game. This includes endpoints that power browsing experiences as well as those that log direct user interactions.
@@ -187,9 +184,9 @@ The number of unique users who have received information or interacted with a ga
 **Deduplication**  
 Events are deduplicated on a 24-hour rolling period based on the combination of:
 
-* User IP  
-* UGC ID  
-* Platform
+- User IP
+- UGC ID
+- Platform
 
 This ensures that repeated impressions of the same UGC by the same user on the same platform within a single day are counted only once toward impression totals.
 
@@ -222,24 +219,24 @@ Each creator is counted once, at the time of their first published UGC.
 
 ### Insights
 
-#### UGC User Locations
+#### UGC MAU Locations
 
-![UGC User Locations](img/ugc-active-locations.png)
+![UGC MAU Locations](img/ugc-active-locations.png)
 Interactive world map showing subscriptions by country or continent.
 
-* Accompanied by a table view with exact counts and percentages.  
-* Can be viewed across different time periods (1W, 1M, 3M, 6M, 1Y, All-time).  
-* Useful for understanding regional adoption patterns and audience distribution.
+- Accompanied by a table view with exact counts and percentages.
+- Can be viewed across different time periods (1W, 1M, 3M, 6M, 1Y, All-time).
+- Useful for understanding regional adoption patterns and audience distribution.
 
 #### Timeseries Graph Impressions Trendline
 
 ![Timeseries Graph Impressions Trendline](img/impression-trend.png)
-An impressions trend line is overlaid on the UGC Users timeseries graph, allowing you to compare audience exposure (impressions) with direct engagement (UGC users).
+An impressions trend line is overlaid on the UGC MAU timeseries graph, allowing you to compare audience exposure (impressions) with direct engagement (UGC MAU).
 
-#### Unique Impressions vs. UGC Users
+#### Unique Impressions vs. UGC MAU
 
-![Unique Impressions vs. UGC Users](img/stackauthlogged.png)
-The graph overlays these metrics, stacking logged-in and anonymous impressions with a UGC user trend line, making it easy to compare overall reach against actual engagement.
+![Unique Impressions vs. UGC MAU](img/stackauthlogged.png)
+The graph overlays these metrics, stacking logged-in and anonymous impressions with a UGC MAU trend line, making it easy to compare overall reach against actual engagement.
 
 ## Health Metrics
 
@@ -355,43 +352,43 @@ Recorded whenever a session starts, capturing the total number of UGC enabled fo
 ![Play Sessions](img/play-session-length.png)
 Breakdown of sessions by duration within the selected range.
 
-* Groups play sessions into time brackets (0–5 mins, 5–30 mins, 30–60 mins, 1–2 hrs, 2+ hrs).  
-* Shows the distribution of playtime lengths to understand how long players typically stay engaged.  
-* Useful for identifying quick drop-offs vs. long-term engagement.
+- Groups play sessions into time brackets (0–5 mins, 5–30 mins, 30–60 mins, 1–2 hrs, 2+ hrs).
+- Shows the distribution of playtime lengths to understand how long players typically stay engaged.
+- Useful for identifying quick drop-offs vs. long-term engagement.
 
 #### What Platforms Are Players On?
 
 ![Play Sessions](img/play-session-platform.png)
 Distribution of total playtime across platforms.
 
-* Shows which platforms (e.g., Windows, Mac, PlayStation, Xbox, Switch, Other) players are using.  
-* Reports share of playtime and total minutes played by platform.  
-* Helps studios understand audience platform preferences and optimise support accordingly.
+- Shows which platforms (e.g., Windows, Mac, PlayStation, Xbox, Switch, Other) players are using.
+- Reports share of playtime and total minutes played by platform.
+- Helps studios understand audience platform preferences and optimise support accordingly.
 
 #### Most Played Mods
 
 Leaderboard of the mods with the highest playtime during the selected range.
 
-* Shows rank, mod name, and total playtime.  
-* Includes rank movement indicators to highlight new entries, climbs, or drops.  
-* Can be viewed across different time periods (1W, 1M, 3M, 6M, 1Y, All-time).  
-* Supports filtering by platform to reveal platform-specific favorites.
+- Shows rank, mod name, and total playtime.
+- Includes rank movement indicators to highlight new entries, climbs, or drops.
+- Can be viewed across different time periods (1W, 1M, 3M, 6M, 1Y, All-time).
+- Supports filtering by platform to reveal platform-specific favorites.
 
 #### Top Creators by Playtime Generated
 
 Leaderboard of creators ranked by the total playtime generated by their mods.
 
-* Shows creator name, total playtime, and ranking.  
-* Includes rank movement indicators to highlight rising, falling, or new creators.  
-* Can be viewed across different time periods (1W, 1M, 3M, 6M, 1Y, All-time).  
-* Supports filtering by platform for more detailed insights.
+- Shows creator name, total playtime, and ranking.
+- Includes rank movement indicators to highlight rising, falling, or new creators.
+- Can be viewed across different time periods (1W, 1M, 3M, 6M, 1Y, All-time).
+- Supports filtering by platform for more detailed insights.
 
 #### Player Locations by Playtime
 
 Breakdown of total playtime by geographic region.
 
-* Displays playtime aggregated by country or continent.  
-* Shows the share (%) of total playtime alongside absolute values.  
-* Can be viewed across different time periods (LIVE, 1W, 1M, 3M, 6M, 1Y, All-time).  
-* In LIVE view, counts reflect players active within the last 30 minutes.  
-* Useful for understanding regional engagement patterns, identifying strong markets, and spotting areas of growth.
+- Displays playtime aggregated by country or continent.
+- Shows the share (%) of total playtime alongside absolute values.
+- Can be viewed across different time periods (LIVE, 1W, 1M, 3M, 6M, 1Y, All-time).
+- In LIVE view, counts reflect players active within the last 30 minutes.
+- Useful for understanding regional engagement patterns, identifying strong markets, and spotting areas of growth.
