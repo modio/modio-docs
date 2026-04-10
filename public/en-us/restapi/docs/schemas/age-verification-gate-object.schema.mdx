@@ -1,0 +1,33 @@
+---
+id: age-verification-gate-object
+title: "Age Verification Gate Object"
+description: "Contains age gate widget if returned."
+sidebar_label: "Age Verification Gate Object"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: [{"url":"https://family.test.k-id.com/widget/age-gate?token=JWT_TOKEN","message":"Success","status":"success"}]
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Age Verification Gate Object"}
+>
+</Heading>
+
+
+
+Contains age gate widget if returned.
+
+<Schema
+  schema={{"title":"Age Verification Gate Object","description":"Contains age gate widget if returned.","type":"array","items":{"properties":{"url":{"description":"The URL of the age gate widget.","type":"string","example":"https://family.test.k-id.com/widget/age-gate?token=JWT_TOKEN"},"message":{"description":"Message associated with the request.","type":"string","example":"Success"},"status":{"description":"Status of the age gate widget.","type":"string","example":"success"}},"type":"object"}}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

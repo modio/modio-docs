@@ -87,7 +87,9 @@ flowchart TD
 
 ## Implementation
 
-If you are using the official mod.io [Unreal Engine](/unreal), [Unity](/unity) or [C++ SDK](/cppsdk), the acceptance dialog functionality is built into those plugins, and should be utilized. Please check those plugins documentation for details using their implementation.
+The official mod.io [Unreal Engine](/unreal/template-ui/layouts#wbp_modiodefaulttosdialog) and [Unity](/unity/template-ui/layouts#modpanel_authentication) plugins contain premade acceptance dialogs you may use, and all the plugins provide an API for both retrieving the terms of use, and submitting acceptance during authentication.
+
+Please check those plugins documentation for details using their implementation.
 
 If you are building the acceptance and consent process yourself, you should implement the steps detailed above, paired with a dialog and authentication process following the instructions detailed below.
 

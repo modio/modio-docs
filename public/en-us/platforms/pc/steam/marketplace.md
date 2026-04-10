@@ -19,6 +19,8 @@ To enable the Steam Inventory Service, start by ensuring you have a Web API key 
 
 In this group, create a new Web API Key and grant it access to your game. Once you have selected the application, create a Web API key and note down this value - it will be required for other steps.
 
+The key requires the `microtransactions` (to process chargebacks) and `economy` (to retrieve and consume entitlements) permissions to be set.
+
 ## Enable the Inventory Service
 
 If you have not yet enabled the Steam Inventory Service for your title, you can do this by going to your game's App Admin page > Community > Inventory Service and checking "Enable Inventory Service". 

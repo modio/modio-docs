@@ -364,6 +364,7 @@ const sidebars = {
         'features/cloud-cooking/cloud-cooking-overview',
         'features/cloud-cooking/cloud-cooking-architecture',
         'features/cloud-cooking/cloud-cooking-configuration',
+        'features/cloud-cooking/cloud-cooking-autosdk',
       ],
     },
     {

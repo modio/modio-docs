@@ -68,7 +68,7 @@ From there Thunes will charge their fee, which is 5% of the total amount + $0.20
 
 We charge the Virtual Currency wholesale amount ($0.0052 per credit sold). The Virtual Currency wholesale amount covers mod.io's fee, and the value of the currency in the economy.
 
-Mod.io gets $0.0012 per credit of the wholesale amount. In this case, this would be $1.2. The Virtual Currency pool gets $0.004 per credit of that wholesale amount. In this case, that would be $4. This is the value of the Virtual Currency in the Marketplace economy.
+mod.io gets $0.0012 per credit of the wholesale amount. In this case, this would be $1.2. The Virtual Currency pool gets $0.004 per credit of that wholesale amount. In this case, that would be $4. This is the value of the Virtual Currency in the Marketplace economy.
 
 In this scenario, this leaves $4.1 that goes directly to the studio.
 
@@ -97,7 +97,7 @@ The external platform would charge 30% of that, leaving $7. Platforms rate vary,
 
 mod.io will issue an invoice at the start of the following month to charge back the Virtual Currency wholesale amount for those 1000 credits sold. We would charge the same Virtual Currency wholesale charge of $0.0052 per credit. The invoice total would amount to $5.2, leaving $1.8 to the studio.
 
-Mod.io gets $0.0012 of the wholesale amount - which would be $1.2.
+mod.io gets $0.0012 of the wholesale amount - which would be $1.2.
 The Virtual Currency pool gets $0.004 of that wholesale amount - which would be $4.
 
 **Additional examples for Virtual Currency Packs sales, via external platform:**

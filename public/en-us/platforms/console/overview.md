@@ -55,6 +55,34 @@ You can see examples of mod.io running on consoles in the following titles today
 
 If you would like to see more examples of mod.io working in any of these games or other titles, please contact [developers@mod.io](mailto:developers@mod.io) for demonstration keys.
 
+
+## Getting approval for console documentation and modules
+
+Following approval from the relevant First Party contacts, access to console platform documents and modules is verified.
+
+In order to access these materials, developers require:
+- A mod.io Game Hub (on the live environment - mod.io, access to docs and modules is not available on the test environment)
+- A mod.io account with Manager or Administrator roles on the Game Hub for your project 
+- The same email address used to request and secure verified status from the First Party must also be used for your mod.io account. The user associated with this mod.io account must be on the Game Admin team for the Game Hub, with the Manager or Administrator role.
+
+Once this is setup, please request docs access for the relevant documentation and modules, and a mod.io representative will grant access.
+
 :::tip[Cross-platform UGC]
 Want UGC on other platforms? Explore our list of [supported platforms](/getting-started#expand-with-cross-platform-functionality) to integrate mod.io across the board.
+:::
+
+## Where to access console documentation and modules
+
+For studios that have gained [platform approval](#gaining-platform-approval) by signing the appropriate NDA, we offer console modules for each SDK and accompanying documentation:  
+
+* [PlayStation®4](https://docs.mod.io/partners/ps4)
+* [PlayStation®5](https://docs.mod.io/partners/ps5)
+* [Xbox One/Series X GDK](https://docs.mod.io/partners/xbox)
+* [Nintendo Switch](https://docs.mod.io/partners/switch)
+* [Nintendo Switch 2](https://docs.mod.io/partners/switch2)
+
+:::note[Premium Feature]
+Console support is a premium feature. These links will only work for studios who have signed up to one of our advanced service tiers and we have verified as being under the [applicable platform NDA](#gaining-platform-approval).
+
+If you believe you are but cannot access the documentation, [contact us](mailto:developers@mod.io) for assistance.
 :::

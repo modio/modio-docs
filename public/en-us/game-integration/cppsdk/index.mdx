@@ -7,16 +7,49 @@ custom_edit_url: https://github.com/modio/modio-sdk-internal/blob/develop/doc/in
 
 # C++ SDK
 
-The mod.io C++ SDK makes it possible to host and automatically install **user-generated content (UGC)** in your game via the [mod.io REST API](https://docs.mod.io/restapi).
+The mod.io C++ SDK makes it possible to browse, install, update, and manage **user-generated content (UGC)** in your game by integrating with the [mod.io REST API](https://docs.mod.io/restapi).
+
+The SDK is a C++17, cross-platform wrapper around mod.io's API and common UGC workflows. It provides a consistent public interface for:
+
+* Communicating with mod.io services (searching, subscriptions, user state, etc.)
+* Managing local content (downloads, updates, installs, and removals)
+* Handling asynchronous work without blocking your game thread
+
+## Connecting your game to mod.io
+
+To connect the C++ SDK to mod.io, you will need to create a game profile in the mod.io dashboard. 
+This game profile is where mod.io hosts your UGC and where you configure the features your game uses.
+
+At a high level, your integration requires:
+
+* A mod.io **Game ID** identifying your game on mod.io
+* An **API key** used by the SDK to authenticate requests for that game
+* The correct **environment** (Live or Test) and **portal** (storefront/platform) when you initialize the SDK
+
+Once those values are configured in your title and passed into the SDK, your game can make requests to mod.io and manage UGC on disk.
+
+:::note
+mod.io provides a sandbox environment (test.mod.io) for development and QA. The SDK supports this via the environment parameter you pass during initialization.
+:::
+
+## How the SDK wraps the REST API
+
+Most SDK calls map closely to REST operations (for example: listing mods, fetching mod details, subscribing/unsubscribing). The main differences are:
+
+* The public API is callback-based and non-blocking. Methods that begin asynchronous work use the `Async` suffix.
+* Callbacks are invoked when you run the SDK event loop (see `RunPendingHandlers`).
+* SDK types provide strong, consistent shapes for requests and results (for example `FilterParams` for queries and `Optional` results alongside an `ErrorCode`).
+
+The complete public interface is declared in `modio/ModioSDK.h`. If you want to understand the available functions and their callback signatures at a glance, that header is the canonical reference.
 
 <div className="simplecard-grid">
 
   <SimpleCard
     shadow="tl"
-    title="Core SDK"
+    title="Get Started"
     image="/img/icon_cpp.svg"
-    text="Facilitates core mod.io service functionality, such as authentication, filtering and subscription management."
-    moreLink="/cppsdk/installation"
+    text="Start here for installation, initialization, authentication, and your first UGC queries."
+    moreLink="/cppsdk/getting-started"
   />
     <SimpleCard
     shadow="tl"
@@ -27,38 +60,33 @@ The mod.io C++ SDK makes it possible to host and automatically install **user-ge
   />
 </div>
 
-You can download the mod.io C++ SDK [from GitHub](https://github.com/modio/modio-sdk). Once you have, follow the [C++ SDK Getting Started guides](https://docs.mod.io/cppsdk#c-sdk-core-setup-guides) below to set up your game or application to use the SDK. 
+You can download the mod.io C++ SDK [from GitHub](https://github.com/modio/modio-sdk). Once you have, follow the [C++ SDK Getting Started guides](https://docs.mod.io/cppsdk/getting-started) to set up your game or application to use the SDK. 
 
 We also have official plugins for [Unreal Engine](https://docs.mod.io/unreal) or [Unity](https://docs.mod.io/unity).
 
-## Features
+## Getting started
 
-* Permissive MIT/BSL-license
+If you're new to the SDK, start with the [Getting Started overview](https://docs.mod.io/cppsdk/getting-started). It links to the core setup guide series and walks through the recommended learning path.
+
+## SDK Features
 * Async callback-based interface
 * Non-blocking IO with a 'bring your own thread' model
+* Header-only, separate compilation or static library support with a C++17 compiler
 * Automatic downloads and updates
 * SSO authentication for email, Steam, Epic Games Store, console platform and custom implementations
 * UGC browsing and filtering
-* Header-only, direct compilation or static library support with C++17 compiler
-
-## C++ SDK core setup guides
-
-Below are a series of guides with code samples demonstrating the C ++ SDK's core functionality.
-
-### Getting started
-
-* [Installation](https://docs.mod.io/cppsdk/installation)
-* [Initialization](https://docs.mod.io/cppsdk/initialization)
-* [Structure & Error Handling](https://docs.mod.io/cppsdk/structure)
-* [User Authentication](https://docs.mod.io/cppsdk/user-authentication)
-* [Searching for UGC](https://docs.mod.io/cppsdk/searching-ugc)
-* [Subscribing to UGC](https://docs.mod.io/cppsdk/subscribing)
-* [Adding UGC](https://docs.mod.io/cppsdk/adding-ugc)
-* [Collections](https://docs.mod.io/cppsdk/collections)
 
 ## Feature Guides
 
-The C++ SDK is compatitable with a variety of mod.io's features. These are additions to the core plugin that are designed to streamline and elevate your game's UGC. Check out the specific [Feature Guides for C++ SDK](https://docs.mod.io/cppsdk/feature-guides) 
+The C++ SDK is compatible with a variety of mod.io's features. These are additions to the core SDK that are designed to streamline and elevate your game's UGC.
+
+Feature guides:
+
+* [List of Features](https://docs.mod.io/cppsdk/feature-guides)
+* [Marketplace](https://docs.mod.io/cppsdk/marketplace)
+* [Metrics](https://docs.mod.io/cppsdk/metrics)
+* [Temporary Mod Sets](https://docs.mod.io/cppsdk/temporary-mods)
+* [Multiplayer](https://docs.mod.io/cppsdk/multiplayer)
 
 ## Platform Support
 

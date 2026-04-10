@@ -49,7 +49,7 @@ If your game uses [cross-platform UGC](/getting-started#expand-with-cross-platfo
 
 ## Include Terms & User Consent
 
-Before downloading UGC, players are required to give consent to both the mod.io terms of use as well as any applicable platform-specific terms. The simplest way to ensure this is to use our Unreal Engine or Unity plugins, which include acceptance dialog functionality that meets the required standards.
+Before downloading UGC, players are required to give consent to both the mod.io terms of use as well as any applicable platform-specific terms. The simplest way to ensure this is to use our [Unreal Engine](/unreal/template-ui/layouts#wbp_modiodefaulttosdialog) or [Unity](/unity/template-ui/layouts#modpanel_authentication) plugins, which include acceptance dialog functionality that meets the required standards.
 
 For more information, check out our [Terms & User Consent](/terms) guide. 
 

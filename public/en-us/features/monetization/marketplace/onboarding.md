@@ -41,7 +41,7 @@ This individual will be able to provide the required financial information about
 You can change this contact at any time through your monetization settings.
 :::
 
-![Entity Onboard Mod.io Flow](img/entity-onboard-1.png)
+![Entity Onboard mod.io Flow](img/entity-onboard-1.png)
 
 :::note
 The financial contact will be used for invoicing and onboarding purposes.
