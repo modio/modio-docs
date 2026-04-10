@@ -879,6 +879,56 @@ void K2_UnmuteUserAsync(FModioUserID UserID, FOnErrorOnlyDelegate Callback)
 
 
 
+#### UnfollowUserAsync
+
+Unfollows the given user for the currently authenticated user.
+
+![nd_img_ModioSubsystem_K2_UnfollowUserAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_UnfollowUserAsync.png)
+
+```cpp
+void K2_UnfollowUserAsync(FModioUserID UserId, FOnErrorOnlyDelegate Callback)
+```
+
+
+##### Requirements
+* _initialized-sdk_
+* _no-rate-limiting_
+* _user-authenticated_
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModioSubsystem`|
+|`UserId`|The UserID of the user that should be unfollowed.|
+|`Callback`|a callback invoked upon completion, indicating if the request was successful.|
+</RefTable>
+
+
+
+
+
+
+##### Error Values
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|GenericError::SDKNotInitialized|SDK not initialized
+|UserDataError::InvalidUser|User not authenticated
+|HttpError::RateLimited|Too many frequent calls to the API. Wait some time and try again.
+|NetworkError|Couldn't connect to mod.io servers
+</RefTable>
+
+
+
+
+
+
+
+
 #### UnfollowModCollectionAsync
 
 Sends a request to the mod.io server to remove the specified mod collection to the user's list of followed collections.
@@ -2536,6 +2586,106 @@ void K2_GetUserMediaAvatarAsync(EModioAvatarSize AvatarSize, FOnGetMediaDelegate
 
 
 
+#### GetUserFollowingAsync
+
+Gets a list of users that the given user is following
+
+![nd_img_ModioSubsystem_K2_GetUserFollowingAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_GetUserFollowingAsync.png)
+
+```cpp
+void K2_GetUserFollowingAsync(FModioUserID UserId, FOnGetFollowsDelegate Callback)
+```
+
+
+##### Requirements
+* _initialized-sdk_
+* _no-rate-limiting_
+* _user-authenticated_
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModioSubsystem`|
+|`UserId`|the UserID of the user you are querying.|
+|`Callback`|a Callback invoked with a status code and optional User List containing the list of followers|
+</RefTable>
+
+
+
+
+
+
+##### Error Values
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|GenericError::SDKNotInitialized|SDK not initialized
+|UserDataError::InvalidUser|User not authenticated
+|HttpError::RateLimited|Too many frequent calls to the API. Wait some time and try again.
+|NetworkError|Couldn't connect to mod.io servers
+</RefTable>
+
+
+
+
+
+
+
+
+#### GetUserFollowersAsync
+
+Gets the list of followers for the given user.
+
+![nd_img_ModioSubsystem_K2_GetUserFollowersAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_GetUserFollowersAsync.png)
+
+```cpp
+void K2_GetUserFollowersAsync(FModioUserID UserId, FOnGetFollowsDelegate Callback)
+```
+
+
+##### Requirements
+* _initialized-sdk_
+* _no-rate-limiting_
+* _user-authenticated_
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModioSubsystem`|
+|`UserId`|the UserID of the user who's followers you are getting|
+|`Callback`|a Callback invoked with a status code and optional User List containing the list of followers|
+</RefTable>
+
+
+
+
+
+
+##### Error Values
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|GenericError::SDKNotInitialized|SDK not initialized
+|UserDataError::InvalidUser|User not authenticated
+|HttpError::RateLimited|Too many frequent calls to the API. Wait some time and try again.
+|NetworkError|Couldn't connect to mod.io servers
+</RefTable>
+
+
+
+
+
+
+
+
 #### GetUserDelegationTokenAsync
 
 Get a user delegation token that can be used for S2S service calls
@@ -3319,6 +3469,56 @@ void K2_ForceUninstallModAsync(FModioModID ModToRemove, FOnErrorOnlyDelegate Cal
 |`UserNotAuthenticatedError`|No authenticated user
 |ApiErrorRefSuccess|User is still subscribed to the specified mod
 |`InvalidArgsError`|The supplied mod ID is invalid
+</RefTable>
+
+
+
+
+
+
+
+
+#### FollowUserAsync
+
+Follows the given user for the currently authenticated user.
+
+![nd_img_ModioSubsystem_K2_FollowUserAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_FollowUserAsync.png)
+
+```cpp
+void K2_FollowUserAsync(FModioUserID UserId, FOnErrorOnlyDelegate Callback)
+```
+
+
+##### Requirements
+* _initialized-sdk_
+* _no-rate-limiting_
+* _user-authenticated_
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModioSubsystem`|
+|`UserId`|The UserID of the user that should be followed.|
+|`Callback`|a callback invoked upon completion, indicating if the request was successful.|
+</RefTable>
+
+
+
+
+
+
+##### Error Values
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|GenericError::SDKNotInitialized|SDK not initialized
+|UserDataError::InvalidUser|User not authenticated
+|HttpError::RateLimited|Too many frequent calls to the API. Wait some time and try again.
+|NetworkError|Couldn't connect to mod.io servers
 </RefTable>
 
 
@@ -4161,6 +4361,23 @@ Library class for operations on FModioUnsigned64
 
 ---
 
+### ModioUserListLibrary 
+
+Utility functions for accessing and managing lists of user information
+
+##### Inheritance Hierarchy
+-> BlueprintFunctionLibrary-> Object
+
+
+
+
+
+
+
+
+
+---
+
 
 
 ## Structs
@@ -4969,6 +5186,22 @@ A wrapper type around the Unreal Engine type FOnlineStoreOffer, representing a p
 
 ---
 
+### ModioUserList 
+
+Strong type struct to wrap multiple Users indexed by a paged result
+
+
+
+
+
+
+
+
+
+
+
+---
+
 ### ModioUserModRatingList 
 
 Strong type struct to wrap multiple user ratings indexed by a paged result
@@ -5035,6 +5268,22 @@ Wrapper around `Modio::ErrorCode`
 ### ModioOptionalModCollectionInfo 
 
 Struct to wrap ModCollectionInfo into an optional parameter
+
+
+
+
+
+
+
+
+
+
+
+---
+
+### ModioOptionalUserList 
+
+Struct to wrap UserList into an optional parameter
 
 
 
@@ -5243,22 +5492,6 @@ Simple struct representing the outcome of a mod management operation
 | `EModioModManagementEventType` | `Event` | What type of event occurred |
 | `FModioErrorCode` | `Status` | Empty if operation completed successfully, truthy/contains error code if operation failed |
 </RefTable>
-
-
-
----
-
-### ModioOptionalUserList 
-
-Struct to wrap UserList into an optional parameter
-
-
-
-
-
-
-
-
 
 
 
@@ -5752,6 +5985,7 @@ Struct with the strings to display to a user when showing the terms of use and t
 | `FModioLink` | `PrivacyLink` | Link to the mod.io Privacy Policy |
 | `FModioLink` | `RefundLink` | Link to the mod.io Refund Policy |
 | `FModioLink` | `ManageLink` | Link to the mod.io Manage User Account page |
+| `FModioLink` | `MonetizationLink` | Link to the mod.io Monetization Policy |
 | `FString` | `TermsText` | The plaintext version of the mod.io terms of use |
 </RefTable>
 
@@ -6118,29 +6352,6 @@ Contains information about a successful transaction for a mod
 | `FModioModID` | `AssociatedModID` | The mod the purchase was for |
 | `FModioUnsigned64` | `Price` | The price the mod was purchased for |
 | `FModioUnsigned64` | `UpdatedUserWalletBalance` | The updated balance in the user's wallet after the transaction |
-</RefTable>
-
-
-
----
-
-### ModioUserList 
-
-Strong type struct to wrap multiple Users indexed by a paged result
-
-
-
-
-
-
-
-
-##### Variables
-<RefTable colWidths={['10%', '10%', '20%']} stripes="odd">
-| | | |
-|-|-|-|
-| `FModioPagedResult` | `PagedResult` | A paged result property |
-| `TArray<FModioUser>` | `InternalList` | Internal array of users |
 </RefTable>
 
 
@@ -7337,6 +7548,82 @@ FModioUnsigned64 Add(FModioUnsigned64 LHS, FModioUnsigned64 RHS)
 
 
 
+
+
+
+
+
+
+
+
+---
+
+
+
+### Get Users
+
+Retrieve the list of users from the user list
+
+![nd_img_ModioUserListLibrary_GetUsers.png](img/refdocs/nd_img_ModioUserListLibrary_GetUsers.png)
+
+```cpp
+TArray<FModioUser> GetUsers(FModioUserList UserList)
+```
+
+
+
+
+
+
+#### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`UserList`|The user list to retrieve the Users from|
+</RefTable>
+
+
+
+#### Returns
+An array of FModioUser objects representing the Users in the list
+
+
+
+
+
+
+
+
+---
+
+
+
+### Get Paged Result
+
+Retrieve paged result information for a user list
+
+![nd_img_ModioUserListLibrary_GetPagedResult.png](img/refdocs/nd_img_ModioUserListLibrary_GetPagedResult.png)
+
+```cpp
+FModioPagedResult GetPagedResult(FModioUserList UserList)
+```
+
+
+
+
+
+
+#### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`UserList`|The user list to retrieve paged result information from|
+</RefTable>
+
+
+
+#### Returns
+An FModioPagedResult containing metadata about the paginated data
 
 
 
@@ -10848,6 +11135,7 @@ Enum representing the platform(s) that a modfile is enabled for
 | `PS4` |  |
 | `PS5` |  |
 | `Switch` |  |
+| `Switch2` |  |
 | `Oculus` |  |
 | `Source` |  |
 | `WindowsServer` |  |
@@ -11031,6 +11319,7 @@ Simple struct to encapsulate data passed to external authentication systems
 | `GoG` |  |
 | `Itch` |  |
 | `Switch` |  |
+| `Switch2` |  |
 | `Discord` |  |
 | `PSN` |  |
 | `Epic` |  |
@@ -11126,6 +11415,8 @@ Type of entitlement that was consumed
 | `RequestInProgress` | The asynchronous operation is already running. Please wait for it to complete before calling it again |
 | `InvalidZipFile` | The zip file submitted is invalid. |
 | `CloudCookingDisabled` | Cloud Cooking is disabled for this game. |
+| `AlreadySubscribedToUser` | The authenticated user is already subscribed to the user. |
+| `CannotSubscribeToSelf` | You cannot subscribe to yourself. |
 </RefTable>
 
 ---
@@ -11259,6 +11550,7 @@ Enum representing a named platform that the plugin is running on.
 | `XBoxOne` |  |
 | `XSX` |  |
 | `Switch` |  |
+| `Switch2` |  |
 | `Unknown` |  |
 | `Android` |  |
 | `iOS` |  |
