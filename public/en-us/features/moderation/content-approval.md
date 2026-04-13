@@ -34,48 +34,71 @@ mod.io makes available to all studios, creators, and subscribers, our [Game Term
 
 ## Curation rules
 
-After inviting your team, the second step is to review the curation rules in the Game Admin panel. These are:
-
-|Option       | Functionality                                        |
-| ------------- |------------------------------------------------|
-|Mature Content        | Define how mature content will be handled. If the user flags their UGC as containing mature content, you can either **disallow** the content entirely, **allow** the content without restriction, or select **mature audiences only** to **restrict** it to users who are 18+, gated with a mature content warning.  |
-|Allow Comments / Allow Guides  | These options disable or enable the ability for players to add comments on UGC pages, or contribute content to the guides section of the game page.  |
-|Autoban     | You can define a **limit** of open user-created reports before the UGC is automatically taken down for review. Once a UGC hits this report threshold, it will automatically be **removed** until it has been reviewed by a member of your team.  |
-|Curation | By default this is set to **No Curation**. UGC will appear live right away, and moderation is community driven (based on user reports). **Full Curation** means all mods will be moved to the pending queue, and must be manually approved by your team before going live.  |
-|Submissions  | **Tools only** will disable the ability for users to upload mod content through the mod.io website. **Tools and Website** allows content submission through both your in-game editors / tools and our web-based upload tool. |
-
-:::tip
-Whilst it saves a lot of engineering time to allow submissions using our web-based upload tool, if you have built your own editor or submission pipeline, we recommend you restrict submissions to using **Tools only**. This will eliminate user error, and allow you to add validation and checks of your own during the submission process.
-:::
-
-### Diagram
-
-The diagram below shows the journey UGC goes through to go live. Each of these steps can be configured (as explained below) depending on the level of automation and curation desired.
+After inviting your team, the second step is to review the curation rules in the Game Admin panel. The diagram below shows the journey UGC goes through to go live. Each of these steps can be configured depending on the level of automation and curation desired.
 
 ```mermaid
 flowchart LR
     A(["Add UGC"]) --> B{"Automated
     Checks"}
-    B -- Yes --> C{"Rules
+    B -- Yes --> C{"File
+    Schema"}
+    B -- No --> H(["fa:fa-xmark UGC Denied or
+    Update Required"])
+    C -- Yes --> I{"Rules
     Engine"}
-    B -- No --> G(["fa:fa-xmark Update Required"])
-    C -- Yes --> D{"Full
+    C -- No --> H
+    I -- Yes --> D{"Cloud
+    Cooking"}
+    I -- No --> H
+    D -- Yes --> E{"Curation"}
+    D -- No --> H
+    E -- Yes --> F{"Platform
     Curation"}
-    C -- No --> G
-    D -- Yes --> E{"Per-platform
-    Curation"}
-    D -- No --> G
-    E -- Yes --> F(["fa:fa-check UGC Live"])
-    E -- No --> G
+    E -- No --> H
+    F -- Yes --> G(["fa:fa-check UGC Live"])
+    F -- No --> H
     style B fill:#999,stroke:#666,color:#000
     style C fill:#999,stroke:#666,color:#000
     style D fill:#999,stroke:#666,color:#000
     style E fill:#999,stroke:#666,color:#000
-    style G fill:#DB5355,stroke:#c00
-    style F fill:#7EEF8C,stroke:#00c717
+    style F fill:#999,stroke:#666,color:#000
+    style I fill:#999,stroke:#666,color:#000
+    style G fill:#7EEF8C,stroke:#00c717
+    style H fill:#DB5355,stroke:#c00
 ```
 
-### No curation
+|Option       | Functionality                                        |
+| ------------- |------------------------------------------------|
+|Automated Checks | These are [built in](/moderation/automated-scanning) like malware scans and only minimum customization options exist. |
+|File Schema | Define a [list of file extensions](/moderation/automated-scanning#file-schema-validation) (i.e. **exe,dll**) which when detected result in the UGC file submitted been denied or a report automatically opened for review. |
+|Rules Engine | Define [custom rules](/moderation/rules-engine) which can call webhooks and other advanced logic based on certain actions occurring. |
+|Cloud Cooking | An advanced feature, which often is used to [cook and prepare source UGC files](/cloud-cooking) for cross-platform use. Some studios also use this functionality to verify the UGC file works via their own custom checks. |
+|Curation | By default this is set to **No Curation**. UGC will appear live right away, and moderation is community driven (based on user reports). **Full Curation** means all mods will be moved to the pending queue, and must be manually approved by your team before going live. These settings are [explained in detail below](#curation). |
+|Platform Curation | If you enable per-platform files via your games dashboard, you can control at a platform-level if each file submitted needs to be approved for that platform in order to go live. |
+
+:::tip[Monetized Content Curation]
+The [marketplace and monetization](/monetization) features offered by mod.io, have their own set of of moderation and curation rules covered by the monetization section of our documentation. This includes a [Partner Program](/monetization/partner) which allows studios to control which creators are eligible to participate, and the ability to [approve submissions into the marketplace and price changes](/monetization/approving-premium-ugc) proposed by creators. If enabling this functionality, we recommend reading those docs. These settings are [explained in detail below](#platform-curation).
+:::
+
+In addition to the above steps, the following settings allow you to control what content is permitted and how it is treated by the system.
+
+|Option       | Functionality                                        |
+| ------------- |------------------------------------------------|
+|Mature Content | Define how mature content will be handled. If the user flags their UGC as containing mature content, you can either **disallow** the content entirely, **allow** the content without restriction, or select **mature audiences only** to **restrict** it to users who are 18+, gated with a mature content warning. |
+|Allow Comments, Guides, Collections, Dependencies | These options disable or enable the ability for players to add comments, link dependencies to their mod, or contribute content to the guides or collections section of the game page.  |
+|Autoban | You can define a **limit** of open user-created reports before the UGC is automatically taken down for review. Once a UGC hits this report threshold, it will automatically be **removed** until it has been reviewed by a member of your team.  |
+|Profanity Filter | Control how textual content is filtered, so innappropiate language is replaced with *. This setting can be turned off, set to Basic, Moderate or Strict. |
+|Word Filter | Define your own allow and deny list, which works in addition to the profanity filter setting chosen above. |
+|Submissions | **Tools only** will disable the ability for users to upload mod content through the mod.io website. **Tools and Website** allows content submission through both your in-game editors / tools and our web-based upload tool. |
+|User Permissions | [Restrict users](/moderation/community-reports#user-management) from submitting UGC, guides, collections, reports and comments via their profile. |
+
+:::tip
+Whilst it saves a lot of engineering time to allow submissions using our web-based upload tool, if you have built your own editor or submission pipeline, we recommend you restrict submissions to using **Tools only**. This will eliminate user error, and allow you to add validation and checks of your own during the submission process.
+:::
+
+### Curation
+
+#### No Curation
 
 The **No Curation** option doesn’t mean content cannot be moderated, it just means content can go-live immediately on submission. All content added to mod.io, even approved content can be put back into the moderation queue for curation, or deleted and removed from circulation as explained later in this guide.
 
@@ -89,7 +112,18 @@ The majority of games using mod.io have **No Curation** enabled because it maxim
 You can always turn [Full Curation](#full-curation) on instantly anytime in the future, if you want new content to go into a queue for approval before going live.
 :::
 
-### Per-platform curation
+#### Full Curation
+mod.io provides studios with the option to curate all content submitted, by turning on **Full Curation** as shown in the image below. This is generally used by studios seeking to oversee all content available for their game, or have complex moddable content and want to verify mods work correctly across all platforms prior to going live.
+
+![Curation settings](img/curation-settings.png)
+
+Change the curation setting via the “Content” section on your games settings page.
+
+![Moderation queue](img/moderation-queue.png)
+
+When you turn this system on, all mods are hidden and go into your moderation queue by default. Content must be approved by a moderator prior to going live.
+
+### Platform Curation
 
 For games that have enabled mods or UGC on more than one platform (such as PC, consoles, VR, or mobile) you can define moderation policies based on each platform you support. This is a particularly powerful feature of mod.io, which gives you the ability to control which platforms each UGC is available on. It also enables each file uploaded to a UGC to target only the platforms it supports, which is critical if your game needs UGC to be built differently for each of the platforms.
 
@@ -104,14 +138,3 @@ Per-platform files should only be enabled if you want to curate files on a per-p
 :::
 
 Otherwise, you should leave this setting turned off as it simplifies the UGC file submission process by not requiring the creator to specify the target platforms, since UGC will target all platforms by default. Most games that use turn this on will setup UGC to not require moderator approval on PC, but to require moderator approval on consoles so they can adhere to the platform rules they have agreed to with the platform owner.
-
-### Full curation
-mod.io provides studios with the option to curate all content submitted, by turning on **Full Curation** as shown in the image below. This is generally used by studios seeking to oversee all content available for their game, or have complex moddable content and want to verify mods work correctly across all platforms prior to going live.
-
-![Curation settings](img/curation-settings.png)
-
-Change the curation setting via the “Content” section on your games settings page.
-
-![Moderation queue](img/moderation-queue.png)
-
-When you turn this system on, all mods are hidden and go into your moderation queue by default. Content must be approved by a moderator prior to going live.

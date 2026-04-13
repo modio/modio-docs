@@ -6,7 +6,7 @@ slug: /cloud-cooking
 
 # Cloud Cooking
 
-The mod.io Cloud Cooking service provides mod.io managed infrastructure that supports preparation of content for platforms that are only available under non-disclosure agreements, such as consoles.
+The mod.io Cloud Cooking service provides mod.io managed infrastructure that supports preparation of content for platforms that are only available under non-disclosure agreements, such as consoles. The feature is also used by some studios to verify the files are valid via their own custom checks.
 
 :::note[Premium Feature]
 Cloud Cooking is a premium feature. Please contact us at developers@mod.io for more information.
@@ -22,6 +22,10 @@ Cloud Cooking provides the following functionality:
 * **On-premise deployment option:** If you already have your own infrastructure, Cloud Cooking can be deployed and managed on your own infrastructure.
 * **Integration with mod.io tooling:** Cooked content goes through the standard moderation flow for platforms.
 * **Isolated deployments:** Your studio's deployment is isolated from all other tenants, and secured under mod.io's security practices.
+
+:::tip[UGC file validation]
+While not the primary use case, the cloud cooking system can be used to verify the uploaded UGC files build, and adhere to your custom requirements and checks, beyond [checks you configure](/moderation/manual-curation) via your mod.io game dashboard.
+:::
 
 ## Shared Responsibility (ISO 27017 / 27001 Framework Compliance)
 
