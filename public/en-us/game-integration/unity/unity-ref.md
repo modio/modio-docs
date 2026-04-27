@@ -10,12 +10,12 @@ slug: /unity/unity-ref
 |------|-------------|
 | [`ImageCacheTexture2D`](#Modio.Unity.ImageCacheTexture2D) |  |
 | [`ModioAPIUnityClient`](#Modio.Unity.ModioAPIUnityClient) |  |
-| [`ModioAndroidSettings`](#Modio.Unity.ModioAndroidSettings) |  |
 | [`ModioImageTexture2DExtensions`](#Modio.Unity.ModioImageTexture2DExtensions) |  |
 | [`ModioPreInitializer`](#Modio.Unity.ModioPreInitializer) |  |
 | [`ModioUnityLogger`](#Modio.Unity.ModioUnityLogger) |  |
 | [`ModioUnityMultiplatformAuthResolver`](#Modio.Unity.ModioUnityMultiplatformAuthResolver) |  |
 | [`ModioUnitySettings`](#Modio.Unity.ModioUnitySettings) |  |
+| [`ModioUnitySettingsExtensions`](#Modio.Unity.ModioUnitySettingsExtensions) |  |
 | [`ModioUnityThreadSync`](#Modio.Unity.ModioUnityThreadSync) |  |
 | [`UnityRootPathProvider`](#Modio.Unity.UnityRootPathProvider) | Provides a default root path for non-windows Unity platforms. |
 | [`UnityWebBrowserHandler`](#Modio.Unity.UnityWebBrowserHandler) |  |
@@ -51,7 +51,7 @@ public class ModioAPIUnityClient : IModioAPIInterface
 #### `bool UseUnityClient`
 
 ```csharp
-[ModioDebugMenu(ShowInSettingsMenu = true, ShowInBrowserMenu = false)]  public static bool UseUnityClient
+[ModioDebugMenu(ShowInSettingsMenu = true, ShowInBrowserMenu = false)] public static bool UseUnityClient
 ```
 `get` `set`
 
@@ -144,14 +144,6 @@ public void Dispose()
 
 ___
 
-### ModioAndroidSettings{#Modio.Unity.ModioAndroidSettings}
-
-```csharp
-[Serializable]  public class ModioAndroidSettings : IModioServiceSettings
-```
-
-___
-
 ### ModioImageTexture2DExtensions{#Modio.Unity.ModioImageTexture2DExtensions}
 
 ```csharp
@@ -172,7 +164,7 @@ public static Task<(Error error, Texture2D texture)> DownloadAsTexture2D(this Im
 #### DownloadAsTexture2D{#Modio.Unity.ModioImageTexture2DExtensions.DownloadAsTexture2D}
 
 ```csharp
-public static Task<(Error error, Texture2D texture)> DownloadAsTexture2D<TResolution>(  this ModioImageSource<TResolution> imageSource,  TResolution resolution  ) where TResolution : Enum
+public static Task<(Error error, Texture2D texture)> DownloadAsTexture2D<TResolution>( this ModioImageSource<TResolution> imageSource, TResolution resolution ) where TResolution : Enum
 ```
 
 ___
@@ -206,7 +198,7 @@ ___
 ### ModioUnityMultiplatformAuthResolver{#Modio.Unity.ModioUnityMultiplatformAuthResolver}
 
 ```csharp
-public class ModioUnityMultiplatformAuthResolver : ModioMultiplatformAuthResolver,  IExternalAvatarProviderService<Texture2D>
+public class ModioUnityMultiplatformAuthResolver : ModioMultiplatformAuthResolver, IExternalAvatarProviderService<Texture2D>
 ```
 
 
@@ -235,7 +227,7 @@ ___
 ### ModioUnitySettings{#Modio.Unity.ModioUnitySettings}
 
 ```csharp
-[CreateAssetMenu(fileName = "config.asset", menuName = "Modio/v3/config")]  public class ModioUnitySettings : ScriptableObject
+[CreateAssetMenu(fileName = "config.asset", menuName = "Modio/v3/config")] public class ModioUnitySettings : ScriptableObject
 ```
 
 
@@ -264,7 +256,7 @@ string DefaultResourceNameOverride = "mod.io/v3_config_local"
 ```csharp
 public ModioSettings Settings
 ```
-`get`
+`get` 
 
 
 ###### Method
@@ -274,6 +266,24 @@ public ModioSettings Settings
 
 ```csharp
 public void InvokeOnChanged()
+```
+
+___
+
+### ModioUnitySettingsExtensions{#Modio.Unity.ModioUnitySettingsExtensions}
+
+```csharp
+public static class ModioUnitySettingsExtensions
+```
+
+
+###### Method
+
+
+#### GetOrAddPlatformSetting{#Modio.Unity.ModioUnitySettingsExtensions.GetOrAddPlatformSetting}
+
+```csharp
+public static T GetOrAddPlatformSetting<T>(this ModioUnitySettings unitySettings) where T : IModioServiceSettings
 ```
 
 ___
@@ -293,7 +303,7 @@ public static class ModioUnityThreadSync
 ```csharp
 public static SynchronizationContext SynchronizationContext
 ```
-`get`
+`get` 
 
 
 ###### Method
@@ -371,36 +381,22 @@ ___
 
 | Type | Description |
 |------|-------------|
-| [`ModioComponentUISettings`](#Modio.Unity.Settings.ModioComponentUISettings) |  |
+| [`UnityMonetizationSettings`](#Modio.Unity.Settings.UnityMonetizationSettings) |  |
 
-### ModioComponentUISettings{#Modio.Unity.Settings.ModioComponentUISettings}
+### UnityMonetizationSettings{#Modio.Unity.Settings.UnityMonetizationSettings}
 
 ```csharp
-[Serializable]  public class ModioComponentUISettings : IModioServiceSettings
+[Serializable] public class UnityMonetizationSettings : MonetizationSettings
 ```
 
 
 ###### Field
 
 
-#### `bool ShowEnableModToggle`
+#### `Sprite CurrencyIcon`
 
 ```csharp
-bool ShowEnableModToggle
-```
-
-
-#### `bool FallbackToEmailAuthentication`
-
-```csharp
-bool FallbackToEmailAuthentication
-```
-
-
-#### `bool EnableAuthSelection`
-
-```csharp
-bool EnableAuthSelection
+Sprite CurrencyIcon
 ```
 
 ___

@@ -1,13 +1,13 @@
 ---
 id: gdk
-title: Xbox
+title: Xbox Series X | S
 slug: /platforms/gdk
 sidebar_position: 3
 ---
 
-# Xbox One & Xbox Series X/S 
+# Xbox Series X | S, GDK Support
 
-We offer cross-platform UGC support for both the *Xbox One & Xbox Series X/S*.
+We offer cross-platform UGC support for *Xbox Series X | S*, *Xbox One* and *Xbox PC*.
 
 This guide includes:
 
@@ -20,7 +20,7 @@ This guide includes:
 
 ## Typical requirements
 
-Typical requirements for using mod.io on **Xbox One & Xbox Series X/S* games include:
+Typical requirements for using mod.io in *GDK* games include:
 
 * UGC cannot run scripts or execute code, unless sufficient mitigations are demonstrated to be in place (e.g. sandboxing or manual curation of content)
 * UGC must work without the need for manual installation

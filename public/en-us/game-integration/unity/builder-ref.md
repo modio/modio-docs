@@ -42,7 +42,7 @@ Produces a list of Tuples with each published change &amp; their corresponding r
 ```csharp
 public string Name
 ```
-`get`
+`get` 
 
 
 #### `string Summary`
@@ -50,7 +50,7 @@ public string Name
 ```csharp
 public string Summary
 ```
-`get`
+`get` 
 
 
 #### `string Description`
@@ -58,7 +58,7 @@ public string Summary
 ```csharp
 public string Description
 ```
-`get`
+`get` 
 
 
 #### `string LogoFilePath`
@@ -66,7 +66,7 @@ public string Description
 ```csharp
 public string LogoFilePath
 ```
-`get`
+`get` 
 
 
 #### `string GalleryFilePaths`
@@ -74,7 +74,7 @@ public string LogoFilePath
 ```csharp
 public string[] GalleryFilePaths
 ```
-`get`
+`get` 
 
 
 #### `string Tags`
@@ -82,7 +82,7 @@ public string[] GalleryFilePaths
 ```csharp
 public string[] Tags
 ```
-`get`
+`get` 
 
 
 #### `string MetadataBlob`
@@ -90,7 +90,7 @@ public string[] Tags
 ```csharp
 public string MetadataBlob
 ```
-`get`
+`get` 
 
 
 #### `Dictionary MetadataKvps`
@@ -98,7 +98,7 @@ public string MetadataBlob
 ```csharp
 public Dictionary<string, string> MetadataKvps
 ```
-`get`
+`get` 
 
 
 #### `List Dependencies`
@@ -106,7 +106,7 @@ public Dictionary<string, string> MetadataKvps
 ```csharp
 public List<long> Dependencies
 ```
-`get`
+`get` 
 
 
 #### `bool Visible`
@@ -114,7 +114,7 @@ public List<long> Dependencies
 ```csharp
 public bool Visible
 ```
-`get`
+`get` 
 
 
 #### [`ModMaturityOptions`](#Modio.Mods.ModMaturityOptions) `MaturityOptions`
@@ -122,7 +122,7 @@ public bool Visible
 ```csharp
 public ModMaturityOptions MaturityOptions
 ```
-`get`
+`get` 
 
 
 #### [`ModCommunityOptions`](#Modio.Mods.ModCommunityOptions) `CommunityOptions`
@@ -130,7 +130,7 @@ public ModMaturityOptions MaturityOptions
 ```csharp
 public ModCommunityOptions CommunityOptions
 ```
-`get`
+`get` 
 
 
 #### `bool IsMonetized`
@@ -138,7 +138,15 @@ public ModCommunityOptions CommunityOptions
 ```csharp
 public bool IsMonetized
 ```
-`get`
+`get` 
+
+
+#### `List MonetizationTeam`
+
+```csharp
+public List<(long userId, int split)> MonetizationTeam
+```
+
 
 
 #### `bool IsLimitedStock`
@@ -146,7 +154,7 @@ public bool IsMonetized
 ```csharp
 public bool IsLimitedStock
 ```
-`get`
+`get` 
 
 
 #### `int Price`
@@ -154,7 +162,7 @@ public bool IsLimitedStock
 ```csharp
 public int Price
 ```
-`get`
+`get` 
 
 
 #### `int Stock`
@@ -162,7 +170,7 @@ public int Price
 ```csharp
 public int Stock
 ```
-`get`
+`get` 
 
 
 #### `bool IsEditMode`
@@ -178,7 +186,7 @@ public bool IsEditMode
 ```csharp
 public Mod EditTarget
 ```
-`get`
+`get` 
 
 
 ###### Method
@@ -188,6 +196,13 @@ public Mod EditTarget
 
 ```csharp
 public ModBuilder SetName(string name)
+```
+
+
+#### SetNameId{#Modio.Mods.Builder.ModBuilder.SetNameId}
+
+```csharp
+public ModBuilder SetNameId(string nameId)
 ```
 
 
@@ -407,12 +422,8 @@ public ModBuilder SetMonetized(bool isMonetized)
 public ModBuilder SetPrice(int price)
 ```
 
+Setting this to 0 or below will disable monetization completely for this mod
 
-#### SetLimitedStock{#Modio.Mods.Builder.ModBuilder.SetLimitedStock}
-
-```csharp
-public ModBuilder SetLimitedStock(bool isLimitedStock)
-```
 
 
 #### SetStockAmount{#Modio.Mods.Builder.ModBuilder.SetStockAmount}
@@ -420,6 +431,46 @@ public ModBuilder SetLimitedStock(bool isLimitedStock)
 ```csharp
 public ModBuilder SetStockAmount(int stockAmount)
 ```
+
+Set this to 0 or below to disable limited stock
+
+
+
+#### SetTeamMemberSplit{#Modio.Mods.Builder.ModBuilder.SetTeamMemberSplit}
+
+```csharp
+public ModBuilder SetTeamMemberSplit(long userId, int split)
+```
+
+Set the earning split for a single team member
+
+
+###### Parameters
+
+`split` Number between 0 to 1 to represent the propertion of split given to the user
+
+###### Remarks
+
+Will overwrite existing split for the user. Total splits cannot exceed 100.
+
+
+#### SetTeamMembersSplits{#Modio.Mods.Builder.ModBuilder.SetTeamMembersSplits}
+
+```csharp
+public ModBuilder SetTeamMembersSplits(IEnumerable<(long userId, int split)> teamMembers)
+```
+
+Set the monetization team and their earning splits
+
+
+###### Parameters
+
+`teamMembers.split` Number between 0 to 100 to represent the percentage of split given to the user.
+All values must add up to 100 or the request will fail.
+
+###### Remarks
+
+Will override existing splits for all users entered. Total splits cannot exceed 100.
 
 
 #### Publish{#Modio.Mods.Builder.ModBuilder.Publish}
@@ -468,7 +519,7 @@ public class ModfileBuilder
 ```csharp
 public string FilePath
 ```
-`get`
+`get` 
 
 
 #### `string Version`
@@ -476,7 +527,7 @@ public string FilePath
 ```csharp
 public string Version
 ```
-`get`
+`get` 
 
 
 #### `string ChangeLog`
@@ -484,7 +535,7 @@ public string Version
 ```csharp
 public string ChangeLog
 ```
-`get`
+`get` 
 
 
 #### `string MetadataBlob`
@@ -492,7 +543,7 @@ public string ChangeLog
 ```csharp
 public string MetadataBlob
 ```
-`get`
+`get` 
 
 
 #### [`Platform`](#Modio.Mods.Builder.ModfileBuilder.Platform) `Platforms`
@@ -500,7 +551,7 @@ public string MetadataBlob
 ```csharp
 public Platform[] Platforms
 ```
-`get`
+`get` 
 
 
 #### `bool IsSource`
@@ -508,7 +559,7 @@ public Platform[] Platforms
 ```csharp
 public bool IsSource
 ```
-`get`
+`get` 
 
 
 ###### Method
@@ -731,6 +782,14 @@ Dependencies       = 1 << 13
 ```
 
 ```csharp
+MonetizationTeam   = 1 << 14
+```
+
+```csharp
+NameId             = 1 << 15
+```
+
+```csharp
 AddFlags = Name
                    | Summary
                    | Description
@@ -740,6 +799,7 @@ AddFlags = Name
                    | CommunityOptions
                    | MetadataBlob
                    | Tags
+                   | NameId
 ```
 
 ```csharp
@@ -753,6 +813,7 @@ EditFlags = Name
                     | MetadataBlob
                     | Tags
                     | MonetizationConfig
+                    | NameId
 ```
 
 ___

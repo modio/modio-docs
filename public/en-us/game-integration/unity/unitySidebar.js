@@ -56,18 +56,7 @@ const unitySidebar = {
                 'game-integration/unity/unity-unity-ref',
                 'game-integration/unity/unity-builder-ref',
             ]
-        },
-        {
-            type: 'category',
-            label: 'Legacy Plugin',
-            items: [
-                'game-integration/unity/legacy/unity',
-                'game-integration/unity/legacy/unity-setup',
-                'game-integration/unity/legacy/unity-getting-started',
-                'game-integration/unity/legacy/unity-marketplace',
-                'game-integration/unity/legacy/unity-unityref',
-            ]
-        },
+        }
     ],
 }
 

@@ -99,7 +99,7 @@ curl -X GET https://*.modapi.io/v1/games/1/mods/1 \
 
 ## Localized Requests
 
-Specific endpoints also allow you to submit fields in the supported languages above. To tell the API you are submitting non-english content you must supply the `Content-Language` header in the request with a valid language code (see above). When you supply the `Content-Language` header in your request, you are explicitly indicating to the API that all eligible fields have been translated into the supplied language and if a user (or client) requests the respective language, the value for that supplied field will be returned.
+Specific endpoints such as tags allow you to submit fields in the supported languages above. To tell the API you are submitting non-english content you must supply the `Content-Language` header in the request with a valid language code (see above). When you supply the `Content-Language` header in your request, you are explicitly indicating to the API that all eligible fields have been translated into the supplied language and if a user (or client) requests the respective language, the value for that supplied field will be returned.
 
 A brief summary of things you should be aware of when dealing with localized requests and responses:
 
@@ -107,4 +107,4 @@ A brief summary of things you should be aware of when dealing with localized req
 - If you don't supply a valid `Content-Language` header value, all input data will be assumed English.
 - If you don't supply a valid `Accept-Language` header value, all response data will be in English.
 - If you supply a valid `Accept-Language` header value, all response data will be in English unless translations exist in the requested language.
-- Only fields that contain the localization icon in the parameter section of the endpoint can be submitted in different languages.
+- Only fields that contain the localization in the parameter section of the endpoint can be submitted in different languages.

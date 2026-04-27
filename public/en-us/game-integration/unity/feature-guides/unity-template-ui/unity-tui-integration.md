@@ -25,7 +25,7 @@ This guide covers:
 
 ## Example scene
 
-The Example Scene for Template UI will show you the basic setup for this feature. It can be found in **unity/ui/examplescene**. 
+The Example Scene for Template UI will show you the basic setup for this feature. It can be found in **unity/ui/ExampleScenes**. 
 
 Let's take a look at some key pieces:
 
@@ -65,14 +65,14 @@ There's also
 We use a panels system, which handles the basics of pushing and popping panels as they're opened by the user
 
 - There's only ever one panel focused, and they handle registering and unregistering from input events when focus changes.
--. This includes interactive screens like ModDisplay or the main ModBrowser, as well as non-interactive states like a waiting screen (ModioWaitingPanelGeneric)
+- This includes interactive screens like ModDisplay or the main ModBrowser, as well as non-interactive states like a waiting screen (ModioWaitingPanelGeneric)
 
 ### Localization
-![mod tile layout](img/layout-localization.png)\
+![ModioUILocalizedText component](img/layout-localization.png)\
 We have a basic localization implementation in the ModioUI_Localization prefab. This allows all of our buttons to look up a key in a CSV, but lacks the advanced features typical in most localization packages.
 
--   The localization solution looks at ``Settings.server.languageCode`` to determine the language. Please re-initialise the plugin via ``ModIOUnity.InitializeForUser`` if you change the language. See ``ModioExampleSettingsPanel`` for an example.
--   If you are using a localization package, you can override the implementation by calling ``ModioUI_Localization.SetCustomHandler(YourHandlerMethod)``
+-   The localization solution looks at ``ModioSettings.defaultLanguage`` to determine the language. Please restart the plugin via ``ModioClient.Shutdown()`` and ``ModioClient.Initialize()`` if you change the language. See ``ModioExampleSettingsPanel`` for an example.
+-   If you are using a localization package, you can override the implementation by calling ``ModioUILocalizationManager.SetCustomHandler(YourHandlerMethod)``
 -   Alternatively, you can leave both localization solutions running
 -   The component UI does not handle RTL text to avoid conflicts. If your game supports RTL language, you'll need to apply your solution to the Component UI yourself
 

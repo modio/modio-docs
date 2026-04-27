@@ -4,7 +4,6 @@ title: Core
 slug: /unity/cs-ref
 ---
 
-
 ## Modio
 
 | Type | Description |
@@ -117,7 +116,7 @@ public override int GetHashCode()
 #### AddMethodContext{#Modio.Error.AddMethodContext}
 
 ```csharp
-public Error AddMethodContext(  string message
+public Error AddMethodContext( string message
 ```
 
 ___
@@ -179,7 +178,7 @@ ___
 ### ModIndex{#Modio.ModIndex}
 
 ```csharp
-[System.Serializable]  public class ModIndex
+[System.Serializable] public class ModIndex
 ```
 
 
@@ -189,7 +188,7 @@ ___
 #### `bool IsDirty`
 
 ```csharp
-[JsonIgnore]  public bool IsDirty
+[JsonIgnore] public bool IsDirty
 ```
 `get` `set`
 
@@ -319,7 +318,7 @@ Returns the total disk usage in bytes
 
 ###### Parameters
 
-`includeQueued`
+`includeQueued` 
 Wether to include queued (pending) operation, if true
 will account for file IO changes to be made by the queued operation
 
@@ -356,7 +355,7 @@ An asynchronous task that returns [`Error`](#Modio.ModioLog.Error).[`Error.None`
 #### EndCurrentTempModSession{#Modio.ModInstallationManagement.EndCurrentTempModSession}
 
 ```csharp
-[ModioDebugMenu(ShowInSettingsMenu = false)]  public static void EndCurrentTempModSession()
+[ModioDebugMenu(ShowInSettingsMenu = false)] public static void EndCurrentTempModSession()
 ```
 
 Will end the current temp mod session started by [`StartTempModSession`](#Modio.ModInstallationManagement.StartTempModSession)
@@ -456,6 +455,13 @@ Returns if there is enough available space to install a Mod, will account for pe
 
 An asynchronous task that returns `true` if there is enough space, `false` otherwise.
 
+
+
+#### IsThereAvailableSpaceFor{#Modio.ModInstallationManagement.IsThereAvailableSpaceFor}
+
+```csharp
+public static async Task<bool> IsThereAvailableSpaceFor(IEnumerable<Mod> mods)
+```
 
 
 ###### Enum
@@ -597,7 +603,7 @@ Prefer resolving the dependency yourself
 ```csharp
 public static bool IsInitialized
 ```
-`get`
+`get` 
 
 Returns `true` if initialized, `false` otherwise.
 
@@ -763,7 +769,7 @@ string LOG_PREFIX_DEFAULT = "[mod.io] "
 ```csharp
 public static ModioLog? Error
 ```
-`get`
+`get` 
 
 
 #### [`ModioLog?`](#Modio.ModioLog) `Warning`
@@ -771,7 +777,7 @@ public static ModioLog? Error
 ```csharp
 public static ModioLog? Warning
 ```
-`get`
+`get` 
 
 
 #### [`ModioLog?`](#Modio.ModioLog) `Message`
@@ -779,7 +785,7 @@ public static ModioLog? Warning
 ```csharp
 public static ModioLog? Message
 ```
-`get`
+`get` 
 
 
 #### [`ModioLog?`](#Modio.ModioLog) `Verbose`
@@ -787,7 +793,7 @@ public static ModioLog? Message
 ```csharp
 public static ModioLog? Verbose
 ```
-`get`
+`get` 
 
 
 ###### Method
@@ -821,7 +827,7 @@ public static class ModioServices
 #### Bind{#Modio.ModioServices.Bind}
 
 ```csharp
-[Pure]  public static IBindType<T> Bind<T>()
+[Pure] public static IBindType<T> Bind<T>()
 ```
 
 Bind a service so that it can be accessed by other systems
@@ -834,6 +840,10 @@ ModioServices.Bind&lt;IWebBrowserHandler&gt;()
 ```
 
 
+###### Type Parameters
+
+`T`: 
+
 
 #### BindInstance{#Modio.ModioServices.BindInstance}
 
@@ -844,12 +854,41 @@ public static void BindInstance<T>(T instance, ModioServicePriority priority
 Convenience wrapper to bind an instance. The same as writing
 ```csharpBind&lt;T&gt;().FromInstance(instance, priority);```
 
+###### Parameters
+
+`instance` The instance to bind
+`priority` The priority of the binding
+
+###### Type Parameters
+
+`T`: 
+
 
 #### BindErrorMessage{#Modio.ModioServices.BindErrorMessage}
 
 ```csharp
 public static void BindErrorMessage<T>(string message, ModioServicePriority priority
 ```
+
+Binds an error message to a type, so that if that type is attempted to be resolved without a proper binding, the error message will be logged and included in the exception.
+
+
+###### Parameters
+
+`message` The error message to log and include in the exception when resolution of the type fails due to missing bindings.
+`priority` The priority of the binding
+
+###### Type Parameters
+
+`T`: 
+
+###### Exceptions
+
+`KeyNotFoundException`: 
+
+###### Remarks
+
+ This is intended to make it easier for users to understand what they need to do to properly set up the Plugin when they encounter common issues with missing bindings.
 
 
 #### Resolve{#Modio.ModioServices.Resolve}
@@ -858,12 +897,42 @@ public static void BindErrorMessage<T>(string message, ModioServicePriority prio
 public static T Resolve<T>()
 ```
 
+Resolves an instance of type T using the current bindings.
+
+
+###### Type Parameters
+
+`T`: 
+
+###### Returns
+
+>An instance of type T
+
+###### Remarks
+
+ If multiple bindings exist, the one with the highest priority will be used. If multiple bindings of the same priority exist, the last one added will be used.
+
 
 #### TryResolve{#Modio.ModioServices.TryResolve}
 
 ```csharp
 public static bool TryResolve<T>(out T result)
 ```
+
+Resolves an instance of type T using the current bindings, returning true if successful and false if no valid bindings were found.
+
+
+###### Parameters
+
+`result` When the method returns, contains the resolved instance of type T if the resolution was successful, or the default value of T if no valid bindings were found.
+
+###### Type Parameters
+
+`T`: 
+
+###### Returns
+
+True if the resolution was successful, false if no valid bindings were found.
 
 
 #### GetBindings{#Modio.ModioServices.GetBindings}
@@ -872,12 +941,47 @@ public static bool TryResolve<T>(out T result)
 public static IResolveType<T> GetBindings<T>(bool createIfMissing
 ```
 
+Gets the bindings for type T.
+
+
+###### Parameters
+
+`createIfMissing` If true, the bindings will be created if they don't exist yet. If false, a KeyNotFoundException will be thrown if the bindings don't exist.
+
+###### Type Parameters
+
+`T`: 
+
+###### Returns
+
+ The bindings for type T
+
+###### Exceptions
+
+`KeyNotFoundException`: 
+
+###### Remarks
+
+ This can be used to manually inspect or modify the bindings for a type. Consider using `AddBindingChangedListener{T}` instead if you just want to be notified when the binding changes without needing to manually manage the bindings yourself.
+
 
 #### AddBindingChangedListener{#Modio.ModioServices.AddBindingChangedListener}
 
 ```csharp
 public static void AddBindingChangedListener<T>(Action<T> onNewValue, bool fireImmediatelyIfValueBound
 ```
+
+Adds a listener that will be invoked whenever a new binding of type T is added.
+
+
+###### Parameters
+
+`onNewValue` The listener to invoke when a new binding is added. 
+`fireImmediatelyIfValueBound` If true, the listener will be immediately invoked with the current value of the binding (if any) when added. If false, the listener will only be invoked on future changes to the binding.
+
+###### Type Parameters
+
+`T`: 
 
 
 #### RemoveBindingChangedListener{#Modio.ModioServices.RemoveBindingChangedListener}
@@ -886,12 +990,38 @@ public static void AddBindingChangedListener<T>(Action<T> onNewValue, bool fireI
 public static void RemoveBindingChangedListener<T>(Action<T> onNewValue)
 ```
 
+Removes a listener added with `AddBindingChangedListener{T}` so that it will no longer be invoked when the binding changes.
+
+
+###### Parameters
+
+`onNewValue` The listener to remove
+
+###### Type Parameters
+
+`T`: 
+
+###### Remarks
+
+ Note that this will not prevent the listener from being invoked if the binding has already changed and the listener was not yet removed, so consider using `RemoveBindingWithPriority{T}` if you want to ensure a binding is no longer used at all.
+
 
 #### RemoveAllBindingsOfType{#Modio.ModioServices.RemoveAllBindingsOfType}
 
 ```csharp
 public static void RemoveAllBindingsOfType<T>()
 ```
+
+Removes all bindings of type T, regardless of priority.
+
+
+###### Type Parameters
+
+`T`: 
+
+###### Remarks
+
+ Use with caution, as this may cause issues if done at the wrong time. Consider using `RemoveBindingWithPriority{T}` instead if you only want to remove specific bindings.
 
 
 ###### Class
@@ -912,6 +1042,10 @@ ___
 
 ___
 
+##### TryResolve{#Modio.ModioServices.Binding.TryResolve}
+
+___
+
 ###### Interface
 
 
@@ -925,7 +1059,7 @@ ___
 ### ModioSettings{#Modio.ModioSettings}
 
 ```csharp
-[Serializable]  public class ModioSettings
+[Serializable] public class ModioSettings
 ```
 
 
@@ -1013,7 +1147,7 @@ public class TermsOfUse
 ```
 
 The mod.io Terms of Use links. Each link contains a boolean field for if its required, Users must agree to all
-linked terms that have a True value for this field.
+linked terms that have a True value for this field. 
 Use [`Get`](#Modio.TermsOfUse.Get) to get the latest Terms of Use.
 
 
@@ -1026,7 +1160,7 @@ Use [`Get`](#Modio.TermsOfUse.Get) to get the latest Terms of Use.
 ```csharp
 public string TermsText
 ```
-`get`
+`get` 
 
 
 #### `string AgreeText`
@@ -1034,7 +1168,7 @@ public string TermsText
 ```csharp
 public string AgreeText
 ```
-`get`
+`get` 
 
 
 #### `string DisagreeText`
@@ -1042,7 +1176,7 @@ public string AgreeText
 ```csharp
 public string DisagreeText
 ```
-`get`
+`get` 
 
 
 #### [`TermsOfUseLink`](#Modio.TermsOfUseLink) `Links`
@@ -1050,7 +1184,7 @@ public string DisagreeText
 ```csharp
 public TermsOfUseLink[] Links
 ```
-`get`
+`get` 
 
 
 ###### Method
@@ -1176,6 +1310,10 @@ Manage
 Refund
 ```
 This cannot be gotten from this endpoint! This is here to help band-aid CUI
+
+```csharp
+Monetization
+```
 
 ___
 
@@ -1322,7 +1460,7 @@ public partial interface IModioAuthService
 ```csharp
 public ModioAPI.Portal Portal
 ```
-`get`
+`get` 
 
 
 ###### Method
@@ -1331,7 +1469,7 @@ public ModioAPI.Portal Portal
 #### Authenticate{#Modio.Authentication.IModioAuthService.Authenticate}
 
 ```csharp
-public Task<Error> Authenticate(  bool displayedTerms,  string thirdPartyEmail
+public Task<Error> Authenticate( bool displayedTerms, string thirdPartyEmail
 ```
 
 Authenticates with the required server
@@ -1356,7 +1494,7 @@ ___
 ### ModioEmailAuthService{#Modio.Authentication.ModioEmailAuthService}
 
 ```csharp
-public class ModioEmailAuthService : IModioAuthService,  IGetActiveUserIdentifier,  IPotentialModioEmailAuthService
+public class ModioEmailAuthService : IModioAuthService, IGetActiveUserIdentifier, IPotentialModioEmailAuthService
 ```
 
 Use for authenticating with email
@@ -1414,7 +1552,7 @@ public ModioAPI.Portal Portal
 #### Authenticate{#Modio.Authentication.ModioEmailAuthService.Authenticate}
 
 ```csharp
-public async Task<Error> Authenticate(  bool displayedTerms,  string thirdPartyEmail
+public async Task<Error> Authenticate( bool displayedTerms, string thirdPartyEmail
 ```
 Begins the email authentication process. This will invoke the `codePrompter` passed either
 into the constructor of this class or with [`SetCodePrompter`](#Modio.Authentication.ModioEmailAuthService.SetCodePrompter) to enter the security code.
@@ -1461,7 +1599,7 @@ ___
 ### ModioMultiplatformAuthResolver{#Modio.Authentication.ModioMultiplatformAuthResolver}
 
 ```csharp
-public class ModioMultiplatformAuthResolver : IModioAuthService,  IGetActiveUserIdentifier,  IPotentialModioEmailAuthService
+public class ModioMultiplatformAuthResolver : IModioAuthService, IGetActiveUserIdentifier, IPotentialModioEmailAuthService
 ```
 
 
@@ -1481,7 +1619,7 @@ public IModioAuthService ServiceOverride
 ```csharp
 public IReadOnlyList<IModioAuthService> AuthBindings
 ```
-`get`
+`get` 
 
 
 #### `bool IsEmailPlatform`
@@ -1535,9 +1673,9 @@ Base class for caching objects in Modio.
 
 ###### Type Parameters
 
-`TCache`:
-`TKey`:
-`TCachedObject`:
+`TCache`: 
+`TKey`: 
+`TCachedObject`: 
 
 
 ###### Property
@@ -1575,7 +1713,7 @@ Clears the cache.
 #### GetCachedSearch{#Modio.Caching.BaseCache.GetCachedSearch}
 
 ```csharp
-public static bool GetCachedSearch(  SearchFilter filter,  string searchKey,  out TCachedObject[] cached,  out long resultTotal  )
+public static bool GetCachedSearch( SearchFilter filter, string searchKey, out TCachedObject[] cached, out long resultTotal )
 ```
 
 Gets a cached search result based on the provided filter and search key.
@@ -1661,7 +1799,7 @@ public class ModCollection : IModioInfo
 ```csharp
 public ModioId Id
 ```
-`get`
+`get` 
 The collection id.
 
 
@@ -1670,7 +1808,7 @@ The collection id.
 ```csharp
 public UserProfile Creator
 ```
-`get`
+`get` 
 The user who submitted the collection.
 
 
@@ -1679,7 +1817,7 @@ The user who submitted the collection.
 ```csharp
 public DateTime DateUpdated
 ```
-`get`
+`get` 
 The date the collection was last updated.
 
 
@@ -1688,7 +1826,7 @@ The date the collection was last updated.
 ```csharp
 public DateTime DateLive
 ```
-`get`
+`get` 
 The date the collection went live.
 
 
@@ -1697,7 +1835,7 @@ The date the collection went live.
 ```csharp
 public ModMaturityOptions MaturityOptions
 ```
-`get`
+`get` 
 The maturity options detected within this collection.
 
 
@@ -1706,7 +1844,7 @@ The maturity options detected within this collection.
 ```csharp
 public long ArchiveFilesize
 ```
-`get`
+`get` 
 The total filesize of all mods in the collection.
 
 
@@ -1715,7 +1853,7 @@ The total filesize of all mods in the collection.
 ```csharp
 public long Filesize
 ```
-`get`
+`get` 
 The total uncompressed filesize of all mods in the collection.
 
 
@@ -1724,7 +1862,7 @@ The total uncompressed filesize of all mods in the collection.
 ```csharp
 public ModTag[] Tags
 ```
-`get`
+`get` 
 The tags associated with the collection.
 
 
@@ -1733,7 +1871,7 @@ The tags associated with the collection.
 ```csharp
 public ModCollectionStats Stats
 ```
-`get`
+`get` 
 The stats of the collection.
 
 
@@ -1742,7 +1880,7 @@ The stats of the collection.
 ```csharp
 public ModioImageSource<Mod.LogoResolution> Logo
 ```
-`get`
+`get` 
 The logo of the collection.
 
 
@@ -1751,7 +1889,7 @@ The logo of the collection.
 ```csharp
 public string Name
 ```
-`get`
+`get` 
 The name of the collection.
 
 
@@ -1760,7 +1898,7 @@ The name of the collection.
 ```csharp
 public string NameId
 ```
-`get`
+`get` 
 The name id of the collection.
 
 
@@ -1778,7 +1916,7 @@ The summary of the collection.
 ```csharp
 public string Description
 ```
-`get`
+`get` 
 The description of the collection.
 
 
@@ -1787,7 +1925,7 @@ The description of the collection.
 ```csharp
 public bool IsFollowed
 ```
-`get`
+`get` 
 Whether the collection is followed by the user.
 
 
@@ -1796,7 +1934,7 @@ Whether the collection is followed by the user.
 ```csharp
 public ModioRating CurrentUserRating
 ```
-`get`
+`get` 
 
 
 ###### Method
@@ -1805,7 +1943,7 @@ public ModioRating CurrentUserRating
 #### AddChangeListener{#Modio.Collections.ModCollection.AddChangeListener}
 
 ```csharp
-public static void AddChangeListener(  ModCollectionChangeType subscribedChange,  Action<ModCollection, ModCollectionChangeType> listener  )
+public static void AddChangeListener( ModCollectionChangeType subscribedChange, Action<ModCollection, ModCollectionChangeType> listener )
 ```
 Adds an event handler to listen for whenever the [`ModCollectionChangeType`](#Modio.Collections.ModCollectionChangeType) of a collection
 is changed.
@@ -1819,7 +1957,7 @@ handler.
 #### RemoveChangeListener{#Modio.Collections.ModCollection.RemoveChangeListener}
 
 ```csharp
-public static void RemoveChangeListener(  ModCollectionChangeType subscribedChange,  Action<ModCollection, ModCollectionChangeType> listener  )
+public static void RemoveChangeListener( ModCollectionChangeType subscribedChange, Action<ModCollection, ModCollectionChangeType> listener )
 ```
 
 Removes an event handler that listens for changes to the [`ModCollectionChangeType`](#Modio.Collections.ModCollectionChangeType) of a collection.
@@ -1838,7 +1976,7 @@ This will only remove the handler if it was previously added with [`AddChangeLis
 #### GetCollections{#Modio.Collections.ModCollection.GetCollections}
 
 ```csharp
-public static async Task<(Error error, ModioPage<ModCollection> page)> GetCollections(  ModioAPI.Collections.GetModCollectionsFilter filter  )
+public static async Task<(Error error, ModioPage<ModCollection> page)> GetCollections( ModioAPI.Collections.GetModCollectionsFilter filter )
 ```
 
 
@@ -1852,7 +1990,7 @@ public static ModCollection Get(long id)
 #### GetCollectionMods{#Modio.Collections.ModCollection.GetCollectionMods}
 
 ```csharp
-public static async Task<(Error error, ModioPage<Mod> page)> GetCollectionMods(  long collectionId,  ModioAPI.Collections.GetCollectionModsFilter filter  )
+public static async Task<(Error error, ModioPage<Mod> page)> GetCollectionMods( long collectionId, ModioAPI.Collections.GetCollectionModsFilter filter )
 ```
 Gets all mods that qualify the provided `ModioAPI.Collections.GetCollectionMods` parameters.
 
@@ -1980,7 +2118,7 @@ public class ModCollectionStats
 ```csharp
 public long CollectionId
 ```
-`get`
+`get` 
 The collection id.
 
 
@@ -1989,8 +2127,8 @@ The collection id.
 ```csharp
 public long ModsTotal
 ```
-`get`
-The total number of mods contained in this collection
+`get` 
+ The total number of mods contained in this collection 
 
 
 #### `long DownloadsToday`
@@ -1998,7 +2136,7 @@ The total number of mods contained in this collection
 ```csharp
 public long DownloadsToday
 ```
-`get`
+`get` 
 The number of downloads today.
 
 
@@ -2007,7 +2145,7 @@ The number of downloads today.
 ```csharp
 public long UniqueDownloads
 ```
-`get`
+`get` 
 The number of unique downloads.
 
 
@@ -2016,7 +2154,7 @@ The number of unique downloads.
 ```csharp
 public long Downloads
 ```
-`get`
+`get` 
 The total number of downloads.
 
 
@@ -2025,7 +2163,7 @@ The total number of downloads.
 ```csharp
 public long Followers
 ```
-`get`
+`get` 
 The total number of followers.
 
 
@@ -2034,7 +2172,7 @@ The total number of followers.
 ```csharp
 public long RatingsPositive
 ```
-`get`
+`get` 
 The number of positive ratings in the last 30 days.
 
 
@@ -2043,7 +2181,7 @@ The number of positive ratings in the last 30 days.
 ```csharp
 public long RatingsPositive30Days
 ```
-`get`
+`get` 
 
 
 #### `long RatingsNegative`
@@ -2051,7 +2189,7 @@ public long RatingsPositive30Days
 ```csharp
 public long RatingsNegative
 ```
-`get`
+`get` 
 
 
 #### `long RatingsNegative30Days`
@@ -2059,7 +2197,7 @@ public long RatingsNegative
 ```csharp
 public long RatingsNegative30Days
 ```
-`get`
+`get` 
 
 
 #### `float? RatingsPercent`
@@ -2067,7 +2205,7 @@ public long RatingsNegative30Days
 ```csharp
 public float? RatingsPercent
 ```
-`get`
+`get` 
 
 ___
 
@@ -2092,2353 +2230,6 @@ ModList          = 1 << 2
 ```csharp
 Everything        = ~0
 ```
-
-___
-
-## Modio.Errors
-
-| Type | Description |
-|------|-------------|
-| [`ApiError`](#Modio.Errors.ApiError) |  |
-| [`ArchiveError`](#Modio.Errors.ArchiveError) |  |
-| [`ErrorException`](#Modio.Errors.ErrorException) |  |
-| [`ErrorExtensions`](#Modio.Errors.ErrorExtensions) |  |
-| [`FilesystemError`](#Modio.Errors.FilesystemError) |  |
-| [`GenericError`](#Modio.Errors.GenericError) |  |
-| [`HttpError`](#Modio.Errors.HttpError) |  |
-| [`MetricsError`](#Modio.Errors.MetricsError) |  |
-| [`ModManagementError`](#Modio.Errors.ModManagementError) |  |
-| [`ModValidationError`](#Modio.Errors.ModValidationError) |  |
-| [`MonetizationError`](#Modio.Errors.MonetizationError) |  |
-| [`RateLimitError`](#Modio.Errors.RateLimitError) |  |
-| [`SystemError`](#Modio.Errors.SystemError) |  |
-| [`TempModsError`](#Modio.Errors.TempModsError) |  |
-| [`UserAuthError`](#Modio.Errors.UserAuthError) |  |
-| [`UserDataError`](#Modio.Errors.UserDataError) |  |
-| [`ZlibError`](#Modio.Errors.ZlibError) |  |
-
-### ApiError{#Modio.Errors.ApiError}
-
-```csharp
-public class ApiError : Error
-```
-
-
-###### Field
-
-
-#### [`ApiError`](#Modio.Errors.ApiError) `None`
-
-```csharp
-ApiError None = new ApiError(ApiErrorCode.NONE)
-```
-
-
-###### Property
-
-
-#### [`ApiErrorCode`](#Modio.Errors.ApiErrorCode) `Code`
-
-```csharp
-public new ApiErrorCode Code
-```
-
-
-___
-
-### ArchiveError{#Modio.Errors.ArchiveError}
-
-```csharp
-public class ArchiveError : Error
-```
-
-
-###### Field
-
-
-#### [`ArchiveError`](#Modio.Errors.ArchiveError) `None`
-
-```csharp
-ArchiveError None = new ArchiveError(ArchiveErrorCode.NONE)
-```
-
-
-###### Property
-
-
-#### [`ArchiveErrorCode`](#Modio.Errors.ArchiveErrorCode) `Code`
-
-```csharp
-public new ArchiveErrorCode Code
-```
-
-
-___
-
-### ErrorException{#Modio.Errors.ErrorException}
-
-```csharp
-public class ErrorException : Error
-```
-
-
-###### Field
-
-
-#### [`Exception`](#Modio.Errors.ErrorException.Exception) `Exception`
-
-```csharp
-Exception Exception
-```
-
-
-###### Method
-
-
-#### GetMessage{#Modio.Errors.ErrorException.GetMessage}
-
-```csharp
-public override string GetMessage()
-```
-
-___
-
-### ErrorExtensions{#Modio.Errors.ErrorExtensions}
-
-```csharp
-public static partial class ErrorExtensions
-```
-
-
-###### Method
-
-
-#### GetMessage{#Modio.Errors.ErrorExtensions.GetMessage}
-
-```csharp
-public static string GetMessage(this ApiErrorCode errorCode, string append
-```
-
-___
-
-### FilesystemError{#Modio.Errors.FilesystemError}
-
-```csharp
-public class FilesystemError : Error
-```
-
-
-###### Field
-
-
-#### [`FilesystemError`](#Modio.Errors.FilesystemError) `None`
-
-```csharp
-FilesystemError None = new FilesystemError(FilesystemErrorCode.NONE)
-```
-
-
-###### Property
-
-
-#### [`FilesystemErrorCode`](#Modio.Errors.FilesystemErrorCode) `Code`
-
-```csharp
-public new FilesystemErrorCode Code
-```
-
-
-___
-
-### GenericError{#Modio.Errors.GenericError}
-
-```csharp
-public class GenericError : Error
-```
-
-
-###### Field
-
-
-#### [`GenericError`](#Modio.Errors.GenericError) `None`
-
-```csharp
-GenericError None = new GenericError(GenericErrorCode.NONE)
-```
-
-
-###### Property
-
-
-#### [`GenericErrorCode`](#Modio.Errors.GenericErrorCode) `Code`
-
-```csharp
-public new GenericErrorCode Code
-```
-
-
-___
-
-### HttpError{#Modio.Errors.HttpError}
-
-```csharp
-public class HttpError : Error
-```
-
-
-###### Field
-
-
-#### [`HttpError`](#Modio.Errors.HttpError) `None`
-
-```csharp
-HttpError None = new HttpError(HttpErrorCode.NONE)
-```
-
-
-###### Property
-
-
-#### [`HttpErrorCode`](#Modio.Errors.HttpErrorCode) `Code`
-
-```csharp
-public new HttpErrorCode Code
-```
-
-
-___
-
-### MetricsError{#Modio.Errors.MetricsError}
-
-```csharp
-public class MetricsError : Error
-```
-
-
-###### Field
-
-
-#### [`MetricsError`](#Modio.Errors.MetricsError) `None`
-
-```csharp
-MetricsError None = new MetricsError(MetricsErrorCode.NONE)
-```
-
-
-###### Property
-
-
-#### [`MetricsErrorCode`](#Modio.Errors.MetricsErrorCode) `Code`
-
-```csharp
-public new MetricsErrorCode Code
-```
-
-
-___
-
-### ModManagementError{#Modio.Errors.ModManagementError}
-
-```csharp
-public class ModManagementError : Error
-```
-
-
-###### Field
-
-
-#### [`ModManagementError`](#Modio.Errors.ModManagementError) `None`
-
-```csharp
-ModManagementError None = new ModManagementError(ModManagementErrorCode.NONE)
-```
-
-
-###### Property
-
-
-#### [`ModManagementErrorCode`](#Modio.Errors.ModManagementErrorCode) `Code`
-
-```csharp
-public new ModManagementErrorCode Code
-```
-
-
-___
-
-### ModValidationError{#Modio.Errors.ModValidationError}
-
-```csharp
-public class ModValidationError : Error
-```
-
-
-###### Field
-
-
-#### [`ModValidationError`](#Modio.Errors.ModValidationError) `None`
-
-```csharp
-ModValidationError None = new ModValidationError(ModValidationErrorCode.NONE)
-```
-
-
-###### Property
-
-
-#### [`ModValidationErrorCode`](#Modio.Errors.ModValidationErrorCode) `Code`
-
-```csharp
-public new ModValidationErrorCode Code
-```
-
-
-___
-
-### MonetizationError{#Modio.Errors.MonetizationError}
-
-```csharp
-public class MonetizationError : Error
-```
-
-
-###### Field
-
-
-#### [`MonetizationError`](#Modio.Errors.MonetizationError) `None`
-
-```csharp
-MonetizationError None = new MonetizationError(MonetizationErrorCode.NONE)
-```
-
-
-###### Property
-
-
-#### [`MonetizationErrorCode`](#Modio.Errors.MonetizationErrorCode) `Code`
-
-```csharp
-public new MonetizationErrorCode Code
-```
-
-
-___
-
-### RateLimitError{#Modio.Errors.RateLimitError}
-
-```csharp
-public class RateLimitError : Error
-```
-
-
-###### Field
-
-
-#### `int RetryAfterSeconds`
-
-```csharp
-int RetryAfterSeconds
-```
-
-###### Remarks
-
-This can be 0 in the event of a rolling rate limit.
-
-___
-
-### SystemError{#Modio.Errors.SystemError}
-
-```csharp
-public class SystemError : Error
-```
-
-
-###### Field
-
-
-#### [`SystemError`](#Modio.Errors.SystemError) `None`
-
-```csharp
-SystemError None = new SystemError(SystemErrorCode.NONE)
-```
-
-
-###### Property
-
-
-#### [`SystemErrorCode`](#Modio.Errors.SystemErrorCode) `Code`
-
-```csharp
-public new SystemErrorCode Code
-```
-
-
-___
-
-### TempModsError{#Modio.Errors.TempModsError}
-
-```csharp
-public class TempModsError : Error
-```
-
-
-###### Field
-
-
-#### [`TempModsError`](#Modio.Errors.TempModsError) `None`
-
-```csharp
-TempModsError None = new TempModsError(TempModsErrorCode.NONE)
-```
-
-
-###### Property
-
-
-#### [`TempModsErrorCode`](#Modio.Errors.TempModsErrorCode) `Code`
-
-```csharp
-public new TempModsErrorCode Code
-```
-
-
-___
-
-### UserAuthError{#Modio.Errors.UserAuthError}
-
-```csharp
-public class UserAuthError : Error
-```
-
-
-###### Field
-
-
-#### [`UserAuthError`](#Modio.Errors.UserAuthError) `None`
-
-```csharp
-UserAuthError None = new UserAuthError(UserAuthErrorCode.NONE)
-```
-
-
-###### Property
-
-
-#### [`UserAuthErrorCode`](#Modio.Errors.UserAuthErrorCode) `Code`
-
-```csharp
-public new UserAuthErrorCode Code
-```
-
-
-___
-
-### UserDataError{#Modio.Errors.UserDataError}
-
-```csharp
-public class UserDataError : Error
-```
-
-
-###### Field
-
-
-#### [`UserDataError`](#Modio.Errors.UserDataError) `None`
-
-```csharp
-UserDataError None = new UserDataError(UserDataErrorCode.NONE)
-```
-
-
-###### Property
-
-
-#### [`UserDataErrorCode`](#Modio.Errors.UserDataErrorCode) `Code`
-
-```csharp
-public new UserDataErrorCode Code
-```
-
-
-___
-
-### ZlibError{#Modio.Errors.ZlibError}
-
-```csharp
-public class ZlibError : Error
-```
-
-
-###### Field
-
-
-#### [`ZlibError`](#Modio.Errors.ZlibError) `None`
-
-```csharp
-ZlibError None = new ZlibError(ZlibErrorCode.NONE)
-```
-
-
-###### Property
-
-
-#### [`ZlibErrorCode`](#Modio.Errors.ZlibErrorCode) `Code`
-
-```csharp
-public new ZlibErrorCode Code
-```
-
-
-___
-
-### Enums
-
-
-###### ApiErrorCode{#Modio.Errors.ApiErrorCode}
-
-
-```csharp
-NONE = ErrorCode.NONE
-```
-
-```csharp
-UNKNOWN = ErrorCode.UNKNOWN
-```
-
-```csharp
-MODIO_OUTAGE = ErrorCode.MODIO_OUTAGE
-```
-
-
-```csharp
-CROSS_ORIGIN_FORBIDDEN = ErrorCode.CROSS_ORIGIN_FORBIDDEN
-```
-
-
-```csharp
-FAILED_TO_COMPLETE_THE_REQUEST = ErrorCode.FAILED_TO_COMPLETE_THE_REQUEST
-```
-
-
-```csharp
-INVALID_API_VERSION = ErrorCode.INVALID_API_VERSION
-```
-
-
-```csharp
-MISSING_APIKEY = ErrorCode.MISSING_APIKEY
-```
-
-
-```csharp
-MALFORMED_APIKEY = ErrorCode.MALFORMED_APIKEY
-```
-
-
-```csharp
-INVALID_APIKEY = ErrorCode.INVALID_APIKEY
-```
-
-
-```csharp
-MISSING_WRITE_PERMISSION = ErrorCode.MISSING_WRITE_PERMISSION
-```
-
-
-```csharp
-MISSING_READ_PERMISSION = ErrorCode.MISSING_READ_PERMISSION
-```
-
-
-```csharp
-EXPIRED_OR_REVOKED_ACCESS_TOKEN = ErrorCode.EXPIRED_OR_REVOKED_ACCESS_TOKEN
-```
-
-
-```csharp
-AUTHENTICATED_ACCOUNT_HAS_BEEN_DELETED = ErrorCode.AUTHENTICATED_ACCOUNT_HAS_BEEN_DELETED
-```
-
-
-```csharp
-BANNED_USER_ACCOUNT = ErrorCode.BANNED_USER_ACCOUNT
-```
-
-
-```csharp
-RATELIMITED = ErrorCode.RATELIMITED
-```
-
-
-```csharp
-RATELIMITED_SAME_ENDPOINT = ErrorCode.RATELIMITED_SAME_ENDPOINT
-```
-
-
-```csharp
-APIKEY_HAS_NO_GAME = ErrorCode.APIKEY_HAS_NO_GAME
-```
-
-
-```csharp
-APIKEY_FOR_TEST_ONLY = ErrorCode.APIKEY_FOR_TEST_ONLY
-```
-
-
-```csharp
-CANNOT_VERIFY_EXTERNAL_CREDENTIALS = ErrorCode.CANNOT_VERIFY_EXTERNAL_CREDENTIALS
-```
-
-
-```csharp
-USER_NO_ACCEPT_TERMS_OF_USE = ErrorCode.USER_NO_ACCEPT_TERMS_OF_USE
-```
-
-
-```csharp
-OPEN_IDNOT_CONFIGURED = ErrorCode.OPEN_IDNOT_CONFIGURED
-```
-
-
-```csharp
-BINARY_FILE_CORRUPTED = ErrorCode.BINARY_FILE_CORRUPTED
-```
-
-
-```csharp
-BINARY_FILE_UNREADABLE = ErrorCode.BINARY_FILE_UNREADABLE
-```
-
-
-```csharp
-INVALID_JSON = ErrorCode.INVALID_JSON
-```
-
-
-```csharp
-MISSING_CONTENT_TYPE_HEADER = ErrorCode.MISSING_CONTENT_TYPE_HEADER
-```
-
-
-```csharp
-UNSUPPORTED_CONTENT_TYPE_HEADER = ErrorCode.UNSUPPORTED_CONTENT_TYPE_HEADER
-```
-
-
-```csharp
-REQUESTED_INVALID_RESPONSE_FORMAT = ErrorCode.REQUESTED_INVALID_RESPONSE_FORMAT
-```
-
-
-```csharp
-VALIDATION_ERRORS = ErrorCode.VALIDATION_ERRORS
-```
-
-
-```csharp
-REQUESTED_RESOURCE_NOT_FOUND = ErrorCode.REQUESTED_RESOURCE_NOT_FOUND
-```
-
-
-```csharp
-REQUESTED_GAME_NOT_FOUND = ErrorCode.REQUESTED_GAME_NOT_FOUND
-```
-
-
-```csharp
-REQUESTED_GAME_DELETED = ErrorCode.REQUESTED_GAME_DELETED
-```
-
-
-```csharp
-FORBIDDEN_DMCA = ErrorCode.FORBIDDEN_DMCA
-```
-
-
-```csharp
-FORBIDDEN_HIDDEN = ErrorCode.FORBIDDEN_HIDDEN
-```
-
-
-```csharp
-ALREADY_UNSUBSCRIBED = ErrorCode.ALREADY_UNSUBSCRIBED
-```
-
-
-```csharp
-MODFILE_NO_UPLOAD_PERMISSION = ErrorCode.MODFILE_NO_UPLOAD_PERMISSION
-```
-
-
-```csharp
-REQUESTED_MODFILE_NOT_FOUND = ErrorCode.REQUESTED_MODFILE_NOT_FOUND
-```
-
-
-```csharp
-FORBIDDEN_TACNOT_ACCEPTED = ErrorCode.FORBIDDEN_TACNOT_ACCEPTED
-```
-
-
-```csharp
-FORBIDDEN_MISSING_FILE = ErrorCode.FORBIDDEN_MISSING_FILE
-```
-
-
-```csharp
-INSUFFICIENT_PERMISSION = ErrorCode.INSUFFICIENT_PERMISSION
-```
-
-
-```csharp
-REQUESTED_MOD_NOT_FOUND = ErrorCode.REQUESTED_MOD_NOT_FOUND
-```
-
-
-```csharp
-REQUESTED_MOD_DELETED = ErrorCode.REQUESTED_MOD_DELETED
-```
-
-
-```csharp
-REQUESTED_COMMENT_NOT_FOUND = ErrorCode.REQUESTED_COMMENT_NOT_FOUND
-```
-
-
-```csharp
-USER_EXISTING_MOD_RATING = ErrorCode.USER_EXISTING_MOD_RATING
-```
-
-
-```csharp
-SUBMIT_REPORT_RIGHTS_REVOKED = ErrorCode.SUBMIT_REPORT_RIGHTS_REVOKED
-```
-
-
-```csharp
-REPORTED_ENTITY_UNAVAILABLE = ErrorCode.REPORTED_ENTITY_UNAVAILABLE
-```
-
-
-```csharp
-MOD_MEDIA_NO_ADD_PERMISSION = ErrorCode.MOD_MEDIA_NO_ADD_PERMISSION
-```
-
-
-```csharp
-MOD_MEDIA_NO_DELETE_PERMISSION = ErrorCode.MOD_MEDIA_NO_DELETE_PERMISSION
-```
-
-
-```csharp
-USER_NO_MOD_RATING = ErrorCode.USER_NO_MOD_RATING
-```
-
-
-```csharp
-MATURE_MODS_NOT_ALLOWED = ErrorCode.MATURE_MODS_NOT_ALLOWED
-```
-
-
-```csharp
-MUTE_USER_NOT_FOUND = ErrorCode.MUTE_USER_NOT_FOUND
-```
-
-
-```csharp
-CANNOT_MUTE_YOURSELF = ErrorCode.CANNOT_MUTE_YOURSELF
-```
-
-
-```csharp
-REQUESTED_USER_NOT_FOUND = ErrorCode.REQUESTED_USER_NOT_FOUND
-```
-
-
-```csharp
-MONETIZATION_UNEXPECTED_ERROR = ErrorCode.MONETIZATION_UNEXPECTED_ERROR
-```
-
-
-```csharp
-MONETIZATION_UNABLE_TO_COMMUNICATE = ErrorCode.MONETIZATION_UNABLE_TO_COMMUNICATE
-```
-
-
-```csharp
-MONETIZATION_AUTHENTICATION = ErrorCode.MONETIZATION_AUTHENTICATION
-```
-
-
-```csharp
-MONETIZATION_WALLET_FETCH_FAILED = ErrorCode.MONETIZATION_WALLET_FETCH_FAILED
-```
-
-
-```csharp
-MONETIZATION_IN_MAINTENANCE = ErrorCode.MONETIZATION_IN_MAINTENANCE
-```
-
-
-```csharp
-MONETIZATION_GAME_MONETIZATION_NOT_ENABLED = ErrorCode.MONETIZATION_GAME_MONETIZATION_NOT_ENABLED
-```
-
-
-```csharp
-MONETIZATION_PAYMENT_FAILED = ErrorCode.MONETIZATION_PAYMENT_FAILED
-```
-
-
-```csharp
-MONETIZATION_ITEM_ALREADY_OWNED = ErrorCode.MONETIZATION_ITEM_ALREADY_OWNED
-```
-
-
-```csharp
-MONETIZATION_INCORRECT_DISPLAY_PRICE = ErrorCode.MONETIZATION_INCORRECT_DISPLAY_PRICE
-```
-
-
-```csharp
-MONETIZATION_INSUFFICIENT_FUNDS = ErrorCode.MONETIZATION_INSUFFICIENT_FUNDS
-```
-
-
-___
-
-###### ArchiveErrorCode{#Modio.Errors.ArchiveErrorCode}
-
-
-```csharp
-NONE = ErrorCode.NONE
-```
-
-```csharp
-UNKNOWN = ErrorCode.UNKNOWN
-```
-
-```csharp
-INVALID_HEADER = ErrorCode.INVALID_HEADER
-```
-
-
-```csharp
-UNSUPPORTED_COMPRESSION = ErrorCode.UNSUPPORTED_COMPRESSION
-```
-
-
-___
-
-###### ErrorCode{#Modio.Errors.ErrorCode}
-
-
-```csharp
-NONE
-```
-
-```csharp
-UNKNOWN = int.MinValue
-```
-
-```csharp
-API_NOT_INITIALIZED
-```
-
-```csharp
-HTTP_EXCEPTION
-```
-
-```csharp
-TERMS_OF_USE_NOT_INITIALIZED
-```
-
-```csharp
-NOT_INITIALIZED
-```
-
-```csharp
-HAS_NOT_ACCEPTED_TERMS_OF_USE
-```
-
-```csharp
-USER_NOT_AUTHENTICATED
-```
-
-```csharp
-USER_ALREADY_AUTHENTICATED
-```
-
-```csharp
-USER_AUTHENTICATION_IN_PROGRESS
-```
-
-```csharp
-NOT_SUBSCRIBED
-```
-
-```csharp
-NO_SEARCH
-```
-
-```csharp
-SEARCH_IN_PROGRESS
-```
-
-```csharp
-PAGE_NOT_SEARCHED
-```
-
-```csharp
-AT_FIRST_PAGE
-```
-
-```csharp
-NO_MORE_PAGES
-```
-
-```csharp
-CANNOT_CAST_NULL_TO_MOD_ID
-```
-
-```csharp
-INVALID_MOD_ID
-```
-
-```csharp
-MOD_TAGS_NOT_INITIALIZED
-```
-
-```csharp
-HTTP_NOT_INITIALIZED
-```
-HTTP service not initialized
-
-```csharp
-HTTP_ALREADY_INITIALIZED
-```
-HTTP service already initialized
-
-```csharp
-CANNOT_OPEN_CONNECTION
-```
-Unable to connect to server
-
-```csharp
-INSUFFICIENT_PERMISSIONS
-```
-Insufficient permissions
-
-```csharp
-SECURITY_CONFIGURATION_INVALID
-```
-Invalid platform HTTP security configuration
-
-```csharp
-SERVER_UNAVAILABLE
-```
-Unable to connect to server
-
-```csharp
-RESOURCE_NOT_AVAILABLE
-```
-Invalid endpoint path
-
-```csharp
-EXCESSIVE_REDIRECTS
-```
-Exceeded the allowed number of redirects
-
-```csharp
-SERVER_CLOSED_CONNECTION
-```
-Server closed connection unexpectedly
-
-```csharp
-DOWNLOAD_NOT_PERMITTED
-```
-Trying to download file from outside of mod.io domain
-
-```csharp
-SERVERS_OVERLOADED
-```
-The mod.io servers are overloaded. Please wait a bit before trying again
-
-```csharp
-REQUEST_ERROR
-```
-An error occurred making a HTTP request
-
-```csharp
-INVALID_RESPONSE
-```
-The HTTP response was malformed or not in the expected format
-
-```csharp
-RATE_LIMITED
-```
-Too many requests made to the mod.io API within the rate-limiting window. Please wait and try again
-
-```csharp
-UNABLE_TO_CREATE_FOLDER
-```
-Could not create folder
-
-```csharp
-UNABLE_TO_CREATE_FILE
-```
-Could not create file
-
-```csharp
-NO_PERMISSION
-```
-Insufficient permission for filesystem operation
-
-```csharp
-FILE_LOCKED
-```
-File locked (already in use?)
-
-```csharp
-FILE_NOT_FOUND
-```
-File not found
-
-```csharp
-DIRECTORY_NOT_EMPTY
-```
-Directory not empty
-
-```csharp
-READ_ERROR
-```
-Error reading file
-
-```csharp
-WRITE_ERROR
-```
-Error writing file
-
-```csharp
-DIRECTORY_NOT_FOUND
-```
-Directory not found
-
-```csharp
-UNABLE_TO_INIT_STORAGE
-```
-Could not initialize user storage
-
-```csharp
-STATUS_AUTH_TOKEN_MISSING
-```
-OAuth token was missing
-
-```csharp
-STATUS_AUTH_TOKEN_INVALID
-```
-The user's OAuth token was invalid
-
-```csharp
-NO_AUTH_TOKEN
-```
-No Auth token available
-
-```csharp
-ALREADY_AUTHENTICATED
-```
-User is already authenticated. To use a new user and OAuth token, call ClearUserDataAsync
-
-```csharp
-INVALID_USER
-```
-Invalid user
-
-```csharp
-BLOB_MISSING
-```
-Some or all of the user data was missing from storage
-
-```csharp
-INVALID_HEADER
-```
-File did not have a valid archive header
-
-```csharp
-UNSUPPORTED_COMPRESSION
-```
-File uses an unsupported compression method. Please use STORE or DEFLATE
-
-```csharp
-OPERATION_CANCELLED
-```
-The asynchronous operation was cancelled before it completed
-
-```csharp
-OPERATION_ERROR
-```
-The asynchronous operation produced an error before it completed
-
-```csharp
-COULD_NOT_CREATE_HANDLE
-```
-Operating system could not create the requested handle
-
-```csharp
-NO_DATA_AVAILABLE
-```
-No data available
-
-```csharp
-END_OF_FILE
-```
-End of file
-
-```csharp
-QUEUE_CLOSED
-```
-Operation could not be started as the service queue was missing or destroyed
-
-```csharp
-SDKALREADY_INITIALIZED
-```
-mod.io SDK was already initialized
-
-```csharp
-SDKNOT_INITIALIZED
-```
-mod.io SDK was not initialized
-
-```csharp
-INDEX_OUT_OF_RANGE
-```
-Index out of range
-
-```csharp
-BAD_PARAMETER
-```
-Bad parameter supplied
-
-```csharp
-SHUTTING_DOWN
-```
-mod.io SDK is shutting down, operation is cancelled
-
-```csharp
-MISSING_COMPONENTS
-```
-mod.io SDK could not find required components
-
-```csharp
-UNKNOWN_SYSTEM_ERROR
-```
-A low-level system error occured, refer to the logs for code and location
-
-```csharp
-NEED_BUFFERS
-```
-Need more input data
-
-```csharp
-END_OF_STREAM
-```
-End of deflate stream
-
-```csharp
-STREAM_ERROR
-```
-Stream error
-
-```csharp
-INVALID_BLOCK_TYPE
-```
-Invalid block type
-
-```csharp
-INVALID_STORED_LENGTH
-```
-Invalid store block length
-
-```csharp
-TOO_MANY_SYMBOLS
-```
-Too many symbols
-
-```csharp
-INVALID_CODE_LENGTHS
-```
-Invalid code lengths
-
-```csharp
-INVALID_BIT_LENGTH_REPEAT
-```
-Invalid bit length repeat
-
-```csharp
-MISSING_EOB
-```
-Missing end-of-block marker
-
-```csharp
-INVALID_LITERAL_LENGTH
-```
-Invalid literal length
-
-```csharp
-INVALID_DISTANCE_CODE
-```
-Invalid distance code
-
-```csharp
-INVALID_DISTANCE
-```
-Invalid distance
-
-```csharp
-OVER_SUBSCRIBED_LENGTH
-```
-Over-subscribed length
-
-```csharp
-INCOMPLETE_LENGTH_SET
-```
-Incomplete length set
-
-```csharp
-NO_PENDING_WORK
-```
-Internal: No mods require processing for this iteration
-
-```csharp
-INSTALL_OR_UPDATE_CANCELLED
-```
-The current mod installation or update was cancelled
-
-```csharp
-MOD_MANAGEMENT_DISABLED
-```
-Could not perform operation: Mod management is disabled and mod collection is locked
-
-```csharp
-MOD_MANAGEMENT_ALREADY_ENABLED
-```
-Mod management was already enabled and the callback remains unchanged.
-
-```csharp
-UPLOAD_CANCELLED
-```
-The current modfile upload was cancelled
-
-```csharp
-MOD_BEING_PROCESSED
-```
-The specified mod's files are currently being updated by the SDK. Please try again later.
-
-```csharp
-TEMP_MOD_SET_NOT_INITIALIZED
-```
-Temporary mod set was not initialized. Please call InitTempModSet.
-
-```csharp
-INCOMPATIBLE_DEPENDENCIES
-```
-The dependencies for this mod are incompatible with your version of the game. Please contact the mod creator for support.
-
-```csharp
-NO_FILES_FOUND_FOR_MOD
-```
-Mod directory does not contain any files
-
-```csharp
-MOD_DIRECTORY_NOT_FOUND
-```
-Mod directory does not exist
-
-```csharp
-MD5DOES_NOT_MATCH
-```
-Mod MD5 does not match
-
-```csharp
-CRCDOES_NOT_MATCH
-```
-File CRC does not match
-
-```csharp
-DISPLAY_PRICE_INCORRECT
-```
-The display price for the mod was out-of-date or incorrect. Please retry with the correct display price.
-
-```csharp
-MONETIZATION_AUTHENTICATION_FAILED
-```
-A failure has occured when trying to authenticate with the monetization system.
-
-```csharp
-WALLET_FETCH_FAILED
-```
-Unable to fetch the account's wallet. Please confirm the account has one
-
-```csharp
-GAME_MONETIZATION_NOT_ENABLED
-```
-The game does not have active monetization.
-
-```csharp
-GAME_MONETIZATION_NOT_CONFIGURED
-```
-The game does not have properly configured monetization settings.
-
-```csharp
-PAYMENT_FAILED
-```
-The payment transaction failed. Please try again later.
-
-```csharp
-INCORRECT_DISPLAY_PRICE
-```
-The given display price does not match the price of the mod.
-
-```csharp
-ITEM_ALREADY_OWNED
-```
-The account already owns this item.
-
-```csharp
-INSUFFICIENT_FUNDS
-```
-The account has insufficent funds to make this purchase.
-
-```csharp
-RETRY_ENTITLEMENTS
-```
-Some entitlements could not be verified. Please try again.
-
-```csharp
-INVALID_METRICS_SECRET
-```
-The configured Metrics Secret Key is invalid.
-
-```csharp
-CANT_INSTALL_TAINTED_MOD
-```
-A mod installation has previously failed, can't install all needed mods for this temporary mod session.
-
-```csharp
-WSS_TIMEOUT
-```
-
-```csharp
-WSS_SERVICE_NOT_CONNECTED
-```
-
-```csharp
-WSS_FAILED_TO_SEND
-```
-
-```csharp
-WSS_FAILED_TO_DESERIALIZE
-```
-
-```csharp
-WSS_NOT_CONFIGURED
-```
-
-```csharp
-MISSING_MOUNT
-```
-
-```csharp
-MOUNT_LIMIT_EXCEEDED
-```
-
-```csharp
-MODIO_OUTAGE = 10000
-```
-mod.io is currently experiencing an outage. (rare)
-
-```csharp
-CROSS_ORIGIN_FORBIDDEN = 10001
-```
-Cross-origin request forbidden.
-
-```csharp
-FAILED_TO_COMPLETE_THE_REQUEST = 10002
-```
-mod.io failed to complete the request, please try again. (rare)
-
-```csharp
-INVALID_API_VERSION = 10003
-```
-API version supplied is invalid.
-
-```csharp
-MISSING_APIKEY = 11000
-```
-api_key is missing from your request.
-
-```csharp
-MALFORMED_APIKEY = 11001
-```
-api_key supplied is malformed.
-
-```csharp
-INVALID_APIKEY = 11002
-```
-api_key supplied is invalid.
-
-```csharp
-MISSING_WRITE_PERMISSION = 11003
-```
-Access token is missing the write scope to perform the request.
-
-```csharp
-MISSING_READ_PERMISSION = 11004
-```
-Access token is missing the read scope to perform the request.
-
-```csharp
-EXPIRED_OR_REVOKED_ACCESS_TOKEN = 11005
-```
-Access token is expired, or has been revoked.
-
-```csharp
-AUTHENTICATED_ACCOUNT_HAS_BEEN_DELETED = 11006
-```
-Authenticated user account has been deleted.
-
-```csharp
-BANNED_USER_ACCOUNT = 11007
-```
-Authenticated user account has been banned by mod.io admins.
-
-```csharp
-RATELIMITED = 11008
-```
-You have been ratelimited for making too many requests. See Rate Limiting.
-
-```csharp
-RATELIMITED_SAME_ENDPOINT = 11009
-```
-You have been ratelimited from calling this endpoint again, for making too many requests. See Rate Limiting.
-
-```csharp
-EMAIL_LOGIN_CODE_EXPIRED = 11012
-```
-Email login code has expired, please request a new one.
-
-```csharp
-EMAIL_LOGIN_CODE_INVALID = 11014
-```
-Email login code is invalid
-
-```csharp
-APIKEY_HAS_NO_GAME = 11016
-```
-The api_key supplied in the request must be associated with a game.
-
-```csharp
-APIKEY_FOR_TEST_ONLY = 11017
-```
-The api_key supplied in the request is for test environment purposes only and cannot be used for this functionality.
-
-```csharp
-STEAM_APP_TICKET_INVALID = 11018
-```
-
-```csharp
-CANNOT_VERIFY_EXTERNAL_CREDENTIALS = 11032
-```
-mod.io was unable to verify the credentials against the external service provider.
-
-```csharp
-USER_NO_ACCEPT_TERMS_OF_USE = 11074
-```
-The user has not agreed to the mod.io Terms of Use. Please see terms_agreed parameter description and the Terms endpoint for more information.
-
-```csharp
-USER_TARGET_BANNED = 11130
-```
-Targeted user is banned
-
-```csharp
-USER_TARGET_DELETED = 11131
-```
-Targeted user has been deleted
-
-```csharp
-OPEN_IDNOT_CONFIGURED = 11086
-```
-You must configure your OpenID config for your game in your game authentication settings before being able to authenticate users.
-
-```csharp
-BINARY_FILE_CORRUPTED = 13001
-```
-The submitted binary file is corrupted.
-
-```csharp
-BINARY_FILE_UNREADABLE = 13002
-```
-The submitted binary file is unreadable.
-
-```csharp
-INVALID_JSON = 13004
-```
-You have used the input_json parameter with semantically incorrect JSON.
-
-```csharp
-MISSING_CONTENT_TYPE_HEADER = 13005
-```
-The Content-Type header is missing from your request.
-
-```csharp
-UNSUPPORTED_CONTENT_TYPE_HEADER = 13006
-```
-The Content-Type header is not supported for this endpoint.
-
-```csharp
-REQUESTED_INVALID_RESPONSE_FORMAT = 13007
-```
-You have requested a response format that is not supported (JSON only).
-
-```csharp
-VALIDATION_ERRORS = 13009
-```
-The request contains validation errors for the data supplied. See the attached errors field within the Error Object to determine which input failed.
-
-```csharp
-REQUESTED_RESOURCE_NOT_FOUND = 14000
-```
-The requested resource does not exist.
-
-```csharp
-REQUESTED_GAME_NOT_FOUND = 14001
-```
-The requested game could not be found.
-
-```csharp
-REQUESTED_GAME_DELETED = 14006
-```
-The requested game has been deleted.
-
-```csharp
-FORBIDDEN_DMCA = 15000
-```
-This mod is currently under DMCA and the user cannot be subscribed to it.
-
-```csharp
-FORBIDDEN_HIDDEN = 15001
-```
-This mod is hidden and the user cannot be subscribed to it.
-
-```csharp
-ALREADY_SUBSCRIBED = 15004
-```
-The user is already subscribed to the specified resource
-
-```csharp
-ALREADY_UNSUBSCRIBED = 15005
-```
-The authenticated user is not subscribed to the resource.
-
-```csharp
-MODFILE_NO_UPLOAD_PERMISSION = 15006
-```
-The authenticated user does not have permission to upload modfiles for the specified mod. Ensure the user is a team manager or administrator.
-
-```csharp
-REQUESTED_MODFILE_NOT_FOUND = 15010
-```
-The requested modfile could not be found.
-
-```csharp
-FORBIDDEN_TACNOT_ACCEPTED = 15011
-```
-The item has not been accepted and can not be purchased at this time.
-
-```csharp
-MOD_NO_UPDATE_PERMISSION = 15013
-```
-The authenticated user does not have permission to update this mod.
-
-```csharp
-INSUFFICIENT_PERMISSION = 15019
-```
-The authenticated user does not have permission to delete this mod. This action is restricted to team managers and administrators only.
-
-```csharp
-FORBIDDEN_MISSING_FILE = 15020
-```
-This mod is missing a file and cannot be subscribed to.
-
-```csharp
-REQUESTED_MOD_NOT_FOUND = 15022
-```
-The requested mod could not be found.
-
-```csharp
-REQUESTED_MOD_DELETED = 15023
-```
-The requested mod has been deleted.
-
-```csharp
-REQUESTED_COMMENT_NOT_FOUND = 15026
-```
-The requested comment could not be found.
-
-```csharp
-USER_EXISTING_MOD_RATING = 15028
-```
-The authenticated user has already submitted a rating for this mod.
-
-```csharp
-SUBMIT_REPORT_RIGHTS_REVOKED = 15029
-```
-The authenticated user does not have permission to submit reports on mod.io due to their access being revoked.
-
-```csharp
-REPORTED_ENTITY_UNAVAILABLE = 15030
-```
-The specified resource is not able to be reported at this time, this is potentially due to the resource in question being removed.
-
-```csharp
-MOD_DEPENDENCIES_NO_ADD_PERMISSION = 15031
-```
-The authenticated user does not have permission to modify this resource.
-
-```csharp
-MOD_DEPENDENCIES_NO_DELETE_PERMISSION = 15032
-```
-The authenticated user does not have permission to modify this resource.
-
-```csharp
-USER_NO_MOD_RATING = 15043
-```
-The authenticated user cannot clear the mod rating as none exists.
-
-```csharp
-MOD_MEDIA_NO_ADD_PERMISSION = 15035
-```
-The authenticated user does not have permission to modify this resource.
-
-```csharp
-MOD_MEDIA_NO_DELETE_PERMISSION = 15036
-```
-The authenticated user does not have permission to modify this resource.
-
-```csharp
-MATURE_MODS_NOT_ALLOWED = 15054
-```
-This game does not allow mature mods.
-
-```csharp
-SUBSCRIBE_FAILED_SELF = 15091
-```
-The user cannot subscribe to self.
-
-```csharp
-MUTE_USER_NOT_FOUND = 17000
-```
-The user with the supplied UserID could not be found.
-
-```csharp
-CANNOT_MUTE_YOURSELF = 17039
-```
-You cannot mute yourself.
-
-```csharp
-INSUFFICIENT_SPACE = 20442
-```
-Insufficient space for file
-
-```csharp
-REQUESTED_USER_NOT_FOUND = 21000
-```
-The requested user could not be found.
-
-```csharp
-MONETIZATION_UNEXPECTED_ERROR = 900000
-```
-An un expected error during a purchase transaction has occured. Please try again later.
-
-```csharp
-MONETIZATION_UNABLE_TO_COMMUNICATE = 900001
-```
-Unable to communicate with the monetization system. Please try again later.
-
-```csharp
-MONETIZATION_AUTHENTICATION = 900002
-```
-A failure has occured when trying to authenticate with the monetization system.
-
-```csharp
-USER_MONETIZATION_NOT_CONFIGURED = 900007
-```
-The account has not been created with monetization.
-
-```csharp
-MONETIZATION_WALLET_FETCH_FAILED = 900008
-```
-Unable to fetch the accounts' wallet. Please confirm the account has one
-
-```csharp
-MONETIZATION_IN_MAINTENANCE = 900012
-```
-The monetization is currently in maintance mode. Please try again later.
-
-```csharp
-USER_MONETIZATION_DISABLED = 900015
-```
-The account does not have monetization enabled.
-
-```csharp
-MONETIZATION_GAME_MONETIZATION_NOT_ENABLED = 900022
-```
-The game does not have active monetization.
-
-```csharp
-MONETIZATION_PAYMENT_FAILED = 900030
-```
-The payment transaction failed. Please try again later.
-
-```csharp
-MONETIZATION_ITEM_ALREADY_OWNED = 900034
-```
-The account already owns this item.
-
-```csharp
-MONETIZATION_INCORRECT_DISPLAY_PRICE = 900035
-```
-The given display price does not match the price of the mod.
-
-```csharp
-MONETIZATION_INSUFFICIENT_FUNDS = 900049
-```
-The account has insufficent funds to make this purchase.
-
-```csharp
-MONETIZATION_ENTITLEMENT_MAPPING_NOT_FOUND = 900051
-```
-The mod does not have a SKU assigned for the given portal.
-
-```csharp
-MONETIZATION_TRANSACTION_FINALIZE_FAILED  = 900055
-```
-The transaction could not be finalized due to an unexpected error. The mod will still be issued to the user at this point as the portal entitlement was consumed (an irreversible operation)
-
-```csharp
-MONETIZATION_OUT_OF_STOCK = 900061
-```
-The mod that was attempting to be purchased has sold out. Only applicable if the Game and Mod have enabled limited.
-
-```csharp
-MONETIZATION_TRANSACTION_CONSUME_FAILED = 900064
-```
-Creation of the payment intent or the consumption of the entitlement within the third party portal failed.
-
-```csharp
-MONETIZATION_PORTAL_INVALID  = 900098
-```
-The provided portal is not a supported platform.
-
-___
-
-###### FilesystemErrorCode{#Modio.Errors.FilesystemErrorCode}
-
-
-```csharp
-NONE = ErrorCode.NONE
-```
-
-```csharp
-UNKNOWN = ErrorCode.UNKNOWN
-```
-
-```csharp
-UNABLE_TO_CREATE_FOLDER = ErrorCode.UNABLE_TO_CREATE_FOLDER
-```
-
-
-```csharp
-UNABLE_TO_CREATE_FILE = ErrorCode.UNABLE_TO_CREATE_FILE
-```
-
-
-```csharp
-INSUFFICIENT_SPACE = ErrorCode.INSUFFICIENT_SPACE
-```
-
-
-```csharp
-NO_PERMISSION = ErrorCode.NO_PERMISSION
-```
-
-
-```csharp
-FILE_LOCKED = ErrorCode.FILE_LOCKED
-```
-
-
-```csharp
-FILE_NOT_FOUND = ErrorCode.FILE_NOT_FOUND
-```
-
-
-```csharp
-DIRECTORY_NOT_EMPTY = ErrorCode.DIRECTORY_NOT_EMPTY
-```
-
-
-```csharp
-READ_ERROR = ErrorCode.READ_ERROR
-```
-
-
-```csharp
-WRITE_ERROR = ErrorCode.WRITE_ERROR
-```
-
-
-```csharp
-DIRECTORY_NOT_FOUND = ErrorCode.DIRECTORY_NOT_FOUND
-```
-
-
-___
-
-###### GenericErrorCode{#Modio.Errors.GenericErrorCode}
-
-
-```csharp
-NONE = ErrorCode.NONE
-```
-
-```csharp
-UNKNOWN = ErrorCode.UNKNOWN
-```
-
-```csharp
-OPERATION_CANCELLED = ErrorCode.OPERATION_CANCELLED
-```
-
-
-```csharp
-OPERATION_ERROR = ErrorCode.OPERATION_ERROR
-```
-
-
-```csharp
-COULD_NOT_CREATE_HANDLE = ErrorCode.COULD_NOT_CREATE_HANDLE
-```
-
-
-```csharp
-NO_DATA_AVAILABLE = ErrorCode.NO_DATA_AVAILABLE
-```
-
-
-```csharp
-END_OF_FILE = ErrorCode.END_OF_FILE
-```
-
-
-```csharp
-QUEUE_CLOSED = ErrorCode.QUEUE_CLOSED
-```
-
-
-```csharp
-SDKALREADY_INITIALIZED = ErrorCode.SDKALREADY_INITIALIZED
-```
-
-
-```csharp
-SDKNOT_INITIALIZED = ErrorCode.SDKNOT_INITIALIZED
-```
-
-
-```csharp
-INDEX_OUT_OF_RANGE = ErrorCode.INDEX_OUT_OF_RANGE
-```
-
-
-```csharp
-BAD_PARAMETER = ErrorCode.BAD_PARAMETER
-```
-
-
-```csharp
-SHUTTING_DOWN = ErrorCode.SHUTTING_DOWN
-```
-
-
-```csharp
-MISSING_COMPONENTS = ErrorCode.MISSING_COMPONENTS
-```
-
-
-___
-
-###### HttpErrorCode{#Modio.Errors.HttpErrorCode}
-
-
-```csharp
-NONE = ErrorCode.NONE
-```
-
-```csharp
-UNKNOWN = ErrorCode.UNKNOWN
-```
-
-```csharp
-HTTP_NOT_INITIALIZED = ErrorCode.HTTP_NOT_INITIALIZED
-```
-
-
-```csharp
-HTTP_ALREADY_INITIALIZED = ErrorCode.HTTP_ALREADY_INITIALIZED
-```
-
-
-```csharp
-CANNOT_OPEN_CONNECTION = ErrorCode.CANNOT_OPEN_CONNECTION
-```
-
-
-```csharp
-INSUFFICIENT_PERMISSIONS = ErrorCode.INSUFFICIENT_PERMISSIONS
-```
-
-
-```csharp
-SECURITY_CONFIGURATION_INVALID = ErrorCode.SECURITY_CONFIGURATION_INVALID
-```
-
-
-```csharp
-SERVER_UNAVAILABLE = ErrorCode.SERVER_UNAVAILABLE
-```
-
-
-```csharp
-RESOURCE_NOT_AVAILABLE = ErrorCode.RESOURCE_NOT_AVAILABLE
-```
-
-
-```csharp
-EXCESSIVE_REDIRECTS = ErrorCode.EXCESSIVE_REDIRECTS
-```
-
-
-```csharp
-SERVER_CLOSED_CONNECTION = ErrorCode.SERVER_CLOSED_CONNECTION
-```
-
-
-```csharp
-DOWNLOAD_NOT_PERMITTED = ErrorCode.DOWNLOAD_NOT_PERMITTED
-```
-
-
-```csharp
-SERVERS_OVERLOADED = ErrorCode.SERVERS_OVERLOADED
-```
-
-
-```csharp
-REQUEST_ERROR = ErrorCode.REQUEST_ERROR
-```
-
-
-```csharp
-INVALID_RESPONSE = ErrorCode.INVALID_RESPONSE
-```
-
-
-```csharp
-RATE_LIMITED = ErrorCode.RATE_LIMITED
-```
-
-
-___
-
-###### MetricsErrorCode{#Modio.Errors.MetricsErrorCode}
-
-
-```csharp
-NONE = ErrorCode.NONE
-```
-
-```csharp
-UNKNOWN = ErrorCode.UNKNOWN
-```
-
-```csharp
-INVALID_METRICS_SECRET = ErrorCode.INVALID_METRICS_SECRET
-```
-
-
-___
-
-###### ModManagementErrorCode{#Modio.Errors.ModManagementErrorCode}
-
-
-```csharp
-NONE = ErrorCode.NONE
-```
-
-```csharp
-UNKNOWN = ErrorCode.UNKNOWN
-```
-
-```csharp
-ALREADY_SUBSCRIBED = ErrorCode.ALREADY_SUBSCRIBED
-```
-
-
-```csharp
-NO_PENDING_WORK = ErrorCode.NO_PENDING_WORK
-```
-
-
-```csharp
-INSTALL_OR_UPDATE_CANCELLED = ErrorCode.INSTALL_OR_UPDATE_CANCELLED
-```
-
-
-```csharp
-MOD_MANAGEMENT_DISABLED = ErrorCode.MOD_MANAGEMENT_DISABLED
-```
-
-
-```csharp
-MOD_MANAGEMENT_ALREADY_ENABLED = ErrorCode.MOD_MANAGEMENT_ALREADY_ENABLED
-```
-
-
-```csharp
-UPLOAD_CANCELLED = ErrorCode.UPLOAD_CANCELLED
-```
-
-
-```csharp
-MOD_BEING_PROCESSED = ErrorCode.MOD_BEING_PROCESSED
-```
-
-
-```csharp
-TEMP_MOD_SET_NOT_INITIALIZED = ErrorCode.TEMP_MOD_SET_NOT_INITIALIZED
-```
-
-
-```csharp
-INCOMPATIBLE_DEPENDENCIES = ErrorCode.INCOMPATIBLE_DEPENDENCIES
-```
-
-
-___
-
-###### ModValidationErrorCode{#Modio.Errors.ModValidationErrorCode}
-
-
-```csharp
-NONE = ErrorCode.NONE
-```
-
-```csharp
-UNKNOWN = ErrorCode.UNKNOWN
-```
-
-```csharp
-NO_FILES_FOUND_FOR_MOD = ErrorCode.NO_FILES_FOUND_FOR_MOD
-```
-
-
-```csharp
-MOD_DIRECTORY_NOT_FOUND = ErrorCode.MOD_DIRECTORY_NOT_FOUND
-```
-
-
-```csharp
-MD5DOES_NOT_MATCH = ErrorCode.MD5DOES_NOT_MATCH
-```
-
-
-___
-
-###### MonetizationErrorCode{#Modio.Errors.MonetizationErrorCode}
-
-
-```csharp
-NONE = ErrorCode.NONE
-```
-
-```csharp
-UNKNOWN = ErrorCode.UNKNOWN
-```
-
-```csharp
-DISPLAY_PRICE_INCORRECT = ErrorCode.DISPLAY_PRICE_INCORRECT
-```
-
-
-```csharp
-MONETIZATION_AUTHENTICATION_FAILED = ErrorCode.MONETIZATION_AUTHENTICATION_FAILED
-```
-
-
-```csharp
-WALLET_FETCH_FAILED = ErrorCode.WALLET_FETCH_FAILED
-```
-
-
-```csharp
-USER_MONETIZATION_NOT_CONFIGURED = ErrorCode.USER_MONETIZATION_NOT_CONFIGURED
-```
-
-
-```csharp
-USER_MONETIZATION_DISABLED = ErrorCode.USER_MONETIZATION_DISABLED
-```
-
-
-```csharp
-GAME_MONETIZATION_NOT_ENABLED = ErrorCode.GAME_MONETIZATION_NOT_ENABLED
-```
-
-
-```csharp
-GAME_MONETIZATION_NOT_CONFIGURED = ErrorCode.GAME_MONETIZATION_NOT_CONFIGURED
-```
-
-
-```csharp
-PAYMENT_FAILED = ErrorCode.PAYMENT_FAILED
-```
-
-
-```csharp
-INCORRECT_DISPLAY_PRICE = ErrorCode.INCORRECT_DISPLAY_PRICE
-```
-
-
-```csharp
-ITEM_ALREADY_OWNED = ErrorCode.ITEM_ALREADY_OWNED
-```
-
-
-```csharp
-INSUFFICIENT_FUNDS = ErrorCode.INSUFFICIENT_FUNDS
-```
-
-
-```csharp
-RETRY_ENTITLEMENTS = ErrorCode.RETRY_ENTITLEMENTS
-```
-
-
-___
-
-###### RateLimitErrorCode{#Modio.Errors.RateLimitErrorCode}
-
-
-```csharp
-RATELIMITED = ErrorCode.RATELIMITED
-```
-
-```csharp
-RATELIMITED_SAME_ENDPOINT = 11009
-```
-
-___
-
-###### SystemErrorCode{#Modio.Errors.SystemErrorCode}
-
-
-```csharp
-NONE = ErrorCode.NONE
-```
-
-```csharp
-UNKNOWN = ErrorCode.UNKNOWN
-```
-
-```csharp
-UNKNOWN_SYSTEM_ERROR = ErrorCode.UNKNOWN_SYSTEM_ERROR
-```
-
-
-___
-
-###### TempModsErrorCode{#Modio.Errors.TempModsErrorCode}
-
-
-```csharp
-NONE = ErrorCode.NONE
-```
-
-```csharp
-UNKNOWN = ErrorCode.UNKNOWN
-```
-
-```csharp
-CANT_INSTALL_TAINTED_MOD = ErrorCode.CANT_INSTALL_TAINTED_MOD
-```
-
-
-___
-
-###### UserAuthErrorCode{#Modio.Errors.UserAuthErrorCode}
-
-
-```csharp
-NONE = ErrorCode.NONE
-```
-
-```csharp
-UNKNOWN = ErrorCode.UNKNOWN
-```
-
-```csharp
-UNABLE_TO_INIT_STORAGE = ErrorCode.UNABLE_TO_INIT_STORAGE
-```
-
-
-```csharp
-STATUS_AUTH_TOKEN_MISSING = ErrorCode.STATUS_AUTH_TOKEN_MISSING
-```
-
-
-```csharp
-STATUS_AUTH_TOKEN_INVALID = ErrorCode.STATUS_AUTH_TOKEN_INVALID
-```
-
-
-```csharp
-NO_AUTH_TOKEN = ErrorCode.NO_AUTH_TOKEN
-```
-
-
-```csharp
-ALREADY_AUTHENTICATED = ErrorCode.ALREADY_AUTHENTICATED
-```
-
-
-```csharp
-EMAIL_LOGIN_CODE_EXPIRED = ErrorCode.EMAIL_LOGIN_CODE_EXPIRED
-```
-
-
-```csharp
-EMAIL_LOGIN_CODE_INVALID = ErrorCode.EMAIL_LOGIN_CODE_INVALID
-```
-
-
-___
-
-###### UserDataErrorCode{#Modio.Errors.UserDataErrorCode}
-
-
-```csharp
-NONE = ErrorCode.NONE
-```
-
-```csharp
-UNKNOWN = ErrorCode.UNKNOWN
-```
-
-```csharp
-INVALID_USER = ErrorCode.INVALID_USER
-```
-
-
-```csharp
-BLOB_MISSING = ErrorCode.BLOB_MISSING
-```
-
-
-___
-
-###### ZlibErrorCode{#Modio.Errors.ZlibErrorCode}
-
-
-```csharp
-NONE = ErrorCode.NONE
-```
-
-```csharp
-UNKNOWN = ErrorCode.UNKNOWN
-```
-
-```csharp
-NEED_BUFFERS = ErrorCode.NEED_BUFFERS
-```
-
-
-```csharp
-END_OF_STREAM = ErrorCode.END_OF_STREAM
-```
-
-
-```csharp
-STREAM_ERROR = ErrorCode.STREAM_ERROR
-```
-
-
-```csharp
-INVALID_BLOCK_TYPE = ErrorCode.INVALID_BLOCK_TYPE
-```
-
-
-```csharp
-INVALID_STORED_LENGTH = ErrorCode.INVALID_STORED_LENGTH
-```
-
-
-```csharp
-TOO_MANY_SYMBOLS = ErrorCode.TOO_MANY_SYMBOLS
-```
-
-
-```csharp
-INVALID_CODE_LENGTHS = ErrorCode.INVALID_CODE_LENGTHS
-```
-
-
-```csharp
-INVALID_BIT_LENGTH_REPEAT = ErrorCode.INVALID_BIT_LENGTH_REPEAT
-```
-
-
-```csharp
-MISSING_EOB = ErrorCode.MISSING_EOB
-```
-
-
-```csharp
-INVALID_LITERAL_LENGTH = ErrorCode.INVALID_LITERAL_LENGTH
-```
-
-
-```csharp
-INVALID_DISTANCE_CODE = ErrorCode.INVALID_DISTANCE_CODE
-```
-
-
-```csharp
-INVALID_DISTANCE = ErrorCode.INVALID_DISTANCE
-```
-
-
-```csharp
-OVER_SUBSCRIBED_LENGTH = ErrorCode.OVER_SUBSCRIBED_LENGTH
-```
-
-
-```csharp
-INCOMPLETE_LENGTH_SET = ErrorCode.INCOMPLETE_LENGTH_SET
-```
-
 
 ___
 
@@ -4585,7 +2376,7 @@ public virtual async Task Shutdown()
 #### DebugDeleteAllGameData{#Modio.FileIO.BaseDataStorage.DebugDeleteAllGameData}
 
 ```csharp
-[ModioDebugMenu]  public static void DebugDeleteAllGameData()
+[ModioDebugMenu] public static void DebugDeleteAllGameData()
 ```
 
 
@@ -4669,7 +2460,7 @@ public virtual async Task<(Error error, UserSaveObject[] results)> ReadAllSavedU
 #### DownloadModFileFromStream{#Modio.FileIO.BaseDataStorage.DownloadModFileFromStream}
 
 ```csharp
-public virtual async Task<Error> DownloadModFileFromStream(  long modId,  long modfileId,  Stream downloadStream,  string md5Hash,  CancellationToken token  )
+public virtual async Task<Error> DownloadModFileFromStream( long modId, long modfileId, Stream downloadStream, string md5Hash, CancellationToken token )
 ```
 
 
@@ -4684,8 +2475,8 @@ Calculate a MD5 Hash
 
 ###### Parameters
 
-`filePath`
-`buffer`
+`filePath` 
+`buffer` 
 
 ###### Returns
 
@@ -4715,7 +2506,7 @@ public virtual async Task<Error> InstallMod(Mod mod, long modfileId, Cancellatio
 #### InstallModFromStream{#Modio.FileIO.BaseDataStorage.InstallModFromStream}
 
 ```csharp
-public virtual async Task<Error> InstallModFromStream(  Mod mod,  long modfileId,  Stream stream,  string md5Hash,  CancellationToken token  )
+public virtual async Task<Error> InstallModFromStream( Mod mod, long modfileId, Stream stream, string md5Hash, CancellationToken token )
 ```
 
 
@@ -4799,7 +2590,7 @@ public virtual string GetModfilePath(long modId, long modfileId)
 #### GetInstallPath{#Modio.FileIO.BaseDataStorage.GetInstallPath}
 
 ```csharp
-public virtual string GetInstallPath(long modId, long modfileId)  // Match V2 install path. Note that initial V3 versions put mods in an "Installed" directory; see MigrateLegacyModInstalls
+public virtual string GetInstallPath(long modId, long modfileId) // Match V2 install path. Note that initial V3 versions put mods in an "Installed" directory; see MigrateLegacyModInstalls
 ```
 
 
@@ -4912,7 +2703,7 @@ The CRCComputingStreamWrapper instance.
 
 ###### Exceptions
 
-`ArgumentNullException`:
+`ArgumentNullException`: 
 
 
 #### WriteOnly{#Modio.FileIO.CRCComputingStreamWrapper.WriteOnly}
@@ -4935,7 +2726,7 @@ The CRCComputingStreamWrapper instance.
 
 ###### Exceptions
 
-`ArgumentNullException`:
+`ArgumentNullException`: 
 
 
 #### Flush{#Modio.FileIO.CRCComputingStreamWrapper.Flush}
@@ -4969,7 +2760,7 @@ public override int Read(byte[] buffer, int offset, int count)
 #### ReadAsync{#Modio.FileIO.CRCComputingStreamWrapper.ReadAsync}
 
 ```csharp
-public override async Task<int> ReadAsync(  byte[] buffer,  int offset,  int count,  CancellationToken cancellationToken  )
+public override async Task<int> ReadAsync( byte[] buffer, int offset, int count, CancellationToken cancellationToken )
 ```
 
 
@@ -5048,7 +2839,7 @@ public interface IModioRootPathProvider
 ```csharp
 public string Path
 ```
-`get`
+`get` 
 
 Path of Mod Installs
 
@@ -5078,7 +2869,7 @@ public class MD5ComputingStreamWrapper : Stream
 ```csharp
 public int TotalBytesRead
 ```
-`get`
+`get` 
 
 
 #### `bool CanRead`
@@ -5250,6 +3041,17 @@ public class ModioZipInputStream : ZipInputStream
 ```
 
 
+###### Property
+
+
+#### `long CentralDirectoryStreamOffset`
+
+```csharp
+public long CentralDirectoryStreamOffset
+```
+`get` 
+
+
 ###### Method
 
 
@@ -5267,18 +3069,18 @@ public async Task ReadUntilEndAsync(CancellationToken token)
 ```
 
 
-#### GetHeaderStream{#Modio.FileIO.ModioZipInputStream.GetHeaderStream}
+#### GetEocdEntries{#Modio.FileIO.ModioZipInputStream.GetEocdEntries}
 
 ```csharp
-public MemoryStream GetHeaderStream()
+public IReadOnlyList<ZipEntry> GetEocdEntries()
 ```
 
-Gets the header stream containing the zip central directory signature.
 
+#### FindEndOfCentralRecordInfo{#Modio.FileIO.ModioZipInputStream.FindEndOfCentralRecordInfo}
 
-###### Returns
-
-The `MemoryStream` containing the header data, or null if no header was found.
+```csharp
+public void FindEndOfCentralRecordInfo(out long recordCount)
+```
 
 
 #### Read{#Modio.FileIO.ModioZipInputStream.Read}
@@ -5494,6 +3296,13 @@ GameCommunityOptions CommunityOptions
 ```
 
 
+#### [`GameMonetizationOptions`](#Modio.Mods.GameMonetizationOptions) `MonetizationOptions`
+
+```csharp
+GameMonetizationOptions MonetizationOptions
+```
+
+
 ###### Method
 
 
@@ -5516,6 +3325,18 @@ public static async Task<(Error error, GameData data)> GetGameData()
 ```csharp
 public static async Task<Error> SetGameData(GameData data)
 ```
+
+Sets the game data, writing it to disk. If a write is already in progress, it will mark the data as dirty and wait for the current write to finish before writing again if necessary.
+This ensures that we don't have multiple concurrent writes to disk, which could cause issues.
+
+
+###### Parameters
+
+`data`  The game data to set. This will be cached in memory and written to disk.
+
+###### Returns
+
+ An error if the write failed, or Error.None if it succeeded.
 
 
 #### SetGameTags{#Modio.Mods.GameData.SetGameTags}
@@ -5557,18 +3378,40 @@ ModTag[] Tags
 ```
 
 
-#### `bool Hidden`
-
-```csharp
-bool Hidden
-```
-
-
 #### `bool Locked`
 
 ```csharp
 bool Locked
 ```
+
+
+###### Property
+
+
+#### `bool Hidden`
+
+```csharp
+[JsonIgnore] public bool Hidden
+```
+`get` `set`
+
+Should this tag category be hidden from users in all UI?
+Set on the mod.io website when configuring your game
+
+
+
+#### `bool TempHidden`
+
+```csharp
+[JsonIgnore] public bool TempHidden
+```
+`set`
+
+Should this tag category be hidden for the user temporarily
+We use this when filtering the entire mods page for a particular search
+e.g. you want to have separate "maps" and "characters" pages using a tag filter,
+but don't want the tags to be visible on those pages
+
 
 
 ###### Method
@@ -5578,6 +3421,13 @@ bool Locked
 
 ```csharp
 public static async Task<(Error, GameTagCategory[])> GetGameTagOptions()
+```
+
+
+#### GetGameTagOptionsInternal{#Modio.Mods.GameTagCategory.GetGameTagOptionsInternal}
+
+```csharp
+public static async Task<(Error, GameTagCategory[])> GetGameTagOptionsInternal()
 ```
 
 
@@ -5608,7 +3458,7 @@ public interface IModioInfo : IModioResource
 ```csharp
 public string Name
 ```
-`get`
+`get` 
 
 
 #### `string Summary`
@@ -5616,7 +3466,7 @@ public string Name
 ```csharp
 public string Summary
 ```
-`get`
+`get` 
 
 
 #### `string Description`
@@ -5624,7 +3474,7 @@ public string Summary
 ```csharp
 public string Description
 ```
-`get`
+`get` 
 
 
 #### `DateTime DateLive`
@@ -5632,7 +3482,7 @@ public string Description
 ```csharp
 public DateTime DateLive
 ```
-`get`
+`get` 
 
 
 #### `DateTime DateUpdated`
@@ -5640,7 +3490,7 @@ public DateTime DateLive
 ```csharp
 public DateTime DateUpdated
 ```
-`get`
+`get` 
 
 
 #### [`ModTag`](#Modio.Mods.ModTag) `Tags`
@@ -5648,7 +3498,7 @@ public DateTime DateUpdated
 ```csharp
 public ModTag[] Tags
 ```
-`get`
+`get` 
 
 
 #### [`ModMaturityOptions`](#Modio.Mods.ModMaturityOptions) `MaturityOptions`
@@ -5656,7 +3506,7 @@ public ModTag[] Tags
 ```csharp
 public ModMaturityOptions MaturityOptions
 ```
-`get`
+`get` 
 
 
 #### [`ModioImageSource`](#Modio.Images.ModioImageSource) `Logo`
@@ -5664,7 +3514,7 @@ public ModMaturityOptions MaturityOptions
 ```csharp
 public ModioImageSource<Mod.LogoResolution> Logo
 ```
-`get`
+`get` 
 
 
 #### [`UserProfile`](#Modio.Users.UserProfile) `Creator`
@@ -5672,7 +3522,7 @@ public ModioImageSource<Mod.LogoResolution> Logo
 ```csharp
 public UserProfile Creator
 ```
-`get`
+`get` 
 
 
 #### [`ModioRating`](#Plugins.Modio.Modio.Ratings.ModioRating) `CurrentUserRating`
@@ -5680,7 +3530,7 @@ public UserProfile Creator
 ```csharp
 public ModioRating CurrentUserRating
 ```
-`get`
+`get` 
 
 
 #### `bool IsSubscribed`
@@ -5688,7 +3538,7 @@ public ModioRating CurrentUserRating
 ```csharp
 public bool IsSubscribed
 ```
-`get`
+`get` 
 
 ___
 
@@ -5707,7 +3557,7 @@ public interface IModioResource
 ```csharp
 public ModioId Id
 ```
-`get`
+`get` 
 
 ___
 
@@ -5729,7 +3579,7 @@ UI elements accordingly.
 ```csharp
 public ModioId Id
 ```
-`get`
+`get` 
 
 
 #### `string Name`
@@ -5737,7 +3587,7 @@ public ModioId Id
 ```csharp
 public string Name
 ```
-`get`
+`get` 
 
 
 #### `string Summary`
@@ -5753,7 +3603,7 @@ public string Summary
 ```csharp
 public string Description
 ```
-`get`
+`get` 
 
 
 #### `DateTime DateLive`
@@ -5761,7 +3611,7 @@ public string Description
 ```csharp
 public DateTime DateLive
 ```
-`get`
+`get` 
 
 
 #### `DateTime DateUpdated`
@@ -5769,7 +3619,7 @@ public DateTime DateLive
 ```csharp
 public DateTime DateUpdated
 ```
-`get`
+`get` 
 
 
 #### [`ModTag`](#Modio.Mods.ModTag) `Tags`
@@ -5777,7 +3627,7 @@ public DateTime DateUpdated
 ```csharp
 public ModTag[] Tags
 ```
-`get`
+`get` 
 
 
 #### [`ModSku`](#Modio.Mods.ModSku) `PortalSku`
@@ -5785,7 +3635,7 @@ public ModTag[] Tags
 ```csharp
 public ModSku PortalSku
 ```
-`get`
+`get` 
 
 
 #### `string MetadataBlob`
@@ -5793,7 +3643,7 @@ public ModSku PortalSku
 ```csharp
 public string MetadataBlob
 ```
-`get`
+`get` 
 
 
 #### `Dictionary MetadataKvps`
@@ -5801,7 +3651,7 @@ public string MetadataBlob
 ```csharp
 public Dictionary<string,string> MetadataKvps
 ```
-`get`
+`get` 
 
 
 #### [`ModCommunityOptions`](#Modio.Mods.ModCommunityOptions) `CommunityOptions`
@@ -5809,7 +3659,7 @@ public Dictionary<string,string> MetadataKvps
 ```csharp
 public ModCommunityOptions CommunityOptions
 ```
-`get`
+`get` 
 
 
 #### [`ModMaturityOptions`](#Modio.Mods.ModMaturityOptions) `MaturityOptions`
@@ -5817,7 +3667,7 @@ public ModCommunityOptions CommunityOptions
 ```csharp
 public ModMaturityOptions MaturityOptions
 ```
-`get`
+`get` 
 
 
 #### [`Modfile`](#Modio.API.ModioAPI.Mods.GetModsFilter.Modfile) `File`
@@ -5825,7 +3675,7 @@ public ModMaturityOptions MaturityOptions
 ```csharp
 public Modfile File
 ```
-`get`
+`get` 
 
 
 #### [`ModPlatform`](#Modio.Mods.ModPlatform) `SupportedPlatforms`
@@ -5833,7 +3683,7 @@ public Modfile File
 ```csharp
 public ModPlatform[] SupportedPlatforms
 ```
-`get`
+`get` 
 
 
 #### [`ModStats`](#Modio.Mods.ModStats) `Stats`
@@ -5841,7 +3691,7 @@ public ModPlatform[] SupportedPlatforms
 ```csharp
 public ModStats Stats
 ```
-`get`
+`get` 
 
 
 #### `long Price`
@@ -5849,7 +3699,7 @@ public ModStats Stats
 ```csharp
 public long Price
 ```
-`get`
+`get` 
 
 
 #### `bool IsMonetized`
@@ -5857,7 +3707,7 @@ public long Price
 ```csharp
 public bool IsMonetized
 ```
-`get`
+`get` 
 
 
 #### [`ModioImageSource`](#Modio.Images.ModioImageSource) `Logo`
@@ -5865,7 +3715,7 @@ public bool IsMonetized
 ```csharp
 public ModioImageSource<LogoResolution> Logo
 ```
-`get`
+`get` 
 
 
 #### `ModioImageSource<GalleryResolution> Gallery`
@@ -5873,7 +3723,7 @@ public ModioImageSource<LogoResolution> Logo
 ```csharp
 public ModioImageSource<GalleryResolution>[] Gallery
 ```
-`get`
+`get` 
 
 
 #### [`UserProfile`](#Modio.Users.UserProfile) `Creator`
@@ -5881,7 +3731,7 @@ public ModioImageSource<GalleryResolution>[] Gallery
 ```csharp
 public UserProfile Creator
 ```
-`get`
+`get` 
 
 
 #### [`ModDependencies`](#Modio.Mods.ModDependencies) `Dependencies`
@@ -5889,7 +3739,7 @@ public UserProfile Creator
 ```csharp
 public ModDependencies Dependencies
 ```
-`get`
+`get` 
 
 
 #### [`ModioRating`](#Plugins.Modio.Modio.Ratings.ModioRating) `CurrentUserRating`
@@ -5897,7 +3747,7 @@ public ModDependencies Dependencies
 ```csharp
 public ModioRating CurrentUserRating
 ```
-`get`
+`get` 
 
 
 #### `bool IsSubscribed`
@@ -5905,7 +3755,7 @@ public ModioRating CurrentUserRating
 ```csharp
 public bool IsSubscribed
 ```
-`get`
+`get` 
 
 
 #### `bool IsPurchased`
@@ -5913,7 +3763,7 @@ public bool IsSubscribed
 ```csharp
 public bool IsPurchased
 ```
-`get`
+`get` 
 
 
 #### `bool IsEnabled`
@@ -5922,6 +3772,17 @@ public bool IsPurchased
 public bool IsEnabled
 ```
 `get` `set`
+
+
+#### `bool IsCreated`
+
+```csharp
+public bool IsCreated
+```
+`get` 
+
+Is the mod a user creation for the currently authenticated user
+
 
 
 #### `string FiatPrice`
@@ -6088,7 +3949,7 @@ Rate this mod as either a single positive, negative or no rating.
 #### Report{#Modio.Mods.Mod.Report}
 
 ```csharp
-public async Task<Error> Report(  ReportType reportType,  ModNotWorkingReason reportReason,  string contact,  string summary  )
+public async Task<Error> Report( ReportType reportType, ModNotWorkingReason reportReason, string contact, string summary )
 ```
 Reports this mod to mod.io. [`ReportType`](#Modio.Reports.ReportType) &amp; [`ModNotWorkingReason`](#Modio.Reports.ModNotWorkingReason) for
 report reasons.
@@ -6167,7 +4028,7 @@ public class ModDependencies
 ```csharp
 public int Count
 ```
-`get`
+`get` 
 
 
 #### `bool HasDependencies`
@@ -6175,7 +4036,7 @@ public int Count
 ```csharp
 public bool HasDependencies
 ```
-`get`
+`get` 
 
 
 #### `bool IsMapped`
@@ -6245,7 +4106,7 @@ ___
 ### ModSearchFilter{#Modio.Mods.ModSearchFilter}
 
 ```csharp
-[Serializable]  public class ModSearchFilter
+[Serializable] public class ModSearchFilter
 ```
 
 
@@ -6316,6 +4177,14 @@ public int TagAndCategoryCount
 
 
 
+#### `int VisibleTagAndCategoryCount`
+
+```csharp
+public int VisibleTagAndCategoryCount
+```
+
+
+
 ###### Method
 
 
@@ -6381,10 +4250,48 @@ Adds a tag to be used in filtering mods for a request.
 [`GameTagCategory`](#Modio.Mods.GameTagCategory)
 
 
+#### AddTag{#Modio.Mods.ModSearchFilter.AddTag}
+
+```csharp
+public void AddTag(ModTag tag)
+```
+
+Adds a tag to be used in filtering mods for a request.
+
+
+###### Parameters
+
+`tag` the tag to be added to the filter
+
+###### See Also
+
+[`ModTag`](#Modio.Mods.ModTag)
+[`GameTagCategory`](#Modio.Mods.GameTagCategory)
+
+
 #### AddTags{#Modio.Mods.ModSearchFilter.AddTags}
 
 ```csharp
-public void AddTags(IEnumerable<string> tags)
+public void AddTags(IEnumerable<string> tags, ResourceTagType tagType
+```
+
+Adds multiple tags used in filtering mods for a request.
+
+
+###### Parameters
+
+`tags` the tags to be added to the filter
+`tagType` 
+
+###### See Also
+
+[`GameTagCategory`](#Modio.Mods.GameTagCategory)
+
+
+#### AddTags{#Modio.Mods.ModSearchFilter.AddTags}
+
+```csharp
+public void AddTags(IEnumerable<ModTag> tags)
 ```
 
 Adds multiple tags used in filtering mods for a request.
@@ -6410,7 +4317,14 @@ public void ClearTags()
 #### GetTags{#Modio.Mods.ModSearchFilter.GetTags}
 
 ```csharp
-public IReadOnlyList<string> GetTags()
+public IReadOnlyList<ModTag> GetTags()
+```
+
+
+#### GetTagNames{#Modio.Mods.ModSearchFilter.GetTagNames}
+
+```csharp
+public IReadOnlyList<string> GetTagNames()
 ```
 
 
@@ -6539,7 +4453,7 @@ public class ModStats
 ```csharp
 public long Subscribers
 ```
-`get`
+`get` 
 
 
 #### `long Downloads`
@@ -6547,7 +4461,7 @@ public long Subscribers
 ```csharp
 public long Downloads
 ```
-`get`
+`get` 
 
 
 #### `long RatingsPositive`
@@ -6555,7 +4469,7 @@ public long Downloads
 ```csharp
 public long RatingsPositive
 ```
-`get`
+`get` 
 
 
 #### `long RatingsNegative`
@@ -6563,7 +4477,7 @@ public long RatingsPositive
 ```csharp
 public long RatingsNegative
 ```
-`get`
+`get` 
 
 
 #### `long RatingsPercent`
@@ -6571,7 +4485,7 @@ public long RatingsNegative
 ```csharp
 public long RatingsPercent
 ```
-`get`
+`get` 
 
 ___
 
@@ -6600,15 +4514,29 @@ string ApiName
 ```csharp
 public string NameLocalized
 ```
-`get`
+`get` 
 
 
 #### `bool IsVisible`
 
 ```csharp
-public bool IsVisible
+[JsonIgnore] public bool IsVisible
 ```
-`get`
+`get` `set`
+
+
+#### `bool TempHidden`
+
+```csharp
+[JsonIgnore] public bool TempHidden
+```
+`set`
+
+Should this tag be hidden for the user temporarily
+We use this when filtering the entire mods page for a particular search
+e.g. you want to have separate "maps" and "characters" pages using a tag filter,
+but don't want the tags to be visible on those pages
+
 
 
 #### [`ResourceTagType`](#Modio.Mods.ResourceTagType) `TagType`
@@ -6616,7 +4544,7 @@ public bool IsVisible
 ```csharp
 public ResourceTagType TagType
 ```
-`get`
+`get` 
 
 
 #### `int Count`
@@ -6628,6 +4556,13 @@ public int Count
 
 
 ###### Method
+
+
+#### Get{#Modio.Mods.ModTag.Get}
+
+```csharp
+public static ModTag Get(string tagName, ResourceTagType tagType
+```
 
 
 #### SetLocalizations{#Modio.Mods.ModTag.SetLocalizations}
@@ -6653,7 +4588,7 @@ public class Modfile
 ```csharp
 public long ModId
 ```
-`get`
+`get` 
 
 
 #### `long Id`
@@ -6661,7 +4596,7 @@ public long ModId
 ```csharp
 public long Id
 ```
-`get`
+`get` 
 
 
 #### `long FileSize`
@@ -6669,7 +4604,7 @@ public long Id
 ```csharp
 public long FileSize
 ```
-`get`
+`get` 
 
 
 #### `long ArchiveFileSize`
@@ -6677,7 +4612,7 @@ public long FileSize
 ```csharp
 public long ArchiveFileSize
 ```
-`get`
+`get` 
 
 
 #### `string InstallLocation`
@@ -6693,7 +4628,7 @@ public string InstallLocation
 ```csharp
 public string Version
 ```
-`get`
+`get` 
 
 
 #### `string MetadataBlob`
@@ -6701,7 +4636,7 @@ public string Version
 ```csharp
 public string MetadataBlob
 ```
-`get`
+`get` 
 
 
 #### [`ModFileState`](#Modio.Mods.ModFileState) `State`
@@ -6741,7 +4676,7 @@ public long DownloadingBytesPerSecond
 ```csharp
 public ModfileDownloadReference Download
 ```
-`get`
+`get` 
 
 
 #### `string Md5Hash`
@@ -6749,7 +4684,7 @@ public ModfileDownloadReference Download
 ```csharp
 public string Md5Hash
 ```
-`get`
+`get` 
 
 ___
 
@@ -6905,6 +4840,35 @@ AllowDependencies = 1024
 
 ___
 
+###### GameMonetizationOptions{#Modio.Mods.GameMonetizationOptions}
+
+
+```csharp
+Disabled       = 0
+```
+
+```csharp
+Monetized      = 1
+```
+
+```csharp
+Marketplace    = 2
+```
+
+```csharp
+PartnerProgram = 4
+```
+
+```csharp
+LimitedStock   = 8
+```
+
+```csharp
+ForcedLimited  = 16
+```
+
+___
+
 ###### ModChangeType{#Modio.Mods.ModChangeType}
 
 
@@ -6949,6 +4913,10 @@ Dependencies      = 1 << 9
 ```
 
 ```csharp
+IsUserCreation    = 1 << 10
+```
+
+```csharp
 Everything        = ~0
 ```
 
@@ -6975,6 +4943,10 @@ EnablePreviewUrls = 128
 
 ```csharp
 AllowDependencies = 1024
+```
+
+```csharp
+AllowCollections = 132096
 ```
 
 ___
@@ -7258,7 +5230,7 @@ ___
 ### ImageReference{#Modio.Images.ImageReference}
 
 ```csharp
-[System.Serializable]  public struct ImageReference : IEquatable<ImageReference>
+[System.Serializable] public struct ImageReference : IEquatable<ImageReference>
 ```
 
 DownloadReference that contains the URL to download an image with.
@@ -7289,7 +5261,7 @@ true if the url isn't null
 ```csharp
 public string Url
 ```
-`get`
+`get` 
 
 
 ###### Method
@@ -7350,7 +5322,7 @@ public class ModioImageSource<TResolution> where TResolution:Enum
 ```csharp
 public string FileName
 ```
-`get`
+`get` 
 
 
 ###### Method
@@ -7534,7 +5506,7 @@ ___
 ### MonetizationSettings{#Modio.Monetization.MonetizationSettings}
 
 ```csharp
-[Serializable]  public class MonetizationSettings : IModioServiceSettings
+[Serializable] public class MonetizationSettings : IModioServiceSettings
 ```
 
 
@@ -7615,7 +5587,7 @@ public static class PriceFormatter
 #### FormatPrice{#Modio.Monetization.PriceFormatter.FormatPrice}
 
 ```csharp
-public static string FormatPrice(string currency, double price)
+[ExcludeFromCodeCoverage] public static string FormatPrice(string currency, double price)
 ```
 
 Helps format a price based on currency code.
@@ -7778,13 +5750,14 @@ ___
 | Type | Description |
 |------|-------------|
 | [`ModInstallationManagementSettings`](#Modio.Settings.ModInstallationManagementSettings) |  |
+| [`ModioHiddenTagOverrideSettings`](#Modio.Settings.ModioHiddenTagOverrideSettings) |  |
 | [`PortainerSettings`](#Modio.Settings.PortainerSettings) | Supports mod.io's internal tests |
 | [`TempModInstallationSettings`](#Modio.Settings.TempModInstallationSettings) |  |
 
 ### ModInstallationManagementSettings{#Modio.Settings.ModInstallationManagementSettings}
 
 ```csharp
-[Serializable]  public class ModInstallationManagementSettings : IModioServiceSettings
+[Serializable] public class ModInstallationManagementSettings : IModioServiceSettings
 ```
 
 
@@ -7795,6 +5768,24 @@ ___
 
 ```csharp
 bool AutoActivate = true
+```
+
+___
+
+### ModioHiddenTagOverrideSettings{#Modio.Settings.ModioHiddenTagOverrideSettings}
+
+```csharp
+public class ModioHiddenTagOverrideSettings : IModioServiceSettings
+```
+
+
+###### Field
+
+
+#### `string HideTagCategories`
+
+```csharp
+string[] HideTagCategories
 ```
 
 ___
@@ -7830,7 +5821,7 @@ ___
 ### TempModInstallationSettings{#Modio.Settings.TempModInstallationSettings}
 
 ```csharp
-[Serializable]  public class TempModInstallationSettings : IModioServiceSettings
+[Serializable] public class TempModInstallationSettings : IModioServiceSettings
 ```
 
 
@@ -7938,7 +5929,7 @@ public bool HasGotSubscriptions
 #### GetCreatedMods{#Modio.Users.ModRepository.GetCreatedMods}
 
 ```csharp
-[Obsolete("GetCreatedMods should be called via User.Current.GetUserCreations, which is async", true)]  public IEnumerable<Mod> GetCreatedMods()
+public IEnumerable<Mod> GetCreatedMods()
 ```
 
 
@@ -8014,7 +6005,7 @@ public class User
 ```csharp
 public static User Current
 ```
-`get`
+`get` 
 
 
 #### `string LocalUserId`
@@ -8022,7 +6013,7 @@ public static User Current
 ```csharp
 public string LocalUserId
 ```
-`get`
+`get` 
 
 
 #### `long UserId`
@@ -8038,7 +6029,7 @@ public long UserId
 ```csharp
 public bool IsInitialized
 ```
-`get`
+`get` 
 
 
 #### `bool HasAcceptedTermsOfUse`
@@ -8046,7 +6037,7 @@ public bool IsInitialized
 ```csharp
 public bool HasAcceptedTermsOfUse
 ```
-`get`
+`get` 
 
 
 #### `bool IsAuthenticated`
@@ -8054,7 +6045,7 @@ public bool HasAcceptedTermsOfUse
 ```csharp
 public bool IsAuthenticated
 ```
-`get`
+`get` 
 
 
 #### `bool IsUpdating`
@@ -8062,7 +6053,7 @@ public bool IsAuthenticated
 ```csharp
 public bool IsUpdating
 ```
-`get`
+`get` 
 
 
 #### [`UserProfile`](#Modio.Users.UserProfile) `Profile`
@@ -8070,7 +6061,7 @@ public bool IsUpdating
 ```csharp
 public UserProfile Profile
 ```
-`get`
+`get` 
 
 
 #### [`Wallet`](#Modio.Users.User.Wallet) `Wallet`
@@ -8078,7 +6069,7 @@ public UserProfile Profile
 ```csharp
 public Wallet Wallet
 ```
-`get`
+`get` 
 
 
 #### [`ModRepository`](#Modio.Users.User.ModRepository) `ModRepository`
@@ -8086,7 +6077,7 @@ public Wallet Wallet
 ```csharp
 public ModRepository ModRepository
 ```
-`get`
+`get` 
 
 
 #### [`ModCollectionRepository`](#Modio.Users.User.ModCollectionRepository) `ModCollectionRepository`
@@ -8094,7 +6085,7 @@ public ModRepository ModRepository
 ```csharp
 public ModCollectionRepository ModCollectionRepository
 ```
-`get`
+`get` 
 
 
 #### [`ModioAPI.Portal`](#Modio.API.ModioAPI.Portal) `AuthenticatedPortal`
@@ -8102,7 +6093,7 @@ public ModCollectionRepository ModCollectionRepository
 ```csharp
 public ModioAPI.Portal AuthenticatedPortal
 ```
-`get`
+`get` 
 
 
 ###### Method
@@ -8293,6 +6284,13 @@ All API requests and Mod requests will already filter out any entries by muted u
 This will not cache any data. Please use sparingly.
 
 
+#### SyncUserCreations{#Modio.Users.User.SyncUserCreations}
+
+```csharp
+public async Task<Error> SyncUserCreations()
+```
+
+
 #### GetUserCreations{#Modio.Users.User.GetUserCreations}
 
 ```csharp
@@ -8315,7 +6313,7 @@ An asynchronous task that returns a tuple ([`Error`](#Modio.ModioLog.Error) erro
 #### GetUserCreationsPaged{#Modio.Users.User.GetUserCreationsPaged}
 
 ```csharp
-public Task<(Error error, ModioPage<Mod> page)> GetUserCreationsPaged(  ModioAPI.Mods.GetModsFilter modsFilter,  bool filterForGame
+public Task<(Error error, ModioPage<Mod> page)> GetUserCreationsPaged( ModioAPI.Mods.GetModsFilter modsFilter, bool filterForGame
 ```
 
 Get all creations by the user. This does cache results
@@ -8384,7 +6382,7 @@ public bool TryGetRating(ModioId id, ModioResourceType resourceType, out ModioRa
 #### DeleteUserData{#Modio.Users.User.DeleteUserData}
 
 ```csharp
-[ModioDebugMenu(ShowInBrowserMenu = false, ShowInSettingsMenu = true)]  public static void DeleteUserData()
+[ModioDebugMenu(ShowInBrowserMenu = false, ShowInSettingsMenu = true)] public static void DeleteUserData()
 ```
 Removes the [`User`](#Modio.Users.User) and associated authentication and caches from this device.
 
@@ -8400,7 +6398,7 @@ Logs out the current [`User`](#Modio.Users.User) without deleting any associated
 #### InvalidateAuthToken{#Modio.Users.User.InvalidateAuthToken}
 
 ```csharp
-[ModioDebugMenu(ShowInBrowserMenu = true, ShowInSettingsMenu = false)]  public static void InvalidateAuthToken()
+[ModioDebugMenu(ShowInBrowserMenu = true, ShowInSettingsMenu = false)] public static void InvalidateAuthToken()
 ```
 
 Sets the current user's auth token to an invalid value
@@ -8412,7 +6410,7 @@ ___
 ### UserProfile{#Modio.Users.UserProfile}
 
 ```csharp
-[System.Serializable]  public class UserProfile : IEquatable<UserProfile>, IModioResource
+[System.Serializable] public class UserProfile : IEquatable<UserProfile>, IModioResource
 ```
 
 Represents a particular mod.io user with their username, DownloadReferences for getting
@@ -8441,7 +6439,7 @@ public ModioId UserId
 ```
 `get` `set`
 
-This is the unique Id of the user.
+ This is the unique Id of the user.
 
 
 
@@ -8450,7 +6448,7 @@ This is the unique Id of the user.
 ```csharp
 public string PortalUsername
 ```
-`get`
+`get` 
 
 The display name of the user's account they authenticated with. Eg if they authenticated
 with Steam it would be their Steam username.
@@ -8462,7 +6460,7 @@ with Steam it would be their Steam username.
 ```csharp
 public ModioImageSource<AvatarResolution> Avatar
 ```
-`get`
+`get` 
 
 
 #### `string Timezone`
@@ -8470,7 +6468,7 @@ public ModioImageSource<AvatarResolution> Avatar
 ```csharp
 public string Timezone
 ```
-`get`
+`get` 
 
 
 #### `string Language`
@@ -8478,7 +6476,7 @@ public string Timezone
 ```csharp
 public string Language
 ```
-`get`
+`get` 
 
 
 #### `bool IsFollowedByLoggedInUser`
@@ -8486,7 +6484,7 @@ public string Language
 ```csharp
 public bool IsFollowedByLoggedInUser
 ```
-`get`
+`get` 
 
 
 ###### Method
@@ -8573,7 +6571,7 @@ ___
 ### UserSaveObject{#Modio.Users.UserSaveObject}
 
 ```csharp
-[Serializable]  public class UserSaveObject
+[Serializable] public class UserSaveObject
 ```
 
 
@@ -8659,7 +6657,7 @@ public class Wallet
 ```csharp
 public string Type
 ```
-`get`
+`get` 
 
 
 #### `string Currency`
@@ -8667,7 +6665,7 @@ public string Type
 ```csharp
 public string Currency
 ```
-`get`
+`get` 
 
 
 #### `long Balance`
@@ -8675,6 +6673,6 @@ public string Currency
 ```csharp
 public long Balance
 ```
-`get`
+`get` 
 
 ___

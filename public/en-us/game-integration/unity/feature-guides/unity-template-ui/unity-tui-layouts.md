@@ -45,6 +45,14 @@ The Mod Tile that will populate the browser. Their scale and padding in the Mod 
 \
 &nbsp;
 
+### ModPanel_Authentication
+
+![the TOS dialog](img/modiotosdialog.png)
+
+A [Terms of Use](https://docs.mod.io/terms) dialog used in the Authentication flow.
+\
+&nbsp;
+
 ### SortAndFilter
 
 ![modio filter panel](img/SortAndFilter.png)

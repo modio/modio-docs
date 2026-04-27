@@ -1,13 +1,13 @@
 ---
 id: switch
-title: Nintendo Switch
+title: Nintendo Switch, Nintendo Switch 2
 slug: /platforms/switch
 sidebar_position: 4
 ---
 
-# Nintendo Switch
+# Nintendo Switch, Nintendo Switch 2 Support
 
-We offer cross-platform UGC support for both the *Nintendo Switch & Nintendo Switch 2*.
+We offer cross-platform UGC support for both the *Nintendo Switch* and *Nintendo Switch 2*.
 
 This guide includes:
 
@@ -20,10 +20,9 @@ This guide includes:
 
 ## Typical requirements
 
-Typical requirements for using mod.io on *Nintendo Switch* games include:
+Typical requirements for using mod.io in *Nintendo Switch* and *Nintendo Switch 2* games include:
 
 * UGC cannot run scripts or execute code, unless sufficient mitigations are demonstrated to be in place (e.g. sandboxing or manual curation of content)
-* Nintendo prefers that UGC is called “UGC”, “Items”, “Content”, “Maps” or something similar, not "Mods"
 * UGC must work without the need for manual installation
 * If content is created by a Nintendo user, the display name of the Nintendo user must be shown as the creator if available (our system does this automatically if you configure your [platform headers correctly](/restapi/platforms))
 * User consent is required the first time before authenticating a Nintendo user

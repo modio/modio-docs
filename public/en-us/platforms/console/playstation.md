@@ -1,13 +1,13 @@
 ---
 id: playstation
-title: PlayStation®4 / PlayStation®5
+title: PlayStation®4, PlayStation®5
 slug: /platforms/playstation
 sidebar_position: 2
 ---
 
-# PlayStation®4 / PlayStation®5 Support
+# PlayStation®4, PlayStation®5 Support
 
-We offer cross-platform UGC support for both the *PlayStation®4 & PlayStation®5*. 
+We offer cross-platform UGC support for both the *PlayStation 4* and *PlayStation 5*. 
 
 This guide includes:
 

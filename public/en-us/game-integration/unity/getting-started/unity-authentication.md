@@ -15,6 +15,7 @@ This guide covers:
 
 * [Email authentication](#email-authentication)
 * [Single Sign-On](#single-sign-on)
+* [Custom Authentication Service](#custom-authentication-service)
 
 ## Email authentication
 
@@ -133,6 +134,10 @@ if your email provider supports it, you can use plus-addressing to test multiple
 
 ## Single Sign-On
 
+:::important
+The mod.io Unity Plugin comes with the below platform integrations already complete stored in .unitypackages for convenience. You can find each in `Modio/Modio/Additional Packages/` ready to be imported into your project.
+:::
+
 There are two types of SSO to consider:
 
 1. [**Custom SSO**](https://docs.mod.io/authentication/openid): Custom SSO harnesses your studio's authentication process as the single point of authentication. 
@@ -149,10 +154,16 @@ There are two types of SSO to consider:
 	* [Google Play (Android)](https://docs.mod.io/platforms/google/authentication)
 	* [Meta Quest](https://docs.mod.io/platforms/meta/authentication)
 	* [GOG Galaxy](https://docs.mod.io/platforms/gog/authentication)
+    * [Epic Online Services](https://docs.mod.io/platforms/epic/authentication)
 
 Each platform has their own requirements and prerequisites for performing SSO.  Platform-specific authentication can be found in the respective [platform documentation](https://docs.mod.io/getting-started#expand-with-cross-platform-functionality).
 
 ### Steam Single Sign-On
+
+:::note
+Platform SSO will automatically bind and initialize itself in most circumstances. Please check the respective folders 
+under `Modio/Unity/Platforms/<platform>` and `Modio/Unity/Examples/<platform>` to see how the plugin handles this for you.
+:::
 
 As an example, let's have a look at setting up your game to use *Steam's* authentication method. Here, we're going to use *Steam* with the [Facepunch Steamworks library](https://wiki.facepunch.com/steamworks).
 
@@ -161,7 +172,6 @@ Feel free to come back to this section later! Authentication is agnostic of the 
 :::important
 Before we can implement single sign-on, we need to configure Steam SSO for your game on the mod.io website. Please read our [documentation](https://docs.mod.io/platforms/steam/authentication) on how to do this before continuing with the implementation below.
 :::
->
 
 To perform our Single Sign-On we're going to use Facepunch's Steamworks C# library to authenticate using a Steam account. Similarly to the Email authentication, we need to bind a Facepunch Auth Service:
 
@@ -179,7 +189,7 @@ void Awake()
 ```
 
 :::important
-this next section requires the `steamclient` to have been initialized before executing. this is out of scope for this guide, but you can find a convenient example of how to do this in `/unity/examples/steam/facepunch/facepunchexampl.cs`.
+this next section requires the `SteamClient` to have been initialized before executing. this is out of scope for this guide, but you can find a convenient example of how to do this in `Modio/Unity/Examples/Steam/Facepunch/FacepunchExample.cs`.
 :::
 
 ### Include Terms of Use
@@ -214,9 +224,158 @@ async Task OnInit()
 }
 ```
 
-Lastly, we need to add a compiler directive to your project settings in order for the Facepunch library to compile. In your Project Settings, under Player and the platform you're building for, add `UNITY_FACEPUNCH` to the `Scripting Define Symbols`:
+Then to trigger the authentication, we don't need to change anything from email authentication above:
+
+```csharp
+async Task Authenticate()
+{
+    Error error = await ModioClient.AuthService.Authenticate(true);
+    
+    if (error)
+    {
+        Debug.LogError($"Error authenticating with Facepunch: {error}");
+        return;
+    }
+    
+    OnAuth();
+}
+```
+
+This works because the plugin will authenticate with the highest priority Authentication Service bound, which in this case is the Facepunch Auth Service. The same principle applies to all SSO services.
+
+Lastly, we will need to add a compiler directive to your project settings in order for the Facepunch library to compile. In your Project Settings, under Player and the platform you're building for, add `MODIO_FACEPUNCH` to the `Scripting Define Symbols`:
+
+![Unity Scripting Symbols](img/precompile_directive.png)
 
 And that should be it! Log into Steam, accept the Terms of Use and you should see your Steam account authenticated with mod.io! If you've initialized your Steam client with the correct AppId then the mod.io plugin will automatically detect the currently logged in user and authenticate using that user.
+
+
+### Best Practice for SSO Authentication
+Some platforms require that you do not show terms of use to a user that has previously accepted them.
+To support this, it's possible to call `Authenticate` with `displayedTerms` as `false`. This will attempt to authenticate via SSO if the user has a linked mod.io account, but not create a new one.
+If this SSO attempt returns `ErrorCode.USER_NO_ACCEPT_TERMS_OF_USE`, you must display the terms links as above and have the user agree, before authenticating with `displayedTerms` as `true`.
+
+:::note
+If you are using TemplateUI this will display the terms of use to the user if required and then authenticate them with mod.io automatically.
+You don't have to do any additional logic to authenticate.
+:::
+
+```csharp
+async Task OnInit()
+{
+    // IsAuthenticated check...
+    
+    //Authenticate without accepting terms, which will succeed if the user has previously accepted terms on this account
+    Error error = await ModioClient.AuthService.Authenticate(false);
+
+    if (error && error.Code == ErrorCode.USER_NO_ACCEPT_TERMS_OF_USE)
+    {
+        //await displaying/accepting terms, or call the next line in response to the user accepting the terms
+            
+        error = await ModioClient.AuthService.Authenticate(true);
+    }
+
+    if (error)
+    {
+        Debug.LogError($"Error authenticating user: {error}");
+        return;
+    }
+    
+    OnAuth();
+}
+```
+
+## Email Linking
+It's possible to link a users email to their SSO account by passing the email into the Authenticate call.
+This is particularly useful when using an SSO platform that isn't able to sign in on the mod.io website.
+
+```csharp
+async Task OnAgreedToTerms(string email)
+{
+    error = await ModioClient.AuthService.Authenticate(true, email);
+    //handle potential error
+}
+```
+If supplied, and the respective user does not have an email registered for their account, we will send a confirmation email to confirm they have ownership of the specified email.
+
+:::note
+If the user already has an email on record with us, this parameter will be ignored.
+:::
+
+## Custom Authentication Service
+
+It is also possible to create a custom authentication service for the Unity Plugin to use. This is useful for providing SSO support for platforms not already covered by the plugin, or when implementing custom studio SSO. This is achieved by implementing the `IModioAuthService` interface:
+
+```csharp
+public interface IModioAuthService
+{
+    public Task<Error> Authenticate(
+        bool displayedTerms,
+        string thirdPartyEmail = null,
+        bool sync = true
+    );
+    
+    public ModioAPI.Portal Portal { get; }
+}
+```
+
+This implementation must:
+1. Collect the necessary data to perform authentication (for example, a Steam Encrypted App Ticket)
+2. Send it to mod.io via one of the available API Authentication methods found in `ModioAPI.Authentication`
+3. Call `User.Current.OnAuthenticated` with the token received from mod.io
+
+This implementation must collect the necessary data to perform authentication (for example, a Steam Encrypted App Ticket) and then send it to mod.io via one of our API Authentication methods found in `ModioAPI.Authentication`:
+
+```csharp
+public async Task<Error> Authenticate(
+    bool displayedTerms,
+    string thirdPartyEmail = null,
+    bool sync = true
+) {
+    //----- 1. Get the required data -----\\
+    byte[] encryptedAppTicket = await SteamUser.RequestEncryptedAppTicketAsync();
+
+    if (encryptedAppTicket == null)
+        return new Error(ErrorCode.BAD_PARAMETER);
+    
+    string base64Ticket = Convert.ToBase64String(encryptedAppTicket, 0, encryptedAppTicket.Length);
+
+    //----- 2. Send the ticket to mod.io for authentication -----\\
+    (Error error, AccessTokenObject? tokenObject) =
+        await ModioAPI.Authentication.AuthenticateViaSteam(
+            new SteamAuthenticationRequest(base64Ticket, displayedTerms, thirdPartyEmail, 0)
+        );
+
+    //----- 3. Give the returned token to the user -----\\
+    if (!error)
+        User.Current.OnAuthenticated(tokenObject.Value.AccessToken, tokenObject.Value.DateExpires, sync);
+
+    return error;
+}
+```
+
+:::note
+You can find a list of supported authentication portals at our [Online Documentation](https://docs.mod.io/restapi/platforms#targeting-a-portal). Each of these supported platforms has an equivalent `AuthenticateVia<Platform>` method that would be used in the same way as the code above.
+:::
+
+To complete the implementation, you will need to return a `Portal` enum value with the `Portal` property:
+
+```csharp
+public ModioAPI.Portal Portal => ModioAPI.Portal.Steam;
+```
+
+Now, with our script ready, we have to bind this custom Auth Service in the same way we bound the Facepunch Auth Service:
+
+```csharp
+void Awake()
+{
+    // By passing in the DeveloperOverride priority with the + 10, this will take precedence over email auth
+    ModioServices.Bind<IModioAuthService>()
+                 .FromInstance(new MyNewCustomAuthService(), ModioServicePriority.DeveloperOverride + 10));    
+}
+```
+
+And that's it! Our custom Authentication Service is ready to be used by the plugin, just call `ModioClient.AuthService.Authenticate` and this new service will be used.
 
 ## Next steps
 

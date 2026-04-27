@@ -34,7 +34,6 @@ If you have a previous version of the plugin installed, we recommend deleting it
 1. Install the **Newtonsoft Json** plugin using the Package Manager.
    - If your Unity Package Manager does not contain Newtonsoft Json, follow the instructions [here](https://github.com/applejag/Newtonsoft.Json-for-Unity/wiki/Install-official-via-UPM#installing-the-package-via-upm-window) to find the installation method for your Unity version.
 2. Download and install the plugin using one of the following methods:
-   - Using the [Unity Asset Store](https://assetstore.unity.com/packages/tools/integration/mod-browser-manager-by-mod-io-138866) and Package Manager.
    - Download the `.unitypackage` directly from the [Releases page](https://github.com/modio/modio-unity/releases).
    - Download an archive of the code using GitHub's download feature, and unpack it in your project's `Assets/Plugins` directory.
 3. Restart Unity, to ensure it recognises the new assembly definitions.
