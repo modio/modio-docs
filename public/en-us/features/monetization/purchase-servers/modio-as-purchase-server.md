@@ -17,6 +17,7 @@ This guide covers:
 * [Concepts](#concepts)
 * [Implementation](#implementation)
 * [Securing access to Premium UGC downloads](#securing-access-to-premium-ugc-downloads)
+* [Authentication errors during entitlement syncing](#authentication-errors-during-entitlement-syncing)
 * [Error reference](#error-reference)
 
 ## Prerequisites
@@ -1056,6 +1057,19 @@ mod.io recommends that by default you set the level of access to the following:
 - Allow downloads for unauthenticated users - Unchecked
 - Allow downloads for paid mods without purchase - Unchecked
 
+## Authentication errors during entitlement syncing
+
+When syncing In-App Purchase entitlements, mod.io must authenticate with the platform provider (Epic Games Store, Google Play, PlayStation Network, Steam, or Xbox Live). If this authentication step fails, syncing cannot continue for that provider.
+
+You will commonly see these authentication errors when:
+
+- The provider credentials configured in mod.io are invalid, expired, or no longer active.
+- The credentials are valid, but are for the wrong product, environment, or publisher account.
+- Required provider-side settings (such as package/app IDs, service labels, or app configuration) do not match what is configured in mod.io.
+- Access for entitlement APIs is missing or has changed in the provider account.
+
+For platform-specific codes and exact meanings, see [Error reference](#error-reference).
+
 ## Error reference
 
 | **Error Ref** | **Meaning**                                                                                |
@@ -1064,3 +1078,9 @@ mod.io recommends that by default you set the level of access to the following:
 | 11069         | The authenticated user does not have an account linked with the associated platform.       |
 | 900054        | In-App Purchases have not been configured for entitlement syncing.                         |
 | 900096        | mod.io failed to fetch the authenticated user's entitlements from the associated platform. |
+| 900102        | mod.io failed to authenticate with Epic Games Store during In-App Purchase entitlement syncing. |
+| 900103        | mod.io failed to authenticate with Google Play during In-App Purchase entitlement syncing. |
+| 900104        | mod.io failed to authenticate with PlayStation Network (PS4) during In-App Purchase entitlement syncing. |
+| 900105        | mod.io failed to authenticate with PlayStation Network (PS5) during In-App Purchase entitlement syncing. |
+| 900106        | mod.io failed to authenticate with Steam during In-App Purchase entitlement syncing. |
+| 900107        | mod.io failed to authenticate with Xbox Live during In-App Purchase entitlement syncing. |

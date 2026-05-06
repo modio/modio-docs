@@ -41,28 +41,30 @@ A number of commands can be sent to and received from Embed Hub using the JavaSc
 
 ### To Embed Hub
 
-| Key           | Data type      | Description                                                                                                                                |
-| ------------- | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| modioAuth     | IModioAuth     | Authenticate a user by passing in either an ID token from your game's [Open ID](/authentication/openid) setup and optional email, or a UDT |
-| modioCSS      | string         | Sets Custom CSS, as described on the [Custom CSS](/embed-hub/custom-css) page                                                              |
-| modioFilter   | IModioFilter   | Sets a tag to force filtering on, or a featured tag                                                                                        |
-| modioHome     | true           | Navigates Embed Hub back to the home page                                                                                                  |
-| modioLang     | string         | Sets the language of Embed Hub. See [Localization](/restapi/localization) for available languages                                          |
-| modioPlatform | string         | Sets a platform header on every request. See [Targeting a platform](/restapi/platforms#targeting-a-platform) for more info                 |
-| modioPortal   | string         | Sets a portal header on every request. See [Targeting a portal](/restapi/platforms#targeting-a-portal) for more info                       |
-| modioQuery    | IModioQuery    | Search or filter mods by name or tags                                                                                                      |
-| modioScroll   | IModioScroll   | Sets the scroll position of the containing site                                                                                            |
-| modioSettings | IModioSettings | Modify the settings of your Embed Hub, as described on the [settings page](/embed-hub/settings)                                            |
-| modioStyle    | IModioStyle    | Modify the style of your Embed Hub, as described on the [theme page](/embed-hub/theme)                                                     |
-| modioUrl      | string         | Informs Embed Hub of the URL of the containing site                                                                                        |
-| modioWindow   | number         | Informs Embed Hub of the height of the user's browser window                                                                               |
+| Key                | Data type      | Description                                                                                                                                |
+| ------------------ | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| modioAuth          | IModioAuth     | Authenticate a user by passing in either an ID token from your game's [Open ID](/authentication/openid) setup and optional email, or a UDT |
+| modioCSS           | string         | Sets Custom CSS, as described on the [Custom CSS](/embed-hub/custom-css) page                                                              |
+| modioFilter        | IModioFilter   | Sets a tag to force filtering on, or a featured tag                                                                                        |
+| modioHome          | true           | Navigates Embed Hub back to the home page                                                                                                  |
+| modioLang          | string         | Sets the language of Embed Hub. See [Localization](/restapi/localization) for available languages                                          |
+| modioPlatform      | string         | Sets a platform header on every request. See [Targeting a platform](/restapi/platforms#targeting-a-platform) for more info                 |
+| modioPortal        | string         | Sets a portal header on every request. See [Targeting a portal](/restapi/platforms#targeting-a-portal) for more info                       |
+| modioQuery         | IModioQuery    | Search or filter mods by name or tags                                                                                                      |
+| modioScroll        | IModioScroll   | Sets the scroll position of the containing site                                                                                            |
+| modioSettings      | IModioSettings | Modify the settings of your Embed Hub, as described on the [settings page](/embed-hub/settings)                                            |
+| modioStyle         | IModioStyle    | Modify the style of your Embed Hub, as described on the [theme page](/embed-hub/theme)                                                     |
+| modioUrl           | string         | Informs Embed Hub of the URL of the containing site                                                                                        |
+| modioWindow        | number         | Informs Embed Hub of the height of the user's browser window                                                                               |
+| modioSubscriptions | true           | Causes the Embed Hub to fetch the current user's subscriptions                                                                             |
+| modioPurchases     | true           | Causes the Embed Hub to fetch the current user's purchases                                                                                 |
 
 #### IModioAuth
 
 ```Typescript
 {
   "id_token": string
-  "access_token": string
+  "udt": string
   "email": string
 }
 ```
@@ -99,7 +101,6 @@ A number of commands can be sent to and received from Embed Hub using the JavaSc
 
 ```Typescript
 {
-  "agreementUrls": string[]
   "allowAddingMods": boolean
   "allowCommenting": boolean
   "allowDownloading": boolean
@@ -110,15 +111,15 @@ A number of commands can be sent to and received from Embed Hub using the JavaSc
   "allowRating": boolean
   "allowSearching": boolean
   "allowSubscribing": boolean
-  "companyName": string
   "filterRightSide": boolean
-  "minAge": number
   "nameRightSide": boolean
-  "showCollection": boolean
+  "showCollections": boolean
   "showComments": boolean
+  "showMarketplace": boolean
   "showGuides": boolean
   "showSortTabs": boolean
   "showUserAvatars": boolean
+  "showActivateButtons": boolean
   "ugcPerPage": number
 }
 ```
@@ -197,6 +198,8 @@ To call functions on the Embed Hub from in-game, The Hub exposes a JavaScript ob
 | getAuthToken        |               | Used to get a UDT of the currently authenticated user from the Embed Hub. **Note**: as this operation is asynchronous, it will call `setAuthToken` with the UDT on the `modio` JS object above |
 | setAuthToken        | token: string | Used to provide a UDT to the Embed Hub which will authenticate the user                                                                                                                        |
 | isUserAuthenticated |               | Returns true if the current user is authenticated within the Embed Hub                                                                                                                         |
+| syncSubscriptions   |               | Causes the Embed Hub to fetch the current user's subscriptions                                                                                                                                 |
+| syncPurchases       |               | Causes the Embed Hub to fetch the current user's purchases                                                                                                                                     |
 | logout              |               | Used to log the current user out of the Embed Hub                                                                                                                                              |
 
 ## Authentication
