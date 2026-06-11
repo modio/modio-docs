@@ -1,0 +1,33 @@
+---
+id: cloud-cooking-user-cook-usage-object
+title: "Cloud Cooking User Cook Usage Object"
+description: "The user's usage statistics for cloud cooks."
+sidebar_label: "Cloud Cooking User Cook Usage Object"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: [{"game_id":1,"concurrency_limit_per_user":3,"concurrency_used":1}]
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Cloud Cooking User Cook Usage Object"}
+>
+</Heading>
+
+
+
+The user's usage statistics for cloud cooks.
+
+<Schema
+  schema={{"title":"Cloud Cooking User Cook Usage Object","description":"The user's usage statistics for cloud cooks.","type":"array","items":{"properties":{"game_id":{"description":"The game the usage statistics are for.","type":"integer","example":1},"concurrency_limit_per_user":{"description":"The max number of concurrent cooks a user can have for this game.","type":"integer","example":3},"concurrency_used":{"description":"The number of cooks the user has pending or actively running.","type":"integer","example":1}},"type":"object"}}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

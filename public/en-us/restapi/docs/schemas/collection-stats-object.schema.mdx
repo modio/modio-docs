@@ -6,7 +6,7 @@ sidebar_label: "Collection Stats Object"
 hide_title: true
 hide_table_of_contents: true
 schema: true
-sample: {"collection_id":123,"downloads_today":50,"downloads_unique":200,"downloads_total":1000,"followers_total":300,"ratings_positive_30_days":25}
+sample: {"collection_id":123,"downloads_today":50,"downloads_unique":200,"downloads_total":1000,"followers_total":300,"ratings_positive_30days":25,"incomplete":1,"incomplete_today":1}
 custom_edit_url: null
 ---
 
@@ -25,7 +25,7 @@ import Heading from "@theme/Heading";
 
 
 <Schema
-  schema={{"title":"Collection Stats Object","properties":{"collection_id":{"description":"The collection id.","type":"integer","format":"int32","example":123},"downloads_today":{"description":"The number of downloads today.","type":"integer","format":"int32","example":50},"downloads_unique":{"description":"The number of unique downloads.","type":"integer","format":"int32","example":200},"downloads_total":{"description":"The total number of downloads.","type":"integer","format":"int32","example":1000},"followers_total":{"description":"The total number of followers.","type":"integer","format":"int32","example":300},"ratings_positive_30_days":{"description":"The number of positive ratings in the last 30 days.","type":"integer","format":"int32","example":25}},"type":"object"}}
+  schema={{"title":"Collection Stats Object","properties":{"collection_id":{"description":"The collection id.","type":"integer","format":"int32","example":123},"downloads_today":{"description":"The number of downloads today.","type":"integer","format":"int32","example":50},"downloads_unique":{"description":"The number of unique downloads.","type":"integer","format":"int32","example":200},"downloads_total":{"description":"The total number of downloads.","type":"integer","format":"int32","example":1000},"followers_total":{"description":"The total number of followers.","type":"integer","format":"int32","example":300},"ratings_positive_30days":{"description":"The number of positive ratings in the last 30 days.","type":"integer","format":"int32","example":25},"incomplete":{"description":"Shows if collection is incomplete (has unavailable mod(s)).","type":"integer","example":1},"incomplete_today":{"description":"Shows if collection became incomplete (has unavailable mod(s)) in last 24hours.","type":"integer","example":1}},"type":"object"}}
   schemaType={"response"}
 >
   

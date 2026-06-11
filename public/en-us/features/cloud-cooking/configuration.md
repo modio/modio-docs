@@ -5,10 +5,28 @@ slug: /cloud-cooking/configuration
 ---
 
 # Cloud Cooking Configuration
+To onboard to Cloud Cooking, you need to start with the relevant [Cloud Cooking Setup Guides](/cloud-cooking#supported-enginessetup-guides) tooling to work with the mod.io infrastructure and Cloud Cooking process. This differs per engine, and we recommend performing these steps and locally validating your engine before configuring Cloud Coking on mod.io.
 
-To onboard to Cloud Cooking, you need start with the relevant [Cloud Cooking Setup Guides](/cloud-cooking#supported-enginessetup-guides) tooling to work with the mod.io infrastructure and Cloud Cooking process. This differs per engine, and we recommend performing these steps and locally validating your engine before configuring Cloud Coking on mod.io.
+We will explain the full process in more detail throughout the document, but to start with, this is a high level overview of the order of operations of the configuration process.
+```mermaid
+sequenceDiagram
+    participant GAME as Studio
+    participant API as mod.io
+    participant AZURE as Azure Storage 
+    autonumber
 
-Once Cloud Cooking has been enabled for your game, you can begin the onboarding process. To begin the onboarding process, navigate to your Game Admin page and select "Cloud Cooking" under General Settings. From here, click Enable Cloud Cooking. This will begin the process of provisioning the infrastructure.
+    GAME->>API: Enable cloud cooking for your game in the admin settings
+    API->>API: Provision dedicated cloud cooking infrastructure for game
+    GAME->>API: Request Azure SAS token
+    API-->>GAME: Return Azure SAS token
+    GAME->>AZURE: Upload build
+    GAME->>API: Finalize / Re-Sync build
+    API->>API: Sync the infrastructure with the latest studio build. Update VM / agent images.
+```
+
+## Enabling Cloud Cooking for your game
+
+Once Cloud Cooking has been enabled for your game, you can begin the onboarding process. To begin the onboarding process, navigate to your Game Admin page and select "Cloud Cooking" from the top navigation bar. From here, click Enable Cloud Cooking. This will begin the process of provisioning the infrastructure.
 
 ![Image of the Cloud Cooking onboarding page](img/enable-cloud-cooking.png)
 
@@ -17,6 +35,7 @@ Depending on your billing agreement with mod.io, you may begin to incur monthly 
 :::
 
 Provisioning the infrastructure takes a little bit of time. You can check back to this page later for the next step in the process, which is to upload your build.
+This is a one time step to provision the core infrastructure for your game.
 
 ## Uploading your build
 
@@ -66,7 +85,7 @@ Once you have enabled Cloud Cooking and locked the target platforms, content cre
 
 ![File Upload](img/file-upload.png)
 
-When the creator chooses to upload a source file, they are prompted with the standard File Upload flow, and all Locked platforms (the platforms intended to be targets for Cloud Cooking) ade made available for selection. Any details filled in by the creator are copied to the output platform modfile as part of the Cloud Cooking process.
+When the creator chooses to upload a source file, they are prompted with the standard File Upload flow, and all Locked platforms (the platforms intended to be targets for Cloud Cooking) are made available for selection. Any details filled in by the creator are copied to the output platform modfile as part of the Cloud Cooking process.
 
 ![Cloud Cooking Platform Selection](img/platform-selection.png)
 
@@ -79,3 +98,84 @@ Platform files that are produced by Cloud Cooking are subject to the same scanni
 Once a file has been queued for Cloud Cooking, content creators can view the status of their files - whether they are pending cook, in the process of being cooked, and success or failure of the cook process. Once a cook has been completed, full logs are available for viewing in the Details pane for each cook job.
 
 ![Cloud Cooking Status](img/cloud-cooking-status.png)
+
+## CI Integration
+
+If you're looking to integrate the steps above into a programattic workflow, such as a CI/CD pipeline where you generate new tooling and builds to upload to the Azure Storage instance for your game, you can follow these steps.
+
+### Step 1
+Obtain a [Service Token](/authentication/s2s#obtaining-a-service-token) with the `update` scope.
+```code
+curl -L -g -X POST 'https://g-{your-game-id}.moddemo.io/v1/oauth/token' \
+-H 'Accept: application/json' \
+-H 'Content-Type: application/x-www-form-urlencoded' \
+-d 'client_id=<client_id_goes_here>' \
+-d 'client_secret=<client_secret_goes_here>' \
+-d 'grant_type=client_credentials' \
+-d 'scope=update'
+```
+
+### Step 2
+[Generate an Azure SAS token](/restapi/docs/generate-cloud-cooking-sas-token) to upload your build tool to the dedicated Azure Storage for your games cloud cooking infrastructure.
+Use the token generated from the proceeding step in the `Authorization` header.
+```code
+curl -L -g -X POST 'https://g-{your-game-id}.modapi.io/v1/games/:game-id/cloud-cooking/sas-token' \
+-H 'Accept: application/json' \
+-H 'Content-Type: application/x-www-form-urlencoded' \
+-H 'Authorization: Bearer <token>' \
+-d 'valid_for_days=7' # must be between 1 and 365
+```
+
+### Step 3
+Upload your build to Azure Storage using the token generated above, following the instructions and guidelines in [Cloud Cooking Setup Guides](/cloud-cooking#supported-enginessetup-guides)
+to ensure your build provides everything required to cook a mod file.
+
+### Step 4
+Call the [Cloud Cooking Finalization Endpoint](/restapi/docs/finalize-cloud-cooking). 
+This endpoint should be called each time you upload new builds in order for the cook agents to reflect your changes.
+This is an asynchronous operation which can take 2 hours+ (depending on engine and provisioning scripts) to create a new virtual machine image. 
+It will transition your games `cloud_cooking_status` to finalizing.
+```code
+curl -L -g -X POST 'https://g-{your-game-id}.modapi.io/v1/games/:game-id/cloud-cooking/finalization' \
+-H 'Authorization: Bearer <token>'
+```
+
+### Step 5
+Configure a webhook to be notified of the success or failure of the finalize operation.
+This can be found under the "Moderation > Automation" menu item in your game admin settings.
+Add a new rule to the ruleset.
+The action should be "Cloud Cooking Webhook", it should fire a webhook, and the when condition should match the payload field as illustrated:
+![Rules Engine Cloud Cooking Webhook](img/rbm-cc-webhook-config.png)
+
+The webhook will receive a response in the following shape:
+```json
+{
+    // Other fields will also be present on the payload. 
+    // Refer to our "Rules Engine" documentation for details
+    "event_body": {
+      "game_id": 7049,
+      "workflow": "finalize",
+      "status": 200, // 200 for success, 422 for failure
+    }
+}
+```
+As implied, a success of `200` indicates the finalization operation succeeded. Whereas a `422` indicates failure.
+
+
+A visual representation of this flow is as follows.
+```mermaid
+sequenceDiagram
+    participant GAME as Studio Server
+    participant API as mod.io
+    participant AZURE as Azure Storage 
+    autonumber
+
+    GAME->>API: Request S2S token
+    API-->>GAME: Return S2S token
+    GAME->>API: Request Azure SAS token
+    API-->>GAME: Return Azure SAS token
+    GAME->>AZURE: Upload new build
+    GAME->>API: Finalize / Re-Sync build
+    API->>API: Sync build with agents.
+    API->>GAME: Report build outcome via webhook.
+```

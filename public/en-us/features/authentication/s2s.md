@@ -177,4 +177,4 @@ Your backend service should be configured such as in the event that the service 
 
 - An OAuth Client ID, Client Secret and Service Tokens should be kept confidential at all times and never shared with untrusted clients such as game consoles or mobile devices.
 - Service Tokens are not associated with any specific user on mod.io, and is a generic token designed to identify your secure server for S2S related tasks.
-- Service Tokens are valid for 90 days. We highly recommend caching the token on your backend and only request a new service token if you require different scope(s) or the token has expired.
+- Service Tokens are valid for 30 days. We highly recommend caching the token on your backend and only request a new service token if you require different scope(s) or the token has expired.

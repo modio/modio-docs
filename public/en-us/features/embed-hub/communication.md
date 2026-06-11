@@ -174,16 +174,16 @@ To receive data from the game, the Embed Hub expects a JavaScript object named `
 | Function                    | Parameters                        | Description                                                                                        |
 | --------------------------- | --------------------------------- | -------------------------------------------------------------------------------------------------- |
 | getAuthToken                |                                   | Used to get a UDT for the logged in user from the game                                             |
-| getActivatedIds             |                                   | Used to get the list of activated mod IDs from the game                                            |
+| getActivations              |                                   | Used to get the list of activated mod IDs from the game                                            |
 | getLocalMods                |                                   | Used to get the list of locally installed mods from the game                                       |
-| getLocalActivatedIds        |                                   | Used to get the list of activated local mod IDs from the game                                      |
+| getLocalActivations         |                                   | Used to get the list of activated local mod IDs from the game                                      |
 | getLanguage                 |                                   | Used to get the language the game is using                                                         |
 | getPlatform                 |                                   | Used to get the platform the game is running on                                                    |
 | getPortal                   |                                   | Used to get the portal the game is authenticated with                                              |
 | setAuthToken                | token: string                     | Used to provide a UDT of the logged in user to the game which can be exchanged for an access token |
 | setUserId                   | userId: int                       | Used to set the logged in user's ID on the game                                                    |
-| setActivatedIds             | modIds: array&lt;int&gt;          | Used to set the list of activated mod IDs on the game                                              |
-| setLocalActivatedIds        | modIds: array&lt;string&gt;       | Used to set the list of activated local mod IDs on the game                                        |
+| setActivations              | modIds: array&lt;int&gt;          | Used to set the list of activated mod IDs on the game                                              |
+| setLocalActivations         | modIds: array&lt;string&gt;       | Used to set the list of activated local mod IDs on the game                                        |
 | notifySubscriptionChange    | modId: int, isSubscribed: boolean | Used to notify the game that a mod has been subscribed to or unsubscribed from                     |
 | notifyActivationChange      | modId: int, isActivated: boolean  | Used to notify the game that a mod has been activated or deactivated                               |
 | notifyLocalActivationChange | modId: int, isActivated: boolean  | Used to notify the game that a local mod has been activated or deactivated                         |

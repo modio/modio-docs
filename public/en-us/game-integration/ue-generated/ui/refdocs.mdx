@@ -6511,7 +6511,7 @@ Wrapper around a FModioModTagOptions because UMG widgets expect UObjects for dat
 | | | |
 |-|-|-|
 | `FModioModTagOptions` | `Underlying` | Underlying tag options |
-| `TArray<UModioModTagInfoUI*>` | `BindableTagCategories` | Transient set of bindable tag categories for use in the UI |
+| `TArray<TObjectPtr<UModioModTagInfoUI> >` | `BindableTagCategories` | Transient set of bindable tag categories for use in the UI |
 </RefTable>
 
 
@@ -13993,6 +13993,42 @@ void RequestUnsubscribeFromModCollection(FModioModCollectionID ID)
 
 
 
+##### Request Unfollow User
+
+Requests to unfollow the given user for the currently authenticated user. Executes callbacks in implementations of IModioUIUserFollowingInfoReceiver.
+
+![nd_img_ModioUISubsystem_RequestUnfollowUser.png](img/refdocs/nd_img_ModioUISubsystem_RequestUnfollowUser.png)
+
+```cpp
+void RequestUnfollowUser(FModioUserID UserToUnfollow)
+```
+
+
+
+
+
+
+###### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModioUISubsystem`|
+|`UserToUnfollow`||
+</RefTable>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ##### Request Unfollow Mod Collection with Handler
 
 Unfollows the given Mod collection ID for the current user, executing the given callback upon completing the unsubscribing.
@@ -14658,6 +14694,41 @@ void RequestLogoDownloadForModCollectionID(FModioModCollectionID ID, EModioLogoS
 
 
 
+##### Request List User Following
+
+Requests a list of all users the currently authenticated user follows. Executes callbacks in implementations of IModioUIUserFollowingInfoReceiver.
+
+![nd_img_ModioUISubsystem_RequestListUserFollowing.png](img/refdocs/nd_img_ModioUISubsystem_RequestListUserFollowing.png)
+
+```cpp
+void RequestListUserFollowing()
+```
+
+
+
+
+
+
+###### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModioUISubsystem`|
+</RefTable>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ##### Request List Mod Collections
 
 Requests a list of mod collections for the current game. Executes callbacks in implementations of IModioUIModCollectionInfoReceiver.
@@ -14826,6 +14897,42 @@ void RequestGalleryImageDownloadForModID(FModioModID ID, int32 Index, EModioGall
 |`ID`|The mod you want to retrieve an image for|
 |`Index`|The zero-based index of the image you want to retrieve|
 |`ImageSize`|Size of the image you want to retrieve|
+</RefTable>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##### Request Follow User
+
+Requests to follow the given user for the currently authenticated user. Executes callbacks in implementations of IModioUIUserFollowingInfoReceiver.
+
+![nd_img_ModioUISubsystem_RequestFollowUser.png](img/refdocs/nd_img_ModioUISubsystem_RequestFollowUser.png)
+
+```cpp
+void RequestFollowUser(FModioUserID UserToFollow)
+```
+
+
+
+
+
+
+###### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModioUISubsystem`|
+|`UserToFollow`||
 </RefTable>
 
 
@@ -15751,6 +15858,23 @@ void SetTokenPackSelectionByID(FModioTokenPackID TokenPackID)
 
 ---
 
+#### ModioUIUserFollowingInfoReceiver 
+
+
+
+###### Inheritance Hierarchy
+-> Interface-> Object
+
+
+
+
+
+
+
+
+
+---
+
 #### ModioUIViewModCollectionCommand 
 
 
@@ -15956,6 +16080,146 @@ Library of functions for resolving and applying property overrides in UMG compon
 
 ###### Inheritance Hierarchy
 -> BlueprintFunctionLibrary-> Object
+
+
+
+
+
+
+
+
+
+---
+
+#### UserFollowingListProvider 
+
+
+
+###### Inheritance Hierarchy
+-> Interface-> Object
+
+
+
+
+
+
+##### Request User Following List Change
+
+
+
+![nd_img_UserFollowingListProvider_RequestUserFollowingListChange.png](img/refdocs/nd_img_UserFollowingListProvider_RequestUserFollowingListChange.png)
+
+```cpp
+void RequestUserFollowingListChange(FModioUserList NewFollowingList)
+```
+
+
+
+
+
+
+###### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`UserFollowingListProvider`|
+|`NewFollowingList`|The new list of users to replace the current list of followers with.|
+</RefTable>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##### Request Remove Followed User
+
+
+
+![nd_img_UserFollowingListProvider_RequestRemoveFollowedUser.png](img/refdocs/nd_img_UserFollowingListProvider_RequestRemoveFollowedUser.png)
+
+```cpp
+void RequestRemoveFollowedUser(FModioUserID NewUnfollowedUser)
+```
+
+
+
+
+
+
+###### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`UserFollowingListProvider`|
+|`NewUnfollowedUser`|the user to remove from the list of currently followed users|
+</RefTable>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##### Request Add Followed User
+
+
+
+![nd_img_UserFollowingListProvider_RequestAddFollowedUser.png](img/refdocs/nd_img_UserFollowingListProvider_RequestAddFollowedUser.png)
+
+```cpp
+void RequestAddFollowedUser(FModioUserID NewFollowedUser)
+```
+
+
+
+
+
+
+###### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`UserFollowingListProvider`|
+|`NewFollowedUser`|the user to add to the list of currently followed users|
+</RefTable>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##### Query User Following List
+
+
+![nd_img_UserFollowingListProvider_QueryUserFollowingList.png](img/refdocs/nd_img_UserFollowingListProvider_QueryUserFollowingList.png)
+
+```cpp
+void QueryUserFollowingList()
+```
+
 
 
 
@@ -22579,6 +22843,21 @@ Enumerator of the information envents
 |-|-|
 | `ListAllTokenPacks` | Event to list all token packs * |
 | `GetTokenPack` | Event to retrieve the token pack information * |
+</RefTable>
+
+---
+
+#### EModioUIUserFollowingEventType {#EModioUIUserFollowingEventType} 
+
+Enumerator of the information envents
+
+
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+| `ListUserFollowing` | Event to list user following * |
+| `FollowUser` | Event when a user is followed * |
+| `UnfollowUser` | Event when a user is unfollowed * |
 </RefTable>
 
 ---

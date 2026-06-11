@@ -14,7 +14,9 @@ Embed Hub is a premium feature. Please contact us at developers@mod.io for more 
 
 ## Setup
 
-Once you've gained access to Embed Hub, you'll find the settings in your game's Admin Dashboard. When you navigate to the page, you'll be prompted to set up a hub which takes a few minutes:
+Once you've gained access to Embed Hub, you'll find the settings in your game's Admin Dashboard. When you navigate to the page, you'll be prompted to set up a hub which takes a few minutes.
+
+When accessing this page for the first time, you'll only be able to edit the name and theme. Make any changes then click 'Save' to view the rest of the options:
 
 1. Name your hub and [configure the theme](/embed-hub/theme).
 2. Adjust hub layout, enabled features and authentication method [via settings](/embed-hub/settings).

@@ -1,0 +1,71 @@
+---
+id: bulk-unfollow-users
+title: "Bulk Unfollow Users"
+description: "Unfollow users in bulk for the specified user. Provide no parameters to unfollow all users, or `user_ids` to unfollow specific users. Successful request will return `204 No Content`."
+sidebar_label: "Bulk Unfollow Users"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVttu4zYQ/RVinlpAtjcXFKjekt0USFsUi2yCRWEYCS2OLG4kjpYXO15D/14MKdlq4iyyfeubTHJmzhyeOfQOvFw5yOdw59A6WGSg0BVWt16TgRzuTEl1TRsReF9oI5ahfhQlWeErFK7FQpcaVdyfio+W1lqhMCRaaWWDnqM8iTDkkXWdcmWCrHjgz3ut3MO/DvVpi3RyKj6FokDnylALi18DOi82uuYfPlgjHk7fnYu/SLwn49H4hylkQC1ayU1cK8iBQd8P6e9jVsjgABHy+Q6MbBBy4N2JVpCBZgZa6St4Tsv1B0FlZIBPM3aLDa1RpArarJwoLTWMhBFriwpybwNm4IoKGwn5Dvy25YLaeFyhhS4DfJJNWyPkZydnZ792ixSNzl+S2nJIkVrkT9m2tS5ij7OnyWazmZRkm0mwNZqCFBfcjYtpz4nhku9vf63x2sVNKsKUWCbOa3QcM9zOCKy0Vm6ZG49NXH9OjGNmklpGV8pEPGs3A8YrfVr65RxG7Z+cnnVdtw+h5RcsPHRxzaJrybiE8PTd+UsQI7n0nU1ZHsyhuImSQcWAXiHzi+Msx7jjas9BsTRKGWqf9kc6jHi7DBwWwWq/jSIjGXx1yhO3sdojLPiSnyYFGRca7ukN98oBrSUVihcBETsT6dE4TSYp+xG3kI+rZLCWdcA3VeuyQ4J91eMJYnVuqEFfEQ+ewho9xlnzFeQwi8qY7foh62b7gYEDUZ+Y+HS/stX3sfhBgK3+A1mB/bgOJ/px/RrQbnmUBqL3gf1CBmVNm5hcNwxdJwEEX5HV32Ijd7aGHCrvW5fPZg2pqaZZTSvN3LqC2gTOouQeb1AqQabeZux7Fh0FW6AThTRiiaIhFS2SFZfuPIf30gipVCZQac9GmHg6BE97sV+MYY2aYWwvXOkSpUUrbukRGegy/vxtGLLfP19B7z6cIe0CF9GmpLHMU8Pi4uP1ixKfsS6oQR5tdj8qS11oWYtDyFT8TSHZc6mNErhGu/WVNiuxpSAMohJyScGLgozBwvPORvtqyLHWMuZGo1rSxjuxxN5B1mhdwnHCV9yS842MtPRiOGJuz1sYeej/93XrVeDxyc/aWmrDdARW7a6ftDkMr1x+eNAOw7bIoCLn+dxut5QO72zddbycBiifL3jErZZLlsR8B0o7/laQl7J2+B1Wf7rpX7yfxY+8k0d7GobebEeWA1lvSENn3aLLoEKp0I78ridscss5/pvjXRQFtv7Nbvfh6s+rW56yZf9cN6TiX4qxd48f6DkDZ+s55lP7p2J3nAa2H5EcZSAkelPEfzTiFUdLsVyNje/V6L1dDhErK42/j2e7Rdd1/wAz65L6
+sidebar_class_name: "delete api-method"
+info_path: restapi/docs/mod-io-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Bulk Unfollow Users"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"delete"}
+  path={"/users/{user-id}/following"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Unfollow users in bulk for the specified user. Provide no parameters to unfollow all users, or `user_ids` to unfollow specific users. Successful request will return `204 No Content`.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"user-id","in":"path","description":"ID of the user to remove followings from.","required":true,"schema":{"type":"integer"},"example":31339}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/x-www-form-urlencoded":{"schema":{"title":"Bulk Unfollow Users Request","properties":{"user_ids":{"type":"array","items":{"description":"IDs of users to unfollow.","type":"integer","format":"int64","example":123}}},"type":"object"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"204":{"description":"Successful Request. No Body Returned.","content":{"application/json":{"schema":{"title":"204","type":"object","default":"204 No Content"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      
