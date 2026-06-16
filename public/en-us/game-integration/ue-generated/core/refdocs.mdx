@@ -461,6 +461,187 @@ Blueprint library which contains a variety of Platform-based helpers for mapping
 
 ---
 
+### ModioPortalInterface 
+
+Interface for objects that provide portal/platform specific implementations
+
+##### Inheritance Hierarchy
+-> Interface-> Object
+
+
+
+
+
+
+#### Sanitize File Path
+
+
+![nd_img_ModioPortalInterface_SanitizeFilePath.png](img/refdocs/nd_img_ModioPortalInterface_SanitizeFilePath.png)
+
+```cpp
+FString SanitizeFilePath(FString FilePath)
+```
+
+
+
+
+
+
+
+#### Request Entitlement Params
+
+
+
+![nd_img_ModioPortalInterface_RequestEntitlementParams.png](img/refdocs/nd_img_ModioPortalInterface_RequestEntitlementParams.png)
+
+```cpp
+void RequestEntitlementParams(TMap<FString,FString> Params, FEntitlementParamsRequestedDelegate Callback)
+```
+
+
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModioPortalInterface`|
+|`Params`|can provide additional parameters for login|
+|`Callback`|will be called with the entitlement parameters|
+</RefTable>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#### Request Auth Token
+
+
+
+![nd_img_ModioPortalInterface_RequestAuthToken.png](img/refdocs/nd_img_ModioPortalInterface_RequestAuthToken.png)
+
+```cpp
+void RequestAuthToken(TMap<FString,FString> Params, FAuthTokenRequestedDelegate Callback)
+```
+
+
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModioPortalInterface`|
+|`Params`|can provide additional parameters for login|
+|`Callback`|will be called with the auth token|
+</RefTable>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#### Prepare Filesystem to Use Path
+
+
+![nd_img_ModioPortalInterface_PrepareFilesystemToUsePath.png](img/refdocs/nd_img_ModioPortalInterface_PrepareFilesystemToUsePath.png)
+
+```cpp
+bool PrepareFilesystemToUsePath(FString UgcPath)
+```
+
+
+
+
+
+
+
+#### Initialize Platform
+
+
+![nd_img_ModioPortalInterface_InitializePlatform.png](img/refdocs/nd_img_ModioPortalInterface_InitializePlatform.png)
+
+```cpp
+void InitializePlatform()
+```
+
+
+
+
+
+
+
+#### Get Extended Initialization Params
+
+
+![nd_img_ModioPortalInterface_GetExtendedInitializationParams.png](img/refdocs/nd_img_ModioPortalInterface_GetExtendedInitializationParams.png)
+
+```cpp
+TMap<FString,FString> GetExtendedInitializationParams()
+```
+
+
+
+
+
+
+
+#### Get Extended Auth Params
+
+
+![nd_img_ModioPortalInterface_GetExtendedAuthParams.png](img/refdocs/nd_img_ModioPortalInterface_GetExtendedAuthParams.png)
+
+```cpp
+TMap<FString,FString> GetExtendedAuthParams()
+```
+
+
+
+
+
+
+
+#### Get Auth Key
+
+
+![nd_img_ModioPortalInterface_GetAuthKey.png](img/refdocs/nd_img_ModioPortalInterface_GetAuthKey.png)
+
+```cpp
+FString GetAuthKey()
+```
+
+
+
+
+
+
+
+
+
+
+---
+
 ### ModioPresetFilterParamsLibrary 
 
 Blueprint library for working with preset filter parameters
@@ -4447,6 +4628,36 @@ FModioOptionalUInt64 GetStorageQuota(EModioStorageLocation Location)
 
 
 
+#### Get Portal Interface Object
+
+
+![nd_img_ModioSubsystem_GetPortalInterfaceObject.png](img/refdocs/nd_img_ModioSubsystem_GetPortalInterfaceObject.png)
+
+```cpp
+UObject* GetPortalInterfaceObject()
+```
+
+
+
+
+
+
+
+#### Get Portal Interface
+
+
+![nd_img_ModioSubsystem_GetPortalInterface.png](img/refdocs/nd_img_ModioSubsystem_GetPortalInterface.png)
+
+```cpp
+TScriptInterface<IModioPortalInterface> GetPortalInterface()
+```
+
+
+
+
+
+
+
 #### Get Last Validation Error
 
 If the last request to the mod.io servers returned a validation failure, this function returns extended information describing the fields that failed validation.
@@ -5498,6 +5709,22 @@ Wrapper around `Modio::ErrorCode`
 
 ---
 
+### ModioEntitlementParams 
+
+Simple struct to encapsulate portal-specific data required when consuming entitlements
+
+
+
+
+
+
+
+
+
+
+
+---
+
 ### ModioOptionalModCollectionInfo 
 
 Struct to wrap ModCollectionInfo into an optional parameter
@@ -6373,22 +6600,6 @@ Strong type struct to wrap the code sent to the email address to obtain an authe
 
 ---
 
-### ModioEntitlementParams 
-
-Simple struct to encapsulate portal-specific data required when consuming entitlements
-
-
-
-
-
-
-
-
-
-
-
----
-
 ### ModioMetricsSessionParams 
 
 Simple struct to store metric session specific parameters
@@ -6457,6 +6668,8 @@ Helper struct for named preset filter parameters
 | `TArray<FString>` | `ExcludedTags` | List of tags to exclude from filtering |
 | `EModioSortDirection` | `Direction` | Sorting direction (default is ascending) |
 | `EModioSortFieldType` | `SortField` | Field to use for sorting (default is ID) |
+| `EModioRevenueFilterType` | `RevenueField` | Field to use for revenue (default is FreeAndPaid) |
+| `TSoftClassPtr<UWidget> ` | `TileWidgetClass` | Field to use for the widget class (default is nullptr) |
 | `int64` | `Count` | Number of results to return |
 </RefTable>
 

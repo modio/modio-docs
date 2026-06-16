@@ -101,7 +101,24 @@ true if the mod is enabled, else false
 
 ---
 
-### MutatorSubsystem 
+### UGCLibrary 
+
+
+
+##### Inheritance Hierarchy
+-> BlueprintFunctionLibrary-> Object
+
+
+
+
+
+
+
+
+
+---
+
+### UGCMutatorSubsystem 
 
 
 
@@ -117,10 +134,10 @@ true if the mod is enabled, else false
 
 
 
-![nd_img_MutatorSubsystem_RegisterMutator.png](img/refdocs/nd_img_MutatorSubsystem_RegisterMutator.png)
+![nd_img_UGCMutatorSubsystem_RegisterMutator.png](img/refdocs/nd_img_UGCMutatorSubsystem_RegisterMutator.png)
 
 ```cpp
-bool RegisterMutator(TSubclassOf<UMutator> Type, int32 Priority, FMutatorHandle OutHandle)
+bool RegisterMutator(TSubclassOf<UUGCMutator> Type, int32 Priority, FMutatorHandle OutHandle)
 ```
 
 
@@ -132,7 +149,7 @@ bool RegisterMutator(TSubclassOf<UMutator> Type, int32 Priority, FMutatorHandle 
 <RefTable colWidths={['30%', '70%']} stripes="odd">
 | | |
 |-|-|
-|`Target`|`MutatorSubsystem`|
+|`Target`|`UGCMutatorSubsystem`|
 |`Type`|The class of mutator you want to register|
 |`Priority`|Defines the order in which mutators are applied. Higher priority = more influence|
 |`Out Handle`|A handle to the create mutator|
@@ -151,25 +168,10 @@ bool RegisterMutator(TSubclassOf<UMutator> Type, int32 Priority, FMutatorHandle 
 
 
 
-#### ScorePoints
-
-
-![nd_img_MutatorSubsystem_Mutator_ScorePoints.png](img/refdocs/nd_img_MutatorSubsystem_Mutator_ScorePoints.png)
-
-```cpp
-FScorePoints_Params Mutator_ScorePoints(FScorePoints_Params Params)
-```
-
-
-
-
-
-
-
 #### PostPlayerInit
 
 
-![nd_img_MutatorSubsystem_Mutator_PostPlayerInit.png](img/refdocs/nd_img_MutatorSubsystem_Mutator_PostPlayerInit.png)
+![nd_img_UGCMutatorSubsystem_Mutator_PostPlayerInit.png](img/refdocs/nd_img_UGCMutatorSubsystem_Mutator_PostPlayerInit.png)
 
 ```cpp
 void Mutator_PostPlayerInit(FPostPlayerInit_Params Params)
@@ -184,40 +186,10 @@ void Mutator_PostPlayerInit(FPostPlayerInit_Params Params)
 #### PostPawnSpawned
 
 
-![nd_img_MutatorSubsystem_Mutator_PostPawnSpawned.png](img/refdocs/nd_img_MutatorSubsystem_Mutator_PostPawnSpawned.png)
+![nd_img_UGCMutatorSubsystem_Mutator_PostPawnSpawned.png](img/refdocs/nd_img_UGCMutatorSubsystem_Mutator_PostPawnSpawned.png)
 
 ```cpp
 void Mutator_PostPawnSpawned(FPostPawnSpawned_Params Params)
-```
-
-
-
-
-
-
-
-#### ModifyDamage
-
-
-![nd_img_MutatorSubsystem_Mutator_ModifyDamage.png](img/refdocs/nd_img_MutatorSubsystem_Mutator_ModifyDamage.png)
-
-```cpp
-FModifyDamage_Params Mutator_ModifyDamage(FModifyDamage_Params Params)
-```
-
-
-
-
-
-
-
-#### EnemyWaveEnded
-
-
-![nd_img_MutatorSubsystem_Mutator_EnemyWaveEnded.png](img/refdocs/nd_img_MutatorSubsystem_Mutator_EnemyWaveEnded.png)
-
-```cpp
-void Mutator_EnemyWaveEnded(FEnemyWaveEnded_Params Params)
 ```
 
 
@@ -230,10 +202,10 @@ void Mutator_EnemyWaveEnded(FEnemyWaveEnded_Params Params)
 
 
 
-![nd_img_MutatorSubsystem_IsRegistered.png](img/refdocs/nd_img_MutatorSubsystem_IsRegistered.png)
+![nd_img_UGCMutatorSubsystem_IsRegistered.png](img/refdocs/nd_img_UGCMutatorSubsystem_IsRegistered.png)
 
 ```cpp
-bool IsRegistered(TSubclassOf<UMutator> Type)
+bool IsRegistered(TSubclassOf<UUGCMutator> Type)
 ```
 
 
@@ -245,7 +217,7 @@ bool IsRegistered(TSubclassOf<UMutator> Type)
 <RefTable colWidths={['30%', '70%']} stripes="odd">
 | | |
 |-|-|
-|`Target`|`MutatorSubsystem`|
+|`Target`|`UGCMutatorSubsystem`|
 |`Type`|the type of mutator to check for|
 </RefTable>
 
@@ -266,10 +238,10 @@ bool IsRegistered(TSubclassOf<UMutator> Type)
 
 
 
-![nd_img_MutatorSubsystem_GetMutatorClassList.png](img/refdocs/nd_img_MutatorSubsystem_GetMutatorClassList.png)
+![nd_img_UGCMutatorSubsystem_GetMutatorClassList.png](img/refdocs/nd_img_UGCMutatorSubsystem_GetMutatorClassList.png)
 
 ```cpp
-bool GetMutatorClassList(TArray<TSubclassOf<UMutator> > OutMutators, bool bUseCache)
+bool GetMutatorClassList(TArray<TSubclassOf<UUGCMutator> > OutMutators, bool bUseCache)
 ```
 
 
@@ -281,7 +253,7 @@ bool GetMutatorClassList(TArray<TSubclassOf<UMutator> > OutMutators, bool bUseCa
 <RefTable colWidths={['30%', '70%']} stripes="odd">
 | | |
 |-|-|
-|`Target`|`MutatorSubsystem`|
+|`Target`|`UGCMutatorSubsystem`|
 |`bUseCache`|whether or not we should return the cached result or rerun the query|
 |`Out Mutators`|the mutator class list|
 </RefTable>
@@ -305,7 +277,7 @@ Was the query successful
 
 
 
-![nd_img_MutatorSubsystem_GetAsset.png](img/refdocs/nd_img_MutatorSubsystem_GetAsset.png)
+![nd_img_UGCMutatorSubsystem_GetAsset.png](img/refdocs/nd_img_UGCMutatorSubsystem_GetAsset.png)
 
 ```cpp
 UObject* GetAsset(FGameplayTag AssetTag, UObject* DefaultValue) const
@@ -320,7 +292,7 @@ UObject* GetAsset(FGameplayTag AssetTag, UObject* DefaultValue) const
 <RefTable colWidths={['30%', '70%']} stripes="odd">
 | | |
 |-|-|
-|`Target`|`MutatorSubsystem`|
+|`Target`|`UGCMutatorSubsystem`|
 |`AssetTag`|The tag of the asset to retrieve|
 |`DefaultValue`|The asset to use if no mutator is overriding it|
 </RefTable>
@@ -342,7 +314,7 @@ UObject* GetAsset(FGameplayTag AssetTag, UObject* DefaultValue) const
 
 
 
-![nd_img_MutatorSubsystem_DeregisterMutator.png](img/refdocs/nd_img_MutatorSubsystem_DeregisterMutator.png)
+![nd_img_UGCMutatorSubsystem_DeregisterMutator.png](img/refdocs/nd_img_UGCMutatorSubsystem_DeregisterMutator.png)
 
 ```cpp
 void DeregisterMutator(FMutatorHandle Handle)
@@ -357,7 +329,7 @@ void DeregisterMutator(FMutatorHandle Handle)
 <RefTable colWidths={['30%', '70%']} stripes="odd">
 | | |
 |-|-|
-|`Target`|`MutatorSubsystem`|
+|`Target`|`UGCMutatorSubsystem`|
 |`Handle`||
 </RefTable>
 
@@ -368,23 +340,6 @@ void DeregisterMutator(FMutatorHandle Handle)
 
 
 
-
-
-
-
-
-
-
-
-
----
-
-### UGCLibrary 
-
-
-
-##### Inheritance Hierarchy
--> BlueprintFunctionLibrary-> Object
 
 
 
@@ -1316,52 +1271,6 @@ void AddModEnabledStateChangeHandler(FModEnabledStateChangeHandler Handler)
 
 ## Structs
 
-### EnemyWaveEnded_Params 
-
-
-
-
-
-
-
-
-
-
-##### Variables
-<RefTable colWidths={['10%', '10%', '20%']} stripes="odd">
-| | | |
-|-|-|-|
-| `int32` | `WaveNumber` |  |
-</RefTable>
-
-
-
----
-
-### ModifyDamage_Params 
-
-
-
-
-
-
-
-
-
-
-##### Variables
-<RefTable colWidths={['10%', '10%', '20%']} stripes="odd">
-| | | |
-|-|-|-|
-| `AActor*` | `Target` |  |
-| `AActor*` | `Source` |  |
-| `float` | `Amount` |  |
-</RefTable>
-
-
-
----
-
 ### PostPawnSpawned_Params 
 
 
@@ -1400,29 +1309,6 @@ void AddModEnabledStateChangeHandler(FModEnabledStateChangeHandler Handler)
 | | | |
 |-|-|-|
 | `AController*` | `Controller` |  |
-</RefTable>
-
-
-
----
-
-### ScorePoints_Params 
-
-
-
-
-
-
-
-
-
-
-##### Variables
-<RefTable colWidths={['10%', '10%', '20%']} stripes="odd">
-| | | |
-|-|-|-|
-| `AController*` | `Scorer` |  |
-| `int32` | `Amount` |  |
 </RefTable>
 
 

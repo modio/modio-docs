@@ -20,6 +20,44 @@ slug: /unreal/modio-action-rpg-refdocs
 
 
 
+#### Override Initialization Options
+
+
+
+![nd_img_ActionRPGModioSubsystem_OverrideInitializationOptions.png](img/refdocs/nd_img_ActionRPGModioSubsystem_OverrideInitializationOptions.png)
+
+```cpp
+FModioInitializeOptions OverrideInitializationOptions(FModioInitializeOptions Options) const
+```
+
+
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ActionRPGModioSubsystem`|
+|`Options`|The initialization options to augment|
+</RefTable>
+
+
+
+##### Returns
+A duplicate of the initialize options with override values
+
+
+
+
+
+
+
+
+
+
+
 #### Get Override Portal
 
 
@@ -113,6 +151,51 @@ true if the environment was overridden, false otherwise
 
 
 
+#### Write Save Game
+
+
+![nd_img_ModioAuthSubsystem_WriteSaveGame.png](img/refdocs/nd_img_ModioAuthSubsystem_WriteSaveGame.png)
+
+```cpp
+void WriteSaveGame()
+```
+
+
+
+
+
+
+
+#### Reset Save Game
+
+
+![nd_img_ModioAuthSubsystem_ResetSaveGame.png](img/refdocs/nd_img_ModioAuthSubsystem_ResetSaveGame.png)
+
+```cpp
+void ResetSaveGame()
+```
+
+
+
+
+
+
+
+#### Delete All Save Data
+
+
+![nd_img_ModioAuthSubsystem_DeleteAllSaveData.png](img/refdocs/nd_img_ModioAuthSubsystem_DeleteAllSaveData.png)
+
+```cpp
+void DeleteAllSaveData()
+```
+
+
+
+
+
+
+
 #### Begin Modio Authentication
 
 
@@ -120,53 +203,6 @@ true if the environment was overridden, false otherwise
 
 ```cpp
 void BeginModioAuthentication(TEnumAsByte<EUIMode> UIMode)
-```
-
-
-
-
-
-
-
-
-
-
----
-
-### ModioEntitlementSubsystem 
-
-
-
-##### Inheritance Hierarchy
--> EngineSubsystem-> DynamicSubsystem-> Subsystem-> Object
-
-
-
-
-
-
-#### Refresh User Entitlements with Handler
-
-
-![nd_img_ModioEntitlementSubsystem_RefreshUserEntitlementsWithHandler.png](img/refdocs/nd_img_ModioEntitlementSubsystem_RefreshUserEntitlementsWithHandler.png)
-
-```cpp
-void RefreshUserEntitlementsWithHandler(FOnUserEntitlementsRefreshedDelegate Handler)
-```
-
-
-
-
-
-
-
-#### Refresh User Entitlements
-
-
-![nd_img_ModioEntitlementSubsystem_RefreshUserEntitlements.png](img/refdocs/nd_img_ModioEntitlementSubsystem_RefreshUserEntitlements.png)
-
-```cpp
-void RefreshUserEntitlements()
 ```
 
 

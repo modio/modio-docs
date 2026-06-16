@@ -1219,6 +1219,28 @@ Library of functions for working with color references
 
 ---
 
+#### ListViewBackPaddingWidget 
+
+
+
+###### Inheritance Hierarchy
+-> UserWidget-> Widget-> Visual-> Object
+
+
+
+
+
+
+###### Variables
+<RefTable colWidths={['10%', '10%', '20%']} stripes="odd">
+| | | |
+|-|-|-|
+</RefTable>
+
+
+
+---
+
 #### ModCollectionRatingStateProvider 
 
 
@@ -1871,6 +1893,82 @@ Default implementation of a border that can be used as a component in mod.io UI
 
 ---
 
+#### ModioDefaultCarouselModListView 
+
+A default implementation of IModioUIModListViewInterface which displays mods as a carousel. This widget inherits from UModioDefaultModListView.
+
+###### Inheritance Hierarchy
+-> ModioDefaultModListView-> ListView-> ListViewBase-> Widget-> Visual-> Object
+
+
+
+
+
+
+##### Scroll Row
+
+
+![nd_img_ModioDefaultCarouselModListView_ScrollRow.png](img/refdocs/nd_img_ModioDefaultCarouselModListView_ScrollRow.png)
+
+```cpp
+void ScrollRow(bool bBackwards)
+```
+
+
+
+
+
+
+
+##### Navigate in Direction
+
+
+![nd_img_ModioDefaultCarouselModListView_NavigateInDirection.png](img/refdocs/nd_img_ModioDefaultCarouselModListView_NavigateInDirection.png)
+
+```cpp
+UWidget* NavigateInDirection(EUINavigation InNavigation)
+```
+
+
+
+
+
+
+
+##### Get Item Count on Screen
+
+
+![nd_img_ModioDefaultCarouselModListView_GetItemCountOnScreen.png](img/refdocs/nd_img_ModioDefaultCarouselModListView_GetItemCountOnScreen.png)
+
+```cpp
+float GetItemCountOnScreen() const
+```
+
+
+
+
+
+
+
+###### Variables
+<RefTable colWidths={['10%', '10%', '20%']} stripes="odd">
+| | | |
+|-|-|-|
+| `int32` | `DefaultLoopingListItemOffset` |  |
+| `float` | `DefaultItemScrollOffset` |  |
+| `float` | `MinimumLoopingTiles` |  |
+| `bool` | `bLoopTiles` |  |
+| `TSubclassOf<UUserWidget>` | `ViewMoreButtonClass` |  |
+| `float` | `ScrollCheckPadding` |  |
+| `bool` | `bScrollCheckViewMoreTileVisible` |  |
+| `bool` | `bResetScrollWhenOffscreen` |  |
+| `int32` | `OffscreenResetFrameCount` |  |
+</RefTable>
+
+
+
+---
+
 #### ModioDefaultCheckBox 
 
 Default implementation of a check box that can be used as a component in mod.io UI
@@ -2424,6 +2522,7 @@ A default implementation of IModioUIModCollectionListViewInterface which display
 <RefTable colWidths={['10%', '10%', '20%']} stripes="odd">
 | | | |
 |-|-|-|
+| `bool` | `bSelectFirstTileWhenFocused` |  |
 | `FModioOnObjectSelectionChangedMulticast` | `OnSelectedValueChanged` | Passes the bound value for which selection state has changed as `SelectedValue` |
 </RefTable>
 
@@ -2447,6 +2546,7 @@ A default implementation of IModioUIModListViewInterface which displays mods as 
 <RefTable colWidths={['10%', '10%', '20%']} stripes="odd">
 | | | |
 |-|-|-|
+| `FModioScrollableOffsetChangedMulticast` | `OnScroll` | Passes `this` as ScrollableContext |
 | `FModioOnObjectSelectionChangedMulticast` | `OnSelectedValueChanged` | Passes the bound value for which selection state has changed as `SelectedValue` |
 </RefTable>
 
@@ -2613,6 +2713,7 @@ A default implementation of IModioUIModListViewInterface which displays mods as 
 <RefTable colWidths={['10%', '10%', '20%']} stripes="odd">
 | | | |
 |-|-|-|
+| `bool` | `bSelectFirstTileWhenFocused` |  |
 | `FModioOnObjectSelectionChangedMulticast` | `OnSelectedValueChanged` | Passes the bound value for which selection state has changed as `SelectedValue` |
 </RefTable>
 
@@ -6149,6 +6250,43 @@ A widget that displays the subscription status of a mod
 
 
 
+##### Set Tag Selected State
+
+Sets the selection state for a given array of tags.
+
+![nd_img_ModioModTagCategoryUIDetails_SetTagSelectedState.png](img/refdocs/nd_img_ModioModTagCategoryUIDetails_SetTagSelectedState.png)
+
+```cpp
+void SetTagSelectedState(TArray<FString> InTags, bool bSelectedState)
+```
+
+
+
+
+
+
+###### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModioModTagCategoryUIDetails`|
+|`InTags`|The array of tags to set the selection state for|
+|`bSelectedState`|The new selection state for the provided tags|
+</RefTable>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ##### Get Selected Tags
 
 Retrieves an array of strings representing tags which are selected for the associated tag category
@@ -6524,6 +6662,43 @@ Wrapper around a FModioModTagOptions because UMG widgets expect UObjects for dat
 
 ###### Inheritance Hierarchy
 -> Interface-> Object
+
+
+
+
+
+
+##### Set Tag Selected State
+
+Sets the selection state for a given array of tags.
+
+![nd_img_ModioModTagOptionsUIDetails_SetTagSelectedState.png](img/refdocs/nd_img_ModioModTagOptionsUIDetails_SetTagSelectedState.png)
+
+```cpp
+void SetTagSelectedState(TArray<FString> InTags, bool bSelectedState)
+```
+
+
+
+
+
+
+###### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModioModTagOptionsUIDetails`|
+|`InTags`|The array of tags to set the selection state for|
+|`bSelectedState`|The new selection state for the provided tags|
+</RefTable>
+
+
+
+
+
+
+
+
 
 
 
@@ -7883,6 +8058,42 @@ void SetScrollOffset(float Offset)
 
 
 
+##### Scroll Visible Area
+
+Scroll the widget by the size of the visible content area
+
+![nd_img_ModioScrollableWidget_ScrollVisibleArea.png](img/refdocs/nd_img_ModioScrollableWidget_ScrollVisibleArea.png)
+
+```cpp
+void ScrollVisibleArea(bool bBackward)
+```
+
+
+
+
+
+
+###### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModioScrollableWidget`|
+|`bBackward`|If true, scroll up/left; if false, scroll down/right|
+</RefTable>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ##### Scroll to Top
 
 Scroll the widget to the top
@@ -7953,6 +8164,42 @@ void ScrollToBottom()
 
 
 
+##### Remove Scrollable Offset Changed Handler
+
+Unsubscribes a delegate from receiving state change callbacks
+
+![nd_img_ModioScrollableWidget_RemoveScrollableOffsetChangedHandler.png](img/refdocs/nd_img_ModioScrollableWidget_RemoveScrollableOffsetChangedHandler.png)
+
+```cpp
+void RemoveScrollableOffsetChangedHandler(FModioScrollableOffsetChanged Handler)
+```
+
+
+
+
+
+
+###### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModioScrollableWidget`|
+|`Handler`|The delegate to remove|
+</RefTable>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ##### Get Scroll Offset
 
 Get the current scroll offset of the widget
@@ -7979,6 +8226,80 @@ float GetScrollOffset() const
 
 ###### Returns
 The current scroll offset
+
+
+
+
+
+
+
+
+
+
+
+##### Can Scroll in Direction
+
+Checks if the widget can scroll in the specified direction
+
+![nd_img_ModioScrollableWidget_CanScrollInDirection.png](img/refdocs/nd_img_ModioScrollableWidget_CanScrollInDirection.png)
+
+```cpp
+bool CanScrollInDirection(bool bBackward) const
+```
+
+
+
+
+
+
+###### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModioScrollableWidget`|
+|`bBackward`|If true, check if can scroll up/left; if false check if can scroll down/right|
+</RefTable>
+
+
+
+###### Returns
+True if the widget can scroll in the specified direction, false otherwise
+
+
+
+
+
+
+
+
+
+
+
+##### Add Scrollable Offset Changed Handler
+
+Registers a delegate that receives a callback when the scroll offset of the widget changes
+
+![nd_img_ModioScrollableWidget_AddScrollableOffsetChangedHandler.png](img/refdocs/nd_img_ModioScrollableWidget_AddScrollableOffsetChangedHandler.png)
+
+```cpp
+void AddScrollableOffsetChangedHandler(FModioScrollableOffsetChanged Handler)
+```
+
+
+
+
+
+
+###### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModioScrollableWidget`|
+|`Handler`|Delegate to invoke on state change|
+</RefTable>
+
+
+
 
 
 
@@ -10020,23 +10341,6 @@ void SetDisplayStringKey(FName InDisplayStringKey)
 
 ---
 
-#### ModioUIEntitlementRefreshEventReceiver 
-
-
-
-###### Inheritance Hierarchy
--> Interface-> Object
-
-
-
-
-
-
-
-
-
----
-
 #### ModioUIHasConfigurableColor 
 
 
@@ -10892,6 +11196,23 @@ void AddImageLoadEventHandler(FModioImageDisplayOnLoadStateChanged Handler)
 
 ---
 
+#### ModioUIInputModeChangedReceiver 
+
+
+
+###### Inheritance Hierarchy
+-> Interface-> Object
+
+
+
+
+
+
+
+
+
+---
+
 #### ModioUIInputValidationLibrary 
 
 Static library of functions to validate text input
@@ -11474,6 +11795,43 @@ Interface class for any widget that displays a set of mod tags for a user to sel
 
 ###### Inheritance Hierarchy
 -> Interface-> Object
+
+
+
+
+
+
+##### Set Tag Selected State
+
+Sets the selection state of the given tags
+
+![nd_img_ModioUIModTagSelector_SetTagSelectedState.png](img/refdocs/nd_img_ModioUIModTagSelector_SetTagSelectedState.png)
+
+```cpp
+void SetTagSelectedState(TArray<FString> InTags, bool bSelectedState)
+```
+
+
+
+
+
+
+###### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModioUIModTagSelector`|
+|`InTags`|Array of tag values to set|
+|`bSelectedState`|Whether the given tags should be selected or unselected|
+</RefTable>
+
+
+
+
+
+
+
+
 
 
 
@@ -14694,6 +15052,41 @@ void RequestLogoDownloadForModCollectionID(FModioModCollectionID ID, EModioLogoS
 
 
 
+##### Request List User Following Mod Collections
+
+Requests a list of all followed mod collections Executes callbacks in implementations of IModioUICollectionFollowStateChangedReceiver
+
+![nd_img_ModioUISubsystem_RequestListUserFollowingModCollections.png](img/refdocs/nd_img_ModioUISubsystem_RequestListUserFollowingModCollections.png)
+
+```cpp
+void RequestListUserFollowingModCollections()
+```
+
+
+
+
+
+
+###### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModioUISubsystem`|
+</RefTable>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ##### Request List User Following
 
 Requests a list of all users the currently authenticated user follows. Executes callbacks in implementations of IModioUIUserFollowingInfoReceiver.
@@ -15169,6 +15562,43 @@ Whether the Mod is enabled or not.
 
 
 
+##### Query Input Mode State
+
+Gets the current MouseInputMode State
+
+![nd_img_ModioUISubsystem_QueryInputModeState.png](img/refdocs/nd_img_ModioUISubsystem_QueryInputModeState.png)
+
+```cpp
+EModioUIInputMode QueryInputModeState()
+```
+
+
+
+
+
+
+###### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModioUISubsystem`|
+</RefTable>
+
+
+
+###### Returns
+The current MouseInputMode State.
+
+
+
+
+
+
+
+
+
+
+
 ##### Query Connectivity State
 
 Gets the current Connectivity State
@@ -15206,9 +15636,45 @@ The current connectivity State.
 
 
 
+##### Notify Input Mode Change
+
+Updates the current MouseInputMode state, and notifies implementations of IModioUIInputModeChangedReceiver *only* if the state changes.
+
+![nd_img_ModioUISubsystem_NotifyInputModeChange.png](img/refdocs/nd_img_ModioUISubsystem_NotifyInputModeChange.png)
+
+```cpp
+void NotifyInputModeChange(EModioUIInputMode NewInputModeState)
+```
+
+
+
+
+
+
+###### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModioUISubsystem`|
+|`NewInputModeState`||
+</RefTable>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ##### Notify Connectivity Change
 
-Updates the current Connectivity state, and notifies implementations of IMOdioUIConnectivityChangedReceiver *only* if the state changes.
+Updates the current Connectivity state, and notifies implementations of IModioUIConnectivityChangedReceiver *only* if the state changes.
 
 ![nd_img_ModioUISubsystem_NotifyConnectivityChange.png](img/refdocs/nd_img_ModioUISubsystem_NotifyConnectivityChange.png)
 
@@ -15235,6 +15701,21 @@ void NotifyConnectivityChange(bool bNewConnectivityState)
 
 
 
+
+
+
+
+
+
+
+##### Is User Following Creator
+
+
+![nd_img_ModioUISubsystem_IsUserFollowingCreator.png](img/refdocs/nd_img_ModioUISubsystem_IsUserFollowingCreator.png)
+
+```cpp
+bool IsUserFollowingCreator(FModioUserID CreatorId)
+```
 
 
 
@@ -15269,6 +15750,43 @@ bool IsUGCFeatureEnabled(EModioUIFeatureFlags Feature)
 
 ###### Returns
 bool indicating the state of the specified feature
+
+
+
+
+
+
+
+
+
+
+
+##### Is Running in VR
+
+Gets the current running in VR state
+
+![nd_img_ModioUISubsystem_IsRunningInVR.png](img/refdocs/nd_img_ModioUISubsystem_IsRunningInVR.png)
+
+```cpp
+bool IsRunningInVR()
+```
+
+
+
+
+
+
+###### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModioUISubsystem`|
+</RefTable>
+
+
+
+###### Returns
+True if HMD is connected and stereo rendering is enabled
 
 
 
@@ -16231,6 +16749,23 @@ void QueryUserFollowingList()
 
 ---
 
+#### ViewMoreWidgetItem 
+
+
+
+###### Inheritance Hierarchy
+-> Object
+
+
+
+
+
+
+
+
+
+---
+
 #### WBP_DefaultTagButton 
 
 
@@ -16262,6 +16797,163 @@ void QueryUserFollowingList()
 
 ###### Inheritance Hierarchy
 -> ModioUIComponentBase-> CommonActivatableWidget-> CommonUserWidget-> UserWidget-> Widget-> Visual-> Object
+
+
+
+
+
+
+###### Variables
+<RefTable colWidths={['10%', '10%', '20%']} stripes="odd">
+| | | |
+|-|-|-|
+</RefTable>
+
+
+
+---
+
+#### WBP_ModViewTemplate 
+
+
+
+###### Inheritance Hierarchy
+-> UserWidget-> Widget-> Visual-> Object
+
+
+
+
+
+
+###### Variables
+<RefTable colWidths={['10%', '10%', '20%']} stripes="odd">
+| | | |
+|-|-|-|
+| `FText` | `CategoryText` |  |
+| `bool` | `bIsLoading` |  |
+| `bool` | `bHasResults` |  |
+</RefTable>
+
+
+
+---
+
+#### WBP_ModView_CarouselFeatured 
+
+
+
+###### Inheritance Hierarchy
+-> WBP_ModViewTemplate-> UserWidget-> Widget-> Visual-> Object
+
+
+
+
+
+
+###### Variables
+<RefTable colWidths={['10%', '10%', '20%']} stripes="odd">
+| | | |
+|-|-|-|
+</RefTable>
+
+
+
+---
+
+#### WBP_ModView_CarouselFeaturedLarge_Looping 
+
+
+
+###### Inheritance Hierarchy
+-> WBP_ModViewTemplate-> UserWidget-> Widget-> Visual-> Object
+
+
+
+
+
+
+###### Variables
+<RefTable colWidths={['10%', '10%', '20%']} stripes="odd">
+| | | |
+|-|-|-|
+</RefTable>
+
+
+
+---
+
+#### WBP_ModView_CarouselFeatured_Looping 
+
+
+
+###### Inheritance Hierarchy
+-> WBP_ModViewTemplate-> UserWidget-> Widget-> Visual-> Object
+
+
+
+
+
+
+###### Variables
+<RefTable colWidths={['10%', '10%', '20%']} stripes="odd">
+| | | |
+|-|-|-|
+</RefTable>
+
+
+
+---
+
+#### WBP_ModView_CarouselRegular 
+
+
+
+###### Inheritance Hierarchy
+-> WBP_ModViewTemplate-> UserWidget-> Widget-> Visual-> Object
+
+
+
+
+
+
+###### Variables
+<RefTable colWidths={['10%', '10%', '20%']} stripes="odd">
+| | | |
+|-|-|-|
+</RefTable>
+
+
+
+---
+
+#### WBP_ModView_CarouselRegular_Looping 
+
+
+
+###### Inheritance Hierarchy
+-> WBP_ModViewTemplate-> UserWidget-> Widget-> Visual-> Object
+
+
+
+
+
+
+###### Variables
+<RefTable colWidths={['10%', '10%', '20%']} stripes="odd">
+| | | |
+|-|-|-|
+</RefTable>
+
+
+
+---
+
+#### WBP_ModView_GridRegular 
+
+
+
+###### Inheritance Hierarchy
+-> WBP_ModViewTemplate-> UserWidget-> Widget-> Visual-> Object
 
 
 
@@ -16399,6 +17091,7 @@ A list of available commands.
 | | | |
 |-|-|-|
 | `FOnSelectionChanged` | `OnSelectionChanged` |  |
+| `TArray<UObject*>` | `Values` |  |
 </RefTable>
 
 
@@ -16569,6 +17262,7 @@ A button that displays only an icon, without text.
 | `bool` | `bFreezeBorderColorOnSelection` |  |
 | `FLinearColorRef` | `TextColor` |  |
 | `FLinearColorRef` | `SelectedTextColor` |  |
+| `bool` | `bIconVertical` |  |
 | `bool` | `bSwapIconSide` |  |
 | `FSlateBrush` | `Icon` |  |
 | `FHAlignOverride` | `HorizontalAlignmentOverride` |  |
@@ -16586,6 +17280,7 @@ A button that displays only an icon, without text.
 | `FLinearColorRef` | `SelectedBorderColor` |  |
 | `FMargin` | `ContentPadding` |  |
 | `FLinearColorRef` | `NormalBorderColor` |  |
+| `FVector2D` | `OverrideButtonSize` |  |
 </RefTable>
 
 
@@ -17261,8 +17956,8 @@ The Mod Dependencies Confirm Dialog displays the required dependencies for a mod
 | `FOnDialogCanceled` | `OnDialogCanceled` |  |
 | `FLinearColorRef` | `TotalBackgroundColor` |  |
 | `FModioModID` | `CurrentModID` |  |
-| `double` | `TargetModDependencyListScrollOffset` |  |
 | `FModioUnsigned64` | `TotalSizeToInstall` |  |
+| `double` | `ScrollVelocity` |  |
 </RefTable>
 
 
@@ -17289,7 +17984,7 @@ The Mod Dependencies Display Dialog shows a list of dependencies required for a 
 | `FOnDialogCanceled` | `OnDialogCanceled` |  |
 | `FLinearColorRef` | `TotalBackgroundColor` |  |
 | `FModioModID` | `CurrentModID` |  |
-| `double` | `TargetModDependencyListScrollOffset` |  |
+| `double` | `ScrollVelocity` |  |
 | `FModioUnsigned64` | `TotalSizeToInstall` |  |
 </RefTable>
 
@@ -17320,6 +18015,7 @@ An entry displaying a single dependency for a mod.
 | `FText` | `InstalledStatusText` |  |
 | `FLinearColorRef` | `InstalledStatusColor` |  |
 | `FLinearColorRef` | `NotInstalledStatusColor` |  |
+| `bool` | `bHasFocus` |  |
 </RefTable>
 
 
@@ -17871,7 +18567,13 @@ Displays a mod tile with key details like title, image, and relevant metadata.
 | `FLinearColorRef` | `NormalTextColor` |  |
 | `FLinearColorRef` | `SelectedTextColor` |  |
 | `FLinearColorRef` | `PriceTextColor` |  |
-| `FText` | `PurchasedLabelText` |  |
+| `UClass*` | `PriceWidget` |  |
+| `FLinearColorRef` | `PremiumBadgeColor` |  |
+| `UClass*` | `PremiumBadgeWidget` |  |
+| `double` | `ModNameTextSize` |  |
+| `double` | `ModNameSizeBoxHeight` |  |
+| `FVector2D` | `TileSize` |  |
+| `EModioLogoSize` | `LogoSizeToDownload` |  |
 </RefTable>
 
 
@@ -17896,6 +18598,50 @@ Displays properties associated with a mod tile, such as size, download count, an
 |-|-|-|
 | `UObject*` | `EditorDataSource` |  |
 | `FLinearColorRef` | `BackgroundColor` |  |
+</RefTable>
+
+
+
+---
+
+#### WBP_ModioDefaultModTile_Featured 
+
+
+
+###### Inheritance Hierarchy
+-> WBP_ModioDefaultModTile-> ModioDefaultModTile-> ModioUIComponentBase-> CommonActivatableWidget-> CommonUserWidget-> UserWidget-> Widget-> Visual-> Object
+
+
+
+
+
+
+###### Variables
+<RefTable colWidths={['10%', '10%', '20%']} stripes="odd">
+| | | |
+|-|-|-|
+</RefTable>
+
+
+
+---
+
+#### WBP_ModioDefaultModTile_FeaturedLarge 
+
+
+
+###### Inheritance Hierarchy
+-> WBP_ModioDefaultModTile-> ModioDefaultModTile-> ModioUIComponentBase-> CommonActivatableWidget-> CommonUserWidget-> UserWidget-> Widget-> Visual-> Object
+
+
+
+
+
+
+###### Variables
+<RefTable colWidths={['10%', '10%', '20%']} stripes="odd">
+| | | |
+|-|-|-|
 </RefTable>
 
 
@@ -18282,6 +19028,7 @@ A specialized button with unique styling.
 | `FLinearColorRef` | `SelectedBorderColor` |  |
 | `UObject*` | `HighlightBorderOverrideImage` |  |
 | `UObject*` | `BackgroundBorderOverrideImage` |  |
+| `TEnumAsByte<E_SpecialButtonContentDirection>` | `AdditionalContentDirection` |  |
 </RefTable>
 
 
@@ -18462,6 +19209,72 @@ A group of buttons related to general terms and conditions.
 
 ###### Inheritance Hierarchy
 -> ModioDefaultTokenPackTile-> ModioUIComponentBase-> CommonActivatableWidget-> CommonUserWidget-> UserWidget-> Widget-> Visual-> Object
+
+
+
+
+
+
+###### Variables
+<RefTable colWidths={['10%', '10%', '20%']} stripes="odd">
+| | | |
+|-|-|-|
+</RefTable>
+
+
+
+---
+
+#### WBP_ModioDefaultViewMoreButton 
+
+
+
+###### Inheritance Hierarchy
+-> WBP_ModioDefaultIconButton-> ModioDefaultIconButton-> ModioDefaultTextButton-> ModioButtonWidget-> CommonButtonBase-> CommonUserWidget-> UserWidget-> Widget-> Visual-> Object
+
+
+
+
+
+
+###### Variables
+<RefTable colWidths={['10%', '10%', '20%']} stripes="odd">
+| | | |
+|-|-|-|
+</RefTable>
+
+
+
+---
+
+#### WBP_ModioDefaultViewMoreButton_Featured 
+
+
+
+###### Inheritance Hierarchy
+-> WBP_ModioDefaultIconButton-> ModioDefaultIconButton-> ModioDefaultTextButton-> ModioButtonWidget-> CommonButtonBase-> CommonUserWidget-> UserWidget-> Widget-> Visual-> Object
+
+
+
+
+
+
+###### Variables
+<RefTable colWidths={['10%', '10%', '20%']} stripes="odd">
+| | | |
+|-|-|-|
+</RefTable>
+
+
+
+---
+
+#### WBP_ModioDefaultViewMoreButton_FeaturedLarge 
+
+
+
+###### Inheritance Hierarchy
+-> WBP_ModioDefaultIconButton-> ModioDefaultIconButton-> ModioDefaultTextButton-> ModioButtonWidget-> CommonButtonBase-> CommonUserWidget-> UserWidget-> Widget-> Visual-> Object
 
 
 
@@ -18682,6 +19495,8 @@ Main widget that displays available mods and includes features for search, filte
 | `FSlateBrush` | `CollectionsIcon` |  |
 | `FText` | `ModSearchHintText` |  |
 | `FText` | `CollectionSearchHintText` |  |
+| `bool` | `bSearching` |  |
+| `FText` | `SelectedNamedPreset` |  |
 </RefTable>
 
 
@@ -18740,6 +19555,53 @@ The Mod Details Dialog displays information about a mod, including the title, au
 
 ---
 
+#### WBP_ModioModTilePriceWidget 
+
+
+
+###### Inheritance Hierarchy
+-> UserWidget-> Widget-> Visual-> Object
+
+
+
+
+
+
+###### Variables
+<RefTable colWidths={['10%', '10%', '20%']} stripes="odd">
+| | | |
+|-|-|-|
+| `UObject*` | `DataSource` |  |
+| `double` | `IconSize` |  |
+| `double` | `TextSize` |  |
+</RefTable>
+
+
+
+---
+
+#### WBP_ModioModTilePriceWidget_Large 
+
+
+
+###### Inheritance Hierarchy
+-> WBP_ModioModTilePriceWidget-> UserWidget-> Widget-> Visual-> Object
+
+
+
+
+
+
+###### Variables
+<RefTable colWidths={['10%', '10%', '20%']} stripes="odd">
+| | | |
+|-|-|-|
+</RefTable>
+
+
+
+---
+
 #### WBP_ModioOperationTracker 
 
 Tracks the status and progress of ongoing mod-related operations.
@@ -18762,6 +19624,31 @@ Tracks the status and progress of ongoing mod-related operations.
 | `FLinearColorRef` | `DownloadingIconColor` |  |
 | `FLinearColorRef` | `QueueCountIconColor` |  |
 | `FLinearColorRef` | `ExtractingIconColor` |  |
+</RefTable>
+
+
+
+---
+
+#### WBP_ModioPremiumBadgeWidget 
+
+
+
+###### Inheritance Hierarchy
+-> UserWidget-> Widget-> Visual-> Object
+
+
+
+
+
+
+###### Variables
+<RefTable colWidths={['10%', '10%', '20%']} stripes="odd">
+| | | |
+|-|-|-|
+| `UObject*` | `DataSource` |  |
+| `double` | `IconSize` |  |
+| `double` | `TextSize` |  |
 </RefTable>
 
 
@@ -20859,6 +21746,38 @@ The peeked value
 
 
 
+#### Get Preset Named Filters
+
+
+![nd_img_ModioUISettings_GetPresetNamedFilters.png](img/refdocs/nd_img_ModioUISettings_GetPresetNamedFilters.png)
+
+```cpp
+TArray<FModioPresetFilterParams> GetPresetNamedFilters()
+```
+
+
+
+
+---
+
+
+
+#### Get Preset Filter by Name
+
+
+![nd_img_ModioUISettings_GetPresetFilterByName.png](img/refdocs/nd_img_ModioUISettings_GetPresetFilterByName.png)
+
+```cpp
+FModioPresetFilterParams GetPresetFilterByName(FText PresetFilterName, bool bSuccess)
+```
+
+
+
+
+---
+
+
+
 #### Get Default Collections Filter
 
 
@@ -22587,6 +23506,43 @@ bool CheckCollectionLogoDownloadEvent(FModioModCollectionID EventModCollectionID
 
 
 
+#### Async Load Class Array
+
+Utility method to async load an array of soft class pointers //
+
+![nd_img_ModioUICommonFunctionLibrary_AsyncLoadClassArray.png](img/refdocs/nd_img_ModioUICommonFunctionLibrary_AsyncLoadClassArray.png)
+
+```cpp
+void AsyncLoadClassArray(TArray<TSoftClassPtr<UObject> > SoftClassPtrs, FModioAsyncLoadClassesComplete OnComplete)
+```
+
+
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`SoftClassPtrs`||
+|`On Complete`|Delegate to execute once loading is complete|
+</RefTable>
+
+
+
+
+
+
+
+
+
+
+
+---
+
+
+
 #### As Object Array
 
 Converts an array of Interface references to an array of UObjects //
@@ -22754,6 +23710,22 @@ Enum for specific dialog types, can be extended if there are additional dialog t
 
 ---
 
+#### EModioUIInputMode {#EModioUIInputMode} 
+
+
+
+
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+| `None` |  |
+| `Mouse` |  |
+| `Touch` |  |
+| `Navigation` |  |
+</RefTable>
+
+---
+
 #### EModioUIComponentID {#EModioUIComponentID} 
 
 
@@ -22891,8 +23863,8 @@ Enumeration for the possible validation rules ScriptName meta specifier suppress
 | | |
 |-|-|
 | `ModsView` |  |
-| `LibraryView` |  |
 | `CollectionsView` |  |
+| `LibraryView` |  |
 </RefTable>
 
 ---
