@@ -55,7 +55,7 @@ This website-based flow – combined with our in-game Custom SSO flow – are in
 To use our website identity provider login, you must satisfy the following criteria:
 
 - Host an identity provider that implements the [OAuth 2.0 Authorization Code Flow](https://openid.net/specs/openid-connect-core-1_0.html).
-- The ability for your identity provider to create an OAuth client for mod.io for `client_credentials` grant type requests.
+- The ability for your identity provider to create an OAuth client for mod.io to initiate `authorization_code` grant type requests.
 
 ## Authentication Process
 
@@ -69,7 +69,7 @@ sequenceDiagram
     SITE->>IP: Prompts login to your Authorize endpoint
     IP->>IP: User logs in
     IP->>API: Redirect with auth code + state
-    API->>IP: Exchanges code using client credentials against Token endpoint
+    API->>IP: Exchanges code against Token endpoint
     IP->>API: Returns Access Token + optional ID Token
     API->>IP: Get Display Name / Avatar from UserInfo endpoint
     IP->>API: Return User Data
@@ -91,7 +91,7 @@ sequenceDiagram
 
 ### Generating an OAuth Client for mod.io
 
-Prior to configuration on mod.io, your identity provider must create an OAuth client to enable mod.io, using the `client_credentials` grant type to make calls to your OAuth API.
+Prior to configuration on mod.io, your identity provider must create an OAuth client to enable mod.io, using the `authorization_code` grant type to make calls to your OAuth API.
 
 #### Required Redirect URI's
 

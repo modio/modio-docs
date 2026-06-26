@@ -46,7 +46,7 @@ For single sign-on web functionality that uses your studio's identity provider, 
 ## Use cases
 
 - **In-Game**: Due to the stateless nature of ID Tokens, they are an excellent candidate for being used in-exchange for a mod.io access token as they do not rely on web-redirects to obtain and furthermore it is independent from how a player authenticates with your service to generate the ID Token.
-- **Embed Hub**: If you are embedding a hub into one or more of your domains, and you already have sign in functionality within your domain against your identity provider, you can use the `openid` to get an `id_token` returned, which you can then pass to our Embed Hub for frictionless SSO.
+- **Embed Hub**: If you are embedding a hub into one or more of your domains, and you already have sign in functionality within your domain against your identity provider, you can use `openid` to get an `id_token` returned, which you can then pass to our Embed Hub for frictionless SSO.
 
 ## Prerequisites
 
@@ -54,6 +54,15 @@ To use ID Token authentication, you must satisfy the following criteria:
 
 - Host an identity provider that implements the [OpenID Connect specification](https://openid.net/developers/how-connect-works) functionality.
 - A mechanism in which you log in players to your service and then return an ID Token to [send to mod.io](/restapi/docs/authenticate-via-openid).
+
+## Supported signing algorithms
+
+mod.io supports ID tokens that are signed by the following algorithms:
+
+- RSA (RS256)
+- ECDSA (ES256)
+- ECDSA (ES512)
+- EdDSA (Ed25519)
 
 ## Authentication process
 
@@ -155,12 +164,11 @@ Within your OpenID configuration panel, you can configure mappings which are the
 
 For an OpenID authentication request to be successful, mod.io will make the following checks, in the shown order before considering the ID token valid for creating a mod.io access token.
 
-1. The signing keys exposed by the JWK URL must either be Elliptic Curve (EC) with `256` and `512` being supported curves, or RSA with `RS256` being supported. The `alg` parameter is mandatory both in the JWK endpoint and the OpenID token that is being verified.
-2. At least one of the signing keys exposed in the JWK URL must have signed the supplied ID Token.
-3. The `sub` claim must be present and a non-empty string or positive integer. In the event an integer datatype is encountered, this value will be cast to a string internally.
-4. The `aud` claim must be set to either `https://mod.io` or `https://g-{your-game-id}.modapi.io`. If you use your game's URL, it must match the API host exactly.
-5. The `iat` claim cannot be greater than the current epoch unix timestamp with a 10 second buffer to account for clock skew.
-6. The `exp` claim must be greater than the current epoch unix timestamp with a 10 second buffer to account for clock skew.
+1. At least one of the signing keys obtained by mod.io from the the registered JWK URL must have signed the supplied ID Token.
+2. The `sub` claim must be present and a non-empty string or positive integer. In the event an integer datatype is encountered, this value will be cast to a string internally.
+3. The `aud` claim must be set to either `https://mod.io` or `https://g-{your-game-id}.modapi.io`. If you use your game's URL, it must match the API host exactly.
+4. The `iat` claim cannot be greater than the current epoch unix timestamp with a 10 second buffer to account for clock skew.
+5. The `exp` claim must be greater than the current epoch unix timestamp with a 10 second buffer to account for clock skew.
 
 ## Recommendations
 
@@ -174,7 +182,7 @@ OpenID offers a powerful method in which game studios can take an existing sessi
 | **Error Ref** | **Meaning**                                                                              |
 | ------------- |------------------------------------------------------------------------------------------|
 | 11086         | The OpenID configuration in your game's dashboard has not been completed.                |
-| 11089         | The signature check against the supplied ID token failed.                                |
+| 11089         | The signature verification against the supplied ID token failed.                         |
 | 11090         | mod.io was unable to obtain the JWK set from the registered JWK URL.                     |
 | 11092         | The ID token is not valid yet, indicating an invalid `nbf` claim value.                  |
 | 11093         | The ID token has expired, indicating an invalid `exp` claim value.                       |
