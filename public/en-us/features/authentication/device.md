@@ -164,7 +164,7 @@ The `context` object returned with the `device_login` operation is identical to 
 |------------------|---------------|-------|---------------------------------------------------------------------------------------------------
 | `code` | `integer` | true | The HTTP response code. Always 200.
 | `access_token` | `string` | true | The user's access token.
-| `date_expires` | `integer | true | Unix timestamp of the date this token will expire. Default is one year from issue date. See [Access Token Lifetime & Expiry](/restapi/introduction#making-requests).
+| `date_expires` | `integer | true | Unix timestamp of the date this token will expire. See [Access Token Lifetime & Expiry](/restapi/introduction#making-requests).
 
 #### Example
 
