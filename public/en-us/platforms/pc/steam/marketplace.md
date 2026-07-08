@@ -59,7 +59,7 @@ You do not need to publish your changes.
 
 ## Configuring your Steam AppID and Key
 
-In order for the mod.io purchase server to consume purchased virtual currency packs, you need to configure your game's Steam App ID and Publisher Key. In your Game's admin page, navigate to Monetization > In-App Purchases and populate "Steam AppID" and "Steam Publisher Key" with your game's AppID, and the key you have defined for your economy server.
+In order for the mod.io purchase server to consume purchased virtual currency packs, you need to configure your game's Steam App ID and Publisher Key. In your mod.io Game Admin, navigate to `Monetization > In-App Purchases` and populate "Steam AppID" and "Steam Publisher Key" with your game's AppID, and the key you have defined for your economy server.
 
 ## Mapping the Item Definitions in your mod.io game
 
@@ -69,7 +69,7 @@ With item definitions configured, it's time to map each of the mod.io virtual cu
 
 ## Purchasing a virtual currency pack
 
-Now you're able to purchase and redeem a virtual currency pack. There are two ways that you can trigger a purchase: utilizing the Steam Item Store, or directly to an ItemDefId.
+Now you're able to purchase and redeem a virtual currency pack. There are two ways that you can trigger a purchase: utilizing the Steam Item Store, or navigating directly to an ItemDefId.
 
 ### Item Store
 
@@ -82,10 +82,6 @@ To make a purchase, navigate to your game's Item Store page by visiting `https:/
 ### Direct Purchase
 
 If you display individual SKUs inside your game's UI rather than relying on the Item Store to list the SKUs, then you can also navigate directly to a purchase by visiting `https://store.steampowered.com/buyitem/<appid>/<itemDefId>/1` which will prompt the user to purchase.
-
-## Testing
-
-Steam does not provide a sandbox purchasing environment when they are the microtransaction server (ie you are using the Item Store or direct purchasing from Steam). During development, you should include support for issuing these items to yourself using the SteamInventory's [GenerateItems](https://partner.steamgames.com/doc/api/ISteamInventory#GenerateItems) helper method
 
 ## Consuming the entitlements
 

@@ -7,7 +7,7 @@ sidebar_position: 0
 
 # Authentication
 
-Authentication is a necessary process for games, users, and servers to connect with both mod.io and the API. Authentication allows creators to submit UGC, subscribe to favorites, share colections, enhances safety and plenty more.
+Authentication is a necessary process for games, users, and servers to connect with both mod.io and the API. Authentication allows players to submit UGC, subscribe to favorites, share colections, sync across platforms and web, enhances safety, enables monetization and plenty more.
 
 The authentication guides cover two separate buckets:
 
