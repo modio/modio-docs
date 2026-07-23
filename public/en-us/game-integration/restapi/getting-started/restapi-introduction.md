@@ -88,9 +88,9 @@ To authenticate using an OAuth 2 access token, you must include the HTTP header 
 
 ### Access Token Lifetime & Expiry
 
-By default, all access token's are long-lived - meaning they are valid for a common year (not leap year) from the date of issue. You should architect your application to smoothly handle the event in which a token expires or is revoked by the user themselves or a mod.io admin, triggering a `401 Unauthorized` API response.
+By default, access tokens are long-lived. They will still eventually expire, and can be revoked at any time by the user or a mod.io admin, so you should architect your application to smoothly handle a token that expires or is revoked, triggering a `401 Unauthorized` API response.
 
-If you would like tokens issued through your game to have a shorter lifespan, you can do this by providing the `date_expires` parameter on any endpoint that returns an access token such as the [Email Exchange](/restapi/docs/request-email-security-code) or [Authenticate via Steam](/restapi/docs/authenticate-via-steam) endpoints. If the parameter is not supplied, it will default to 1 year from the request date, if the supplied parameter value is above one year or below the current server time it will be ignored and the default value restored.
+If you would like tokens issued through your game to have a shorter lifespan, you can do this by providing the `date_expires` parameter on any endpoint that returns an access token such as the [Email Exchange](/restapi/docs/request-email-security-code) or [Authenticate via Steam](/restapi/docs/authenticate-via-steam) endpoints. If the supplied value is beyond the maximum allowed lifetime or below the current server time it will be ignored and the default lifetime applied.
 
 ### Request Content-Type
 

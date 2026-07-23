@@ -176,9 +176,9 @@ The above request of redeeming a code for an access token **must** be made from 
 | Name         | Type   | Description                                                                                                                                       |
 | ------------ | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
 | token_type   | string | Token type, always `Bearer`.                                                                                                                      |
-| expires_in   | int    | Seconds until the supplied `access_token` expires which is fixed at `2592000` seconds (approx 1 month).                                           |
+| expires_in   | int    | Seconds until the supplied `access_token` expires.                                           |
 | access_token | string | The user's access token, to be used for calling mod.io API's.                                                                                     |
-| refresh_token | string | The refresh token that can be exchanged via the Exchange Refresh Token endpoint for a new access token. Fixed at 7776000 seconds (approx 3 months). See [Refresh Tokens](#step-4-using-refresh-tokens) for information on using refresh tokens. |
+| refresh_token | string | The refresh token that can be exchanged via the Exchange Refresh Token endpoint for a new access token. See [Refresh Tokens](#step-4-using-refresh-tokens) for information on using refresh tokens. |
 
 ### Step 3: Call protected API's
 
@@ -187,6 +187,10 @@ Finally, once you have a valid access token returned from the Token URL endpoint
 ### Step 4: Using refresh tokens
 
 Returned with the access token is a refresh token, which can be exchanged for an access token at a later date. Refresh tokens can be convenient as they effectively enable your web application to maintain long-lived token access for a user in a frictionless manner as the user is not required to re-authenticate with mod.io. To exchange a refresh token for another access token, refer to the request details below.
+
+:::info
+Refresh tokens are single-use. Each successful exchange returns a **new** `refresh_token` and invalidates the one you presented (the access token issued alongside it is also revoked). Always store the new `refresh_token` from every response and use it for your next refresh — reusing a spent refresh token will fail.
+:::
 
 #### Request
 
@@ -226,9 +230,9 @@ The above request of redeeming a code for an access token **must** be made from 
 | Name         | Type   | Description                                                                                                                                       |
 | ------------ | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
 | token_type   | string | Token type, always `Bearer`.                                                                                                                      |
-| expires_in   | int    | Seconds until the supplied `access_token` expires which is fixed at `2592000` seconds (approx 1 month).                                           |
+| expires_in   | int    | Seconds until the supplied `access_token` expires.                                           |
 | access_token | string | The user's access token, to be used for calling mod.io API's.                                                                                     |
-| refresh_token | string | The refresh token that can be exchanged via the Exchange Refresh Token endpoint for a new access token. Fixed at 7776000 seconds (approx 3 months). |
+| refresh_token | string | A new refresh token that replaces the one you just exchanged. Refresh tokens are single-use, so store this value and use it for your next refresh. |
 
 ### Handling failures
 
