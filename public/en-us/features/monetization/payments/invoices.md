@@ -20,7 +20,7 @@ In order to top up your wallet you will be able to wire funds directly to our pa
 Invoices are due 30 days from issuance and any Virtual Currency credits earned during that time frame by creators or the game studio are marked as pending, and cannot be paid out, until the invoice payment has cleared.
 :::
 
-![Invoice Pay Flow](img/invoice-pay.jpg)
+![Invoice Pay Flow](img/invoice.png)
 
 :::note
 Studio is able to view and pay any outstanding invoices directly from their dashboard.

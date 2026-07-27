@@ -3771,6 +3771,7 @@ A widget that manages the visibility of its children based on the enabled state 
 | | | |
 |-|-|-|
 | `EModioUIFeatureFlags` | `FeatureToCheck` |  |
+| `bool` | `bInvertCheck` |  |
 </RefTable>
 
 
@@ -8768,14 +8769,236 @@ Wrapper around FModioTokenPack when consumer needs UObject-representable data (e
 
 
 
-##### Get Token Pack ID
+##### Is Purchasable
 
+Check if the token pack is purchasable
 
-
-![nd_img_ModioTokenPackUIDetails_GetTokenPackID.png](img/refdocs/nd_img_ModioTokenPackUIDetails_GetTokenPackID.png)
+![nd_img_ModioTokenPackUIDetails_IsPurchasable.png](img/refdocs/nd_img_ModioTokenPackUIDetails_IsPurchasable.png)
 
 ```cpp
-FModioTokenPackID GetTokenPackID()
+bool IsPurchasable() const
+```
+
+
+
+
+
+
+###### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModioTokenPackUIDetails`|
+</RefTable>
+
+
+
+###### Returns
+True if the token pack is purchasable, false otherwise
+
+
+
+
+
+
+
+
+
+
+
+##### Get Token Pack Display Price
+
+
+
+![nd_img_ModioTokenPackUIDetails_GetTokenPackDisplayPrice.png](img/refdocs/nd_img_ModioTokenPackUIDetails_GetTokenPackDisplayPrice.png)
+
+```cpp
+FText GetTokenPackDisplayPrice() const
+```
+
+
+
+
+
+
+###### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModioTokenPackUIDetails`|
+</RefTable>
+
+
+
+###### Returns
+FText containing display string for the pack's current price
+
+
+
+
+
+
+
+
+
+
+
+##### Get Title
+
+Get the title of the token pack
+
+![nd_img_ModioTokenPackUIDetails_GetTitle.png](img/refdocs/nd_img_ModioTokenPackUIDetails_GetTitle.png)
+
+```cpp
+FText GetTitle() const
+```
+
+
+
+
+
+
+###### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModioTokenPackUIDetails`|
+</RefTable>
+
+
+
+###### Returns
+The title text of the token pack
+
+
+
+
+
+
+
+
+
+
+
+##### Get Release Date
+
+Get the release date of the token pack
+
+![nd_img_ModioTokenPackUIDetails_GetReleaseDate.png](img/refdocs/nd_img_ModioTokenPackUIDetails_GetReleaseDate.png)
+
+```cpp
+FDateTime GetReleaseDate() const
+```
+
+
+
+
+
+
+###### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModioTokenPackUIDetails`|
+</RefTable>
+
+
+
+###### Returns
+The release date of the token pack
+
+
+
+
+
+
+
+
+
+
+
+##### Get Regular Price
+
+Get the regular price of the token pack
+
+![nd_img_ModioTokenPackUIDetails_GetRegularPrice.png](img/refdocs/nd_img_ModioTokenPackUIDetails_GetRegularPrice.png)
+
+```cpp
+FText GetRegularPrice() const
+```
+
+
+
+
+
+
+###### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModioTokenPackUIDetails`|
+</RefTable>
+
+
+
+###### Returns
+The regular price text of the token pack
+
+
+
+
+
+
+
+
+
+
+
+##### Get Numeric Price
+
+Get the numeric price of the token pack
+
+![nd_img_ModioTokenPackUIDetails_GetNumericPrice.png](img/refdocs/nd_img_ModioTokenPackUIDetails_GetNumericPrice.png)
+
+```cpp
+int64 GetNumericPrice() const
+```
+
+
+
+
+
+
+###### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModioTokenPackUIDetails`|
+</RefTable>
+
+
+
+###### Returns
+The numeric price of the token pack
+
+
+
+
+
+
+
+
+
+
+
+##### Get Modio Id
+
+
+
+![nd_img_ModioTokenPackUIDetails_GetModioId.png](img/refdocs/nd_img_ModioTokenPackUIDetails_GetModioId.png)
+
+```cpp
+FModioTokenPackID GetModioId() const
 ```
 
 
@@ -8805,14 +9028,14 @@ Token Pack ID for the relevant TokenPack
 
 
 
-##### Get Full Token Pack
+##### Get Long Description
 
+Get the long description of the token pack
 
-
-![nd_img_ModioTokenPackUIDetails_GetFullTokenPack.png](img/refdocs/nd_img_ModioTokenPackUIDetails_GetFullTokenPack.png)
+![nd_img_ModioTokenPackUIDetails_GetLongDescription.png](img/refdocs/nd_img_ModioTokenPackUIDetails_GetLongDescription.png)
 
 ```cpp
-FModioTokenPack GetFullTokenPack()
+FText GetLongDescription() const
 ```
 
 
@@ -8830,7 +9053,155 @@ FModioTokenPack GetFullTokenPack()
 
 
 ###### Returns
-Token Pack struct
+The long description text of the token pack
+
+
+
+
+
+
+
+
+
+
+
+##### Get Fields
+
+Get any dynamic fields associated with the token pack
+
+![nd_img_ModioTokenPackUIDetails_GetFields.png](img/refdocs/nd_img_ModioTokenPackUIDetails_GetFields.png)
+
+```cpp
+TMap<FString,FString> GetFields() const
+```
+
+
+
+
+
+
+###### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModioTokenPackUIDetails`|
+</RefTable>
+
+
+
+###### Returns
+A map of dynamic fields for the token pack
+
+
+
+
+
+
+
+
+
+
+
+##### Get Expiration Date
+
+Get the expiration date of the token pack
+
+![nd_img_ModioTokenPackUIDetails_GetExpirationDate.png](img/refdocs/nd_img_ModioTokenPackUIDetails_GetExpirationDate.png)
+
+```cpp
+FDateTime GetExpirationDate() const
+```
+
+
+
+
+
+
+###### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModioTokenPackUIDetails`|
+</RefTable>
+
+
+
+###### Returns
+The expiration date of the token pack
+
+
+
+
+
+
+
+
+
+
+
+##### Get Description
+
+Get the description of the token pack
+
+![nd_img_ModioTokenPackUIDetails_GetDescription.png](img/refdocs/nd_img_ModioTokenPackUIDetails_GetDescription.png)
+
+```cpp
+FText GetDescription() const
+```
+
+
+
+
+
+
+###### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModioTokenPackUIDetails`|
+</RefTable>
+
+
+
+###### Returns
+The description text of the token pack
+
+
+
+
+
+
+
+
+
+
+
+##### Get Currency Code
+
+Get the currency code of the token pack
+
+![nd_img_ModioTokenPackUIDetails_GetCurrencyCode.png](img/refdocs/nd_img_ModioTokenPackUIDetails_GetCurrencyCode.png)
+
+```cpp
+FString GetCurrencyCode() const
+```
+
+
+
+
+
+
+###### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModioTokenPackUIDetails`|
+</RefTable>
+
+
+
+###### Returns
+The currency code of the token pack
 
 
 
@@ -14172,6 +14543,42 @@ void SetModCollectionRatingStateDataProvider(TScriptInterface<IModCollectionRati
 
 
 
+##### Set Cached SKUMappings
+
+Sets the cached set of platform-specific token packs so that UI elements can fetch the localized pricing when fiat monetization is enabled
+
+![nd_img_ModioUISubsystem_SetCachedSKUMappings.png](img/refdocs/nd_img_ModioUISubsystem_SetCachedSKUMappings.png)
+
+```cpp
+void SetCachedSKUMappings(TArray<FModioTokenPack> SKUMappings)
+```
+
+
+
+
+
+
+###### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModioUISubsystem`|
+|`SKUMappings`||
+</RefTable>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ##### Request Wallet Balance Refresh with Handler
 
 Requests an update of the currently authenticated user's mod.io wallet balance, creating a wallet if one does not already exist. Also executes the given callback upon completion. Executes callbacks in implementations of IModioUIWalletBalanceUpdatedEventReceiver.
@@ -14608,6 +15015,45 @@ void RequestSubscribeToModCollection(FModioModCollectionID ID)
 
 
 
+##### Request Show Token SKUPurchase UIWith Handler
+
+Attempts to invoke the store with a specific SKU for the current platform.
+
+![nd_img_ModioUISubsystem_RequestShowTokenSKUPurchaseUIWithHandler.png](img/refdocs/nd_img_ModioUISubsystem_RequestShowTokenSKUPurchaseUIWithHandler.png)
+
+```cpp
+EModioOpenStoreResult RequestShowTokenSKUPurchaseUIWithHandler(FOnShowTokenPurchaseUIResult Callback, FString SKU)
+```
+
+
+
+
+
+
+###### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModioUISubsystem`|
+|`Callback`|A callback that returns a bool indicating whether the user made a purchase in the store|
+|`SKU`|ID of the SKU to purchase, if empty just opens the store normally|
+</RefTable>
+
+
+
+###### Returns
+Indicates if the native store UI is supported on the current platform, i.e if the store has opened, *not* if a purchase was made.
+
+
+
+
+
+
+
+
+
+
+
 ##### Request Show Token Purchase UIWith Handler
 
 Attempts to invoke the store for the current platform.
@@ -14813,6 +15259,43 @@ void RequestRefreshEntitlements()
 | | |
 |-|-|
 |`Target`|`ModioUISubsystem`|
+</RefTable>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##### Request Purchase with Entitlement for Mod IDWith Handler
+
+Purchases a mod for the current player, executing the callback upon completion.
+
+![nd_img_ModioUISubsystem_RequestPurchaseWithEntitlementForModIDWithHandler.png](img/refdocs/nd_img_ModioUISubsystem_RequestPurchaseWithEntitlementForModIDWithHandler.png)
+
+```cpp
+void RequestPurchaseWithEntitlementForModIDWithHandler(FModioModID ID, FOnPurchaseModDelegate Callback)
+```
+
+
+
+
+
+
+###### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModioUISubsystem`|
+|`ID`|ID of the mod to purchase between the displayed price and the price in the backend. If there is a mismatch, the purchase will fail.|
+|`Callback`|Callback invoked with purchase information once the purchase is completed.|
 </RefTable>
 
 
@@ -15787,6 +16270,58 @@ bool IsRunningInVR()
 
 ###### Returns
 True if HMD is connected and stereo rendering is enabled
+
+
+
+
+
+
+
+
+
+
+
+##### Get SKUMapping by SKUMapping Array
+
+
+![nd_img_ModioUISubsystem_GetSKUMappingBySKUMappingArray.png](img/refdocs/nd_img_ModioUISubsystem_GetSKUMappingBySKUMappingArray.png)
+
+```cpp
+FModioTokenPack GetSKUMappingBySKUMappingArray(TArray<FModioModMonetizationSKU> SKUMappings, bool bValid)
+```
+
+
+
+
+
+
+
+##### Get SKUMapping by Id
+
+Looks up the specified SKU by ID in the subsystem's cache. The cache is populated by game code invoking SetCachedSKUMappings.
+
+![nd_img_ModioUISubsystem_GetSKUMappingById.png](img/refdocs/nd_img_ModioUISubsystem_GetSKUMappingById.png)
+
+```cpp
+FModioTokenPack GetSKUMappingById(FString ID, bool bValid)
+```
+
+
+
+
+
+
+###### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModioUISubsystem`|
+|`ID`||
+|`Valid`||
+</RefTable>
+
+
+
 
 
 
@@ -22501,6 +23036,22 @@ The resolved FText or empty FText if not found
 
 
 
+#### Get Mod Display Price Text
+
+
+![nd_img_ModioUICommonFunctionLibrary_GetModDisplayPriceText.png](img/refdocs/nd_img_ModioUICommonFunctionLibrary_GetModDisplayPriceText.png)
+
+```cpp
+FText GetModDisplayPriceText(FModioModInfo InModInfo)
+```
+
+
+
+
+---
+
+
+
 #### Get Localized Tag Value
 
 Localizes the specified tag value //
@@ -23704,6 +24255,7 @@ Enum for specific dialog types, can be extended if there are additional dialog t
 |-|-|
 | `ModEnableDisable` |  |
 | `Monetization` |  |
+| `FiatMonetization` |  |
 | `ModDownvote` |  |
 | `ModCollections` |  |
 </RefTable>

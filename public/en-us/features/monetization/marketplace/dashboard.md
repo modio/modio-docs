@@ -34,13 +34,12 @@ Your dashboard provides you a snapshot into the latest activity within your mark
 
 - **Marketplace** - You will be able to adjust the settings you configured as part of your onboarding here. These are the same controls and options you enabled in [Monetization settings](/monetization/onboarding#monetization-settings). This is where you manage your SKUs, content pricing and revenue share.
 - **Partner Program** - Direct access to the configuration of [Partner Program](/monetization/partner) settings can also be found here.
-- **Financial Contact Info**  - If you wish to update or change the assigned Financial Contact, you can access these details at any time. We will use this information to send any invoices owing.
 - **In-App Purchases** - To enable cross-platform functionality for Marketplace purchases, it's essential to configure your available platforms. Enter your API keys and pertinent details for these platforms in this section.
 
 ## Transactions
 
 - **Transactions** - This section enables you to review all transactions carried out on the game marketplace. You can apply filters to distinguish between SKU sales and UGC sales, or delve into individual transactions to examine the revenue trail and, if applicable, process refunds for eligible transactions.
-- **Invoices** - A full visible list of all pending and historical [invoices](/monetization/invoices) can be viewed in this section.
+- **Transactions exports** - The ability to export and view all transactions as a csv can be viewed in this section.
 
 ![Transaction Example](img/transaction-external.png)
 

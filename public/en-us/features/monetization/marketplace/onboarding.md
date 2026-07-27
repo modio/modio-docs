@@ -49,16 +49,12 @@ The financial contact will be used for invoicing and onboarding purposes.
 
 ### Application form
 
-Once you’ve entered the details of the financial contact, a KYB application form will be generated and emailed directly to the contact you entered. This form will need to be filled out with all the required information in order to verify your business. Once filled out, it needs to be sent to Thunes for processing.
+After you submit your financial contact details, a Thunes representative will contact you within 3–5 business days to collect the information needed to verify your business. This verification is a manual step and is required to begin your merchant application with our payment partner, Thunes.
+
+![Application Form for mod.io](img/application-form.png)
 
 :::note
-This process is manual and can take up to 3 business days. At times a representative from Thunes may reach out by email to gather new information or clarify information you have provided as part of the application process.
-:::
-
-![Entity Onboard Form For Thunes](img/entity-onboard-2.png)
-
-:::note
-The verification services are provided by our partner Thunes.
+Your status will show as Pending while Thunes reviews your application, and you won't be able to continue your monetization setup during this time. Your status updates to Approved automatically once the review is successful, allowing you to proceed.
 :::
 
 ### Setup entity team
@@ -91,7 +87,7 @@ The verification services are provided by our partner Thunes.
 
 You have the ability to specify a separate individual as the financial contact or fill this information in with your own details. We will use this information to send invoices. You will be able to change this contact at any time through your monetization settings.
 
-![Team Financial Contact Example](img/fin-contact.png)
+![Team Financial Contact Example](img/financial-contact.png)
 
 :::note
 The financial contact will be used for invoicing purposes.
@@ -111,17 +107,22 @@ Revenue share splits can be adjusted at any time and will affect all future tran
 
 Now that you’ve verified and onboarded your team, you are able to turn on and adjust the marketplace functionality for your game:
 
-- Virtual Currency or USD Pricing - Define if content will be sold with a price in virtual currency (players buy virtual currency packs, and then use that virtual currency to purchase content) or USD Pricing (players purchase content directly at a set price in USD or local currency on external platforms).
+- **Virtual Currency or USD Pricing** - Define if content will be sold with a price in virtual currency (players buy virtual currency packs, and then use that virtual currency to purchase content) or USD Pricing (players purchase content directly at a set price in USD or local currency on external platforms).
 - **Virtual Currency name** - The default name for virtual currency is cogs, but you can change the name of your virtual currency to something that matches your game context. This name will be shown anywhere the virtual currency is referenced within your marketplace.
 - **Minimum and maximum price** - These values restrict content sold in the marketplace to be limited to prices within this range.
 - **Default price** - Sets the default/recommended value populated in the price field when creators set up their content for sale.
 - **Transaction revenue split** - Allows you to change the default revenue share split between creators and you as the game publisher. You can see which share each party will get in the split calculator on the right side.
-- **Enable manual moderation** - Activating this will require all content added to the Marketplace by creators to be [manually approved](/monetization/approving-premium-ugc) by your team.
+- **Enable moderation for mod marketplace submissions** - Activating this will require all content added to the Marketplace by creators to be [manually approved](/monetization/approving-premium-ugc) by your team.
+- **Allow currency packs to be purchased on the website** - Allows the ability to disable purchasing of currency packs on the Web
+- **Allow mods to be purchased on the website** - Allows the ability to disable purchasing of UGC on the Web.
+- **Allow players to self-refund mod transactions on the website** - If this is enabled, it allows players to be able to refund UGC transactions from their dashboards within 30 days, and up to 8 times a year.
+- **Hide marketplace for users not in the Partner Program** - If this is turned on, users will not be able to see marketplace related menus and content unless they are part of the Partner Program.
+- **Enable selling mods in limited quantity** - If this is turned on, content sold on the marketplace can be limited to a quantity amount set by creators. Once that quantity has been exhausted, the mod will no longer be able to be sold on the marketplace. This is completely optional and controlled by creators unless force limited quantity is enabled.
 
 ![Marketplace Settings Flow](img/marketplace-settings.png)
 
 :::note
-Marketplace setting can be adjusted at any time through your dashboard.
+Marketplace settings can be adjusted at any time through your dashboard.
 :::
 
 ## Virtual Currency Packs
@@ -141,3 +142,15 @@ This ensures we are able to correctly reconcile funds received on external platf
 :::note
 Virtual Currency Packs can be mapped to Virtual Currency Pack SKUs sold on external platforms.
 :::
+
+
+## Regional Pricing
+
+Please note that mod.io will always invoice $0.0052 for every credit sold, regardless of the originating platform, country and currency of the customer.  Most platforms will charge customers in their local currency, such as the PlayStation Store, Xbox Games Store, Steam and Epic Games Store.  When setting up VC SKUs, platforms will also suggest local currency prices for those markets.  Please make sure when suggesting prices to your platform partners that the wholesale or local SRP is at a level to account for the cost of credits granted in USD.  In rare cases, due to various economic reasons, some local market suggested prices may be insufficient.
+
+We recommend paying particular attention to the following markets: Japan, Argentina, Indonesia, South Korea, Turkey, and Ukraine.
+
+**Additional Notes**
+
+- Transactions made through mod.io's web payment method are charged to the customer in USD. 
+- If you use Steam's Steam Inventory System as recommended in our marketplace setup, prices are set to a USD standard that you provide.

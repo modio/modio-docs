@@ -1,0 +1,33 @@
+---
+id: cook-runner-object
+title: "Cook Runner Object"
+description: "Health and status information for a single cook runner agent."
+sidebar_label: "Cook Runner Object"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"id":"a1b2c3d4-e5f6-7890-abcd-ef1234567890","name":"cook-runner-1","cloud_portal_identifier":"azure-runner-001","version":"1.0.0","virtual_machine_type":"Standard_D4ads_v5","created_at":1718787600,"status":"Healthy","description":"cook-runner-1 is currently running a job","jobs":[{"mod_id":123,"platforms":["Windows","Linux"],"job_step":"Cooking","job_id":"3fa85f64-5717-4562-b3fc-2c963f66afa6"}]}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Cook Runner Object"}
+>
+</Heading>
+
+
+
+Health and status information for a single cook runner agent.
+
+<Schema
+  schema={{"title":"Cook Runner Object","description":"Health and status information for a single cook runner agent.","properties":{"id":{"description":"Unique identifier of the cook runner.","type":"string","format":"uuid","example":"a1b2c3d4-e5f6-7890-abcd-ef1234567890"},"name":{"description":"Name of the cook runner.","type":"string","example":"cook-runner-1","nullable":true},"cloud_portal_identifier":{"description":"Cloud portal identifier for the cook runner.","type":"string","example":"azure-runner-001"},"version":{"description":"Version of the cook runner agent.","type":"string","example":"1.0.0","nullable":true},"virtual_machine_type":{"description":"Name of the underlying virtual machine.","type":"string","example":"Standard_D4ads_v5"},"created_at":{"description":"Unix timestamp of when the cook runner was created.","type":"integer","format":"int64","example":1718787600},"status":{"description":"Health status of the cook runner.","type":"string","enum":["Healthy","Degraded","Unhealthy","Draining"],"example":"Healthy"},"description":{"description":"Human-readable description of the current status.","type":"string","example":"cook-runner-1 is currently running a job","nullable":true},"jobs":{"description":"Array of jobs currently running on this cook runner. Empty when idle.","type":"array","items":{"properties":{"mod_id":{"description":"ID of the mod being processed.","type":"integer","format":"int64","example":123,"nullable":true},"platforms":{"description":"Target platforms for this job.","type":"array","items":{"type":"string"},"example":["Windows","Linux"]},"job_step":{"description":"Current step of the job.","type":"string","example":"Cooking","nullable":true},"job_id":{"description":"Unique identifier of the job.","type":"string","format":"uuid"}},"type":"object"}}},"type":"object"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

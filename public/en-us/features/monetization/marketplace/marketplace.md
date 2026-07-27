@@ -37,7 +37,7 @@ You can choose between using virtual currency for the transactions within Market
 
 ### Secured and scalable 
 
-Backed by a KYC/KYB verification process for all users and businesses, our system is entirely PSD2, PCI, and sales tax compliant, supporting payments in 180 countries. All regulatory obligations are managed through Thunes, our digital payment solution, ensuring a secure end-to-end payment with built-in fraud detection.
+Backed by a KYC/KYB verification process for all users and businesses, our system is entirely PSD3, PCI, and sales tax compliant, supporting payments in 180 countries. All regulatory obligations are managed through Thunes, our digital payment solution, ensuring a secure end-to-end payment with built-in fraud detection.
 
 ### Full control 
 

@@ -11,6 +11,7 @@ Our system is built to support cross-platform payments on web, in-game and conso
 This guide covers:
 
 * [Virtual Currency](#virtual-currency)
+* [USD Pricing](#usd-pricing)
 * [Wholesale Virtual Currency price and fees](#wholesale-virtual-currency-price-and-fees)
 * [Examples](#examples)
 
@@ -46,7 +47,7 @@ A studio can expect a 20% to 61% share of the revenue from UGC sales, depending 
 
 For sales happening on the mod.io platform, the fees described above are applied directly, and the game publisher receives their share of the revenue immediately.
 
-However, sales made through external platforms (e.g. Steam, PlayStation Store, iOS) are paid as royalties directly to the studio; in that case, mod.io’s fee is paid by the publisher retroactively with a monthly invoice (see details below).
+However, sales made through external platforms (e.g. Steam, PlayStation Store, iOS) are paid directly to the studio; in that case, mod.io’s fee is paid by the publisher retroactively with a monthly invoice (see details below).
 
 mod.io's fee is always a fixed $0.0012 per credit, taken from the Virtual Currency wholesale rate.
 

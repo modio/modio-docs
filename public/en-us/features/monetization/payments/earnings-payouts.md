@@ -6,10 +6,6 @@ slug: /monetization/earnings
 
 # Earnings & Payouts
 
-If you have onboarded your game through KYB, any funds marked as available in your USD wallet will be paid out automatically every month via wire transfer by our payment partner, Thunes.
-
-A representative from Thunes will reach out to the Financial Contact marked in your Monetization Settings to obtain the information needed.
-
 You will be able to see your balance at any time through your Game Admin dashboard on mod.io.
 
 If you have onboarded your game through KYC, you will be able to see your balance through your Account on mod.io.

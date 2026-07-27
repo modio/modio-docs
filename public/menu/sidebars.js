@@ -67,6 +67,10 @@ const sidebars = {
         {
           type: 'category',
           label: 'Getting Started',
+          link: {
+            type: 'doc',
+            id: 'game-integration/unreal/getting-started/ue-getting-started',
+          },
           items: [
             'game-integration/unreal/getting-started/ue-installation',
             'game-integration/unreal/getting-started/ue-initialization',
@@ -84,18 +88,25 @@ const sidebars = {
             'game-integration/unreal/getting-started/ue-subscribing',
             'game-integration/unreal/getting-started/ue-adding-ugc',
             'game-integration/unreal/getting-started/ue-ugc-best-practices',
+            'game-integration/unreal/getting-started/ue-multiplayer-servers',
           ],
         },
         {
           type: 'category',
           label: 'Feature Setup Guides',
+          link: {
+            type: 'doc',
+            id: 'game-integration/unreal/feature-guides/ue-feature-guides',
+          },
           items: [
-            'game-integration/unreal/feature-guides/ue-feature-guides',
             {
               type: 'category',
               label: 'Component UI',
+              link: {
+                type: 'doc',
+                id: 'game-integration/unreal/component-ui/ue-principles',
+              },
               items: [
-                'game-integration/unreal/component-ui/ue-principles',
                 'game-integration/unreal/component-ui/ue-building-a-screen',
                 'game-integration/unreal/component-ui/ue-substitute-components',
                 'game-integration/unreal/component-ui/ue-custom-components',
@@ -110,6 +121,10 @@ const sidebars = {
             {
               type: 'category',
               label: 'Template UI',
+              link: {
+                type: 'doc',
+                id: 'game-integration/unreal/template-ui/ui-overview',
+              },
               items: [
                 'game-integration/unreal/template-ui/ue-tui-functionality',
                 'game-integration/unreal/template-ui/ue-tui-layouts',
@@ -118,9 +133,14 @@ const sidebars = {
             {
               type: 'category',
               label: 'ModioUGC',
+              link: {
+                type: 'doc',
+                id: 'game-integration/unreal/ue-modio-ugc/overview',
+              },
               items: [
-                'game-integration/unreal/ue-modio-ugc/overview',
                 'game-integration/unreal/ue-modio-ugc/getting-started',
+                'game-integration/unreal/ue-modio-ugc/mutators',
+                'game-integration/unreal/ue-modio-ugc/ugc-templates',
                 'game-integration/ue-generated/ugc/modio-ugc-refdocs',
               ],
             },
@@ -128,6 +148,8 @@ const sidebars = {
             'game-integration/unreal/feature-guides/ue-temporary-mods',
             'game-integration/unreal/feature-guides/ue-metrics',
             'game-integration/unreal/feature-guides/ue-cloud-cooking',
+            'game-integration/unreal/feature-guides/ue-multiplayer',
+            'game-integration/unreal/feature-guides/ue-online-portal-helpers',
           ],
         },
         {
@@ -139,6 +161,7 @@ const sidebars = {
             'game-integration/unreal/modio-action-rpg/modio-plugin-integration',
             'game-integration/unreal/modio-action-rpg/moddable-weapons',
             'game-integration/unreal/modio-action-rpg/troubleshooting',
+            'game-integration/ue-generated/ARPG/modio-action-rpg-refdocs',
           ],
         },
         'game-integration/ue-generated/core/ue-refdocs',
@@ -362,7 +385,6 @@ const sidebars = {
       label: 'Cloud Cooking',
       items: [
         'features/cloud-cooking/cloud-cooking-overview',
-        'features/cloud-cooking/cloud-cooking-architecture',
         'features/cloud-cooking/cloud-cooking-configuration',
         'features/cloud-cooking/cloud-cooking-autosdk',
       ],

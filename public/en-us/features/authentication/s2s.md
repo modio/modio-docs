@@ -58,7 +58,7 @@ sequenceDiagram
 Prior to this flow, you must first create an OAuth Client on your game dashboard, to store on your secure server for Step 1.
 
 1. Studio Secure Server calls mod.io S2S Auth API with the Studio Client ID, Client Secret and requested scopes.
-2. mod.io S2S Server responds with a Service token.
+2. mod.io S2S Server responses with a Service token, valid for 90 days.
 3. Studio Secure Server attaches Service Token as Bearer token to requests to protected S2S APIs.
 
 ## Implementation
@@ -100,7 +100,7 @@ client_id=12743894323&client_secret=Uq8jI5vWHoX0BBKDFDeaiYOVjofITG19&grant_type=
 | Name         | Type   | Description                                                                                                                                       |
 | ------------ | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------- |
 | token_type   | string | Token type, always `Bearer`.                                                                                                                      |
-| expires_in   | int    | Seconds until the supplied `access_token` expires.                                           |
+| expires_in   | int    | Seconds until the supplied `access_token` expires which is fixed at `2592000` seconds (approx 1 month).                                           |
 | access_token | string | The service token used to make requests to the mod.io API on behalf of your purchase server. There is no user context associated with this token. |
 | scopes       | string | The scopes of the token that have been set.                                                                                                   |
 
@@ -177,4 +177,4 @@ Your backend service should be configured such as in the event that the service 
 
 - An OAuth Client ID, Client Secret and Service Tokens should be kept confidential at all times and never shared with untrusted clients such as game consoles or mobile devices.
 - Service Tokens are not associated with any specific user on mod.io, and is a generic token designed to identify your secure server for S2S related tasks.
-- We highly recommend caching the token on your backend and only requesting a new service token if you require different scope(s) or the token has expired.
+- Service Tokens are valid for 30 days. We highly recommend caching the token on your backend and only request a new service token if you require different scope(s) or the token has expired.

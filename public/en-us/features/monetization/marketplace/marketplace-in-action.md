@@ -19,13 +19,13 @@ When Marketplace is enabled, a Marketplace tab will appear on your mod.io game p
 
 As a studio you will have the ability to subscribe to all paid UGC automatically, or purchase it directly to support creators.
 
-![Virtual Currency Pack Listing Page](img/virtual-currency-pack-page.jpg)
+![Virtual Currency Pack Listing Page](img/virtual-currency-pack-page.png)
 
 :::note
 Players are able to purchase Virtual Currency credits to exchange for UGC content, or purchase content directly when set up with USD Pricing.
 :::
 
-![Marketplace Tab](img/marketplace-tab.jpg)
+![Marketplace Tab](img/marketplace-tab.png)
 
 :::note
 Approved premium content is made available in the Marketplace.
@@ -35,7 +35,7 @@ Approved premium content is made available in the Marketplace.
 
 Creators are able to list content on the Marketplace for defined prices, once listed on the Marketplace, players are able to purchase said content using their credits (or perform direct purchases when set up with USD Pricing). Player credit balances are unique and specific to each game to meet compliance with external platforms.
 
-![UGC Purchase Flow](img/ugc-purchased.jpg)
+![UGC Purchase Flow](img/ugc-purchase.png)
 
 :::note
 Players can utilize their credit balance to exchange for premium UGC content.
@@ -53,7 +53,7 @@ Players will be able to self-service refund any transactions they have made thro
 
 The studio will also be able to refund transactions on behalf of the player if the transaction has been made within 30 days.
 
-![Refund Transaction Flow](img/refund-flow.jpg)
+![Refund Transaction Flow](img/refund.png)
 
 :::note
 Self service refunds are available for all purchases within a set time frame.

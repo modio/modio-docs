@@ -488,6 +488,36 @@ FString SanitizeFilePath(FString FilePath)
 
 
 
+#### Request SKUMappings
+
+
+![nd_img_ModioPortalInterface_RequestSKUMappings.png](img/refdocs/nd_img_ModioPortalInterface_RequestSKUMappings.png)
+
+```cpp
+void RequestSKUMappings(FSKUMappingsRequestedDelegate Callback)
+```
+
+
+
+
+
+
+
+#### Request Open Store
+
+
+![nd_img_ModioPortalInterface_RequestOpenStore.png](img/refdocs/nd_img_ModioPortalInterface_RequestOpenStore.png)
+
+```cpp
+EModioOpenStoreResult RequestOpenStore(FStoreClosedDelegate Callback, FString SKU)
+```
+
+
+
+
+
+
+
 #### Request Entitlement Params
 
 
@@ -614,21 +644,6 @@ TMap<FString,FString> GetExtendedInitializationParams()
 
 ```cpp
 TMap<FString,FString> GetExtendedAuthParams()
-```
-
-
-
-
-
-
-
-#### Get Auth Key
-
-
-![nd_img_ModioPortalInterface_GetAuthKey.png](img/refdocs/nd_img_ModioPortalInterface_GetAuthKey.png)
-
-```cpp
-FString GetAuthKey()
 ```
 
 
@@ -2197,6 +2212,48 @@ FModioOptionalModProgressInfo K2_QueryCurrentModUpdate()
 
 ##### Returns
 `ModioOptionalModProgressInfo` object containing information regarding the progress of the installation operation.
+
+
+
+
+
+
+
+
+
+
+
+#### PurchaseModWithEntitlementAsync
+
+Attempts to purchase a specified mod by consuming an existing, un-consumed entitlement that the user has from the current portal. Purchasing a mod will add a subscription to it. If the user does not have an existing entitlement, the purchase will fail. It is recommended to call GetAvailableUserEntitlementsAsync to query if the current user has an available entitlement prior to this call.
+
+![nd_img_ModioSubsystem_K2_PurchaseModWithEntitlementAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_PurchaseModWithEntitlementAsync.png)
+
+```cpp
+void K2_PurchaseModWithEntitlementAsync(FModioModID ModID, FModioEntitlementParams EntitlementParams, FOnPurchaseModDelegate Callback)
+```
+
+
+##### Requirements
+* _initialized-sdk_
+* _authenticated-user_
+* _no-rate-limiting_
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModioSubsystem`|
+|`ModID`|ID of the mod to purchase|
+|`EntitlementParams`|Portal-specific additional parameters|
+|`Callback`|Callback invoked with purchase information once the purchase is completed.|
+</RefTable>
+
+
+
 
 
 
@@ -3846,6 +3903,46 @@ void K2_GetGameInfoAsync(FModioGameID GameID, FOnGetGameInfoDelegate Callback)
 
 
 
+#### GetAvailableUserEntitlementsAsync
+
+
+
+![nd_img_ModioSubsystem_K2_GetAvailableUserEntitlementsAsync.png](img/refdocs/nd_img_ModioSubsystem_K2_GetAvailableUserEntitlementsAsync.png)
+
+```cpp
+void K2_GetAvailableUserEntitlementsAsync(FOnGetAvailableUserEntitlementsDelegate Callback)
+```
+
+
+##### Requirements
+* _initialized-sdk_
+* _authenticated-user_
+* _no-rate-limiting_
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModioSubsystem`|
+|`Callback`|Callback providing an error code indicating success or failure of the retrieval operation|
+</RefTable>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #### ForceUninstallModAsync
 
 Forcibly uninstalls a mod from the system. This can be used when the host application requires additional space for other mods. The current user must not be subscribed to the mod to force uninstall. To remove a mod the current user is subscribed to, first use [`UnsubscribeFromModAsync`](#unsubscribefrommodasync). If the mod does not uninstall (due to a different user on the same system remaining subscribed), `ForceUninstallModAsync` can be called next.
@@ -4826,6 +4923,71 @@ Utility functions for accessing and managing lists of user information
 
 ## Structs
 
+### ModioEntitlementList 
+
+Strong type struct to wrap multiple Entitlement indexed by a paged result
+
+
+
+
+
+
+
+
+
+
+
+---
+
+### ModioEntitlement 
+
+Information related to a SKU entitlement
+
+
+
+
+
+
+
+
+##### Variables
+<RefTable colWidths={['10%', '10%', '20%']} stripes="odd">
+| | | |
+|-|-|-|
+| `FString` | `SkuId` | Id of the Sku the entitlement is for |
+| `EModioEntitlementType` | `EntitlementType` | The type of the entitlement |
+</RefTable>
+
+
+
+---
+
+### ModioPagedResult 
+
+Strong type struct to acknowledge the position of a result relative to the API endpoint's results
+
+
+
+
+
+
+
+
+##### Variables
+<RefTable colWidths={['10%', '10%', '20%']} stripes="odd">
+| | | |
+|-|-|-|
+| `int32` | `PageIndex` | The index of this page |
+| `int32` | `PageSize` | The amount of results allowed to be displayed within a page |
+| `int32` | `PageCount` | The total amount of pages |
+| `int32` | `TotalResultCount` | The total amount of results |
+| `int32` | `ResultCount` | The amount of results for this page |
+</RefTable>
+
+
+
+---
+
 ### ModioGameInfoList 
 
 Strong type struct to wrap multiple GameInfo indexed by a paged result
@@ -5154,32 +5316,6 @@ Contains media URLs to the icon for the game
 
 ---
 
-### ModioPagedResult 
-
-Strong type struct to acknowledge the position of a result relative to the API endpoint's results
-
-
-
-
-
-
-
-
-##### Variables
-<RefTable colWidths={['10%', '10%', '20%']} stripes="odd">
-| | | |
-|-|-|-|
-| `int32` | `PageIndex` | The index of this page |
-| `int32` | `PageSize` | The amount of results allowed to be displayed within a page |
-| `int32` | `PageCount` | The total amount of pages |
-| `int32` | `TotalResultCount` | The total amount of results |
-| `int32` | `ResultCount` | The amount of results for this page |
-</RefTable>
-
-
-
----
-
 ### ModioModCollectionInfoList 
 
 Strong type struct to wrap multiple ModCollectionInfo indexed by a paged result
@@ -5403,6 +5539,31 @@ Full mod profile including current release information, media links, and stats
 | `FModioModStats` | `Stats` | Stats and rating information for the mod |
 | `EModioModServerSideStatus` | `ModStatus` | Status of the mod |
 | `FModioUnsigned64` | `Price` | Price of this mod |
+| `TArray<FModioModMonetizationSKU>` | `SKUMappings` |  |
+</RefTable>
+
+
+
+---
+
+### ModioModMonetizationSKU 
+
+
+
+
+
+
+
+
+
+
+##### Variables
+<RefTable colWidths={['10%', '10%', '20%']} stripes="odd">
+| | | |
+|-|-|-|
+| `int64` | `Id` |  |
+| `FString` | `SKUName` |  |
+| `FString` | `Portal` |  |
 </RefTable>
 
 
@@ -5728,6 +5889,22 @@ Simple struct to encapsulate portal-specific data required when consuming entitl
 ### ModioOptionalModCollectionInfo 
 
 Struct to wrap ModCollectionInfo into an optional parameter
+
+
+
+
+
+
+
+
+
+
+
+---
+
+### ModioOptionalEntitlementList 
+
+Struct to wrap EntitlementList into an optional parameter
 
 
 
@@ -6130,6 +6307,22 @@ Struct type to specify the fields to update for a mod
 
 ---
 
+### ModioOptionalEntitlement 
+
+Strong type struct to store an optional Entitlement parameter
+
+
+
+
+
+
+
+
+
+
+
+---
+
 ### ModioEntitlementWalletBalance 
 
 Updated wallet balance from the sync entitlements call
@@ -6483,7 +6676,7 @@ Struct with the strings to display to a user when showing the terms of use and t
 
 ### ModioOptionalTokenPack 
 
-Strong type struct to store an optional ModInfo parameter
+Strong type struct to store an optional TokenPack parameter
 
 
 
@@ -11611,6 +11804,20 @@ bool K2_LoadModFileToMemory(UModioSubsystem* Target, FModioModID ModId, TArray<u
 
 ## Enums
 
+### EModioEntitlementType {#EModioEntitlementType} 
+
+Type of entitlement that was consumed
+
+
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+| `VirtualCurrency` |  |
+| `SKU` |  |
+</RefTable>
+
+---
+
 ### EModioGameCloudCookingStatus {#EModioGameCloudCookingStatus} 
 
 Cloud Cooking status for this game
@@ -11856,19 +12063,6 @@ State of an entitlement consumption transaction
 | `Pending` |  |
 | `Fulfilled` |  |
 | `ConsumeLimitExceeded` |  |
-</RefTable>
-
----
-
-### EModioEntitlementType {#EModioEntitlementType} 
-
-Type of entitlement that was consumed
-
-
-<RefTable colWidths={['30%', '70%']} stripes="odd">
-| | |
-|-|-|
-| `VirtualCurrency` |  |
 </RefTable>
 
 ---
