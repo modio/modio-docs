@@ -125,7 +125,7 @@ public static partial class ErrorExtensions
 #### GetMessage{#Modio.Errors.ErrorExtensions.GetMessage}
 
 ```csharp
-public static string GetMessage(this ApiErrorCode errorCode, string append
+public static string GetMessage(this ErrorCode errorCode, string append)
 ```
 
 ___
@@ -1469,6 +1469,11 @@ STEAM_APP_TICKET_INVALID = 11018
 CANNOT_VERIFY_EXTERNAL_CREDENTIALS = 11032
 ```
 mod.io was unable to verify the credentials against the external service provider.
+
+```csharp
+SWITCH_APP_ID_NOT_VALID = 11041
+```
+mod.io was unable to sign in as the App Id was not valid (please note it is case sensitive).
 
 ```csharp
 USER_NO_ACCEPT_TERMS_OF_USE = 11074

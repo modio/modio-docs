@@ -66,6 +66,13 @@ public void SetBasePath(string value)
 ```
 
 
+#### SetUserAgent{#Modio.Unity.ModioAPIUnityClient.SetUserAgent}
+
+```csharp
+public void SetUserAgent(string value)
+```
+
+
 #### AddDefaultPathParameter{#Modio.Unity.ModioAPIUnityClient.AddDefaultPathParameter}
 
 ```csharp
@@ -266,6 +273,13 @@ public ModioSettings Settings
 
 ```csharp
 public void InvokeOnChanged()
+```
+
+
+#### LoadSettings{#Modio.Unity.ModioUnitySettings.LoadSettings}
+
+```csharp
+[ExcludeFromCodeCoverage] public static ModioUnitySettings LoadSettings()
 ```
 
 ___

@@ -1,0 +1,89 @@
+---
+id: meta-marketplace
+title: Meta Quest Marketplace
+slug: /cppsdk/meta/marketplace
+custom_edit_url: https://github.com/modio/modio-sdk-internal/blob/develop/platform/meta/doc/meta/marketplace.mdx
+---
+
+# Meta Quest Marketplace
+
+The mod.io SDK supports [Monetization](https://docs.mod.io/monetization) on Meta Quest through Virtual Currency. Players purchase virtual currency packs on the Meta Quest Store, and the SDK consumes those purchases as entitlements, converting them into virtual currency that can be spent on UGC.
+
+Before following this guide, complete the [Meta Quest Setup](https://docs.mod.io/cppsdk/meta/getting-started) guide (including authentication) and read the general [Marketplace](https://docs.mod.io/cppsdk/marketplace) guide. These cover the platform-agnostic purchase flow (`GetUserWalletBalanceAsync`, `PurchaseModAsync`, and displaying monetized content). This page only covers the Meta-specific steps.
+
+## SDK Initialization
+
+Initialize the SDK with `Modio::Portal::Meta` so that entitlements are redeemed against the Meta Quest Store. This is set in the `Modio::InitializeOptions` passed to `Modio::InitializeAsync`.
+
+## Refreshing Entitlements and Wallet Balance
+
+Entitlement refreshing is the mechanism by which virtual currency packs purchased on the Meta Quest Store are consumed and credited to the user's mod.io wallet.
+
+A wallet is the user's mod.io balance of virtual currency (tokens) for your game. When a user consumes a purchased virtual currency pack, its value is credited to their wallet, and that balance is later spent on premium UGC. Each user has one wallet per game, created on first access.
+
+On Meta, `RefreshUserEntitlementsAsync` requires two values in `EntitlementParams.ExtendedParameters`:
+
+* **Device** (`APIStrings::Device`) - must be the string `"quest"`.
+* **UserID** (`APIStrings::UserID`) - the logged-in Meta user's ID, obtained from `ovr_GetLoggedInUserID()`.
+
+You should call `GetUserWalletBalanceAsync` at least once before refreshing entitlements to ensure the user has a wallet - entitlements cannot be consumed without one. 
+Refresh on startup (to catch purchases made outside the game) and after any purchase completes on the Meta Quest Store.
+
+The example below refreshes entitlements, logs each consumed entitlement, and then updates the cached wallet balance:
+
+```cpp
+void RefreshEntitlements()
+{
+	Modio::Detail::Logger().Log(Modio::LogLevel::Info, Modio::LogCategory::Core, "RefreshEntitlements called");
+
+	std::string userId = std::to_string(ovr_GetLoggedInUserID());
+
+	Modio::EntitlementParams EntitlementParams;
+	EntitlementParams.ExtendedParameters.emplace(Modio::Detail::Constants::APIStrings::Device, "quest");
+	EntitlementParams.ExtendedParameters.emplace(Modio::Detail::Constants::APIStrings::UserID, userId);
+
+	Modio::RefreshUserEntitlementsAsync(
+		EntitlementParams,
+		[](Modio::ErrorCode ec, Modio::Optional<Modio::EntitlementConsumptionStatusList> entitlementList) {
+			if (ec)
+			{
+				Modio::Detail::Logger().Log(Modio::LogLevel::Error, Modio::LogCategory::Core,
+											"RefreshEntitlements something went wrong: {}", ec.message());
+			}
+			else
+			{
+				int entitlementCount = entitlementList.value().GetTotalResultCount();
+				Modio::Detail::Logger().Log(Modio::LogLevel::Info, Modio::LogCategory::Test,
+											"Number of entitlements returned: {}", entitlementCount);
+
+				for (int index = 0; index < entitlementCount; index++)
+				{
+					size_t i = static_cast<size_t>(index);
+					Modio::Detail::Logger().Log(Modio::LogLevel::Info, Modio::LogCategory::Test,
+												"Entitelement Id : {} , Consumed : {} , ProductId : {} ",
+												entitlementList.value()[i].TransactionId,
+												entitlementList.value()[i].EntitlementConsumed,
+												entitlementList.value()[i].SkuId);
+				}
+
+				// Update the wallet balance
+				Modio::GetUserWalletBalanceAsync([](Modio::ErrorCode ec, Modio::Optional<uint64_t> WalletBalance) {
+					if (!ec)
+					{
+						GlobalSDKState.WalletAmount = WalletBalance.value();
+					}
+					else
+					{
+						Modio::Detail::Logger().Log(Modio::LogLevel::Error, Modio::LogCategory::Core,
+													"GetUserWalletBalanceAsync something went wrong: {}", ec.message());
+					}
+				});
+			}
+		});
+}
+```
+
+:::note
+If your game uses the USD Marketplace flow instead of Virtual Currency, populate `EntitlementParams` with the same `"quest"` Device and `ovr_GetLoggedInUserID()` UserID values when calling `<<GetAvailableUserEntitlementsAsync>>` and `<<PurchaseModWithEntitlementAsync>>`.
+See the [Marketplace](https://docs.mod.io/cppsdk/marketplace#usd-marketplace) guide for the USD flow.
+:::

@@ -7,7 +7,7 @@ custom_edit_url: https://github.com/modio/modio-unity-internal/tree/main/docs/pu
 
 # User Authentication for Unity
 
-Most of the API’s functionality requires player authentication. The Unity Plugin offers a range of SSO (single-sign on) authentication options, including *Steam, Meta, Epic Games, Apple, Google, Xbox, PS4™/PS5®, Nintendo Switch/2,* and more. 
+Most of the API’s functionality requires player authentication. The Unity Plugin offers a range of SSO (single-sign on) authentication options, including *Steam, Meta, Epic Games, Apple, Google, XBOX, PS4™/PS5®, Nintendo Switch/2,* and more. 
 
 We strongly recommend using these options as they provide a frictionless user experience and don't require multiple steps. You can further explore these options below and in our [Authentication Guide](https://docs.mod.io/authentication).
 
@@ -148,7 +148,7 @@ There are two types of SSO to consider:
 
 	* [Steam](https://docs.mod.io/platforms/steam/authentication)
 	* [PlayStation™Network](https://docs.mod.io/platforms/playstation#authentication)
-	* [Xbox Live](https://docs.mod.io/platforms/gdk#authentication)
+	* [XBOX Live](https://docs.mod.io/platforms/gdk#authentication)
 	* [Nintendo Switch](https://docs.mod.io/platforms/switch#authentication)
 	* [Apple (iOS)](https://docs.mod.io/platforms/apple/authentication)
 	* [Google Play (Android)](https://docs.mod.io/platforms/google/authentication)
@@ -195,6 +195,10 @@ this next section requires the `SteamClient` to have been initialized before exe
 ### Include Terms of Use
 
 In order to authenticate a user with mod.io, they must agree to the mod.io Terms of Use. This differs from Email authentication as the Terms of Use is built into the email sign-up process, not requiring it in-game. You can learn more about this in our [Terms of Use](https://docs.mod.io/terms-user-consent) section. This window requires links to the mod.io Terms of Use &amp; the mod.io Privacy Policy to be valid.
+
+:::important
+Ensure your localization language is configured before displaying the Terms of Use. The mod.io Terms of Use and Privacy Policy links will be provided in the language specified by `ModioClient.Settings.DefaultLanguage`. See the [Localization for Unity](/unity/localization) for details on setting the language preference.
+:::
 
 :::note
 While creating the UI layout referenced below is outside the scope of this guide, there are great Unity UI tutorials available.

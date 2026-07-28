@@ -24,7 +24,7 @@ The following platforms require approval, see [Console SDKs](https://docs.mod.io
 
 * [PlayStation®4](https://docs.mod.io/partners/ps4/marketplace)
 * [PlayStation®5](https://docs.mod.io/partners/ps5/marketplace)
-* [Xbox](https://docs.mod.io/partners/xbox/marketplace)
+* [XBOX](https://docs.mod.io/partners/xbox/marketplace)
 
 ## Template UI
 

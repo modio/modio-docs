@@ -1279,7 +1279,7 @@ void AuthenticationCallback(Result result)
 public static void AuthenticateUserViaXbox(string xboxToken,  string emailAddress,  TermsHash? hash,  Action<Result> callback)
 ```
 
-Attempts to authenticate a user via the Xbox API.
+Attempts to authenticate a user via the XBOX API.
 
 
 ###### Remarks
@@ -4207,9 +4207,9 @@ void ReportCallback(Result result)
 public static void SyncEntitlements(Action<ResultAnd<Entitlement[]>> callback)
 ```
 
-Convert an in-game consumable that a user has purchased on Steam, Xbox, or Psn into a users
+Convert an in-game consumable that a user has purchased on Steam, XBOX, or Psn into a users
 mod.io inventory. This endpoint will consume the entitlement on behalf of the user against
-the portal in which the entitlement resides (i.e. Steam, Xbox, Psn).
+the portal in which the entitlement resides (i.e. Steam, XBOX, Psn).
 
 
 ###### Parameters
@@ -5278,7 +5278,7 @@ async void Authenticate_Example()
 public static async Task<Result> AuthenticateUserViaXbox(string xboxToken,  string emailAddress,  TermsHash? hash)
 ```
 
-Attempts to authenticate a user via the Xbox API.
+Attempts to authenticate a user via the XBOX API.
 
 
 ###### Remarks
@@ -7409,9 +7409,9 @@ async void Example()
 public static async Task<ResultAnd<Entitlement[]>> SyncEntitlements()
 ```
 
-Convert an in-game consumable that a user has purchased on Steam, Xbox, or Psn into a users
+Convert an in-game consumable that a user has purchased on Steam, XBOX, or Psn into a users
 mod.io inventory. This endpoint will consume the entitlement on behalf of the user against
-the portal in which the entitlement resides (i.e. Steam, Xbox, Psn).
+the portal in which the entitlement resides (i.e. Steam, XBOX, Psn).
 
 
 ###### See Also

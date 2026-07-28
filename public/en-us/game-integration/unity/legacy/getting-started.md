@@ -68,7 +68,7 @@ Now, return to your scene in Unity, enter Play mode and you should see the logge
 This guide uses `ModIOUnityAsync` wherever possible. However, you can find callback equivalents to every method in `ModIOUnity` if you prefer.
 :::
 
-Most of the API’s functionality requires player authentication. The plugin offers a large range of SSO (single-sign on) authentication options, including Steam, Xbox, Google, PlayStation, and more. We strongly recommend using these options as they provide a frictionless user experience and don't require multiple steps.
+Most of the API’s functionality requires player authentication. The plugin offers a large range of SSO (single-sign on) authentication options, including Steam, XBOX, Google, PlayStation, and more. We strongly recommend using these options as they provide a frictionless user experience and don't require multiple steps.
 
 For now, let's start with a simple email authentication to allow us full access.
 

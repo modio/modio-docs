@@ -16,18 +16,18 @@ Working with Mutators is simple. As a developer you create specific points where
 
 Once these points have been defined modders can easily create a new mutator and implement any behaviours they want using the framework you have provided them. Because the events have default implementations modders only need to implement the events they specifically care about, which can serve to lower the barrier to entry to modding. Having a defined framework can also serve as inspiration for modders as they can easily see the types of events they have access to which might spark creativity.
 
-# Registering Mutators
+## Registering Mutators
 You will need to provide players with some way of picking which mutators they want applied at any given time. Once they have decided you will need to register each of them with the Mutator Subsystem using `RegisterMutator()`. This function takes the type of mutator you want to register, instantiates it, and returns a handle to it for future purposes.
 
 An advantage with Mutators is they can easily be combined to create more complex behaviour. To support this each Mutator is registered with a priority which determines the order in which they are evaluated. If two or more mutators are registered with the same priority then they will be processed in the order in which they were registered.
 
-# Asset Replacement
+## Asset Replacement
 Mutators give you a simple way to allow modders to easily swap certain assets that you have made replaceable with assets of their own. These can be things as simple as skins for items or player models or more complicated assets such as data assets that describe what enemies can spawn in a given area.
 
-## Create Asset Replacement Tag
+### Create Asset Replacement Tag
 For each asset you want a modder to be able to replace, create a new Gameplay Tag to be used to identify the asset at the point of replacement. As a convention we use `Mutator.Asset` as the tag root but that is not a requirement, which means this should be compatible with any existing asset tagging structures. Likewise there is no requirement on the Tag Source. We use MutatorTags.ini for ours but feel free to use your own.
 
-## Create Replacement point
+### Create Replacement point
 Once you have an Asset Replacement Tag for an asset you now need to handle the replacement. At the point that the asset is being initialised, replace the reference to the asset with a call to `UMutatorSubsystem:GetAsset()`. This function will check any active mutators to see if they want to replace this asset and return the replacement asset. If no Mutator has a replacement for that asset, the function will return the default parameter. Mutators are checked for asset replacements in priority order and once a replacement is found it will not check any other mutators.
 
 Example:
@@ -41,7 +41,7 @@ SetStaticMesh(MutatorSubsystem->GetAsset(FGameplayTag::RequestGameplayTag("Mutat
 
 modders will now be able to add entries to the `AssetOverrides` property of the mutators they create.
 
-# Mutating Behaviours
+## Mutating Behaviours
 The other way Mutators can enable modders is through Mutator Events. Creating a new Mutator Event allows modders to add, change, or react to certain things happening in your game, for example the player taking damage or an enemy spawning. Many times you may want to allow these events to change the result of what is happening (the amount of damage being dealt or the enemy being spawned). Note that unlike Asset Replacement, each registered mutator will get an opportunity to mutate each event.
 
 New mutator events are created by using a combination of custom macros (found in ModioUGC\Public\Mutators\MutatorUtils.h). These macros help cut down on boilerplate code and let you focus on creating quickly and efficiently.
@@ -54,7 +54,7 @@ MUTATOR_EVENT_START
 ...code...
 MUTATOR_EVENT_END
 ```
-## Set up
+### Set up
 We recommend that you create subclasses of `UMutator` and `UMutatorSubsystem` in your project. For the system to pick them up you will also need to add the following to your projects `*.Build.cs` file:
 
 ```cs
@@ -68,7 +68,7 @@ PublicDefinitions.Add("MUTATOR_CLASS=URPGMutator");
 PublicDefinitions.Add("MUTATOR_SUBSYSTEM_CLASS=URPGMutatorSubsystem");
 ``` 
 
-## Define New Events
+### Define New Events
 New events are defined in your `UMutatorSubsystem` subclass header using the `DEFINE_MUTATOR()` or `DEFINE_MUTATOR_RETURN()` macros. These macros take in the name of the event followed by an optional list of type + name pairs. This list will get converted into struct that is used to pass information in to the event. The only difference between the two macros is the `_RETURN` variant creates a function that returns data to be passed along the chain of events, allowing it to mutate the data of the event.
 
 Example:
@@ -97,7 +97,7 @@ Example:
 DEFINE_MUTATOR(EnemyWaveEnded, int32, WaveNumber = 1)
 ```
 
-## Implementing New Events
+### Implementing New Events
 Once you have defined a mutator event you will need to create a corresponding implemenation in the `UMutatorSubsystem` subclass implementation file using `IMPLEMENT_MUTATOR_EVENT()` or `IMPLEMENT_MUTATOR_EVENT_RETURN()`, whichever corresponds to the macro used to define it. These macros just take the name of the event and will generate code that calls the function on each registered mutator.
 
 Example:
@@ -110,7 +110,7 @@ MUTATOR_EVENTS_END
 
 Note that you don't have to respecify the paramters for the event, just supply the name.
 
-## Declaring The Events For The Mutator
+### Declaring The Events For The Mutator
 The last part of creating a new event is to declare it in your `UMutator` subclass header using either `DECLARE_MUTATOR_EVENT_NATIVE()` or `DECLARE_MUTATOR_EVENT_BLUEPRINT()`. The first will create a function that can only be overriden in native code and probably has less applications, though provided for completeness. The second will create a function that can be overridden in Blueprint and C++ (essentially marked as a BlueprintNativeEvent). Both macros take the name of the event as their only argument.
 
 Example:
@@ -121,7 +121,7 @@ DECLARE_MUTATOR_EVENT_BLUEPRINT(ModifyDamage)
 MUTATOR_EVENTS_END
 ```
 
-## Calling Your New Event
+### Calling Your New Event
 Now you have fully implemented a new mutator event the final part is to call it in your game code.
 
 Example:

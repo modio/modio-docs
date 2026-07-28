@@ -8,10 +8,10 @@ custom_edit_url: https://github.com/modio/modio-ue4-internal/blob/develop/Plugin
 # Meta Quest Configuration
 
 :::important[Find your guide]
-This setup guide is intended for those building for Meta Quest. If that's not you, continue to work through the [Unreal Engine Getting Started Guides](/unreal#unreal-engine-core-plugin-guides) to implement mod.io's core functionality.
+This setup guide is intended for those building for Meta Quest. If that's not you, continue to work through the [Unreal Engine Getting Started Guides](/unreal/getting-started) to implement mod.io's core functionality.
 :::
 
-### Configuration
+## Configuration
 
 To access Meta Quest-specific APIs, including authentication, you need to download and integrate the MetaXR and MetaXR Platform plugins into your Unreal Engine project. Follow these steps:
 
@@ -35,7 +35,7 @@ To access Meta Quest-specific APIs, including authentication, you need to downlo
 
 These plugins provide access to Meta Quest-specific functionality, such as achievements, leaderboards, authentication, and so on.
 
-### Authentication
+## Authentication
 
 Before Meta authentication with Modio can work, you must create an app on the [Meta Horizon Dashboard](https://developers.meta.com/horizon) and link it to an app on the mod.io dashboard. [Instructions on how to do this are here](https://docs.mod.io/platforms/meta/authentication). 
 
@@ -50,7 +50,7 @@ You can now authenticate users via Meta. The authentication process involves obt
 
 Authentication can be implemented via C++ or Blueprint. 
 
-#### C++
+### C++
 
 First, you must ensure that your game has a valid `UGameInstance`, as the MetaXR Platform does not initialize until the game instance has initialized. 
 
@@ -169,7 +169,7 @@ ModioSubsystem->AuthenticateUserExternalAsync(
 	FOnErrorOnlyDelegateFast::CreateUObject(this, &ThisClass::OnAuthenticationComplete));
 ```
 
-#### Blueprint
+### Blueprint
 
 To implement Meta authentication in Blueprint, open the blueprint for your Game Instance. Create a custom event called `OvrPlatformSubsystemStarted`. 
 

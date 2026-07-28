@@ -333,7 +333,8 @@ The total disk usage (bytes)
 public static async Task<Error> StartTempModSession(List<ModioId> tempMods, bool appendCurrentSession
 ```
 
-Will start a temporary mod session.
+Will start a temporary mod session. Use this when you want mods to exist only for the current session of the
+games running.
 
 
 ###### Parameters
@@ -347,6 +348,12 @@ Will start a temporary mod session.
 An asynchronous task that returns [`Error`](#Modio.ModioLog.Error).[`Error.None`](#Modio.Error.None) on success.
 
 
+###### Remarks
+
+Mods installed this way will NOT persist on the file system once the session ends. The only exception
+are mods that are subscribed to by a user. Use [`AddTemporaryMods`](#Modio.ModInstallationManagement.AddTemporaryMods) for mods to persist after the
+session ends.
+
 ###### See Also
 
 [`EndCurrentTempModSession`](#Modio.ModInstallationManagement.EndCurrentTempModSession)
@@ -358,7 +365,14 @@ An asynchronous task that returns [`Error`](#Modio.ModioLog.Error).[`Error.None`
 [ModioDebugMenu(ShowInSettingsMenu = false)] public static void EndCurrentTempModSession()
 ```
 
-Will end the current temp mod session started by [`StartTempModSession`](#Modio.ModInstallationManagement.StartTempModSession)
+Will end the current temp mod session started by [`StartTempModSession`](#Modio.ModInstallationManagement.StartTempModSession). If using temp mods to
+install premium mods, it's imperative that this is called BEFORE the game shuts down to allow the plugin to
+uninstall the temp mods.
+
+
+###### Remarks
+
+Will cause mods installed using [`StartTempModSession`](#Modio.ModInstallationManagement.StartTempModSession)to be uninstalled.
 
 
 #### AddTemporaryMods{#Modio.ModInstallationManagement.AddTemporaryMods}
@@ -367,7 +381,7 @@ Will end the current temp mod session started by [`StartTempModSession`](#Modio.
 public static async Task<Error> AddTemporaryMods(List<ModioId> tempMods, int lifeTimeDaysOverride
 ```
 
-Adds the list of mods to mod index
+Adds the list of mods to mod index. Use this for mods to persist for longer than a single play session.
 
 
 ###### Parameters
@@ -380,6 +394,21 @@ Adds the list of mods to mod index
 
 An asynchronous task that returns [`Error`](#Modio.ModioLog.Error).[`Error.None`](#Modio.Error.None) on success.
 
+
+
+#### RemoveTemporaryMods{#Modio.ModInstallationManagement.RemoveTemporaryMods}
+
+```csharp
+public static void RemoveTemporaryMods(List<ModioId> modsToRemove)
+```
+
+Use this to remove mods that would otherwise persist due to their set lifetime. Useful for forcefully making
+space for other mods or cleaning up unwanted temp mods sooner.
+
+
+###### Parameters
+
+`modsToRemove` The list of mods to remove
 
 
 #### ClearExpiredTempMods{#Modio.ModInstallationManagement.ClearExpiredTempMods}
@@ -461,6 +490,13 @@ An asynchronous task that returns `true` if there is enough space, `false` other
 
 ```csharp
 public static async Task<bool> IsThereAvailableSpaceFor(IEnumerable<Mod> mods)
+```
+
+
+#### GetDebugString{#Modio.ModInstallationManagement.GetDebugString}
+
+```csharp
+public static string GetDebugString(Mod mod)
 ```
 
 
@@ -1276,6 +1312,13 @@ public static void AddEnvironmentDetails(string details)
 ```
 
 
+#### ClearEnvironmentDetails{#Modio.Version.ClearEnvironmentDetails}
+
+```csharp
+public static void ClearEnvironmentDetails()
+```
+
+
 #### GetCurrent{#Modio.Version.GetCurrent}
 
 ```csharp
@@ -1408,926 +1451,6 @@ Intended for internal usage to support mod.io's unit testing
 
 ___
 
-## Modio.Authentication
-
-| Type | Description |
-|------|-------------|
-| [`IEmailCodePrompter`](#Modio.Authentication.IEmailCodePrompter) |  |
-| [`IGetActiveUserIdentifier`](#Modio.Authentication.IGetActiveUserIdentifier) |  |
-| [`IModioAuthService`](#Modio.Authentication.IModioAuthService) |  |
-| [`IPotentialModioEmailAuthService`](#Modio.Authentication.IPotentialModioEmailAuthService) |  |
-| [`ModioEmailAuthService`](#Modio.Authentication.ModioEmailAuthService) | Use for authenticating with email |
-| [`ModioMultiplatformAuthResolver`](#Modio.Authentication.ModioMultiplatformAuthResolver) |  |
-
-### IEmailCodePrompter{#Modio.Authentication.IEmailCodePrompter}
-
-```csharp
-public interface IEmailCodePrompter
-```
-
-___
-
-### IGetActiveUserIdentifier{#Modio.Authentication.IGetActiveUserIdentifier}
-
-```csharp
-public interface IGetActiveUserIdentifier
-```
-
-
-###### Method
-
-
-#### GetActiveUserIdentifier{#Modio.Authentication.IGetActiveUserIdentifier.GetActiveUserIdentifier}
-
-```csharp
-public Task<string> GetActiveUserIdentifier();
-```
-
-___
-
-### IModioAuthService{#Modio.Authentication.IModioAuthService}
-
-```csharp
-public partial interface IModioAuthService
-```
-
-
-###### Property
-
-
-#### [`ModioAPI.Portal`](#Modio.API.ModioAPI.Portal) `Portal`
-
-```csharp
-public ModioAPI.Portal Portal
-```
-`get` 
-
-
-###### Method
-
-
-#### Authenticate{#Modio.Authentication.IModioAuthService.Authenticate}
-
-```csharp
-public Task<Error> Authenticate( bool displayedTerms, string thirdPartyEmail
-```
-
-Authenticates with the required server
-
-
-###### Parameters
-
-`displayedTerms` The terms that were displayed to the user
-`thirdPartyEmail` Optional email address used for authentication
-`sync` Optional parameter to indicate if the profile should begin syncing with the server immediately after authentication
-
-___
-
-### IPotentialModioEmailAuthService{#Modio.Authentication.IPotentialModioEmailAuthService}
-
-```csharp
-public interface IPotentialModioEmailAuthService
-```
-
-___
-
-### ModioEmailAuthService{#Modio.Authentication.ModioEmailAuthService}
-
-```csharp
-public class ModioEmailAuthService : IModioAuthService, IGetActiveUserIdentifier, IPotentialModioEmailAuthService
-```
-
-Use for authenticating with email
-
-```csharp
-
-GameObject codeWindow;
-void Awake()
-{
-    ModioServices.Bind&lt;IModioAuthService&gt;()
-                 .FromInstance(new ModioEmailAuthPlatform(), 50);
-}
-async void Authenticate()
-{
-    Error error = await ModioClient.AuthService.Authenticate(true, "some_email@supercoolemail.com");
-    if (error)
-        Debug.LogError($"Error authenticating with email");
-    else
-        Debug.Log($"Successfully authenticated");
-}
-Task&lt;string&gt; ShowCodePrompt()
-{
-    codeWindow.Enable;
-    // Capture security code here
-    string code = await SomeCodeInputLogic();
-    return code;
-}
-
-```
-
-
-
-###### Property
-
-
-#### `bool IsEmailPlatform`
-
-```csharp
-public bool IsEmailPlatform
-```
-
-
-
-#### [`ModioAPI.Portal`](#Modio.API.ModioAPI.Portal) `Portal`
-
-```csharp
-public ModioAPI.Portal Portal
-```
-
-
-
-###### Method
-
-
-#### Authenticate{#Modio.Authentication.ModioEmailAuthService.Authenticate}
-
-```csharp
-public async Task<Error> Authenticate( bool displayedTerms, string thirdPartyEmail
-```
-Begins the email authentication process. This will invoke the `codePrompter` passed either
-into the constructor of this class or with [`SetCodePrompter`](#Modio.Authentication.ModioEmailAuthService.SetCodePrompter) to enter the security code.
-
-###### Returns
-
-`Error.None` if the authentication completed successfully.
-
-
-#### AuthenticateWithoutEmailRequest{#Modio.Authentication.ModioEmailAuthService.AuthenticateWithoutEmailRequest}
-
-```csharp
-public async Task<Error> AuthenticateWithoutEmailRequest()
-```
-Use this to authenticate with a previously acquired, still valid security code.
-
-###### Returns
-
-`Error.None` if the authentication completed successfully.
-
-
-#### SetCodePrompter{#Modio.Authentication.ModioEmailAuthService.SetCodePrompter}
-
-```csharp
-public void SetCodePrompter(IEmailCodePrompter codePrompter)
-```
-
-
-#### SetCodePrompter{#Modio.Authentication.ModioEmailAuthService.SetCodePrompter}
-
-```csharp
-public void SetCodePrompter(Func<Task<string>> codePrompter)
-```
-
-
-#### GetActiveUserIdentifier{#Modio.Authentication.ModioEmailAuthService.GetActiveUserIdentifier}
-
-```csharp
-public Task<string> GetActiveUserIdentifier()
-```
-
-___
-
-### ModioMultiplatformAuthResolver{#Modio.Authentication.ModioMultiplatformAuthResolver}
-
-```csharp
-public class ModioMultiplatformAuthResolver : IModioAuthService, IGetActiveUserIdentifier, IPotentialModioEmailAuthService
-```
-
-
-###### Property
-
-
-#### [`IModioAuthService`](#Modio.Authentication.IModioAuthService) `ServiceOverride`
-
-```csharp
-public IModioAuthService ServiceOverride
-```
-`get` `set`
-
-
-#### `IReadOnlyList AuthBindings`
-
-```csharp
-public IReadOnlyList<IModioAuthService> AuthBindings
-```
-`get` 
-
-
-#### `bool IsEmailPlatform`
-
-```csharp
-public bool IsEmailPlatform
-```
-
-
-
-#### [`ModioAPI.Portal`](#Modio.API.ModioAPI.Portal) `Portal`
-
-```csharp
-public ModioAPI.Portal Portal
-```
-
-
-
-###### Method
-
-
-#### Authenticate{#Modio.Authentication.ModioMultiplatformAuthResolver.Authenticate}
-
-```csharp
-public Task<Error> Authenticate(bool displayedTerms, string thirdPartyEmail
-```
-
-
-#### GetActiveUserIdentifier{#Modio.Authentication.ModioMultiplatformAuthResolver.GetActiveUserIdentifier}
-
-```csharp
-public Task<string> GetActiveUserIdentifier()
-```
-
-___
-
-## Modio.Caching
-
-| Type | Description |
-|------|-------------|
-| [`BaseCache`](#Modio.Caching.BaseCache) | Base class for caching objects in Modio. |
-
-### BaseCache{#Modio.Caching.BaseCache}
-
-```csharp
-public abstract class BaseCache<TCache, TKey, TCachedObject>  where TCache : BaseCache<TCache, TKey, TCachedObject>, new()
-```
-
-Base class for caching objects in Modio.
-
-
-###### Type Parameters
-
-`TCache`: 
-`TKey`: 
-`TCachedObject`: 
-
-
-###### Property
-
-
-#### `int SearchesNotInCache`
-
-```csharp
-public static int SearchesNotInCache
-```
-
-
-
-#### `int SearchesSavedByCache`
-
-```csharp
-public static  int SearchesSavedByCache
-```
-
-
-
-###### Method
-
-
-#### Clear{#Modio.Caching.BaseCache.Clear}
-
-```csharp
-public static void Clear()
-```
-
-Clears the cache.
-
-
-
-#### GetCachedSearch{#Modio.Caching.BaseCache.GetCachedSearch}
-
-```csharp
-public static bool GetCachedSearch( SearchFilter filter, string searchKey, out TCachedObject[] cached, out long resultTotal )
-```
-
-Gets a cached search result based on the provided filter and search key.
-
-
-###### Parameters
-
-`filter` The filter to apply to the search.
-`searchKey` The key used to identify the cached search.
-`cached` The cached results of the search, if found.
-`resultTotal` The total number of results found for the search.
-
-###### Returns
-
-Returns true if the search results were found in the cache, otherwise false.
-
-
-#### CacheSearch{#Modio.Caching.BaseCache.CacheSearch}
-
-```csharp
-public static void CacheSearch(string searchKey, TCachedObject[] cached, long pageIndex, long resultTotal)
-```
-
-Stores the search results in the cache.
-
-
-###### Parameters
-
-`searchKey` The key used to identify the cached search.
-`cached` The cached results of the search.
-`pageIndex` The index of the page of results.
-`resultTotal` The total number of results found for the search.
-
-
-#### ClearCachedSearchCache{#Modio.Caching.BaseCache.ClearCachedSearchCache}
-
-```csharp
-public static void ClearCachedSearchCache()
-```
-
-Clears the cached search results.
-
-
-
-#### ConstructFilterKey{#Modio.Caching.BaseCache.ConstructFilterKey}
-
-```csharp
-public static string ConstructFilterKey(SearchFilter filter)
-```
-
-Constructs a filter key based on the provided search filter.
-
-
-###### Parameters
-
-`filter` The filter to construct the key from.
-
-###### Returns
-
-A string representing the constructed filter key.
-
-___
-
-## Modio.Collections
-
-| Type | Description |
-|------|-------------|
-| [`ModCollection`](#Modio.Collections.ModCollection) |  |
-| [`ModCollectionStats`](#Modio.Collections.ModCollectionStats) |  |
-
-### ModCollection{#Modio.Collections.ModCollection}
-
-```csharp
-public class ModCollection : IModioInfo
-```
-
-
-###### Property
-
-
-#### [`ModioId`](#Modio.Mods.ModioId) `Id`
-
-```csharp
-public ModioId Id
-```
-`get` 
-The collection id.
-
-
-#### [`UserProfile`](#Modio.Users.UserProfile) `Creator`
-
-```csharp
-public UserProfile Creator
-```
-`get` 
-The user who submitted the collection.
-
-
-#### `DateTime DateUpdated`
-
-```csharp
-public DateTime DateUpdated
-```
-`get` 
-The date the collection was last updated.
-
-
-#### `DateTime DateLive`
-
-```csharp
-public DateTime DateLive
-```
-`get` 
-The date the collection went live.
-
-
-#### [`ModMaturityOptions`](#Modio.Mods.ModMaturityOptions) `MaturityOptions`
-
-```csharp
-public ModMaturityOptions MaturityOptions
-```
-`get` 
-The maturity options detected within this collection.
-
-
-#### `long ArchiveFilesize`
-
-```csharp
-public long ArchiveFilesize
-```
-`get` 
-The total filesize of all mods in the collection.
-
-
-#### `long Filesize`
-
-```csharp
-public long Filesize
-```
-`get` 
-The total uncompressed filesize of all mods in the collection.
-
-
-#### [`ModTag`](#Modio.Mods.ModTag) `Tags`
-
-```csharp
-public ModTag[] Tags
-```
-`get` 
-The tags associated with the collection.
-
-
-#### [`ModCollectionStats`](#Modio.Collections.ModCollectionStats) `Stats`
-
-```csharp
-public ModCollectionStats Stats
-```
-`get` 
-The stats of the collection.
-
-
-#### [`ModioImageSource`](#Modio.Images.ModioImageSource) `Logo`
-
-```csharp
-public ModioImageSource<Mod.LogoResolution> Logo
-```
-`get` 
-The logo of the collection.
-
-
-#### `string Name`
-
-```csharp
-public string Name
-```
-`get` 
-The name of the collection.
-
-
-#### `string NameId`
-
-```csharp
-public string NameId
-```
-`get` 
-The name id of the collection.
-
-
-#### `string Summary`
-
-```csharp
-public string Summary
-```
-
-The summary of the collection.
-
-
-#### `string Description`
-
-```csharp
-public string Description
-```
-`get` 
-The description of the collection.
-
-
-#### `bool IsFollowed`
-
-```csharp
-public bool IsFollowed
-```
-`get` 
-Whether the collection is followed by the user.
-
-
-#### [`ModioRating`](#Plugins.Modio.Modio.Ratings.ModioRating) `CurrentUserRating`
-
-```csharp
-public ModioRating CurrentUserRating
-```
-`get` 
-
-
-###### Method
-
-
-#### AddChangeListener{#Modio.Collections.ModCollection.AddChangeListener}
-
-```csharp
-public static void AddChangeListener( ModCollectionChangeType subscribedChange, Action<ModCollection, ModCollectionChangeType> listener )
-```
-Adds an event handler to listen for whenever the [`ModCollectionChangeType`](#Modio.Collections.ModCollectionChangeType) of a collection
-is changed.
-
-###### Remarks
-
-[`ModCollectionChangeType`](#Modio.Collections.ModCollectionChangeType) is a bit flag, multiple changes can be listened for with one
-handler.
-
-
-#### RemoveChangeListener{#Modio.Collections.ModCollection.RemoveChangeListener}
-
-```csharp
-public static void RemoveChangeListener( ModCollectionChangeType subscribedChange, Action<ModCollection, ModCollectionChangeType> listener )
-```
-
-Removes an event handler that listens for changes to the [`ModCollectionChangeType`](#Modio.Collections.ModCollectionChangeType) of a collection.
-
-
-###### Parameters
-
-`subscribedChange` The type of change to unsubscribe from.
-`listener` The event handler to remove.
-
-###### Remarks
-
-This will only remove the handler if it was previously added with [`AddChangeListener`](#Modio.Collections.ModCollection.AddChangeListener).
-
-
-#### GetCollections{#Modio.Collections.ModCollection.GetCollections}
-
-```csharp
-public static async Task<(Error error, ModioPage<ModCollection> page)> GetCollections( ModioAPI.Collections.GetModCollectionsFilter filter )
-```
-
-
-#### Get{#Modio.Collections.ModCollection.Get}
-
-```csharp
-public static ModCollection Get(long id)
-```
-
-
-#### GetCollectionMods{#Modio.Collections.ModCollection.GetCollectionMods}
-
-```csharp
-public static async Task<(Error error, ModioPage<Mod> page)> GetCollectionMods( long collectionId, ModioAPI.Collections.GetCollectionModsFilter filter )
-```
-Gets all mods that qualify the provided `ModioAPI.Collections.GetCollectionMods` parameters.
-
-###### Remarks
-
-
-This will cache searches and results. If a search exists in the cache, this method will
-return those results.
-The [`ModioAPI.Collections.GetCollectionModsFilter`](#Modio.API.ModioAPI.Collections.GetCollectionModsFilter) is used to filter the results, allowing
-for pagination, sorting, and other search parameters.
-
-
-
-#### GetMods{#Modio.Collections.ModCollection.GetMods}
-
-```csharp
-public async Task<(Error error, IReadOnlyList<Mod> results)> GetMods()
-```
-
-Gets all mods of the collection.
-
-
-###### Returns
-
-An asynchronous task that returns a tuple ([`Error`](#Modio.ModioLog.Error) error, `IReadOnlyList{Mod}` results), where:
-`error` is the error encountered during the task (if any)
-`result` is a readonly list of [`Mod`](#ModioResourceType.Mod) in the collection.
-
-
-
-#### Subscribe{#Modio.Collections.ModCollection.Subscribe}
-
-```csharp
-public Task<Error> Subscribe()
-```
-
-Subscribe to all mods in this collection.
-
-
-###### Returns
-
-An [`Error`](#Modio.ModioLog.Error) indicating the success or failure of the operation.
-
-
-#### Unsubscribe{#Modio.Collections.ModCollection.Unsubscribe}
-
-```csharp
-public Task<Error> Unsubscribe()
-```
-
-Unsubscribe from all mods in this collection.
-
-
-###### Returns
-
-An [`Error`](#Modio.ModioLog.Error) indicating the success or failure of the operation.
-
-
-#### Follow{#Modio.Collections.ModCollection.Follow}
-
-```csharp
-public Task<Error> Follow()
-```
-
-Follow this collection.
-
-
-###### Returns
-
-An [`Error`](#Modio.ModioLog.Error) indicating the success or failure of the operation.
-
-
-#### Unfollow{#Modio.Collections.ModCollection.Unfollow}
-
-```csharp
-public Task<Error> Unfollow()
-```
-
-Unfollow this collection.
-
-
-###### Returns
-
-An [`Error`](#Modio.ModioLog.Error) indicating the success or failure of the operation.
-
-
-#### Rate{#Modio.Collections.ModCollection.Rate}
-
-```csharp
-public async Task<Error> Rate(ModioRating rating)
-```
-
-Rate this collection.
-
-
-###### Parameters
-
-`rating` The rating to give the collection.
-
-###### Returns
-
-An [`Error`](#Modio.ModioLog.Error) indicating the success or failure of the operation.
-
-
-#### Report{#Modio.Collections.ModCollection.Report}
-
-```csharp
-public async Task<Error> Report(ReportType reportType, string contact, string summary)
-```
-
-___
-
-### ModCollectionStats{#Modio.Collections.ModCollectionStats}
-
-```csharp
-public class ModCollectionStats
-```
-
-
-###### Property
-
-
-#### `long CollectionId`
-
-```csharp
-public long CollectionId
-```
-`get` 
-The collection id.
-
-
-#### `long ModsTotal`
-
-```csharp
-public long ModsTotal
-```
-`get` 
- The total number of mods contained in this collection 
-
-
-#### `long DownloadsToday`
-
-```csharp
-public long DownloadsToday
-```
-`get` 
-The number of downloads today.
-
-
-#### `long UniqueDownloads`
-
-```csharp
-public long UniqueDownloads
-```
-`get` 
-The number of unique downloads.
-
-
-#### `long Downloads`
-
-```csharp
-public long Downloads
-```
-`get` 
-The total number of downloads.
-
-
-#### `long Followers`
-
-```csharp
-public long Followers
-```
-`get` 
-The total number of followers.
-
-
-#### `long RatingsPositive`
-
-```csharp
-public long RatingsPositive
-```
-`get` 
-The number of positive ratings in the last 30 days.
-
-
-#### `long RatingsPositive30Days`
-
-```csharp
-public long RatingsPositive30Days
-```
-`get` 
-
-
-#### `long RatingsNegative`
-
-```csharp
-public long RatingsNegative
-```
-`get` 
-
-
-#### `long RatingsNegative30Days`
-
-```csharp
-public long RatingsNegative30Days
-```
-`get` 
-
-
-#### `float? RatingsPercent`
-
-```csharp
-public float? RatingsPercent
-```
-`get` 
-
-___
-
-### Enums
-
-
-###### ModCollectionChangeType{#Modio.Collections.ModCollectionChangeType}
-
-
-```csharp
-IsFollowed         = 1 << 0
-```
-
-```csharp
-Rating            = 1 << 1
-```
-
-```csharp
-ModList          = 1 << 2
-```
-
-```csharp
-Everything        = ~0
-```
-
-___
-
-## Modio.Extensions
-
-| Type | Description |
-|------|-------------|
-| [`DateTimeExtensions`](#Modio.Extensions.DateTimeExtensions) |  |
-| [`LongExtensions`](#Modio.Extensions.LongExtensions) |  |
-| [`ModioResourceTypeExtensions`](#Modio.Extensions.ModioResourceTypeExtensions) |  |
-| [`TaskExtensions`](#Modio.Extensions.TaskExtensions) |  |
-
-### DateTimeExtensions{#Modio.Extensions.DateTimeExtensions}
-
-```csharp
-public static class DateTimeExtensions
-```
-
-
-###### Method
-
-
-#### GetUtcDateTime{#Modio.Extensions.DateTimeExtensions.GetUtcDateTime}
-
-```csharp
-public static DateTime GetUtcDateTime(this long timeStamp)
-```
-
-
-#### GetLocalDateTime{#Modio.Extensions.DateTimeExtensions.GetLocalDateTime}
-
-```csharp
-public static DateTime GetLocalDateTime(this long timeStamp)
-```
-
-___
-
-### LongExtensions{#Modio.Extensions.LongExtensions}
-
-```csharp
-public static class LongExtensions
-```
-
-
-###### Method
-
-
-#### RoundTimestampToHour{#Modio.Extensions.LongExtensions.RoundTimestampToHour}
-
-```csharp
-public static long RoundTimestampToHour(this long timeStamp)
-```
-
-
-#### RoundTimestampsToHour{#Modio.Extensions.LongExtensions.RoundTimestampsToHour}
-
-```csharp
-public static ICollection<long> RoundTimestampsToHour(this ICollection<long> timeStamps)
-```
-
-___
-
-### ModioResourceTypeExtensions{#Modio.Extensions.ModioResourceTypeExtensions}
-
-```csharp
-public static class ModioResourceTypeExtensions
-```
-
-
-###### Method
-
-
-#### GetStringCode{#Modio.Extensions.ModioResourceTypeExtensions.GetStringCode}
-
-```csharp
-public static string GetStringCode(this ModioResourceType resourceType)
-```
-
-___
-
-### TaskExtensions{#Modio.Extensions.TaskExtensions}
-
-```csharp
-public static class TaskExtensions
-```
-
-
-###### Method
-
-
-#### ForgetTaskSafely{#Modio.Extensions.TaskExtensions.ForgetTaskSafely}
-
-```csharp
-public static async void ForgetTaskSafely(this Task task)
-```
-
-___
-
 ## Modio.FileIO
 
 | Type | Description |
@@ -2383,7 +1506,7 @@ public virtual async Task Shutdown()
 #### DeleteAllGameData{#Modio.FileIO.BaseDataStorage.DeleteAllGameData}
 
 ```csharp
-public Task<Error> DeleteAllGameData()
+public virtual Task<Error> DeleteAllGameData()
 ```
 
 
@@ -3245,6 +2368,339 @@ public static class ZipHelperStreamExtensions
 
 ___
 
+## Modio.Images
+
+| Type | Description |
+|------|-------------|
+| [`BaseImageCache`](#Modio.Images.BaseImageCache) |  |
+| [`IExternalAvatarProviderService`](#Modio.Images.IExternalAvatarProviderService) |  |
+| [`ImageCacheBytes`](#Modio.Images.ImageCacheBytes) |  |
+| [`ImageReference`](#Modio.Images.ImageReference) | DownloadReference that contains the URL to download an image with. (DownloadReference is serializable with Unity's JsonUtility) |
+| [`LazyImage`](#Modio.Images.LazyImage) |  |
+| [`ModioImageSource`](#Modio.Images.ModioImageSource) |  |
+
+### BaseImageCache{#Modio.Images.BaseImageCache}
+
+```csharp
+public abstract class BaseImageCache
+```
+
+
+###### Method
+
+
+#### CacheToDisk{#Modio.Images.BaseImageCache.CacheToDisk}
+
+```csharp
+public static void CacheToDisk(ImageReference image, bool shouldCache)
+```
+
+
+#### GetCachedImage{#Modio.Images.BaseImageCache.GetCachedImage}
+
+```csharp
+public T GetCachedImage(ImageReference uri)
+```
+
+
+#### DownloadImage{#Modio.Images.BaseImageCache.DownloadImage}
+
+```csharp
+public Task<(Error errror, T image)> DownloadImage(ImageReference uri)
+```
+
+
+#### GetFirstCachedImage{#Modio.Images.BaseImageCache.GetFirstCachedImage}
+
+```csharp
+public T GetFirstCachedImage(IEnumerable<ImageReference> imageReferences)
+```
+
+___
+
+### IExternalAvatarProviderService{#Modio.Images.IExternalAvatarProviderService}
+
+```csharp
+public interface IExternalAvatarProviderService<TImage>
+```
+
+___
+
+### ImageCacheBytes{#Modio.Images.ImageCacheBytes}
+
+```csharp
+public class ImageCacheBytes : BaseImageCache<byte[]>
+```
+
+
+###### Field
+
+
+#### [`ImageCacheBytes`](#Modio.Images.ImageCacheBytes) `Instance`
+
+```csharp
+ImageCacheBytes Instance = new ImageCacheBytes()
+```
+
+___
+
+### ImageReference{#Modio.Images.ImageReference}
+
+```csharp
+[System.Serializable] public struct ImageReference : IEquatable<ImageReference>
+```
+
+DownloadReference that contains the URL to download an image with.
+(DownloadReference is serializable with Unity's JsonUtility)
+
+
+
+###### Property
+
+
+#### `bool IsValid`
+
+```csharp
+public bool IsValid
+```
+
+
+Check if there is a valid url for this image. You may want to check this before using
+
+
+###### Returns
+
+true if the url isn't null
+
+
+#### `string Url`
+
+```csharp
+public string Url
+```
+`get` 
+
+
+###### Method
+
+
+#### Equals{#Modio.Images.ImageReference.Equals}
+
+```csharp
+public bool Equals(ImageReference other)
+```
+
+
+#### Equals{#Modio.Images.ImageReference.Equals}
+
+```csharp
+public override bool Equals(object obj)
+```
+
+
+#### GetHashCode{#Modio.Images.ImageReference.GetHashCode}
+
+```csharp
+public override int GetHashCode()
+```
+
+___
+
+### LazyImage{#Modio.Images.LazyImage}
+
+```csharp
+public class LazyImage<TImage> where TImage : class
+```
+
+
+###### Method
+
+
+#### SetImage{#Modio.Images.LazyImage.SetImage}
+
+```csharp
+public async void SetImage<T>(ModioImageSource<T> source, T resolution) where T : Enum
+```
+
+___
+
+### ModioImageSource{#Modio.Images.ModioImageSource}
+
+```csharp
+public class ModioImageSource<TResolution> where TResolution:Enum
+```
+
+
+###### Property
+
+
+#### `string FileName`
+
+```csharp
+public string FileName
+```
+`get` 
+
+
+###### Method
+
+
+#### GetUri{#Modio.Images.ModioImageSource.GetUri}
+
+```csharp
+public ImageReference GetUri(TResolution resolution)
+```
+
+
+#### GetAllReferences{#Modio.Images.ModioImageSource.GetAllReferences}
+
+```csharp
+public IEnumerable<ImageReference> GetAllReferences()
+```
+
+
+#### CacheLowestResolutionOnDisk{#Modio.Images.ModioImageSource.CacheLowestResolutionOnDisk}
+
+```csharp
+public void CacheLowestResolutionOnDisk(bool shouldCache)
+```
+
+___
+
+## Modio.Settings
+
+| Type | Description |
+|------|-------------|
+| [`ModInstallationManagementSettings`](#Modio.Settings.ModInstallationManagementSettings) |  |
+| [`ModioHiddenTagOverrideSettings`](#Modio.Settings.ModioHiddenTagOverrideSettings) |  |
+| [`PortainerSettings`](#Modio.Settings.PortainerSettings) | Supports mod.io's internal tests |
+| [`PortalNameSettings`](#Modio.Settings.PortalNameSettings) |  |
+| [`TempModInstallationSettings`](#Modio.Settings.TempModInstallationSettings) |  |
+
+### ModInstallationManagementSettings{#Modio.Settings.ModInstallationManagementSettings}
+
+```csharp
+[Serializable] public class ModInstallationManagementSettings : IModioServiceSettings
+```
+
+
+###### Field
+
+
+#### `bool AutoActivate`
+
+```csharp
+bool AutoActivate = true
+```
+
+___
+
+### ModioHiddenTagOverrideSettings{#Modio.Settings.ModioHiddenTagOverrideSettings}
+
+```csharp
+public class ModioHiddenTagOverrideSettings : IModioServiceSettings
+```
+
+
+###### Field
+
+
+#### `string HideTagCategories`
+
+```csharp
+string[] HideTagCategories
+```
+
+___
+
+### PortainerSettings{#Modio.Settings.PortainerSettings}
+
+```csharp
+public class PortainerSettings : IModioServiceSettings
+```
+
+Supports mod.io's internal tests
+
+
+
+###### Field
+
+
+#### `string Stack`
+
+```csharp
+string Stack
+```
+
+
+#### `bool AlwaysReseed`
+
+```csharp
+bool AlwaysReseed
+```
+
+___
+
+### PortalNameSettings{#Modio.Settings.PortalNameSettings}
+
+```csharp
+[Serializable] public class PortalNameSettings : IModioServiceSettings
+```
+
+
+###### Field
+
+
+#### [`ModioAPI.Portal`](#Modio.API.ModioAPI.Portal) `_ignorePortalNameOn`
+
+```csharp
+ModioAPI.Portal[] _ignorePortalNameOn
+```
+
+
+#### [`ModioAPI.Portal`](#Modio.API.ModioAPI.Portal) `_ignorePortalAvatarOn`
+
+```csharp
+ModioAPI.Portal[] _ignorePortalAvatarOn
+```
+
+
+###### Method
+
+
+#### ShouldIgnorePortalNameOn{#Modio.Settings.PortalNameSettings.ShouldIgnorePortalNameOn}
+
+```csharp
+public bool ShouldIgnorePortalNameOn(ModioAPI.Portal portal)
+```
+
+
+#### ShouldIgnorePortalAvatarOn{#Modio.Settings.PortalNameSettings.ShouldIgnorePortalAvatarOn}
+
+```csharp
+public bool ShouldIgnorePortalAvatarOn(ModioAPI.Portal portal)
+```
+
+___
+
+### TempModInstallationSettings{#Modio.Settings.TempModInstallationSettings}
+
+```csharp
+[Serializable] public class TempModInstallationSettings : IModioServiceSettings
+```
+
+
+###### Field
+
+
+#### `int LifeTimeDays`
+
+```csharp
+int LifeTimeDays = 0
+```
+
+___
+
 ## Modio.Mods
 
 | Type | Description |
@@ -3336,7 +2792,7 @@ This ensures that we don't have multiple concurrent writes to disk, which could 
 
 ###### Returns
 
- An error if the write failed, or Error.None if it succeeded.
+An error if the write failed, or Error.None if it succeeded.
 
 
 #### SetGameTags{#Modio.Mods.GameData.SetGameTags}
@@ -3670,7 +3126,7 @@ public ModMaturityOptions MaturityOptions
 `get` 
 
 
-#### [`Modfile`](#Modio.API.ModioAPI.Mods.GetModsFilter.Modfile) `File`
+#### [`Modfile`](#Modio.API.ModioAPI.Me.GetUserSubscriptionsFilter.Modfile) `File`
 
 ```csharp
 public Modfile File
@@ -4281,7 +3737,7 @@ Adds multiple tags used in filtering mods for a request.
 ###### Parameters
 
 `tags` the tags to be added to the filter
-`tagType` 
+`tagType`
 
 ###### See Also
 
@@ -4434,6 +3890,13 @@ public override bool Equals(object obj)
 
 ```csharp
 public override int GetHashCode()
+```
+
+
+#### ToString{#Modio.Mods.ModSku.ToString}
+
+```csharp
+public override string ToString()
 ```
 
 ___
@@ -4676,7 +4139,7 @@ public long DownloadingBytesPerSecond
 ```csharp
 public ModfileDownloadReference Download
 ```
-`get` 
+`get` `set`
 
 
 #### `string Md5Hash`
@@ -5139,486 +4602,6 @@ DateSubmitted
 
 ___
 
-## Modio.Images
-
-| Type | Description |
-|------|-------------|
-| [`BaseImageCache`](#Modio.Images.BaseImageCache) |  |
-| [`BaseImageCache`](#Modio.Images.BaseImageCache) |  |
-| [`IExternalAvatarProviderService`](#Modio.Images.IExternalAvatarProviderService) |  |
-| [`ImageCacheBytes`](#Modio.Images.ImageCacheBytes) |  |
-| [`ImageReference`](#Modio.Images.ImageReference) | DownloadReference that contains the URL to download an image with. (DownloadReference is serializable with Unity's JsonUtility) |
-| [`LazyImage`](#Modio.Images.LazyImage) |  |
-| [`ModioImageSource`](#Modio.Images.ModioImageSource) |  |
-
-### BaseImageCache{#Modio.Images.BaseImageCache}
-
-```csharp
-public abstract class BaseImageCache
-```
-
-
-###### Method
-
-
-#### CacheToDisk{#Modio.Images.BaseImageCache.CacheToDisk}
-
-```csharp
-public static void CacheToDisk(ImageReference image, bool shouldCache)
-```
-
-___
-
-### BaseImageCache{#Modio.Images.BaseImageCache}
-
-```csharp
-public abstract class BaseImageCache<T> : BaseImageCache where T : class
-```
-
-
-###### Method
-
-
-#### GetCachedImage{#Modio.Images.BaseImageCache.GetCachedImage}
-
-```csharp
-public T GetCachedImage(ImageReference uri)
-```
-
-
-#### DownloadImage{#Modio.Images.BaseImageCache.DownloadImage}
-
-```csharp
-public Task<(Error errror, T image)> DownloadImage(ImageReference uri)
-```
-
-
-#### GetFirstCachedImage{#Modio.Images.BaseImageCache.GetFirstCachedImage}
-
-```csharp
-public T GetFirstCachedImage(IEnumerable<ImageReference> imageReferences)
-```
-
-___
-
-### IExternalAvatarProviderService{#Modio.Images.IExternalAvatarProviderService}
-
-```csharp
-public interface IExternalAvatarProviderService<TImage>
-```
-
-___
-
-### ImageCacheBytes{#Modio.Images.ImageCacheBytes}
-
-```csharp
-public class ImageCacheBytes : BaseImageCache<byte[]>
-```
-
-
-###### Field
-
-
-#### [`ImageCacheBytes`](#Modio.Images.ImageCacheBytes) `Instance`
-
-```csharp
-ImageCacheBytes Instance = new ImageCacheBytes()
-```
-
-___
-
-### ImageReference{#Modio.Images.ImageReference}
-
-```csharp
-[System.Serializable] public struct ImageReference : IEquatable<ImageReference>
-```
-
-DownloadReference that contains the URL to download an image with.
-(DownloadReference is serializable with Unity's JsonUtility)
-
-
-
-###### Property
-
-
-#### `bool IsValid`
-
-```csharp
-public bool IsValid
-```
-
-
-Check if there is a valid url for this image. You may want to check this before using
-
-
-###### Returns
-
-true if the url isn't null
-
-
-#### `string Url`
-
-```csharp
-public string Url
-```
-`get` 
-
-
-###### Method
-
-
-#### Equals{#Modio.Images.ImageReference.Equals}
-
-```csharp
-public bool Equals(ImageReference other)
-```
-
-
-#### Equals{#Modio.Images.ImageReference.Equals}
-
-```csharp
-public override bool Equals(object obj)
-```
-
-
-#### GetHashCode{#Modio.Images.ImageReference.GetHashCode}
-
-```csharp
-public override int GetHashCode()
-```
-
-___
-
-### LazyImage{#Modio.Images.LazyImage}
-
-```csharp
-public class LazyImage<TImage> where TImage : class
-```
-
-
-###### Method
-
-
-#### SetImage{#Modio.Images.LazyImage.SetImage}
-
-```csharp
-public async void SetImage<T>(ModioImageSource<T> source, T resolution) where T : Enum
-```
-
-___
-
-### ModioImageSource{#Modio.Images.ModioImageSource}
-
-```csharp
-public class ModioImageSource<TResolution> where TResolution:Enum
-```
-
-
-###### Property
-
-
-#### `string FileName`
-
-```csharp
-public string FileName
-```
-`get` 
-
-
-###### Method
-
-
-#### GetUri{#Modio.Images.ModioImageSource.GetUri}
-
-```csharp
-public ImageReference GetUri(TResolution resolution)
-```
-
-
-#### GetAllReferences{#Modio.Images.ModioImageSource.GetAllReferences}
-
-```csharp
-public IEnumerable<ImageReference> GetAllReferences()
-```
-
-
-#### CacheLowestResolutionOnDisk{#Modio.Images.ModioImageSource.CacheLowestResolutionOnDisk}
-
-```csharp
-public void CacheLowestResolutionOnDisk(bool shouldCache)
-```
-
-___
-
-## Modio.Monetization
-
-| Type | Description |
-|------|-------------|
-| [`IModioEntitlementService`](#Modio.Monetization.IModioEntitlementService) |  |
-| [`IModioStorefrontService`](#Modio.Monetization.IModioStorefrontService) |  |
-| [`IModioUsdMarketplaceService`](#Modio.Monetization.IModioUsdMarketplaceService) | A service interface for handling USD marketplace operations. |
-| [`IModioVirtualCurrencyProviderService`](#Modio.Monetization.IModioVirtualCurrencyProviderService) | Use this interface if the target platform supports purchasing Virtual Currency but requires it to display in UI in-game. |
-| [`ModioFiatPrice`](#Modio.Monetization.ModioFiatPrice) |  |
-| [`ModioVirtualCurrencyName`](#Modio.Monetization.ModioVirtualCurrencyName) |  |
-| [`MonetizationSettings`](#Modio.Monetization.MonetizationSettings) |  |
-| [`PortalSku`](#Modio.Monetization.PortalSku) |  |
-| [`PriceFormatter`](#Modio.Monetization.PriceFormatter) |  |
-
-### IModioEntitlementService{#Modio.Monetization.IModioEntitlementService}
-
-```csharp
-public interface IModioEntitlementService
-```
-
-
-###### Method
-
-
-#### SyncEntitlements{#Modio.Monetization.IModioEntitlementService.SyncEntitlements}
-
-```csharp
-public Task<Error> SyncEntitlements();
-```
-
-___
-
-### IModioStorefrontService{#Modio.Monetization.IModioStorefrontService}
-
-```csharp
-public interface IModioStorefrontService
-```
-
-
-###### Method
-
-
-#### OpenPlatformPurchaseFlow{#Modio.Monetization.IModioStorefrontService.OpenPlatformPurchaseFlow}
-
-```csharp
-public Task<Error> OpenPlatformPurchaseFlow();
-```
-
-___
-
-### IModioUsdMarketplaceService{#Modio.Monetization.IModioUsdMarketplaceService}
-
-```csharp
-public interface IModioUsdMarketplaceService
-```
-
-A service interface for handling USD marketplace operations.
-
-
-
-###### Method
-
-
-#### UpdateSkuCache{#Modio.Monetization.IModioUsdMarketplaceService.UpdateSkuCache}
-
-```csharp
-public Task<Error> UpdateSkuCache();
-```
-
-Update the local cache of SKUs for a portal
-
-
-###### Returns
-
-A tuple containing an error if the operation failed, and an array of PortalSku objects representing the updated SKU cache.
-
-___
-
-### IModioVirtualCurrencyProviderService{#Modio.Monetization.IModioVirtualCurrencyProviderService}
-
-```csharp
-public interface IModioVirtualCurrencyProviderService
-```
-Use this interface if the target platform supports purchasing Virtual Currency but requires it to display in UI in-game.
-
-
-###### Method
-
-
-#### GetCurrencyPackSkus{#Modio.Monetization.IModioVirtualCurrencyProviderService.GetCurrencyPackSkus}
-
-```csharp
-public Task<(Error error, PortalSku[] skus)> GetCurrencyPackSkus();
-```
-Retrieve a list of [`UserPortal`](#Modio.Users.UserSaveObject.UserPortal) specific SKUs that can be purchased.
-
-
-#### OpenCheckoutFlow{#Modio.Monetization.IModioVirtualCurrencyProviderService.OpenCheckoutFlow}
-
-```csharp
-public Task<Error> OpenCheckoutFlow(PortalSku sku);
-```
-Opens the target platform's checkout flow. This will open a separate UI window outside the game.
-
-###### Parameters
-
-`sku` The SKU being purchased.
-
-___
-
-### ModioFiatPrice{#Modio.Monetization.ModioFiatPrice}
-
-```csharp
-public static class ModioFiatPrice
-```
-
-
-###### Method
-
-
-#### FetchSkuCache{#Modio.Monetization.ModioFiatPrice.FetchSkuCache}
-
-```csharp
-public static async Task<Error> FetchSkuCache(ModioAPI.Portal portal)
-```
-
-
-#### TryGetLocalPrice{#Modio.Monetization.ModioFiatPrice.TryGetLocalPrice}
-
-```csharp
-public static void TryGetLocalPrice(Mod mod)
-```
-
-___
-
-### ModioVirtualCurrencyName{#Modio.Monetization.ModioVirtualCurrencyName}
-
-```csharp
-public class ModioVirtualCurrencyName
-```
-
-
-###### Method
-
-
-#### GetVirtualCurrencyName{#Modio.Monetization.ModioVirtualCurrencyName.GetVirtualCurrencyName}
-
-```csharp
-public static async Task<(Error error, string name)> GetVirtualCurrencyName()
-```
-
-___
-
-### MonetizationSettings{#Modio.Monetization.MonetizationSettings}
-
-```csharp
-[Serializable] public class MonetizationSettings : IModioServiceSettings
-```
-
-
-###### Field
-
-
-#### `string CurrencyFallbackName`
-
-```csharp
-string CurrencyFallbackName = "Cogs"
-```
-
-
-#### [`ModioMonetizationType`](#Modio.Monetization.ModioMonetizationType) `MonetizationType`
-
-```csharp
-ModioMonetizationType MonetizationType = ModioMonetizationType.VirtualCurrency
-```
-
-___
-
-### PortalSku{#Modio.Monetization.PortalSku}
-
-```csharp
-public struct PortalSku
-```
-
-
-###### Field
-
-
-#### [`ModioAPI.Portal`](#Modio.API.ModioAPI.Portal) `Portal`
-
-```csharp
-ModioAPI.Portal Portal
-```
-
-
-#### `string Sku`
-
-```csharp
-string Sku
-```
-
-
-#### `string Name`
-
-```csharp
-string Name
-```
-
-
-#### `string FormattedPrice`
-
-```csharp
-string FormattedPrice
-```
-
-
-#### `int Value`
-
-```csharp
-int Value
-```
-
-___
-
-### PriceFormatter{#Modio.Monetization.PriceFormatter}
-
-```csharp
-public static class PriceFormatter
-```
-
-
-###### Method
-
-
-#### FormatPrice{#Modio.Monetization.PriceFormatter.FormatPrice}
-
-```csharp
-[ExcludeFromCodeCoverage] public static string FormatPrice(string currency, double price)
-```
-
-Helps format a price based on currency code.
-
-
-###### Parameters
-
-`currency` The currency code.
-`price` The price amount.
-
-###### Returns
-
-
-___
-
-### Enums
-
-
-###### ModioMonetizationType{#Modio.Monetization.ModioMonetizationType}
-
-
-```csharp
-VirtualCurrency = 0
-```
-
-```csharp
-UsdMarketplace = 1
-```
-
-___
-
 ## Modio.Reports
 
 | Type | Description |
@@ -5745,93 +4728,97 @@ Other = 7
 
 ___
 
-## Modio.Settings
+## Modio.Extensions
 
 | Type | Description |
 |------|-------------|
-| [`ModInstallationManagementSettings`](#Modio.Settings.ModInstallationManagementSettings) |  |
-| [`ModioHiddenTagOverrideSettings`](#Modio.Settings.ModioHiddenTagOverrideSettings) |  |
-| [`PortainerSettings`](#Modio.Settings.PortainerSettings) | Supports mod.io's internal tests |
-| [`TempModInstallationSettings`](#Modio.Settings.TempModInstallationSettings) |  |
+| [`DateTimeExtensions`](#Modio.Extensions.DateTimeExtensions) |  |
+| [`LongExtensions`](#Modio.Extensions.LongExtensions) |  |
+| [`ModioResourceTypeExtensions`](#Modio.Extensions.ModioResourceTypeExtensions) |  |
+| [`TaskExtensions`](#Modio.Extensions.TaskExtensions) |  |
 
-### ModInstallationManagementSettings{#Modio.Settings.ModInstallationManagementSettings}
+### DateTimeExtensions{#Modio.Extensions.DateTimeExtensions}
 
 ```csharp
-[Serializable] public class ModInstallationManagementSettings : IModioServiceSettings
+public static class DateTimeExtensions
 ```
 
 
-###### Field
+###### Method
 
 
-#### `bool AutoActivate`
-
-```csharp
-bool AutoActivate = true
-```
-
-___
-
-### ModioHiddenTagOverrideSettings{#Modio.Settings.ModioHiddenTagOverrideSettings}
+#### GetUtcDateTime{#Modio.Extensions.DateTimeExtensions.GetUtcDateTime}
 
 ```csharp
-public class ModioHiddenTagOverrideSettings : IModioServiceSettings
+public static DateTime GetUtcDateTime(this long timeStamp)
 ```
 
 
-###### Field
-
-
-#### `string HideTagCategories`
+#### GetLocalDateTime{#Modio.Extensions.DateTimeExtensions.GetLocalDateTime}
 
 ```csharp
-string[] HideTagCategories
+public static DateTime GetLocalDateTime(this long timeStamp)
 ```
 
 ___
 
-### PortainerSettings{#Modio.Settings.PortainerSettings}
+### LongExtensions{#Modio.Extensions.LongExtensions}
 
 ```csharp
-public class PortainerSettings : IModioServiceSettings
-```
-
-Supports mod.io's internal tests
-
-
-
-###### Field
-
-
-#### `string Stack`
-
-```csharp
-string Stack
+public static class LongExtensions
 ```
 
 
-#### `bool AlwaysReseed`
+###### Method
+
+
+#### RoundTimestampToHour{#Modio.Extensions.LongExtensions.RoundTimestampToHour}
 
 ```csharp
-bool AlwaysReseed
+public static long RoundTimestampToHour(this long timeStamp)
+```
+
+
+#### RoundTimestampsToHour{#Modio.Extensions.LongExtensions.RoundTimestampsToHour}
+
+```csharp
+public static ICollection<long> RoundTimestampsToHour(this ICollection<long> timeStamps)
 ```
 
 ___
 
-### TempModInstallationSettings{#Modio.Settings.TempModInstallationSettings}
+### ModioResourceTypeExtensions{#Modio.Extensions.ModioResourceTypeExtensions}
 
 ```csharp
-[Serializable] public class TempModInstallationSettings : IModioServiceSettings
+public static class ModioResourceTypeExtensions
 ```
 
 
-###### Field
+###### Method
 
 
-#### `int LifeTimeDays`
+#### GetStringCode{#Modio.Extensions.ModioResourceTypeExtensions.GetStringCode}
 
 ```csharp
-int LifeTimeDays = 0
+public static string GetStringCode(this ModioResourceType resourceType)
+```
+
+___
+
+### TaskExtensions{#Modio.Extensions.TaskExtensions}
+
+```csharp
+public static class TaskExtensions
+```
+
+
+###### Method
+
+
+#### ForgetTaskSafely{#Modio.Extensions.TaskExtensions.ForgetTaskSafely}
+
+```csharp
+public static async void ForgetTaskSafely(this Task task)
 ```
 
 ___
@@ -6390,7 +5377,7 @@ Removes the [`User`](#Modio.Users.User) and associated authentication and caches
 #### LogOut{#Modio.Users.User.LogOut}
 
 ```csharp
-public static void LogOut()
+public static async Task LogOut()
 ```
 Logs out the current [`User`](#Modio.Users.User) without deleting any associated data stored on this device.
 
@@ -6439,7 +5426,7 @@ public ModioId UserId
 ```
 `get` `set`
 
- This is the unique Id of the user.
+This is the unique Id of the user.
 
 
 
@@ -6676,3 +5663,1098 @@ public long Balance
 `get` 
 
 ___
+
+## Modio.Authentication
+
+| Type | Description |
+|------|-------------|
+| [`IEmailCodePrompter`](#Modio.Authentication.IEmailCodePrompter) |  |
+| [`IGetActiveUserIdentifier`](#Modio.Authentication.IGetActiveUserIdentifier) |  |
+| [`IModioAuthService`](#Modio.Authentication.IModioAuthService) |  |
+| [`IPotentialModioEmailAuthService`](#Modio.Authentication.IPotentialModioEmailAuthService) |  |
+| [`ModioEmailAuthService`](#Modio.Authentication.ModioEmailAuthService) | Use for authenticating with email |
+| [`ModioMultiplatformAuthResolver`](#Modio.Authentication.ModioMultiplatformAuthResolver) |  |
+
+### IEmailCodePrompter{#Modio.Authentication.IEmailCodePrompter}
+
+```csharp
+public interface IEmailCodePrompter
+```
+
+___
+
+### IGetActiveUserIdentifier{#Modio.Authentication.IGetActiveUserIdentifier}
+
+```csharp
+public interface IGetActiveUserIdentifier
+```
+
+
+###### Method
+
+
+#### GetActiveUserIdentifier{#Modio.Authentication.IGetActiveUserIdentifier.GetActiveUserIdentifier}
+
+```csharp
+public Task<string> GetActiveUserIdentifier();
+```
+
+___
+
+### IModioAuthService{#Modio.Authentication.IModioAuthService}
+
+```csharp
+public partial interface IModioAuthService
+```
+
+
+###### Property
+
+
+#### [`ModioAPI.Portal`](#Modio.API.ModioAPI.Portal) `Portal`
+
+```csharp
+public ModioAPI.Portal Portal
+```
+`get` 
+
+
+###### Method
+
+
+#### Authenticate{#Modio.Authentication.IModioAuthService.Authenticate}
+
+```csharp
+public Task<Error> Authenticate( bool displayedTerms, string thirdPartyEmail
+```
+
+Authenticates with the required server
+
+
+###### Parameters
+
+`displayedTerms` The terms that were displayed to the user
+`thirdPartyEmail` Optional email address used for authentication
+`sync` Optional parameter to indicate if the profile should begin syncing with the server immediately after authentication
+
+___
+
+### IPotentialModioEmailAuthService{#Modio.Authentication.IPotentialModioEmailAuthService}
+
+```csharp
+public interface IPotentialModioEmailAuthService
+```
+
+___
+
+### ModioEmailAuthService{#Modio.Authentication.ModioEmailAuthService}
+
+```csharp
+public class ModioEmailAuthService : IModioAuthService, IGetActiveUserIdentifier, IPotentialModioEmailAuthService
+```
+
+Use for authenticating with email
+
+```csharp
+
+GameObject codeWindow;
+void Awake()
+{
+    ModioServices.Bind&lt;IModioAuthService&gt;()
+                 .FromInstance(new ModioEmailAuthPlatform(), 50);
+}
+async void Authenticate()
+{
+    Error error = await ModioClient.AuthService.Authenticate(true, "some_email@supercoolemail.com");
+    if (error)
+        Debug.LogError($"Error authenticating with email");
+    else
+        Debug.Log($"Successfully authenticated");
+}
+Task&lt;string&gt; ShowCodePrompt()
+{
+    codeWindow.Enable;
+    // Capture security code here
+    string code = await SomeCodeInputLogic();
+    return code;
+}
+
+```
+
+
+
+###### Property
+
+
+#### `bool IsEmailPlatform`
+
+```csharp
+public bool IsEmailPlatform
+```
+
+
+
+#### [`ModioAPI.Portal`](#Modio.API.ModioAPI.Portal) `Portal`
+
+```csharp
+public ModioAPI.Portal Portal
+```
+
+
+
+###### Method
+
+
+#### Authenticate{#Modio.Authentication.ModioEmailAuthService.Authenticate}
+
+```csharp
+public async Task<Error> Authenticate( bool displayedTerms, string thirdPartyEmail
+```
+Begins the email authentication process. This will invoke the `codePrompter` passed either
+into the constructor of this class or with [`SetCodePrompter`](#Modio.Authentication.ModioEmailAuthService.SetCodePrompter) to enter the security code.
+
+###### Returns
+
+`Error.None` if the authentication completed successfully.
+
+
+#### AuthenticateWithoutEmailRequest{#Modio.Authentication.ModioEmailAuthService.AuthenticateWithoutEmailRequest}
+
+```csharp
+public async Task<Error> AuthenticateWithoutEmailRequest()
+```
+Use this to authenticate with a previously acquired, still valid security code.
+
+###### Returns
+
+`Error.None` if the authentication completed successfully.
+
+
+#### SetCodePrompter{#Modio.Authentication.ModioEmailAuthService.SetCodePrompter}
+
+```csharp
+public void SetCodePrompter(IEmailCodePrompter codePrompter)
+```
+
+
+#### SetCodePrompter{#Modio.Authentication.ModioEmailAuthService.SetCodePrompter}
+
+```csharp
+public void SetCodePrompter(Func<Task<string>> codePrompter)
+```
+
+
+#### GetActiveUserIdentifier{#Modio.Authentication.ModioEmailAuthService.GetActiveUserIdentifier}
+
+```csharp
+public Task<string> GetActiveUserIdentifier()
+```
+
+___
+
+### ModioMultiplatformAuthResolver{#Modio.Authentication.ModioMultiplatformAuthResolver}
+
+```csharp
+public class ModioMultiplatformAuthResolver : IModioAuthService, IGetActiveUserIdentifier, IPotentialModioEmailAuthService
+```
+
+
+###### Property
+
+
+#### [`IModioAuthService`](#Modio.Authentication.IModioAuthService) `ServiceOverride`
+
+```csharp
+public IModioAuthService ServiceOverride
+```
+`get` `set`
+
+
+#### `IReadOnlyList AuthBindings`
+
+```csharp
+public IReadOnlyList<IModioAuthService> AuthBindings
+```
+`get` 
+
+
+#### `bool IsEmailPlatform`
+
+```csharp
+public bool IsEmailPlatform
+```
+
+
+
+#### [`ModioAPI.Portal`](#Modio.API.ModioAPI.Portal) `Portal`
+
+```csharp
+public ModioAPI.Portal Portal
+```
+
+
+
+###### Method
+
+
+#### Authenticate{#Modio.Authentication.ModioMultiplatformAuthResolver.Authenticate}
+
+```csharp
+public Task<Error> Authenticate(bool displayedTerms, string thirdPartyEmail
+```
+
+
+#### GetActiveUserIdentifier{#Modio.Authentication.ModioMultiplatformAuthResolver.GetActiveUserIdentifier}
+
+```csharp
+public Task<string> GetActiveUserIdentifier()
+```
+
+___
+
+## Modio.Monetization
+
+| Type | Description |
+|------|-------------|
+| [`IModioEntitlementService`](#Modio.Monetization.IModioEntitlementService) |  |
+| [`IModioStorefrontService`](#Modio.Monetization.IModioStorefrontService) |  |
+| [`IModioUsdMarketplaceService`](#Modio.Monetization.IModioUsdMarketplaceService) | A service interface for handling USD marketplace operations. |
+| [`IModioVirtualCurrencyProviderService`](#Modio.Monetization.IModioVirtualCurrencyProviderService) | Use this interface if the target platform supports purchasing Virtual Currency but requires it to display in UI in-game. |
+| [`ModioFiatPrice`](#Modio.Monetization.ModioFiatPrice) |  |
+| [`ModioVirtualCurrencyName`](#Modio.Monetization.ModioVirtualCurrencyName) |  |
+| [`MonetizationSettings`](#Modio.Monetization.MonetizationSettings) |  |
+| [`PortalSku`](#Modio.Monetization.PortalSku) |  |
+| [`PriceFormatter`](#Modio.Monetization.PriceFormatter) |  |
+
+### IModioEntitlementService{#Modio.Monetization.IModioEntitlementService}
+
+```csharp
+public interface IModioEntitlementService
+```
+
+
+###### Method
+
+
+#### SyncEntitlements{#Modio.Monetization.IModioEntitlementService.SyncEntitlements}
+
+```csharp
+public Task<Error> SyncEntitlements();
+```
+
+___
+
+### IModioStorefrontService{#Modio.Monetization.IModioStorefrontService}
+
+```csharp
+public interface IModioStorefrontService
+```
+
+
+###### Method
+
+
+#### OpenPlatformPurchaseFlow{#Modio.Monetization.IModioStorefrontService.OpenPlatformPurchaseFlow}
+
+```csharp
+public Task<Error> OpenPlatformPurchaseFlow();
+```
+
+___
+
+### IModioUsdMarketplaceService{#Modio.Monetization.IModioUsdMarketplaceService}
+
+```csharp
+public interface IModioUsdMarketplaceService
+```
+
+A service interface for handling USD marketplace operations.
+
+
+
+###### Method
+
+
+#### UpdateSkuCache{#Modio.Monetization.IModioUsdMarketplaceService.UpdateSkuCache}
+
+```csharp
+public Task<Error> UpdateSkuCache();
+```
+
+Update the local cache of SKUs for a portal
+
+
+###### Returns
+
+A tuple containing an error if the operation failed, and an array of PortalSku objects representing the updated SKU cache.
+
+___
+
+### IModioVirtualCurrencyProviderService{#Modio.Monetization.IModioVirtualCurrencyProviderService}
+
+```csharp
+public interface IModioVirtualCurrencyProviderService
+```
+Use this interface if the target platform supports purchasing Virtual Currency but requires it to display in UI in-game.
+
+
+###### Method
+
+
+#### GetCurrencyPackSkus{#Modio.Monetization.IModioVirtualCurrencyProviderService.GetCurrencyPackSkus}
+
+```csharp
+public Task<(Error error, PortalSku[] skus)> GetCurrencyPackSkus();
+```
+Retrieve a list of [`UserPortal`](#Modio.Users.UserSaveObject.UserPortal) specific SKUs that can be purchased.
+
+
+#### OpenCheckoutFlow{#Modio.Monetization.IModioVirtualCurrencyProviderService.OpenCheckoutFlow}
+
+```csharp
+public Task<Error> OpenCheckoutFlow(PortalSku sku);
+```
+Opens the target platform's checkout flow. This will open a separate UI window outside the game.
+
+###### Parameters
+
+`sku` The SKU being purchased.
+
+___
+
+### ModioFiatPrice{#Modio.Monetization.ModioFiatPrice}
+
+```csharp
+public static class ModioFiatPrice
+```
+
+
+###### Method
+
+
+#### FetchSkuCache{#Modio.Monetization.ModioFiatPrice.FetchSkuCache}
+
+```csharp
+public static async Task<Error> FetchSkuCache(ModioAPI.Portal portal)
+```
+
+
+#### TryGetLocalPrice{#Modio.Monetization.ModioFiatPrice.TryGetLocalPrice}
+
+```csharp
+public static void TryGetLocalPrice(Mod mod)
+```
+
+___
+
+### ModioVirtualCurrencyName{#Modio.Monetization.ModioVirtualCurrencyName}
+
+```csharp
+public class ModioVirtualCurrencyName
+```
+
+
+###### Method
+
+
+#### GetVirtualCurrencyName{#Modio.Monetization.ModioVirtualCurrencyName.GetVirtualCurrencyName}
+
+```csharp
+public static async Task<(Error error, string name)> GetVirtualCurrencyName()
+```
+
+___
+
+### MonetizationSettings{#Modio.Monetization.MonetizationSettings}
+
+```csharp
+[Serializable] public class MonetizationSettings : IModioServiceSettings
+```
+
+
+###### Field
+
+
+#### `string CurrencyFallbackName`
+
+```csharp
+string CurrencyFallbackName = "Cogs"
+```
+
+
+#### [`ModioMonetizationType`](#Modio.Monetization.ModioMonetizationType) `MonetizationType`
+
+```csharp
+ModioMonetizationType MonetizationType = ModioMonetizationType.VirtualCurrency
+```
+
+___
+
+### PortalSku{#Modio.Monetization.PortalSku}
+
+```csharp
+public struct PortalSku
+```
+
+
+###### Field
+
+
+#### [`ModioAPI.Portal`](#Modio.API.ModioAPI.Portal) `Portal`
+
+```csharp
+ModioAPI.Portal Portal
+```
+
+
+#### `string Sku`
+
+```csharp
+string Sku
+```
+
+
+#### `string Name`
+
+```csharp
+string Name
+```
+
+
+#### `string FormattedPrice`
+
+```csharp
+string FormattedPrice
+```
+
+
+#### `int Value`
+
+```csharp
+int Value
+```
+
+___
+
+### PriceFormatter{#Modio.Monetization.PriceFormatter}
+
+```csharp
+public static class PriceFormatter
+```
+
+
+###### Method
+
+
+#### FormatPrice{#Modio.Monetization.PriceFormatter.FormatPrice}
+
+```csharp
+[ExcludeFromCodeCoverage] public static string FormatPrice(string currency, double price)
+```
+
+Helps format a price based on currency code.
+
+
+###### Parameters
+
+`currency` The currency code.
+`price` The price amount.
+
+###### Returns
+
+
+___
+
+### Enums
+
+
+###### ModioMonetizationType{#Modio.Monetization.ModioMonetizationType}
+
+
+```csharp
+VirtualCurrency = 0
+```
+
+```csharp
+UsdMarketplace = 1
+```
+
+___
+
+## Modio.Caching
+
+| Type | Description |
+|------|-------------|
+| [`BaseCache`](#Modio.Caching.BaseCache) | Base class for caching objects in Modio. |
+
+### BaseCache{#Modio.Caching.BaseCache}
+
+```csharp
+public abstract class BaseCache<TCache, TKey, TCachedObject>  where TCache : BaseCache<TCache, TKey, TCachedObject>, new()
+```
+
+Base class for caching objects in Modio.
+
+
+###### Type Parameters
+
+`TCache`:
+`TKey`:
+`TCachedObject`:
+
+
+###### Property
+
+
+#### `int SearchesNotInCache`
+
+```csharp
+public static int SearchesNotInCache
+```
+
+
+
+#### `int SearchesSavedByCache`
+
+```csharp
+public static  int SearchesSavedByCache
+```
+
+
+
+###### Method
+
+
+#### Clear{#Modio.Caching.BaseCache.Clear}
+
+```csharp
+public static void Clear()
+```
+
+Clears the cache.
+
+
+
+#### GetCachedSearch{#Modio.Caching.BaseCache.GetCachedSearch}
+
+```csharp
+public static bool GetCachedSearch( SearchFilter filter, string searchKey, out TCachedObject[] cached, out long resultTotal )
+```
+
+Gets a cached search result based on the provided filter and search key.
+
+
+###### Parameters
+
+`filter` The filter to apply to the search.
+`searchKey` The key used to identify the cached search.
+`cached` The cached results of the search, if found.
+`resultTotal` The total number of results found for the search.
+
+###### Returns
+
+Returns true if the search results were found in the cache, otherwise false.
+
+
+#### CacheSearch{#Modio.Caching.BaseCache.CacheSearch}
+
+```csharp
+public static void CacheSearch(string searchKey, TCachedObject[] cached, long pageIndex, long resultTotal)
+```
+
+Stores the search results in the cache.
+
+
+###### Parameters
+
+`searchKey` The key used to identify the cached search.
+`cached` The cached results of the search.
+`pageIndex` The index of the page of results.
+`resultTotal` The total number of results found for the search.
+
+
+#### ClearCachedSearchCache{#Modio.Caching.BaseCache.ClearCachedSearchCache}
+
+```csharp
+public static void ClearCachedSearchCache()
+```
+
+Clears the cached search results.
+
+
+
+#### ConstructFilterKey{#Modio.Caching.BaseCache.ConstructFilterKey}
+
+```csharp
+public static string ConstructFilterKey(SearchFilter filter)
+```
+
+Constructs a filter key based on the provided search filter.
+
+
+###### Parameters
+
+`filter` The filter to construct the key from.
+
+###### Returns
+
+A string representing the constructed filter key.
+
+___
+
+## Modio.Collections
+
+| Type | Description |
+|------|-------------|
+| [`ModCollection`](#Modio.Collections.ModCollection) |  |
+| [`ModCollectionStats`](#Modio.Collections.ModCollectionStats) |  |
+
+### ModCollection{#Modio.Collections.ModCollection}
+
+```csharp
+public class ModCollection : IModioInfo
+```
+
+
+###### Property
+
+
+#### [`ModioId`](#Modio.Mods.ModioId) `Id`
+
+```csharp
+public ModioId Id
+```
+`get` 
+The collection id.
+
+
+#### [`UserProfile`](#Modio.Users.UserProfile) `Creator`
+
+```csharp
+public UserProfile Creator
+```
+`get` 
+The user who submitted the collection.
+
+
+#### `DateTime DateUpdated`
+
+```csharp
+public DateTime DateUpdated
+```
+`get` 
+The date the collection was last updated.
+
+
+#### `DateTime DateLive`
+
+```csharp
+public DateTime DateLive
+```
+`get` 
+The date the collection went live.
+
+
+#### [`ModMaturityOptions`](#Modio.Mods.ModMaturityOptions) `MaturityOptions`
+
+```csharp
+public ModMaturityOptions MaturityOptions
+```
+`get` 
+The maturity options detected within this collection.
+
+
+#### `long ArchiveFilesize`
+
+```csharp
+public long ArchiveFilesize
+```
+`get` 
+The total filesize of all mods in the collection.
+
+
+#### `long Filesize`
+
+```csharp
+public long Filesize
+```
+`get` 
+The total uncompressed filesize of all mods in the collection.
+
+
+#### [`ModTag`](#Modio.Mods.ModTag) `Tags`
+
+```csharp
+public ModTag[] Tags
+```
+`get` 
+The tags associated with the collection.
+
+
+#### [`ModCollectionStats`](#Modio.Collections.ModCollectionStats) `Stats`
+
+```csharp
+public ModCollectionStats Stats
+```
+`get` 
+The stats of the collection.
+
+
+#### [`ModioImageSource`](#Modio.Images.ModioImageSource) `Logo`
+
+```csharp
+public ModioImageSource<Mod.LogoResolution> Logo
+```
+`get` 
+The logo of the collection.
+
+
+#### `string Name`
+
+```csharp
+public string Name
+```
+`get` 
+The name of the collection.
+
+
+#### `string NameId`
+
+```csharp
+public string NameId
+```
+`get` 
+The name id of the collection.
+
+
+#### `string Summary`
+
+```csharp
+public string Summary
+```
+
+The summary of the collection.
+
+
+#### `string Description`
+
+```csharp
+public string Description
+```
+`get` 
+The description of the collection.
+
+
+#### `bool IsFollowed`
+
+```csharp
+public bool IsFollowed
+```
+`get` 
+Whether the collection is followed by the user.
+
+
+#### [`ModioRating`](#Plugins.Modio.Modio.Ratings.ModioRating) `CurrentUserRating`
+
+```csharp
+public ModioRating CurrentUserRating
+```
+`get` 
+
+
+###### Method
+
+
+#### AddChangeListener{#Modio.Collections.ModCollection.AddChangeListener}
+
+```csharp
+public static void AddChangeListener( ModCollectionChangeType subscribedChange, Action<ModCollection, ModCollectionChangeType> listener )
+```
+Adds an event handler to listen for whenever the [`ModCollectionChangeType`](#Modio.Collections.ModCollectionChangeType) of a collection
+is changed.
+
+###### Remarks
+
+[`ModCollectionChangeType`](#Modio.Collections.ModCollectionChangeType) is a bit flag, multiple changes can be listened for with one
+handler.
+
+
+#### RemoveChangeListener{#Modio.Collections.ModCollection.RemoveChangeListener}
+
+```csharp
+public static void RemoveChangeListener( ModCollectionChangeType subscribedChange, Action<ModCollection, ModCollectionChangeType> listener )
+```
+
+Removes an event handler that listens for changes to the [`ModCollectionChangeType`](#Modio.Collections.ModCollectionChangeType) of a collection.
+
+
+###### Parameters
+
+`subscribedChange` The type of change to unsubscribe from.
+`listener` The event handler to remove.
+
+###### Remarks
+
+This will only remove the handler if it was previously added with [`AddChangeListener`](#Modio.Mods.Mod.AddChangeListener).
+
+
+#### GetCollections{#Modio.Collections.ModCollection.GetCollections}
+
+```csharp
+public static async Task<(Error error, ModioPage<ModCollection> page)> GetCollections( ModioAPI.Collections.GetModCollectionsFilter filter )
+```
+
+
+#### Get{#Modio.Collections.ModCollection.Get}
+
+```csharp
+public static ModCollection Get(long id)
+```
+
+
+#### GetCollectionMods{#Modio.Collections.ModCollection.GetCollectionMods}
+
+```csharp
+public static async Task<(Error error, ModioPage<Mod> page)> GetCollectionMods( long collectionId, ModioAPI.Collections.GetCollectionModsFilter filter )
+```
+Gets all mods that qualify the provided `ModioAPI.Collections.GetCollectionMods` parameters.
+
+###### Remarks
+
+
+This will cache searches and results. If a search exists in the cache, this method will
+return those results.
+The [`ModioAPI.Collections.GetCollectionModsFilter`](#Modio.API.ModioAPI.Collections.GetCollectionModsFilter) is used to filter the results, allowing
+for pagination, sorting, and other search parameters.
+
+
+
+#### GetMods{#Modio.Collections.ModCollection.GetMods}
+
+```csharp
+public async Task<(Error error, IReadOnlyList<Mod> results)> GetMods()
+```
+
+Gets all mods of the collection.
+
+
+###### Returns
+
+An asynchronous task that returns a tuple ([`Error`](#Modio.ModioLog.Error) error, `IReadOnlyList{Mod}` results), where:
+`error` is the error encountered during the task (if any)
+`result` is a readonly list of [`Mod`](#ModioResourceType.Mod) in the collection.
+
+
+
+#### Subscribe{#Modio.Collections.ModCollection.Subscribe}
+
+```csharp
+public Task<Error> Subscribe()
+```
+
+Subscribe to all mods in this collection.
+
+
+###### Returns
+
+An [`Error`](#Modio.ModioLog.Error) indicating the success or failure of the operation.
+
+
+#### Unsubscribe{#Modio.Collections.ModCollection.Unsubscribe}
+
+```csharp
+public Task<Error> Unsubscribe()
+```
+
+Unsubscribe from all mods in this collection.
+
+
+###### Returns
+
+An [`Error`](#Modio.ModioLog.Error) indicating the success or failure of the operation.
+
+
+#### Follow{#Modio.Collections.ModCollection.Follow}
+
+```csharp
+public Task<Error> Follow()
+```
+
+Follow this collection.
+
+
+###### Returns
+
+An [`Error`](#Modio.ModioLog.Error) indicating the success or failure of the operation.
+
+
+#### Unfollow{#Modio.Collections.ModCollection.Unfollow}
+
+```csharp
+public Task<Error> Unfollow()
+```
+
+Unfollow this collection.
+
+
+###### Returns
+
+An [`Error`](#Modio.ModioLog.Error) indicating the success or failure of the operation.
+
+
+#### Rate{#Modio.Collections.ModCollection.Rate}
+
+```csharp
+public async Task<Error> Rate(ModioRating rating)
+```
+
+Rate this collection.
+
+
+###### Parameters
+
+`rating` The rating to give the collection.
+
+###### Returns
+
+An [`Error`](#Modio.ModioLog.Error) indicating the success or failure of the operation.
+
+
+#### Report{#Modio.Collections.ModCollection.Report}
+
+```csharp
+public async Task<Error> Report(ReportType reportType, string contact, string summary)
+```
+
+___
+
+### ModCollectionStats{#Modio.Collections.ModCollectionStats}
+
+```csharp
+public class ModCollectionStats
+```
+
+
+###### Property
+
+
+#### `long CollectionId`
+
+```csharp
+public long CollectionId
+```
+`get` 
+The collection id.
+
+
+#### `long ModsTotal`
+
+```csharp
+public long ModsTotal
+```
+`get` 
+ The total number of mods contained in this collection 
+
+
+#### `long DownloadsToday`
+
+```csharp
+public long DownloadsToday
+```
+`get` 
+The number of downloads today.
+
+
+#### `long UniqueDownloads`
+
+```csharp
+public long UniqueDownloads
+```
+`get` 
+The number of unique downloads.
+
+
+#### `long Downloads`
+
+```csharp
+public long Downloads
+```
+`get` 
+The total number of downloads.
+
+
+#### `long Followers`
+
+```csharp
+public long Followers
+```
+`get` 
+The total number of followers.
+
+
+#### `long RatingsPositive`
+
+```csharp
+public long RatingsPositive
+```
+`get` 
+The number of positive ratings in the last 30 days.
+
+
+#### `long RatingsPositive30Days`
+
+```csharp
+public long RatingsPositive30Days
+```
+`get` 
+
+
+#### `long RatingsNegative`
+
+```csharp
+public long RatingsNegative
+```
+`get` 
+
+
+#### `long RatingsNegative30Days`
+
+```csharp
+public long RatingsNegative30Days
+```
+`get` 
+
+
+#### `float? RatingsPercent`
+
+```csharp
+public float? RatingsPercent
+```
+`get` 
+
+___
+
+### Enums
+
+
+###### ModCollectionChangeType{#Modio.Collections.ModCollectionChangeType}
+
+
+```csharp
+IsFollowed         = 1 << 0
+```
+
+```csharp
+Rating            = 1 << 1
+```
+
+```csharp
+ModList          = 1 << 2
+```
+
+```csharp
+Everything        = ~0
+```
+
+___
+

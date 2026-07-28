@@ -9,7 +9,9 @@ custom_edit_url: https://github.com/modio/modio-ue4-internal/blob/develop/Plugin
 
 [Cloud Cooking](https://docs.mod.io/cloud-cooking) provides mod.io managed infrastructure that supports preparation of content for platforms that are only available under non-disclosure agreements, such as consoles.
 
-:::note[Premium Feature] Cloud Cooking is a premium feature. Please contact us at developers@mod.io for more information. :::
+:::note[Premium Feature]
+Cloud Cooking is a premium feature. Please contact us at developers@mod.io for more information.
+:::
 
 This feature is fully functional for games utilizing our Unreal Engine Plugin.
 
@@ -173,13 +175,10 @@ An example directory structure can be found below:
 │       ├── GDK
 │       ├── PS4
 │       └── ...
-└── CloudCooking.config
+└── cloudcooking.config
 ```
 
-The `CloudCooking.config` file is used to indicate to the build agent where it can locate RunUAT and your project file, relative to the root of this directory. It should be formatted as json.
-:::note
-This filename (`CloudCooking.config`) is case sensitive and must be supplied as shown here.
-:::
+The `cloudcooking.config` file is used to indicate to the build agent where it can locate RunUAT and your project file, relative to the root of this directory. It should be formatted as json.
 
 ### CloudCooking.config file
 
@@ -189,7 +188,7 @@ This filename (`CloudCooking.config`) is case sensitive and must be supplied as 
 | GameProjectDirectory | /UnrealEngine/Engine/MyGame | Path to the directory of your game  |
 | GameProjectName | MyGame.uproject | Filename of the uproject file for your game.  |
 
-An example of the CloudCooking.config file for the above folder structure:
+An example of the cloudcooking.config file for the above folder structure:
 
 ```json
 {

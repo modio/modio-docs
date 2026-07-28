@@ -15,6 +15,7 @@ const unitySidebar = {
                 'game-integration/unity/getting-started/unity-installation',
                 'game-integration/unity/getting-started/unity-initialization',
                 'game-integration/unity/getting-started/unity-authentication',
+                'game-integration/unity/getting-started/unity-localization',
                 'game-integration/unity/getting-started/unity-adding-ugc',
                 'game-integration/unity/getting-started/unity-searching-ugc',
                 'game-integration/unity/getting-started/unity-subscribing',

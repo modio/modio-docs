@@ -77,6 +77,14 @@ public string[] GalleryFilePaths
 `get` 
 
 
+#### `int GalleryByteArraysCount`
+
+```csharp
+public int GalleryByteArraysCount
+```
+
+
+
 #### `string Tags`
 
 ```csharp
@@ -301,9 +309,18 @@ public ModBuilder SetLogo(byte[] imageData, ImageFormat format)
 public ModBuilder SetGallery(ICollection<string> galleryImageFilePaths)
 ```
 
+Set the gallery images for this mod, overwriting existing gallery images on the mod.io API to just what's
+uploaded.
+
+
+###### Parameters
+
+`galleryImageFilePaths` A collection of file paths to upload the images from.
+
 ###### Remarks
 
-Will overwrite existing gallery images.
+Can be used alongside `SetGallery(byte[])` with images from both sources
+uploaded.
 
 
 #### SetGallery{#Modio.Mods.Builder.ModBuilder.SetGallery}
@@ -312,9 +329,18 @@ Will overwrite existing gallery images.
 public ModBuilder SetGallery(string galleryImageFilePath)
 ```
 
+Set the gallery image for this mod, overwriting existing gallery images on the mod.io API to just what's
+uploaded.
+
+
+###### Parameters
+
+`galleryImageFilePath` A file path to upload the image from.
+
 ###### Remarks
 
-Will overwrite existing gallery images.
+Can be used alongside `SetGallery(byte[])` with images from both sources
+uploaded.
 
 
 #### AppendGallery{#Modio.Mods.Builder.ModBuilder.AppendGallery}
@@ -323,12 +349,118 @@ Will overwrite existing gallery images.
 public ModBuilder AppendGallery(ICollection<string> galleryImageFilePaths)
 ```
 
+Upload the provided gallery images to this mod, preserving images already previously uploaded to the mod.io
+API.
+
+
+###### Parameters
+
+`galleryImageFilePaths` A file path to upload the image from.
+
+###### Remarks
+
+Can be used alongside `AppendGallery(byte[])` with images from both sources
+uploaded.
+
 
 #### AppendGallery{#Modio.Mods.Builder.ModBuilder.AppendGallery}
 
 ```csharp
 public ModBuilder AppendGallery(string galleryImageFilePath)
 ```
+
+Upload the provided gallery images to this mod, preserving images already previously uploaded to the mod.io
+API.
+
+
+###### Parameters
+
+`galleryImageFilePath` A file path to upload the image from.
+
+###### Remarks
+
+Can be used alongside `AppendGallery(byte[])` with images from both sources
+uploaded.
+
+
+#### SetGallery{#Modio.Mods.Builder.ModBuilder.SetGallery}
+
+```csharp
+public ModBuilder SetGallery(byte[] galleryImageByteArray, ImageFormat format)
+```
+
+Set the gallery image for this mod, overwriting existing gallery images on the mod.io API to just what's
+uploaded.
+
+
+###### Parameters
+
+`galleryImageByteArray` A byte array of the encoded image bytes to upload.
+
+###### Remarks
+
+Can be used alongside `SetGallery(string)` with images from both sources
+uploaded.
+
+
+#### SetGallery{#Modio.Mods.Builder.ModBuilder.SetGallery}
+
+```csharp
+public ModBuilder SetGallery(ICollection<byte[]> galleryImageByteArrays, ImageFormat format)
+```
+
+Set the gallery images for this mod, overwriting existing gallery images on the mod.io API to just what's
+uploaded.
+
+
+###### Parameters
+
+`galleryImageByteArrays` A collection of byte arrays of the encoded image bytes to upload.
+
+###### Remarks
+
+Can be used alongside `SetGallery(string)` with images from both sources
+uploaded.
+
+
+#### AppendGallery{#Modio.Mods.Builder.ModBuilder.AppendGallery}
+
+```csharp
+public ModBuilder AppendGallery(byte[] galleryImageByteArray, ImageFormat format)
+```
+
+Upload the provided gallery images to this mod, preserving images already previously uploaded to the mod.io
+API.
+
+
+###### Parameters
+
+`galleryImageByteArray` A byte array of the encoded image bytes to upload.
+
+###### Remarks
+
+Can be used alongside `AppendGallery(string)` with images from both sources
+uploaded.
+
+
+#### AppendGallery{#Modio.Mods.Builder.ModBuilder.AppendGallery}
+
+```csharp
+public ModBuilder AppendGallery(ICollection<byte[]> galleryImageByteArrays, ImageFormat format)
+```
+
+Upload the provided gallery images to this mod, preserving images already previously uploaded to the mod.io
+API.
+
+
+###### Parameters
+
+`galleryImageByteArrays` A collection of byte arrays of the encoded image bytes to upload.
+
+###### Remarks
+
+Can be used alongside `AppendGallery(string)` with images from both sources
+uploaded.
 
 
 #### SetDependencies{#Modio.Mods.Builder.ModBuilder.SetDependencies}

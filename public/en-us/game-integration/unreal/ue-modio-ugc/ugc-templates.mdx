@@ -12,16 +12,16 @@ This feature is currently released in an experimental state. Functionality is su
 # UGC Templates
 Currently creating new mods leaves the Modder with a blank UGC plugin. UGC Templates instead allow a Developer to define items that Modders can add, letting them immediately get started. This doesn't preclude Modders from adding content themselves manually but modding is a great way for people to dip their toes into game development and this would help the less experienced people hit the ground running by providing them with more than just a blank slate.
 
-# Template Types
+## Template Types
 Currently we support two types of templates: Mod Templates and Item Templates.
 
-## Mod Templates
+### Mod Templates
 Mod Templates are used as the base of a new piece of UGC and will create the necessary scaffolding for you.
 
-## Item Templates
+### Item Templates
 Item Templates are templates for items that can be added to an existing Mod. These can help creators make bigger Mods with a larger variety of content with less hassle.
 
-# File Name Substitution
+## File Name Substitution
 We support the ability to provide for template creators to supply partial file name substitutions. This allows Modders to use the same template multiple times without needing to worry about clashing names. As a file is being extracted from the template any substitutions will be applied to the name as it is written to it's new location. Values for these parameters are provided by the Modder when they instantiate the template.
 
 Example:
@@ -37,14 +37,14 @@ While most substitutions are defined by the template creator there are a few imp
 | ```___MODNAME___```   | The name of the mod   |
 | ```___UGCNAME___```   | Currently synonymous with ```___MODNAME___```   | 
 
-# What is in a Template?
+## What is in a Template?
 Each template is a zip file that contains two parts: the files to copy and the template descriptor.
 
 When a user creates content with a template the files contained in the zip file are copied in to the Mod  directory in the same directory structure. This structure should mirror the expected folder structure for Unreal plugins and begin with ```\Content\```.
 
 The template descriptor is a ```.template``` file with the same name as the template. See below for more information.
 
-# Template Descriptor
+## Template Descriptor
 The Template Descriptor is a json file that contains information about the template. The file can contain the following properties:
 
 | Property      | Type          | Version | Required   | Description |
@@ -53,7 +53,7 @@ The Template Descriptor is a json file that contains information about the templ
 | Type          | int           | 1       | Yes        | Indicates which type of template this is (0 = Item, 1 = Mod). This maps to an enum in Unreal |
 | Parameters    | String Array  | 1       | Optional   | Contains a list of strings used as substitution parameters for the template |
 
-# Export
+## Export
 To make things easier we have supplied a template export tool to help create custom templates.
 
 1. Create a UGC Mod plugin, either manually or by using our ```Blank``` UGC template.

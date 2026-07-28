@@ -170,7 +170,7 @@ Successfully purchasing a mod also subscribes the user in the same action. Once 
 
 ![marketplace features](img/feature_marketplace_8.png)
 
-When prompted to buy more Tokens on PlayStation, Switch or Steam, the Template UI will call on the native platform marketplace UI to handle all token purchases. However, when prompted to buy tokens on Xbox & Oculus platforms, an internal modal will be used to list available token packs.
+When prompted to buy more Tokens on PlayStation, Switch or Steam, the Template UI will call on the native platform marketplace UI to handle all token purchases. However, when prompted to buy tokens on XBOX & Oculus platforms, an internal modal will be used to list available token packs.
 
 All token pack purchases will sync with the user's account and update their total tokens immediately.
 
