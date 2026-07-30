@@ -84,7 +84,7 @@ A number of commands can be sent to and received from Embed Hub using the JavaSc
 ```Typescript
 {
   "_q": string
-  "tags-in": string
+  "tags": string
 }
 ```
 
@@ -92,10 +92,12 @@ A number of commands can be sent to and received from Embed Hub using the JavaSc
 
 ```Typescript
 {
-  "frameTop": string
-  "scrollY": string
+  "frameTop": number
+  "scrollY": number
 }
 ```
+
+`frameTop` is the `<iframe>`'s offset from the top of the viewport (`getBoundingClientRect().top`) and `scrollY` is the containing window's vertical scroll position (`window.scrollY`). Both are pixel values.
 
 #### IModioSettings
 
@@ -117,6 +119,7 @@ A number of commands can be sent to and received from Embed Hub using the JavaSc
   "showComments": boolean
   "showMarketplace": boolean
   "showGuides": boolean
+  "showLibrary": boolean
   "showSortTabs": boolean
   "showUserAvatars": boolean
   "showActivateButtons": boolean
@@ -132,7 +135,7 @@ A number of commands can be sent to and received from Embed Hub using the JavaSc
   "activeButtonBorderColorHover": string
   "activeButtonColor": string
   "activeButtonColorHover": string
-  "buttonRadius": number
+  "buttonRadius": string
   "inputBackgroundColor": string
   "linkColor": string
   "modalBackground": string
@@ -147,10 +150,12 @@ A number of commands can be sent to and received from Embed Hub using the JavaSc
   "secondaryButtonColorHover": string
   "tileBackgroundColor": string
   "tileBorderColor": string
-  "tileBorderRadius": number
-  "tileBorderWidth": number
+  "tileBorderRadius": string
+  "tileBorderWidth": string
 }
 ```
+
+Color values accept any valid CSS color, as described on the [theme page](/embed-hub/theme). `buttonRadius`, `tileBorderRadius` and `tileBorderWidth` are applied directly as CSS values, so they must include a unit - for example `'8px'` or `'0.5rem'`.
 
 ### From Embed Hub
 
@@ -175,18 +180,133 @@ To receive data from the game, the Embed Hub expects a JavaScript object named `
 | --------------------------- | --------------------------------- | -------------------------------------------------------------------------------------------------- |
 | getAuthToken                |                                   | Used to get a UDT for the logged in user from the game                                             |
 | getActivations              |                                   | Used to get the list of activated mod IDs from the game                                            |
-| getLocalMods                |                                   | Used to get the list of locally installed mods from the game                                       |
+| getLocalMods                |                                   | Used to get the list of local mods (mods not hosted on mod.io) from the game. Returns [ILocalMod](#ilocalmod)[] |
 | getLocalActivations         |                                   | Used to get the list of activated local mod IDs from the game                                      |
 | getLanguage                 |                                   | Used to get the language the game is using                                                         |
 | getPlatform                 |                                   | Used to get the platform the game is running on                                                    |
 | getPortal                   |                                   | Used to get the portal the game is authenticated with                                              |
 | setAuthToken                | token: string                     | Used to provide a UDT of the logged in user to the game which can be exchanged for an access token |
-| setUserId                   | userId: int                       | Used to set the logged in user's ID on the game                                                    |
+| setUserId                   | userId: string                    | Used to set the logged in user's ID on the game                                                    |
 | setActivations              | modIds: array&lt;int&gt;          | Used to set the list of activated mod IDs on the game                                              |
 | setLocalActivations         | modIds: array&lt;string&gt;       | Used to set the list of activated local mod IDs on the game                                        |
 | notifySubscriptionChange    | modId: int, isSubscribed: boolean | Used to notify the game that a mod has been subscribed to or unsubscribed from                     |
 | notifyActivationChange      | modId: int, isActivated: boolean  | Used to notify the game that a mod has been activated or deactivated                               |
-| notifyLocalActivationChange | modId: int, isActivated: boolean  | Used to notify the game that a local mod has been activated or deactivated                         |
+| notifyLocalActivationChange | modId: string, isActivated: boolean | Used to notify the game that a local mod has been activated or deactivated                       |
+
+:::info Local mods
+"Local mods" refers to mods that are **not hosted on mod.io** - for example, UGC the player has sideloaded or placed manually in the game's mod directory. They are supplied to the Embed Hub by the game, so it can list and activate them alongside mod.io mods, but the Embed Hub does not host or manage their files.
+
+Because local mods have no mod.io mod ID, they are identified by a game-supplied string ID, which is why `setLocalActivations` takes `array<string>` rather than `array<int>`, and `notifyLocalActivationChange` takes a `string` mod ID.
+:::
+
+#### ILocalMod
+
+`getLocalMods` returns an array of objects describing each local mod.
+
+| Property     | Data type           | Description                                                                                           |
+| ------------ | ------------------- | ----------------------------------------------------------------------------------------------------- |
+| modId        | string              | Your identifier for the mod. Used for activation calls and dependency matching                         |
+| modName      | string              | The name shown to the user                                                                            |
+| image        | string              | URL of a thumbnail image, displayed at a 16:9 aspect ratio                                             |
+| size         | number              | File size in **bytes**. Displayed in the nearest sensible unit, eg. `4.75 MB`                          |
+| version      | string              | The mod's version. Accepted, but not currently surfaced in the Embed Hub UI                            |
+| dateLive     | number              | Unix timestamp in **seconds** for when the mod was added. Displayed as a relative time, eg. `3d`       |
+| dateUpdated  | number              | Unix timestamp in **seconds** for when the mod was last updated                                        |
+| downloads    | number              | Download count                                                                                        |
+| subscribers  | number              | Subscriber count                                                                                      |
+| rating       | number              | Rating count                                                                                          |
+| dependencies | array&lt;string&gt; | The `modId` of every other local mod this mod requires. See [Local dependencies](#local-dependencies)  |
+
+`modId` and `modName` are the two fields worth treating as mandatory - the first identifies the mod, the second is all the user has to recognise it by. If you omit the remaining fields:
+
+- `dateLive`, `dateUpdated`, `downloads`, `subscribers` and `rating` degrade cleanly, displaying `-` or `0`.
+- `image` leaves an empty space where the thumbnail would be.
+- `size` must be a number if you supply it at all. A missing or non-numeric value is displayed literally as `NaN bytes`, so send `0` rather than omitting it if you do not track file sizes.
+
+```Typescript
+[
+  {
+    "modId": "my-local-mod",
+    "modName": "My Local Mod",
+    "image": "https://example.com/thumb.png",
+    "size": 4980736,
+    "version": "1.2.0",
+    "dateLive": 1751328000,
+    "dateUpdated": 1753920000,
+    "downloads": 0,
+    "subscribers": 0,
+    "rating": 0,
+    "dependencies": ["some-other-local-mod"]
+  }
+]
+```
+
+Local mods are listed alongside the user's subscriptions in their library. A few differences apply, because the Embed Hub has no profile for content it does not host:
+
+- The name is not a link, as there is no mod profile page to open.
+- Unsubscribing is unavailable. The action is disabled and labelled _'Locally installed'_.
+
+##### Local dependencies
+
+`dependencies` is resolved against the other local mods in the same `getLocalMods` response, matched on `modId`. Any entry with no match is treated as missing: the mod's activate button is disabled and its tooltip reads _'This &lt;ugc name&gt; cannot be loaded as one or more dependencies are missing'_, followed by the unmatched IDs.
+
+:::warning
+Dependencies on mod.io-hosted mods cannot be expressed here. Only local `modId` values are matched, so a mod.io mod ID listed in `dependencies` will always count as missing and will permanently disable the mod. Resolve those dependencies in your own code before building the list.
+:::
+
+#### Implementing the interface
+
+The `get*` functions return data to the Embed Hub, while the `set*` and `notify*` functions receive data from it. Whatever language your game is written in, the end result should be an object on the page's global JS object shaped like this:
+
+```Typescript
+globalThis.modio = {
+  // Getters - return data to the Embed Hub
+  getAuthToken: () => game.getUserDelegationToken(),
+  getActivations: () => game.getActivatedModIds(),
+  getLocalMods: () => game.getLocalMods(),
+  getLocalActivations: () => game.getActivatedLocalModIds(),
+  getLanguage: () => game.getLanguage(),
+  getPlatform: () => game.getPlatform(),
+  getPortal: () => game.getPortal(),
+
+  // Setters - receive data from the Embed Hub
+  setAuthToken: (token) => game.authenticateWithUdt(token),
+  setUserId: (userId) => game.setUserId(userId),
+  setActivations: (modIds) => game.setActivatedModIds(modIds),
+  setLocalActivations: (modIds) => game.setActivatedLocalModIds(modIds),
+
+  // Notifications - state changed inside the Embed Hub
+  notifySubscriptionChange: (modId, isSubscribed) => game.onSubscriptionChanged(modId, isSubscribed),
+  notifyActivationChange: (modId, isActivated) => game.onActivationChanged(modId, isActivated),
+  notifyLocalActivationChange: (modId, isActivated) => game.onLocalActivationChanged(modId, isActivated),
+}
+```
+
+In a web page you can write exactly the above. In a game, use your webview library's mechanism for exposing native functions to JavaScript to build the same object at runtime, and attach it to the global JS object of the main frame as soon as the DOM is ready.
+
+Note that `getLocalMods` must return an array of [ILocalMod](#ilocalmod) objects, not a JSON string.
+
+#### WebView2 hosts
+
+If your host is [Microsoft Edge WebView2](https://learn.microsoft.com/en-us/microsoft-edge/webview2/) and no `modio` object is present on the global JS object, the Embed Hub falls back to `window.chrome.webview.postMessage()` for the following functions:
+
+- `setAuthToken`
+- `setUserId`
+- `notifySubscriptionChange`
+- `notifyActivationChange`
+- `notifyLocalActivationChange`
+
+Each message is an object keyed by the function name, with the parameters as its value - for example:
+
+```Typescript
+window.chrome.webview.postMessage({
+  notifyActivationChange: { modId: 12345, isActivated: true }
+})
+```
+
+Handle these in your native code via the WebView2 `WebMessageReceived` event.
+
+This fallback only covers the functions listed above. The `get*` functions have no fallback, so if your game needs to supply data to the Embed Hub you must still provide a `modio` object on the global JS object.
 
 ### To the Embed Hub
 
@@ -201,6 +321,45 @@ To call functions on the Embed Hub from in-game, The Hub exposes a JavaScript ob
 | syncSubscriptions   |               | Causes the Embed Hub to fetch the current user's subscriptions                                                                                                                                 |
 | syncPurchases       |               | Causes the Embed Hub to fetch the current user's purchases                                                                                                                                     |
 | logout              |               | Used to log the current user out of the Embed Hub                                                                                                                                              |
+
+#### Calling the interface
+
+Unlike the `modio` object, you do not create `modioEmbedHub` - the Embed Hub creates it. Your game only needs to call it:
+
+```Typescript
+// Push a UDT the game already holds, authenticating the user in the Embed Hub
+modioEmbedHub.setAuthToken('<UDT>')
+
+// Ask the Embed Hub for a UDT for the user it has authenticated.
+// Returns false if nobody is logged in; see the round trip below.
+const started = modioEmbedHub.getAuthToken()
+
+// Query the Embed Hub's auth state
+if (modioEmbedHub.isUserAuthenticated()) { /* ... */ }
+
+// Refresh the Embed Hub's caches after the game changes something
+modioEmbedHub.syncSubscriptions()
+modioEmbedHub.syncPurchases()
+
+modioEmbedHub.logout()
+
+// Useful when first wiring things up - returns ['hello', 1] as a JS array
+modioEmbedHub.echo('hello', 1)
+```
+
+From a game, make these calls by evaluating the equivalent JavaScript string in your webview, using whichever function it provides for the purpose - `EvaluateScript`, `ExecuteScriptAsync`, `evaluateJavaScript` and so on.
+
+Note that `getAuthToken` does not return a token. It returns a boolean indicating whether the request was started, and the token arrives afterwards on the `modio` object:
+
+```
+1. game -> EMH    modioEmbedHub.getAuthToken()
+2. EMH  -> game   returns false if no user is logged in - nothing further happens
+   EMH  -> game   returns true, and asynchronously generates a UDT
+3. EMH  -> game   modio.setAuthToken(udt)
+4. game           exchanges the UDT for an access token
+```
+
+The two directions are therefore a single system: `modioEmbedHub.getAuthToken()` is only useful if the `modio` object described above is present to receive the reply.
 
 ## Authentication
 
