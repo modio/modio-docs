@@ -33,6 +33,10 @@ For situations where Custom SSO isn't a viable option, there are a variety of ot
 * **[Device Login](/authentication/device)**: For games looking to authenticate users via a separate device. Currently the recommended option for VR games due to the nature of keyboard/controller constraints.
 * **[Email Authentication](#testing-with-email-authentication)**: Great for testing given there are no dependencies. Not recommended for launch.
 
+:::info Refresh tokens
+The [Studio Website Login](/authentication/studio-website-login) and Email Authentication flows return a `refresh_token` alongside the access token, letting you obtain a fresh access token without the user re-authenticating. See [Using refresh tokens](/authentication/studio-website-login#step-4-using-refresh-tokens) for the exchange request — Studio Website tokens are exchanged with your `client_id`/`client_secret`, while email-issued tokens are first-party and exchanged with the refresh token alone.
+:::
+
 ### Supported use cases
 
 The below table showcases some of the use-cases for the various authentation systems:
