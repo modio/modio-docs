@@ -9,7 +9,7 @@ sidebar_position: 1
 
 Platform Single Sign-On uses the existing OpenID Authentication of the active gaming platform (such as *Steam* or *PlayStation)* to verify users. This is the recommended method for games where [Custom SSO](/authentication/openid) isn't a viable option.
 
-With this method, the user will be able to access your game's UGC by signing into the native system of the platform they are playing the game on. These platforms include *Steam, PlayStation™Network, Xbox Live, Nintendo Switch Online, Epic Games, GOG Galaxy, Meta Quest, iOS and Android*.
+With this method, the user will be able to access your game's UGC by signing into the native system of the platform they are playing the game on. These platforms include *Steam, PlayStation®, Xbox Live, Nintendo Switch Online, Epic Games, GOG Galaxy, Meta Quest, iOS and Android*.
 
 As this method uses each platform's native authentication system, it offers a single sign-on solution for *each* platform, as opposed to a single sign-on solution for *all* platforms.
 
@@ -30,7 +30,7 @@ The implementation requirements differ slightly for each platform. The typical s
     - [GOG Galaxy](/platforms/gog/authentication)
 
     **Console**:
-    - [PlayStation™Network](https://docs.mod.io/partners/ps5/authentication)* 
+    - [PlayStation®](https://docs.mod.io/partners/ps5/authentication)* 
     - [Xbox Live](https://docs.mod.io/partners/xbox/authentication)*
     - [Nintendo Switch Online](https://docs.mod.io/partners/switch/authentication)*
 

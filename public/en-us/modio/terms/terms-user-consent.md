@@ -13,7 +13,7 @@ Consent is important so users are aware a mod.io account is being created, inlin
 
 ## Frequency of application
 
-It is a requirement of the [Game Terms](https://mod.io/gameterms) with mod.io, and the platforms mod.io is used on, to ensure the user provides consent and has agreed to the latest [Terms of Use](https://mod.io/terms) and [Privacy Policy](https://mod.io/privacy) of mod.io. The users agreement must be collected prior to using a 3rd party authentication flow (including but not limited to Steam, PSN, Nintendo and Xbox Live). You only need to collect the users agreement once, and also each time these policies are updated.
+It is a requirement of the [Game Terms](https://mod.io/gameterms) with mod.io, and the platforms mod.io is used on, to ensure the user provides consent and has agreed to the latest [Terms of Use](https://mod.io/terms) and [Privacy Policy](https://mod.io/privacy) of mod.io. The users agreement must be collected prior to using a 3rd party authentication flow (including but not limited to Steam, PlayStation®, Nintendo and Xbox Live). You only need to collect the users agreement once, and also each time these policies are updated.
 
 ## What are the terms?
 

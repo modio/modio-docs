@@ -54,7 +54,7 @@ Premium UGC | User generated content that can be bought or sold from the Marketp
 Virtual Currency | The currency that a player exchanges in return for premium UGC - irrespective of the vanity name your game uses for it. | mod.io
 Currency Pack | A pre-configured pack containing a specific amount of virtual currency. | mod.io
 Wallet | A wallet where any virtual currency you own resides. | mod.io
-Entitlement | A user-purchased digital right to a currency pack, which is always purchased through platform stores such as Steam, Xbox Live, PlayStation™Network, Meta, Epic Games Store, etc and exchanged with mod.io for virtual currency. | Third-party platforms
+Entitlement | A user-purchased digital right to a currency pack, which is always purchased through platform stores such as Steam, Xbox Live, PlayStation®, Meta, Epic Games Store, etc and exchanged with mod.io for virtual currency. | Third-party platforms
 
 ## Concepts
 
@@ -63,7 +63,7 @@ Entitlement | A user-purchased digital right to a currency pack, which is always
 Entitlement Mapping is the process of associating a third-party platform store entitlement with a mod.io currency pack. This step is essential for informing mod.io what amount of virtual currency should be attributed to a player when they purchase and [sync a platform store-purchased entitlement](#3-sync-platform-entitlements-to-modio). Depending on the store used, please see the following guides for registering the mappings.
 
 - [Steam](/platforms/steam/marketplace)
-- [PlayStation™Network](https://docs.mod.io/partners/ps5/marketplace) ([NDA access required](/platforms/console-sdks))
+- [PlayStation®](https://docs.mod.io/partners/ps5/marketplace) ([NDA access required](/platforms/console-sdks))
 - [Xbox Live](https://docs.mod.io/partners/xbox/marketplace) ([NDA access required](/platforms/console-sdks))
 - [Apple (iOS)](/platforms/apple/marketplace)
 - [Google Play (Android)](/platforms/google/marketplace)
@@ -149,7 +149,7 @@ When it comes to a user purchasing virtual currency it depends on where your mod
     <td rowspan="5">Player purchases consumable entitlement via platform store. Game client syncs entitlements to mod.io in-game, converting the entitlement(s) into mod.io virtual currency.</td>
   </tr>
   <tr>
-    <td>PlayStation™Network</td>
+    <td>PlayStation®</td>
   </tr>
   <tr>
     <td>Steam</td>
@@ -262,7 +262,7 @@ data[].entitlement_consumed | boolean | Has the entitlement been consumed in the
 data[].entitlement_type | integer | The entitlement type, once consumed and the entitlement is transferred to mod.io. Possible values:<ul><li><strong>0</strong> = Virtual Currency</li></ul>
 details | object (nullable) | Additional information associated with the transaction.
 
-#### PlayStation™Network
+#### PlayStation®
 
 ##### Request
 
@@ -278,8 +278,8 @@ Authorization|string|true|The user's mod.io access token.
 
 Parameter|Type|Required|Description
 -------|---|---|---|
-psn_token|string|true|The auth code returned from the PlayStation™Network API.
-psn_env|integer|false|The PlayStation™Network environment you are targeting. If omitted, the request will default to targeting the production environment.
+psn_token|string|true|The auth code returned from the PlayStation API.
+psn_env|integer|false|The PlayStation environment you are targeting. If omitted, the request will default to targeting the production environment.
 psn_service_label|integer|false|The service label where the entitlements for mod.io reside. If omitted the default value will be 0.
 
 ```
@@ -1059,7 +1059,7 @@ mod.io recommends that by default you set the level of access to the following:
 
 ## Authentication errors during entitlement syncing
 
-When syncing In-App Purchase entitlements, mod.io must authenticate with the platform provider (Epic Games Store, Google Play, PlayStation Network, Steam, or Xbox Live). If this authentication step fails, syncing cannot continue for that provider.
+When syncing In-App Purchase entitlements, mod.io must authenticate with the platform provider (Epic Games Store, Google Play, PlayStation®, Steam, or Xbox Live). If this authentication step fails, syncing cannot continue for that provider.
 
 You will commonly see these authentication errors when:
 
@@ -1080,7 +1080,7 @@ For platform-specific codes and exact meanings, see [Error reference](#error-ref
 | 900096        | mod.io failed to fetch the authenticated user's entitlements from the associated platform. |
 | 900102        | mod.io failed to authenticate with Epic Games Store during In-App Purchase entitlement syncing. |
 | 900103        | mod.io failed to authenticate with Google Play during In-App Purchase entitlement syncing. |
-| 900104        | mod.io failed to authenticate with PlayStation Network (PS4) during In-App Purchase entitlement syncing. |
-| 900105        | mod.io failed to authenticate with PlayStation Network (PS5) during In-App Purchase entitlement syncing. |
+| 900104        | mod.io failed to authenticate with PlayStation (PS4) during In-App Purchase entitlement syncing. |
+| 900105        | mod.io failed to authenticate with PlayStation (PS5) during In-App Purchase entitlement syncing. |
 | 900106        | mod.io failed to authenticate with Steam during In-App Purchase entitlement syncing. |
 | 900107        | mod.io failed to authenticate with Xbox Live during In-App Purchase entitlement syncing. |

@@ -1,0 +1,33 @@
+---
+id: placement-object
+title: "Placement Object"
+description: "Placement object for game monetization configuration."
+sidebar_label: "Placement Object"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"id":1,"name":"Homepage Placement","name_localized":"Homepage Placement","display_position":1,"total":3,"filters":{"timespan":"today"},"enabled":true,"size":"small","type":"filter","date_added":1735689600,"date_updated":1735689600}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Placement Object"}
+>
+</Heading>
+
+
+
+Placement object for game monetization configuration.
+
+<Schema
+  schema={{"title":"Placement Object","description":"Placement object for game monetization configuration.","required":["id","name","name_localization","display_position","total","filters","size","enabled","timespan","date_added","date_updated"],"properties":{"id":{"type":"integer","example":1},"name":{"type":"string","example":"Homepage Placement"},"name_localized":{"type":"string","example":"Homepage Placement"},"display_position":{"type":"integer","minimum":1,"example":1},"total":{"type":"integer","minimum":1,"example":3},"filters":{"type":"object","example":{"timespan":"today"},"additionalProperties":{"type":"string"}},"enabled":{"type":"boolean","example":true},"size":{"type":"string","enum":["small","medium","large"],"title":"Placement_Size_Enum"},"type":{"type":"string","example":"filter"},"date_added":{"type":"integer","format":"int32","example":1735689600},"date_updated":{"type":"integer","format":"int32","example":1735689600}},"type":"object"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

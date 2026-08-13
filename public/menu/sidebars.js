@@ -177,6 +177,10 @@ const sidebars = {
         {
           type: 'category',
           label: 'Getting Started',
+          link: {
+            type: 'doc',
+            id: 'game-integration/cppsdk/getting-started/cpp-getting-started',
+          },
           items: [
             'game-integration/cppsdk/getting-started/cpp-installation',
             'game-integration/cppsdk/getting-started/cpp-initialization',

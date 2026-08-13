@@ -15,7 +15,7 @@ The following platforms are able to integrate mod.io.
 |      | **Service Availability** | **Certification Support** | **Native SDK** | **Single Sign-On** | **Monetization** |
 |------|:----:|:----:|:----:|:----:|:----:|
 | **[Steam](/platforms/steam/authentication)**   | ✓ | ✓ | ✓ | ✓ | ✓ |
-| **[Epic Games](/platforms/epic/authentication)**        | ✓ | ✓ | ✓ | ✓ | |
+| **[Epic Games](/platforms/epic/authentication)**        | ✓ | ✓ | ✓ | ✓ | ✓ |
 | **[GOG Galaxy](/platforms/gog/authentication)**   | ✓ | ✓ | ✓ | ✓ | |
 
 :::tip[Cross-platform UGC]

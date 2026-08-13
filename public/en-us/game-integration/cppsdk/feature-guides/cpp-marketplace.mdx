@@ -15,7 +15,7 @@ mod.io provides two different options for supporting marketplace features within
 
 Every platform requires specific setup for monetization features to work. Platform-specific information is available in the relevant [Platform Guides](https://docs.mod.io/getting-started#expand-with-cross-platform-functionality).
 
-Monetization features need to be enabled through the web UI and, if using the virtual currency form of Marketplace through a platform store, will need a service to consume the virtual currency entitlements and apply them to player's mod.io account.
+Monetization features need to be enabled through the web UI and, if using the virtual currency form of Marketplace through a platform store, will need a service to consume the Virtual Currency Entitlements and apply them to player's mod.io account.
 
 :::note
 You can use our sandbox test environment at test.mod.io for testing monetization functionality, which allows for simulating real-world payments using dummy credit cards and credentials. When you initialize the SDK, use ``Modio::Environment::Test`` as the environment parameter, along with your test.mod.io title's GameID and APIKey.
@@ -36,7 +36,7 @@ Ensure that you have set the appropriate Portal when initializing the SDK for th
 
 ### Querying for Monetized Content
 
-Regardless of whether you are using Virtual Currency or the USD marketplace model, the regular `<<ListAllModsAsync>>` method includes an additional filter for whether the results include paid content. By default, only free mods are shown, but you can set `RevenueType` on the `<<FilterParams>>` object passed to `<<ListAllModsAsync>>` to include free and paid content, or just paid content. If you are using Virtual Currency, then all mods returned will have a `Price` property, indicating the virtual currency price that must be paid in order to purchase. If you are using USD Marketplace, then each mod will have an associated set of `SKUMappings`, which map to the SKU pack that must be purchased and owned by the player in order to consume it for that piece of content.
+Regardless of whether you are using Virtual Currency or the USD marketplace model, the regular `ListAllModsAsync` method includes an additional filter for whether the results include paid content. By default, only free mods are shown, but you can set `RevenueType` on the `FilterParams` object passed to `ListAllModsAsync` to include free and paid content, or just paid content. If you are using Virtual Currency, then all mods returned will have a `Price` property, indicating the virtual currency price that must be paid in order to purchase. If you are using USD Marketplace, then each mod will have an associated set of `SKUMappings`, which map to the SKU pack that must be purchased and owned by the player in order to consume it for that piece of content.
 
 ```cpp
 Modio::ListAllModsAsync(Modio::FilterParams().RevenueType(Modio::FilterParams::RevenueFilterType::FreeAndPaid), [](Modio::ErrorCode ec, Modio::Optional<Modio::ModInfoList> Results)
@@ -57,9 +57,9 @@ Modio::ListAllModsAsync(Modio::FilterParams().RevenueType(Modio::FilterParams::R
 
 ### Showing user purchases
 
-Even though all purchased mods are automatically subscribed, the user can still unsubscribe from them and uninstall them; however, they still remain owned and purchased by the user. They must re-subscribe to the mod in order to have it installed. This is facilitated by `<<FetchUserPurchasesAsync>>`, which will fetch a list of a users purchased mods. After a successful call, you can then display them with `<<QueryUserPurchases>>`, allowing re-subscription if necessary.
+Even though all purchased mods are automatically subscribed, the user can still unsubscribe from them and uninstall them; however, they still remain owned and purchased by the user. They must re-subscribe to the mod in order to have it installed. This is facilitated by `FetchUserPurchasesAsync`, which will fetch a list of a users purchased mods. After a successful call, you can then display them with `QueryUserPurchases`, allowing re-subscription if necessary.
 
-### Virtual Currency 
+### Virtual Currency
 
 :::note
 This functionality is demonstrated in example 09_MonetizationWalletManagement (for initialization and wallet management) and 10_MonetizationPurchase (for purchase functionality).
@@ -68,9 +68,9 @@ This functionality is demonstrated in example 09_MonetizationWalletManagement (f
 
 #### Getting the user's wallet
 
-On startup, you can make a call to `<<GetUserWalletBalanceAsync>>` to get the balance of the current user's wallet. If no wallet exists for the user, one will be created for them automatically. This call returns the users wallet balance for the current game. On startup is the only time you need to make this call.
+On startup, you can make a call to `GetUserWalletBalanceAsync` to get the balance of the current user's wallet. If no wallet exists for the user, one will be created for them automatically. This call returns the users wallet balance for the current game. On startup is the only time you need to make this call.
 
-We recommend that you cache the value of this result in your game code rather than making consistent calls to `<<GetUserWalletBalanceAsync>>` and update your local state from the return values of other calls that affect wallet balance.
+We recommend that you cache the value of this result in your game code rather than making consistent calls to `GetUserWalletBalanceAsync` and update your local state from the return values of other calls that affect wallet balance.
 
 ```cpp
 		Modio::GetUserWalletBalanceAsync([](Modio::ErrorCode ec, Modio::Optional<uint64_t> WalletBalance) {
@@ -137,12 +137,12 @@ Generally speaking, you should do this on startup in case the user has made a pu
 
 #### Purchasing UGC with Virtual Currency
 
-You can call `<<PurchaseModAsync>>` to purchase any given UGC. PurchaseModAsync takes two parameters = the ModID of the UGC to purchase, and the ExpectedPrice, which is the price displayed to the user from `<<ListAllModsAsync>>`. You must include this parameter for safety, so the user is not charged more or less than the price displayed to them in case the price of the UGC has changed between the call to ListAllModsAsync and purchase time.
+You can call `PurchaseModAsync` to purchase any given UGC. PurchaseModAsync takes two parameters = the ModID of the UGC to purchase, and the ExpectedPrice, which is the price displayed to the user from `ListAllModsAsync`. You must include this parameter for safety, so the user is not charged more or less than the price displayed to them in case the price of the UGC has changed between the call to ListAllModsAsync and purchase time.
 Once UGC is purchased, it is automatically subscribed to for the user.
 
 You should validate that the user has enough virtual currency to make the purchase by comparing it to the balance you received from `GetUserWalletBalanceAsync`. Note this is purely for user experience (ie for graying out the purchase button in the UI, or upselling the user a virtual currenct pack), and `PurchaseModAsync` will return an error if the user does not have enough in their wallet.
 
-The updated wallet balance after the purchase amount is subtracted is returned in the callback of `<<PurchaseModAsync>>`.
+The updated wallet balance after the purchase amount is subtracted is returned in the callback of `PurchaseModAsync`.
 
 ```cpp
 Modio::PurchaseModAsync(ModId, ModPrice, [](Modio::ErrorCode ec, Modio::Optional<Modio::TransactionRecord> Transaction) {
@@ -167,7 +167,7 @@ Modio::PurchaseModAsync(ModId, ModPrice, [](Modio::ErrorCode ec, Modio::Optional
 USD Marketplace is an experimental feature and is subject to change. If you are interested in using this feature, please contact us.
 :::
 
-#### Looking Up Platform SKUs
+#### Looking up platform SKUs
 
 The first step for USD Marketplace is to look up and cache the SKUs for the platform that you are on. These SKU IDs are used for two purposes:
 1. Localized Price Display for the mod that is going to be purchased
@@ -179,40 +179,40 @@ Steam SKU packs utilize the Steam Inventory Service for its purchase information
 
 To start, you have to call `SteamInventory()->RequestPrices()` to request all current prices for all applicable item definitions, with your Steam Callback as appropriate.
 
-```
+```cpp
 if (SteamInventory()) 
 {
-    SteamAPICall_t requestPriceCallbackHandle = SteamInventory()->RequestPrices();
+    SteamAPICall_t RequestPriceCallbackHandle = SteamInventory()->RequestPrices();
 
     ModioTest::SteamAuthHelper::instance().m_SteamCallResultInventoryPrices.Set(
-        requestPriceCallbackHandle, &ModioTest::SteamAuthHelper::instance(),
+        RequestPriceCallbackHandle, &ModioTest::SteamAuthHelper::instance(),
         &ModioTest::SteamAuthHelper::OnRequestPricesResponse);
 }
 ```
 
 Within this callback, you can then get the users localized currency for display purposes, and then get all item definitions with their associated localized prices.
 
-```
+```cpp
 void SteamAuthHelper::OnRequestPricesResponse(SteamInventoryRequestPricesResult_t* result, bool )
 {
     GlobalSDKState.CurrencyCode = result->m_rgchCurrency;
 
-    uint32_t len = SteamInventory()->GetNumItemsWithPrices();
+    uint32_t Len = SteamInventory()->GetNumItemsWithPrices();
     
-    std::vector<SteamItemDef_t> itemDefs(len);
-    std::vector<uint64> prices(len);
-    std::vector<uint64> basePrices(len);
+    std::vector<SteamItemDef_t> ItemDefs(Len);
+    std::vector<uint64> Prices(Len);
+    std::vector<uint64> BasePrices(Len);
 
-    SteamInventory()->GetItemsWithPrices(itemDefs.data(), prices.data(), basePrices.data(), len);
+    SteamInventory()->GetItemsWithPrices(ItemDefs.data(), Prices.data(), BasePrices.data(), Len);
 
-    if (!itemDefs.empty())
+    if (!ItemDefs.empty())
     {
-        for (uint32_t i = 0; i < itemDefs.size(); i++)
+        for (uint32_t i = 0; i < ItemDefs.size(); i++)
         {
-            PlatformSKUMapping skuMapping;
-            skuMapping.Price = prices[i];
-            skuMapping.SkuId = std::to_string(itemDefs[i]);
-            GlobalSDKState.PlatformSKUMappings.push_back(skuMapping);
+            PlatformSKUMapping SkuMapping;
+            SkuMapping.Price = Prices[i];
+            SkuMapping.SkuId = std::to_string(ItemDefs[i]);
+            GlobalSDKState.PlatformSKUMappings.push_back(SkuMapping);
         }    
     }
 }
@@ -226,17 +226,17 @@ Inside of your UI, for each mod that you want to make available for purchase, yo
 
 To display the appropriate price, simply find the SKU Mapping for the current Portal that you are going to request the purchase on (ie Steam, PSN, XBoxLive) and look up that SKU ID from your Platform SKUs from the previous step.
 
-#### Purchasing UGC with Entitlements
+#### Purchasing UGC with entitlements
 
-To perform a purchase in the USD marketplace flow, we recommend calling `<<GetAvailableUserEntitlementsAsync>>` first, to validate that the user has an available entitlement for the SKU of the mod that they want to purchase.
-This method, and other USD marketplace functions, takes an EntitlementParams struct, which you should populate in the same fashion as though you were calling `<<RefreshUserEntitlementsAsync>>` from our virtual currency flow (refer to platform-specific documentation for information about what parameters need to be included). 
+To perform a purchase in the USD marketplace flow, we recommend calling `GetAvailableUserEntitlementsAsync` first, to validate that the user has an available entitlement for the SKU of the mod that they want to purchase.
+This method, and other USD marketplace functions, takes an EntitlementParams struct, which you should populate in the same fashion as though you were calling `RefreshUserEntitlementsAsync` from our virtual currency flow (refer to platform-specific documentation for information about what parameters need to be included). 
 
 :::note
-`<<RefreshUserEntitlementsAsync>>` itself does not need to be called by your game if you are using USD marketplace functionality - we consume entitlements on demand as part of a call to `<<PurchaseModWithEntitlementsAsync>>` rather than the batch consumption performed by `<<RefreshUserEntitlementsAsync>>`, which will not do anything if USD marketplace is enabled for your game.
+`RefreshUserEntitlementsAsync` itself does not need to be called by your game if you are using USD marketplace functionality - we consume entitlements on demand as part of a call to `PurchaseModWithEntitlementsAsync` rather than the batch consumption performed by `RefreshUserEntitlementsAsync`, which will not do anything if USD marketplace is enabled for your game.
 :::
 
 Purchasing with entitlements requires an exact matching SKU entitlement to be available, an available entitlement of a different value will not be consumed instead. If an entitlement for that SKU is not currently available, you can trigger the current platform's purchase UI to allow the user to purchase the correct SKU if necessary.
-Once you have validated that a suitable entitlement is available, to perform a purchase, you can use the `<<PurchaseModWithEntitlementAsync>>` method, also passing in an EntitlementParams struct populated with the same information as for `<<GetAvailableUserEntitlementsAsync>>`. mod.io will then attempt to consume the applicable platform SKU for the mod, if the user owns one. If the user had an unconsumed entitlement, and our request to consume it is successful, the mod will be automatically subscribed to for the user. Otherwise, an error will be returned indicating whether the the user had an entitlement but that consumption failed, or that the user does not have the correct entitlement. In the latter case, `<<Modio::MonetizationError::AccountLacksEntitlement>> will be returned.`
+Once you have validated that a suitable entitlement is available, to perform a purchase, you can use the `PurchaseModWithEntitlementAsync` method, also passing in an EntitlementParams struct populated with the same information as for `GetAvailableUserEntitlementsAsync`. mod.io will then attempt to consume the applicable platform SKU for the mod, if the user owns one. If the user had an unconsumed entitlement, and our request to consume it is successful, the mod will be automatically subscribed to for the user. Otherwise, an error will be returned indicating whether the the user had an entitlement but that consumption failed, or that the user does not have the correct entitlement. In the latter case, `Modio::MonetizationError::AccountLacksEntitlement` will be returned.
 
 ```mermaid
 sequenceDiagram
@@ -253,4 +253,4 @@ SDK->>Game: purchase success/fail
 
 ### Getting a User Delegation Token
 
-User Delegation Tokens can be used by a backend server for S2S (Server to Server) transactions/functionality. You can get one for the current user by calling `<<GetUserDelegationToken>>`, the callback for which contains the Token as a `std::string`.
+User Delegation Tokens can be used by a backend server for S2S (Server to Server) transactions/functionality. You can get one for the current user by calling `GetUserDelegationToken`, the callback for which contains the Token as a `std::string`.

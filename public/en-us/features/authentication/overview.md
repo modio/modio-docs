@@ -28,7 +28,7 @@ Prior to authenticating a user for the first time, terms and user consent must b
 
 For situations where Custom SSO isn't a viable option, there are a variety of other ways to authenticate users:
 
-* **[Platform SSO](/authentication/platform)**: Our recommended standard option for in-game authentication and sign-in via our website. This works with each platform's current login system (*Steam, PlayStation™Network* etc.) to verify a user.
+* **[Platform SSO](/authentication/platform)**: Our recommended standard option for in-game authentication and sign-in via our website. This works with each platform's current login system (*Steam, PlayStation®* etc.) to verify a user.
 * **[Studio Website Login](/authentication/studio-website-login)**: For studios looking to host UGC hubs on their own website as opposed to the mod.io Game Portal.
 * **[Device Login](/authentication/device)**: For games looking to authenticate users via a separate device. Currently the recommended option for VR games due to the nature of keyboard/controller constraints.
 * **[Email Authentication](#testing-with-email-authentication)**: Great for testing given there are no dependencies. Not recommended for launch.

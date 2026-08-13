@@ -47,7 +47,7 @@ Premium UGC | User generated content that can be bought or sold from the Marketp
 Virtual Currency | The currency that a player exchanges in return for premium mods - irrespective of the vanity name your game uses for it. | mod.io
 Currency Pack | A pre-configured pack containing a specific amount of virtual currency. | mod.io
 Wallet | A wallet where any virtual currency you own resides. | mod.io
-Entitlement | A user-purchased digital right to a currency pack, which is always purchased through platform stores such as Steam, Xbox Live, PlayStation™Network, Meta, etc and exchanged with mod.io for virtual currency. | Third-party platforms
+Entitlement | A user-purchased digital right to a currency pack, which is always purchased through platform stores such as Steam, Xbox Live, PlayStation®, Meta, etc and exchanged with mod.io for virtual currency. | Third-party platforms
 
 ## Architecture overview
 
@@ -109,7 +109,12 @@ See below for further examples of an Idempotent Key being incorporated into requ
 
 This request acts as an indicator of intent, to inform mod.io you are beginning a transaction. This step is necessary for book-keeping in the event a player's platform entitlement is consumed, but a purchase server does not finalize the transaction. This is not ideal as the player has then had the entitlement removed from their platform inventory, and they also have not been awarded their mod.io Virtual Currency credits. The purchase server should save the returned _Transaction ID_ returned in this request for your book-keeping.
 
-#### Request
+We have two different request flows based on the operation that needs to be performed.
+This behaviour can be toggled via the `paymentflow_type` field which accepts `sku` or `in_ugc`.
+A `sku` request will mint tokens to the users wallet, which they can use to purchase mods with virtual currency on the mod.io platform.
+An `in_ugc` request on the other hand, will mint and consume tokens immediately, which is primarily used for book-keeping and allocating funds to creators.
+
+#### Request (sku)
 
 `POST https://g-{your-game-id}.modapi.io/v1/s2s/transactions/intent`
 
@@ -125,7 +130,8 @@ X-Modio-Idempotent-Key|string|true|A value used to ensure that multiple identica
 
 Parameter|Type|Required|Description
 -------|---|---|---|
-sku|string|true|The sku ID of the entitlement that will be converted into its equivalent Virtual Currency Credit amount. This is the identifier that will associate the transaction with a registered entitlement on mod.io that maps to an eligible Virtual Currency Pack.
+paymentflow_type|string|true|The payment flow this transaction is being processed under. `sku` for this example.
+sku|string|true|The sku ID of the entitlement that will be converted into its equivalent Virtual Currency Credit amount. This is the identifier that will associate the transaction with a registered entitlement on mod.io that maps to an eligible Virtual Currency Pack.  Required when `paymentflow_type` is `sku`.
 portal|string|true|The portal where the sku resides. Valid values are `apple`, `google`, `xboxlive`, `psn` and `steam`.
 gateway_uuid|string|false|An optional mapping alpha dash string that can be used to track this transaction. It is recommended to use the primary ID of the entitlement as it exists on the processing platform if you have it available.
 
@@ -135,16 +141,18 @@ Content-Type: application/x-www-form-urlencoded
 Accept: application/json
 X-Modio-Idempotent-Key: d720901c-a8ed-42ff-9343-39d4a3e16b18
 Authorization: Bearer {service-token}
-Content-Type: application/json
+X-Modio-Delegation-Token: {user-delegation-token}
 
-sku=Item01&portal=xboxlive&gateway_uuid=1f1ecb47-0074-4092-8eda-f6a65aa2ce32
+paymentflow_type=sku&sku=Item01&portal=xboxlive&gateway_uuid=1f1ecb47-0074-4092-8eda-f6a65aa2ce32
 ```
 
-#### Response
+#### Response (sku)
 
 ```json
 {
     "transaction_id": 897258250,
+    "gateway_uuid": "d859ad78-f984-44c5-96f9-c39bad415ad7",
+    "paymentflow_type": "sku",
     "gross_amount": 104,
     "net_amount": 104,
     "platform_fee": 24,
@@ -165,17 +173,100 @@ sku=Item01&portal=xboxlive&gateway_uuid=1f1ecb47-0074-4092-8eda-f6a65aa2ce32
 }
 ```
 
-##### Response schema
+##### Response schema (sku)
 
 Name|Type|Description
 ---|---|---
 transaction_id|integer|The transaction id.
+gateway_uuid|string|The uuid of this transaction with the mod.io gateway.
+paymentflow_type|string|The payment flow this transaction was processed under.
 gross_amount|integer|The gross amount of the purchase in the lowest denomination of currency.
 net_amount|integer|The net amount of the purchase in the lowest denomination of currency.
 platform_fee|integer|The platform fee of the purchase in the lowest denomination of currency.
 gateway_fee|integer|The gateway fee of the purchase in the lowest denomination of currency.
 transaction_type|string|The state of the transaction that was processed. E.g. CANCELLED, CLEARED, FAILED, PAID, PENDING, REFUNDED.
-meta|object|The metadata that was given in the transaction.
+meta|array|The metadata that was given in the transaction.
+purchase_date|integer|The time of the purchase.
+
+#### Request (in_ugc)
+
+`POST https://g-{your-game-id}.modapi.io/v1/s2s/transactions/intent`
+
+##### Headers
+
+Header|Type|Required|Description
+---|---|---|---|
+Authorization|string|true|The valid service token created with your OAuth Credentials.
+X-Modio-Delegation-Token|string|true|The User Delegation Token requested by your application on behalf of a user.
+X-Modio-Idempotent-Key|string|true|A value used to ensure that multiple identical requests are treated as a single request, preventing duplicate operations. Supported characters are alphabetical characters, dashes and underscores. Must validate against the following regex: `/A[a-zA-Z0-9_-]+z/`
+
+##### Body
+
+Parameter|Type|Required|Description
+-------|---|---|---|
+paymentflow_type|string|true|The payment flow this transaction is being processed under. `in_ugc` for this example.
+portal|string|false|The portal of the originating external purchase.
+gateway_uuid|string|false|An optional mapping alpha dash string that can be used to track this transaction. It is recommended to use the primary ID of the entitlement as it exists on the processing platform if you have it available.
+mod_id|integer|true|The id of the mod this external purchase transaction is associated with. 
+amount|integer|true|The amount of tokens to mint and spend for this external purchase transaction. 
+line_items|array|false|Optional unstructured metadata about the purchase, sent by the purchase server. 
+
+```
+POST https://g-{your-game-id}.modapi.io/v1/s2s/transactions/intent HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+Accept: application/json
+X-Modio-Idempotent-Key: d720901c-a8ed-42ff-9343-39d4a3e16b18
+Authorization: Bearer {service-token}
+X-Modio-Delegation-Token: {user-delegation-token}
+
+paymentflow_type=in_ugc&portal=payportal&gateway_uuid=1f1ecb47-0074-4092-8eda-f6a65aa2ce32&mod_id=1001&amount=299&line_items%5B0%5D%5Bpurchase_server_buyer_id%5D=1234567890
+```
+
+#### Response (in_ugc)
+
+```json
+{
+    "transaction_id": 897258250,
+    "gateway_uuid": "d859ad78-f984-44c5-96f9-c39bad415ad7",
+    "paymentflow_type": "in_ugc",
+    "gross_amount": 299,
+    "net_amount": 299,
+    "platform_fee": 0,
+    "gateway_fee": 0,
+    "transaction_type": "pending",
+    "meta": [
+        {
+            "mod_id": 1001,
+            "game_id": 101,
+            "buyer_id": 6990060,
+            "mod_name": "Glowing Sword",
+            "game_name": "Rogue Knight",
+            "token_name": "Gold",
+            "portal": "payportal",
+            "external_line_items": [
+              {
+                "purchase_server_buyer_id": 1234567890
+              }
+            ]
+        }
+    ],
+    "purchase_date": 1715323164
+}
+```
+
+##### Response schema (in_ugc)
+
+Name|Type|Description
+---|---|---
+transaction_id|integer|The transaction id.
+gateway_uuid|string|The uuid of this transaction with the mod.io gateway.
+paymentflow_type|string|The payment flow this transaction was processed under.
+gross_amount|integer|The gross amount of the purchase in the lowest denomination of currency.
+net_amount|integer|The net amount of the purchase in the lowest denomination of currency.
+platform_fee|integer|The platform fee of the purchase in the lowest denomination of currency.
+gateway_fee|integer|The gateway fee of the purchase in the lowest denomination of currency.
+transaction_type|string|The state of the transaction that was processed. E.g. CANCELLED, CLEARED, FAILED, PAID, PENDING, REFUNDED.
+meta|array|The metadata that was given in the transaction. This will include an embeded `external_line_items` array, echoing any data persisted by the provided `line_items` in the request.
 purchase_date|integer|The time of the purchase.
 
 ### 2. Consuming platform entitlement
@@ -187,7 +278,7 @@ Refer to the table below to determine if you can defer entitlement state where t
 **Platform API** | **Manages Entitlement State?**
 |----------|----------
 | Xbox Live | Yes
-| PlayStation™Network | Yes
+| PlayStation | Yes
 | Steam | Yes
 | Google Play Store | No
 | Apple App Store | No
@@ -211,7 +302,6 @@ Create a service-to-service (S2S) transaction commit. This is for performing an 
 Header|Type|Required|Description
 ---|---|---|---|
 Authorization|string|true|The valid service token created with your OAuth Credentials.
-X-Modio-Delegation-Token|string|true|The User Delegation Token requested by your application on behalf of a user.
 X-Modio-Idempotent-Key|string|true|A value used to ensure that multiple identical requests are treated as a single request, preventing duplicate operations. Supported characters are alphabetical characters, dashes and underscores. Must validate against the following regex: `/A[a-zA-Z0-9_-]+z/`
 
 ##### Body
@@ -227,12 +317,14 @@ Content-Type: application/x-www-form-urlencoded
 Accept: application/json
 X-Modio-Idempotent-Key: d720901c-a8ed-42ff-9343-39d4a3e16b18
 Authorization: Bearer {service-token}
-Content-Type: application/json
 
 transaction_id=897258250&clawback_uuid=b5ce3097-ad5f-4402-8469-57233842d0b4
 ```
 
 #### Response
+
+The response may contain extra fields depending on the `paymentflow_type` you sent in the original intent request, though as an example,
+you can expect a response in the following shape. Directly refer to the [s2s transaction commit API docs](/restapi/docs/s-2-s-transaction-commit) for further details.
 
 ```json
 {

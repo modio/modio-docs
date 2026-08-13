@@ -1,0 +1,33 @@
+---
+id: boxart-image-object
+title: "Boxart Image Object"
+description: "Contains boxart data."
+sidebar_label: "Boxart Image Object"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"filename":"modio-boxart-bluedark.png","original":"https://assets.modcdn.io/images/branding/modio-boxart-bluedark.png","thumb_360x480":"https://assets.modcdn.io/images/branding/modio-boxart-bluedark.png"}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Boxart Image Object"}
+>
+</Heading>
+
+
+
+Contains boxart data.
+
+<Schema
+  schema={{"title":"Boxart Image Object","description":"Contains boxart data.","properties":{"filename":{"description":"Boxart image filename including extension.","type":"string","example":"modio-boxart-bluedark.png"},"original":{"description":"URL to the full-sized boxart image.","type":"string","example":"https://assets.modcdn.io/images/branding/modio-boxart-bluedark.png"},"thumb_360x480":{"description":"URL to the thumbnail image with dimensions 360x480.","type":"string","example":"https://assets.modcdn.io/images/branding/modio-boxart-bluedark.png"}},"type":"object"}}
+  schemaType={"response"}
+>
+  
+</Schema>
+            

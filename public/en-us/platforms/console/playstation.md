@@ -48,7 +48,7 @@ Once verified, your [mod.io contact](mailto:developers@mod.io) will provide acce
 
 ## Authentication
 
-On *PS4/PS5*, you can authenticate the user via our PlayStation™Network authentication flow, or by using their email address. We highly recommend using the authentication flow where possible, as it is instant and accessible vs email which is not, and more importantly synchronizes a user's *PlayStation™Network* blocklist. The ability to be able to block content from users is a TRC requirement, therefore users must be authenticated before they can access your UGC content via mod.io. Detailed instructions can be found in the mod.io [PlayStation®4 SDK](https://docs.mod.io/partners/ps4/authentication) and [PlayStation®5 SDK](https://docs.mod.io/partners/ps5/authentication) (to access this documentation you must complete the required [SDK Access step](#sdk-access)).
+On *PS4/PS5*, you can authenticate the user via our PlayStation authentication flow, or by using their email address. We highly recommend using the authentication flow where possible, as it is instant and accessible vs email which is not, and more importantly synchronizes a user's *PlayStation* blocklist. The ability to be able to block content from users is a TRC requirement, therefore users must be authenticated before they can access your UGC content via mod.io. Detailed instructions can be found in the mod.io [PlayStation®4 SDK](https://docs.mod.io/partners/ps4/authentication) and [PlayStation®5 SDK](https://docs.mod.io/partners/ps5/authentication) (to access this documentation you must complete the required [SDK Access step](#sdk-access)).
 
 If your implementation displays the mod.io website or custom web app through a browser overlay, we recommend adding the following query strings to the URL depending on the authentication method you have chosen to support:
 * *PlayStation®4 / PlayStation®5* authentication: `?portal=psn&login=auto`
@@ -56,11 +56,11 @@ If your implementation displays the mod.io website or custom web app through a b
 
 This will provide users with a streamlined login experience tailored to the appropriate login method (example below):
 
-![PlayStation Network log in interface available in the mod.io web UI](img/psn_auth_web.png)
+![PlayStation log in interface available in the mod.io web UI](img/psn_auth_web.png)
 
 ## Consent
 
-If you choose to use *PlayStation™Network* authentication, it is a requirement from Sony Interactive Entertainment that consent is collected before a user is authenticated for the first time. So when a user clicks the “UGC” button in-game, you must display an acceptance dialog similar to the one explained in the [Terms & User Consent](/terms) guide.
+If you choose to use *PlayStation* authentication, it is a requirement from Sony Interactive Entertainment that consent is collected before a user is authenticated for the first time. So when a user clicks the “UGC” button in-game, you must display an acceptance dialog similar to the one explained in the [Terms & User Consent](/terms) guide.
 
 ## Moderation & Reporting
 
