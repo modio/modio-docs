@@ -23,6 +23,7 @@ This guide covers:
 * [Prerequisites](#prerequisites)
 * [Authentication process](#authentication-process)
 * [Configuration](#configuration)
+* [OIDC Back-Channel Logout](#oidc-back-channel-logout)
 * [Recommendations](#recommendations)
 * [References](#references)
 
@@ -144,12 +145,46 @@ Full instructions with screenshots can be found on the [Custom SSO (Web)](/authe
 
 ![OpenID setup](img/openid-setup.png)
 
-### Required token claims
+## OIDC Back-Channel Logout
+
+Custom SSO also supports [OIDC Back-Channel Logout](https://openid.net/specs/openid-connect-backchannel-1_0.html) for server-to-server session invalidation.
+
+This lets your identity provider notify mod.io when a user disconnects their OIDC session from your side, so mod.io can revoke all active sessions for that user.
+
+### How Back-Channel Logout works
+
+1. Your identity provider sends a signed `logout_token` to mod.io's Back-Channel Logout endpoint.
+2. mod.io resolves the game + OpenID configuration from your `api_key` (including g-url game hosts).
+3. mod.io validates the `logout_token` signature against your configured JWK set.
+4. mod.io resolves the mod.io user from the token `sub` using the SSO portal mapping (`sso{mapping_id}`).
+5. mod.io revokes all active sessions for that user using global revoke-all semantics.
+6. mod.io returns success even when sessions were already expired/revoked (idempotent behavior).
+
+### Logout token requirements
+
+The Back-Channel request must include `logout_token` (not `id_token`).
+
+After signature verification, mod.io validates these claims:
+
+- `sub`: Required. Unique user identifier from your identity provider.
+- `aud`: Required. Must target `https://mod.io` or `https://g-{your-game-id}.modapi.io`.
+- `events`: Required. Must contain `http://schemas.openid.net/event/backchannel-logout` as an object key.
+- `iss`: Required when an issuer URL is configured in the game's OpenID settings. If issuer URL is not configured, this check is skipped for backward compatibility.
+
+### Back-Channel Logout responses
+
+Per OIDC Back-Channel guidance, this endpoint returns:
+
+- `200` for successful processing (including already-revoked sessions).
+- `400` for validation failures (invalid token/signature/claims).
+
+### Required ID token claims
 
 Once the signature of the ID token has been verified, mod.io will then extract claims from the ID Token to create an account for the player. The following claims are required:
 
 - `sub`: Subject claim. This value MUST be the unique identifier for the player within your identity provider.
 - `aud`: Audience claim. This value must be set to either `https://mod.io` or `https://g-{your-game-id}.modapi.io`. If you set the audience to your game's URL, the token will only work within that URL and won't be valid on any other [mod.io](https://mod.io) domain.
+- `iss`: Issuer claim. This value must match the issuer URL configured in your game's OpenID configuration panel. If it's not configured, this check will be skipped.
 
 ### Optional claims mappings
 
@@ -160,6 +195,10 @@ A few additional claim mappings are supported for sharing additional context wit
 
 Within your OpenID configuration panel, you can configure mappings which are the **claim names within the ID token** that map to any of the above. As an example, if you issue an ID Token with a claim titled `username` containing a vanity display name for the user that you wish to associate with the mod.io account, you should supply `username` as the _Display name claim_ within the config panel.
 
+### Issuer Url
+
+The issuer URL is the URL that your identity provider uses to identify itself. This value is used to verify the `iss` claim within the ID Token. If you do not wish to validate the `iss` claim, you can leave this field blank.
+
 ### ID token validation process
 
 For an OpenID authentication request to be successful, mod.io will make the following checks, in the shown order before considering the ID token valid for creating a mod.io access token.
@@ -169,6 +208,7 @@ For an OpenID authentication request to be successful, mod.io will make the foll
 3. The `aud` claim must be set to either `https://mod.io` or `https://g-{your-game-id}.modapi.io`. If you use your game's URL, it must match the API host exactly.
 4. The `iat` claim cannot be greater than the current epoch unix timestamp with a 10 second buffer to account for clock skew.
 5. The `exp` claim must be greater than the current epoch unix timestamp with a 10 second buffer to account for clock skew.
+6. The `iss` claim must match the issuer URL configured in your game's OpenID configuration panel. If it's not configured, this check will be skipped.
 
 ## Recommendations
 

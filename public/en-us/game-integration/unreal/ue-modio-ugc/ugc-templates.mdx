@@ -35,23 +35,26 @@ While most substitutions are defined by the template creator there are a few imp
 | Name                  | Value                 |
 | ----                  | -----                 |
 | ```___MODNAME___```   | The name of the mod   |
-| ```___UGCNAME___```   | Currently synonymous with ```___MODNAME___```   | 
+| ```___UGCNAME___```   | The name given to the item (synonymous with ```___MODNAME___``` for mod templates)   | 
 
 ## What is in a Template?
 Each template is a zip file that contains two parts: the files to copy and the template descriptor.
 
-When a user creates content with a template the files contained in the zip file are copied in to the Mod  directory in the same directory structure. This structure should mirror the expected folder structure for Unreal plugins and begin with ```\Content\```.
+When a user creates content with a template the files contained in the zip file are copied in to the Mod directory in the same directory structure. This structure should mirror the expected folder structure for Unreal plugins and begin with ```\Content\```. The ```\Resources\``` folder contains meta information that is useful for the UI and Mod templates but will not get copied for Item templates.
 
 The template descriptor is a ```.template``` file with the same name as the template. See below for more information.
 
 ## Template Descriptor
 The Template Descriptor is a json file that contains information about the template. The file can contain the following properties:
 
-| Property      | Type          | Version | Required   | Description |
-| --------      | ----          | ------- | --------   | ----------- |
-| Version       | int           | 1       | Yes        | The version number for this template |
-| Type          | int           | 1       | Yes        | Indicates which type of template this is (0 = Item, 1 = Mod). This maps to an enum in Unreal |
-| Parameters    | String Array  | 1       | Optional   | Contains a list of strings used as substitution parameters for the template |
+| Property          | Type          | Version | Required   | Description |
+| --------          | ----          | ------- | --------   | ----------- |
+| Version           | int           | 1       | Yes        | The version number for this template file |
+| Type              | int           | 1       | Yes        | Indicates which type of template this is (0 = Item, 1 = Mod). This maps to an enum in Unreal |
+| Parameters        | String Array  | 1       | Optional   | Contains a list of strings used as substitution parameters for the template |
+| TemplateVersion   | String        | 1       | Optional   | Version string to display to users |
+| Description       | String        | 1       | Optional   | Description of what this template creates |
+| Category          | String        | 1       | Optional   | Used for filtering in the UI |
 
 ## Export
 To make things easier we have supplied a template export tool to help create custom templates.
@@ -59,7 +62,10 @@ To make things easier we have supplied a template export tool to help create cus
 1. Create a UGC Mod plugin, either manually or by using our ```Blank``` UGC template.
 2. Add the content to the plugin that you want to be part of the template
 3. Optional: Make sure your file names contain any substrings you want to use as parameters for file name substitutions
-4. Open the UGC Template tool and select the Export option
+4. Open the UGC Template Export tool. This can be accessed via:
+    * The Editor Toolbar
+    * File Menu
+    * Content Browser context menu
 5. Select the plugin you want to turn into a template and name it
 6. Fill out the properties for the template descriptor
 7. Export your template

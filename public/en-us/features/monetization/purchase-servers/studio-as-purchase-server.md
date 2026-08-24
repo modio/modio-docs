@@ -72,7 +72,7 @@ sequenceDiagram
 2. mod.io returns the mod.io Transaction ID. This Transaction ID is required in Step 5, and should be saved by the studio for book-keeping.
 3. Studio Purchase Server [consumes](#2-consuming-platform-entitlement) the players' entitlement against the platform where the entitlement resides.
 4. Platform returns the consumption state after the request.
-5. Studio Purchase Server informs mod.io to [finalize the transaction](#3-confirming-transaction), passing in the transaction ID from step 1. Only after this step will mod.io allocate Virtual Currency credits to a user.
+5. Studio Purchase Server informs mod.io to [finalize the transaction](#3-confirming-transaction), passing in the transaction ID from step 1. Only after this step will mod.io allocate Virtual Currency to a user.
 6. mod.io confirms the transaction has been finalized, and returns the players' updated wallet balance.
 
 ## Implementation
@@ -107,12 +107,12 @@ See below for further examples of an Idempotent Key being incorporated into requ
 
 ### 1. Initiating transaction
 
-This request acts as an indicator of intent, to inform mod.io you are beginning a transaction. This step is necessary for book-keeping in the event a player's platform entitlement is consumed, but a purchase server does not finalize the transaction. This is not ideal as the player has then had the entitlement removed from their platform inventory, and they also have not been awarded their mod.io Virtual Currency credits. The purchase server should save the returned _Transaction ID_ returned in this request for your book-keeping.
+This request acts as an indicator of intent, to inform mod.io you are beginning a transaction. This step is necessary for book-keeping in the event a player's platform entitlement is consumed, but a purchase server does not finalize the transaction. This is not ideal as the player has then had the entitlement removed from their platform inventory, and they also have not been awarded their mod.io Virtual Currency. The purchase server should save the returned _Transaction ID_ returned in this request for your book-keeping.
 
 We have two different request flows based on the operation that needs to be performed.
 This behaviour can be toggled via the `paymentflow_type` field which accepts `sku` or `in_ugc`.
-A `sku` request will mint tokens to the users wallet, which they can use to purchase mods with virtual currency on the mod.io platform.
-An `in_ugc` request on the other hand, will mint and consume tokens immediately, which is primarily used for book-keeping and allocating funds to creators.
+A `sku` request will mint Virtual Currency to the user's wallet, which they can use to purchase mods on the mod.io platform.
+An `in_ugc` request on the other hand, will mint and consume Virtual Currency immediately, which is primarily used for book-keeping and allocating funds to creators.
 
 #### Request (sku)
 
@@ -131,7 +131,7 @@ X-Modio-Idempotent-Key|string|true|A value used to ensure that multiple identica
 Parameter|Type|Required|Description
 -------|---|---|---|
 paymentflow_type|string|true|The payment flow this transaction is being processed under. `sku` for this example.
-sku|string|true|The sku ID of the entitlement that will be converted into its equivalent Virtual Currency Credit amount. This is the identifier that will associate the transaction with a registered entitlement on mod.io that maps to an eligible Virtual Currency Pack.  Required when `paymentflow_type` is `sku`.
+sku|string|true|The sku ID of the entitlement that will be converted into its equivalent Virtual Currency amount. This is the identifier that will associate the transaction with a registered entitlement on mod.io that maps to an eligible Virtual Currency Pack.  Required when `paymentflow_type` is `sku`.
 portal|string|true|The portal where the sku resides. Valid values are `apple`, `google`, `xboxlive`, `psn` and `steam`.
 gateway_uuid|string|false|An optional mapping alpha dash string that can be used to track this transaction. It is recommended to use the primary ID of the entitlement as it exists on the processing platform if you have it available.
 
@@ -208,7 +208,7 @@ paymentflow_type|string|true|The payment flow this transaction is being processe
 portal|string|false|The portal of the originating external purchase.
 gateway_uuid|string|false|An optional mapping alpha dash string that can be used to track this transaction. It is recommended to use the primary ID of the entitlement as it exists on the processing platform if you have it available.
 mod_id|integer|true|The id of the mod this external purchase transaction is associated with. 
-amount|integer|true|The amount of tokens to mint and spend for this external purchase transaction. 
+amount|integer|true|The amount of Virtual Currency to mint and spend for this external purchase transaction. 
 line_items|array|false|Optional unstructured metadata about the purchase, sent by the purchase server. 
 
 ```
@@ -289,7 +289,7 @@ In the event your are unable to consume the entitlement, potentially due to it a
 
 ### 3. Confirming transaction
 
-Upon successful consumption of the entitlement against the Platforms Entitlement API, you can then finalize the transaction by sending a request to the endpoint listed below. If this request succeeds, the player will then get the Virtual Currency credits amount associated with the SKU in the transaction allocated to their wallet.
+Upon successful consumption of the entitlement against the Platforms Entitlement API, you can then finalize the transaction by sending a request to the endpoint listed below. If this request succeeds, the player will then get the Virtual Currency amount associated with the SKU in the transaction allocated to their wallet.
 
 #### Request
 
@@ -372,10 +372,10 @@ A good baseline to follow, is if the entitlement has been consumed, either [by m
 Consider an example where the following chain of events occur:
 
 - A player within your title purchases an item, in the form of a consumable entitlement from the platform store.
-- Your purchase server converts an eligible entitlement into mod.io Virtual Currency as illustrated in the [transaction process above](#transaction-process), resulting in a player having 100 credits in their mod.io wallet.
-- The player spends the 100 credits on our marketplace in exchange for premium UGC, reducing their wallet balance to 0.
+- Your purchase server converts an eligible entitlement into mod.io Virtual Currency as illustrated in the [transaction process above](#transaction-process), resulting in a player having 100 Virtual Currency in their mod.io wallet.
+- The player spends the 100 Virtual Currency on our marketplace in exchange for premium UGC, reducing their wallet balance to 0.
 - The player disputes the payment with their payment provider, resulting in a chargeback.
-- The player has received their funds back for the purchase of the entitlement against the platform store, and still have the premium UGC they purchased with the 100 credits they temporarily possessed.
+- The player has received their funds back for the purchase of the entitlement against the platform store, and still have the premium UGC they purchased with the 100 Virtual Currency they temporarily possessed.
 
 The scenario described is considered fraudulent behavior as a player could continue to make refund / chargeback claims against either their financial institution or against the platform (Xbox Live, etc) and continue to get funds refunded to them. However critically, mod.io is not aware the funds have been returned and your marketplace is now at a loss as premium UGC has been purchased and distributed, but the funds used in the transaction won't be distributed to your creators - potentially disincentivizing creators from contributing.
 
@@ -862,7 +862,7 @@ gateway_fee | integer | Fee charged by the payment gateway (in cents).
 tax | integer | Tax amount applied to the transaction (in cents).
 tax_type | string | Type of tax applied (e.g., sales).
 currency | string | Currency code (e.g., USD).
-tokens | integer | Number of tokens in the transaction.
+tokens | integer | Amount of Virtual Currency in the transaction.
 transaction_type | string | Type of transaction (e.g., cleared).
 monetization_type | string | Type of monetization (e.g., fiat).
 purchase_date | string | Date and time of the purchase in "YYYY-MM-DD HH:MM:SS" format.
@@ -879,10 +879,10 @@ items[].gateway_name | string | Name of the payment gateway for this item.
 items[].sale_price | integer | Sale price of the item (in cents).
 items[].gateway_fee | integer | Fee charged by the payment gateway for this item (in cents).
 items[].platform_fee | integer | Fee charged by the platform for this item (in cents).
-items[].token_pool_fee | integer | Token pool fee associated with the item (in cents).
+items[].token_pool_fee | integer | Virtual Currency pool fee associated with the item (in cents).
 items[].currency | string | Currency code for the item (e.g., USD).
-items[].tokens | integer | Number of tokens involved in the transaction.
-items[].token_team_id | integer | ID of the token team for the item.
+items[].tokens | integer | Amount of Virtual Currency involved in the transaction.
+items[].token_team_id | integer | ID of the Virtual Currency team for the item.
 items[].sale_type | string | Type of sale (e.g., bought, sold).
 items[].monetization_type | string | Type of monetization for the item (e.g., fiat).
 items[].transaction_type | string | Type of transaction for the item (e.g., paid, cleared).

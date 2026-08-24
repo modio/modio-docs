@@ -4095,6 +4095,23 @@ void AddFocusPathChangedHandler(FModioOnFocusPathChanged Handler)
 
 ---
 
+#### ModioForceFeedbackRefLibrary 
+
+Library of functions for working with force feedback references
+
+###### Inheritance Hierarchy
+-> BlueprintFunctionLibrary-> Object
+
+
+
+
+
+
+
+
+
+---
+
 #### ModioGalleryImageUI 
 
 Wrapper around FModioImageWrapper when consumer needs UObject-representable data (e.g. for UMG as a list item or data source)
@@ -8369,6 +8386,23 @@ TScriptInterface<IModioUIClickableWidget> GetButtonWidget() const
 
 ---
 
+#### ModioSoundCueRefLibrary 
+
+Library of functions for working with sound references
+
+###### Inheritance Hierarchy
+-> BlueprintFunctionLibrary-> Object
+
+
+
+
+
+
+
+
+
+---
+
 #### ModioStackedBoolLibrary 
 
 Library of functions for working with stacked bool values
@@ -11601,6 +11635,97 @@ Static library of functions to validate text input
 
 ---
 
+#### ModioUIInteractionFeedback 
+
+Interface for objects that play feedback in response to a UI interaction
+
+###### Inheritance Hierarchy
+-> Interface-> Object
+
+
+
+
+
+
+##### Play UISound Feedback
+
+Plays the sound feedback associated with the given interaction key
+
+![nd_img_ModioUIInteractionFeedback_PlayUISoundFeedback.png](img/refdocs/nd_img_ModioUIInteractionFeedback_PlayUISoundFeedback.png)
+
+```cpp
+void PlayUISoundFeedback(USoundBase* UIFeedbackSound, UObject* WorldContextObject)
+```
+
+
+
+
+
+
+###### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModioUIInteractionFeedback`|
+|`UIFeedbackSound`|The feedback sound to play|
+|`WorldContextObject`|Object used to resolve the world for sound playback (e.g. the calling widget)|
+</RefTable>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##### Play UIForce Feedback
+
+Plays the force feedback associated with the given interaction key
+
+![nd_img_ModioUIInteractionFeedback_PlayUIForceFeedback.png](img/refdocs/nd_img_ModioUIInteractionFeedback_PlayUIForceFeedback.png)
+
+```cpp
+void PlayUIForceFeedback(UForceFeedbackEffect* UIFeedbackForceEffect, APlayerController* PlayerController)
+```
+
+
+
+
+
+
+###### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModioUIInteractionFeedback`|
+|`UIFeedbackForceEffect`|The force feedback effect to play|
+|`PlayerController`|The player to play force feedback on|
+</RefTable>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
 #### ModioUIManageModSubscriptionCommand 
 
 
@@ -14092,6 +14217,8 @@ void AddSelectedStateChangedHandler(FModioSelectableOnSelectionChanged Handler)
 | | | |
 |-|-|-|
 | `TSoftObjectPtr<UDataTable>` | `ColorsTable` |  |
+| `TSoftObjectPtr<UDataTable>` | `SoundsTable` |  |
+| `TSoftObjectPtr<UDataTable>` | `ForceFeedbackTable` |  |
 | `TSoftObjectPtr<UDataTable>` | `CommandsTable` |  |
 | `TSoftObjectPtr<UMaterial>` | `UnderlineMaterial` |  |
 | `TSoftObjectPtr<UMaterial>` | `FakeCaretMaterial` |  |
@@ -14420,6 +14547,42 @@ void UnregisterPreUninstallHandler()
 | | |
 |-|-|
 |`Target`|`ModioUISubsystem`|
+</RefTable>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##### Set UIInteraction Feedback Provider
+
+Sets the provider object responsible for playing UI feedback (sound and force feedback).
+
+![nd_img_ModioUISubsystem_SetUIInteractionFeedbackProvider.png](img/refdocs/nd_img_ModioUISubsystem_SetUIInteractionFeedbackProvider.png)
+
+```cpp
+void SetUIInteractionFeedbackProvider(TScriptInterface<IModioUIInteractionFeedback> InUIInteractionFeedbackProvider)
+```
+
+
+
+
+
+
+###### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModioUISubsystem`|
+|`InUIInteractionFeedbackProvider`|The object implementing the IModioUIInteractionFeedback interface that will play feedback.|
 </RefTable>
 
 
@@ -15241,7 +15404,7 @@ void RequestRemoveSubscriptionForModID(FModioModID ID)
 
 ##### Request Refresh Entitlements
 
-Requests a refreshing of the currently logged in user's entitlements (consuming them if possible). This then executes callbacks in implementations of IModioUIWalletBalanceUpdatedEventReceiver.
+Requests a refreshing of the currently logged in user's entitlements (consuming them if possible). This then executes callbacks in implementations of IModioUIWalletBalanceUpdatedEventReceiver. Requires that a valid portal implementation has been set via RegisterPortalInterface before calling.
 
 ![nd_img_ModioUISubsystem_RequestRefreshEntitlements.png](img/refdocs/nd_img_ModioUISubsystem_RequestRefreshEntitlements.png)
 
@@ -15276,7 +15439,7 @@ void RequestRefreshEntitlements()
 
 ##### Request Purchase with Entitlement for Mod IDWith Handler
 
-Purchases a mod for the current player, executing the callback upon completion.
+Purchases a mod for the current player, executing the callback upon completion. Requires that a valid portal implementation has been set via RegisterPortalInterface before calling.
 
 ![nd_img_ModioUISubsystem_RequestPurchaseWithEntitlementForModIDWithHandler.png](img/refdocs/nd_img_ModioUISubsystem_RequestPurchaseWithEntitlementForModIDWithHandler.png)
 
@@ -15313,7 +15476,7 @@ void RequestPurchaseWithEntitlementForModIDWithHandler(FModioModID ID, FOnPurcha
 
 ##### Request Purchase Token Pack
 
-Requests the purchase of the given Token Pack via the currently active online portal provider
+Requests the purchase of the given Token Pack via the currently active online portal provider. Requires that a valid portal implementation has been set via RegisterPortalInterface before calling.
 
 ![nd_img_ModioUISubsystem_RequestPurchaseTokenPack.png](img/refdocs/nd_img_ModioUISubsystem_RequestPurchaseTokenPack.png)
 
@@ -15644,7 +15807,7 @@ void RequestListModCollections(FModioFilterParams Filter, FString RequestIdentif
 
 ##### Request List All Token Packs
 
-Requests a list of all purchasable Token Packs via the currently active online portal provider The result is received by any class implementing the ModioTokenPackReceiver interface via OnListAllTokenPacksRequestCompleted
+Requests a list of all purchasable Token Packs via the currently active online portal provider The result is received by any class implementing the ModioTokenPackReceiver interface via OnListAllTokenPacksRequestCompleted. Requires that a valid portal implementation has been set via RegisterPortalInterface before calling.
 
 ![nd_img_ModioUISubsystem_RequestListAllTokenPacks.png](img/refdocs/nd_img_ModioUISubsystem_RequestListAllTokenPacks.png)
 
@@ -15934,6 +16097,42 @@ void RequestEmailAuthenticationWithHandler(FModioEmailAuthCode Code, FOnErrorOnl
 
 
 
+##### Request Available User Entitlements
+
+Requests the list of the currently logged in user's entitlements and does NOT consume them. The result is returned via the provided callback. Requires that a valid portal implementation has been set via RegisterPortalInterface before calling.
+
+![nd_img_ModioUISubsystem_RequestAvailableUserEntitlements.png](img/refdocs/nd_img_ModioUISubsystem_RequestAvailableUserEntitlements.png)
+
+```cpp
+void RequestAvailableUserEntitlements(FOnGetAvailableUserEntitlementsDelegate OnGetUserEntitlements)
+```
+
+
+
+
+
+
+###### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModioUISubsystem`|
+|`On Get User Entitlements`|The callback to be executed upon completion of the request|
+</RefTable>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ##### Register Pre Uninstall Handler
 
 Registers a callback that will be invoked before mods are uninstalled.
@@ -15955,6 +16154,42 @@ void RegisterPreUninstallHandler(FOnPreUninstallDelegate Callback)
 |-|-|
 |`Target`|`ModioUISubsystem`|
 |`Callback`|The Callback to invoke before uninstall. Receives the FModioModID of the mod being uninstalled, and must return a bool indicating approval.|
+</RefTable>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##### Register Portal Interface
+
+Registers a portal interface that will be used for certain platform specific functionality
+
+![nd_img_ModioUISubsystem_RegisterPortalInterface.png](img/refdocs/nd_img_ModioUISubsystem_RegisterPortalInterface.png)
+
+```cpp
+void RegisterPortalInterface(TScriptInterface<IModioPortalInterface> InPortalInterface)
+```
+
+
+
+
+
+
+###### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModioUISubsystem`|
+|`InPortalInterface`|The portal interface to register|
 </RefTable>
 
 
@@ -16108,6 +16343,79 @@ bool QueryConnectivityState()
 
 ###### Returns
 The current connectivity State.
+
+
+
+
+
+
+
+
+
+
+
+##### Play UISound Feedback
+
+Plays the UI sound feedback associated with the given event key via the current feedback provider.
+
+![nd_img_ModioUISubsystem_PlayUISoundFeedback.png](img/refdocs/nd_img_ModioUISubsystem_PlayUISoundFeedback.png)
+
+```cpp
+void PlayUISoundFeedback(USoundBase* UIFeedbackSound, UObject* WorldContextObject)
+```
+
+
+
+
+
+
+###### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModioUISubsystem`|
+|`UIFeedbackSound`|The feedback sound  to play|
+</RefTable>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##### Play UIForce Feedback
+
+Plays the UI force feedback associated with the given event key via the current feedback provider.
+
+![nd_img_ModioUISubsystem_PlayUIForceFeedback.png](img/refdocs/nd_img_ModioUISubsystem_PlayUIForceFeedback.png)
+
+```cpp
+void PlayUIForceFeedback(UForceFeedbackEffect* UIFeedbackForceEffect, APlayerController* PlayerController)
+```
+
+
+
+
+
+
+###### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModioUISubsystem`|
+|`UIFeedbackForceEffect`|The force feedback effect to play|
+|`PlayerController`|The player to play force feedback on.|
+</RefTable>
+
+
+
 
 
 
@@ -16318,6 +16626,41 @@ FModioTokenPack GetSKUMappingById(FString ID, bool bValid)
 |`Target`|`ModioUISubsystem`|
 |`ID`||
 |`Valid`||
+</RefTable>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##### Get Portal Interface
+
+Returns the currently registered portal interface
+
+![nd_img_ModioUISubsystem_GetPortalInterface.png](img/refdocs/nd_img_ModioUISubsystem_GetPortalInterface.png)
+
+```cpp
+TScriptInterface<IModioPortalInterface> GetPortalInterface() const
+```
+
+
+
+
+
+
+###### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModioUISubsystem`|
 </RefTable>
 
 
@@ -17581,6 +17924,8 @@ A standard button used across the UI.
 | `FLinearColorRef` | `SelectedBorderColor` |  |
 | `FLinearColorRef` | `HoveredBorderColor` |  |
 | `FMargin` | `ContentPadding` |  |
+| `FModioSoundCueRef` | `NavigateSoundFeedback` |  |
+| `FModioForceFeedbackRef` | `PressForceFeedback` |  |
 </RefTable>
 
 
@@ -18642,6 +18987,8 @@ A list of available commands within the mod details view.
 | | | |
 |-|-|-|
 | `FOnSelectionChanged` | `OnSelectionChanged` |  |
+| `FModioSoundCueRef` | `NavigateSoundFeedback` |  |
+| `FModioForceFeedbackRef` | `PressForceFeedback` |  |
 </RefTable>
 
 
@@ -20032,6 +20379,8 @@ Main widget that displays available mods and includes features for search, filte
 | `FText` | `CollectionSearchHintText` |  |
 | `bool` | `bSearching` |  |
 | `FText` | `SelectedNamedPreset` |  |
+| `FModioSoundCueRef` | `NavigateSoundFeedback` |  |
+| `FModioForceFeedbackRef` | `PressForceFeedback` |  |
 </RefTable>
 
 
@@ -20084,6 +20433,8 @@ The Mod Details Dialog displays information about a mod, including the title, au
 | `FLinearColorRef` | `BackgroundColor` |  |
 | `EModioRating` | `CurrentModRating` |  |
 | `EModioRating` | `NewRating` |  |
+| `FModioSoundCueRef` | `NavigateSoundFeedback` |  |
+| `FModioForceFeedbackRef` | `PressForceFeedback` |  |
 </RefTable>
 
 
@@ -20496,6 +20847,75 @@ Blueprint-compatible struct representing a color reference override
 
 ---
 
+#### ModioUIForceFeedbackEntry 
+
+Struct representing a force feedback entry in a data table
+
+###### Inheritance Hierarchy
+-> Table Row Base
+
+
+
+
+
+
+###### Variables
+<RefTable colWidths={['10%', '10%', '20%']} stripes="odd">
+| | | |
+|-|-|-|
+| `TObjectPtr<UForceFeedbackEffect>` | `ForceFeedback` | The force feedback effect to use for the entry |
+</RefTable>
+
+
+
+---
+
+#### ModioForceFeedbackRef 
+
+Blueprint-compatible struct representing a force feedback reference
+
+
+
+
+
+
+
+
+###### Variables
+<RefTable colWidths={['10%', '10%', '20%']} stripes="odd">
+| | | |
+|-|-|-|
+| `FName` | `ReferencedForceFeedbackName` | The name of the force feedback effect to reference |
+| `TObjectPtr<UForceFeedbackEffect>` | `FallbackForceFeedback` | The force feedback effect to use if the reference is not found |
+</RefTable>
+
+
+
+---
+
+#### ModioForceFeedbackRefOverride 
+
+Blueprint-compatible struct representing a force feedback reference override
+
+
+
+
+
+
+
+
+###### Variables
+<RefTable colWidths={['10%', '10%', '20%']} stripes="odd">
+| | | |
+|-|-|-|
+| `bool` | `bOverride` | Whether the force feedback reference is overridden |
+| `FModioForceFeedbackRef` | `ForceFeedback` | The force feedback to use if the reference is overridden |
+</RefTable>
+
+
+
+---
+
 #### IntegerOverride 
 
 Struct for conveniently handling integer overrides in UMG components. Allows conditional editing of an integer value based on the bOverride flag that is displayed inline as an edit condition toggle. See UPropertyOverridesLibrary for functions to resolve and apply overrides (ResolveIntOverride, ApplyIntOverride).
@@ -20627,6 +21047,75 @@ A simple retry counter that can be used to limit the number of retries for a giv
 | | | |
 |-|-|-|
 | `int32` | `RetriesRemaining` | Number of retries remaining |
+</RefTable>
+
+
+
+---
+
+#### ModioUISoundEntry 
+
+Struct representing a sound entry in a data table
+
+###### Inheritance Hierarchy
+-> Table Row Base
+
+
+
+
+
+
+###### Variables
+<RefTable colWidths={['10%', '10%', '20%']} stripes="odd">
+| | | |
+|-|-|-|
+| `TObjectPtr<USoundBase>` | `Sound` | The sound to use for the entry |
+</RefTable>
+
+
+
+---
+
+#### ModioSoundCueRef 
+
+Blueprint-compatible struct representing a sound reference
+
+
+
+
+
+
+
+
+###### Variables
+<RefTable colWidths={['10%', '10%', '20%']} stripes="odd">
+| | | |
+|-|-|-|
+| `FName` | `ReferencedSoundName` | The name of the sound to reference |
+| `TObjectPtr<USoundBase>` | `FallbackSound` | The sound to use if the reference is not found |
+</RefTable>
+
+
+
+---
+
+#### ModioSoundCueRefOverride 
+
+Blueprint-compatible struct representing a sound reference override
+
+
+
+
+
+
+
+
+###### Variables
+<RefTable colWidths={['10%', '10%', '20%']} stripes="odd">
+| | | |
+|-|-|-|
+| `bool` | `bOverride` | Whether the sound reference is overridden |
+| `FModioSoundCueRef` | `Sound` | The sound to use if the reference is overridden |
 </RefTable>
 
 
@@ -20903,6 +21392,231 @@ Adds a handler to be called when the color table changes
 
 ```cpp
 void AddColorChangeHandler(FLinearColorRefColorChangeHandler Handler)
+```
+
+
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Handler`|The handler to add|
+</RefTable>
+
+
+
+
+
+
+
+
+
+
+
+---
+
+
+
+#### Resolve Force Feedback Override As Exec
+
+Resolves a force feedback reference override to a force feedback effect
+
+![nd_img_ModioForceFeedbackRefLibrary_ResolveOverrideAsExec.png](img/refdocs/nd_img_ModioForceFeedbackRefLibrary_ResolveOverrideAsExec.png)
+
+```cpp
+UForceFeedbackEffect* ResolveOverrideAsExec(FModioForceFeedbackRefOverride Target, bool bOverrideSet)
+```
+
+
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`FModioForceFeedbackRefOverride`|
+</RefTable>
+
+
+
+##### Returns
+The resolved force feedback effect, or null if the override is not set
+
+
+
+
+
+
+
+
+---
+
+
+
+#### Resolve Force Feedback Override
+
+Resolves a force feedback reference override to a force feedback effect
+
+![nd_img_ModioForceFeedbackRefLibrary_ResolveOverride.png](img/refdocs/nd_img_ModioForceFeedbackRefLibrary_ResolveOverride.png)
+
+```cpp
+UForceFeedbackEffect* ResolveOverride(FModioForceFeedbackRefOverride Target, bool bOverrideSet)
+```
+
+
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`FModioForceFeedbackRefOverride`|
+|`Override Set`|True if the force feedback reference was overridden, false otherwise|
+</RefTable>
+
+
+
+##### Returns
+The resolved force feedback effect, or null if the override is not set
+
+
+
+
+
+
+
+
+---
+
+
+
+#### Resolve
+
+Resolves a force feedback reference to a force feedback effect
+
+![nd_img_ModioForceFeedbackRefLibrary_Resolve.png](img/refdocs/nd_img_ModioForceFeedbackRefLibrary_Resolve.png)
+
+```cpp
+UForceFeedbackEffect* Resolve(FModioForceFeedbackRef Target, bool bResolved)
+```
+
+
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`FModioForceFeedbackRef`|
+|`Resolved`|True if the force feedback reference was resolved, false if the fallback effect was used|
+</RefTable>
+
+
+
+##### Returns
+The resolved force feedback effect
+
+
+
+
+
+
+
+
+---
+
+
+
+#### Remove Force Feedback Change Handler
+
+Removes a handler from the list of handlers to be called when the force feedback table changes
+
+![nd_img_ModioForceFeedbackRefLibrary_RemoveForceFeedbackChangeHandler.png](img/refdocs/nd_img_ModioForceFeedbackRefLibrary_RemoveForceFeedbackChangeHandler.png)
+
+```cpp
+void RemoveForceFeedbackChangeHandler(FModioForceFeedbackRefChangeHandler Handler)
+```
+
+
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Handler`|The handler to remove|
+</RefTable>
+
+
+
+
+
+
+
+
+
+
+
+---
+
+
+
+#### Get Valid Force Feedback Keys
+
+Gets the list of valid force feedback keys
+
+![nd_img_ModioForceFeedbackRefLibrary_GetValidForceFeedbackKeys.png](img/refdocs/nd_img_ModioForceFeedbackRefLibrary_GetValidForceFeedbackKeys.png)
+
+```cpp
+TArray<FName> GetValidForceFeedbackKeys()
+```
+
+
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+</RefTable>
+
+
+
+##### Returns
+The list of valid force feedback keys
+
+
+
+
+
+
+
+
+---
+
+
+
+#### Add Force Feedback Change Handler
+
+Adds a handler to be called when the force feedback table changes
+
+![nd_img_ModioForceFeedbackRefLibrary_AddForceFeedbackChangeHandler.png](img/refdocs/nd_img_ModioForceFeedbackRefLibrary_AddForceFeedbackChangeHandler.png)
+
+```cpp
+void AddForceFeedbackChangeHandler(FModioForceFeedbackRefChangeHandler Handler)
 ```
 
 
@@ -22154,6 +22868,231 @@ bool CanRetry(FModioRetryCounter Target)
 
 ##### Returns
 True if the retry counter has retries remaining
+
+
+
+
+
+
+
+
+---
+
+
+
+#### Resolve Sound Override As Exec
+
+Resolves a sound reference override to a sound asset
+
+![nd_img_ModioSoundCueRefLibrary_ResolveOverrideAsExec.png](img/refdocs/nd_img_ModioSoundCueRefLibrary_ResolveOverrideAsExec.png)
+
+```cpp
+USoundBase* ResolveOverrideAsExec(FModioSoundCueRefOverride Target, bool bOverrideSet)
+```
+
+
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`FModioSoundCueRefOverride`|
+</RefTable>
+
+
+
+##### Returns
+The resolved sound asset, or null if the override is not set
+
+
+
+
+
+
+
+
+---
+
+
+
+#### Resolve Sound Override
+
+Resolves a sound reference override to a sound asset
+
+![nd_img_ModioSoundCueRefLibrary_ResolveOverride.png](img/refdocs/nd_img_ModioSoundCueRefLibrary_ResolveOverride.png)
+
+```cpp
+USoundBase* ResolveOverride(FModioSoundCueRefOverride Target, bool bOverrideSet)
+```
+
+
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`FModioSoundCueRefOverride`|
+|`Override Set`|True if the sound reference was overridden, false otherwise|
+</RefTable>
+
+
+
+##### Returns
+The resolved sound asset, or null if the override is not set
+
+
+
+
+
+
+
+
+---
+
+
+
+#### Resolve
+
+Resolves a sound reference to a sound asset
+
+![nd_img_ModioSoundCueRefLibrary_Resolve.png](img/refdocs/nd_img_ModioSoundCueRefLibrary_Resolve.png)
+
+```cpp
+USoundBase* Resolve(FModioSoundCueRef Target, bool bResolved)
+```
+
+
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`FModioSoundCueRef`|
+|`Resolved`|True if the sound reference was resolved, false if the fallback sound was used|
+</RefTable>
+
+
+
+##### Returns
+The resolved sound asset
+
+
+
+
+
+
+
+
+---
+
+
+
+#### Remove Sound Change Handler
+
+Removes a handler from the list of handlers to be called when the sound table changes
+
+![nd_img_ModioSoundCueRefLibrary_RemoveSoundChangeHandler.png](img/refdocs/nd_img_ModioSoundCueRefLibrary_RemoveSoundChangeHandler.png)
+
+```cpp
+void RemoveSoundChangeHandler(FModioSoundCueRefChangeHandler Handler)
+```
+
+
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Handler`|The handler to remove|
+</RefTable>
+
+
+
+
+
+
+
+
+
+
+
+---
+
+
+
+#### Get Valid Sound Keys
+
+Gets the list of valid sound keys
+
+![nd_img_ModioSoundCueRefLibrary_GetValidSoundKeys.png](img/refdocs/nd_img_ModioSoundCueRefLibrary_GetValidSoundKeys.png)
+
+```cpp
+TArray<FName> GetValidSoundKeys()
+```
+
+
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+</RefTable>
+
+
+
+##### Returns
+The list of valid sound keys
+
+
+
+
+
+
+
+
+---
+
+
+
+#### Add Sound Change Handler
+
+Adds a handler to be called when the sound table changes
+
+![nd_img_ModioSoundCueRefLibrary_AddSoundChangeHandler.png](img/refdocs/nd_img_ModioSoundCueRefLibrary_AddSoundChangeHandler.png)
+
+```cpp
+void AddSoundChangeHandler(FModioSoundCueRefChangeHandler Handler)
+```
+
+
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Handler`|The handler to add|
+</RefTable>
+
+
+
 
 
 

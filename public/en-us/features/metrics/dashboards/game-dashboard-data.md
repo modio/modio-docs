@@ -145,7 +145,7 @@ Monitor UGC MAU, comments, guide engagement, and creator growth, with segmentati
 The number of unique monthly active users (MAU) for the current and previous calendar month.
 
 **How it's measured**  
-A UGC MAU is a unique user identified by IP address that performs at least one qualifying action on UGC.
+A UGC MAU is a unique user identity that performs at least one qualifying action on UGC.
 
 **Qualifying actions**
 
@@ -155,20 +155,37 @@ A UGC MAU is a unique user identified by IP address that performs at least one q
 - Rating UGC
 - Commenting on UGC
 
-**Deduplication**  
-Events are deduplicated on a 24-hour rolling period based on the combination of:
+**Deduplication**
+Events are deduplicated over a rolling 24-hour period using the combination of:
 
 - User IP
+- User ID, when available
 - UGC ID
 - Platform
 
-This ensures that repeated interactions with the same UGC by the same user on the same platform within 24 hours count only once.
+Including User ID preserves separate authenticated and anonymous observations using the same IP and prevents different authenticated users behind a shared IP from being treated as the same observation.
+An authenticated user using multiple IP addresses may produce multiple retained events. These events are resolved to one User ID during DAU/MAU aggregation.
 
-**Monthly aggregation**  
-Across a full calendar month, each user IP is counted once in the unfiltered MAU total, even if they interact on multiple days.
+**Daily Aggregation**
+Across a calendar day:
 
-**Platform behavior**  
-At the platform level, the same user IP can contribute to separate counts on different platforms. Without a platform filter, MAU is deduplicated by IP across the full month.
+- Each authenticated User ID is counted once.
+- An IP address is counted as an anonymous identity only when it was not associated with an authenticated User ID during that day.
+- Identities are combined and deduplicated across UGC and platforms before calculating the unfiltered DAU total. Per-UGC or per-platform unique counts are not added together.
+
+**Monthly Aggregation**
+Across a calendar month:
+
+- Each authenticated User ID is counted once, even when the user interacts on multiple days, IP addresses, UGC items or platforms.
+- An IP address is counted once as an anonymous identity only when it was not associated with an authenticated User ID during that month.
+- Monthly unique identities are calculated across the complete timeframe. MAU is not calculated by summing daily unique-user totals.
+
+**Platform Behaviour**
+When viewing results by platform, each platform is calculated separately. If the same authenticated User ID or eligible anonymous IP is active on multiple platforms, it may appear once in each relevant platform count.
+Without a platform filter, identities are combined across all platforms before DAU/MAU is calculated, so each authenticated User ID or eligible anonymous IP contributes once to the total.
+
+**Authenticated DAU/MAU**
+Authenticated DAU/MAU counts distinct positive User IDs only. It excludes anonymous IP identities.
 
 #### Impressions
 
