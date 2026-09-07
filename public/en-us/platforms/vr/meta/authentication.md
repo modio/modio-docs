@@ -29,6 +29,18 @@ For each option, click Add, tick all the options that apply and write a brief de
 
 Once complete, click Submit Verification. While waiting for approval, we can configure both Meta & mod.io's services for authentication.
 
+### Suggested Wording
+
+We've provided reasons you can use for both Blocked Users and User Age Group features, as they relate to mod.io.
+
+#### Blocked Users
+
+mod.io requires the Blocked Users feature to keep the mod.io Blocked Users list in sync with the users Meta Blocked Users list. This allows mod.io to hide content created by users that have been blocked by the authenticated user.
+
+#### User Age Group
+
+mod.io requires the User Age Group feature to verify the age of the users that are attempting to authenticate with mod.io. They need this information to comply with mod.io's age policies.
+
 ## Configuration
 
 In order to set up Meta Quest Authentication, you must configure your App Id & App Secret in your mod.io game authentication options.

@@ -19,7 +19,7 @@ When making API requests you should include the `X-Modio-Platform` header (with 
 
 ### Example
 
-Consider your game client wishes to fetch all mods that have been approved and set live for Xbox Series X. By setting the HTTP header `X-Modio-Platform: xboxseriesx` in your API request to the <Link to="/restapi/docs/get-mods">Get Mods</Link> endpoint, the header informs mod.io your player is on Xbox Series X and the content returned should be specific to Xbox Series X. So when the following HTTP request is made:
+Consider your game client wishes to fetch all mods that have been approved and set live for XBOX Series X. By setting the HTTP header `X-Modio-Platform: xboxseriesx` in your API request to the <Link to="/restapi/docs/get-mods">Get Mods</Link> endpoint, the header informs mod.io your player is on XBOX Series X and the content returned should be specific to XBOX Series X. So when the following HTTP request is made:
 
 ```shell
 curl -X GET https://g-1.modapi.io/v1/games/1/mods \
@@ -27,7 +27,7 @@ curl -X GET https://g-1.modapi.io/v1/games/1/mods \
   -H 'X-Modio-Platform: xboxseriesx'
 ```
 
-The response will only contain mods that are live on Xbox Series X. Official mod.io <Link to="/restapi#official-tools">Plugins and SDK's</Link>  will automatically supply this value for you providing you have specified the correct platform in the tools' settings. We __strongly recommend__ you supply this header in every request with the correct platform to enable mod.io to provide the best cross-platform experience for your players. Please see a list of supported platforms below:
+The response will only contain mods that are live on XBOX Series X. Official mod.io <Link to="/restapi#official-tools">Plugins and SDK's</Link>  will automatically supply this value for you providing you have specified the correct platform in the tools' settings. We __strongly recommend__ you supply this header in every request with the correct platform to enable mod.io to provide the best cross-platform experience for your players. Please see a list of supported platforms below:
 
 Target Platform | Header Value
 ---------- | ----------  
@@ -37,8 +37,8 @@ Mac | `mac`
 Linux | `linux`
 Android | `android`
 iOS | `ios`
-Xbox One | `xboxone`
-Xbox Series X | `xboxseriesx`
+XBOX One | `xboxone`
+XBOX Series X | `xboxseriesx`
 PlayStation® 4 | `ps4`
 PlayStation 5 | `ps5`
 Switch | `switch`
@@ -81,7 +81,7 @@ Nintendo | `nintendo`
 PlayStation | `psn`
 SSO | `sso`
 Steam | `steam`
-Xbox Live | `xboxlive`
+XBOX Live | `xboxlive`
 
 These are the only supported values and are case-insensitive, anything else will be ignored. Have we missed a portal you are using? [Get in touch!](mailto:developers@mod.io?subject=Portal%20Support)
 

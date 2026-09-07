@@ -11,7 +11,7 @@ sidebar_position: 3
 
 "PlayStation" and the "PS" Family logo are registered trademarks and "PS4" is a trademark of Sony Interactive Entertainment Inc.
 
-Microsoft, the Xbox Sphere mark, the Series X logo, Series S logo, Series X|S logo, Xbox One, Xbox Series X, Xbox Series S, and Xbox Series X|S are trademarks of the Microsoft group of companies.
+Microsoft, the XBOX Sphere mark, the Series X logo, Series S logo, Series X|S logo, XBOX One, XBOX Series X, XBOX Series S, and XBOX Series X|S are trademarks of the Microsoft group of companies.
 
 Nintendo Switch™ and The Nintendo Switch logo and Joy-Con™ are trademarks of Nintendo.
 

@@ -72,7 +72,7 @@ The [REST API](/restapi) powers all our UGC functions. The three options above u
 Our service is a recognized middleware solution that spans a variety of platforms. To add a platform, you'll first need to gain approval from your platform's account manager. Once you're connected, our service works behind the scenes to streamline the cross-platform UGC experience. 
 
 * **[PC](/platforms/pc)**: Set up UGC for *Steam*, *GOG Galaxy*, *Epic Games* and *PC Games Pass* on desktop or handheld devices.
-* **[Console](/platforms/console)**: Set up UGC for *PlayStation®4*, *PlayStation®5*, *Xbox One*, *Xbox Series X*, *Nintendo Switch* and *Nintendo Switch 2*.
+* **[Console](/platforms/console)**: Set up UGC for *PlayStation®4*, *PlayStation®5*, *XBOX One*, *XBOX Series X*, *Nintendo Switch* and *Nintendo Switch 2*.
 * **[VR](/platforms/vr)**: Set up UGC for *Meta Quest*.
 * **[Mobile](/platforms/mobile)**: Set up UGC for *iOS* and *Android* devices.
 

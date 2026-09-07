@@ -378,7 +378,7 @@ Breakdown of sessions by duration within the selected range.
 ![Play Sessions](img/play-session-platform.png)
 Distribution of total playtime across platforms.
 
-- Shows which platforms (e.g., Windows, Mac, PlayStation, Xbox, Switch, Other) players are using.
+- Shows which platforms (e.g., Windows, Mac, PlayStation, XBOX, Switch, Other) players are using.
 - Reports share of playtime and total minutes played by platform.
 - Helps studios understand audience platform preferences and optimise support accordingly.
 

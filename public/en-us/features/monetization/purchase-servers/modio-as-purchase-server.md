@@ -26,7 +26,7 @@ To use mod.io Marketplace, you must have the following steps completed:
 
 - A title registered within mod.io with [Marketplace functionality enabled](/monetization/enabling).
 - SKU's registered to your mod.io game profile with [entitlements mapped](#entitlement-mapping), if you are using a third-party store.
-- Platform authentication for the platform where you intend to enable marketplace (i.e. Login with Xbox Live).
+- Platform authentication for the platform where you intend to enable marketplace (i.e. Login with XBOX Live).
 
 We also strongly encourage developers to utilize our official plugins and SDKs whenever possible, as these tools are specifically designed to abstract away much of the underlying complexity and get you up and running sooner. For implementation details related to specific plugins and SDK's, please see the following implementation guides:
 
@@ -54,7 +54,7 @@ Premium UGC | User generated content that can be bought or sold from the Marketp
 Virtual Currency | The currency that a player exchanges in return for premium UGC - irrespective of the vanity name your game uses for it. | mod.io
 Currency Pack | A pre-configured pack containing a specific amount of virtual currency. | mod.io
 Wallet | A wallet where any virtual currency you own resides. | mod.io
-Entitlement | A user-purchased digital right to a currency pack, which is always purchased through platform stores such as Steam, Xbox Live, PlayStation®, Meta, Epic Games Store, etc and exchanged with mod.io for virtual currency. | Third-party platforms
+Entitlement | A user-purchased digital right to a currency pack, which is always purchased through platform stores such as Steam, XBOX Live, PlayStation®, Meta, Epic Games Store, etc and exchanged with mod.io for virtual currency. | Third-party platforms
 
 ## Concepts
 
@@ -64,7 +64,7 @@ Entitlement Mapping is the process of associating a third-party platform store e
 
 - [Steam](/platforms/steam/marketplace)
 - [PlayStation®](https://docs.mod.io/partners/ps5/marketplace) ([NDA access required](/platforms/console-sdks))
-- [Xbox Live](https://docs.mod.io/partners/xbox/marketplace) ([NDA access required](/platforms/console-sdks))
+- [XBOX Live](https://docs.mod.io/partners/xbox/marketplace) ([NDA access required](/platforms/console-sdks))
 - [Apple (iOS)](/platforms/apple/marketplace)
 - [Google Play (Android)](/platforms/google/marketplace)
 - [Meta Quest](/platforms/meta/marketplace)
@@ -144,7 +144,7 @@ When it comes to a user purchasing virtual currency it depends on where your mod
     <td>Player purchases tokens directly from the mod.io website, and is ready to be used to purchase mods either in-game or via the website. No entitlement sync necessary.</td>
   </tr>
   <tr>
-    <td>Xbox Live</td>
+    <td>XBOX Live</td>
     <td rowspan="5">Entitlement</td>
     <td rowspan="5">Player purchases consumable entitlement via platform store. Game client syncs entitlements to mod.io in-game, converting the entitlement(s) into mod.io virtual currency.</td>
   </tr>
@@ -194,14 +194,14 @@ sequenceDiagram
 
 1. The game client uses the native platform store to purchase one or more entitlements which are mapped to Token packs on mod.io.
 2. Platform allocates entitlement to player upon purchase.
-3. The game client authenticates with mod.io via the platform that tracks the entitlements. As an example, if you purchase an entitlement on the Microsoft Store, you *must* authenticate with mod.io via [the Xbox Live authentication flow](/restapi/docs/authenticate-via-xbox-live).
+3. The game client authenticates with mod.io via the platform that tracks the entitlements. As an example, if you purchase an entitlement on the Microsoft Store, you *must* authenticate with mod.io via [the XBOX Live authentication flow](/restapi/docs/authenticate-via-xbox-live).
 4. A mod.io access token is returned to the game client.
 5. Game Client instructs mod.io to sync the users platform entitlements to their mod.io account.
 6. mod.io consumes _mapped_ entitlements on behalf of the user against the platform's inventory system.
 7. Platform consumes the entitlement on behalf of the user.
 8. mod.io updates the players wallet balance relative to the value of the token packs mapped to the entitlement(s).
 
-#### Xbox Live
+#### XBOX Live
 
 ##### Request
 
@@ -217,7 +217,7 @@ Authorization|string|true|The user's mod.io access token.
 
 Parameter|Type|Required|Description
 -------|---|---|---|
-xbox_token|string|true|The Xbox Live token returned from calling [GetTokenAndSignatureAsync(""POST"", "https://*.modapi.io")](https://docs.microsoft.com/en-us/dotnet/api/microsoft.xbox.services.system.xboxliveuser.gettokenandsignatureasync?view=xboxlive-dotnet-2017.11.20171204.01). __NOTE:__ Due to the encrypted app ticket containing special characters, you must URL encode the string before sending the request to ensure it is successfully sent to our servers otherwise you may encounter an `422 Unprocessable Entity` response. For example, [cURL](https://ec.haxx.se/index.html) will do this for you by using the `--data-urlencode` option.
+xbox_token|string|true|The XBOX Live token returned from calling [GetTokenAndSignatureAsync(""POST"", "https://*.modapi.io")](https://docs.microsoft.com/en-us/dotnet/api/microsoft.xbox.services.system.xboxliveuser.gettokenandsignatureasync?view=xboxlive-dotnet-2017.11.20171204.01). __NOTE:__ Due to the encrypted app ticket containing special characters, you must URL encode the string before sending the request to ensure it is successfully sent to our servers otherwise you may encounter an `422 Unprocessable Entity` response. For example, [cURL](https://ec.haxx.se/index.html) will do this for you by using the `--data-urlencode` option.
 
 ```
 POST https://g-{your-game-id}.modapi.io/v1/me/iap/xboxlive/sync HTTP/1.1
@@ -257,7 +257,7 @@ wallet.balance | integer | The amount of virtual currency in the wallet.
 data | array | Contains entitlement data.
 data[].transaction_id | string | The mod.io transaction ID for the entitlement transfer.
 data[].transaction_state | integer | The mod.io transaction state from converting the portal entitlements into mod.io assets / currency. Possible values:<ul><li><strong>0</strong> = Failed</li><li><strong>1</strong> = Pending</li><li><strong>2</strong> = Fulfilled</li><li><strong>3</strong> = Consume Limit Exceeded</li></ul> 
-data[].sku_id | string | The portal SKU ID associated with the transaction. This will be the ID as defined by the portal (i.e. Xbox Live).
+data[].sku_id | string | The portal SKU ID associated with the transaction. This will be the ID as defined by the portal (i.e. XBOX Live).
 data[].entitlement_consumed | boolean | Has the entitlement been consumed in the third-party portal?
 data[].entitlement_type | integer | The entitlement type, once consumed and the entitlement is transferred to mod.io. Possible values:<ul><li><strong>0</strong> = Virtual Currency</li></ul>
 details | object (nullable) | Additional information associated with the transaction.
@@ -320,7 +320,7 @@ wallet.balance | integer | The amount of virtual currency in the wallet.
 data | array | Contains entitlement data.
 data[].transaction_id | string | The mod.io transaction ID for the entitlement transfer.
 data[].transaction_state | integer | The mod.io transaction state from converting the portal entitlements into mod.io assets / currency. Possible values:<ul><li><strong>0</strong> = Failed</li><li><strong>1</strong> = Pending</li><li><strong>2</strong> = Fulfilled</li><li><strong>3</strong> = Consume Limit Exceeded</li></ul> 
-data[].sku_id | string | The portal SKU ID associated with the transaction. This will be the ID as defined by the portal (i.e. Xbox Live).
+data[].sku_id | string | The portal SKU ID associated with the transaction. This will be the ID as defined by the portal (i.e. XBOX Live).
 data[].entitlement_consumed | boolean | Has the entitlement been consumed in the third-party portal?
 data[].entitlement_type | integer | The entitlement type, once consumed and the entitlement is transferred to mod.io. Possible values:<ul><li><strong>0</strong> = Virtual Currency</li></ul>
 details | object (nullable) | Additional information associated with the transaction.
@@ -376,7 +376,7 @@ wallet.balance | integer | The amount of virtual currency in the wallet.
 data | array | Contains entitlement data.
 data[].transaction_id | string | The mod.io transaction ID for the entitlement transfer.
 data[].transaction_state | integer | The mod.io transaction state from converting the portal entitlements into mod.io assets / currency. Possible values:<ul><li><strong>0</strong> = Failed</li><li><strong>1</strong> = Pending</li><li><strong>2</strong> = Fulfilled</li><li><strong>3</strong> = Consume Limit Exceeded</li></ul> 
-data[].sku_id | string | The portal SKU ID associated with the transaction. This will be the ID as defined by the portal (i.e. Xbox Live).
+data[].sku_id | string | The portal SKU ID associated with the transaction. This will be the ID as defined by the portal (i.e. XBOX Live).
 data[].entitlement_consumed | boolean | Has the entitlement been consumed in the third-party portal?
 data[].entitlement_type | integer | The entitlement type, once consumed and the entitlement is transferred to mod.io. Possible values:<ul><li><strong>0</strong> = Virtual Currency</li></ul>
 details | object (nullable) | Additional information associated with the transaction.
@@ -438,7 +438,7 @@ wallet.balance | integer | The amount of virtual currency in the wallet.
 data | array | Contains entitlement data.
 data[].transaction_id | string | The mod.io transaction ID for the entitlement transfer.
 data[].transaction_state | integer | The mod.io transaction state from converting the portal entitlements into mod.io assets / currency. Possible values:<ul><li><strong>0</strong> = Failed</li><li><strong>1</strong> = Pending</li><li><strong>2</strong> = Fulfilled</li><li><strong>3</strong> = Consume Limit Exceeded</li></ul> 
-data[].sku_id | string | The portal SKU ID associated with the transaction. This will be the ID as defined by the portal (i.e. Xbox Live).
+data[].sku_id | string | The portal SKU ID associated with the transaction. This will be the ID as defined by the portal (i.e. XBOX Live).
 data[].entitlement_consumed | boolean | Has the entitlement been consumed in the third-party portal?
 data[].entitlement_type | integer | The entitlement type, once consumed and the entitlement is transferred to mod.io. Possible values:<ul><li><strong>0</strong> = Virtual Currency</li></ul>
 details | object (nullable) | Additional information associated with the transaction.
@@ -500,7 +500,7 @@ wallet.balance | integer | The amount of virtual currency in the wallet.
 data | array | Contains entitlement data.
 data[].transaction_id | string | The mod.io transaction ID for the entitlement transfer.
 data[].transaction_state | integer | The mod.io transaction state from converting the portal entitlements into mod.io assets / currency. Possible values:<ul><li><strong>0</strong> = Failed</li><li><strong>1</strong> = Pending</li><li><strong>2</strong> = Fulfilled</li><li><strong>3</strong> = Consume Limit Exceeded</li></ul> 
-data[].sku_id | string | The portal SKU ID associated with the transaction. This will be the ID as defined by the portal (i.e. Xbox Live).
+data[].sku_id | string | The portal SKU ID associated with the transaction. This will be the ID as defined by the portal (i.e. XBOX Live).
 data[].entitlement_consumed | boolean | Has the entitlement been consumed in the third-party portal?
 data[].entitlement_type | integer | The entitlement type, once consumed and the entitlement is transferred to mod.io. Possible values:<ul><li><strong>0</strong> = Virtual Currency</li></ul>
 details | object (nullable) | Additional information associated with the transaction.
@@ -1059,7 +1059,7 @@ mod.io recommends that by default you set the level of access to the following:
 
 ## Authentication errors during entitlement syncing
 
-When syncing In-App Purchase entitlements, mod.io must authenticate with the platform provider (Epic Games Store, Google Play, PlayStation®, Steam, or Xbox Live). If this authentication step fails, syncing cannot continue for that provider.
+When syncing In-App Purchase entitlements, mod.io must authenticate with the platform provider (Epic Games Store, Google Play, PlayStation®, Steam, or XBOX Live). If this authentication step fails, syncing cannot continue for that provider.
 
 You will commonly see these authentication errors when:
 
@@ -1083,4 +1083,4 @@ For platform-specific codes and exact meanings, see [Error reference](#error-ref
 | 900104        | mod.io failed to authenticate with PlayStation (PS4) during In-App Purchase entitlement syncing. |
 | 900105        | mod.io failed to authenticate with PlayStation (PS5) during In-App Purchase entitlement syncing. |
 | 900106        | mod.io failed to authenticate with Steam during In-App Purchase entitlement syncing. |
-| 900107        | mod.io failed to authenticate with Xbox Live during In-App Purchase entitlement syncing. |
+| 900107        | mod.io failed to authenticate with XBOX Live during In-App Purchase entitlement syncing. |

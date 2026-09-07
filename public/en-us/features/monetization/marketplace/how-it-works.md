@@ -27,13 +27,19 @@ Alternatively, you can set up the Marketplace to use USD pricing, in which case 
 
 Virtual Currency Packs are sold at a price of USD$0.01 per Virtual Currency, so $1 for 100, on which we charge a fixed wholesale rate of USD$0.0052 per Virtual Currency which covers our fee and payouts to creators which we manage for you. The remaining USD$0.0048 per Virtual Currency goes to the game publisher after payment processor fees are applied.
 
+:::warning
+**Currency Pack Discounts**
+Studios should not apply discounts to any SKU's linked to [virtual currency packs](/monetization/onboarding#virtual-currency-packs) as
+discounting a SKU _will not_ change the amount invoiced by mod.io.
+:::
+
 When the Marketplace is set up with USD pricing, a pack of currency of the value corresponding to the price of the content in USD will be automatically purchased and spent as part of the transaction. This means the two steps described below (first purchasing the currency pack, and then the premium UGC) become two parts of a single transaction. The breakdown & examples below, and the way costs are applied remain the same.
 
 ### Detailed breakdown
 
 When $1 is spent to purchase 100 Virtual Currency, and this Virtual Currency is then used to purchase a piece of content:
 
-* USD$0.48 (48%) is used to cover the payment processor fee (e.g. Steam, PlayStation™Store, Xbox, iOS, Android, or Thunes on Web), and the remainder is profit for the game studio
+* USD$0.48 (48%) is used to cover the payment processor fee (e.g. Steam, PlayStation™Store, XBOX, iOS, Android, or Thunes on Web), and the remainder is profit for the game studio
 * USD$0.52 (52%) is used to cover the fixed wholesale rate of the Virtual Currency, broken down as follows:
     - USD$0.4 (40%) is allocated to the Virtual Currency earnings pool (i.e. the Marketplace economy)
         - When these 100 Virtual Currency are spent, the default is for 70% of the currency to go to the creator, and 30% go to the studio (this split can be adjusted in your dashboard)
@@ -90,11 +96,11 @@ So in total, the studio share after the sale of this Virtual Currency Pack, and 
 
 *Overview of the system for a Virtual Currency Pack sale of $10 happening via the mod.io web app.*
 
-### Sales originating from external platforms (Steam, PlayStation, Xbox, etc.)
+### Sales originating from external platforms (Steam, PlayStation, XBOX, etc.)
 
 Player purchases Virtual Currency from an external platform (Steam, PlayStation Store, Microsoft Store, etc). The price is still $0.01 per Virtual Currency. In this example, we’ll again assume the sale of a currency pack of 1000 Virtual Currency for $10.
 
-The external platform would charge 30% of that, leaving $7. Platforms rate vary, for example Epic Game Store would only charge 12%, but for this example we’ll assume a 30% rate which is the standard for Steam, PlayStation or Xbox. The studio will then get the remaining $7 paid directly to them by the platform as royalties.
+The external platform would charge 30% of that, leaving $7. Platforms rate vary, for example Epic Game Store would only charge 12%, but for this example we’ll assume a 30% rate which is the standard for Steam, PlayStation or XBOX. The studio will then get the remaining $7 paid directly to them by the platform as royalties.
 
 mod.io will issue an invoice at the start of the following month to charge back the Virtual Currency wholesale amount for those 1000 Virtual Currency sold. We would charge the same Virtual Currency wholesale charge of $0.0052 per Virtual Currency. The invoice total would amount to $5.2, leaving $1.8 to the studio.
 

@@ -7,7 +7,7 @@ sidebar_position: 0
 
 # Console Cross-Platform Support
 
-mod.io is a fully authorized middleware provider for *Xbox One*, *Xbox Series X*, *PlayStation®4*, *PlayStation®5*, *Nintendo Switch* and *Nintendo Switch 2*. 
+mod.io is a fully authorized middleware provider for *XBOX One*, *XBOX Series X*, *PlayStation®4*, *PlayStation®5*, *Nintendo Switch* and *Nintendo Switch 2*. 
 
 :::note[Premium Feature]
 Console support is a premium feature. Sign up to one of our advanced service tiers and complete the approval process for the corresponding platform to gain [SDK Access](/platforms/console-sdks), or contact us at developers@mod.io for more information.
@@ -19,8 +19,8 @@ The following platforms are able to integrate mod.io.
 
 |      | **Service Availability** | **Certification Support** | **Native SDK** | **Single Sign-On** | **Monetization** |
 |------|:----:|:----:|:----:|:----:|:----:|
-| **[Xbox One](/platforms/gdk)**       | ✓ | ✓ | ✓ | ✓ | ✓ |
-| **[Xbox Series X](/platforms/gdk)**   | ✓ | ✓ | ✓ | ✓ | ✓ |
+| **[XBOX One](/platforms/gdk)**       | ✓ | ✓ | ✓ | ✓ | ✓ |
+| **[XBOX Series X](/platforms/gdk)**   | ✓ | ✓ | ✓ | ✓ | ✓ |
 | **[PlayStation®4](/platforms/playstation)**   | ✓ | ✓ | ✓ | ✓ | ✓ |
 | **[PlayStation®5](/platforms/playstation)**   | ✓ | ✓ | ✓ | ✓ | ✓ |
 | **[Nintendo Switch](/platforms/switch)** | ✓ | ✓ | ✓ | ✓ | |
@@ -44,14 +44,14 @@ These include:
 * [Rules-Based Moderation](/moderation/rules-engine) flows to streamline and automate moderation depending on the platform(s) targeted.
 * [Monetization](/monetization) that is compliant with each platforms rules and supports their payment flows.
 
-![SnowRunner in-game mod browser on Xbox](img/snowrunner_ui.jpg)
+![SnowRunner in-game mod browser on XBOX](img/snowrunner_ui.jpg)
 
-_Example Implementation: SnowRunner in-game UGC browser on Xbox_
+_Example Implementation: SnowRunner in-game UGC browser on XBOX_
 
 You can see examples of mod.io running on consoles in the following titles today:
-* [Baldur's Gate 3](https://mod.io/g/spaceengineers) - *Xbox Series X/S*, *PlayStation®5*
-* [SnowRunner](https://mod.io/g/snowrunner) - *Xbox One*, *Xbox Series X/S*, *PlayStation®4 / PlayStation®5*, *Switch*
-* [Skater XL](https://mod.io/g/skaterxl) - *Xbox One*, *Xbox Series X/S*, *PlayStation®4 / PlayStation®5*, *Switch*
+* [Baldur's Gate 3](https://mod.io/g/spaceengineers) - *XBOX Series X/S*, *PlayStation®5*
+* [SnowRunner](https://mod.io/g/snowrunner) - *XBOX One*, *XBOX Series X/S*, *PlayStation®4 / PlayStation®5*, *Switch*
+* [Skater XL](https://mod.io/g/skaterxl) - *XBOX One*, *XBOX Series X/S*, *PlayStation®4 / PlayStation®5*, *Switch*
 
 If you would like to see more examples of mod.io working in any of these games or other titles, please contact [developers@mod.io](mailto:developers@mod.io) for demonstration keys.
 
@@ -77,7 +77,7 @@ For studios that have gained [platform approval](#gaining-platform-approval) by 
 
 * [PlayStation®4](https://docs.mod.io/partners/ps4)
 * [PlayStation®5](https://docs.mod.io/partners/ps5)
-* [Xbox One/Series X GDK](https://docs.mod.io/partners/xbox)
+* [XBOX One/Series X GDK](https://docs.mod.io/partners/xbox)
 * [Nintendo Switch](https://docs.mod.io/partners/switch)
 * [Nintendo Switch 2](https://docs.mod.io/partners/switch2)
 

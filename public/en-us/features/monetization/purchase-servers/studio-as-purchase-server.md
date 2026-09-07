@@ -47,7 +47,7 @@ Premium UGC | User generated content that can be bought or sold from the Marketp
 Virtual Currency | The currency that a player exchanges in return for premium mods - irrespective of the vanity name your game uses for it. | mod.io
 Currency Pack | A pre-configured pack containing a specific amount of virtual currency. | mod.io
 Wallet | A wallet where any virtual currency you own resides. | mod.io
-Entitlement | A user-purchased digital right to a currency pack, which is always purchased through platform stores such as Steam, Xbox Live, PlayStation®, Meta, etc and exchanged with mod.io for virtual currency. | Third-party platforms
+Entitlement | A user-purchased digital right to a currency pack, which is always purchased through platform stores such as Steam, XBOX Live, PlayStation®, Meta, etc and exchanged with mod.io for virtual currency. | Third-party platforms
 
 ## Architecture overview
 
@@ -277,7 +277,7 @@ Refer to the table below to determine if you can defer entitlement state where t
 
 **Platform API** | **Manages Entitlement State?**
 |----------|----------
-| Xbox Live | Yes
+| XBOX Live | Yes
 | PlayStation | Yes
 | Steam | Yes
 | Google Play Store | No
@@ -377,7 +377,7 @@ Consider an example where the following chain of events occur:
 - The player disputes the payment with their payment provider, resulting in a chargeback.
 - The player has received their funds back for the purchase of the entitlement against the platform store, and still have the premium UGC they purchased with the 100 Virtual Currency they temporarily possessed.
 
-The scenario described is considered fraudulent behavior as a player could continue to make refund / chargeback claims against either their financial institution or against the platform (Xbox Live, etc) and continue to get funds refunded to them. However critically, mod.io is not aware the funds have been returned and your marketplace is now at a loss as premium UGC has been purchased and distributed, but the funds used in the transaction won't be distributed to your creators - potentially disincentivizing creators from contributing.
+The scenario described is considered fraudulent behavior as a player could continue to make refund / chargeback claims against either their financial institution or against the platform (XBOX Live, etc) and continue to get funds refunded to them. However critically, mod.io is not aware the funds have been returned and your marketplace is now at a loss as premium UGC has been purchased and distributed, but the funds used in the transaction won't be distributed to your creators - potentially disincentivizing creators from contributing.
 
 For the scenario described above, it is critical to a healthy marketplace within your titles that clawback events are processed by your purchase server, and if eligible, relayed to mod.io for action.
 

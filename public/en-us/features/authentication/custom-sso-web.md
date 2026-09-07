@@ -235,7 +235,7 @@ mod.io users will have the option at any time to remove the link between their m
 2. Click 'General Settings' from the menu that slides out.
 3. Click 'Linked Accounts' from the menu on the left-hand side.
 
-The user will then be shown all first party portals, such as Steam, Xbox Live, etc - as well as any connected identity providers by registered games on mod.io.
+The user will then be shown all first party portals, such as Steam, XBOX Live, etc - as well as any connected identity providers by registered games on mod.io.
 
 ![Unlink account example](img/web-sso-unlink-account.png)
 

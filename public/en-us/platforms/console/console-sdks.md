@@ -20,7 +20,7 @@ For studios that have gained [platform approval](#gaining-platform-approval) by 
 
 * [PlayStation®4](https://docs.mod.io/partners/ps4)
 * [PlayStation®5](https://docs.mod.io/partners/ps5)
-* [Xbox One/Series X GDK](https://docs.mod.io/partners/xbox)
+* [XBOX One/Series X GDK](https://docs.mod.io/partners/xbox)
 * [Nintendo Switch](https://docs.mod.io/partners/switch)
 * [Nintendo Switch 2](https://docs.mod.io/partners/switch2)
 
@@ -35,7 +35,7 @@ If you believe you are but cannot access the documentation, [contact us](mailto:
 Before embarking on your UGC support journey with any new platform, your first step is to verify your access under the applicable NDA:
 
 * [PlayStation®4 / PlayStation®5](/platforms/playstation#sdk-access)
-* [Xbox](/platforms/gdk#sdk-access)
+* [XBOX](/platforms/gdk#sdk-access)
 * [Nintendo Switch](/platforms/switch#sdk-access)
 
 The next step should be to speak to your account manager and let them know you intend on supporting UGC using mod.io. This allows you to begin the process of understanding what rules exist and information they require from you in order for your plans to pass certification.
@@ -45,7 +45,7 @@ The next step should be to speak to your account manager and let them know you i
 If you need an introduction to our account managers who understand mod.io and UGC, let us know and we will connect you with:
 
 * Sony Interactive Entertainment: Global Technology Partnerships
-* Microsoft Xbox: Developer Partner Manager
+* Microsoft XBOX: Developer Partner Manager
 * Nintendo Switch: Developer Relations
 
 ### The approval process

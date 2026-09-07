@@ -30,7 +30,7 @@ A sample UE4 project showcasing a simple integration is available here: [UE4 Sam
 ## Example UE4 games live with mod.io
 
 - Ready or Not (PC)
-- Park Beyond (PC, Xbox, PlayStation)
+- Park Beyond (PC, XBOX, PlayStation)
 - Homeworld 3 (PC)
 - Deep Rock Galactic (PC)
 

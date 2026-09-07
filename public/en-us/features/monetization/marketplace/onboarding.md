@@ -146,7 +146,7 @@ Virtual Currency Packs can be mapped to Virtual Currency Pack SKUs sold on exter
 
 ## Regional Pricing
 
-Please note that mod.io will always invoice $0.0052 for every Virtual Currency sold, regardless of the originating platform, country and currency of the customer.  Most platforms will charge customers in their local currency, such as the PlayStation Store, Xbox Games Store, Steam and Epic Games Store.  When setting up VC SKUs, platforms will also suggest local currency prices for those markets.  Please make sure when suggesting prices to your platform partners that the wholesale or local SRP is at a level to account for the cost of Virtual Currency granted in USD.  In rare cases, due to various economic reasons, some local market suggested prices may be insufficient.
+Please note that mod.io will always invoice $0.0052 for every Virtual Currency sold, regardless of the originating platform, country and currency of the customer.  Most platforms will charge customers in their local currency, such as the PlayStation Store, XBOX Games Store, Steam and Epic Games Store.  When setting up VC SKUs, platforms will also suggest local currency prices for those markets.  Please make sure when suggesting prices to your platform partners that the wholesale or local SRP is at a level to account for the cost of Virtual Currency granted in USD.  In rare cases, due to various economic reasons, some local market suggested prices may be insufficient.
 
 We recommend paying particular attention to the following markets: Japan, Argentina, Indonesia, South Korea, Turkey, and Ukraine.
 

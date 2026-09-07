@@ -13,7 +13,7 @@ Consent is important so users are aware a mod.io account is being created, inlin
 
 ## Frequency of application
 
-It is a requirement of the [Game Terms](https://mod.io/gameterms) with mod.io, and the platforms mod.io is used on, to ensure the user provides consent and has agreed to the latest [Terms of Use](https://mod.io/terms) and [Privacy Policy](https://mod.io/privacy) of mod.io. The users agreement must be collected prior to using a 3rd party authentication flow (including but not limited to Steam, PlayStation®, Nintendo and Xbox Live). You only need to collect the users agreement once, and also each time these policies are updated.
+It is a requirement of the [Game Terms](https://mod.io/gameterms) with mod.io, and the platforms mod.io is used on, to ensure the user provides consent and has agreed to the latest [Terms of Use](https://mod.io/terms) and [Privacy Policy](https://mod.io/privacy) of mod.io. The users agreement must be collected prior to using a 3rd party authentication flow (including but not limited to Steam, PlayStation®, Nintendo and XBOX Live). You only need to collect the users agreement once, and also each time these policies are updated.
 
 ## What are the terms?
 
@@ -27,7 +27,7 @@ It is a requirement of the [Game Terms](https://mod.io/gameterms) with mod.io, a
 
 ## Platform SSO standard
 
-In addition to following our consent and acceptance process, mod.io also follows the standards set by the SSO provider used to authenticate the player. Example being; a user who is playing a game on Xbox, is signed in with their Xbox ID, which is connected to their mod.io account. During the authentication process with Xbox, mod.io checks the users parental controls and age gate requirements, and processes or denies their authentication accordingly. It is highly recommended you use the applicable Platform SSO standard when authenticating players with mod.io (or your SSO system as explained below), to ensure a seamless and compliant implementation. If you're not using the Platform SSO standard, your implementation will need to ensure it enforces the requirements set by the platform to pass certification.
+In addition to following our consent and acceptance process, mod.io also follows the standards set by the SSO provider used to authenticate the player. Example being; a user who is playing a game on XBOX, is signed in with their XBOX ID, which is connected to their mod.io account. During the authentication process with XBOX, mod.io checks the users parental controls and age gate requirements, and processes or denies their authentication accordingly. It is highly recommended you use the applicable Platform SSO standard when authenticating players with mod.io (or your SSO system as explained below), to ensure a seamless and compliant implementation. If you're not using the Platform SSO standard, your implementation will need to ensure it enforces the requirements set by the platform to pass certification.
 
 :::tip 
 If you have your own accounts system, mod.io can be set up to use it as the SSO provider, to ensure all users follow any parental controls and age gate requirements you have. This will also connect their mod.io account to your backend, which improves reporting, and means any accounts you block, will also be blocked from engaging with your games on mod.io.
@@ -74,7 +74,7 @@ flowchart TD
 
 ![Step 2: User is prompted to agree to terms](img/terms-step2.png)
 
-3. Once the user has accepted, authentication can happen instantly if using platform SSO (i.e. Xbox auth), or your own account system using OIDC. Email authentication and QR code are also supported, and if used require additional steps to sign in.
+3. Once the user has accepted, authentication can happen instantly if using platform SSO (i.e. XBOX auth), or your own account system using OIDC. Email authentication and QR code are also supported, and if used require additional steps to sign in.
    * Visit our [authentication documentation](/authentication/platform) for instructions on how to authenticate users.
    * If you completed step 2 prior to authenticating the user, you should indicate the user has accepted the terms in your request to mod.io `terms_agreed=true`, otherwise the value must remain `terms_agreed=false`.
    * If you skipped step 2 and receive the error `403 Forbidden (error_ref 11074)`, this indicates the terms have been updated since the user last agreed. You need to return to step 2 and get the users agreement to continue.

@@ -53,9 +53,9 @@ On all tabs you can edit the UGC’s details (such as name and description) by c
 
 ![Pending approval tab](img/pending-approval.png)
 
-### Approving Per-Platform Files
+### Approving platform files
 
-If you have enabled [per-platform moderation](/moderation/manual-curation#per-platform-moderation), an additional tab **Pending files** will appear. If Per-Platform Moderation is enabled, all UGC with files ready for approval for the supported platforms will appear here. From this tab you can **Review Files** for approval, which will release the file onto the approved platform(s).
+If you have enabled [per-platform moderation](/moderation/manual-curation#platform-curation), an additional tab **Pending files** will appear. If per-platform moderation is enabled, all UGC with files ready for approval for the supported platforms will appear here. From this tab you can **Review Files** for approval, which will release the file onto the approved platform(s).
 
 ![Pending files](img/pending-files.png)
 
@@ -81,7 +81,7 @@ Files cannot be tampered with once uploaded, so the only way to replace a UGC fi
 If a UGC has multiple files/versions uploaded, you can choose which file/version to set live using the trophy icon, which instructs the SDKs to prioritize that file over the other versions. A non-live file can also be deleted using the trash can icon.
 
 :::tip 
-If Per-Platform Moderation is enabled, the same rules as above apply, however each file can be approved or denied for each of the platforms the game supports. If you are interested in using this feature, we recommend contacting us to provide a demonstration.
+If per-platform moderation is enabled, the same rules as above apply, however each file can be approved or denied for each of the platforms the game supports. If you are interested in using this feature, we recommend contacting us to provide a demonstration.
 :::
 
 ### Editing UGC

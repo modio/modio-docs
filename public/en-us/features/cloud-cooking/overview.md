@@ -23,21 +23,21 @@ Cloud Cooking provides the following functionality:
 * **Integration with mod.io tooling:** Cooked content goes through the standard moderation flow for platforms.
 * **Isolated deployments:** Your studio's deployment is isolated from all other tenants, and secured under mod.io's security practices.
 
-:::tip[UGC file validation]
+:::tip
 While not the primary use case, the cloud cooking system can be used to verify the uploaded UGC files build, and adhere to your custom requirements and checks, beyond [checks you configure](/moderation/manual-curation) via your mod.io game dashboard.
 :::
 
 ## How it works
 
-As part of the Cloud Cooking setup process, you provide mod.io with a copy of your tooling to cook content for each platform that you wish to support with Cloud Cooking. Once the infrastructure is provisioned, content creators can submit their Source mod files, either via the website or via our official plugins for editor tooling. At submission time, creators can choose which platforms they wish to cook their content for. These files are then queued to be processed by the Cloud Cooking service. 
+As part of the Cloud Cooking setup process, you provide mod.io with a copy of your tooling to cook content for each platform that you wish to support with Cloud Cooking. Once the infrastructure is provisioned, content creators can submit their source mod files, either via the website or via our official plugins for editor tooling. At submission time, creators can choose which platforms they wish to cook their content for. These files are then queued to be processed by the Cloud Cooking service. 
 
-### For Studios
+### For studios
 
-For Game Studios, you can choose how content flows through the Cloud Cooking pipeline. Submitted Source files can be placed into a Cloud Cooking approval queue, allowing admins & moderators to approve specific pieces of content to undergo Cloud Cooking, or you can have an open submission for any Cloud Cooking platform for your creators.
+For Game Studios, you can choose how content flows through the Cloud Cooking pipeline. Submitted source files can be placed into a Cloud Cooking approval queue, allowing admins & moderators to approve specific pieces of content to undergo Cloud Cooking, or you can have an open submission for any Cloud Cooking platform for your creators.
 
 Cloud Cooking also includes reporting dashboards, where game admins & moderators can view how many cooks have been submitted and processed by Cloud Cooking, how long they take, success/failure rates and more, all broken down on a per-platform basis. This helps you understand whether one platform takes longer than others, or whether some platforms have a higher rate of failure.
 
-### For Creators
+### For creators
 
 Creators are able to get updates on the progress of their content cooks via the mod.io dashboards, including how their content is progressing through the cook queue and process and how long it took. Full logs of the cooking process are also provided, so if any cook fails, creators are provided clear reasons for why their content failed and can fix before re-submitting.
 
@@ -49,14 +49,14 @@ Cloud Cooking is currently only supported on Windows build agents. You cannot cu
 
 Below is a list of the supported engines and the relevant setup guides. We recommend actioning the correct engine guide in order to properly prepare your game before heading across to the [Cloud Cooking Configuration](/cloud-cooking/configuration) guide.
 
-| Engine    | Supported | Guide |
-| -------- | ------- | ------- |
-| [Unreal Engine](/unreal)  | Yes    | [Setup Guide](/unreal/cloud-cooking)    |
-| [Unity](/unity) | [Contact Us](mailto:developers@mod.io)     | In Progress   |
-| [Custom Engine](/cppsdk)   | [Contact Us](mailto:developers@mod.io)    | In Progress   |
+| Engine                    | Supported                              | Guide                                 |
+|---------------------------|-----------------------------------------|----------------------------------------|
+| [Unreal Engine](/unreal)  | Yes                                     | [Setup Guide](/unreal/cloud-cooking)   |
+| [Unity](/unity)           | [Contact Us](mailto:developers@mod.io)  | In Progress                            |
+| [Custom Engine](/cppsdk)  | [Contact Us](mailto:developers@mod.io)  | In Progress                            |
 
 
-## Shared Responsibility (ISO 27017 / 27001 Framework Compliance)
+## Shared responsibility (ISO 27017 / 27001 framework compliance)
 
 The mod.io **Cloud Cooking** service operates under a **shared responsibility model** in line with **ISO/IEC 27001:2022** (including Annex A control 5.23 on information security for cloud services) and **ISO/IEC 27017:2015** (code of practice for cloud security controls). This model clearly defines security obligations to protect information assets, prevent gaps, and ensure secure use of the service.
 

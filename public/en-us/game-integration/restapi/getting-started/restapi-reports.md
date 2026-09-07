@@ -9,7 +9,7 @@ slug: /restapi/reports
 ## Report Form
 
 :::warning
-It is a requirement of the [Game Terms](https://mod.io/gameterms) with mod.io, and the platforms mod.io is used on (including but not limited to Steam, PlayStation, Nintendo and Xbox), to ensure all displayed content is reportable by users. You can enable a resource to be reported (by implementing a dialog similar to the example below) or linking to the report page on mod.io.
+It is a requirement of the [Game Terms](https://mod.io/gameterms) with mod.io, and the platforms mod.io is used on (including but not limited to Steam, PlayStation, Nintendo and XBOX), to ensure all displayed content is reportable by users. You can enable a resource to be reported (by implementing a dialog similar to the example below) or linking to the report page on mod.io.
 :::
 
 Use the report endpoint to let users flag inappropriate content, dmca content, or broken content for review. Integrate a dialog or link directly to the [mod.io](https://mod.io/report) website to remain compliant with platform policies. See: [Submit Report](/restapi/docs/submit-report).

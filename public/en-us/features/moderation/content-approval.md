@@ -129,7 +129,7 @@ For games that have enabled mods or UGC on more than one platform (such as PC, c
 
 ![Platform moderation](img/platform-moderation.png)
 
-On your games settings page via the Platforms section as shown above, you should **check the box of all platforms** your game will be using mod.io on. Doing this automatically activates certain requirements those platforms have, such as the Xbox Live word filtering service. You can also can **enable the per-platform files** toggle, which allows creators to specify which platforms they would like to release each file they upload on. 
+On your games settings page via the Platforms section as shown above, you should **check the box of all platforms** your game will be using mod.io on. Doing this automatically activates certain requirements those platforms have, such as the XBOX Live word filtering service. You can also can **enable the per-platform files** toggle, which allows creators to specify which platforms they would like to release each file they upload on. 
 
 To control which platforms UGC is released on, enable **Moderator Approval** using the toggle on the right-hand side next to each platform you have checked. Once enabled, all UGC files uploaded targeting these platforms will need to be manually approved by a member of your team before it appears on these platforms.
 

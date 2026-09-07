@@ -33,7 +33,7 @@ Authentication can be done via 5 ways:
 
 - Use an [API key](https://mod.io/me/access) for **Read-only** access (get a [test environment](#testing) API key here)
 - Use the [Email Authentication Flow](/restapi/docs/request-email-security-code) for **Read and Write** access (it creates an OAuth 2 Access Token via **email**)
-- Use the [Platform Authentication Flow](/restapi/docs/authenticate-via-steam) for **Read and Write** access (it creates an OAuth 2 Access Token automatically on popular platforms such as **Steam and Xbox**)
+- Use the [Platform Authentication Flow](/restapi/docs/authenticate-via-steam) for **Read and Write** access (it creates an OAuth 2 Access Token automatically on popular platforms such as **Steam and XBOX**)
 - Use the [OpenID Authentication Flow](/restapi/docs/authenticate-via-openid) for **Read and Write** access (it creates an OAuth 2 Access Token automatically using your identity provider for SSO)
 - Manually create an [OAuth 2 Access Token](https://mod.io/me/access) for **Read and Write** access (get a [test environment](#testing) OAuth 2 token here)
 

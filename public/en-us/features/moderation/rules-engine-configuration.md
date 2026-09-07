@@ -82,7 +82,7 @@ Request headers (HTTP headers which can be used to determine where the request i
 * User-Agent
 * Content-Type
 * Content-Length
-* X-Modio-Portal (Apple, Xbox Live etc)
+* X-Modio-Portal (Apple, XBOX Live etc)
 * X-Modio-Platform (Windows, PS4, PS5 etc)
 * X-Modio-Origin (web indicates mod.io site)
 * X-Forwarded-For

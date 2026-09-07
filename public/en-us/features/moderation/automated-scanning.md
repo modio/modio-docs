@@ -21,7 +21,7 @@ This guide covers:
 All text-based content submitted to mod.io is validated through a series of rules, depending on the text field’s settings. It must pass:
 
 1. **mod.io validation** (i.e. correct length, correct type, XSS filter, valid HTML)
-2. **Platform validation** (e.g. Xbox Live word filter which blanks words deemed inappropriate)
+2. **Platform validation** (e.g. XBOX Live word filter which blanks words deemed inappropriate)
 3. **Custom rules** defined by the Game Admin, using the Rules Engine Moderation system, and also the word filter allow list and deny list
 
 ![Text scanning](img/text-scanning.png)
