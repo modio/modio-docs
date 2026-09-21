@@ -693,6 +693,21 @@ Shuts down the client.
 Will invoke the shutdown methods on services.
 
 
+
+#### FocusChanged{#Modio.ModioClient.FocusChanged}
+
+```csharp
+public static void FocusChanged(bool focus)
+```
+
+Invoked when the application focus changes.
+This is used to determine if the user has returned to the application after being away.
+
+
+###### Parameters
+
+`focus` 
+
 ___
 
 ### ModioCommandLine{#Modio.ModioCommandLine}
@@ -1448,7 +1463,6 @@ UnitTestOverride = 100
 
 Intended for internal usage to support mod.io's unit testing
 
-
 ___
 
 ## Modio.FileIO
@@ -1598,8 +1612,8 @@ Calculate a MD5 Hash
 
 ###### Parameters
 
-`filePath` 
-`buffer` 
+`filePath`
+`buffer`
 
 ###### Returns
 
@@ -1700,6 +1714,13 @@ public virtual Task<bool> IsThereAvailableFreeSpaceForModInstall(long bytes)
 
 ```csharp
 public virtual Task<long> GetAvailableFreeSpaceForModInstall()
+```
+
+
+#### WriteFile{#Modio.FileIO.BaseDataStorage.WriteFile}
+
+```csharp
+public virtual async Task<Error> WriteFile(string path, byte[] data, int bytesToWrite)
 ```
 
 
@@ -1826,7 +1847,7 @@ The CRCComputingStreamWrapper instance.
 
 ###### Exceptions
 
-`ArgumentNullException`: 
+`ArgumentNullException`:
 
 
 #### WriteOnly{#Modio.FileIO.CRCComputingStreamWrapper.WriteOnly}
@@ -1849,7 +1870,7 @@ The CRCComputingStreamWrapper instance.
 
 ###### Exceptions
 
-`ArgumentNullException`: 
+`ArgumentNullException`:
 
 
 #### Flush{#Modio.FileIO.CRCComputingStreamWrapper.Flush}
@@ -1962,7 +1983,7 @@ public interface IModioRootPathProvider
 ```csharp
 public string Path
 ```
-`get` 
+`get`
 
 Path of Mod Installs
 
@@ -1992,7 +2013,7 @@ public class MD5ComputingStreamWrapper : Stream
 ```csharp
 public int TotalBytesRead
 ```
-`get` 
+`get`
 
 
 #### `bool CanRead`
@@ -2135,7 +2156,7 @@ ___
 ### ModioDiskTestSettings{#Modio.FileIO.ModioDiskTestSettings}
 
 ```csharp
-public class ModioDiskTestSettings : IModioServiceSettings
+[Serializable] public class ModioDiskTestSettings : IModioServiceSettings
 ```
 
 
@@ -2172,7 +2193,7 @@ public class ModioZipInputStream : ZipInputStream
 ```csharp
 public long CentralDirectoryStreamOffset
 ```
-`get` 
+`get`
 
 
 ###### Method
@@ -2478,7 +2499,7 @@ true if the url isn't null
 ```csharp
 public string Url
 ```
-`get` 
+`get`
 
 
 ###### Method
@@ -2522,6 +2543,13 @@ public class LazyImage<TImage> where TImage : class
 public async void SetImage<T>(ModioImageSource<T> source, T resolution) where T : Enum
 ```
 
+
+#### SetImage{#Modio.Images.LazyImage.SetImage}
+
+```csharp
+public async void SetImage(ImageReference reference)
+```
+
 ___
 
 ### ModioImageSource{#Modio.Images.ModioImageSource}
@@ -2539,7 +2567,7 @@ public class ModioImageSource<TResolution> where TResolution:Enum
 ```csharp
 public string FileName
 ```
-`get` 
+`get`
 
 
 ###### Method
@@ -2571,11 +2599,33 @@ ___
 
 | Type | Description |
 |------|-------------|
+| [`ExtendedVersionInfoSettings`](#Modio.Settings.ExtendedVersionInfoSettings) | Used to show additional version info (e.g. build number) on the mod.io UI |
 | [`ModInstallationManagementSettings`](#Modio.Settings.ModInstallationManagementSettings) |  |
 | [`ModioHiddenTagOverrideSettings`](#Modio.Settings.ModioHiddenTagOverrideSettings) |  |
 | [`PortainerSettings`](#Modio.Settings.PortainerSettings) | Supports mod.io's internal tests |
 | [`PortalNameSettings`](#Modio.Settings.PortalNameSettings) |  |
 | [`TempModInstallationSettings`](#Modio.Settings.TempModInstallationSettings) |  |
+
+### ExtendedVersionInfoSettings{#Modio.Settings.ExtendedVersionInfoSettings}
+
+```csharp
+[Serializable] public class ExtendedVersionInfoSettings : IModioServiceSettings
+```
+
+Used to show additional version info (e.g. build number) on the mod.io UI
+
+
+
+###### Field
+
+
+#### `string Info`
+
+```csharp
+string Info
+```
+
+___
 
 ### ModInstallationManagementSettings{#Modio.Settings.ModInstallationManagementSettings}
 
@@ -2598,7 +2648,7 @@ ___
 ### ModioHiddenTagOverrideSettings{#Modio.Settings.ModioHiddenTagOverrideSettings}
 
 ```csharp
-public class ModioHiddenTagOverrideSettings : IModioServiceSettings
+[Serializable] public class ModioHiddenTagOverrideSettings : IModioServiceSettings
 ```
 
 
@@ -2616,7 +2666,7 @@ ___
 ### PortainerSettings{#Modio.Settings.PortainerSettings}
 
 ```csharp
-public class PortainerSettings : IModioServiceSettings
+[Serializable] public class PortainerSettings : IModioServiceSettings
 ```
 
 Supports mod.io's internal tests
@@ -2718,6 +2768,7 @@ ___
 | [`ModTag`](#Modio.Mods.ModTag) |  |
 | [`Modfile`](#Modio.Mods.Modfile) |  |
 | [`ModfileDownloadReference`](#Modio.Mods.ModfileDownloadReference) |  |
+| [`ModioFeaturedContent`](#Modio.Mods.ModioFeaturedContent) |  |
 | [`ModioId`](#Modio.Mods.ModioId) |  |
 | [`ModioPage`](#Modio.Mods.ModioPage) |  |
 
@@ -2759,6 +2810,13 @@ GameMonetizationOptions MonetizationOptions
 ```
 
 
+#### [`ModioFeaturedContent`](#Modio.Mods.ModioFeaturedContent) `FeaturedContent`
+
+```csharp
+ModioFeaturedContent[] FeaturedContent
+```
+
+
 ###### Method
 
 
@@ -2792,7 +2850,7 @@ This ensures that we don't have multiple concurrent writes to disk, which could 
 
 ###### Returns
 
-An error if the write failed, or Error.None if it succeeded.
+ An error if the write failed, or Error.None if it succeeded.
 
 
 #### SetGameTags{#Modio.Mods.GameData.SetGameTags}
@@ -2842,6 +2900,14 @@ bool Locked
 
 
 ###### Property
+
+
+#### `string LocalizedName`
+
+```csharp
+public string LocalizedName
+```
+
 
 
 #### `bool Hidden`
@@ -3585,10 +3651,10 @@ public int PageSize
 `get` `set`
 
 
-#### `bool ShowMatureContent`
+#### [`MatureContentFilter`](#Modio.Mods.ModSearchFilter.MatureContentFilter) `MatureContentFilter`
 
 ```csharp
-public bool ShowMatureContent
+public MatureContentFilter MatureContentFilter
 ```
 `get` `set`
 
@@ -3737,7 +3803,7 @@ Adds multiple tags used in filtering mods for a request.
 ###### Parameters
 
 `tags` the tags to be added to the filter
-`tagType`
+`tagType` 
 
 ###### See Also
 
@@ -4176,6 +4242,77 @@ DateTime ExpiresAfter
 
 ___
 
+### ModioFeaturedContent{#Modio.Mods.ModioFeaturedContent}
+
+```csharp
+public class ModioFeaturedContent
+```
+
+
+###### Field
+
+
+#### `string Name`
+
+```csharp
+string Name
+```
+
+
+#### `ReadOnlyDictionary NameLocalization`
+
+```csharp
+ReadOnlyDictionary<string, string> NameLocalization
+```
+
+
+#### `int Total`
+
+```csharp
+int Total
+```
+
+
+#### `ReadOnlyDictionary Filters`
+
+```csharp
+ReadOnlyDictionary<string, string> Filters
+```
+
+
+#### `string Size`
+
+```csharp
+string Size
+```
+
+
+#### `bool Enabled`
+
+```csharp
+bool Enabled
+```
+
+
+#### `string Type`
+
+```csharp
+string Type
+```
+
+
+###### Property
+
+
+#### `string LocalizedName`
+
+```csharp
+public string LocalizedName
+```
+
+
+___
+
 ### ModioId{#Modio.Mods.ModioId}
 
 ```csharp
@@ -4328,6 +4465,35 @@ LimitedStock   = 8
 
 ```csharp
 ForcedLimited  = 16
+```
+
+___
+
+###### MatureContentFilter{#Modio.Mods.MatureContentFilter}
+
+
+```csharp
+ShowAll = -1
+```
+
+```csharp
+NoMature = 0
+```
+
+```csharp
+Alcohol = 1
+```
+
+```csharp
+Drugs = 2
+```
+
+```csharp
+Violent = 4
+```
+
+```csharp
+Explicit = 8
 ```
 
 ___
@@ -4598,6 +4764,10 @@ Subscribers
 
 ```csharp
 DateSubmitted
+```
+
+```csharp
+DateUpdated
 ```
 
 ___
@@ -4992,7 +5162,7 @@ public class User
 ```csharp
 public static User Current
 ```
-`get` 
+`get`
 
 
 #### `string LocalUserId`
@@ -5000,7 +5170,7 @@ public static User Current
 ```csharp
 public string LocalUserId
 ```
-`get` 
+`get`
 
 
 #### `long UserId`
@@ -5016,7 +5186,7 @@ public long UserId
 ```csharp
 public bool IsInitialized
 ```
-`get` 
+`get`
 
 
 #### `bool HasAcceptedTermsOfUse`
@@ -5024,7 +5194,7 @@ public bool IsInitialized
 ```csharp
 public bool HasAcceptedTermsOfUse
 ```
-`get` 
+`get`
 
 
 #### `bool IsAuthenticated`
@@ -5032,7 +5202,7 @@ public bool HasAcceptedTermsOfUse
 ```csharp
 public bool IsAuthenticated
 ```
-`get` 
+`get`
 
 
 #### `bool IsUpdating`
@@ -5040,7 +5210,7 @@ public bool IsAuthenticated
 ```csharp
 public bool IsUpdating
 ```
-`get` 
+`get`
 
 
 #### [`UserProfile`](#Modio.Users.UserProfile) `Profile`
@@ -5048,7 +5218,7 @@ public bool IsUpdating
 ```csharp
 public UserProfile Profile
 ```
-`get` 
+`get`
 
 
 #### [`Wallet`](#Modio.Users.User.Wallet) `Wallet`
@@ -5056,7 +5226,7 @@ public UserProfile Profile
 ```csharp
 public Wallet Wallet
 ```
-`get` 
+`get`
 
 
 #### [`ModRepository`](#Modio.Users.User.ModRepository) `ModRepository`
@@ -5064,7 +5234,7 @@ public Wallet Wallet
 ```csharp
 public ModRepository ModRepository
 ```
-`get` 
+`get`
 
 
 #### [`ModCollectionRepository`](#Modio.Users.User.ModCollectionRepository) `ModCollectionRepository`
@@ -5072,7 +5242,7 @@ public ModRepository ModRepository
 ```csharp
 public ModCollectionRepository ModCollectionRepository
 ```
-`get` 
+`get`
 
 
 #### [`ModioAPI.Portal`](#Modio.API.ModioAPI.Portal) `AuthenticatedPortal`
@@ -5080,7 +5250,15 @@ public ModCollectionRepository ModCollectionRepository
 ```csharp
 public ModioAPI.Portal AuthenticatedPortal
 ```
-`get` 
+`get`
+
+
+#### `Task DelayedSyncTasks`
+
+```csharp
+public Task DelayedSyncTasks
+```
+`get`
 
 
 ###### Method
@@ -5090,13 +5268,6 @@ public ModioAPI.Portal AuthenticatedPortal
 
 ```csharp
 public static async Task InitializeNewUser()
-```
-
-
-#### OnAuthenticated{#Modio.Users.User.OnAuthenticated}
-
-```csharp
-public void OnAuthenticated(string oAuthToken, long dateExpires, bool sync
 ```
 
 
@@ -5392,6 +5563,20 @@ Sets the current user's auth token to an invalid value
 Used for testing error handling
 
 
+
+#### MuteUser{#Modio.Users.User.MuteUser}
+
+```csharp
+public async Task<Error> MuteUser(UserProfile userProfile)
+```
+
+
+#### UnmuteUser{#Modio.Users.User.UnmuteUser}
+
+```csharp
+public async Task<Error> UnmuteUser(UserProfile userProfile)
+```
+
 ___
 
 ### UserProfile{#Modio.Users.UserProfile}
@@ -5435,7 +5620,7 @@ This is the unique Id of the user.
 ```csharp
 public string PortalUsername
 ```
-`get` 
+`get`
 
 The display name of the user's account they authenticated with. Eg if they authenticated
 with Steam it would be their Steam username.
@@ -5447,7 +5632,7 @@ with Steam it would be their Steam username.
 ```csharp
 public ModioImageSource<AvatarResolution> Avatar
 ```
-`get` 
+`get`
 
 
 #### `string Timezone`
@@ -5455,7 +5640,7 @@ public ModioImageSource<AvatarResolution> Avatar
 ```csharp
 public string Timezone
 ```
-`get` 
+`get`
 
 
 #### `string Language`
@@ -5463,7 +5648,7 @@ public string Timezone
 ```csharp
 public string Language
 ```
-`get` 
+`get`
 
 
 #### `bool IsFollowedByLoggedInUser`
@@ -5471,7 +5656,7 @@ public string Language
 ```csharp
 public bool IsFollowedByLoggedInUser
 ```
-`get` 
+`get`
 
 
 ###### Method
@@ -5501,14 +5686,14 @@ public override bool Equals(object obj)
 #### Mute{#Modio.Users.UserProfile.Mute}
 
 ```csharp
-public async Task<Error> Mute()
+public Task<Error> Mute()
 ```
 
 
 #### UnMute{#Modio.Users.UserProfile.UnMute}
 
 ```csharp
-public async Task<Error> UnMute()
+public Task<Error> UnMute()
 ```
 
 
@@ -5621,6 +5806,13 @@ List<long> FollowedCollections
 ```
 
 
+#### `List MutedUsers`
+
+```csharp
+List<long> MutedUsers
+```
+
+
 #### `int UserPortal`
 
 ```csharp
@@ -5644,7 +5836,7 @@ public class Wallet
 ```csharp
 public string Type
 ```
-`get` 
+`get`
 
 
 #### `string Currency`
@@ -5652,7 +5844,7 @@ public string Type
 ```csharp
 public string Currency
 ```
-`get` 
+`get`
 
 
 #### `long Balance`
@@ -5660,7 +5852,7 @@ public string Currency
 ```csharp
 public long Balance
 ```
-`get` 
+`get`
 
 ___
 
@@ -5672,6 +5864,7 @@ ___
 | [`IGetActiveUserIdentifier`](#Modio.Authentication.IGetActiveUserIdentifier) |  |
 | [`IModioAuthService`](#Modio.Authentication.IModioAuthService) |  |
 | [`IPotentialModioEmailAuthService`](#Modio.Authentication.IPotentialModioEmailAuthService) |  |
+| [`IRequireReAuthOnReOpen`](#Modio.Authentication.IRequireReAuthOnReOpen) |  |
 | [`ModioEmailAuthService`](#Modio.Authentication.ModioEmailAuthService) | Use for authenticating with email |
 | [`ModioMultiplatformAuthResolver`](#Modio.Authentication.ModioMultiplatformAuthResolver) |  |
 
@@ -5704,7 +5897,7 @@ ___
 ### IModioAuthService{#Modio.Authentication.IModioAuthService}
 
 ```csharp
-public partial interface IModioAuthService
+public interface IModioAuthService
 ```
 
 
@@ -5716,7 +5909,7 @@ public partial interface IModioAuthService
 ```csharp
 public ModioAPI.Portal Portal
 ```
-`get` 
+`get`
 
 
 ###### Method
@@ -5743,6 +5936,14 @@ ___
 
 ```csharp
 public interface IPotentialModioEmailAuthService
+```
+
+___
+
+### IRequireReAuthOnReOpen{#Modio.Authentication.IRequireReAuthOnReOpen}
+
+```csharp
+public interface IRequireReAuthOnReOpen
 ```
 
 ___
@@ -5875,7 +6076,7 @@ public IModioAuthService ServiceOverride
 ```csharp
 public IReadOnlyList<IModioAuthService> AuthBindings
 ```
-`get` 
+`get`
 
 
 #### `bool IsEmailPlatform`
@@ -6132,6 +6333,20 @@ string FormattedPrice
 
 ```csharp
 int Value
+```
+
+
+#### `string Description`
+
+```csharp
+string Description
+```
+
+
+#### [`ImageReference`](#Modio.Monetization.PortalSku.ImageReference) `ImageReference`
+
+```csharp
+ImageReference ImageReference
 ```
 
 ___
@@ -6758,3 +6973,381 @@ Everything        = ~0
 
 ___
 
+## Modio.Search
+
+| Type | Description |
+|------|-------------|
+| [`ModioSearch`](#Modio.Search.ModioSearch) | This is a helper that allows running searches, and getting notified about changes in the search status The reference UI uses one for the main search, as well as a separate one per carousel It's also used for showing a mods dependencies and a collection's contents |
+
+### ModioSearch{#Modio.Search.ModioSearch}
+
+```csharp
+public class ModioSearch
+```
+
+This is a helper that allows running searches, and getting notified about changes in the search status
+The reference UI uses one for the main search, as well as a separate one per carousel
+It's also used for showing a mods dependencies and a collection's contents
+
+
+
+###### Property
+
+
+#### [`ModSearchFilter`](#Modio.Mods.ModSearchFilter) `LastSearchFilter`
+
+```csharp
+public ModSearchFilter LastSearchFilter
+```
+`get`
+
+
+#### [`SpecialSearchType`](#Modio.Search.SpecialSearchType) `LastSearchPreset`
+
+```csharp
+public SpecialSearchType LastSearchPreset
+```
+
+
+
+#### `bool IsSearching`
+
+```csharp
+public bool IsSearching
+```
+`get`
+
+
+#### `bool IsAdditiveSearch`
+
+```csharp
+public bool IsAdditiveSearch
+```
+`get`
+
+
+#### `IReadOnlyList LastSearchResultMods`
+
+```csharp
+public IReadOnlyList<Mod> LastSearchResultMods
+```
+`get`
+
+
+#### `IReadOnlyList LastSearchResultModCollections`
+
+```csharp
+public IReadOnlyList<ModCollection> LastSearchResultModCollections
+```
+`get`
+
+
+#### `int LastSearchResultTotalCount`
+
+```csharp
+public int LastSearchResultTotalCount
+```
+`get`
+
+
+#### `int LastSearchResultPageCount`
+
+```csharp
+public int LastSearchResultPageCount
+```
+
+
+
+#### `bool CanGetMoreResults`
+
+```csharp
+public bool CanGetMoreResults
+```
+
+
+
+#### [`Error`](#Modio.ModioLog.Error) `LastSearchError`
+
+```csharp
+public Error LastSearchError
+```
+`get`
+
+
+#### `int LastSearchSelectionIndex`
+
+```csharp
+public int LastSearchSelectionIndex
+```
+`get`
+
+
+###### Method
+
+
+#### ApplySortBy{#Modio.Search.ModioSearch.ApplySortBy}
+
+```csharp
+public void ApplySortBy(SortModsBy sortModsBy, bool ascending)
+```
+
+Change the sort mode and order for an existing search
+
+
+
+#### ApplySearchPhrase{#Modio.Search.ModioSearch.ApplySearchPhrase}
+
+```csharp
+public void ApplySearchPhrase(string query)
+```
+
+Apply a search phrase to an existing search
+Uses the "Like" filtering option, and replaces any other phrases
+
+
+
+#### ApplyTagsToSearch{#Modio.Search.ModioSearch.ApplyTagsToSearch}
+
+```csharp
+public void ApplyTagsToSearch(IEnumerable<ModTag> tags)
+```
+
+Apply a new set of filtering tags to an existing search
+Clears any non hidden tags, but leaves hidden tags applied
+
+
+###### Parameters
+
+`tags`
+
+
+#### HasCustomSearch{#Modio.Search.ModioSearch.HasCustomSearch}
+
+```csharp
+public bool HasCustomSearch()
+```
+
+Has the last applied preset been overriden?
+
+
+
+#### HasCustomTags{#Modio.Search.ModioSearch.HasCustomTags}
+
+```csharp
+public bool HasCustomTags()
+```
+
+Have any tags been applied that weren't on the last preset?
+
+
+
+#### HasCustomOrdering{#Modio.Search.ModioSearch.HasCustomOrdering}
+
+```csharp
+public bool HasCustomOrdering()
+```
+
+Has the order been altered at all from the last preset?
+
+
+
+#### ClearSearch{#Modio.Search.ModioSearch.ClearSearch}
+
+```csharp
+public void ClearSearch()
+```
+
+Reset the search back to the last applied preset. Logs a warning if there's no preset to reset to
+
+
+
+#### TryClearSearch{#Modio.Search.ModioSearch.TryClearSearch}
+
+```csharp
+public bool TryClearSearch()
+```
+
+Reset the search back to the last applied preset, if there was one
+
+
+###### Returns
+
+True if a preset was reapplied
+
+
+#### ClearCustomOrdering{#Modio.Search.ModioSearch.ClearCustomOrdering}
+
+```csharp
+public void ClearCustomOrdering()
+```
+
+
+#### ClearCurrentResultsImmediately{#Modio.Search.ModioSearch.ClearCurrentResultsImmediately}
+
+```csharp
+public void ClearCurrentResultsImmediately()
+```
+
+Immediately discard all previous search results
+
+
+
+#### SetSearchForUser{#Modio.Search.ModioSearch.SetSearchForUser}
+
+```csharp
+public void SetSearchForUser(UserProfile user)
+```
+
+Start a new search for mods by the given user.
+If the last search was for collections, searches for collections instead
+
+
+###### Parameters
+
+`user`
+
+
+#### SetSearchForTag{#Modio.Search.ModioSearch.SetSearchForTag}
+
+```csharp
+public void SetSearchForTag(ModTag tag)
+```
+
+Start a new search for a particular tag. If it's a collection tag, will search collections
+This will keep any previous hidden tags applied, and otherwise uses the filtering/sorting setting of the last search
+
+
+
+#### GetNextPageAdditivelyForLastSearch{#Modio.Search.ModioSearch.GetNextPageAdditivelyForLastSearch}
+
+```csharp
+public void GetNextPageAdditivelyForLastSearch()
+```
+
+Fetch more results for the current search and append them to the existing search
+
+
+
+#### SetPageForCurrentSearch{#Modio.Search.ModioSearch.SetPageForCurrentSearch}
+
+```csharp
+public void SetPageForCurrentSearch(int page)
+```
+
+Replace the current search results with a particular page of results
+
+
+
+#### SetSearch{#Modio.Search.ModioSearch.SetSearch}
+
+```csharp
+public void SetSearch( ModSearchFilter searchFilter, SpecialSearchType specialSearchType, bool resetToThis
+```
+
+Run a search for a particular filter
+
+
+###### Parameters
+
+`searchFilter` The filtering options to apply
+`specialSearchType` If a source other than the /mods endpoint should be used. E.g. collections, subscriptions, installed mods
+`resetToThis` Should this be treated as a preset that we'll reset back to when applying new searches
+`shareFiltersWith` Pass in the same object to multiple sequential searches to keep the same filters between those searches
+`allowSearchWithoutUser` If true, the plugin won't require a user to be signed in. Not recommended in most cases.
+
+
+#### SetCustomSearchBase{#Modio.Search.ModioSearch.SetCustomSearchBase}
+
+```csharp
+public void SetCustomSearchBase(ModSearchFilter searchFilter, SpecialSearchType searchType)
+```
+
+
+#### SetSearchForDependencies{#Modio.Search.ModioSearch.SetSearchForDependencies}
+
+```csharp
+public void SetSearchForDependencies(Mod dependant)
+```
+
+
+#### SetSearchForCollectionMods{#Modio.Search.ModioSearch.SetSearchForCollectionMods}
+
+```csharp
+public void SetSearchForCollectionMods(ModCollection collection)
+```
+
+Search for the mods contained by a collection
+
+
+
+#### SetCollection{#Modio.Search.ModioSearch.SetCollection}
+
+```csharp
+public void SetCollection(long collectionId)
+```
+
+Set the collection that's being searched for
+Note that this is a little hacky
+
+
+___
+
+### Enums
+
+
+###### SpecialSearchType{#Modio.Search.SpecialSearchType}
+
+
+```csharp
+Nothing = 8
+```
+
+```csharp
+Installed             = 5
+```
+
+```csharp
+Subscribed            = 6
+```
+
+```csharp
+InstalledOrSubscribed = 7
+```
+
+```csharp
+UserCreations         = 9
+```
+
+```csharp
+Purchased             = 10
+```
+
+```csharp
+SearchForTag
+```
+
+```csharp
+SearchForUser
+```
+
+```csharp
+SubSearchesOnly
+```
+
+```csharp
+VcPacks
+```
+
+```csharp
+SearchCollections     = 100
+```
+
+```csharp
+FollowedCollections   = 101
+```
+
+```csharp
+SearchModsInCollection
+```
+
+___

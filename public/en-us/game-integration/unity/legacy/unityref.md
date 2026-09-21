@@ -1808,7 +1808,7 @@ void IsAuthenticatedCallback(Result result)
 public static Result LogOutCurrentUser()
 ```
 
-De-authenticates the current Mod.io user for the current session and clears all
+De-authenticates the current mod.io user for the current session and clears all
 user-specific data stored on the current device. Installed mods that do not have
 other local users subscribed will be uninstalled if ModIOUnity.EnableModManagement() has
 been used to enable the mod management system.

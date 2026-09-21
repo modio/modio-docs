@@ -172,7 +172,7 @@ The mod.io Unity Engine plugin makes it simple to implement USD Marketplace into
 
 ### Purchasing with USD Entitlements
 
-In order to allow USD purchases, you must also enable the setting in the Unity Plugin's Mod.io Settings window.
+In order to allow USD purchases, you must also enable the setting in the Unity Plugin's mod.io Settings window.
 
 When a UGC is purchased using USD, the plugin will first check a cache of entitlements to see if the user has a relevant entitlement for the UGC.
 This can happen if the user has previously purchased outside the plugin, for example directly through the platform's storefront, or if there was an interruption during the purchase flow.

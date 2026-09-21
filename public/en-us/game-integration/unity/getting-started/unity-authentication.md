@@ -147,7 +147,7 @@ There are two types of SSO to consider:
 	The platforms included in this process are:
 
 	* [Steam](https://docs.mod.io/platforms/steam/authentication)
-	* [PlayStation™Network](https://docs.mod.io/platforms/playstation#authentication)
+	* [PlayStation®](https://docs.mod.io/platforms/playstation#authentication)
 	* [XBOX Live](https://docs.mod.io/platforms/gdk#authentication)
 	* [Nintendo Switch](https://docs.mod.io/platforms/switch#authentication)
 	* [Apple (iOS)](https://docs.mod.io/platforms/apple/authentication)

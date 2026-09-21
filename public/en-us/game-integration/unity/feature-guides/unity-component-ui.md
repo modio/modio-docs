@@ -58,13 +58,37 @@ and dynamically swap them out as they near the visible area.
 
 ### ModioUISearch
 This manages any searches run by the plugin.
-Unlike Mods, it doesn't have a non-UI component, but is instead given
-ModioUISearchSettings which specify what to search for.
 
-This follows a similar logic for children observing changes to mods via ModioUISearchProperties.
+Unlike `ModioUIMod` or `ModioUIUser`, there's no separate non-UI/core object being wrapped - the `ModioUISearch`
+component *is* the search. It owns the current search state (a `ModSearchFilter` plus a `SpecialSearchType`), runs
+the query, and stores the results (`LastSearchResultMods` / `LastSearchResultModCollections`) for children to read.
+Children observe changes the same way as other resource components: add a `ModioUISearchProperties` to a child
+GameObject and populate it with `ISearchProperty` entries (e.g. `SearchPropertyDisplayResults`).
 
-A ModioUiSearch is used for the main search by the plugin (the browse screen) as well as a separate one per carousel.
-It's also used for showing a mods dependencies and a collection's contents.
+You never configure a search directly on the `ModioUISearch` component in the Inspector. Instead you assign it a
+**`ModioUISearchSettings`** - a separate component (usually on its own prefab) that acts as a reusable recipe
+describing *what* to search for: a search phrase, tags, sort order, revenue filter, an optional target collection,
+and a `SpecialSearchType`. Calling `settings.Search(mySearch)` (or assigning the settings to `ModioUISearch`'s
+"Search On Start" field) builds a `ModSearchFilter` from that recipe and hands it to the `ModioUISearch` instance to
+run. The same settings asset can be reused to point multiple different `ModioUISearch` instances at the same query.
+
+`SpecialSearchType` (on the settings) decides where results actually come from, not just how they're filtered:
+- `Nothing` runs a standard mods search against the API.
+- `Installed` / `Subscribed` / `InstalledOrSubscribed` / `Purchased` query the local mod repository instead of the
+  API (no network round-trip).
+- `UserCreations` queries the current user's own mods.
+- `SearchCollections` / `FollowedCollections` / `SearchModsInCollection` search collections rather than mods, and
+  populate `LastSearchResultModCollections` instead of `LastSearchResultMods`.
+- `SearchForTag` / `SearchForUser` / `SubSearchesOnly` are set automatically by helper methods like
+  `ApplyTagsToSearch` / `SetSearchForUser` when the user interacts with filters, rather than being picked directly
+  on a settings asset.
+
+Exactly one `ModioUISearch` in the scene should have `Is Default` checked - this becomes the static
+`ModioUISearch.Default`, used as the fallback whenever a caller doesn't have a specific instance to hand (for
+example, a settings asset's `Search()` is called with `null`). This is normally the main browse screen search.
+Every other `ModioUISearch` instance - one for a mod's dependency list (`SetSearchForDependencies`), one for a
+collection's contents (`SetSearchForCollectionMods`) - is a separate, independent, non-default instance with its
+own state, sitting elsewhere in the hierarchy.
 
 ## Other useful components
 ### ModioUIFilterDisplay

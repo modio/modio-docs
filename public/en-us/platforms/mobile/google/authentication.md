@@ -43,7 +43,7 @@ To begin, we require the following scopes to authenticate a user against your Go
 * openid
 
 :::note
-Play Games Services Version 2 (PGSV2) no longer supports additional OAuth2.0 scopes out of the box, therefore we recommend using Google sign-in SDK as outlined in their [OAuth scopes on PGSV2](https://developer.android.com/games/pgs/signin#oauth-scopes) and [OAuth scopes and PGSV1](https://developers.google.com/games/services/common/concepts/v1/sign-in#oauth-scopes) guides.
+Play Games Services Version 2 (PGSV2) no longer supports additional OAuth 2.0 scopes out of the box, therefore we recommend using Google sign-in SDK as outlined in their [OAuth scopes on PGSV2](https://developer.android.com/games/pgs/signin#oauth-scopes) and [OAuth scopes and PGSV1](https://developers.google.com/games/services/common/concepts/v1/sign-in#oauth-scopes) guides.
 :::
 
 To authenticate to mod.io via a Google Play account, we support the following credential flows:
@@ -108,7 +108,7 @@ Now it's time to set up Google's Play Games services. To do so, work through the
 
     ![Google Play external integrations](img/google_PGS_config_game_server_oauth_client.png)
 
-6. Return to the play games services setup page and click on **Add Credential**, then select the **Android** option and the Android OAuth2.0 client ID from the dropdown (Step 5, previous section) **save changes**.
+6. Return to the play games services setup page and click on **Add Credential**, then select the **Android** option and the Android OAuth 2.0 client ID from the dropdown (Step 5, previous section) **save changes**.
 
     ![Google Play external integrations](img/google_PGS_config_android_oauth_client.png)
 

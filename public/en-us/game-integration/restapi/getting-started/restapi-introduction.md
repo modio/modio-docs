@@ -4,9 +4,9 @@ title: Introduction
 slug: /restapi/introduction
 ---
 
-# mod.io API v1
+# REST API
 
-Using the mod.io REST API requires you to have an __API key__. If you are a game developer, you can access the API key for any game you are an administrator of via the [mod.io library dashboard](https://mod.io/library), or you can add a [new game here](https://mod.io/g/add). If you are a user working on tools, sites and plugins, you can access an API key for [your user account here](https://mod.io/me/access). You should also copy the __API path__, as all games and users get a unique URL to use when making requests to API endpoints:
+Using the mod.io REST API requires you to have an __API key__. If you are a game developer, you can access the API key for any game you are an administrator of via the [My Content](https://mod.io/content) page, or you can add a [new game here](https://mod.io/g/add). If you are a user working on tools, sites and plugins, you can access an API key for [your user account here](https://mod.io/me/access). You should also copy the __API path__, as all games and users get a unique URL to use when making requests to API endpoints:
 
 - Games API path: `https://g-{your-game-id}.modapi.io/v1`
 - Users API path: `https://u-{your-user-id}.modapi.io/v1`
@@ -32,25 +32,25 @@ Here is a brief list of the things to know about our API, as explained in more d
 Authentication can be done via 5 ways:
 
 - Use an [API key](https://mod.io/me/access) for **Read-only** access (get a [test environment](#testing) API key here)
-- Use the [Email Authentication Flow](/restapi/docs/request-email-security-code) for **Read and Write** access (it creates an OAuth 2 Access Token via **email**)
-- Use the [Platform Authentication Flow](/restapi/docs/authenticate-via-steam) for **Read and Write** access (it creates an OAuth 2 Access Token automatically on popular platforms such as **Steam and XBOX**)
-- Use the [OpenID Authentication Flow](/restapi/docs/authenticate-via-openid) for **Read and Write** access (it creates an OAuth 2 Access Token automatically using your identity provider for SSO)
-- Manually create an [OAuth 2 Access Token](https://mod.io/me/access) for **Read and Write** access (get a [test environment](#testing) OAuth 2 token here)
+- Use the [Email Authentication Flow](/restapi/docs/request-email-security-code) for **Read and Write** access (it creates an OAuth 2.0 Access Token via **email**)
+- Use the [Platform Authentication Flow](/restapi/docs/authenticate-via-steam) for **Read and Write** access (it creates an OAuth 2.0 Access Token automatically on popular platforms such as **Steam and XBOX**)
+- Use the [OpenID Authentication Flow](/restapi/docs/authenticate-via-openid) for **Read and Write** access (it creates an OAuth 2.0 Access Token automatically using your identity provider for SSO)
+- Manually create an [OAuth 2.0 Access Token](https://mod.io/me/access) for **Read and Write** access (get a [test environment](#testing) OAuth 2.0 token here)
 
-All users and games are issued an API key which must be included when querying the API. It is quick and easy to use but limited to read-only GET requests, due to the limited security it offers. If you want players to be able to add, edit, rate and subscribe to content, you will need to use an authentication method that generates an OAuth 2 Access token. These [authentication methods](/restapi/docs/authenticate-via-steam) are explained in detail here.
+All users and games are issued an API key which must be included when querying the API. It is quick and easy to use but limited to read-only GET requests, due to the limited security it offers. If you want players to be able to add, edit, rate and subscribe to content, you will need to use an authentication method that generates an OAuth 2.0 Access token. These [authentication methods](/restapi/docs/authenticate-via-steam) are explained in detail here.
 
 Authentication Type | In | HTTP Methods | Abilities | Purpose
 ---------- | ---------- | ---------- | ---------- | ---------- 
 API Key | Query | GET | Read-only GET requests and authentication flows. | Browsing and downloading content. Retrieving access tokens on behalf of users.
-Access Token (OAuth 2) | Header | GET, POST, PUT, DELETE | Read, create, update, delete. | View, add, edit and delete content the authenticated user has subscribed to or has permission to change.
+Access Token (OAuth 2.0) | Header | GET, POST, PUT, DELETE | Read, create, update, delete. | View, add, edit and delete content the authenticated user has subscribed to or has permission to change.
 
-You can use an OAuth 2.0 bearer token instead of an API key for GET endpoints (excluding [Authentication](/restapi/docs/authenticate-via-steam) endpoints). But remember, if you provide both an Access Token (OAuth 2) and an API key in one request, the access token takes precedence and the API key is ignored. So, always ensure you use a valid access token and have the process in place to get a new token when the old one expires.
+You can use an OAuth 2.0 bearer token instead of an API key for GET endpoints (excluding [Authentication](/restapi/docs/authenticate-via-steam) endpoints). But remember, if you provide both an Access Token (OAuth 2.0) and an API key in one request, the access token takes precedence and the API key is ignored. So, always ensure you use a valid access token and have the process in place to get a new token when the old one expires.
 
 ### Web Overlay Authentication
 
 At the moment it is not possible to open the mod.io website in-game with the user pre-authenticated, however you can provide a hint by appending `?portal=PORTAL` to the end of the URL. What this tells mod.io, is that when the user attempts to perform an action that requires authentication, they will be prompted to login with their `PORTAL` account. For example if you want to take a mod creator to their mod webpage in-game on Steam, the URL would look something like: `https://mod.io/g/gamename/m/modname?portal=steam`. You can optionally add `&login=auto` as well to automatically start the login process. [Supported portals](/restapi/platforms#targeting-a-portal) can be found here.
 
-### Scopes (OAuth 2)
+### Scopes (OAuth 2.0)
 
 mod.io allows you to specify the permission each access token has (default is _read+write_), this is done by the use of scopes. See below for a full list of scopes available, you must include at least one scope when generating a new token.
 
@@ -70,7 +70,7 @@ Requests to the mod.io API are to be over HTTPS (Port 443), any requests made ov
 curl https://g-{your-game-id}.modapi.io/v1/games?api_key=xxxxxxxxxxxxxxxx
 ``` 
 
-To authenticate using your unique 32-character API key, append the `api_key=xxxxxxxxxxxxxxxx` parameter to the end of your request. Remember that using an API key means requests are read-only, if you want to create, update or delete resources - authentication via OAuth 2 is required which you can [set up with your api key](#authentication).
+To authenticate using your unique 32-character API key, append the `api_key=xxxxxxxxxxxxxxxx` parameter to the end of your request. Remember that using an API key means requests are read-only, if you want to create, update or delete resources - authentication via OAuth 2.0 is required which you can [set up with your api key](#authentication).
 
 ### Using an Access Token
 
@@ -84,7 +84,7 @@ curl -X POST https://g-1.modapi.io/v1/games/1/mods/1/tags \
   -d 'tags[]=Dual-Wielding'
 ```
 
-To authenticate using an OAuth 2 access token, you must include the HTTP header `Authorization` in your request with the value Bearer *your-token-here*. Verification via Access Token allows much greater power including creating, updating and deleting resources that you have access to. Also because OAuth 2 access tokens are tied to a user account, you can personalize the output by viewing content they are subscribed and connected to via the [me endpoint](/restapi/docs/get-authenticated-user) and by using relevant filters.
+To authenticate using an OAuth 2.0 access token, you must include the HTTP header `Authorization` in your request with the value Bearer *your-token-here*. Verification via Access Token allows much greater power including creating, updating and deleting resources that you have access to. Also because OAuth 2.0 access tokens are tied to a user account, you can personalize the output by viewing content they are subscribed and connected to via the [me endpoint](/restapi/docs/get-authenticated-user) and by using relevant filters.
 
 ### Access Token Lifetime & Expiry
 
@@ -239,7 +239,7 @@ You should always plan to minimize requests and cache API responses. It will mak
 
 To help familiarize yourself with the mod.io API and to ensure your implementation is battle-hardened and operating as intended, we have setup a test sandbox. The test sandbox allows you to make requests to the API whilst your integration is a work in progress and the submitted data is not important. When you are ready to go live it's as easy as adding your game to the production environment, substituting the test API path for the production API path, and updating the `api_key` and `game_id` you are using to the values from your games profile on production.
 
-To begin using the test sandbox you will need to [register a test account](https://test.mod.io) and [add your game](https://test.mod.io/g/add). In your [test library dashboard](https://mod.io/library) you will only see games you are a team member of and there is no connection between the data added to the test environment and production. We highly recommend you use the test environment when integrating as it allows you to keep your development private, and you can submit as much dummy data as you need to try the functionality required, without having to clean it up at the end.
+To begin using the test sandbox you will need to [register a test account](https://test.mod.io) and [add your game](https://test.mod.io/g/add). On the [My Content](https://test.mod.io/content) page you will only see games you are a team member of and there is no connection between the data added to the test environment and production. We highly recommend you use the test environment when integrating as it allows you to keep your development private, and you can submit as much dummy data as you need to try the functionality required, without having to clean it up at the end.
 
 - Test Games API path: `https://g-{your-game-id}.test.mod.io/v1`
 - Test Users API path: `https://u-{your-user-id}.test.mod.io/v1`

@@ -55,7 +55,7 @@ For more information, check out our [Terms & User Consent](/terms) guide.
 
 ## Choose your features
 
-As you test your game, you may want to explore some of our [UGC Features](/features). These are designed to make sure you get the most out of your UGC experience. Things like the Embeddable Hub, a browser-based UGC hub that can be customized to suit your brand; Monetization, enabling users to sell premium mods; or Multiplayer functionality, to ensure UGC is experienced by all users in the same game.
+As you test your game, you may want to explore some of our [UGC Features](/features). These are designed to make sure you get the most out of your UGC experience. Things like the Embed Hub, which can be customized to suit your brand; Monetization, enabling users to sell premium mods; or Multiplayer functionality, to ensure UGC is experienced by all users in the same game.
 
 ## Test with Preview System
 

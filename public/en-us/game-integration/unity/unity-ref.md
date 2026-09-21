@@ -12,6 +12,7 @@ slug: /unity/unity-ref
 | [`ModioAPIUnityClient`](#Modio.Unity.ModioAPIUnityClient) |  |
 | [`ModioImageTexture2DExtensions`](#Modio.Unity.ModioImageTexture2DExtensions) |  |
 | [`ModioPreInitializer`](#Modio.Unity.ModioPreInitializer) |  |
+| [`ModioUnity`](#Modio.Unity.ModioUnity) |  |
 | [`ModioUnityLogger`](#Modio.Unity.ModioUnityLogger) |  |
 | [`ModioUnityMultiplatformAuthResolver`](#Modio.Unity.ModioUnityMultiplatformAuthResolver) |  |
 | [`ModioUnitySettings`](#Modio.Unity.ModioUnitySettings) |  |
@@ -180,6 +181,24 @@ ___
 
 ```csharp
 public class ModioPreInitializer : MonoBehaviour
+```
+
+___
+
+### ModioUnity{#Modio.Unity.ModioUnity}
+
+```csharp
+public static class ModioUnity
+```
+
+
+###### Method
+
+
+#### SetUpModioForUnity{#Modio.Unity.ModioUnity.SetUpModioForUnity}
+
+```csharp
+public static void SetUpModioForUnity()
 ```
 
 ___

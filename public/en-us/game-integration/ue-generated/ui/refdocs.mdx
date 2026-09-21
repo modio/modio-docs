@@ -14562,6 +14562,43 @@ void UnregisterPreUninstallHandler()
 
 
 
+##### Should Show Platform SKUInformation
+
+Check if the UI should display SKU information when checking out a purchase for a mod
+
+![nd_img_ModioUISubsystem_ShouldShowPlatformSKUInformation.png](img/refdocs/nd_img_ModioUISubsystem_ShouldShowPlatformSKUInformation.png)
+
+```cpp
+bool ShouldShowPlatformSKUInformation()
+```
+
+
+
+
+
+
+###### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModioUISubsystem`|
+</RefTable>
+
+
+
+###### Returns
+True if the UI should display SKU information, false otherwise
+
+
+
+
+
+
+
+
+
+
+
 ##### Set UIInteraction Feedback Provider
 
 Sets the provider object responsible for playing UI feedback (sound and force feedback).
@@ -16427,6 +16464,42 @@ void PlayUIForceFeedback(UForceFeedbackEffect* UIFeedbackForceEffect, APlayerCon
 
 
 
+##### Notify Platform Store Browsing
+
+Notifies the portal interface that the user is currently browsing products from the the platform store, which may affect the behavior of certain UI elements.
+
+![nd_img_ModioUISubsystem_NotifyPlatformStoreBrowsing.png](img/refdocs/nd_img_ModioUISubsystem_NotifyPlatformStoreBrowsing.png)
+
+```cpp
+void NotifyPlatformStoreBrowsing(bool bBrowsing)
+```
+
+
+
+
+
+
+###### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModioUISubsystem`|
+|`bBrowsing`|Whether the user is currently browsing products from the platform store.|
+</RefTable>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ##### Notify Input Mode Change
 
 Updates the current MouseInputMode state, and notifies implementations of IModioUIInputModeChangedReceiver *only* if the state changes.
@@ -18021,6 +18094,7 @@ The Confirm Purchase Dialog allows users to confirm the purchase of a selected m
 | `FOnDialogCanceled` | `OnDialogCanceled` |  |
 | `EModioUILoadState` | `PurchaseResultsLoadingState` |  |
 | `FLinearColorRef` | `TokenIconColor` |  |
+| `double` | `ScrollVelocity` |  |
 </RefTable>
 
 

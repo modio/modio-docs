@@ -13,7 +13,7 @@ The mod.io Unity Plugin requires the functionality of two other open-source Unit
 
 ## Installation
 
-:::warning  
+:::warning
 If you have a previous version of the plugin installed, it is _highly_ recommended to delete it before updating to a later version.
 :::
 
@@ -25,7 +25,7 @@ If you have a previous version of the plugin installed, it is _highly_ recommend
    - Download an archive of the code using GitHub's download feature, and unpack it in your project's `Assets/Plugins` directory.
 3. Restart Unity, to ensure it recognises the new assembly definitions.
 
-:::note 
+:::note
 If you receive errors due to conflicting libraries after installing the plugin, remove any duplicates from `Assets/Plugins/mod.io/ThirdParty`.
 :::
 
@@ -33,7 +33,7 @@ If you receive errors due to conflicting libraries after installing the plugin, 
 
 The first thing you'll need to do is [create a game profile](https://mod.io/g/add) on mod.io.
 
-:::tip  
+:::tip
 You'll need your `game ID` and `API key` for the following steps.
 :::
 
@@ -42,7 +42,7 @@ You'll need your `game ID` and `API key` for the following steps.
 3. In the Inspector under *Server Settings*, enter your `game ID` and `API key`.
 4. Use the *Insert URL* buttons to set the `server URL` depending on where you created your game profile earlier.
 
-:::warning  
+:::warning
 Deselect the config file before entering Play mode. A known Unity bug can cause the Editor to crash in Unity 2019-2021.
 :::
 

@@ -18,7 +18,7 @@ We also enforce per-endpoint rate limits which will only result in requests to t
 - API keys linked to a game have __unlimited requests__.
 - API keys linked to a user have __60 requests per minute__.
 
-### Global OAuth2 Rate Limiting
+### Global OAuth 2.0 Rate Limiting
 
 - User tokens are limited to __120 requests per minute__.
 - User token writes are limited to __60 requests per minute__.

@@ -1,4 +1,4 @@
-﻿---
+---
 id: unity-localization
 title: Localization
 slug: /unity/localization
@@ -13,7 +13,7 @@ This guide covers:
 
 * [Overview](#overview)
 * [Setting the Language](#setting-the-language)
-* [Localization in Template UI](#localization-in-template-ui)
+  * [Template UI Localization](#template-ui-localization)
 
 ## Overview
 

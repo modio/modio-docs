@@ -815,11 +815,32 @@ void RemoveModEnabledStateChangeHandler(FModEnabledStateChangeHandler Handler)
 #### Refresh UGC
 
 
+
 ![nd_img_UGCSubsystem_RefreshUGC.png](img/refdocs/nd_img_UGCSubsystem_RefreshUGC.png)
 
 ```cpp
-void RefreshUGC()
+void RefreshUGC(bool bUnloadAll)
 ```
+
+
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`UGCSubsystem`|
+|`bUnloadAll`|If true, will unload all UGC packages loading them again|
+</RefTable>
+
+
+
+
+
+
+
 
 
 

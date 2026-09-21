@@ -21,6 +21,7 @@ This guide covers:
 
 * [Example scene](#example-scene)
 * [Key components](#key-components)
+* [Carousels](#carousels)
 * [Customization](#customization)
 
 ## Example scene
@@ -34,7 +35,7 @@ Let's take a look at some key pieces:
 There's a few key things in the scene to note, which you'll need to copy into your scene or create a suitable alternative.
 
 - Canvas (Mods) contains the prefab **ModBrowser**. This is the core of the UI, and can be dropped into your menu scene as is
-    - Either duplicate the Canvas, or add the ModBrowser prefab to a canvas of your own. It's designed to look best on a "Scale with Screen Size" canvas with ``Reference Resolution`` 1920x1080 and ``Match`` set to 1 (Height)
+    - Either duplicate the Canvas, or add the ModBrowser prefab to a canvas of your own. It's designed to look best on a "Scale with Screen Size" canvas with `Reference Resolution` 1920x1080 and `Match` set to 1 (Height)
 - **ModioUI_InputCapture** will load an EventSystem at runtime, as well as integrating it with our UI. It also maps icons for use in the UI
     - You will need to have one of the EventSystems it references available, or create your own in scene
     - If you are using Unity's InputSystem, you can extract ModioInputListener_InputSystem.zip
@@ -43,14 +44,14 @@ There's a few key things in the scene to note, which you'll need to copy into yo
 - Canvas (Title) is a basic menu and settings page that gives some more control of the demo
 
 #### Opening the Browser
-- You can open the browser by calling ``OpenPanel()`` on the instance of ``ModBrowserPanel`` in your scene.
-    - You can also get that instance by calling ``ModioPanelManager.GetPanelOfType<ModBrowserPanel>()``.
+- You can open the browser by calling `OpenPanel()` on the instance of `ModBrowserPanel` in your scene.
+    - You can also get that instance by calling `ModioPanelManager.GetPanelOfType<ModBrowserPanel>()`.
 
 
 ## Key components
 ### ModioUIMod and similar
 
-We use monobehaviours like ModioUIMod to act as containers for ``ModioUI.Data.Mod``, which holds all the details you may wish to know about the UGC. Children of that gameobject will add ``ModioUIModProperties`` monoBehaviours, which have properties added to update UI or add listeners to buttons (such as to subscribe or get ratings)
+We use monobehaviours like ModioUIMod to act as containers for `ModioUI.Data.Mod`, which holds all the details you may wish to know about the UGC. Children of that gameobject will add `ModioUIModProperties` monoBehaviours, which have properties added to update UI or add listeners to buttons (such as to subscribe or get ratings)
 
 There's also
 
@@ -58,7 +59,7 @@ There's also
     - There's currently two ModioUISearches in our example. One exists on the ModBrowser root object, and controls the main search. All children use this by default
     - **ModPanel_Dependencies** has its own ModioUISearch and its children will display the results of a dependency search instead
 - **ModioUIUser** and **ModioUIUserProperties**, which has details about either the logged in local user or the author of the UGC.
-    - If you want to display UGC authors, use a ``ModProperties`` with the Creator property, pointed at a ModioUIUser on the same GameObject. You can then use ModioUIUserProperties to display details like the name or icon
+    - If you want to display UGC authors, use a `ModProperties` with the Creator property, pointed at a ModioUIUser on the same GameObject. You can then use ModioUIUserProperties to display details like the name or icon
     - See "Title and Creator" on the "ModContent_ModDetails" prefab for an example
 
 ### ModioPanels
@@ -71,11 +72,58 @@ We use a panels system, which handles the basics of pushing and popping panels a
 ![ModioUILocalizedText component](img/layout-localization.png)\
 We have a basic localization implementation in the ModioUI_Localization prefab. This allows all of our buttons to look up a key in a CSV, but lacks the advanced features typical in most localization packages.
 
--   The localization solution looks at ``ModioSettings.defaultLanguage`` to determine the language. Please restart the plugin via ``ModioClient.Shutdown()`` and ``ModioClient.Initialize()`` if you change the language. See ``ModioExampleSettingsPanel`` for an example.
--   If you are using a localization package, you can override the implementation by calling ``ModioUILocalizationManager.SetCustomHandler(YourHandlerMethod)``
+-   The localization solution looks at `ModioSettings.defaultLanguage` to determine the language. Please restart the plugin via `ModioClient.Shutdown()` and `ModioClient.Initialize()` if you change the language. See `ModioExampleSettingsPanel` for an example.
+-   If you are using a localization package, you can override the implementation by calling `ModioUILocalizationManager.SetCustomHandler(YourHandlerMethod)`
 -   Alternatively, you can leave both localization solutions running
 -   The component UI does not handle RTL text to avoid conflicts. If your game supports RTL language, you'll need to apply your solution to the Component UI yourself
 
+
+## Carousels
+
+The row of carousels above the main results grid on the mod browser is built entirely out of extra
+[ModioUISearch](/unity/component-ui#modiouisearch) instances, configured from data on the main search's
+`ModioUISearchSettings` asset. You don't write any code to add, remove, or restyle a carousel - it's all done through
+that settings asset and the `SearchPropertyCarousels` property on the main search.
+
+![ModioUI Carousel](img/carousel.png)\
+
+### Adding a carousel
+
+1. Open the `ModioUISearchSettings` asset assigned to the main search's "Search On Start" field (e.g.
+   `SearchSettings_WithCarousels` in `Modio/Unity/UI/Prefabs/SearchSettings/`).
+2. Add an entry to its `Carousels` array. Each entry is a `ModioUICarouselSettings`, made up of:
+    - **Search** - another `ModioUISearchSettings` asset describing what that carousel should search for (its own
+      search phrase, tags, sort order, `SpecialSearchType`, etc. - the same fields you'd set on any other search
+      settings asset).
+    - **Style** - a `CarouselStyle` (`Default`, `FeaturedLarge`, or `Featured`) which picks which visual prefab is
+      used to display that carousel.
+3. On the main search's `ModioUISearchProperties`, make sure a `SearchPropertyCarousels` property is present. This is
+   what actually reads the `Carousels` array and spins up a `ModioUISearch` per entry.
+
+### How it behaves
+
+- `SearchPropertyCarousels` keeps a pool of instantiated carousel prefabs per `CarouselStyle`, so switching between
+  settings assets that use the same styles reuses existing GameObjects rather than creating new ones.
+- Carousels only show while the main search is showing its default, unmodified settings. As soon as the user
+  searches by phrase or applies tags, the carousel row is hidden and its pooled instances are deactivated.
+- Because each carousel is its own independent `ModioUISearch`, it can be given any `SpecialSearchType` a normal
+  search can - featured mods, a specific tag, the user's subscriptions, etc.
+
+### Example: Adding a Recently Updated carousel
+
+1. In `Modio/Unity/UI/Prefabs/SearchSettings/`, duplicate an existing settings asset (e.g. `SearchSettings_Newest`)
+   and rename it something like `SearchSettings_RecentlyUpdated`.
+2. On the new asset, set:
+    - `DisplayAs` to `Recently Updated` (and `DisplayAsLocalisedKey` if you're using localization).
+    - `searchType` to `Nothing` (a standard mods search).
+    - `sortModsBy` to `Date Updated`.
+    - `isAscending` to unchecked, so newest mods sort first.
+3. Open the main search's `ModioUISearchSettings` asset (e.g. `SearchSettings_WithCarousels`) and add a new entry to
+   its `Carousels` array:
+    - **Search**: the `SearchSettings_RecentlyUpdated` asset you just made.
+    - **Style**: `Default` (or `Featured` / `FeaturedLarge` if you want it to stand out).
+4. Enter Play Mode and open the browser - the new carousel appears in the row alongside the others, titled "Recently
+   Updated", pulling from a live standard mods query sorted newest-first.
 
 ## Customization
 
@@ -149,14 +197,14 @@ Any object implementing this interface can be added to the theme sheet straight 
 
 #### Basic Recoloring
 
-The Component UI is built using a small set of prefabs stored in ``ModioUI/Prefabs/Widgets/UIBasics/Components/``.
+The Component UI is built using a small set of prefabs stored in `ModioUI/Prefabs/Widgets/UIBasics/Components/`.
 
 ![mod tile layout](img/layout-interactionstates.png)
 
 - The majority of background elements are ButtonBackground or PanelBackground
-    - In addition to changing the Image component's Color, you'll need to change the values on ``ModioUISelectableTransitions`` which controls the various selection states
+    - In addition to changing the Image component's Color, you'll need to change the values on `ModioUISelectableTransitions` which controls the various selection states
     - ButtonBackground is also used in locations other than buttons, with some of its functionality (like SelectableTransitions) disabled
-- Most text is based on the ``ButtonText (TMP)`` prefab. You can change its font, and change colors in the same way as above
+- Most text is based on the `ButtonText (TMP)` prefab. You can change its font, and change colors in the same way as above
 
 #### Adding ModioUIModProperties options
 

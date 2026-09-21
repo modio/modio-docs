@@ -38,7 +38,7 @@ Our Unity Plugin is the simplest and fastest way to integrate UGC into your **Un
 
 Get started by downloading the [Unity Core Plugin from GitHub](https://github.com/modio/modio-unity).
 
-### Unity version support
+## Unity version support
 
 mod.io guarantees full functionality and long-term support of the plugin for the following Unity Versions:
 

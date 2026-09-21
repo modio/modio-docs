@@ -1046,7 +1046,7 @@ To configure the access levels for downloading Premium UGC, navigate to `General
 
 ![UGC Access Levels Preview](img/api-access-options-example.png)
 
-Once configured - within your game client you can ascertain the level of authorization configured for your title by inspecting the `api_access_options` bitwise value within the [Game Object](/restapi/docs/schemas/game-object) returned from our RESTAPI.
+Once configured - within your game client you can ascertain the level of authorization configured for your title by inspecting the `api_access_options` bitwise value within the [Game Object](/restapi/docs/schemas/game-object) returned from our REST API.
 
 **Recommendation**
 

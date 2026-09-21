@@ -6,7 +6,7 @@ slug: /restapi
 
 # REST API
 
-The mod.io REST API is the foundation that allows you to add UGC support to your game. You can manage your game(s) via your [mod.io library dashboard](https://mod.io/library) and your [API access here](https://mod.io/me/access).
+The mod.io REST API is the foundation that allows you to add UGC support to your game. You can manage your game(s) via your [My Content](https://mod.io/content) page and your [API access here](https://mod.io/me/access).
 
 <div className="simplecard-grid">
 
@@ -30,7 +30,7 @@ The mod.io REST API is the foundation that allows you to add UGC support to your
 
 Compatible with all builds of your game on all platforms and stores, mod.io is a clientless and standalone solution which gives you complete control over your modding ecosystem.
 
-![RESTAPI Overview](img/restapi-overview.svg)
+![REST API Overview](img/restapi-overview.svg)
 
 ## Tools & implementation
 

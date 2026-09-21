@@ -403,6 +403,11 @@ const sidebars = {
     },
     {
       type: 'category',
+      label: 'Content Discovery',
+      items: ['features/content-discovery/content-discovery-featured-content'],
+    },
+    {
+      type: 'category',
       label: 'Dependencies',
       items: [
         'features/dependencies/dependency-management',

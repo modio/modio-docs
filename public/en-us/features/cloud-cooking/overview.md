@@ -19,7 +19,7 @@ Cloud Cooking provides the following functionality:
 * **Managed infrastructure:** mod.io manages the Cloud Cooking server and build agents on your behalf.
 * **Status updates:** Content creators are given realtime reports on the progress of their content being prepared.
 * **Logging & metrics:** Logs and cook metrics are reported for every cook job, for both content creators and game admins.
-* **On-premise deployment option:** If you already have your own infrastructure, Cloud Cooking can be deployed and managed on your own infrastructure.
+* **Self-hosted deployment option:** If you already have your own infrastructure, Cloud Cooking can be deployed and managed on your own infrastructure.
 * **Integration with mod.io tooling:** Cooked content goes through the standard moderation flow for platforms.
 * **Isolated deployments:** Your studio's deployment is isolated from all other tenants, and secured under mod.io's security practices.
 

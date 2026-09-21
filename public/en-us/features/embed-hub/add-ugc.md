@@ -40,4 +40,4 @@ If enabled by the game, you can specify other UGC that is required for your UGC 
 
 ## Wrapping up
 
-With that complete, you will be redirected to your 'My content' page where you can view or edit all the UGC you have created.
+With that complete, you will be redirected to your 'My Content' page where you can view or edit all the UGC you have created.

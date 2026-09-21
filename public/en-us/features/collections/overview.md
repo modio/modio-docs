@@ -25,7 +25,7 @@ Collections can be configured with the following settings:
 * The collection UGC limit can be overridden for selected collections from the collection settings dashboard. This setting is available to game administrators only, for any required special cases.
 
 ## How it works
-When enabled, you'll see a new Collections tab on your [game page](https://mod.io/g) where users can browse public collections and manage collections they are subscribed to via [their Library](https://mod.io/library#collections). Any user can create [their own collections](https://mod.io/content#collections) and choose to keep them hidden for their own use, or make them publicly available for others to pick them up and subscribe.
+When enabled, you'll see a new Collections tab on your [game page](https://mod.io/g) where users can browse public collections and manage collections they are subscribed to via the [My Library](https://mod.io/library#collections) page. Any user can create [their own collections](https://mod.io/content#collections) and choose to keep them hidden for their own use, or make them publicly available for others to pick them up and subscribe.
 
 ![game profile tabs](img/collections_browse.png)
 

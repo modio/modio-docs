@@ -39,7 +39,7 @@ Once you've created the above class:
 
 ## Initialization
 
-:::info 
+:::info
 The plugin relies on the *config file* that is configured during the [setup instructions](#initial-setup) above. Please ensure you have completed all of those steps before proceeding.
 :::
 
@@ -64,7 +64,7 @@ Now, return to your scene in Unity, enter Play mode and you should see the logge
 
 ## Authentication
 
-:::note 
+:::note
 This guide uses `ModIOUnityAsync` wherever possible. However, you can find callback equivalents to every method in `ModIOUnity` if you prefer.
 :::
 
@@ -72,7 +72,7 @@ Most of the API’s functionality requires player authentication. The plugin off
 
 For now, let's start with a simple email authentication to allow us full access.
 
-:::note  
+:::note
 While creating the UI layout referenced below is outside the scope of this guide, there are great Unity UI tutorials available. You can, however, use the image below as a guide for the elements required to achieve the same functionality:
 :::
 
@@ -147,7 +147,7 @@ async void OnAuth()
 }
 ```
 
-:::warning  
+:::warning
 Don't forget to assign the fields in the Inspector!
 :::
 
@@ -170,7 +170,7 @@ There is something worth highlighting: if you restart Play mode, you'll see the 
 
 If you change the initialization value (currently *"default"*), you will no longer receive the authenticated log. This functionality can enable support for multiple players; separately tracking authentication states and mod-subscriptions. However, as mentioned previously, most games can pass a constant value if they only ever expect one player on the device.
 
-:::note  
+:::note
 If your email provider supports it, you can use plus-addressing to test multiple users with a single email address:
 ```
 john.smith+test1@gmail.com
@@ -181,7 +181,7 @@ john.smith+test3@gmail.com
 
 ## Adding Mods
 
-:::note 
+:::note
 Among a range of other functionality, players can use the mod.io website for creating, modifying, and removing mods for your game. In this section, we're going to add mods using the plugin and API. Feel free to skip this section if you'd prefer to use the web interface.
 :::
 
@@ -223,7 +223,7 @@ async Task AddModsIfNone()
 
 ### Generating Dummy Mods
 
-:::note  
+:::note
 This section is going to generate some dummy mods for use throughout the rest of this guide. If you already have mods or test files ready to upload, you can skip to the [uploading mods](#uploading-mods) section.
 :::
 
@@ -236,11 +236,11 @@ Let's generate a few dummy mods for you to use for testing. At a minimum, a mod 
 
 We'll use a third-party API to generate a logo for each of your mods, and we'll create a temporary folder and dummy file in each in your Unity project's directory:
 
-:::note 
+:::note
 Don't worry if you don't understand the code below. Its only job is to generate our dummy mods, and it doesn't have any relation to the plugin! If you'd prefer to create your own dummy mods, skip to the [uploading mods](#uploading-mods) section!
 :::
 
-:::warning  
+:::warning
 The following code is going to generate a handful of 10-100 MB files, the size of which will give us enough time to show download progress later on. Ensure you have some free space available in your project directory.
 :::
 
@@ -337,7 +337,7 @@ Uploading mods is a two-step process:
 
 Let's add a method that handles both steps:
 
-:::note  
+:::note
 The following code takes advantage of `ModIOUnity.GetCurrentUploadHandle`, which can be used for obtaining the current upload progress. This isn't required, and you can use `await ModIOUnityAsync.UploadModFile(details)` instead if you prefer. 
 :::
 
@@ -396,7 +396,7 @@ async Task UploadMod(string name, string summary, Texture2D logo, string path)
 
 All that's left now is to feed some mods to our brand new `UploadMod` method. After we test to see if any mods exist in `AddModsIfNone`, we will iterate our list of mods and upload them:
 
-:::info  
+:::info
 If you didn't generate dummy mods in the previous section, modify the below to suit your mod files.
 :::
 
@@ -418,7 +418,7 @@ async Task AddModsIfNone()
 }
 ```
 
-:::note 
+:::note
 When uploading a mod, the plugin expects a directory (for each mod) that it will compress before uploading. You do <b><u>not</u></b> need to zip your files before uploading.
 :::
 
@@ -486,7 +486,7 @@ new SearchFilter(1, 10); // Will return results 11-20
 new SearchFilter(2, 10); // Will return results 21-30
 ```
 
-:::note 
+:::note
 Search Filters have a number of options for filtering and ordering your results. See the [reference documentation](/legacy/unity/unityref) (or use code completion in your IDE) for its available options.
 :::
 
@@ -498,7 +498,7 @@ A common feature when listing mods is to display an image along with its name an
 
 As we know, [all mods have a logo](#adding-mods). So let's write a short method that selects a random mod, downloads its logo and displays it alongside its name:
 
-:::note  
+:::note
 Below is a screenshot of the UI we're using to utilize the method. You can use this as a guide for your own or display the result however you'd like!
 :::
 
@@ -525,7 +525,7 @@ async void SetRandomMod()
 }
 ```
 
-:::warning  
+:::warning
 The code above relies on `allMods`, which is set in the first [searching for mods](#searching-for-mods) section. **Ensure that `allMods` has been set before running this method.**
 :::
 
@@ -574,7 +574,7 @@ async void OnAuth()
 }
 ```
 
-:::info  
+:::info
 A *Mod Profile* is a read-only snapshot of the state of a mod. It is <u>not</u> a unique or dynamic class. Compare `ModProfile.id` if you want to determine whether two Mod Profiles represent the same mod.
 :::
 
@@ -582,7 +582,7 @@ For now, you should see "*Subscribed mods: None*" in the log if you enter Play m
 
 ## Subscribing to Mods
 
-:::note 
+:::note
 > The web interface at your game's mod.io page can also be used to subscribe to mods. However, you'll need to exit and enter Play mode to see the changes, as `FetchUpdates()` needs to be run to synchronise the local state.
 :::
 
@@ -675,7 +675,7 @@ void Update()
 
 In a real implementation, you'll likely track the `modId`'s download and install progress separately to display in your UI. But, this should give you an idea of what's possible with the mod management feature.
 
-:::note 
+:::note
 There are a number of mod management events available. See the [reference documentation](/legacy/unity/unityref) (or use code completion in your IDE) for a complete list.
 :::
 
@@ -710,7 +710,7 @@ Please join us on our [Discord server](https://discord.mod.io) if you have any q
 
 ## Complete Class
 
-:::note 
+:::note
 You can also find the following class (along with an example scene) in `Assets/Plugins/mod.io/Example`. 
 :::
 

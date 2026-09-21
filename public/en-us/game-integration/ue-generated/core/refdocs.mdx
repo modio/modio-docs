@@ -473,6 +473,43 @@ Interface for objects that provide portal/platform specific implementations
 
 
 
+#### Should Show SKUInformation
+
+
+
+![nd_img_ModioPortalInterface_ShouldShowSKUInformation.png](img/refdocs/nd_img_ModioPortalInterface_ShouldShowSKUInformation.png)
+
+```cpp
+bool ShouldShowSKUInformation()
+```
+
+
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModioPortalInterface`|
+</RefTable>
+
+
+
+##### Returns
+true if the UI should show SKU information, false otherwise
+
+
+
+
+
+
+
+
+
+
+
 #### Sanitize File Path
 
 
@@ -615,6 +652,42 @@ void RequestAuthToken(TMap<FString,FString> Params, FAuthTokenRequestedDelegate 
 ```cpp
 bool PrepareFilesystemToUsePath(FString UgcPath)
 ```
+
+
+
+
+
+
+
+#### Notify Store Browsing
+
+
+
+![nd_img_ModioPortalInterface_NotifyStoreBrowsing.png](img/refdocs/nd_img_ModioPortalInterface_NotifyStoreBrowsing.png)
+
+```cpp
+void NotifyStoreBrowsing(bool bEnabled)
+```
+
+
+
+
+
+
+##### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Target`|`ModioPortalInterface`|
+|`bEnabled`|whether the store is being browsed or not|
+</RefTable>
+
+
+
+
+
+
+
 
 
 
@@ -4780,6 +4853,21 @@ Collection of `ModioValidationError` objects, or empty collection if there were 
 
 
 
+#### Get Current Portal
+
+
+![nd_img_ModioSubsystem_GetCurrentPortal.png](img/refdocs/nd_img_ModioSubsystem_GetCurrentPortal.png)
+
+```cpp
+EModioPortal GetCurrentPortal() const
+```
+
+
+
+
+
+
+
 #### Disable Mod Management
 
 Disables automatic installation or uninstallation of mods based on the user's subscriptions. Allows currently processing installation to complete. Will cancel any pending operations when called.
@@ -5028,8 +5116,55 @@ Full game profile with extended information
 | `FString` | `VirtualTokenName` | Name of the Virtual Tokens for this game |
 | `TArray<FModioGamePlatform>` | `PlatformSupport` | Platforms that are supported by this title |
 | `TArray<FModioModTagInfo>` | `TagOptions` | Tags available for this game |
+| `TArray<FModioPlacement>` | `Placements` | Placements available for this game |
 | `EModioGameCloudCookingStatus` | `CloudCookingStatus` | Cloud Cooking status for this game |
 </RefTable>
+
+
+
+---
+
+### ModioPlacement 
+
+Placements of a game to represent dynamic mod view
+
+
+
+
+
+
+
+
+##### Variables
+<RefTable colWidths={['10%', '10%', '20%']} stripes="odd">
+| | | |
+|-|-|-|
+| `int64` | `ID` | Unique placement id |
+| `EModioPlacementType` | `Type` | Placement type |
+| `FString` | `Name` | Placement name |
+| `FString` | `NameLocalized` | Placement name localized |
+| `FModioFilterParams` | `Filters` | Structured filter describing the mods this placement should display |
+| `int64` | `DisplayPosition` | Placement's display position |
+| `int64` | `Total` | Total number in the placement to show |
+| `EModioPlacementSize` | `Size` | Placement's display size |
+| `bool` | `bEnabled` | Placement's enabled status |
+</RefTable>
+
+
+
+---
+
+### ModioFilterParams 
+
+Class storing a set of filter parameters for use in [`ListAllModsAsync`](#listallmodsasync)
+
+
+
+
+
+
+
+
 
 
 
@@ -6811,22 +6946,6 @@ Strong type struct to wrap Token Pack ID
 
 ---
 
-### ModioFilterParams 
-
-Class storing a set of filter parameters for use in [`ListAllModsAsync`](#listallmodsasync)
-
-
-
-
-
-
-
-
-
-
-
----
-
 ### ModioPresetFilterParams 
 
 Helper struct for named preset filter parameters
@@ -7084,7 +7203,7 @@ Converts an Unsigned64 filesize to a human-readable string with the appropriate 
 ![nd_img_ModioUIEnumLocalizationLibrary_FileSizeUnsigned64_ToText.png](img/refdocs/nd_img_ModioUIEnumLocalizationLibrary_FileSizeUnsigned64_ToText.png)
 
 ```cpp
-FText FileSizeUnsigned64_ToText(FModioUnsigned64 FileSize, int32 MinDecimals, int32 MaxDecimals, TEnumAsByte<EFileSizeUnit> Unit, bool bIncludeUnitName)
+FText FileSizeUnsigned64_ToText(FModioUnsigned64 FileSize, int32 MinDecimals, int32 MaxDecimals, EFileSizeUnit Unit, bool bIncludeUnitName)
 ```
 
 
@@ -10993,6 +11112,43 @@ True if the email address is valid.
 
 
 
+### BytesGreaterThan (Filesize)
+
+
+
+![nd_img_ModioSDKLibrary_IsFilesizeGreaterThanUnit.png](img/refdocs/nd_img_ModioSDKLibrary_IsFilesizeGreaterThanUnit.png)
+
+```cpp
+bool IsFilesizeGreaterThanUnit(FModioUnsigned64 FileSize, EFileSizeUnit Unit)
+```
+
+
+
+
+
+
+#### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`FileSize`||
+|`Unit`||
+</RefTable>
+
+
+
+
+
+
+
+
+
+
+
+---
+
+
+
 ### Get Time Span as String
 
 Get the time span between the present and a specified past date as a string.
@@ -11218,6 +11374,84 @@ The project API key.
 
 
 
+### GetPreviousSize
+
+Get the previous file size unit from the current unit.
+
+![nd_img_ModioSDKLibrary_GetPreviousSize.png](img/refdocs/nd_img_ModioSDKLibrary_GetPreviousSize.png)
+
+```cpp
+EFileSizeUnit GetPreviousSize(EFileSizeUnit Unit, bool WrapAround)
+```
+
+
+
+
+
+
+#### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Unit`|The current file size unit.|
+|`WrapAround`|Whether to wrap around to the largest unit if the current unit is the smallest.|
+</RefTable>
+
+
+
+#### Returns
+The previous file size unit.
+
+
+
+
+
+
+
+
+---
+
+
+
+### GetNextSize
+
+Get the next file size unit from the current unit.
+
+![nd_img_ModioSDKLibrary_GetNextSize.png](img/refdocs/nd_img_ModioSDKLibrary_GetNextSize.png)
+
+```cpp
+EFileSizeUnit GetNextSize(EFileSizeUnit Unit, bool WrapAround)
+```
+
+
+
+
+
+
+#### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Unit`|The current file size unit.|
+|`WrapAround`|Whether to wrap around to the smallest unit if the current unit is the largest.|
+</RefTable>
+
+
+
+#### Returns
+The next file size unit.
+
+
+
+
+
+
+
+
+---
+
+
+
 ### Get Monetization Purchase Category
 
 Get the purchase category ID for the store overlay UI for a given portal.
@@ -11339,7 +11573,7 @@ Get the appropriate file size unit based on the file size in bytes.
 ![nd_img_ModioSDKLibrary_GetDesiredFileSizeUnit_Unsigned64.png](img/refdocs/nd_img_ModioSDKLibrary_GetDesiredFileSizeUnit_Unsigned64.png)
 
 ```cpp
-TEnumAsByte<EFileSizeUnit> GetDesiredFileSizeUnit_Unsigned64(FModioUnsigned64 FileSize)
+EFileSizeUnit GetDesiredFileSizeUnit_Unsigned64(FModioUnsigned64 FileSize)
 ```
 
 
@@ -11407,6 +11641,44 @@ The Windows session ID, or an empty string if the platform is not Windows.
 
 
 
+### ToString (EFileSizeUnit)
+
+Convert a file size unit to a human-readable string.
+
+![nd_img_ModioSDKLibrary_FileSizeUnit_ToString.png](img/refdocs/nd_img_ModioSDKLibrary_FileSizeUnit_ToString.png)
+
+```cpp
+FString FileSizeUnit_ToString(EFileSizeUnit Unit)
+```
+
+
+
+
+
+
+#### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`Unit`|The file size unit to convert.|
+</RefTable>
+
+
+
+#### Returns
+A formatted string representing the file size unit.
+
+
+
+
+
+
+
+
+---
+
+
+
 ### ToString (ModioUnsigned64)
 
 Convert a file size to a human-readable string with the appropriate unit.
@@ -11414,7 +11686,7 @@ Convert a file size to a human-readable string with the appropriate unit.
 ![nd_img_ModioSDKLibrary_Filesize_ToString_Unsigned64.png](img/refdocs/nd_img_ModioSDKLibrary_Filesize_ToString_Unsigned64.png)
 
 ```cpp
-FText Filesize_ToString_Unsigned64(FModioUnsigned64 FileSize, int32 MinDecimals, int32 MaxDecimals, TEnumAsByte<EFileSizeUnit> Unit, bool bIncludeUnitName)
+FText Filesize_ToString_Unsigned64(FModioUnsigned64 FileSize, int32 MinDecimals, int32 MaxDecimals, EFileSizeUnit Unit, bool bIncludeUnitName)
 ```
 
 
@@ -11437,6 +11709,44 @@ FText Filesize_ToString_Unsigned64(FModioUnsigned64 FileSize, int32 MinDecimals,
 
 #### Returns
 A formatted string representing the file size.
+
+
+
+
+
+
+
+
+---
+
+
+
+### ToBytes (Filesize)
+
+Returns the byte size of the given FilesizeUnit (e.g EFileSizeUnit::KB returns 1024)
+
+![nd_img_ModioSDKLibrary_Filesize_ToBytes.png](img/refdocs/nd_img_ModioSDKLibrary_Filesize_ToBytes.png)
+
+```cpp
+FModioUnsigned64 Filesize_ToBytes(EFileSizeUnit FileSizeUnit)
+```
+
+
+
+
+
+
+#### Parameters
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+|`FileSizeUnit`|The unit to convert to a byte value|
+</RefTable>
+
+
+
+#### Returns
+The byte value of the given unit.
 
 
 
@@ -11823,6 +12133,34 @@ Cloud Cooking status for this game
 
 ---
 
+### EModioPlacementSize {#EModioPlacementSize} 
+
+Size of the placement to display
+
+
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+| `Small` |  |
+| `Medium` | (default) |
+| `Large` |  |
+</RefTable>
+
+---
+
+### EModioPlacementType {#EModioPlacementType} 
+
+Type of the placement
+
+
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+| `Filters` |  |
+</RefTable>
+
+---
+
 ### EModioModfilePlatform {#EModioModfilePlatform} 
 
 Enum representing the platform(s) that a modfile is enabled for
@@ -12027,7 +12365,7 @@ Simple struct to encapsulate data passed to external authentication systems
 | `Switch` |  |
 | `Switch2` |  |
 | `Discord` |  |
-| `PSN` |  |
+| `PS` | Deprecated as of 2026.9 release. Please use PS |
 | `Epic` |  |
 | `Oculus` |  |
 | `OpenID` |  |
@@ -12159,6 +12497,8 @@ Enumerator of potential results on attempting to open a native platform store
 | `Success` | Store opened successfully * |
 | `FailedInactive` | Monetization not active * |
 | `FailedUnsupportedPlatform` | The current platform does not support a native store * |
+| `FailedStoreNotLoaded` | The current platform has not loaded the store skus yet * |
+| `FailedStoreEmpty` | The current platform has no products in the store * |
 | `FailedUnknown` | Failed to open for an unknown reason * |
 </RefTable>
 
@@ -12221,7 +12561,7 @@ Enum representing the store or service your game is being distributed through
 | `Google` |  |
 | `Itchio` |  |
 | `Nintendo` |  |
-| `PSN` |  |
+| `PS` | Deprecated as of 2026.9 release. Please use PS |
 | `Steam` |  |
 | `XboxLive` |  |
 </RefTable>
@@ -12424,6 +12764,25 @@ Enum indicating filtering options based off revenue type
 | `Free` | Return only free mods |
 | `Paid` | Return only paid mods |
 | `FreeAndPaid` | Return both free and paid mods |
+| `FreeAndPaidWeighted` | Return both free and paid mods at game specified weighting |
+</RefTable>
+
+---
+
+### EModioFilterTimespan {#EModioFilterTimespan} 
+
+Enum indicating the duration from which results should be included
+
+
+<RefTable colWidths={['30%', '70%']} stripes="odd">
+| | |
+|-|-|
+| `Today` |  |
+| `Week` | (default) |
+| `Month` |  |
+| `ThreeMonths` |  |
+| `Year` |  |
+| `AllTime` |  |
 </RefTable>
 
 ---
