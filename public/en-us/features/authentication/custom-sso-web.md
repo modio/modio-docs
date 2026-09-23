@@ -210,6 +210,17 @@ A confirmation page will now display a summary of all the endpoints configured a
 
 Once everything is correct and ready, click 'Create config'.
 
+## Using ID Tokens for the user profile
+
+If you enable **Use ID Token for User Profile** in your config, mod.io skips the User Info URL step and reads the user's profile directly from the ID Token your Token endpoint returns. The ID Token must be a JWT signed with a key published at your configured JWK URL, and it must contain the following claims:
+
+- `sub`: the unique identifier for the player within your identity provider. This must match your configured _Portal ID Claim_.
+- `aud`: the audience claim. This **must** be set to either `https://mod.io` or `https://g-{your-game-id}.modapi.io`. It is **not** your OAuth client ID. Setting it to your client ID, your identity provider's URL, or any other value will fail the login with a bad-audience error (`11091`). If you use `https://g-{your-game-id}.modapi.io` it must match the API host exactly.
+- `iat`: issued-at. Cannot be greater than the current unix timestamp (with a 10 second clock-skew buffer).
+- `exp`: expiry. Must be greater than the current unix timestamp (with a 10 second clock-skew buffer).
+
+mod.io validates the ID Token in this order before creating the mod.io access token: signature (against your JWK URL), `sub`, `aud`, `iat`, then `exp`. If any check fails the login is rejected.
+
 ## Prompting users to login
 
 Once your config has been saved, we are now ready to prompt users to log into mod.io using your configured identity provider. There are two ways in-which users are prompted to login:
@@ -287,3 +298,6 @@ Upon success, to re-establish an account link you must initiate the [In-Game Cus
 | 11117 | The `expires_in` field returned the Token URL endpoint is either missing or invalid (non-integer). |
 | 11118 | The `token_type` field returned the Token URL endpoint is either missing or not the expected value `Bearer` (case-insensitive). |
 | 11121 | The expected field from the User Info URL endpoint which maps to the users ID for your identity provider could not be obtained. |
+| 11091 | The ID Token `aud` claim did not match the expected value. It must be `https://mod.io` or `https://g-{your-game-id}.modapi.io` (not your OAuth client ID). |
+| 11089 | The signature verification against the supplied ID Token failed. |
+| 11090 | mod.io was unable to obtain the JWK set from the registered JWK URL. |
